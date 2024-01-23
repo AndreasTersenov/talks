@@ -1,3 +1,6 @@
 [submodule "test/reveal.js"]
 	path = test/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "TITAN_Saclay_2024/reveal.js"]
+	path = TITAN_Saclay_2024/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
