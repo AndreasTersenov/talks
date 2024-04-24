@@ -4,3 +4,6 @@
 [submodule "TITAN_Saclay_2024/reveal.js"]
 	path = TITAN_Saclay_2024/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "AstroML_JC_Mar24/reveal.js"]
+	path = AstroML_JC_Mar24/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
