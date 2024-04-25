@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>TITAN Science Meeting, Mar 29 2024</title>
+	<title>IA-FORTH Journal Club, Apr 26 2024</title>
 	<meta name="description" content="A basic template to start a new talk">
 	<meta name="author" content="Andreas Tersenov">
 
@@ -20,34 +20,463 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section> Slide 1 </section>
+
+			<!-- <section data-background-image="assets/convergence.png"> -->
+			<section data-background-iframe="background.html">
+				<div class="container">
+					<div class="title" style="border-radius: 20px; background-color:rgba(0, 0, 0, 0.4);">
+						<h1>Fast likelihood-free inference in the LSS Stage IV era</h1>
+						<h3>G. Franco-Abellan, G. Canas-Herrera, M. Martinelli, O. Savchenko, D. Sciotti, and C.
+							Wenigera</h3>
+					</div>
+				</div>
+				<hr>
+				<br>
+				<div style="border-radius: 20px; background-color:rgba(0, 0, 0, 0);">
+					<div class="container">
+						<div class="col">
+							<div align="left" style="margin-left: 20px;">
+								<h3>Andreas Tersenov</h3>
+								<h3><em>IA-FORTH Journal Club</em> </h3>
+							</div>
+						</div>
+
+					</div>
+					<br><br>
+					<div> slides at <a
+							href="https://andreastersenov.github.io/talks/AstroML_JC_Mar24/">andreastersenov.github.io/talks/AstroML_JC_Mar24/</a>
+					</div>
+				</div>
+			</section>
+
+			<section data-background-image="/assets/WMAP_timeline_large.jpg">
+				<h3 class="slide-title" style="position: absolute; top: 0">
+					the $\Lambda$CDM view of the Universe
+				</h3>
+				<br />
+				<br />
+				<div class="container">
+					<div class="col" style="flex: 0 0 40em"></div>
+					<div class="col">
+						<img class="plain" data-src="/assets/Euclid.png" style="width: 240px" />
+
+						<img class="plain" data-src="/assets/roman_logo_black_w200px.png" style="width: 240px" />
+
+						<img class="plain" data-src="/assets/vrro.png" style="width: 240px" />
+					</div>
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+			</section>
+
 
 			<section>
-				<h3 class="slide-title"> No-noise constrain</h3>
-				<img src="assets/mcmc_low_noise.png" alt="Weak Lensing Distortions" style="height: 600px;">
+				<div class="block">
+					<div class="block-title">
+						How does "standard" inference work?
+					</div>
+					<div class="block-content">
+						<br>
+						<ul>
+							<li class="fragment"> Given data to analyze, $x$, that was generated through a model/random
+								process &rarr; develop the <b class="alert">likelihood</b>, a model of the data
+								generation process that describes the <em>probability of the data given some
+									parameters</em> $\theta$
+								$$ p(x|\theta) $$
+								$$ \text{e.g.} \,\,\,\,p(x|\theta) = \mathcal{N}(\theta,1) = \frac{1}{\sqrt{2\pi}}
+								\exp\left(-\frac{(x-\theta)^2}{2}\right) $$
+							</li>
+							<li class="fragment"><b class="alert">Goal</b>: perform inference on the parameters $\theta$
+								given the data $x$</li>
+							</li>
+
+
+
+							<li class="fragment"> <b class="alert">Bayesian Inference</b>:
+								$$ p(\theta | x) = \frac{p(x|\theta) p(\theta)}{p(x)} $$ </li>
+
+							<li class="fragment"> In typical statistics, we write down an analytic form for the
+								likelihood.
+							</li>
+
+							<li class="fragment"> <span style="color: #90EE90;">Nice case</span>: Can analytically
+								derive posterior, confidence intervals, etc. </li>
+							<li class="fragment"> <span style="color: #FF6347;">Not as nice</span>: Can't analytically
+								derive posterior, need to use sampling, e.g. MCMC </li>
+
+						</ul>
+
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Metropolis-Hastings (MH) MCMC</h3>
+				<span class="fragment fade-in">
+					<ul>
+						<li>Want to <b class="alert">sample</b> a (possibly un-normalized) distribution $p(x)$</li>
+						<br>
+						<li>Build a Markov Chain of samples $\{x_t\}$ &rarr; Transition to a new sample with a
+							transition
+							probability $q(x_{t+1}|x_{\text{t}})$ &rarr; The distribution of the samples converges to
+							$p(x)$
+							as $t \to \infty$</li>
+
+						</li>
+					</ul>
+				</span>
+				<br><br>
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Algorithm</div>
+								<div class="block-content">
+									<ul>
+										<li>Given current sample $x_t$</li>
+										<li>Draw proposal $x' \sim q(x'|x_t)$ </li>
+										<li>Evaluate $a = \min \left[ 1 , \frac{p(x')}{p(x_t)} \right]$</li>
+										<li>Accept $x_{t+1} = x'$ with probability $a$</li>
+										<li> Stay at $x_{t+1} = x_t$ with probability $1-a$</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<img src="assets/Flowchart-of-Metropolis-Hastings-M-H-algorithm-for-the-parameter-estimation-using-the.png"
+								style="width:auto" ; height="400">
+						</div>
+					</div>
+				</span>
+
+			</section>
+
+			<section
+				data-background-iframe="https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana">
+			</section>
+
+			<section>
+				<section>
+					<h3 class='slide-title'> The limits of traditional cosmological inference </h3>
+					<div class='container'>
+						<div class='col'>
+							<div style="position:relative; width:480px; height:30px; margin:0 auto;">
+								<div class="fragment current-visible" style="position:absolute;top:0;"
+									data-fragment-index="1">HSC cosmic shear power spectrum</div>
+								<div class="fragment" style="position:absolute;top:0;" data-fragment-index="2">HSC Y1
+									constraints on $(S_8, \Omega_m)$</div>
+							</div>
+							<div style="position:relative; width:480px; height:300px; margin:0 auto;">
+								<div class="fragment current-visible" style="position:absolute;top:0;left:0;"
+									data-fragment-index="0">
+									<img class="plain" data-src="/assets/alonso_g1.png" />
+									<img class="plain" data-src="/assets/alonso_g2.png" />
+								</div>
+								<img class="fragment current-visible plain"
+									data-src="/assets/hsc_correlation_function.png"
+									style="position:absolute;top:0;left:0;" data-fragment-index="1" />
+								<img class="fragment  plain" data-src="/assets/hsc_constraints.png"
+									style="position:absolute;top:0;left:0;" data-fragment-index="2" />
+							</div>
+							<div class="fragment" data-fragment-index="1" style="float:right; font-size: 20px">(Hikage
+								et al. 2018)</div>
+						</div>
+
+						<div class='col'>
+							<ul>
+								<li class="fragment" data-fragment-index="0"> Measure the ellipticity $\epsilon =
+									\epsilon_i + \gamma$ of all galaxies<br>
+									$\Longrightarrow$ Noisy tracer of the weak lensing shear $\gamma$ </li>
+								<br>
+								<li class="fragment" data-fragment-index="1"> Compute <b class="alert">summary
+										statistics</b> based on 2pt functions, <br>e.g. the <b>power spectrum</b> </li>
+								<br>
+								<li class="fragment" data-fragment-index="2"> Run an MCMC to recover a posterior on
+									model parameters, using an <b class="alert">analytic likelihood</b>
+									$$ p(\theta | x ) \propto \underbrace{p(x | \theta)}_{\mathrm{likelihood}} \
+									\underbrace{p(\theta)}_{\mathrm{prior}}$$
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="block fragment">
+						<div class="block-title">
+							Main limitation: the need for an explicit likelihood
+						</div>
+						<div class="block-content">
+							We can only compute <b>from theory</b> the likelihood for <b class="alert">simple summary
+								statistics</b> and on <b class="alert">large scales</b>
+							<br>
+							<div class="fragment"> $\Longrightarrow$ We are dismissing a significant fraction of the
+								information! </div>
+							<br>
+							<div class="fragment">Moreover, likelihood-based methods require sampling the <em>full joint
+									posterior</em>
+								$\Longrightarrow$ time to converge increases dramatically with the number of parameters.
+							</div>
+						</div>
+
+					</div>
+				</section>
+
+				<section>
+					<h3 class='slide-title'>Simulation-Based Inference</h3>
+
+					<div class="r-stack">
+						<div>
+							<div class='container'>
+								<div class='col'>
+									<ul>
+										<li data-fragment-index="0"> Instead of trying to analytically evaluate the
+											likelihood
+											of
+											sub-optimal summary statistics, let us build a forward model of the full
+											observables.<br>
+											$\Longrightarrow$ <b class="alert">The <b class="alert">stochastic
+													simulator</b> becomes the <b class="alert">physical
+													model</b></b>.
+										</li>
+										<br>
+										<li class="fragment" data-fragment-index="1"> Allows us to sample observations
+											given a set of parameters $\Longrightarrow$ this way, we can implicitly
+											define $p(x|\theta)$.
+
+											<br><br>
+
+										<li class="fragment" data-fragment-index="2"> Each component of the model is now
+											tractable, but at the
+											cost of a <b>large number of latent variables</b>.
+										</li>
+									</ul>
+
+									<br>
+									<br>
+
+									<div class="block fragment">
+										<div class="block-title">
+											Benefits of a forward modeling approach
+										</div>
+										<div class="block-content">
+											<ul>
+												<li> Can fully exploit the information content of the data.
+												</li>
+
+
+												<li> Easy to incorporate systematic effects.
+												</li>
+
+												<li> Easy to combine multiple cosmological probes by joint simulations.
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class='col'>
+									<div style="position:relative; width:600px; height:600px; margin:0 auto;">
+										<img class=" plain" data-src="/assets/forward_model.png"
+											style="position:absolute;top:0;left:0;width:600px;"
+											data-fragment-index="0" />
+										<!-- <img class="fragment plain" data-src="/talks/assets/porqueres_hbm.png" style="position:absolute;top:0;left:0;width:500px;background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);" data-fragment-index="1" /> -->
+										<!-- <div class="fragment" data-fragment-index="1" style="float:right; font-size: 20px">(Porqueres et al. 2021)</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div>
+							<iframe class="fragment" src="https://giphy.com/embed/Ztzt8zhmmpVPUiSNMX" width="480"
+								height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+							<p><a
+									href="https://giphy.com/gifs/theoffice-episode-13-the-office-tv-Ztzt8zhmmpVPUiSNMX"></a>
+							</p>
+						</div>
+					</div>
+
+
+
+				</section>
+
+				<section>
+					<h3 class="slide-title">...so why is this not mainstream?</h3>
+					<img class="plain" data-src="/assets/lfi_sim.png" style="width:1000px;" />
+
+					<div class="r-stack">
+
+						<img class="plain fragment" data-src="/assets/plot_massive_nu.png" style="width:1000px;" />
+
+						<div class="block fragment">
+							<div class="block-title">
+								The Challenge of Simulation-Based Inference
+							</div>
+							<div class="block-content">
+								Probability of a simulation run depends jointly on observation and the <em>stochastic
+									latent
+									variables</em> $z$ of the simulator: $ p(x, z | \theta) $.
+								<br><br>
+								However, we only observe $x$, so the likelihood we need is marginalized over latent
+								variables:
+								$$ p(x|\theta) = \int p(x, z | \theta) dz = \int p(x | z, \theta) p(z | \theta) dz $$
+								<br>
+								$\Longrightarrow$ This <b class="alert">marginal likelihood is intractable</b>!
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<img class="plain" data-src="/assets/sbi.png" style="width:auto;" />
 			</section>
 			<section>
-				<h3 class="slide-title"> Constraints with noise</h3>
-				<img src="assets/mcmc_normal_noise.png" alt="Weak Lensing Distortions" style="height: 600px;">
+				<section>
+					<h3 class="slide-title">A variety of algorithms</h3>
+					<div style="float:right; font-size: 20px">Lueckmann, Boelts, Greenberg, Gonçalves, Macke (2021) <a
+							href="https://arxiv.org/abs/2101.04653"><img
+								src="https://img.shields.io/badge/stat.ML-arXiv%3A2101.04653-B31B1B.svg" class="plain"
+								style="height:25px;vertical-align:middle;" /></a></div>
+					<img class="plain" data-src="/assets/sbibm_comparison.png" />
+
+					<br>
+					<br>
+
+				</section>
+			</section>
+
+			<section>
+				<h3 class="slide-title">SBI with Marginal Neural Ratio Estimation</h3>
+				<ul>
+					<li class="fragment fade-in"> Information about $p(x|\theta)$ is implicitly accessed via a <b
+							class="alert">stochastic simulator</b>, mapping: $\theta \rightarrow x$</li>
+					<br>
+					<li class="fragment fade-in">
+						Drawing parameters from the prior, $p(\theta)$, and calling the simulator &rarr; <b
+							class="alert">generate $N$ data-parameter pairs</b> $\{(x_1, \theta_1), \dots, (x_N,
+						\theta_N)\}$, drawn from the joint distribution $p(x, \theta)=p(x|\theta)p(\theta)$
+					</li>
+					<br>
+					<li class="fragment fade-in">
+						Can also construct samples from the product of <b class="alert">marginals</b> $p(x)p(\theta)$,
+						by randomly shuffling the data and parameters
+					</li>
+					<br>
+
+				</ul>
+				<br>
+				<div class="block; fragment fade-in">
+					<div class="block-title">
+						Neural Ratio Estimation
+					</div>
+					<div class="block-content">
+						Use these two sets of data-parameter pairs to train a neural network to estimate the ratio:
+						$$ r(x ; \theta) \equiv \frac{p(x,\theta)}{p(x)p(\theta)} = \frac{p(x|\theta)}{p(x)} =
+						\frac{p(\theta|x)}{p(\theta)} $$
+					</div>
+					<div class="fragment fade-in">$\Longrightarrow$ Determining $r(x ; \theta)$ is equivalent to
+						determining the <em>likelihood-to-evidence</em> ratio or the <em>posterior-to-prior</em> ratio.
+					</div>
+					<br>
+					<div class="fragment fade-in">$\Longrightarrow$ Allows to obtain posterior samples by drawing
+						samples from prior $p(\theta)$ and weighting them by $r(x ; \theta)$</div>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Ratio computation</h3>
+				<ul>
+					<li class="fragment fade-in"> To compute $r(x ; \theta)$, train a <b class="alert">binary
+							classifier</b> $d_{\phi}(x, \theta)$ ($\phi$ are the parameters of the neural network) to
+						distinguish between samples from the joint and the product of marginals:
+						$$ d_{\phi}(x, \theta) \approx \begin{cases} 1 & \text{if } (x, \theta) \sim p(x, \theta) \\ 0 &
+						\text{if } (x, \theta) \sim p(x)p(\theta) \end{cases} $$
+					</li>
+
+					<li class="fragment fade-in">
+						Learning problem &rarr; minimization of loss function (binary cross-entropy):
+						$$ \ell \left[ d_{\phi}(x, \theta) \right] = - \int dx d\theta \, \left[ p(x, \theta) \ln
+						d_{\phi}(x,\theta) + p(x)p(\theta) \ln (1-d_{\phi}(x,\theta)) \right] $$
+					</li>
+
+				</ul>
+
+				<div class="block; fragment fade-in">
+					<div class="block-title">
+						Solution
+					</div>
+					<div class="block-content">
+						$$ \boxed{d^*_{\phi}(x, \theta) = \sigma \left( \ln r(x ; \theta) \right) =
+						\frac{p(x,\theta)}{p(x,\theta)+p(x)p(\theta)}} $$
+					</div>
+
+					<div class="fragment fade-in">$\Longrightarrow r(x ; \theta) = \frac{p(x,\theta)}{p(x)p(\theta)}
+						\approx \frac{d_{\phi}(x, \theta)}{1-d_{\phi}(x, \theta)} = \hat{r}(x ; \theta)$</div>
+				</div>
+				<br>
+					<div class="fragment fade-in">* Allows to directly estimate marginal posteriors by omitting parameters form network's input</div>
+			</section>
+
+
+
+
+
+
+
+
+			<section> Slide 1 </section>
+			<section>
+				<h3 class="slide-title"> Figure 1</h3>
+				<img src="assets/nz.pdf" alt="Galaxy Redshift distribution" style="width:auto">
 			</section>
 			<section>
-				<h3 class="slide-title"> Constraints with high noise</h3>
-				<img src="assets/mcmc_high_noise.png" alt="Weak Lensing Distortions" style="height: 600px;">
+				<h3 class="slide-title"> Figure 2</h3>
+				<img src="assets/Cls.pdf" alt="Angular Power Spectrum" style="width:auto">
 			</section>
 			<section>
-				<h3 class="slide-title"> Figure 4</h3>
-				<img src="assets/Fig4.pdf" alt="Weak Lensing Distortions" style="width:auto">
+				<h3 class="slide-title"> Figure 3</h3>
+				<img src="assets/diagram_network.pdf" alt="Network Architecture" style="width:auto">
+			</section>
+			<section>
+				<h3 class="slide-title"> Figure 4 </h3>
+				<img src="assets/Swyft_vs_MCMC_varnuis_COSMO.pdf" alt="Forecast Constraints" style="width:auto">
 			</section>
 			<section>
 				<h3 class="slide-title"> Figure 5</h3>
-				<img src="assets/Fig5.pdf" alt="Weak Lensing Distortions" style="width:auto">
+				<img src="assets/Swyft_vs_MCMC_varnuis_NUISANCE.pdf" alt="Forecast Constraints on Nuisance Parameters"
+					style="height: 600px;">
 			</section>
 			<section>
-				<h3 class="slide-title"> Figure 6</h3>
-				<img src="assets/Fig6.pdf" alt="Weak Lensing Distortions" style="width:auto">
+				<h3 class="slide-title"> Figure 6 </h3>
+				<img src="assets/Swyft_vs_MCMC_varnuis_DDM.pdf" alt="C.L. bounds" style="width:auto">
+			</section>
+			<section>
+				<h3 class="slide-title"> Figure 7 </h3>
+				<img src="assets/coverage_varnuis.pdf" alt="Coverage test" style="width:auto">
+			</section>
+			<section>
+				<h3 class="slide-title"> Figure 8 </h3>
+				<img src="assets/compare_cosmo.pdf" alt="Constraints on cosmo parameters" style="height: 600px;">
+			</section>
+			<section>
+				<h3 class="slide-title"> Figure 9</h3>
+				<img src="assets/compare_nuis.pdf" alt="Constraints on cosmo parameters" style="height: 600px;">
 			</section>
 
 
+			<section>
+				<img src="assets/FwRRLH-aYAATy8r.jpeg" alt="meme" style="width:auto">
+			</section>
 
 			<style>
 				/* .reveal .slides {
