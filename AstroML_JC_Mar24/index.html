@@ -390,7 +390,8 @@
 					</div>
 					<br>
 					<div class="fragment fade-in">$\Longrightarrow$ Allows to obtain posterior samples by drawing
-						samples from prior $p(\theta)$ and weighting them by $r(x ; \theta)$</div>
+						samples from prior $p(\theta)$ and weighting them by $r(x ; \theta)$
+					</div>
 			</section>
 
 			<section>
@@ -424,9 +425,117 @@
 						\approx \frac{d_{\phi}(x, \theta)}{1-d_{\phi}(x, \theta)} = \hat{r}(x ; \theta)$</div>
 				</div>
 				<br>
-					<div class="fragment fade-in">* Allows to directly estimate marginal posteriors by omitting parameters form network's input</div>
+				<div class="fragment fade-in">* Allows to directly estimate marginal posteriors by omitting parameters
+					form network's input</div>
 			</section>
 
+			<section>
+				<h1> LSS observables and synthetic data </h1>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Theoretical Predictions</h3>
+
+				<div class="container">
+					<div class="col">
+						<div class="block; fragment fade-in">
+							<div class="block-title">Observables</div>
+
+							<div class="block-content">
+								<ul>
+									<li> Weak Lensing (WL): correlation between shear in the galaxy shapes </li>
+									<li> Galaxy Clustering (GC): correlation between galaxy positions </li>
+									<li> Cross-correlation between WL and GC (XC) </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+
+
+				<ul>
+					<li class="fragment fade-in"> Obtain theoretical predictions on those by modeling their <b
+							class="alert">angular power spectra</b> in multipole space, and dividing observations in <b
+							class="alert">redshift bins</b>. Applying <em>Limber approximation</em>:
+						$$ C_{ij}^{AB} = \int \frac{dz}{H(z) \, r^2(z)} W_i^A(z) W_j^B(z) P_{AB} \left( k_\ell(z), z
+						\right) $$
+						where $W_i^A(z)$ are the window functions, $P_{AB}$ are the power spectra, and $k_\ell(z)$ is
+						the wavenumber corresponding to the multipole $\ell$ at redshift $z$.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3 class="slide-title">$C_\ell$ modelling</h3>
+
+				<div class="container">
+					<div class="col">
+						<div class="block; fragment fade-in">
+							<div class="block-title">Galaxy clustering (doesn't trace total matter distr. directly)
+							</div>
+							<div class="block-content">
+								<ul>
+									<li> $ W_i^g (z) = n_i^g(z) H(z), \,\, P_{gg} = b_g^2(z) P_{\delta \delta}(k,z) $
+									</li> <br>
+									<li> where $n_i^g(z)$: normalized distr. in $z$ of the observed galaxies in bin $i$,
+										$b_g(z)$: galaxy bias (treat it as free nuisance param.) </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="container">
+					<div class="col">
+						<div class="block; fragment fade-in">
+							<div class="block-title">Weak Lensing (traces directly the total matter distribution)</div>
+							<div class="block-content">
+								<ul>
+									<li> Intrinsic alignment: $C^{\epsilon \epsilon}_{ij}(\ell) = C^{\gamma
+										\gamma}_{ij}(\ell) + C^{I \gamma}_{ij}(\ell) + C^{I I}_{ij}(\ell) $ </li><br>
+									<li> $ W_i^\gamma (z) = \frac{3}{2} \Omega_m H_0^2 (1+z) r(z) \int_z^{z_{max}} dz'
+										\frac{r(z')-r(z)}{r(z')} n_i^\gamma(z'), \,\, W_i^I(z) = n_i^\gamma(z) H(z) $
+									</li> <br>
+									<li>$P_{\gamma \gamma} = P_{\delta \delta} \left( k, z \right), \,\, P_{I I} =
+										f^2_{\rm IA}(z) P_{\delta \delta} \left( k, z \right)$</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section>
+				<h3 class="slide-title">Noise and covariance</h3>
+
+				<ul>
+					<li class="fragment fade-in"> Creating synthetic data that mimic observations &rarr; need to model
+						the <b class="alert">observational uncertainty</b> affecting the measurements, and how it
+						propagates to the $C_\ell$s </li>
+						<br>
+					<li>Assume that the final measured spectra $C_\ell$ distributed following a <b
+							class="alert">multivariate Gaussian</b> distribution, with a covariance matrix that they
+						model as
+						$$\begin{aligned}
+						\mathbf{C}\left[C_{i j}^{A B}(\ell), C_{m n}^{A^{\prime}
+						B^{\prime}}\left(\ell^{\prime}\right)\right]= & \frac{\delta_{\ell \ell^{\prime}}^K}{(2 \ell+1)
+						f_{\text {sky }} \Delta \ell}\left\{\left[C_{i m}^{A A^{\prime}}(\ell)+N_{i m}^{A
+						A^{\prime}}(\ell)\right]\left[C_{j n}^{B B^{\prime}}\left(\ell^{\prime}\right)+N_{j n}^{B
+						B^{\prime}}\left(\ell^{\prime}\right)\right]+\right. \\
+						& {\left.\left[C_{i n}^{A B^{\prime}}(\ell)+N_{i n}^{A B^{\prime}}(\ell)\right]\left[C_{j m}^{B
+						A^{\prime}}\left(\ell^{\prime}\right)+N_{j m}^{B
+						A^{\prime}}\left(\ell^{\prime}\right)\right]\right\}, }
+						\end{aligned}$$
+					</li>
+					<li>
+						Information on the observational uncertainties is encoded in the <b class="alert">noise
+							terms</b> $N_{ij}^{AB}(\ell)$. Noise modelled as:
+							$$N_{i j}^{A B}(\ell)= \begin{cases}\delta_{i j}^{\mathrm{K}} / \bar{n}_{\mathrm{g}}^i & A=B=\mathrm{g}, \\ \delta_{i j}^{\mathrm{K}} \sigma_\epsilon^2 / \bar{n}_{\mathrm{g}}^i & A=B=\epsilon \\ 0 & A \neq B \end{cases}$$
+					</li>
+				</ul>
+			</section>
 
 
 
