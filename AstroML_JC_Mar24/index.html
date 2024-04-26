@@ -231,6 +231,10 @@
 					</div>
 				</section>
 
+				<section class="inverted" data-background="#000">
+					<h2>Is there an alternative?</h2>
+				</section>
+
 				<section>
 					<h3 class='slide-title'>Simulation-Based Inference</h3>
 
@@ -430,6 +434,11 @@
 			</section>
 
 			<section>
+				<!-- <h3 class="slide-title"> Diagram</h3> -->
+				<img src="assets/carl.png" alt="Ratio NN" style="width:auto">
+			</section>
+
+			<section>
 				<h1> LSS observables and synthetic data </h1>
 			</section>
 
@@ -506,6 +515,16 @@
 				</div>
 			</section>
 
+			<section>
+				<h4 class="slide-title">Galaxy redshift distribution & Angular PS for photometric LSS probes ($3 \times
+					2$pt)
+				</h4>
+				<img src="assets/nz.pdf" style="height: 250px;">
+				<img src="assets/Cls.pdf" style="height: 300px;">
+			</section>
+
+
+
 
 			<section>
 				<h3 class="slide-title">Noise and covariance</h3>
@@ -514,9 +533,9 @@
 					<li class="fragment fade-in"> Creating synthetic data that mimic observations &rarr; need to model
 						the <b class="alert">observational uncertainty</b> affecting the measurements, and how it
 						propagates to the $C_\ell$s </li>
-						<br>
-					<li>Assume that the final measured spectra $C_\ell$ distributed following a <b
-							class="alert">multivariate Gaussian</b> distribution, with a covariance matrix that they
+					<br>
+					<li class="fragment fade-in">Assume that the final measured spectra $C_\ell$ distributed following a
+						<b class="alert">multivariate Gaussian</b> distribution, with a covariance matrix that they
 						model as
 						$$\begin{aligned}
 						\mathbf{C}\left[C_{i j}^{A B}(\ell), C_{m n}^{A^{\prime}
@@ -529,21 +548,222 @@
 						A^{\prime}}\left(\ell^{\prime}\right)\right]\right\}, }
 						\end{aligned}$$
 					</li>
-					<li>
+					<li class="fragment fade-in">
 						Information on the observational uncertainties is encoded in the <b class="alert">noise
 							terms</b> $N_{ij}^{AB}(\ell)$. Noise modelled as:
-							$$N_{i j}^{A B}(\ell)= \begin{cases}\delta_{i j}^{\mathrm{K}} / \bar{n}_{\mathrm{g}}^i & A=B=\mathrm{g}, \\ \delta_{i j}^{\mathrm{K}} \sigma_\epsilon^2 / \bar{n}_{\mathrm{g}}^i & A=B=\epsilon \\ 0 & A \neq B \end{cases}$$
+						$$N_{i j}^{A B}(\ell)= \begin{cases}\delta_{i j}^{\mathrm{K}} / \bar{n}_{\mathrm{g}}^i &
+						A=B=\mathrm{g}, \\ \delta_{i j}^{\mathrm{K}} \sigma_\epsilon^2 / \bar{n}_{\mathrm{g}}^i &
+						A=B=\epsilon \\ 0 & A \neq B \end{cases}$$
 					</li>
 				</ul>
 			</section>
 
+			<section>
+				<h1> Results </h1>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Inference setup: Simulator</h3>
+
+				<ul>
+					<li class="fragment fade-in"> To perform the SBI analysis, require: <b class="alert">a forward
+							simulator</b> and a <b class="alert">neural network design</b>.
+					</li>
+					<li class="fragment fade-in"> The simulator has <em>same statistical content</em> as the <b
+							class="alert">multivariate Gaussian likelihood</b>, and is defined as:
+				</ul>
+				<br><br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Simulator</div>
+
+						<div class="block-content">
+							<ol>
+								<li>Given the cosmological and nuisance parameters &rarr; compute each $C_{ij}^{AB}$,
+									according to the equations above</li>
+								<li>
+									Add a <em>noise realization</em> to each angular power spectrum, $\hat{C}_{ij}^{AB}
+									= C_{ij}^{AB} + n_{ij}^{AB}$, where $n_{ij}^{AB}$ is drawn from the multivariate
+									Gaussian $\mathcal{N}(0, \mathbf{C})$, with the covariance matrix $\mathbf{C}$ shown
+									previously
+								</li>
+							</ol>
+
+						</div>
+					</div>
+				</span>
+				<br>
+
+				<ul>
+					<li class="fragment fade-in">
+						Generate $5\times 10^4$ simulations by varying all <em>cosmological</em> and <em>nuisance</em>
+						parameters $\{H_0, 100\omega_b, \omega_{\rm cdm}, n_s, \ln(10^{10}A_s)\} + \{ A_{\rm IA},
+						\eta_{\rm IA}, \sigma_{\rm IA}, b_1, \dots, b_{10} \}$.
+					</li>
+					<br>
+					<li class="fragment fade-in">
+						Each parameter $\theta_i$ drawn from a uniform prior $\theta_i \sim \mathcal{U}\left( \left[
+						\theta_i^0 - 5 \sigma_i^F, \theta_i^0 + 5 \sigma_i^F \right] \right)$, where $\theta_i^0$ is the
+						fiducial value and $\sigma_i^F$ is the fiducial error, estimated from the Fisher matrix as
+						$\sigma_i^F = \left( F^{-1} \right)_{ii}^{1/2}$.
+				</ul>
+
+			</section>
+
+			<section>
+				<h3 class="slide-title">Network
+				</h3>
+
+				<img src="assets/diagram_network.pdf" alt="Relation between $\kappa$ and $\gamma$" style="width:auto">
+
+				<div class="container">
+					<div class="col">
+						<ol>
+							<li><b class="alert">Data compression</b>: pre-compress data using PCA
+							</li>
+							<li><b class="alert">Inference</b>
+						</ol>
+					</div>
+				</div>
+				<br>
+				Output of trained network: different estimated ratios for the parameters of interest.
+			</section>
 
 
 
+			<section>
+				<h3 class="slide-title">Forecast posteriors for $\Lambda$CDM</h3>
+				<div class=container>
+					<div class="col">
+						<img src="assets/Swyft_vs_MCMC_varnuis_COSMO.pdf" alt="Forecast Constraints" style="width:auto">
+					</div>
+
+					<div class="col">
+						<div class="fragment">
+							<ul>
+								<li> MNRE and MCMC posteriors are in excellent agreement</li>
+								<br>
+								<li> MNRE results in a speedup factor of $\sim$ 40</li>
+								<br>
+								<li>
+									MNRE directly estimates the marginal posteriors $p(\theta_i|x)$ and $p(\theta_i,
+									\theta_j|x)$ $\Longrightarrow$ requires far fewer simulation runs that sampling the
+									full joint posterior and marginalizing
+								</li>
+								<br>
+								<li> Generation of simulations with MNRE can be fully parallelized, while MCMC is
+									inherently sequential</li>
+								<br>
+								<li> MNRE can be also used to evaluate consistency and get information about e.g.
+									systematics and astrophysics</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Forecast posteriors for decaying dark matter</h3>
+
+				MNRE can be applied to accelerate the inference of <b class="alert">$\Lambda$CDM extensions</b>, having significantly <b class="alert">non-Gaussian</b> posteriors.
+				<br><br>
+				<div class=container>
+					<div class="col">
+						<img src="assets/Swyft_vs_MCMC_varnuis_DDM.pdf" alt="C.L. bounds" style="width:auto">
+					</div>
+
+					<div class="col">
+						<div class="fragment">
+							<ul>
+								<li> 
+									$\Lambda$DDM: model where DM is allowed to decay into a massless and a massive particle. 
+								</li>
+								<br>
+								<li> Characterized by two extra parameters: the DM decay rate $\Gamma$ and the velocity kick $v_{\rm k}$ received by the warm decay product. </li>
+								<br>
+								<li> Here, they vary not only the $\Lambda$CDM and nuisance parameters, but also the two new parameters. </li>
+								<br>
+								<li> MNRE and MCMC posteriors are in very good agreement</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="fragment"> MNRE can be easily applied to test alternative models exhibiting significantly non-Gaussian posteriors & Stage IV surveys can improve the bounds on $\Lambda$DDM by up to 1 order of magnitude.</div>
+			</section>
+
+			<section>
+				<h3 class="slide-title">Conclusions and outlook</h3>
+
+				MNRE can be used to optimize cosmological parameter inference from upcoming Stage IV surveys.
+				
+				<br><br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Benefits compared to LBI</div>
+
+						<div class="block-content">
+							<ol>
+								<li>Does not need to assume a possibly incorrect functional form for the likelihood, only to generate samples from it.</li>
+								<br>
+								<li>
+									Directly estimates the marginal posteriors of interest, without the need to sample the full joint posterior $\Longrightarrow$ much more efficient and flexible than conventional MCMC.
+								</li>
+								<br>
+								<li>
+									The generation of simulations can be fully parallelized, while MCMC is inherently sequential.</li>
+									<br>
+								<li> Allows to perform statistical consistency checks, e.g. coverage tests, which are usually unfeasible with MCMC.</li>
+							</ol>
+
+						</div>
+					</div>
+				</span>
+				<br>
+
+			</section>
+
+			<section>
+				<h3 class="slide-title">Conclusions and outlook</h3>
+
+				To illustrate this, they focused on the photometric $3\times 2$pt statistics measured at 10 tomographic bins that they modelled with a 17-dim cosmological+nuisance parameter space.
+				
+				<br><br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Findings</div>
+
+						<div class="block-content">
+							<ol>
+								<li>Able to accurately reconstruct the posterior of all $\Lambda$CDM and nuisance parameters, with 1-2 orders of magnitude speedup compared to MCMC.</li>
+								<br>
+								<li>
+									Showed that MNRE performs equally well when posteriors are significantly non-Gaussian, as in the case of $\Lambda$DDM. Again, they find posteriors in excellent agreement with MCMC at a fraction of the computational cost.
+								</li>
+							</ol>
+						</div>
+					</div>
+				</span>
+				<br>
+				<div class="fragment">Future work: </div>
+				<br>
+				<ul>
+					<li class="fragment">
+						Extend the pipeline to include other LSS observables </li>
+					<li class="fragment">
+						Here they have used 2pt statistics, that capture only a fraction of the information content in the dat &rarr; explore field level inference, to extract all information available in higher order statistics.
+				</ul>
+
+			</section>
 
 
 
-			<section> Slide 1 </section>
+			<section>
+				<img src="assets/FwRRLH-aYAATy8r.jpeg" alt="meme" style="width:auto">
+			</section>
+
+
+
 			<section>
 				<h3 class="slide-title"> Figure 1</h3>
 				<img src="assets/nz.pdf" alt="Galaxy Redshift distribution" style="width:auto">
@@ -583,9 +803,7 @@
 			</section>
 
 
-			<section>
-				<img src="assets/FwRRLH-aYAATy8r.jpeg" alt="meme" style="width:auto">
-			</section>
+			
 
 			<style>
 				/* .reveal .slides {
