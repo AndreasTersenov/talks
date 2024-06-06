@@ -10,3 +10,6 @@
 [submodule "TITAN_Eval_2024/reveal.js"]
 	path = TITAN_Eval_2024/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "TITAN_Crete_2024/reveal.js"]
+	path = TITAN_Crete_2024/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
