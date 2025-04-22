@@ -19,3 +19,6 @@
 [submodule "TITAN_Saclay_2025/reveal.js"]
 	path = TITAN_Saclay_2025/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "CCA_Predoc_2025/reveal.js"]
+    path = CCA_Predoc_2025/reveal.js
+    url = https://github.com/EiffL/reveal.js.git
