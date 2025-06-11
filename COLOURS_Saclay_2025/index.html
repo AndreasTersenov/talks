@@ -725,6 +725,17 @@
 
 			<!-- ################################################################################################### -->
 
+			<section class="inverted" data-background="#000">
+				<h2> Does the choice of mass-mapping method matter for cosmology? </h2>
+
+				<img src="assets/QR_mass_mapping_impact.png" alt="QR mass mapping impact" style="width: 200px;">
+				<br>
+				A. Tersenov, L. Baumont, J.L. Starck, M. Kilbinger, <a
+					href="https://doi.org/10.1051/0004-6361/202553707">doi.org/10.1051/0004-6361/202553707</a>
+			</section>
+
+			<!-- ################################################################################################### -->
+
 			<section>
 				<h3 class="slide-title">Mass mapping methods: </h3>
 				<div class="container">
@@ -751,13 +762,9 @@
 					</div>
 			</section>
 
-			<!-- ################################################################################################### -->
-
-
 
 
 			<!-- ################################################################################################### -->
-
 
 			<section>
 				<h3 class="slide-title">Higher Order Statistics: <b class="alert">Peak Counts</b></h3>
@@ -1046,64 +1053,7 @@
 			</section>
 			<!-- ################################################################################################### -->
 
-			<section>
-				<h3 class="slide-title">Conclusions</h3>
-				<span class="fragment fade-in">
-					<div class="block">
 
-						<div class="block-content">
-							<ul>
-								<li>Investigated how different <b class="alert">mass mapping algorithms</b> affect <b
-										class="alert">cosmological inference</b>
-									using HOS from WL data.</li>
-								<li>Estimated <b class="alert">posterior</b> distributions of $\Omega_\mathrm{m}$,
-									$\sigma_8$, $h$, and $w_0$
-									using <b class="alert">peak counts</b> and <b class="alert">wavelet peak counts</b>.
-								</li>
-							</ul>
-						</div>
-					</div>
-				</span>
-				<br><br>
-
-				<span class="fragment fade-in">
-					<div class="block">
-						<div class="block-title">Results</div>
-						<div class="block-content">
-							<ul>
-								<li> <b class="alert">MCALens Advantage</b>:
-									<ul>
-										<li>$\sim 17\%$ improvement in (FoM) over KS.</li>
-										<li>$\sim 157\%$ improvement in FoM over KS.</li>
-									</ul>
-								<li> <b class="alert">KS vs. iKS</b>: No significant difference in constraints &rarr;
-									inpainting does not
-									improve
-									performance</li>
-								<li><b class="alert">Wavelet Peak Counts</b>: Provide tighter constraints than
-									single-scale peak counts.</li>
-								<li><b class="alert">MCALens and Multi-Scale Approach</b>: Captures more small-scale
-									information, leading to
-									the greatest improvement.</li>
-							</ul>
-						</div>
-					</div>
-				</span>
-				<br>
-				<span class="fragment fade-in">
-					<div class="block">
-						<div class="block-title"> Takeaway</div>
-						<div class="block-content">
-							<ul>
-								<li><b class="alert">Careful Selection Matters</b>: Choosing an advanced mass mapping
-									method
-									significantly enhances constraints on cosmological parameters from HOS.</li>
-							</ul>
-						</div>
-
-					</div>
-				</span>
-			</section>
 
 			<!-- ################################################################################################### -->
 
@@ -1113,6 +1063,17 @@
 			</section>
 
 			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> Part 2 </h2>
+				<h3> A plug-and-play approach with fast uncertainty quantification for
+					weak lensing mass mapping </h3>
+					<br>
+				H. Leterme,
+				A. Tersenov,
+				J. Fadili, and J.-L. Starck (in prep.)
+			</section>
+
 			<!-- ################################################################################################### -->
 
 			<section data-background-color="#ffffff" class="light-slide">
@@ -1349,7 +1310,65 @@
 			</section>
 
 			<!-- ################################################################################################### -->
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Conclusions</h3>
+				<span class="fragment fade-in">
+					<div class="block">
 
+						<div class="block-content">
+							<ul>
+								<li>Investigated how different <b class="alert">mass mapping algorithms</b> affect <b
+										class="alert">cosmological inference</b>
+									using HOS from WL data.</li>
+								<li>Constructed <b class="alert">new mass mapping algorithm</b> based on the <b
+										class="alert">PnP</b> formalism.</li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Results</div>
+						<div class="block-content">
+							<ul>
+								<li> With a <b class="alert">state-of-the-art</b> mass-mapping method (MCALens) we
+									managed to get
+									$\sim 157\%$ improvement in FoM over KS.
+								</li>
+								<li> Increase in constraining power comes from the more accurate recovery of the <b
+										class="alert">smaller scales</b>.</li>
+								<li><b class="alert">Wavelet Peak Counts</b>: Provide tighter constraints than
+									single-scale peak counts.</li>
+								<li> <b class="alert">PnP Mass Mapping</b>: </li>
+								<ul>
+									<li>Provides a <b class="alert">fast</b>, <b class="alert">flexible</b>, and <b
+											class="alert">accurate</b> mass mapping
+										algorithm that can be used with any denoiser.</li>
+									<li>Provides <b class="alert">fast</b> and <b class="alert">reliable</b>
+										uncertainties using <b class="alert">moment networks</b> and <b
+											class="alert">conformal quantile regression</b>.</li>
+								</ul>
+
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title"> Takeaway</div>
+						<div class="block-content">
+							<ul>
+								<li><b class="alert">Mass-mapping Matters</b>: Choosing an advanced mass mapping method
+									significantly enhances constraints on cosmological parameters from HOS.</li>
+							</ul>
+						</div>
+
+					</div>
+				</span>
+			</section>
 
 
 		</div>
