@@ -1,0 +1,3925 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>PhD Defence- Vilasini</title>
+		<meta name="description" content="Talk for my PhD defence">
+		<meta name="author" content="Vilasini">
+
+		<link rel="stylesheet" href="reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Global footer text (hidden on slide 1 via JS below) -->
+				<!-- <div class="global-footer-text" id="vf">Vilasini PhD Defence - 22 October 2025</div> -->
+
+
+<!-- ######################################################################################################################################################################### -->
+				<section data-background-image="assets/joint-titan-argos-tosca-workshop-background.png"  data-background-opacity="0.4" >
+					<br>
+					<br>
+					<br>
+					<br>
+					<!-- <br>
+					<br>
+					<br>
+					<br> -->
+					<div class="container" style="display: flex; justify-content: center; align-items: center;">
+						<div class="title" style="border-radius: 50px; background-color: rgba(0, 0, 0, 0.4); padding: 20px; text-align: center;" >
+							
+							<h3 style="font-size:2.em;">Likelihood-free cosmological parameter
+								inference using theoretical high-order statistics
+								predictions</h3>
+						</div>
+					</div>	
+					<h2>Vilasini Tinnaneri Sreekanth</h2>
+					<h5> Thesis Defence, 22 October 2025</h5>
+					<!-- <div> slides at <a href="https://vilasinits.github.io/Talks/PhD-Defence/">vilasinits.github.io/Talks/Phd-Defence/</a> </div> -->
+					<hr>
+					<div class="col">
+						<div align="left" style="margin-left: 20px;">
+							
+							<h5>Supervisors: Jean-Luc Starck and Sandrine Codis</h5>
+							<h5>CosmoStat, CEA Paris-Saclay, IRFU/DAp-AIM
+								Université Paris-Saclay, ED Astronomie et Astrophysique d’Ile de France</h5>
+							<br>
+						</div>		
+					</div>
+					<div class="logo-footer">
+						<div class="footer-logos">
+						  <img src="assets/CosmoStatDarkBK.png" alt="CosmoStat" />
+						  <img src="assets/LOGO_CEA.png" alt="AIM" />
+						  <img src="assets/aim.png" alt="AIM" />
+						  <img src="assets/logo_usp_AAIF.png" alt="Université Paris-Saclay"/>
+						</div>
+					  </div>  
+				</section>
+
+				
+<!-- ######################################################################################################################################################################### -->
+
+<!--########################## AIM ############################-->
+
+		<section data-background="#000" data-auto-animate>
+			<h3 class="slide-title"">Aim of this thesis</h3>
+			<div style="
+			max-width:1100px; margin:10px auto 0;
+			background:rgba(255,255,255,.045);
+			border:1px solid rgba(255,255,255,.12);
+			border-left:4px solid #6bdcff;
+			border-radius:14px;
+			padding:14px 18px; font-size:1.2em; line-height:1.35;">
+			Advance cosmological inference <b>beyond two-point statistics</b> by developing
+			<b>theoretical</b> and <b>computational</b> tools for weak lensing.
+			</div>
+			<br>
+			<div class="block" style="width:100vw;max-width:1100px;margin:0 auto;">
+				<div class="block-content" style="font-size:1.2em; color:#ccc;">
+				  <div style="max-width:1100px; margin:16px auto 10px;
+					font-weight:800; font-size:1.55em; color:#e9dcff;
+					border-left:4px solid #996699; padding-left:10px;">
+					The Big Picture - From Theory to Inference
+				  </div>
+				  <p style="margin-top:10px; font-size:1.05em; color:#aaa;">
+					Build an end-to-end pipeline for weak lensing cosmology - 
+					going from <b>theory</b> to <b>inference</b>. 
+					This requires three key ingredients:
+				  </p>
+				</div>
+			  
+				<ul style="font-size:1.6em; margin-top:8px; list-style-type:none; padding-left:0;">
+					<li>
+					  <span style="background:rgba(107,220,255,.14); color:#cfefff; border:1px solid #6bdcff;
+						border-radius:999px; padding:2px 10px; font-size:.85em;">1. Theory</span>
+					  - analytic prediction of the wavelet&nbsp;$\ell_1$-norm
+					</li>
+					<br>
+					<li>
+					  <span style="background:rgba(107,220,255,.14); color:#cfefff; border:1px solid #6bdcff;
+						border-radius:999px; padding:2px 10px; font-size:.85em;">2. Emulator</span>
+					  - fast surrogate for weak-lensing&nbsp;$\kappa$ maps
+					</li>
+					<br>
+					<li>
+					  <span style="background:rgba(107,220,255,.14); color:#cfefff; border:1px solid #6bdcff;
+						border-radius:999px; padding:2px 10px; font-size:.85em;">3. Validation</span>
+					  - testing and calibration against simulations
+					</li>
+				  </ul>
+				  
+			  
+				<p style="margin-top:14px; font-size:1.05em; color:#aaa;">
+				  Each part connects directly to this overarching goal and represents one stage of the pipeline.
+				</p>
+			  </div>
+			  
+		</section>
+  
+  
+  
+
+<!--########################## MOTIVATION ############################-->
+				<section 
+					data-background-video="assets/science-lss.MP4"
+					data-background-video-speed="5"> 
+					<div style="
+					position:fixed; right:70px; bottom:-750px;  /* bump right to avoid slide number */
+					background:rgba(0,0,0,.55); color:#e9e9f0;
+					padding:3px 8px; border-radius:999px; font-size:.8rem;
+					border:1px solid rgba(255,255,255,.18); z-index:1000;">
+					© Greg Bacon/STScI/NASA Goddard Space Flight Center
+					</div>
+				</section>
+
+				<section data-auto-animate  data-background="#000">
+					<h3 class="slide-title">What do we want to know about the Universe?</h3>				  
+					<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:25px; text-align:center;font-size:1.5em;">
+					  <div>
+						<h4 style="color:#66b3ff;">The Beginning</h4>
+						<p>\(A_s, n_s, f_{NL}, \tau...\)</p>
+						<p style="color:#bbb;">Statistics of initial conditions</p>
+					  </div>
+					  <div>
+						<h4 style="color:#66b3ff;">The Content</h4>
+						<p>\(\Omega_m, \Omega_b, m_\nu,...\)</p>
+						<p style="color:#bbb;">Cosmic ingredients</p>
+					  </div>
+					  <div>
+						<h4 style="color:#66b3ff;">The Future</h4>
+						<p>\(H_0, \Omega_\Lambda, w_0, w_a...\)</p>
+						<p style="color:#bbb;">Expansion & dynamics</p>
+					  </div>
+					</div>
+				  
+					<!-- ΛCDM block -->
+					<div class="block" style="max-width:1150px; margin:0 auto;">
+					  <h3 class="slide-title">ΛCDM model</h3>
+				  
+					  <div class="block-content"
+						   style="display:grid; grid-template-columns:50% 50%; align-items:center; gap:10px;">
+						<div style="text-align:left;">
+						  <p class="muted small" style="margin-bottom:10px;">
+							The simplest framework that fits almost all cosmological observations with a minimal parameter set.
+							<p>But it is not without its challenges.</p>
+							<ul style="margin-left:20px;">
+							<li>How is matter distributed in the Universe?</li>
+							<li>How does structure grow over time?</li>
+							<li>Cosmological tensions (e.g., \(H_0\)).</li>
+							</ul>
+						  </p>
+						</div>
+						<figure style="margin:0;">
+						  <img
+							src="assets/dedm_pie_chart.001.jpeg"
+							alt="Energy-matter budget"
+							style="max-width:100%; height:auto; max-height:35vh;
+								   border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.4);"
+						  />
+						</figure>
+					  </div>
+					</div>
+				  </section>
+				  
+				  <section data-auto-animate  data-background="#000">
+					<h3 class="slide-title">Probes of the Universe</h3>
+				  
+					<div class="block" style="max-width:1150px; margin:0 auto;">
+					  <div class="block-content"
+						   style="display:grid; grid-template-columns:58% 42%; align-items:start; gap:6px;">
+						<div style="justify-self:start; max-width:600px; width:100%;
+									max-height:48vh; overflow:auto; border-radius:10px;">
+						  <table style="width:100%; border-collapse:collapse; font-size:1.0em; line-height:1.5; table-layout:fixed;">
+							<thead>
+							  <tr style="background-color:#333333; color:#ffaa7f;">
+								<th style="padding:6px; border-bottom:1px solid #444; width:32%;">Description</th>
+								<th style="padding:4px; border-bottom:1px solid #444; width:15%;">Parameter</th>
+								<th style="padding:4px; border-bottom:1px solid #444; width:40%;">Value</th>
+							  </tr>
+							</thead>
+							<tbody>
+							<tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+								background:var(--bg);
+								box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+											0 0 1px 1px var(--glow);
+								border-radius:8px;">
+								<td style="padding:6px;">Hubble parameter</td>
+								<td style="padding:6px;">\( H_0 \)</td>
+								<td style="padding:6px;">\( 67.66 \pm 0.42\ \mathrm{km\,s^{-1}\,Mpc^{-1}} \)</td>
+							  </tr>
+							  <tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+								<td style="padding:6px;">Total matter density</td>
+								<td style="padding:6px;">\( \Omega_m \)</td>
+								<td style="padding:6px;">\( 0.3111 \pm 0.0056 \)</td>
+							  </tr>
+							  <tr>
+								<td style="padding:6px;">Dark matter density</td>
+								<td style="padding:6px;">\( \Omega_c h^2 \)</td>
+								<td style="padding:6px;">\( 0.11933 \pm 0.00091 \)</td>
+							  </tr>
+							  <tr>
+								<td style="padding:6px;">Baryon density</td>
+								<td style="padding:6px;">\( \Omega_b h^2 \)</td>
+								<td style="padding:6px;">\( 0.02242 \pm 0.00014 \)</td>
+							  </tr>
+							  <tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+							<td style="padding:6px;">Dark energy density</td>
+							<td style="padding:6px;">\( \Omega_\Lambda \)</td>
+							<td style="padding:6px;">\( 0.6889 \pm 0.0056 \)</td>
+							</tr>
+							  <tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+							<td style="padding:6px;">Power spectrum normalisation</td>
+							<td style="padding:6px;">\( \sigma_8 \)</td>
+							<td style="padding:6px;">\( 0.8102 \pm 0.0060 \)</td>
+							</tr>
+							  <tr>
+								<td style="padding:6px;">Spectral index</td>
+								<td style="padding:6px;">\( n_s \)</td>
+								<td style="padding:6px;">\( 0.9665 \pm 0.0038 \)</td>
+							  </tr>
+							  <tr>
+								<td style="padding:6px;">Reionisation optical depth</td>
+								<td style="padding:6px;">\( \tau \)</td>
+								<td style="padding:6px;">\( 0.0561 \pm 0.0071 \)</td>
+							  </tr>
+							  <tr>
+								<td style="padding:6px;">Sum of neutrino masses</td>
+								<td style="padding:6px;">\( M_\nu \)</td>
+								<td style="padding:6px;">\( < 0.12\ \mathrm{eV} \)</td>
+							  </tr>
+							</tbody>
+						  </table>
+						  <p style="margin-top:15px; font-size:0.85em; color:#aaa;">
+						
+							<a href="https://arxiv.org/abs/1807.06209" target="_blank" rel="noopener">
+								Planck Collaboration, “Planck 2018 results. VI. Cosmological parameters”, <i>A$\&$A</i>
+							</a>
+						  </p>	
+						</div>
+						<div style="text-align:left;">
+						  <p class="muted small" style="margin-bottom:10px;">
+							Different cosmological probes capture different physical aspects of the Universe:
+						  </p>
+						  <figure style="margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; min-height:60vh;">
+							<img
+							  src="assets/probes.png"
+							  alt="Cosmological probes overview"
+							  style="max-height:80vh; width:auto; object-fit:contain; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.38);"
+							  loading="lazy" decoding="async"
+							>
+							<figcaption style="font-size:0.95rem; color:#a8b2c7; letter-spacing:.2px;">
+							  Key cosmological probes
+							<div style="font-size:0.75rem; color:#777; text-align:center; max-width:80%;">
+							  Clockwise: <b>CMB</b> - initial conditions | <b>BAO &amp; SNe</b> - geometry |
+							  <b>Galaxy clustering</b> - matter growth | <b>Weak lensing</b> - total matter
+							</div>
+						  </figure>		  
+						</div>
+					  </div>
+					</div>
+				  </section>
+				  
+				
+				  <section
+					data-auto-animate
+					data-background-video="assets/euclid_intro.mp4"
+					data-background-interactive
+					data-background-video-muted
+					data-background-size="cover"
+					data-background-color="#000">
+					<div style="
+						position:absolute; inset:0;
+						background: radial-gradient(400px 800px at 70% -10%, rgba(0,0,0,.45) 0%, rgba(0,0,0,.78) 65%);
+						pointer-events:none; z-index:0;">
+					</div>
+					<div style="
+						position:absolute; inset:1;
+						display:flex; align-items:center; justify-content:center;
+						padding:3vh 3vw;font-size:1.1em;   
+						line-height:1.;">						
+						<div class="overlay-card"
+							style="
+							max-width:1380px;
+							max-height:88vh;
+							overflow:auto;
+							text-align:left;
+							padding:5vh 5vw;">
+						
+						<h3 class="slide-title" style="font-size:1.8em;">Euclid: Mapping the Dark Universe</h3>
+						<p class="muted small" style="margin:0 0 12px 0;font-size:1.8em;">
+							ESA mission using <b>lensing + clustering</b> to measure cosmic geometry and growth with <b>percent-level precision</b>.
+
+						</p>
+
+						<div style="
+							display:grid;
+							grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+							gap:6px;
+							text-align:left; font-size:1.2em;">
+							<ul style="margin:0;">
+							<!-- <li >15 000 deg² extragalactic survey (6 years)</li> -->
+							<li ><span class="alert">~1.5 billion galaxies </span> with shape + photo-z</li>
+							<li ><span class="alert">Joint constraints on \( \Omega_m, \sigma_8, w_0, w_a \)</span></li>
+							</ul>
+							<ul style="margin:0;">
+							<!-- <li >VIS: optical imaging (550-900 nm) for galaxy shapes (WL)</li> -->
+							<!-- <li >NISP: NIR spectroscopy/photometry for clustering</li> -->
+							<li ><span class="alert">Designed for precision dark-energy and gravity tests</span></li>
+							</ul>
+						</div>
+
+						<h4 style="margin:10px 0 8px 0; color:#6bdcff; font-size:1.8em;">Scientific objectives</h4>
+						<div style="
+							display:grid;
+							grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+							gap:14px; font-size:1.2em;">
+							<ul style="margin:0;">
+							<li>Constrain dark-energy EOS \(w_0, w_a\)</li>
+							<!-- <li>Measure growth history and test GR on cosmic scales</li> -->
+							<li>Percent-level constraints on \( \Omega_m, \sigma_8, H_0 \)</li>
+							</ul>
+							<ul style="margin:0;">
+							<li>Map matter distribution via weak-lensing tomography</li>
+							<!-- <li>Break geometry–growth degeneracies with WL × GC</li> -->
+							<li>Enable synergy with LSST, DESI, Planck</li>
+							</ul>
+						</div>
+						</div>
+					</div>
+					</section>
+
+				<section 
+				data-background-video="assets/wl_animation.mp4"
+				data-background-video-loop
+				data-background-video-muted
+				data-background-size="cover"
+				data-background-color="#000">
+				</section>
+							
+				
+			
+				<section data-background-image="assets/Euclid_sees_spiral_galaxy_NGC_2188_and_galaxy_cluster_Abell_3381.jpg">
+					<!-- put this anywhere inside the slide section -->
+				<div style="
+				position:fixed; right:70px; bottom:-600px;  /* bump right to avoid slide number */
+				background:rgba(0,0,0,.55); color:#e9e9f0;
+				padding:3px 8px; border-radius:999px; font-size:.8rem;
+				border:1px solid rgba(255,255,255,.18); z-index:1000;">
+				© ESA / Euclid Consortium
+				</div>
+
+				</section>
+				<section data-background-image="assets/shearvskappa_.png">
+				</section>
+
+				<section data-auto-animate  data-background="#000">
+					<h3 class="slide-title">Convergence \( \kappa \)</h3>
+					<div class="block" style="max-width:1150px; margin:0 auto;font-size:1.2em;">
+					  <div class="block-content">
+						<!-- <p style="margin-bottom:8px;">
+						  The convergence field \( \kappa(\boldsymbol{\theta}) \) quantifies the <b>isotropic focusing</b> of light bundles by foreground matter; it is proportional to the <b>projected mass density</b>.
+						</p> -->
+						<!-- <p style="text-align:center; margin:8px 0;">
+						  \[
+							\kappa = \tfrac{1}{2}\!\left(\psi_{,xx}+\psi_{,yy}\right)
+							\;\propto\; \Sigma(\boldsymbol{\theta})
+						  \]
+						</p> -->
+						<p style="margin:6px 0;">
+						  As a <b>Line-of-sight (LOS) projection</b> of the 3D overdensity:
+						</p>
+						<p style="text-align:center; margin:6px 0; font-size:0.95em;">
+						  \[
+							\kappa(\boldsymbol{\theta})
+							= \int_{0}^{\chi_s}\! d\chi\; W(\chi)\,\delta(\chi\,\boldsymbol{\theta},\chi),\qquad
+							W(\chi)=\frac{3H_0^2\Omega_m}{2c^2}\,\frac{\chi(\chi_s-\chi)}{a(\chi)\,\chi_s}.
+						  \]
+						</p>				  
+						<ul class="muted small" style="margin-top:10px;">
+						  <li>Encodes both <i>geometry</i> (via \( \chi, a(\chi) \)) and <i>growth</i> (via \( \delta \)).</li>
+						</ul>				  
+						<img
+						  src="assets/WL_mass_map.png"
+						  alt="Convergence map"
+						  class="img"
+						  style="width:80%; height:auto; max-height:40vh; margin-top:12px; border-radius:10px;">
+						<div class="small muted" style="text-align:right; margin-top:4px;">
+						  Simulated \( \kappa(\boldsymbol{\theta}) \) map.
+						</div>
+				  
+					  </div>
+					</div>
+				  </section>
+
+				  <section data-background="#000">
+					<h3 class="slide-title">The Bayesian Framework for Cosmological Inference</h3>
+				  
+					<!-- Flow: Parameters → Likelihood → Posterior -->
+					<div style="display:flex; justify-content:center; align-items:center; gap:35px; margin:40px 0; font-size:1.20em;">
+					  <div
+						style="background:linear-gradient(145deg,#1a1a1a,#222);
+							   border:1px solid #333; border-radius:10px;
+							   padding:25px 35px; width:160px; text-align:center;
+							   box-shadow:0 0 20px rgba(0,0,0,0.4);">
+						<b style="color:#6bdcff;">Parameters</b><br>
+						<span style="font-size:1.2em;">\( \boldsymbol{\theta} \)</span>
+					  </div>
+				  
+					  <div style="font-size:2em; color:#999;">&#8594;</div>
+				  
+					  <div
+						style="background:linear-gradient(145deg,#181818,#202020);
+							   border:1px solid #444; border-radius:12px;
+							   padding:30px 40px; width:260px; text-align:center;
+							   box-shadow:0 0 25px rgba(0,0,0,0.6);">
+						<b style="color:#ffaa7f;">Likelihood</b><br>
+						<span style="font-size:0.95em;">\( p(x\,|\,\boldsymbol{\theta},\mathcal{M}) \)</span><br>
+						<span style="color:#aaa;">Forward model of data given parameters</span>
+					  </div>
+				  
+					  <div style="font-size:2em; color:#999;">&#8594;</div>
+				  
+					  <div
+						style="background:linear-gradient(145deg,#1a1a1a,#222);
+							   border:1px solid #333; border-radius:10px;
+							   padding:25px 35px; width:180px; text-align:center;
+							   box-shadow:0 0 20px rgba(0,0,0,0.4);">
+						<b style="color:#6bdcff;">Posterior</b><br>
+						<span style="font-size:1.2em;">\( p(\boldsymbol{\theta}\,|\,x,\mathcal{M}) \)</span>
+					  </div>
+					</div>
+				  
+					<!-- Bayes rule -->
+					<div style="text-align:center; font-size:1.35em;">
+					  \[
+						p(\boldsymbol{\theta}\,|\,x,\mathcal{M})
+						\propto
+						\underbrace{p(x\,|\,\boldsymbol{\theta},\mathcal{M})}_{\text{likelihood}}
+						\underbrace{p(\boldsymbol{\theta}\,|\,\mathcal{M})}_{\text{prior}}
+					  \]
+					</div>
+				  
+					<!-- Definitions -->
+					<div style="margin-top:18px;">
+					  <div class="block-title">Interpretation</div>
+					  <div class="block-content">
+						<ul style="list-style:none; padding-left:0; font-size:1.05em; line-height:1.45;">
+						  <li><b style="color:#6bdcff;">Prior</b> - belief about parameters before seeing data.</li>
+						  <li><b style="color:#ffaa7f;">Likelihood</b> - probability of data given parameters.</li>
+						  <li><b style="color:#6bdcff;">Posterior</b> - updated belief about parameters given data.</li>
+						</ul>
+					  </div>
+					</div>
+				  
+					<!-- Tractability + segue to simulators -->
+					<div style="margin-top:18px;">
+					  <!-- <div style="font-weight:600; color:#ffb6a6;">⟹ Classical Bayesian inference requires tractable posterior evaluation:
+						\( \log p(\boldsymbol{\theta}|x,\mathcal{M}) = \log p(x|\boldsymbol{\theta},\mathcal{M}) + \log p(\boldsymbol{\theta}|\mathcal{M}) + \text{const} \).
+					  </div> -->
+				  
+					  <div style="margin-top:16px;">
+						<!-- <span style="display:block; font-weight:700; color:#e9dcff; border-left:4px solid #996699; padding-left:10px; font-size:1.1em;">
+						  Where do likelihoods come from?
+						</span>
+						<p style="margin-top:6px; color:#bbb; font-size:1.02em;">
+						  In practice (e.g., weak lensing), data are generated by complex <b>simulation models</b>, making analytic likelihoods intractable.
+						</p> -->
+						<!-- <span style="display:block; font-weight:700; color:#6bdcff; border-left:4px solid #6bdcff; padding-left:10px; font-size:1.05em;">
+						  Simulators as Hierarchical Bayesian Models
+						</span>
+						<p style="margin-top:6px; color:#bbb; font-size:1.02em;">
+						  If all latent variables \( z \) were accessible, the joint \( p(x\,|\,z,\boldsymbol{\theta}) \) is explicit, but marginalizing over \( z \) is typically intractable.
+						</p> -->
+					  </div>
+					</div>
+				  </section>
+				  
+
+				   <section data-background="#000">
+					<h3 class="slide-title">Inference pipeline</h3>
+				  
+					<div style="display:flex;justify-content:center;gap:40px;margin-top:4px;flex-wrap:wrap;font-size:1.20em;">
+				  
+					  <!-- TOP: two sources, each with its own ↓ -->
+					  <div style="display:flex;gap:40px;align-items:flex-start;justify-content:center;">
+				  
+						<!-- Observed data -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+						  <div style="background:#1c1c1c;border:1px solid #333;border-radius:12px;padding:14px 22px;min-width:210px;text-align:center;box-shadow:0 0 16px rgba(0,0,0,0.3);">
+							<b style="color:#6bdcff;">Observed data</b><br>
+							\( \mathbf{d}_{\mathrm{obs}} \)
+						  </div>
+						  <div style="font-size:1.2em;color:#777;line-height:1;">&#8595;</div>
+						</div>
+				  
+						<!-- Sim/Theory -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+						  <div style="background:#1c1c1c;border:1px solid #444;border-radius:12px;padding:14px 22px;min-width:210px;text-align:center;box-shadow:0 0 16px rgba(0,0,0,0.35);">
+							<b style="color:#ffaa7f;">Simulations / Theory</b><br>
+							\( \mathbf{d}_{\mathrm{pred}}(\boldsymbol{\theta}) \)
+						  </div>
+						  <div style="font-size:1.2em;color:#777;line-height:1;">&#8595;</div>
+						</div>
+				  
+					  </div>
+				  
+					  <!-- SUMMARY STAT -->
+					  <div style="flex-basis:100%;display:flex;justify-content:center;margin-top:0;">
+						<div style="background:#202020;border:1px solid #444;border-radius:12px;padding:14px 24px;min-width:480px;text-align:center;box-shadow:0 0 20px rgba(0,0,0,0.35);">
+						  <b style="color:#e7e7e7;">Summary statistic</b>
+						  \( s(\cdot) \)
+						</div>
+					  </div>
+				  
+					  <!-- ↓ to Likelihood -->
+					  <div style="flex-basis:100%;display:flex;justify-content:center;margin-top:2px;">
+						<div style="font-size:1.4em;color:#777;line-height:1;">&#8595;</div>
+					  </div>
+				  
+					  <!-- LIKELIHOOD with formula inside -->
+					  <div style="flex-basis:100%;display:flex;justify-content:center;margin-top:0;">
+						<div style="position:relative;background:#1a1a1a;border:1px solid #444;border-radius:12px;padding:14px 24px;min-width:480px;text-align:center;box-shadow:0 0 24px rgba(0,0,0,0.45);">
+						  <b style="color:#ffaa7f;">Likelihood</b><br>
+						  \( p\!\left(s_{\mathrm{obs}}\mid\boldsymbol{\theta}\right) \) <br>
+						  <span style="color:#ddd; font-size:0.95em;">
+							\[
+							\mathrm{L}(\boldsymbol{\theta})
+							\propto
+							\exp\!\Big[-\tfrac{1}{2}\,\Delta s^{\!\top}\,\mathbf{C}^{-1}\,\Delta s\Big],
+							\quad
+							\Delta s \!=\! s_{\mathrm{obs}}-s_{\mathrm{theory}}(\boldsymbol{\theta})
+							\]
+						  </span>
+						  <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);
+									  background:#2a2a2a;border:1px solid #444;border-radius:999px;
+									  padding:1px 8px;font-size:0.85em;color:#ddd;">MCMC</div>
+						</div>
+					  </div>
+				  
+					  <!-- ↓ to Inference -->
+					  <div style="flex-basis:100%;display:flex;justify-content:center;margin-top:6px;">
+						<div style="font-size:1.4em;color:#777;line-height:1;">&#8595;</div>
+					  </div>
+				  
+					  <!-- INFERENCE -->
+					  <div style="flex-basis:100%;display:flex;justify-content:center;margin-top:0;">
+						<div style="background:#171717;border:1px solid #444;border-radius:12px;padding:14px 24px;min-width:480px;text-align:center;box-shadow:0 0 20px rgba(0,0,0,0.35);">
+						  <b style="color:#6bdcff;">Inference</b><br>
+						  \( p\!\left(\boldsymbol{\theta}\mid s_{\mathrm{obs}}\right) \)
+						</div>
+					  </div>
+				  
+					</div>
+				  </section>
+
+				  
+				  <section data-background="#000">		
+					<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+					<div style=" display:grid; grid-template-columns:50% 50%; align-items:center; gap:10px; margin-top:20px; ">
+					  <!-- <div> -->
+						<video src="assets/shear_correlation_animation.mp4"
+							   autoplay loop muted playsinline
+							   style="width:90%; border:1px solid #333; border-radius:12px; box-shadow:0 0 24px rgba(0,0,0,0.5); background:#000;">
+						</video>
+					  <!-- </div>				   -->
+					  <div
+						style="
+						  background:rgba(20,20,20,0.85);
+						  border-left:4px solid #6bdcff;
+						  border-radius:12px;
+						  padding:20px 28px;
+						  box-shadow:0 8px 20px rgba(0,0,0,.4);
+						  font-size:1.2em;
+						"
+					  >
+						<div class="block-title" style="background:#333; color:#FFAA7F; border-radius:8px; padding:8px 12px; margin:-8px -4px 10px;">
+						  Concept
+						</div>
+						<div class="block-content" style="line-height:1.28;">
+						  <ul style="margin:0;">
+							<li>Measure galaxy ellipticities \( \epsilon \) .</li>
+							<li>Compute the 2-pt functions.</li>
+							<li>Run MCMC with an analytic likelihood to recover posteriors:
+							  <div style="margin-top:6px;">
+								\[
+								  p(\theta \mid x)\;\propto\;
+								  \underbrace{p(x \mid \theta)}_{\text{likelihood}}\,
+								  \underbrace{p(\theta)}_{\text{prior}}
+								\]
+							  </div>
+							</li>
+						  </ul>
+						</div>
+					  </div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+				  </section>
+				  <section data-background="#000">	
+					<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>			  
+					<div style=" display:grid; grid-template-columns:50% 50%; align-items:center; gap:15px; margin-top:20px; ">
+					  <div>
+						<img src="assets/kids_cls_constraint.jpeg" 
+						 style="width:52%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+				  
+					<div style="text-align:center; font-size:1.2em; color:#888;">
+					  KiDS-1000 cosmic shear constraints using 2-point functions only  
+					  (<a href="https://academic.oup.com/mnras/article/515/2/1942/6625643" target="_blank" style="color:#6bdcff;">Asgari et al. 2022</a>)
+					</div>
+					  </div>				  
+					  <div
+						style="
+						  background:rgba(20,20,20,0.85);
+						  border-left:4px solid #6bdcff;
+						  border-radius:12px;
+						  padding:20px 28px;
+						  box-shadow:0 8px 20px rgba(0,0,0,.4);
+						  font-size:1.2em;
+						"
+					  >
+						<div class="block-title" style="background:#333; color:#FFAA7F; border-radius:8px; padding:8px 12px; margin:-8px -4px 10px;">
+						  Concept
+						</div>
+						<div class="block-content" style="line-height:1.28;">
+						  <ul style="margin:0;">
+							<li>Measure galaxy ellipticities \( \epsilon \) .</li>
+							<li>Compute the 2-pt functions.</li>
+							<li>Run MCMC with an analytic likelihood to recover posteriors:
+							  <div style="margin-top:6px;">
+								\[
+								  p(\theta \mid x)\;\propto\;
+								  \underbrace{p(x \mid \theta)}_{\text{likelihood}}\,
+								  \underbrace{p(\theta)}_{\text{prior}}
+								\]
+							  </div>
+							</li>
+						  </ul>
+						</div>
+					  </div>
+					</div>
+					<br>
+					<br>
+					<div class="fragment" style="
+						margin-top:14px;
+						background:rgba(20,20,20,0.85);
+						border-left:4px solid #FFAA7F;
+						border-radius:12px;
+						padding:12px 16px;
+						box-shadow:0 6px 16px rgba(0,0,0,.35);
+						text-align:center;
+						font-size:1.20em;
+						">
+						<strong style="font-size:1.2em;">…but is this sufficient?</strong>
+					</div>
+
+				  </section>
+
+				  <section data-background="#000">
+					<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+					<img src="assets/pk_lss.png" 
+						 style="width:85%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+					<br>
+					<br>
+				  </section>
+
+				  <section data-background="#000">
+					<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+					<img src="assets/2pt-phase-amp.png" 
+						 style="width:82%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+						 <ul style="font-size:1.5em">
+							<li >Efficient, but lose <b>non-Gaussian</b> info.</li>
+							<li><span style="color:#ffaa7f;">Non-Gaussian structure</span> lives in higher orders.</li>
+							<li>To access it → go beyond 2-pt: <b>Higher-Order Statistics (HOS)</b> (bispectrum, peak counts, Minkowski Functionals etc).</li>
+						  </ul>
+						  
+				  </section>
+				  
+				<section data-background="#000">
+					<h3 class="slide-title">Beyond the 2-point: higher-order statistics (HOS)</h3>
+					<div class="block">
+					  <div class="block-title">Why "higher"?</div>
+					  <div class="block-content" style="font-size:1.2em">
+						<ul>
+						  <li>2-pt measures the <b>second moment (variance)</b>; sufficient only if the information is Gaussian.</li>
+						  <li class="alert">LSS is non-Gaussian → information lies beyond variance.</li>
+						</ul>
+					  </div>
+					</div>
+					<p style="text-align:center; color:#6bdcff; margin-top:10px; font-size:1.0em;">
+					  ⟹ <b>Polyspectra</b> (bispectrum, trispectrum) quantify <i>Fourier-mode coupling</i>; 
+					  morphology-based HOS (peaks, Minkowski) capture <i>real-space non-Gaussian structure</i>.
+					</p>
+					<figure style="margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; min-height:38vh;">
+					<img src="assets/DR1.png"
+						 style="width:40%; height:auto; max-height:34vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+						 <figcaption style="font-size:0.9em; color:#aaa; margin-top:6px;">
+							(Euclid preparation, S. Vinciguerra et al. 2025)
+						</figcaption>
+					</figure>
+				  </section>
+				
+				  <section data-background="#000">
+					<h3 class="slide-title">Probing the Universe with Higher-Order Statistics</h3>
+					<br>
+					<section data-background="#000">					  
+						<div style="display:grid; grid-template-columns:45% 55%; align-items:center; gap:10px;">
+						  <figure  style="margin:0;">
+							<img src="assets/filter_choice_illustration.png" alt="Filter responses in Fourier space"
+								 style="width:95%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.4em; color:#aaa; margin-top:6px;">
+							  Maps obtained by applying different filter at same scale to the same convergence field.
+							</figcaption>
+						  </figure>
+					  
+						  <div>
+							<div class="block-title">Filter choice matters</div>
+							<div class="block-content" style="font-size:1.4em;">
+								<ul style="font-size:1.2em;">
+								  <li>HOS need a <b>stable, scale-defined</b> field.</li>
+								  <li>Filtering → <b>sparsity</b> (signal concentrated; noise suppressed).</li>
+								  <li>Filter = \(k\)-weighting; <b>compensated</b> reduces leakage.</li>
+								</ul>
+								<p style="color:#6bdcff; margin-top:6px;">⟹ Filter choice shapes the estimator.</p>
+							  </div>
+							  
+						  </div>
+						</div>
+					  </section>
+					<section data-background="#000">					  
+						<div style="display:grid; grid-template-columns:45% 55%; align-items:center; gap:10px;">
+						  <figure  style="margin:0;">
+							<img src="assets/filters_plots.png" alt="Filter responses in Fourier space"
+								 style="width:95%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.4em; color:#aaa; margin-top:6px;">
+							  Fourier responses of Gaussian, top-hat, difference-of-tophat, and starlet (compensated) filters.
+							</figcaption>
+						  </figure>
+					  
+						  <div>
+							<div class="block-title">Filter choice matters</div>
+							<div class="block-content" style="font-size:1.4em;">
+								<ul style="font-size:1.2em;">
+								  <li>HOS need a <b>stable, scale-defined</b> field.</li>
+								  <li>Filtering → <b>sparsity</b> (signal concentrated; noise suppressed).</li>
+								  <li>Filter = \(k\)-weighting; <b>compensated</b> reduces leakage.</li>
+								</ul>
+								<p style="color:#6bdcff; margin-top:6px;">⟹ Filter choice shapes the estimator.</p>
+							  </div>
+							  
+						  </div>
+						</div>
+					  </section>
+
+					  <section data-background="#000">					  
+						<div style="display:grid; grid-template-columns:45% 55%; align-items:center; gap:10px;">
+							<figure  style="margin:0;">
+								<img src="assets/filteringscheme_martin.png" alt="Constraints with different filters"
+									 style="width:80%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+								<figcaption style="font-size:1.2em; color:#aaa; margin-top:6px;">
+								  Example constraints vs. filter choice.
+								  <a href="https://www.aanda.org/articles/aa/full_html/2016/09/aa28565-16/aa28565-16.html" target="_blank" style="color:#6bdcff;">(Lin, Kilbinger & Pires 2016)</a>.
+								</figcaption>
+							  </figure>
+					  
+						  <div>
+							<div class="block-title">Takeaway</div>
+							<div class="block-content" style="font-size:1.4em;">
+							  <ul style="font-size:1.2em;">
+								<li>Same data, <b>different filters</b> → <b>different posteriors</b>.</li>
+								<li>Compensated/multiscale filters typically give <b>tighter, more robust</b> HOS constraints than simple Gaussian/top-hat.</li>
+							  </ul>
+							  <p style="color:#6bdcff; margin-top:8px; font-size:1.2em;">⟹ Motivates multiscale, localized filtering.</p>
+							</div>
+						  </div>
+						</div>
+					  </section>
+				  </section>		
+
+				  <section data-background="#000">
+					<h3 class="slide-title">Wavelet $\ell_1$-norm</h3>  
+					
+					  <section>
+						<br>
+						<br>
+						<!-- <br>
+						<br><br> -->
+						<figure style="margin:0;">
+							<img src="assets/wavelet_decomposition.png" alt="Wavelet decomposition"
+								 style="width:90%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.5em; color:#aaa; margin-top:6px;">
+							  Decompose \( \kappa \) into localized, multi-scale coefficients \( w_{\theta_j}(x,y) \).
+							</figcaption>
+						  </figure>
+
+						<div class="block">
+							<div class="block-title">Definition</div>
+							<div class="block-content" style="font-size:1.5em;">
+							  \[
+								\boxed{\;
+								  w_{\theta_j}(x,y)
+								  = \big\langle \kappa,\ \Upsilon_{\theta_j,x,y} \big\rangle
+								  = \sum_{m,n}\ \kappa(m,n)\,
+									\Upsilon\!\left(\frac{m-x}{\theta_j},\,\frac{n-y}{\theta_j}\right)
+								\;}
+							  \]
+							  \[
+								\boxed{\; w_{\theta_j}
+								= \big\langle \kappa,\ \xi_{\theta_{j+1}} \big\rangle
+								  - \big\langle \kappa,\ \xi_{\theta_j} \big\rangle \;}
+							  \]
+							  \[
+								\text{Dyadic scales: }\ \theta_j = 2^{\,j-1}\,\theta_1,\qquad
+								W_\kappa=\{\,w_{\theta_1},\ldots,w_{\theta_J}\,\}.
+							  \]
+							</div>
+						  </div>
+					  </section>
+					  
+
+					  <section>
+						<br>
+						<br>
+						<figure style="margin:0;">
+							<img src="assets/wavelet_decomposition_l1.png" alt="Wavelet decomposition"
+								 style="width:90%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.5em; color:#aaa; margin-top:6px;">
+							  Decompose \( \kappa \) into localized, multi-scale coefficients \( w_{\theta_j}(x,y) \).
+							</figcaption>
+						  </figure>
+				
+						<div style="display:grid; grid-template-columns:55% 45%; align-items:center; gap:24px;">
+							<div style="
+							  background:rgba(10,12,16,.6);
+							  border:1px solid rgba(110,150,255,.35);
+							  border-left:4px solid #6bdcff;
+							  border-radius:12px; padding:16px 18px; box-shadow:0 8px 24px rgba(0,0,0,.35);
+							  ">
+							  <div style="font-size:1.5em;">
+								<div style="margin-bottom:10px;">
+								  \[
+									\mathrm{S}_{j,i}\;=\;\big\{\, w_{j,k}
+									| B_i \;<\; w_{j,k} \;<\; B_{i+1} \,\big\}
+								  \]
+								</div>
+								<div style="border:1px solid #355;
+											padding:10px 12px; border-radius:8px; background:rgba(20,28,40,.55);">
+								  \[
+									\boxed{\;
+									  \ell^{\,j,i}_{1}
+									  \;=\;
+									  \sum_{u=1}^{\#\mathrm{coef}(\mathrm{S}_{j,i})}
+									  \big|\,\mathrm{S}_{j,i}[u]\,\big|
+									  \;=\;
+									  \left\| \mathrm{S}_{j,i} \right\|_{1}
+									\;}
+								  \]
+								</div>
+								<div style="margin-top:8px; color:#9ecbff; font-size:1.2em;"">
+								  <small style="font-size:.9em;">Here \(w_{j,k}\) are wavelet coefficients at scale \(\theta_j\); bins \([B_i,B_{i+1})\) select coefficient ranges.</small>
+								</div>
+							  </div>
+							</div>
+							<div class="block">
+							  <div class="block-title">Why this summary?</div>
+							  <div class="block-content" style="font-size:1.2em;">
+								<ul style="font-size:1.5em;">
+								  <li>information encoded in all pixels</li>
+								  <li>automatically includes peaks and voids</li>
+								  <li>multi-scale approach</li>
+								</ul>
+							  </div>
+							</div>
+						</div>		
+						</section>	 
+						<section>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<!-- <br>
+							<br> -->
+							<div style="display:grid; grid-template-rows:75% 35%; align-items:center; gap:14px;">
+							<figure style="margin:0;">
+								<img src="assets/starlet_l1_ajani-1.png" alt="Ajani et al. 2021 comparison"
+						   style="width:80%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.5em; color:#aaa; margin-top:6px;">
+								(Ajani et al. 2021)
+							</figcaption>
+							</figure>
+							<div style="font-size:1.2em; color:#aaa; margin-top:6px;">
+								<ul style="font-size:1.2em;">
+									<!-- <li>Starlet wavelet -> B3 spline as scaling function</li> -->
+									<li>The starlet $\ell_1$-norm outperform peak and void statistics</b> (Ajani et al. 2021).</li>
+								</ul>
+							</div>
+							</div>
+							
+						</section>
+					   
+				  </section>
+				  
+				  <section data-background="#000">
+					<h3 class="slide-title">How we do 2-pt vs HOS today</h3>
+					<div style="width:100%;max-width:1100px;margin:8px auto 0;">
+					  <svg viewBox="0 0 1100 520" style="width:100%;height:auto;display:block;">
+						<defs>
+						  <filter id="soft"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity=".45"/></filter>
+						  <marker id="arrA" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#b7c6ff"/>
+						  </marker>
+						  <marker id="arrB" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#9adcc1"/>
+						  </marker>
+						  <marker id="arrG" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#bfbfbf"/>
+						  </marker>
+						</defs>				  
+						<text x="170" y="60" fill="#ffffff" font-size="28" font-weight="700" text-anchor="middle">Theory</text>
+						<text x="930" y="60" fill="#ffffff" font-size="28" font-weight="700" text-anchor="middle">Simulations</text>
+						<rect x="70" y="160" width="280" height="96" rx="16" ry="16"
+							  fill="#171717" stroke="#2a2a2a" filter="url(#soft)"/>
+						<text x="210" y="198" fill="#e9e9e9" font-size="22" font-weight="700" text-anchor="middle">2-point statistics</text>
+						<!-- <text x="210" y="220" fill="#a9a9a9" font-size="14" text-anchor="middle">(\(C_\ell,\ \xi\))</text> -->
+						<rect x="720" y="160" width="320" height="96" rx="16" ry="16"
+							  fill="#2b313c" stroke="#3a4350" filter="url(#soft)"/>
+						<text x="880" y="198" fill="#eef2fa" font-size="22" font-weight="700" text-anchor="middle">Higher-order statistics</text>
+						<text x="880" y="220" fill="#c9d5ff" font-size="14" text-anchor="middle">HOS</text>
+						<circle cx="540" cy="208" r="28" fill="#262626" stroke="#3a3a3a" filter="url(#soft)"/>
+						<text x="540" y="213" fill="#fff" font-size="16" text-anchor="middle">Data</text>
+						<ellipse cx="540" cy="400" rx="210" ry="46" fill="#f5f5f5" filter="url(#soft)"/>
+						<text x="540" y="405" fill="#111" font-size="22" font-weight="700" text-anchor="middle">Cosmological Inference</text>
+						<line x1="170" y1="88" x2="210" y2="160" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+						<line x1="512" y1="208" x2="350" y2="208" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+						<line x1="210" y1="256" x2="440" y2="372" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+						<line x1="930" y1="88" x2="880" y2="160" stroke="#9adcc1" stroke-width="2.2" marker-end="url(#arrB)"/>
+						<line x1="568" y1="208" x2="720" y2="208" stroke="#b7c6ff" stroke-width="2.2" marker-end="url(#arrA)"/>
+						<line x1="880" y1="256" x2="640" y2="372" stroke="#b7c6ff" stroke-width="2.2" marker-end="url(#arrA)"/>
+						<line x1="240" y1="60" x2="720" y2="150"
+							  stroke="#cfcfcf" stroke-width="2" stroke-dasharray="7 7" opacity=".55"/>
+						<g transform="translate(490,107) rotate(30)">
+						  <rect x="-12" y="-2.5" width="24" height="6" fill="#ff5f6d"/>
+						  <rect x="-12" y="-2.5" width="24" height="5" fill="#ff5f6d" transform="rotate(90)"/>
+						</g>
+					  </svg>
+					</div>
+				  </section>
+				  
+
+<!-- ######################################################################################################################################################################### -->
+
+<!-- ######################################################################################################################################################################### -->
+
+<!-- ################################################################### PROJECT 1 ########################################################################################### -->
+
+				<section data-background-color="#ffffff" class="white-center" data-transition="none">
+					<div class="centerbox">
+					<h2>Part 1</h2>
+					<h4 class="slide-title" style="margin-top:0;">From Simulation-Based to Theoretical HOS Predictions</h4>
+					</div>
+				</section>
+
+				<section data-background="#000">
+					<h3 class="slide-title">This work</h3>
+					<div style="width:100%;max-width:1100px;margin:8px auto 0;">
+					  <svg viewBox="0 0 1100 520" style="width:100%;height:auto;display:block;">
+						<defs>
+						  <filter id="soft">
+							<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity=".45"/>
+						  </filter>
+				  
+						  <!-- arrowheads -->
+						  <marker id="arrA" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#b7c6ff"/>
+						  </marker>
+						  <marker id="arrB" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#63e6b0"/>
+						  </marker>
+						  <marker id="arrG" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+							<polygon points="0,0 7,3.5 0,7" fill="#bfbfbf"/>
+						  </marker>
+				  
+						  <!-- soft green glow for the Theory→HOS arrow -->
+						  <filter id="glowG" x="-50%" y="-50%" width="200%" height="200%">
+							<feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#63e6b0" flood-opacity=".85"/>
+						  </filter>
+				  
+						  <!-- soft green halo around HOS box -->
+						  <filter id="boxGlowG" x="-40%" y="-40%" width="180%" height="180%">
+							<feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#63e6b0" flood-opacity=".55"/>
+							<feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#63e6b0" flood-opacity=".25"/>
+						  </filter>
+						</defs>
+				  
+						<!-- headings -->
+						<text x="170" y="60" fill="#ffffff" font-size="28" font-weight="700" text-anchor="middle">Theory</text>
+						<!-- SOFT-FADE simulations heading -->
+						<text x="930" y="60" fill="#ffffff" fill-opacity=".75" font-size="28" font-weight="700" text-anchor="middle">Simulations</text>
+				  
+						<!-- 2-pt: FADED box + labels -->
+						<g opacity=".45">
+						  <rect x="70" y="160" width="280" height="96" rx="16" ry="16"
+								fill="#171717" stroke="#2a2a2a" filter="url(#soft)"/>
+						  <text x="210" y="198" fill="#e9e9e9" font-size="22" font-weight="700" text-anchor="middle">2-point statistics</text>
+						  <!-- <text x="210" y="220" fill="#a9a9a9" font-size="14" text-anchor="middle">(\(C_\ell,\ \xi\))</text> -->
+						</g>
+				  
+						<!-- HOS: GREEN HALO on box -->
+						<rect x="720" y="160" width="320" height="96" rx="16" ry="16"
+							  fill="#2b313c" stroke="#63e6b0" stroke-width="1.6" filter="url(#boxGlowG)"/>
+						<text x="880" y="198" fill="#eef2fa" font-size="22" font-weight="700" text-anchor="middle">Higher-order statistics</text>
+						<text x="880" y="220" fill="#c9d5ff" font-size="14" text-anchor="middle">HOS</text>
+				  
+						<!-- data + inference -->
+						<circle cx="540" cy="208" r="28" fill="#262626" stroke="#3a3a3a" filter="url(#soft)"/>
+						<text x="540" y="213" fill="#fff" font-size="16" text-anchor="middle">Data</text>
+						<ellipse cx="540" cy="400" rx="210" ry="46" fill="#f5f5f5" filter="url(#soft)"/>
+						<text x="540" y="405" fill="#111" font-size="22" font-weight="700" text-anchor="middle">Cosmological Inference</text>
+				  
+						<!-- existing (neutral) arrows -->
+						<line x1="170" y1="88" x2="210" y2="160" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+						<line x1="512" y1="208" x2="350" y2="208" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+						<line x1="210" y1="256" x2="440" y2="372" stroke="#bfbfbf" stroke-width="2.2" marker-end="url(#arrG)"/>
+				  
+						<!-- Simulations → HOS: SOFT-FADE arrow -->
+						<line x1="930" y1="88"  x2="880" y2="160"
+							  stroke="#9adcc1" stroke-width="2.2" stroke-opacity=".7" marker-end="url(#arrA)"/>
+				  
+						<!-- Data → HOS & HOS → Inference (kept) -->
+						<line x1="568" y1="208"  x2="720" y2="208" stroke="#b7c6ff" stroke-width="2.2" marker-end="url(#arrA)"/>
+						<line x1="880" y1="256"  x2="640" y2="372" stroke="#b7c6ff" stroke-width="2.2" marker-end="url(#arrA)"/>
+				  
+						<!-- NEW: glowing Theory → HOS arrow -->
+						<line x1="240" y1="60" x2="720" y2="150"
+							  stroke="#63e6b0" stroke-width="3.2" filter="url(#glowG)" marker-end="url(#arrB)"/>
+					  </svg>
+					</div>
+				  </section>
+				  
+				  <section data-background="#000">
+					<h3 class="slide-title">What I predict (and with which filter)</h3>
+					<div style="display:grid; grid-template-rows:20% 70%; gap:6px;">
+					  <div style="display:grid; grid-template-columns:56% 44%; gap:18px; align-items:center;">
+						<div class="block" style="margin:0;">
+							<div class="block-title" style="padding:0px 5px;">Wavelet from a top-hat scaling function</div>
+							<div class="block-content" style="font-size:1.2em; line-height:1.15;">
+						  
+							  <p style="margin:.25em 0 .45em; color:#bbb;">Scaling (low-pass) at angular scale \(R\):</p>
+							  <div style="background:rgba(20,28,40,.55); border:0.1px solid #355; border-radius:10px;
+										  padding:5px 10px; margin-bottom:.45em;">
+								\[
+								  \boxed{\ \hat{\xi}_{R}(\ell)=\frac{2\,J_1(R\ell)}{R\ell}\ }\quad \text{(spherical top-hat)}
+								\]
+							  </div>
+						  
+							  <p style="margin:.25em 0 .45em; color:#bbb;">Wavelet coefficient (difference of smoothings):</p>
+							  <div style="background:rgba(20,28,40,.55); border:0.1px solid #355; border-radius:15\0px;
+										  padding:5px 5px; margin-bottom:0;">
+								\[
+								  w_{\theta}(\boldsymbol{x})
+								  \;=\;
+								  \langle \kappa,\  \hat{\xi}_{2\theta} \rangle(\boldsymbol{x})
+								  \;-\;
+								  \langle \kappa,\  \hat{\xi}_{\theta} \rangle(\boldsymbol{x}) \, .
+								\]
+							  </div>
+						  
+							</div>
+						  </div>
+						<figure style="margin:0;">
+						  <img src="assets/filters.png" alt="Filter responses"
+							   style="width:70%; max-height:42vh; object-fit:contain; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+						  <figcaption style="font-size:1.2em; color:#aaa; margin-top:6px; text-align:center;"></figcaption>
+						</figure>
+					  </div>
+					  <div style="display:flex; justify-content:center; align-items:center; min-height:44vh; transform:translateY(100px);">
+						<img src="assets/l1_example.png" alt="Aperture-mass / ℓ1 diagnostic"
+							 style="width:80%; max-height:30vh; object-fit:contain; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+					  </div>
+					  
+					</div>				  
+				  </section>
+				  <section data-background="#000">
+					<h3 class="slide-title">The $\ell_1$ Norm: From PDF to Prediction</h3>
+				  
+					<style>
+					  .pdf-glow {
+						color: #FFAA7F;
+						text-shadow: 0 0 15px rgba(255,170,127,0.8),
+									 0 0 25px rgba(255,170,127,0.6),
+									 0 0 35px rgba(255,170,127,0.4);
+						font-weight: bold;
+					  }
+					</style>
+				  
+					<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:80vh; transform:translateY(-44px);">
+					  <div style="background:rgba(20,28,40,.65); border:2px solid #44CCFF; border-radius:15px; padding:30px 50px; box-shadow:0 0 30px rgba(68,204,255,0.4);">
+						<p style="text-align:center; margin:0; color:#fff; font-size:1.2em;">
+						  To predict $\ell_1$ in theory, we must model the <b>Wavelet PDF</b>:
+						</p>
+				  
+						<p style="text-align:center; color:#fff; font-size:1.4em; margin-top:20px;">
+							$
+							  \ell_{1}^{(j,i)} \;=\;
+							  \int_{B_i} |w|\;
+							  \color{orange}{\mathbf{P_j(w)}}\,dw
+
+
+							$
+						  </p>
+						  
+					  </div>
+				  
+					  <div style="font-size:5em; color:#B39DDB; font-weight:bold; margin:40px 0 10px 0;">
+						$\Downarrow$
+					  </div>
+				  
+					  <div style="padding:10px 30px; border:2px solid #B39DDB; background-color:#0A141A; border-radius:10px;">
+						<p style="margin:0; font-size:1.8em; color:#B39DDB; font-weight:bold;">
+						  Use Large Deviation Theory (LDT) to predict $\color{orange}{\mathbf{P_j(w)}}$.
+						</p>
+					  </div>
+					</div>
+				  </section>
+				  
+
+				  
+				  
+<!-- ######################################################################################################################################################################### -->
+				<!-- <section>
+					<h2>Working principle</h2>
+				</section> -->
+
+				<section data-background="#000">
+					<h3 class="slide-title">Why Large-Deviation Theory?</h3>
+				  
+					<div style="
+					  display:grid;
+					  grid-template-rows:40% 60%;
+					  align-items:center;
+					  gap:15px;
+					  margin-top:20px;
+					">
+				  
+					  <!-- Left text block -->
+					  <div style="
+						background:rgba(20,20,20,0.85);
+						border-left:4px solid #6bdcff;
+						border-radius:12px;
+						padding:20px 28px;
+						box-shadow:0 8px 20px rgba(0,0,0,.4);
+						font-size:0.7em;
+					  ">
+						
+						<p style="margin:0 0 10px 0; font-size:1.5em;">
+							<b>Large-Deviation Theory (LDT):</b> a framework to describe the <b>probability of rare events</b> by quantifying the
+							<b>exponential decay of probabilities</b> in the tails of distributions.
+						 
+						</p>
+						
+						
+					  </div>
+				  
+					  <!-- Right figure -->
+					  <div style="text-align:center;">
+						<img src="assets/LDT_demo.png"
+							 style="width:80%; border-radius:12px; box-shadow:0 6px 25px rgba(0,0,0,.35);">
+						<div style="font-size:0.85em; color:#aaa; margin-top:8px;">
+						  Gaussian approximations fail in the tails - where rare events dominate
+						</div>
+					  </div>
+				  
+					</div>
+				  </section>
+
+
+				<section data-auto-animate>
+
+					<!-- <section data-auto-animate>
+					<h3 class="slide-title">Large-Deviation Theory in Cosmology</h3>
+					<div style="display:flex; flex-direction:column; align-items:center; gap:18px; font-size:0.7em;">
+						<div class="circle">Rate Function</div>
+						<div class="circle">Cumulant Generating Function</div>
+						<div class="circle">Predicted Observable</div>
+					</div>
+					<p class="fragment" style="margin-top:16px; font-size:0.7em; text-align:center; color:#aaa;">
+						From gravitational dynamics → statistical predictions of structure.
+					</p>
+					</section>
+				 -->
+					<section data-auto-animate  data-background="#000">
+						<h3 class="slide-title">Step 1 - Rate Function (physics input)</h3>
+					  
+						<div class="r-hstack" style="align-items:center; gap:8px; margin-bottom:15px;">
+						  <div class="circle" style="font-size:1.8em;">Rate Function</div>
+						  <div class="another-container" style="font-size:1.8em;">
+							\[
+							\psi(\rho_i)
+							= \frac{\sigma_{R_1}^2}{2}\,
+							\sum_{k,j} \Xi_{kj}\!\left(\tau_i\right)\,\bar{\tau}_k\,\bar{\tau}_j .
+							\qquad 
+							\rho = \Bigl(1 - \frac{\tau}{\nu}\Bigr)^{-\nu}
+							\]
+							
+
+						  </div>
+						</div>
+					  
+						<div style="display:flex; justify-content:center; align-items:center; gap:40px; margin-top:10px;">
+							<div style="text-align:center; position:relative; display:inline-block;">
+								<img src="assets/gaussian.png" 
+									 alt="Gaussian field" 
+									 style="width:250px; border-radius:8px;">
+								
+								<div style="
+									 position:absolute;
+									 bottom:150px;
+									 left:55%;
+									 transform:translateX(-120%);
+									 font-size:1.1em;
+									 color:white;
+									 background:rgba(0,0,0,0.45);
+									 padding:2px 8px;
+									 border-radius:4px;">
+								  $\tau$
+								</div>
+							  
+								<div style="font-size:1.25em; color:#aaa; margin-top:6px;">
+								  Gaussian Initial Conditions
+								</div>
+							  </div>
+							  
+					  
+						  <div style="display:flex; flex-direction:column; align-items:center;">
+							<div style="font-size:2.5em; color:#fff;">&#8594;</div>
+							<div style="background:rgba(255,255,255,0.1); padding:3px 10px; border-radius:6px;
+										font-size:1.25em; color:#ffb347; margin-top:4px;">
+							  Spherical Collapse
+							</div>
+						  </div>
+					  
+						  <div style="text-align:center;">
+							<img src="assets/lss2.png" alt="Nonlinear LSS" 
+								 style="width:250px; border-radius:8px;">
+							<div style="
+									 position:absolute;
+									 bottom:150px;
+									 left:68%;
+									 transform:translateX(-50%);
+									 font-size:1.1em;
+									 color:white;
+									 background:rgba(0,0,0,0.45);
+									 padding:2px 8px;
+									 border-radius:4px;">
+								  $\rho$
+								</div>
+							<div style="font-size:1.25em; color:#aaa; margin-top:4px;">Non-linear Cosmic Web</div>
+						  </div>
+						</div>
+					  </section>
+					  
+					<section data-auto-animate  data-background="#000">
+						<h3 class="slide-title">Step 2 - Cumulant Generating Function</h3>
+					  
+						<div class="r-hstack" style="align-items:center; gap:8px;">
+						  <div class="circle" style="font-size:1.8em;">Cumulant Generating Function</div>
+						  <div class="another-container" style="font-size:1.8em;">
+							Rate function → cumulants (variance, skewness, kurtosis, …),<br>
+							capturing how non-linear growth drives departures from Gaussianity.
+						  </div>
+						</div>
+					  
+						<div style="text-align:center; margin-top:8px;">
+						  <img src="assets/cumulants_demo.png"
+							   alt="Cumulant visualisation"
+							   style="width:40%; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+						  <div style="font-size:1.6em; color:#aaa; margin-top:6px;">
+							Example PDF evolution - increasing variance widens it, skewness tilts it, kurtosis sharpens tails.
+						  </div>
+						</div>
+					  
+						<p  style="text-align:center; font-size:1.5em; color:#6bdcff; margin-top:14px;">
+						  Cumulants bridge the rate function and observable higher-order statistics.
+						</p>
+					  </section>
+
+					  <section data-auto-animate  data-background="#000">
+						<h3 class="slide-title">Step 2 - Cumulant Generating Function</h3>
+					  
+						<div class="r-hstack" style="align-items:center; gap:8px;">
+						  <div class="circle" style="font-size:1.8em;">Cumulant Generating Function</div>
+						  <div class="another-container" style="font-size:1.8em;">
+							Rate function → cumulants (variance, skewness, kurtosis, …),<br>
+							capturing how non-linear growth drives departures from Gaussianity.
+						  </div>
+						</div>
+						<br><br><br>
+						<!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+						<h3 class="slide-title">Step 3 - Predicting the Wavelet \( \ell_1 \)-Norm</h3>
+						<div class="r-hstack" style="align-items:center; gap:8px;">
+							<div class="circle" style="font-size:1.8em; box-shadow:0 0 8px 2px rgba(255,255,255,0.35);">Predicted Observable</div>
+							<div class="another-container" style="font-size:1.8em; box-shadow:0 0 8px 2px rgba(255,255,255,0.35);">
+							  <div style="margin-top:.6em;">
+								\[
+								  \ell_{1}^{(j,i)}
+								  \;=\;
+								  \int_{B_i} |w|\; P_j(w)\,dw
+								  \;\simeq\;
+								  \sum_{w\in B_i} |w|
+								\]
+							  </div>
+							</div>
+						  </div>
+					  </section>
+
+					  <!-- <section data-auto-animate  data-background="#000">
+						<h3 class="slide-title">Step 3 - Predicting the Wavelet \( \ell_1 \)-Norm</h3>
+						<div class="r-hstack" style="align-items:center; gap:8px;">
+							<div class="circle" style="font-size:1.8em;">Predicted Observable</div>
+							<div class="another-container" style="font-size:1.8em;">
+							  <div style="margin-top:.6em;">
+								\[
+								  \ell_{1}^{(j,i)}
+								  \;=\;
+								  \int_{B_i} |w|\; P_j(w)\,dw
+								  \;\simeq\;
+								  \sum_{w\in B_i} |w|
+								\]
+							  </div>
+							</div>
+						  </div>
+					  </section> -->
+				</section>
+
+				  			
+<!-- ######################################################################################################################################################################### -->
+			<section  data-background="#000">
+				<h2 class="slide-title">Results</h2>
+				<br>
+				<div class="row">
+					<div class="container"> 
+						<div class="col">
+							<image src="assets/alltheta_z1_4.png" class="plain" style="height: 450px;" controls></image>
+						</div>
+						<div class="col">
+							<image src="assets/derivative_l1.png" class="plain" style="height: 450px;" controls></image>
+						</div>
+					</div>
+					<h4><a href = "https://www.aanda.org/articles/aa/full_html/2024/11/aa50061-24/aa50061-24.html">Sreekanth, V. T., Codis, S., Barthelemy, A., & Starck, J.-L. 2024, A&A, 691,A80 </a></h4>
+				</div>
+			</section>
+
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Can this be used for other filters?</h3>
+			
+				<div style="display:grid; grid-template-columns:55% 45%; gap:16px; align-items:center;">
+				<div class="block" style="margin:0;">
+					<div class="block-title">Filter choice: Starlet</div>
+					<div class="block-content" style="font-size:1.2em;">
+						<p style="margin:0.3em 0;">Cubic B-spline (1D scaling function):</p>
+							\[
+							B(x)\;=\;\frac{1}{12}\Big(\,|x-2|^{3}-4|x-1|^{3}+6|x|^{3}-4|x+1|^{3}+|x+2|^{3}\,\Big)
+							\]
+
+							
+
+			
+					<ul style="margin:.5em 0;">
+						<li><b>Compact & compensated</b> → minimal leakage, stable HOS</li>
+						<li><b>Isotropic, non-oscillatory</b> → no ringing artifacts</li>
+						<li><b>Multiscale redundant (à trous)</b> → robust ℓ₁ with noise & masks</li>
+					</ul>
+					<p style="margin:.5em 0 0; color:#6bdcff; font-weight:600;">
+						→ Starlet can be better filter choice
+					</p>
+					</div>
+				</div>
+			
+				<div class="card" style="text-align:center; padding:12px;">
+					<img src="assets/Filter_comparisions_fourier.png" alt="Fourier-space filter comparison"
+						class="plain"
+						style="max-width:100%; max-height:48vh; width:auto; height:auto; border-radius:8px;">
+				</div>
+				</div>
+			</section>
+			
+			<!-- SLIDE 2: Implementation strategy -->
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Can this be used for other filters?</h3>
+			
+				<div style="display:grid; grid-template-columns:55% 45%; gap:16px; align-items:center;">
+				<div class="block" style="margin:0;">
+					<div class="block-title">From theory to practice</div>
+					<div class="block-content" style="font-size:1.2em;">
+					<p style="margin:.3em 0;"><b>Approach:</b></p>
+					<ul style="margin:.3em 0;">
+						<li><b>Filter swap:</b> \(W(kR)\rightarrow\widehat{\phi}_{\mathrm{B3}}(kR)\)</li>
+						<li><b>Properties:</b> radial, compact, non-oscillatory</li>
+						<li><b>Pipeline:</b> rate → CGF → PDF → \( \ell_1 \)</li>
+						<!-- <li><b>Validation:</b> tight match to sims across scales</li> -->
+					  </ul>
+					<p style="margin:.4em 0 0; color:#9adcc1;">
+						<b>Solution:</b> Shape-matched B3 swap - valid when power is central-\(\ell\) dominated
+					</p>
+					</div>
+				</div>
+			
+				<figure style="margin:0; text-align:center;">
+					<img src="assets/Filter_comparisions_fourier.png" alt="Fourier-space filter comparison"
+						style="max-width:100%; max-height:48vh; border-radius:8px; box-shadow:0 8px 25px rgba(0,0,0,.35);">
+				</figure>
+				</div>
+			</section>
+			
+			<!-- SLIDE 3: Results -->
+			<section data-auto-animate data-background="#000">
+				<h3 class="slide-title">Results</h3>
+			  
+				<div style="display:grid; grid-template-columns:45% 55%; gap:16px; align-items:center;">
+			  
+				  <div>
+					<div class="block-content" style="font-size:1.2em; line-height:1.3;">
+					  <ul>
+						<li>Top: starlet $\ell_1$ at $\theta=15'$ for multiple cosmologies (prediction vs simulations).</li>
+						<li>Bottom: relative residual = $(\text{theory} - \text{sim}) / \text{theory}$.</li>
+						<li>Error bars: simulation scatter (finite realisations).</li>
+					  </ul>
+			  
+					  <p style="margin:.6em 0 0; color:#6bdcff; font-weight:600;">
+						→ LDT + B3 scaling reproduces the $\ell_1$ at 15′.
+					  </p>
+					</div>
+				  </div>
+			  
+				  <div style="text-align:center; padding:12px;">
+					<img src="assets/l1-norm-starlet.png"
+						 alt="Starlet $\ell_1$-norm prediction vs simulations"
+						 class="plain"
+						 style="max-width:100%; max-height:60vh; width:auto; height:auto; border-radius:8px;">
+					<div class="small muted" style="margin-top:6px; font-size:1.2em;">
+					  LDT + B3 substitution matches simulations at $\theta=15'$
+					</div>
+				  </div>
+			  
+				</div>
+			  </section>
+			  
+			
+			<!-- SLIDE 4: Takeaways -->
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Part 1- Takeaways</h3>
+			  
+				<div class="block" style="margin:0;">
+				  <div class="block-title">In a nutshell</div>
+				  <div class="block-content" style="font-size:1.5em; line-height:1.25;">
+					<ul style="margin:.2em 0;">
+					  <li><b>Filter choice matters:</b> compact, compensated (starlet) ⇒ less leakage, cleaner HOS.</li>
+					  <li><b>Wavelet \( \ell_1 \):</b> scale-dependent, localized summary capturing non-Gaussian information.</li>
+					  <li><b>LDT → PDF → \( \ell_1 \):</b> fast, simulation-light predictions that match sims in the mildly non-linear regime.</li>
+					  <li><b>Practical swaps:</b> B3/starlet window works when power is central-ℓ dominated.</li>
+					</ul>
+			  
+					<div style="margin-top:.6em; padding:.6em .8em; border-left:4px solid #ffaa7f; background:rgba(255,170,127,.08);">
+					  <span style="color:#ffccaa;">
+						<b>Systematics remain the challenge:</b> current theory does not fully include them -> need <b>Forward simulations</b> 
+					  </span>
+					</div>
+				  </div>
+				</div>
+			  </section>
+			  
+
+			
+
+<!-- ######################################################################################################################################################################### -->
+<!-- ######################################################################################################################################################################### -->
+<!-- ################################################################### PROJECT 2 ########################################################################################### -->
+
+
+			<section data-background="#000">
+				<h3 class="slide-title">Forward Modelling of the Universe</h3>
+			  
+				<div style="display:flex; justify-content:center; align-items:center; gap:40px; margin-top:60px;">
+			  
+				  <!-- Parameters -->
+				  <div  style="text-align:center;">
+					<b style="color:#6bdcff;">Parameters</b><br>
+					<span style="font-size:1.2em;">\( \boldsymbol{\theta} \)</span>
+				  </div>
+			  
+				  <div style="font-size:2em; color:#999;">&#8594;</div>
+			  
+				  <!-- STATIC 3D Cube -->
+				  <div style="perspective:800px;">
+					<div style="
+						position:relative;
+						width:156px; height:156px;
+						transform-style:preserve-3d;
+						transform: rotateY(-28deg) rotateX(16deg);
+						">
+					  <!-- Front -->
+					  <div style="
+						  position:absolute; inset:0;
+						  background:#181818; border:1px solid #444; border-radius:6px;
+						  transform: translateZ(78px);
+						  display:flex; flex-direction:column; justify-content:center; align-items:center;
+						  color:#eaeaea; box-shadow:0 10px 28px rgba(0,0,0,.35);">
+						<b style="color:#ffaa7f; margin-bottom:6px;">Forward Model</b>
+						<span style="font-size:0.85em;">Physics + ICs</span>
+					  </div>
+					  <!-- Top -->
+					  <div style="
+						  position:absolute; inset:0;
+						  background:#111; border:1px solid #333; border-radius:6px;
+						  transform: rotateX(90deg) translateZ(78px); opacity:.95;">
+					  </div>
+					  <!-- Right -->
+					  <div style="
+						  position:absolute; inset:0;
+						  background:#141414; border:1px solid #333; border-radius:6px;
+						  transform: rotateY(90deg) translateZ(78px); opacity:.95;">
+					  </div>
+					</div>
+				  </div>
+			  
+				  <div style="font-size:2em; color:#999;">&#8594;</div>
+			  
+				  <!-- Observables -->
+				  <div style="text-align:center;">
+					<b style="color:#6bdcff;">Observables</b><br>
+					<span style="font-size:1.2em;">\( x \)</span>
+				  </div>
+				</div>
+			  
+				<div style="text-align:center; margin-top:30px; font-size:1.1em;">
+				  \[
+					\boldsymbol{\theta} \;\xrightarrow{\text{simulate}}\; x \quad\text{instead of}\quad p(x|\boldsymbol{\theta})
+				  \]
+				</div>
+			  
+				<div style="margin-top:20px;">
+				  <div class="block-title">Why Forward Model?</div>
+				  <div class="block-content">
+					<ul>
+					  <li><b>Flexibility:</b> -> includes systematics (masks, noise, selection effects)</li>
+					  <li><b>Probe combination:</b> -> joint analysis of multiple datasets with shared physics</li>
+					  <li><b>Model complexity:</b> -> capture nonlinear growth, baryons, galaxy formation</li>
+					  <!-- <li><b>Beyond analytics:</b> no need for tractable likelihood \(p(x|\boldsymbol{\theta})\)</li> -->
+					  <li><b>Methods: </b> -> Full N-body, approximate method, or Neural net based</li>
+					</ul>
+				  </div>
+				</div>
+			</section>
+
+		
+			
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Approximate method: Shifted lognormal maps</h3>
+			  
+				<div style="display:grid; grid-template-columns:55% 45%; gap:16px; align-items:center;">
+			  
+				  <!-- LEFT: figure -->
+				  <figure style="margin:0; text-align:center;">
+					<img src="assets/lognormal_comparision.png"
+						 alt="Lognormal vs target comparison"
+						 class="plain"
+						 style="width:100%; max-height:58vh; object-fit:contain; border-radius:8px;">
+				  </figure>
+			  
+				  <!-- RIGHT: compact equation card -->
+				  <!-- <div class="block" style="margin:0;"> -->
+					<!-- <div class="block-title">Shifted lognormal construction</div> -->
+				
+			  
+					  <div class="block" style="margin:0;">
+						<div class="block-title">Shifted lognormal</div>
+						<div class="block-content" style="font-size:1.2em;">
+						  <div style="background:rgba(20,28,40,.55); border:1px solid #355; border-radius:10px; padding:10px 12px;">
+							\[
+							  \boxed{\, X_i \;=\; e^{Z_i} \;-\; \lambda_i \,}
+							\]
+						  </div>
+						  <!-- <p style="margin:.4em 0 0; color:#9ecbff;">
+							\(Z_i\) Gaussian; choose \(\lambda_i\) (e.g. \(\lambda_i=\mathbb{E}[e^{Z_i}]\)) to set the mean/variance or match the target 2-pt.
+						  </p> -->
+						  <p class="eq-small" style="margin:.25em 0 0; color:#ffccaa;">
+							Matches variance / power by construction, but <b>HOS not guaranteed</b>.
+						  </p>
+						</div>
+					  </div>
+					  
+			  
+					  
+					<!-- </div> -->
+				  <!-- </div> -->
+			  
+				<!-- </div> -->
+			  
+				<p style="text-align:center; margin-top:8px; font-size:1.2em; color:#aaa;">
+				  Current weak-lensing convergence emulators often capture 2-pt well, but lack accurate higher-order statistics.
+				</p>
+			  </section>
+
+			  <section data-background-color="#ffffff" class="white-center" data-transition="none">
+				<div class="centerbox">
+				<h2>Part 2</h2>
+				<h4 class="slide-title" style="margin-top:0;">Can we have a better emulator for convergence maps?</h4>
+				</div>
+			</section>
+			  
+
+			<!-- Decomposition -->
+			<section data-auto-animate  data-background="#000">
+				<h3 class="slide-title">Wavelet decomposition</h3>
+				<div style="text-align:center; padding:10px; margin-bottom:12px;">
+				  <img src="assets/wavelet_decomposition_filters.png"
+					   alt="Starlet scales and coarse map"
+					   class="plain"
+					   style="max-width:100%; max-height:58vh; width:auto; height:auto; border-radius:8px;">
+				</div>
+			  </section>
+			  
+			  
+
+			  <section data-auto-animate  data-background="#000">
+				<div style="display:grid; grid-template-columns:40% 45%; gap:26px; align-items:center;">
+			  
+				<div>
+					<div class="block-title">Requirements</div>
+					<div class="block-content" style="font-size:1.1em; line-height:1.5;">
+						<ol style="margin-left:10px;">
+						<li><b style="color:#6bdcff;">Map with correct $P(k)$</b><br>
+							<span style="color:#aaa; font-size:0.9em;">(power spectrum / 2-pt statistics)</span>
+						</li>
+						<li style="margin-top:10px;">
+							<b style="color:#ffaa7f;">Map with correct wavelet&nbsp;$\ell_1$-norm</b><br>
+							<span style="color:#aaa; font-size:0.9em;">(at scales of interest)</span>
+						</li>
+						<li>Fast and accurate.</li>
+						</ol>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
+					</div>
+				  <div >
+					<div class="block-title">Idea -> Scale wise reconstruction</div>
+					<div class="block-content" style="text-align:center; font-size:1.0em;">
+					  \[
+						\underbrace{\kappa}_{\text{input}}
+						\;\xrightarrow{\text{wavelet}}\;
+						\{\,w_j\,\}_{j=1}^J \;+\; c_J
+					  \]
+					  <br>
+					  \[
+						w_j \;\xrightarrow[\;P(k),\,\ell_1^j\;]{\text{method}}\; \widehat w_j
+					  \]
+					  <br>
+					  \[
+						\widehat{\kappa}
+						\;=\;
+						\widehat c_J \;+\; \sum_{j=1}^{J} \widehat w_j
+					  \]
+					  <div class="small muted" style="margin-top:6px;">
+						decompose → constrain each scale → sum to reconstruct
+					  </div>
+					</div>
+				  </div>
+			  
+				</div>
+			  </section>
+			  
+  
+  
+
+<!-- ######################################################################################################################################################################### -->
+			<section  data-background="#000">
+				<div style="background-color: #111; color: #fff; font-family: sans-serif; padding: 40px; text-align: center;">
+					<!-- Title -->
+					<h2 class="slide-title" style="color: #eee;">Generative Process of Weak Lensing Convergence Map</h2>
+					<!-- Process Flow -->
+					<div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin: 40px 0;">
+					  <div style="background-color: #b3e5fc; color: #111; padding: 16px 30px; border-radius: 12px;">
+						Gaussian Initial Map
+					  </div>
+					  <div style="font-size: 2em;">→</div>
+					  <div style="background-color: #ffe082; color: #111; padding: 16px 30px; border-radius: 12px;">
+						Iterative Generalised Forward–Backward Method (GFB)
+					  </div>
+					  <div style="font-size: 2em;">→</div>
+					  <div style="background-color: #a5d6a7; color: #111; padding: 16px 30px; border-radius: 12px;">
+						Converged κ Map
+					  </div>
+					</div>
+					<div class="fragment fade-up">
+						<!-- <div class="container"  style="border-radius: 20px; background-color: rgba(0, 0, 0, 0.7); padding: 50px;"> -->
+							GFB → decompose the optimisation into <span style="color: #72b5ec;">simpler sub-problems</span> associated with each constraint and alternate between them
+						<!-- </div> -->
+						<div class="container"  style="border-radius: 20px; background-color: rgba(0, 0, 0, 0.7); padding: 50px;">
+							<br><br>
+							<ul>
+								<li>
+									<span style="font-family: 'Courier New', monospace; color: #fff;">
+										&nbsp;&nbsp;&nbsp;&nbsp;‖$\mathrm{P}[\kappa]$ - $\mathrm{P}_{target}$</sub>‖²<sub>2</sub> ; &nbsp;‖&nbsp;$\ell_1[\kappa]$ - $\ell_1[\kappa]_{target}$</sub>&nbsp;‖²
+										</span>
+								</li>
+							</ul>
+							
+						</div>
+						<!-- <br><br> -->
+						where P is the power spectrum operator and $\ell_1[\kappa]$ is the wavelet $\ell_1$ norm of the map $\kappa$.
+					</div>
+				</div>
+			</section>
+
+			<section  data-background="#000">
+				<!-- <h3 class="slide-title">Generative Process of Weak Lensing Convergence Map</h3> -->
+				<div class="container" style="border-radius: 20px; background-color: rgba(0, 0, 0, 0.7); padding: 50px;">
+					<image src="assets/fwd-bkwd.png" class="plain" style="height: 600px;" controls></image>
+					<!-- <a href="https://github.com/vilasinits/GOLCONDA/tree/refactor" target="_blank">
+						<img src="assets/golconda_qr.png" class="plain qr" style="height: 100px; position:relative; left:245px; bottom:10px" alt="GOLCONDA QR Code">
+					  </a> -->
+			</section>
+
+<!-- ######################################################################################################################################################################### -->
+			<section>
+				<image src="assets/solution_animation.gif" class="plain" style="height: 550px;" controls></image>
+				<h4><a href = "https://arxiv.org/pdf/2507.01707">Tinnaneri Sreekanth, V., Starck, J.-L., & Codis, S. 2025, , arXiv:2507.01707., A&A, 701, A170  </a></h4>
+			</section>
+
+			<section>
+				<image src="assets/l1-norm-scales.png" class="plain" style="height: 550px;" controls></image>
+			</section>
+<!-- ######################################################################################################################################################################### -->
+			<section>
+				<h3 class="slide-title">Benchmarking</h3>
+				<image src="assets/skew-variance-kurtosis-tophatpng.png" class="plain" style="height: auto;" controls></image>
+
+				<div style="display:grid; grid-template-columns:58% 42%; gap:0px; align-items:start;">
+					<!-- LEFT -->
+					<figure style="margin:0;">
+					  <img src="assets/time_analysis 2.png" alt="Timing analysis"
+						   class="plain"
+						   style="height:300px; width:auto; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.35); object-fit:contain;">
+					  <figcaption style="font-size:0.9rem; color:#a8b2c7; margin-top:6px;">
+						<em>Runtime profile (single run)</em>
+					  </figcaption>
+					</figure>
+				  
+					<!-- RIGHT: CENTERED box -->
+					<div class="block" style="margin:0; place-self:center; width:min(420px, 100%);">
+					  <div class="block-title" style="display:flex; align-items:center; gap:10px;">
+						<!-- … SVG hand … -->
+						Runtime & Pixels
+					  </div>
+					  <div class="block-content" style="font-size:0.95rem; line-height:1.4;">
+						<ul style="margin:0;">
+						  <li>Runs on a <b>single CPU</b>.</li>
+						  <li>Pixel size: <b>2 arcmin</b>.</li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  
+			</section>
+
+			<!-- ########################################### RECAP Project 2 ################################################################################## -->
+		
+			<section data-auto-animate  data-background="#000">
+				<h3 class="slide-title">Part 2 - takeaways</h3>
+			  
+				<div class="block fragment" data-fragment-index="0">
+				  <div class="block-content">
+					<ul>
+						<li><b>Goal:</b> fast κ emulator matching <i>P(k)</i> + wavelet ℓ₁.</li>
+						<li><b>Method:</b> Gaussian init → <i>GFB</i> iterations → constrained κ.</li>
+						<li><b>Constraints:</b> ‖P[κ]-P<sub>tgt</sub>‖² &nbsp;,&nbsp; ‖ℓ₁[κ]-ℓ₁<sub>tgt</sub>‖².</li>
+						<li><b>Results:</b> realistic HOS, good PDF/skew/kurtosis; fast generation.</li>
+						<li><b>Cost:</b> minutes per map on CPU; no training set needed.</li>
+					</ul>
+				  </div>
+				</div>
+			  </section>
+			  
+<!-- ######################################################################################################################################################################### -->
+<!-- ######################################################################################################################################################################### -->
+<!-- ################################################################### PROJECT 3 ########################################################################################### -->
+
+			
+			<section data-background-color="#ffffff" class="white-center" data-transition="none">
+				<div class="centerbox">
+				<h2>Part 3</h2>
+				<h4 class="slide-title" style="margin-top:0;">Are we there yet- can we now directly start using theory?</h4>
+				</div>
+			</section>
+
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Theory validation pipeline for wavelet \( \ell_1 \)-norm</h3>
+			  
+				<div style="width:80%;max-width:1200px;margin:8px auto 0;">
+				  <svg viewBox="0 0 1200 520" style="width:100%;height:auto;display:block;font-family:Inter,system-ui,-apple-system,sans-serif">
+					<!-- ========= defs ========= -->
+					<defs>
+					  <filter id="soft"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity=".45"/></filter>
+					  <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+						<polygon points="0,0 10,5 0,10" fill="#dcdcdc"/>
+					  </marker>
+					  <style><![CDATA[
+						.pane    { rx:12; filter:url(#soft) }
+						.theoryB { fill:#14283a; stroke:#284b6b }
+						.simsB   { fill:#2b1d10; stroke:#5b3b1f }
+						.gprB    { fill:#26213a; stroke:#4a3f65 }
+						.likeB   { fill:#0f2f26; stroke:#2e6a56 }
+						.ovalB   { fill:#f5f5f5 }
+						.tLt     { fill:#d9ecff } .tSi{ fill:#ffdcb8 } .tEm{ fill:#e9ddff } .tLi{ fill:#c9f7e6 }
+						.cap     { fill:#9aa4b2 } .muted{ fill:#9aa4b2 }
+					  ]]></style>
+					</defs>
+			  
+					<!-- lane titles -->
+					<text x="120" y="48" fill="#8fcaff" font-size="22" font-weight="700">Theory lane</text>
+					<text x="120" y="268" fill="#ffc184" font-size="22" font-weight="700">Simulation lane</text>
+			  
+					<!-- x positions (kept consistent for clean spacing) -->
+					<!--  x0=70  x1=330  x2=610  x3=860  posterior center at (1000, 200) -->
+			  
+					<!-- ======= THEORY LANE ======= -->
+					<rect x="70" y="70" width="220" height="82" class="pane theoryB"/>
+					<text x="180" y="100" text-anchor="middle" class="tLt" font-size="18" font-weight="700">LDT (theory)</text>
+					<text x="180" y="122" text-anchor="middle" fill="#9ecbff" font-size="13">predictions</text>
+			  
+					<!-- theory DV (flat tails) -->
+					<g transform="translate(330,70)">
+					  <path id="MflatTop"
+							d="M -75 62 C -60 62 -48 50 -30 34 S   5  -4,  20  10
+									   S  38  54,  55  62 S  85  20, 100  10
+									   S 130  42, 145  62 C 160 62 170 62 180 62"
+							fill="none" stroke="#6fb7ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+					  <use href="#MflatTop" stroke="#3da7ff" stroke-width="5" opacity=".8"/>
+					  <use href="#MflatTop" stroke="#3da7ff" stroke-width="3" opacity=".55" transform="translate(0,3) scale(1,0.93)"/>
+					  <text x="52" y="80" font-size="12" fill="#9ecbff" text-anchor="middle">DV</text>
+					</g>
+			  
+					<!-- → GPR (theory) -->
+					<line x1="510" y1="111" x2="610" y2="111" stroke="#dcdcdc" stroke-width="2.2" marker-end="url(#arr)"/>
+					<rect x="610" y="70" width="220" height="82" class="pane gprB"/>
+					<text x="720" y="100" text-anchor="middle" class="tEm" font-size="18" font-weight="700">GPR emulator</text>
+					<!-- <text x="720" y="122" text-anchor="middle" fill="#d7ccff" font-size="13">one per DV \(d_i(\theta)\)</text> -->
+			  
+					<!-- Likelihood (theory) box -->
+					<rect x="860" y="70" width="230" height="82" class="pane likeB"/>
+					<text x="975" y="98" text-anchor="middle" class="tLi" font-size="18" font-weight="700">Likelihood</text>
+
+					<!-- REPLACE the SVG <text> math with this foreignObject -->
+					<foreignObject x="865" y="112" width="220" height="36">
+					<div xmlns="http://www.w3.org/1999/xhtml"
+						style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+								font-size:13px;color:#c9f7e6;">
+						\( \ln \mathcal{L}=-\tfrac12(\mathbf d-\mu_\theta)^{\!\top}\,\mathbf C^{-1}\,(\mathbf d-\mu_\theta) \)
+					</div>
+					</foreignObject>
+			  
+					<!-- downward link to posterior -->
+					<path d="M 975 152 L 975 188" stroke="#9adcc1" stroke-width="2.6" marker-end="url(#arr)"/>
+			  
+					<!-- ======= SIMULATION LANE ======= -->
+					<rect x="70" y="290" width="220" height="82" class="pane simsB"/>
+					<text x="180" y="320" text-anchor="middle" class="tSi" font-size="18" font-weight="700">Cosmo-SLICS</text>
+					<text x="180" y="342" text-anchor="middle" fill="#ffcfa7" font-size="13">measurements</text>
+			  
+					<!-- sims DV (flat tails) -->
+					<g transform="translate(330,290)">
+					  <path id="MflatBot"
+							d="M -75 62 C -60 62 -48 50 -30 34 S   5  -4,  20  10
+									   S  38  54,  55  62 S  85  20, 100  10
+									   S 130  42, 145  62 C 160 62 170 62 180 62"
+							fill="none" stroke="#ffb47a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+					  <use href="#MflatBot" stroke="#ff9d57" stroke-width="5" opacity=".8"/>
+					  <use href="#MflatBot" stroke="#ff9d57" stroke-width="3" opacity=".55" transform="translate(0,3) scale(1,0.93)"/>
+					  <text x="52" y="80" font-size="12" fill="#ffc184" text-anchor="middle">DV</text>
+					</g>
+			  
+					<!-- → GPR (sims) -->
+					<line x1="510" y1="331" x2="610" y2="331" stroke="#dcdcdc" stroke-width="2.2" marker-end="url(#arr)"/>
+					<rect x="610" y="290" width="220" height="82" class="pane gprB"/>
+					<text x="720" y="320" text-anchor="middle" class="tEm" font-size="18" font-weight="700">GPR emulator</text>
+					<!-- <text x="720" y="342" text-anchor="middle" fill="#d7ccff" font-size="13">one per DV \(d_i(\theta)\)</text> -->
+			  
+					<rect x="860" y="290" width="230" height="82" class="pane likeB"/>
+					<text x="975" y="318" text-anchor="middle" class="tLi" font-size="18" font-weight="700">Likelihood</text>
+
+					<!-- REPLACE the SVG <text> math with this foreignObject -->
+					<foreignObject x="865" y="332" width="220" height="36">
+					<div xmlns="http://www.w3.org/1999/xhtml"
+						style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+								font-size:13px;color:#c9f7e6; text-align:center;">
+						\( \ln \mathcal{L}=-\tfrac12(\mathbf d-\mu_\theta)^{\!\top}\,
+						(\mathbf C+\Sigma_{\rm emu})^{-1}\,(\mathbf d-\mu_\theta) \)
+					</div>
+					</foreignObject>
+
+			  
+					<!-- upward link to posterior -->
+					<path d="M 975 290 L 975 254" stroke="#9adcc1" stroke-width="2.6" marker-end="url(#arr)"/>
+			  
+					<!-- ======= COMMON POSTERIOR ======= -->
+					<ellipse cx="1000" cy="220" rx="180" ry="46" class="ovalB" filter="url(#soft)"/>
+
+					<!-- Title + math rendered via HTML so MathJax can process it -->
+					<foreignObject x="835" y="198" width="330" height="44">
+					<div xmlns="http://www.w3.org/1999/xhtml"
+						style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+						<div style="font-weight:800; font-size:20px; color:#223399; line-height:1.1;">
+						MCMC → posterior \( p(\theta \mid \mathbf{d}) \)
+						</div>
+						<div class="muted" style="font-size:13px; color:#8aa; line-height:1.1;">
+						compare theory-driven vs sims-driven pipelines
+						</div>
+					</div>
+					</foreignObject>
+
+			  
+					<!-- gentle curved joiners into posterior (cosmetic) -->
+					<path d="M 1090 111 Q 1125 165 1090 200" stroke="#cfd3d8" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+					<path d="M 1090 331 Q 1125 275 1090 240" stroke="#cfd3d8" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+			  
+					<!-- legend -->
+					<!-- <g transform="translate(70,458)">
+					  <rect x="0" y="-12" width="14" height="14" class="theoryB pane" style="rx:3;filter:none;"/>
+					  <text x="22" y="-1" fill="#9ecbff" font-size="12">theory</text>
+					  <rect x="90" y="-12" width="14" height="14" class="simsB pane" style="rx:3;filter:none;"/>
+					  <text x="112" y="-1" fill="#ffc184" font-size="12">sims</text>
+					  <rect x="160" y="-12" width="14" height="14" class="gprB pane" style="rx:3;filter:none;"/>
+					  <text x="182" y="-1" class="tEm" font-size="12">GPR</text>
+					  <rect x="220" y="-12" width="14" height="14" class="likeB pane" style="rx:3;filter:none;"/>
+					  <text x="242" y="-1" class="tLi" font-size="12">likelihood</text>
+					</g> -->
+				  </svg>
+				</div>
+				<div class="block" style="margin-top: -90px; padding: 10px;">
+					<div class="block-title">Likelihood used</div>
+					<div class="block-content" style="font-size:1.2em;">
+					  <p style="margin:0;">
+						We keep the covariance fixed at the fiducial cosmology and evaluate the mean with a GPR at each sampled \( \theta \).
+					  </p>
+					  
+					  <div style="background:rgba(20,28,40,.55); border:1px solid #355; border-radius:10px; padding:12px 14px; margin-bottom:0.2em;"> 
+						\[
+						  \ln \mathcal{L}(\theta)
+						  \;=\;
+						  -\tfrac12\Big[
+							(\mathbf d_{\rm obs}-\mu_\theta)^{\!\top}\,
+							\mathbf C_{\rm fid}^{-1}\,
+							(\mathbf d_{\rm obs}-\mu_\theta)
+							\;+\; \ln\!\det \mathbf C_{\rm fid}
+							\;+\; n\ln(2\pi)
+						  \Big] .
+						\]
+					  </div>
+					  
+					  <ul style="margin-top:0.2em; color:#9aa4b2;">
+						<li>\(\mathbf d_{\rm obs}\): measured wavelet \(\ell_1\) DV, \(\;\mu_\theta\): GPR prediction at sampled \(\theta\).</li>
+						<li>\(\mathbf C_{\rm fid}\): covariance estimated at fiducial cosmology (kept fixed for inference).</li>
+					  </ul>
+					</div>
+				</div>
+			  </section>
+
+			  <section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">Theory validation on cosmo-SLICS (wavelet \( \ell_1 \))</h3>
+			  
+				<div style="display:grid; grid-template-columns:42% 58%; gap:18px; align-items:center;">
+			  
+				  <!-- LEFT: figure -->
+				  <figure style="margin:0;">
+					<img src="assets/theoryvssim_slics.png"
+						 alt="Fractional residuals of theory vs simulations"
+						 class="plain"
+						 style="width:100%; max-height:54vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35);">
+					<figcaption style="font-size:1.2em; color:#9bb4cc; margin-top:6px; text-align:center;">
+					  Fractional residuals \( r=\frac{\mu_{\rm th}-\mu_{\rm sim}}{\sigma_{\rm sim}} \) across cosmologies and SNR bins \(\mathrm{SNR}=\kappa/\sigma_\kappa\).
+					</figcaption>
+				  </figure>
+			  
+				  <!-- RIGHT: definition + criteria + takeaway -->
+				  <div class="block" style="margin:0;">
+					<!-- <div class="block-title">Validation metric & gate</div> -->
+					<div class="block-content" style="font-size:1.2em;">
+					  <div style="background:rgba(20,28,40,.55); border:1px solid #355; border-radius:10px; padding:10px 12px; margin-bottom:.6em;">
+						\[
+						  r(\mathrm{SNR}) \;=\; 
+						  \frac{\mu_{\rm th}(\mathrm{SNR}) - \mu_{\rm sim}(\mathrm{SNR})}
+							   {\sigma_{\rm sim}(\mathrm{SNR})}
+						\]
+					  </div>
+					  <ul style="margin:.2em 0;">
+						<li><b>Result:</b> most points lie within \(\pm 1\sigma\) for \(|\mathrm{SNR}|\lesssim 2\).</li>
+						<!-- <li><b>Gate:</b> points with \(|r|>1\) are <span style="color:#ff9090;">discarded</span> (theory not accurate there) and are <b>not used</b> to train the GPR.</li> -->
+						<!-- <li><span style="color:#ffaa7f;">Beyond:</span> larger deviations in the high-SNR tails (rare peaks/voids).</li> -->
+					  </ul>
+					  <p style="margin:.5em 0 0; color:#6bdcff;">
+						⟹ Validated domain for cosmo-SLICS: \(|\mathrm{SNR}|\le 2\); train GPR only on retained points.
+					  </p>
+					  <br>
+					  <br>
+
+					  <table style="font-size:0.9em; border-collapse:collapse;">
+						<thead>
+						  <tr>
+							<th style="padding:4px 10px;">Simulation</th>
+							<th style="padding:4px 10px;">$\Omega_m$</th>
+							<th style="padding:4px 10px;">$S_8$</th>
+							<th style="padding:4px 10px;">$h$</th>
+							<th style="padding:4px 10px;">$w_0$</th>
+							<th style="padding:4px 10px;">$M_\nu$</th>
+							<th style="padding:4px 10px;">$L_\mathrm{box}$ [Mpc$/h$]</th>
+							<!-- <th style="padding:4px 10px;">$N_p$</th> -->
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td>cosmo-SLICS</td>
+							<td>[0.10 , 0.55]</td>
+							<td>[0.60 , 0.90]</td>
+							<td>[0.60 , 0.82]</td>
+							<td>[−2.0 , −0.5]</td>
+							<td>0.0</td>
+							<td>505</td>
+							<!-- <td>$1536^3$</td> -->
+						  </tr>
+						</tbody>
+					  </table>
+					  <figcaption style="font-size:0.75em; color:#aaa; margin-top:4px;">
+						Harnois-Déraps et al. 2019 (arXiv:1905.06454).
+					  </figcaption>
+					  
+					</div>
+				  </div>
+
+				  
+			  
+				</div>			  
+			  </section>
+			  
+			
+			
+			<section data-auto-animate  data-background="#000">
+					<h3 class="slide-title">Gaussian progress regression validation</h3>
+					<section data-background="#000" data-auto-animate>
+						<!-- <h3 class="slide-title">GPR validation - % difference check</h3> -->
+					  
+						<div style="display:grid; grid-template-columns:55% 45%; gap:16px; align-items:center;">
+						  <!-- LEFT: your figure -->
+						  <figure style="margin:0;">
+							<img
+							  src="assets/percentage_diff_bw_real_pred_gpr.png"
+							  alt="% difference: real vs GPR"
+							  class="plain"
+							  style="width:100%; max-height:54vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.35);">
+							<figcaption style="font-size:1.2em; color:#9bb4cc; margin-top:6px; text-align:center;">
+							  Percentage difference across cosmologies and SNR bins.
+							</figcaption>
+						  </figure>
+					  
+						  <!-- RIGHT: concise explanation -->
+						  <div class="block" style="margin:0;">
+							<div class="block-title">Definition & criterion</div>
+							<div class="block-content" style="font-size:1.2em;">
+							  <div style="background:rgba(20,28,40,.55); border:1px solid #355; border-radius:10px; padding:10px 12px; margin-bottom:.6em;">
+								\[
+								  \%\mathrm{err}_i(k)=100\times
+								  \frac{d^{\rm pred}_i(k)-d^{\rm real}_i(k)}{d^{\rm real}_i(k)},
+								  \quad k:\ \mathrm{SNR\ bin}
+								\]
+							  </div>
+							  <ul style="margin:.2em 0;">
+								<li>Scan all cosmologies and all SNR bins.</li>
+								<li><b>Pass:</b> small, residuals; most bins within combined uncertainties.</li>
+								<li>Validated range: typically \(|\mathrm{SNR}|\le 2\).</li>
+								<li>Outliers (\(|\%\mathrm{err}|> \) tolerance) are flagged for follow-up / exclusion.</li>
+							  </ul>
+							  <p style="margin:.5em 0 0; color:#6bdcff;">
+								⟹ This verifies the GPR captures the DV dependence over the grid before inference.
+							  </p>
+							</div>
+						  </div>
+						</div>
+					  
+						<style>.reveal section{font-size:.70em}</style>
+					  </section>
+					  
+
+					  <section data-background="#000">					  
+						<div style="display:grid; grid-template-columns:48% 52%; gap:18px; align-items:center;">
+					  
+							<div class="block" style="margin:0;">
+								<div class="block-title" style="font-size:1.5em;">How we validate</div>
+								<div class="block-content" style="font-size:1.4em;">
+								  <p style="margin:.2em 0 .6em; color:#bbb; font-size:1.2em">
+									We check the <b>residuals</b> between the GPR prediction and simulations at the same cosmology.
+								  </p>
+								  <ul style="margin:.2em 0; font-size:1.2em;">
+									<li>The residuals are <b>consistent with zero</b> within the simulation error bars.</li>
+									<li>No systematic trend across bins → <b>no visible bias</b> of the emulator.</li>
+									<li>Deviations lie within expected variance → <b>GPR is reliable at fiducial</b>.</li>
+								  </ul>
+								</div>
+							  </div>
+							  
+					  
+						  <!-- RIGHT: figure -->
+						  <figure style="margin:0; text-align:center;">
+							<img
+							  src="assets/gprvalidation.png"
+							  alt="GPR validation: residuals vs simulations"
+							  class="plain"
+							  style="width:100%; max-height:420px; object-fit:contain; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.35);"
+							>
+							<figcaption style="font-size:1.2em; color:#aaa; margin-top:6px;">
+							  Residuals \( \Delta = \hat{d}_{\mathrm{GPR}} - d_{\mathrm{sim}} \) per bin; <b>error bars are</b>
+							  \( \sqrt{\mathrm{diag}\, C_{\text{data}}} \) from the simulation covariance (fiducial).
+							</figcaption>
+						  </figure>
+					  
+						</div>
+					  </section>
+					  
+			</section>
+
+			<section data-background="#000">
+				<h3 class="slide-title">Results</h3>
+			  
+				<!-- Watermark -->
+				<div class="watermark">PRELIMINARY</div>
+			  
+				<div style="display:flex; justify-content:center; align-items:center; gap:40px; margin-top:10px;">
+				  <!-- Left: Theory contours -->
+				  <figure style="text-align:center;">
+					<img src="assets/newposterior.jpg" class="plain" style="height:520px; border-radius:10px; box-shadow:0 0 25px rgba(68,204,255,0.25);" />
+					<figcaption style="color:#ccc; font-size:1.1em; margin-top:6px;">Contours from <b>theory</b></figcaption>
+				  </figure>
+			  
+				  <!-- Right: Simulation contours -->
+				  <figure style="text-align:center;">
+					<img src="assets/cosmoslics_contours_gpr_fiducial.png" class="plain" style="height:520px; border-radius:10px; box-shadow:0 0 25px rgba(255,170,127,0.25);" />
+					<figcaption style="color:#ccc; font-size:1.1em; margin-top:6px;">Contours from <b>simulations</b></figcaption>
+				  </figure>
+				</div>
+			  </section>
+			
+			<!-- 5) Results -->
+			<section data-auto-animate data-background="#000">
+				<h3 class="slide-title">Part 3 - Takeaways</h3>
+				<div class="block fragment">
+				  <div class="block-content" style="font-size:1.5em;">
+					<ul>
+					  <li><b>Trend:</b> posteriors are converging in the expected direction.</li>
+					  <li><b>Next:</b> a few remaining consistency checks before sign-off.</li>
+					  <li><b>Outcome:</b> once validated, the method is ready for Euclid integration.</li>
+					</ul>
+				  </div>
+				</div>
+			  </section>			  
+			  
+<!-- ######################################################################################################################################################################### -->		
+<!-- ######################################################################################################################################################################### -->
+<!-- ###################################### CONCLUSION & FUTURE PERSPECTIVES ################################################################################################# -->
+
+			<!-- CONCLUSION -->
+
+			<section data-background="#000">
+				<h3 class="slide-title">Conclusion</h3>
+			  
+				<div style="display:grid; grid-template-columns:55% 45%; gap:18px; align-items:start;">
+			  
+				  <!-- LEFT COLUMN: Summary + Publications -->
+				  <div style="display:grid; grid-template-rows:auto auto; gap:14px;">
+			  
+					<!-- Summary block -->
+					<div class="block fragment" data-fragment-index="0">
+					  <div class="block-title">Summary</div>
+					  <div class="block-content" style="font-size:0.95rem; line-height:1.35;">
+						<ul style="margin:0;">
+						  <li><b>LDT → wavelet \( \ell_1 \)</b>: analytic, multiscale WL statistic.</li>
+						  <li><b>Validated</b> on sims across \(z\)/scales; sensitive to \( \sigma_8, \Omega_m \).</li>
+						  <li><b>GPR emulator</b>: fast DV prediction with uncertainties.</li>
+						  <li><b>Open-source</b> tools for theory + inference (right).</li>
+						  <li><b>Impact</b>: minutes vs hours (N-body); simulation-light HOS.</li>
+						</ul>
+					  </div>
+					</div>
+					<div class="block fragment" data-fragment-index="1">
+					  <div class="block-title">Publications</div>
+					  <div class="block-content" style="font-size:0.95rem; line-height:1.3;">
+						<ul style="margin:0;">
+						  <li>
+							<span style="color:#cda4d8; font-weight:700;">Tinnaneri Sreekanth V.</span>, Codis S., Barthélémy A., Starck J.-L. (2024),
+							<i>A&amp;A</i>, 691, A80.
+						  </li>
+						  <li>
+							<span style="color:#cda4d8; font-weight:700;">Tinnaneri Sreekanth V.</span>, Starck J.-L., Codis S. (2025),
+							<i>A&amp;A</i>, vol. 701, Art. no. A170, EDP, 2025. doi:10.1051/0004-6361/202554142.
+						  </li>
+						  
+						  <li>
+							Euclid preparation: Towards a DR1 application of higher-order weak-lensing statistics,
+							<span style="color:#cda4d8; font-weight:700;">Tinnaneri Sreekanth V.</span>, <span style="opacity:.8;">…</span> (TSV)
+						  </li>
+						  <br>
+						  <li>
+							In prep (theory validation): Tersenov A.,
+							<span style="color:#cda4d8; font-weight:700;">Tinnaneri Sreekanth V.</span>, Starck J.-L., Codis S.
+						  </li>
+						</ul>
+					  </div>
+					</div>
+			  
+				  </div>
+				  <div class="block fragment" data-fragment-index="2">
+					<div class="block-title">Open-source software</div>
+					<div class="block-content" style="font-size:0.95rem;">
+					  <div style="display:flex; flex-direction:column; gap:14px;">
+						<div>
+						  <a href="https://github.com/vilasinits/WALE" target="_blank" style="text-decoration:none;">
+							<span style="display:inline-flex; align-items:center; border-radius:6px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,.35);">
+							  <span style="background:#2d333b; color:#e6edf3; padding:4px 8px; font-weight:600;">WALE</span>
+							  <span style="background:#28a745; color:#062; padding:4px 8px; font-weight:700;">passing</span>
+							</span>
+						  </a>
+						  <div style="margin-top:6px; color:#cfd6e6;">
+							<b>WALE</b> (Wavelet \( \ell_1 \)-norm Estimator) - Python tools to predict and analyze the one-point statistics of the wavelet \( \ell_1 \) norm in cosmological density fields.
+						  </div>
+						</div>
+						<div>
+						  <a href="https://github.com/vilasinits/GOLCONDA" target="_blank" style="text-decoration:none;">
+							<span style="display:inline-flex; align-items:center; border-radius:6px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,.35);">
+							  <span style="background:#2d333b; color:#e6edf3; padding:4px 8px; font-weight:600;">GOLCONDA</span>
+							  <span style="background:#d1b000; color:#2b2100; padding:4px 8px; font-weight:700;">MIT</span>
+							</span>
+						  </a>
+						  <div style="margin-top:6px; color:#cfd6e6;">
+							<b>GOLCONDA</b> (Generative modeling of convergence maps from predicted one-point statistics) - an efficient emulator for generating weak-lensing convergence (\( \kappa \)) maps.
+						  </div>
+						</div>
+						<div>
+						  <a href="#" target="_blank" style="text-decoration:none;">
+							<span style="display:inline-flex; align-items:center; border-radius:6px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,.35);">
+							  <span style="background:#2d333b; color:#e6edf3; padding:4px 8px; font-weight:600;">LDT-2cell-ℓ₁</span>
+							  <span style="background:#6c757d; color:#f8f9fa; padding:4px 8px; font-weight:700;">black</span>
+							</span>
+						  </a>
+						  <div style="margin-top:6px; color:#cfd6e6;">
+							<b>LDT-2cell-ℓ₁</b> - reference implementation for rate-function/CGF-based predictions of wavelet \( \ell_1 \) statistics (two-cell LDT).
+						  </div>
+						</div>
+			  
+					  </div>
+					</div>
+				  </div>
+			  
+				</div>
+			  </section>
+			  
+			
+			  <section data-auto-animate data-background="#000">
+				<h3 class="slide-title">Future perspectives</h3>
+			  
+				<div style="display:grid; grid-template-columns:48% 52%; gap:22px; align-items:start;">
+				  <!-- LEFT: stochasticity example -->
+				  <div>				  <ul>
+					<li><b class="alert">Stochasticity of wavelet $\ell_1$-norm:</b> investigate a tractable analytical model.</li>
+				  </ul>
+				  <figure class="fragment" style="margin:0;">
+					<img src="assets/stochasticity_example.png"
+						 alt="Stochasticity of wavelet l1-norm example"
+						 class="plain"
+						 style="width:100%; max-height:62vh; object-fit:contain; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+					<figcaption style="color:#bbb; font-size:1.0em; text-align:center; margin-top:6px;">
+					  Covariance estimate using GPR and PCA decomposition
+					</figcaption>
+				  </figure>
+				</div>
+
+			  
+				  <!-- RIGHT: bullets -->
+				  <div class="block fragment" style="margin:0;">
+					<br>
+					<br>
+					<div class="block-content" style="font-size:1.05em; line-height:1.35;">
+					  <ul>
+						<li>Extend the theory model to include systematics.</li>
+						<li>Use hybrid models where analytic approximations break down.</li>
+						<li>Extend the convergence-map generator; include additional constraints.</li>
+						<li><b>Application:</b> integrate the framework within <b>Euclid</b> for upcoming <b>data releases (DRs)</b>.</li>
+					  </ul>
+					</div>
+				  </div>
+				  
+				</div>
+			  </section>
+			  
+	
+  
+<!-- ######################################################################################################################################################################### -->
+			<section data-background-image="assets/joint-titan-argos-tosca-workshop-background.png"  data-background-opacity="0.4">
+				<h2 style="font-family: Brush Script MT; font-size:132px;">Thank you!</h2>
+			</section>
+<!-- ######################################################################################################################################################################### -->
+			<section>
+
+			</section>
+
+<!-- ######################################################################################################################################################################### -->
+			<section>
+				<h3 class="slide-title">Backup</h3>
+			</section>
+
+			<section data-background="#000">
+				<h3 class="slide-title">Parameter tensions — snapshot</h3>
+			  
+				<div style="display:grid; grid-template-columns:50% 50%; gap:8px; align-items:center;">
+				  <figure style="margin:0;">
+					<img src="assets/h0_tension_verde.png"
+						 alt="H0 tension summary"
+						 class="plain"
+						 style="width:80%; max-height:50vh; object-fit:contain; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+					<figcaption style="font-size:0.9em; color:#aaa; margin-top:6px; text-align:center;">
+					  Early vs Late measurements of $H_0$
+					</figcaption>
+				  </figure>
+			  
+				  <figure style="margin:0;">
+					<img src="assets/news8.jpg"
+						 alt="Recent S8 constraints"
+						 class="plain"
+						 style="width:80%; max-height:60vh; object-fit:contain; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+					<figcaption style="font-size:0.9em; color:#aaa; margin-top:6px; text-align:center;">
+					  Recent $S_8$ constraints (WL+BAO+Planck)
+					</figcaption>
+				  </figure>
+				</div>
+			  
+				<div style="margin-top:12px; text-align:center; font-size:1.1em; line-height:1.35;">
+				  <p style="margin:4px 0;"><b>$H_0$:</b> tension persists at $\sim$5–6$\sigma$ (early vs late Universe).</p>
+				  <p style="margin:4px 0;"><b>$S_8$:</b> discrepancy largely reduced in latest combined analyses (now $\lesssim$2$\sigma$).</p>
+				</div>
+			  </section>
+
+			<section>
+				<section>
+				<h3 class="slide-title">Wavelets</h3>
+				<p> A wavelet is a waveform of effectively limited duration that has an average value of zero and nonzero norm.
+				</p>
+				<img src="assets/db5_ex.png" class="plain" style="height: 400px;" controls> </img>
+				<figcaption>This is an example of a DB5 wavelet</figcaption>
+				</section>
+
+				<section>
+					<img src="assets/wavelet_demo.png" class="plain" style="height: 250px;" controls></img>
+					<figcaption>The coefficients from Fourier transform and wavelet trandform respectively</figcaption>
+					<img src="assets/wavelet_demo2.png" class="plain" style="height: 250px;" controls></img>
+					
+				<div class="block">
+					<div class="block-content" style="font-size:34px;">
+						Especially useful in cases where we have discontinuties, trends etc that other techniques often tend to miss
+					</div>
+				</div>
+				</section>
+			</section>
+			<section data-background="#000">
+				<h3 class="slide-title">Starlet (B<sub>3</sub>-spline, à trous)</h3>
+			  
+				<div style="display:grid; grid-template-columns:54% 46%; gap:18px; align-items:start;">
+			  
+				  <!-- LEFT: definitions & key points -->
+				  <div class="block" style="margin:0;">
+					<div class="block-content" style="font-size:1.08em; line-height:1.42;">
+					  <p style="margin:0.4em 0;"><b>Scaling (cubic B<sub>3</sub>-spline)</b></p>
+					  \[
+					  B(x)=\frac{1}{12}\left(|x-2|^{3}-4|x-1|^{3}+6|x|^{3}-4|x+1|^{3}+|x+2|^{3}\right)
+					  \]
+					  \[
+					  \varphi(t_1,t_2)=B(t_1)\,B(t_2)
+					  \]
+			  
+					  <p style="margin:0.4em 0;"><b>Starlet mother wavelet (undecimated)</b></p>
+					  \[
+					  \psi(t_1,t_2)=4\,\varphi(2t_1,2t_2)-\varphi(t_1,t_2)
+					  \]
+			  
+					  <ul style="margin-top:0.6em;">
+						<li class="fragment">Isotropic, undecimated (shift-invariant), multiscale bands.</li>
+						<li class="fragment">Fast separable filters: \(h_{1D}=\tfrac{1}{16}[1\,4\,6\,4\,1]\), \(c_{j+1}=c_j*h^{(j)}\), \(w_j=c_j-c_{j+1}\).</li>
+					  </ul>
+					</div>
+				  </div>
+			  
+				  <!-- RIGHT: your image -->
+				  <figure style="margin:0;">
+					<img src="assets/starlet_wavelet.png"
+						 alt="Starlet wavelet and B3-spline (1D)"
+						 class="plain"
+						 style="width:100%; max-height:62vh; object-fit:contain; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+					<figcaption style="font-size:0.95rem; color:#a8b2c7; margin-top:6px;">
+					  1D starlet wavelet \( \psi(x) \) (left panel in image) and B<sub>3</sub>-spline \( \varphi(x) \) (right).
+					</figcaption>
+				  </figure>
+			  
+				</div>
+			  </section>
+			  
+			  <section data-background="#000">
+				<h3 class="slide-title">Backup — Mass-Sheet Degeneracy</h3>
+			  
+				<div class="block" style="margin-top:14px;">
+				  <div class="block-title">Statement</div>
+				  <div class="block-content" style="font-size:0.95rem; line-height:1.35;">
+					The lensing observables (shear shapes) are invariant under
+					\[
+					\kappa(\theta) \;\longrightarrow\; \kappa'(\theta) = \lambda\,\kappa(\theta) + (1-\lambda)
+					\]
+					i.e. adding a constant “mass-sheet” while rescaling leaves the reduced shear unchanged.
+				  </div>
+				</div>
+			  
+				<div class="block" style="margin-top:18px;">
+				  <div class="block-title">Physical meaning</div>
+				  <div class="block-content" style="font-size:0.95rem; line-height:1.35;">
+					Lensing by a uniform sheet produces pure isotropic magnification, which is degenerate
+					with a global rescaling of the convergence field.
+					Without additional information (e.g. magnification, absolute size priors, redshift leverage),
+					\(\kappa\) is only known up to this transformation.
+				  </div>
+				</div>
+			  
+				<div class="block" style="margin-top:18px;">
+				  <div class="block-title">Implication for inference</div>
+				  <div class="block-content" style="font-size:0.95rem; line-height:1.35;">
+					Cosmology from shear alone must rely on contrasts and statistics insensitive to
+					an additive sheet, or break the degeneracy via external information.
+				  </div>
+				</div>
+			  
+			  </section>
+			  
+
+			<!-- <section>
+				<h3>Lens Jacobian (image &larr; source)</h3>
+				<p>
+					\[
+					\mathbf{A} \equiv \frac{\partial \boldsymbol{\beta}}{\partial \boldsymbol{\theta}}
+					= \begin{pmatrix}
+					1-\kappa-\gamma_1 & -\gamma_2\\
+					-\gamma_2 & 1-\kappa+\gamma_1
+					\end{pmatrix}
+					\]
+				</p>
+
+				<h4>Convergence (scalar, isotropic)</h4>
+				<p>
+					\[
+					\kappa = \tfrac{1}{2}\!\left(\psi_{,xx}+\psi_{,yy}\right)
+					\;\propto\; \text{projected mass density}
+					\]
+					<br>
+					It represents the <b>line-of-sight (LOS) integral</b> of the 3D matter overdensity:
+					\[
+					\kappa(\boldsymbol{\theta})
+					= \int_0^{\chi_s} d\chi\, W(\chi)\,\delta(\chi\,\boldsymbol{\theta}, \chi),
+					\]
+					where \( W(\chi) \) is the lensing efficiency kernel and \( \chi_s \) the source distance.
+				</p>
+
+				<h4>Shear components (spin-2, directional)</h4>
+				<p>
+					\[
+					\gamma_1 = \tfrac{1}{2}\!\left(\psi_{,xx}-\psi_{,yy}\right),
+					\qquad
+					\gamma_2 = \psi_{,xy}
+					\]
+				</p>
+
+				<h4>What we actually see: reduced shear</h4>
+				<p>
+					\[
+					g = \frac{\gamma}{1-\kappa},
+					\qquad
+					\gamma = \gamma_1 + i\,\gamma_2
+					\]
+				</p>
+			</section> -->
+			
+			<section data-background="#000" data-auto-animate>
+				<h3 class="slide-title">From Rare Events to the Full Distribution</h3>
+			  
+				<!-- <div style="
+				  display:grid;
+				  grid-template-columns:55% 45%;
+				  align-items:center;
+				  gap:35px;
+				  margin-top:20px;
+				"> -->
+				  <div style="font-size:1.2em;">
+					<div class="block-content">
+					  <ul>
+						<li>The <b>probability distribution function (PDF)</b> \( P(x) \) describes how likely different values of a field are - 
+							e.g. densities in the Universe.</li>
+						<li>Its <b>tails</b> correspond to <b>rare events</b> (very high or low values).</li>
+						<li><b>Large-Deviation Theory</b> focuses precisely on those tails - 
+							it predicts how fast the probability decays for rare fluctuations.</li>
+					  </ul>
+			  
+					  <div style="margin-top:10px;">
+						<p style="text-align:center;">
+						  \[
+						  P(x) \; \sim\; e^{-\,\Psi(x)} \quad 
+						  \text{with } \Psi(x) \text{ the rate function.}
+						  \]
+						</p>
+					  </div>
+			  
+					  <ul >
+						<li>Once \( \Psi(x) \) is known, the entire <b>PDF shape</b> can be reconstructed - 
+							including its most probable and extreme values.</li>
+						<li class="alert">
+						  ⟹ Knowing how the tails behave tells us the full statistical structure of the field.
+						</li>
+					  </ul>
+					</div>
+				  </div>
+				<!-- </div> -->
+			  </section>
+
+			  <section data-background="#000">
+				<h3 class="slide-title">Asymmetry of $\delta$ and its imprint on wavelet $\ell_{1}$</h3>
+			  
+				<div class="block" style="margin:0;">
+				  <div class="block-content" style="font-size:1.25em; line-height:1.38;">
+			  
+					<p class="fragment" style="margin:.4em 0;">
+					  \[
+					  \delta = \frac{\rho - \bar\rho}{\bar\rho},
+					  \qquad
+					  \delta \ge -1 \quad(\rho\rightarrow 0),
+					  \qquad
+					  \delta \to +\infty \quad(\rho\gg\bar\rho)
+					  \]
+					</p>
+			  
+					<ul style="margin-top:.6em;">
+					  <li class="fragment">
+						Gravitational collapse produces <b>unbounded high–density peaks</b>, but voids <b>cannot go below −1</b>.
+					  </li>
+			  
+					  <li class="fragment">
+						This asymmetry yields <b>larger wavelet amplitudes in the positive tail</b> than in the negative tail.
+					  </li>
+			  
+					  <li class="fragment">
+						Thus the <b>wavelet $\ell_1$-norm</b> at a given scale is <b>dominated by rare collapsed peaks</b>,
+						not by the underdense regions.
+					  </li>
+					</ul>
+			  
+				  </div>
+				</div>
+			  </section>
+			  
+
+			  <section data-background="#000">
+				<h3 class="slide-title">Interpreting wavelet $\ell_{1}$-derivatives ($\theta_1 \approx 22.5'$)</h3>
+			  
+				<div style="display:grid; grid-template-columns:54% 46%; gap:20px; align-items:start;">
+			  
+				  <!-- LEFT: interpretation -->
+				  <div class="block" style="margin:0;">
+					<div class="block-content" style="font-size:1.2em; line-height:1.35;">
+			  
+					  <ul style="margin:0;">
+						<li>
+						  <b>$\Omega_m$:</b> increasing $\Omega_m$ pushes mass into collapsed halos  
+						  → <b>tails gain probability</b> (positive lobes at large $|\kappa|$)  
+						  and <b>bulk loses probability</b> (negative around $\kappa\!\approx\!0$).
+						</li>
+			  
+						<li>
+						  <b>$A_s$:</b> increasing $A_s$ boosts moderate fluctuations more than rare peaks  
+						  → <b>center increases</b> (positive near $\kappa{=}0$) and  
+						  <b>tails weaken</b> (negative at large $|\kappa|$).
+						</li>
+			  
+						<li><b>Ωₘ has the largest amplitude</b> because this scale is dominated by non-linear collapsed structure, and Ωₘ directly controls how much mass ends up in halos - increasing Ωₘ strongly boosts the tail amplitude of κ.</li>
+
+						<li><b>Aₛ and Mν do not create new collapsed mass</b>: Aₛ mainly rescales the linear amplitude and Mν suppresses growth by free-streaming, so both have a much weaker impact on the tail-driven ℓ₁ signal at this scale.</li>
+
+					  </ul>
+			  
+					</div>
+				  </div>
+			  
+				  <!-- RIGHT: figure -->
+				  <figure style="margin:0;">
+					<img src="assets/derivative_l1.png"
+						 class="plain"
+						 style="width:100%; max-height:60vh; object-fit:contain; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+				  </figure>
+			  
+				</div>
+			  </section>
+
+			  <section data-background="#000">
+				<h3 class="slide-title">What is a “mildly non-linear” scale?</h3>
+			  
+				<div style="display:grid; grid-template-columns:56% 44%; gap:18px; align-items:start;">
+			  
+				  <!-- LEFT: definitions & mapping -->
+				  <div class="block" style="margin:0;">
+					<div class="block-content" style="font-size:1.15em; line-height:1.42;">
+					  <ul style="margin:0;">
+						<li class="fragment">
+						  Defined by fluctuation amplitude: <b>linear</b> if \( \sigma(R)\!\ll\!1 \),
+						  <b>mildly non-linear</b> if \( \sigma(R)\!\sim\!0.5{-}1 \)
+						  (equivalently \( \Delta^2(k)\!\equiv\!k^3P(k)/(2\pi^2)\sim\mathcal{O}(1) \)).
+						</li>
+			  
+						<li class="fragment">
+						  For weak lensing with sources at \(z_s\!\approx\!2\), the efficiency kernel \(W(z)\propto (1+z)\,\chi(z)\big[1-\chi(z)/\chi_s\big]\)
+						  <b>peaks at</b> \(z_\text{peak}\approx 0.97\) (here: \( \chi(z_\text{peak})\approx 3.23\times10^3\) Mpc).
+						</li>
+			  
+						<li class="fragment">
+						  Angular scale \(\theta\) probes a comoving scale near the peak:
+						  \[
+							R \approx \chi\!\left(z_\text{peak}\right)\,\theta \quad(\theta\ \text{in radians}).
+						  \]
+						  <!-- <li class="fragment"> -->
+							Example: $\theta = 15'$  $\Rightarrow$  $R \approx 14.1\ \mathrm{Mpc}$ at the kernel peak ($z\simeq 0.97$).
+						  <!-- </li> -->
+						  
+						</li>
+					  </ul>
+					</div>
+				  </div>
+			  
+				  <!-- RIGHT: kernel figure -->
+				  <figure style="margin:0;">
+					<img src="assets/lensing_kernel_z2.png"
+						 alt="Lensing kernel for z_s=2 (normalized), peak marked"
+						 class="plain"
+						 style="width:100%; max-height:62vh; object-fit:contain; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35);" />
+					<figcaption style="font-size:0.95rem; color:#a8b2c7; margin-top:6px;">
+					  Lensing efficiency (normalized) for \(z_s=2\); peak at \(z\simeq0.97\).
+					</figcaption>
+				  </figure>
+			  
+				</div>
+			  </section>
+			  
+			  
+			  
+
+			<section>
+				<h3>Emulator</h3>
+			</section>
+			<section>
+				<h3 slide-title>Convergence map generation for lower Omega m</h3>
+				<section>
+					<img src="assets/low_omegam_maps.png" class="plain" style="height: 400px;" controls></img>
+
+				</section>
+				<section>
+					<img src="assets/low_omegam_l1norms.png" class="plain" style="height: 400px;" controls></img>
+				</section>
+				<section>
+					<img src="assets/low_omega_m_error.png" class="plain" style="height: 400px;" controls></img>
+				</section>
+				
+			</section>
+			<section>
+				<h3 slide-title>Convergence map generation for higher Omega m</h3>
+				<section>
+					<img src="assets/highomegam_maps.png" class="plain" style="height: 400px;" controls></img>
+
+				</section>
+				<section>
+					<img src="assets/highomegam_l1norms.png" class="plain" style="height: 400px;" controls></img>
+				</section>
+				<section>
+					<img src="assets/highomegam_error.png" class="plain" style="height: 400px;" controls></img>
+				</section>
+				
+			</section>
+			  
+
+			<section>
+				<h3>Benchmarking- comparing PDF and peak counts at different scales</h3>
+				<img src="assets/pdf_scales.png" class="plain" style="height: 350px;" controls></img>
+				<img src="assets/peak_count.png" class="plain" style="height: 350px;" controls></img>
+			</section>
+
+			<section>
+				<h3>Theory validation</h3>
+			</section>
+			<section>
+				<h3>Cosmo-SLICS vs SLICS fiducial comparison</h3>
+				<img src="assets/cosmoslicsvsslocs_fiducial.png" class="plain" style="height: 550px;" controls></img>
+			</section>
+			<section>
+				<div class="grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+					<div class="grid-item">
+						<h3>Simulation contours using SLICS as fiducial</h3>
+						<img src="assets/cosmoslics_contours_slics_fiducial.png" class="plain" style="height: 550px;" controls></img>
+					</div>
+					<div class="grid-item">
+						<h3>Simulation contours using cosmo-SLICS as fiducial</h3>
+						<img src="assets/cosmoslics_contours_cosmoslics_fiducial.png" class="plain" style="height: 530px;" controls></img>
+					</div>
+				
+			</section>
+			  <section data-background="#000">
+				<h3 class="slide-title">Large-Deviation Theory and its Validity</h3>
+				<div class="block">
+				  <div class="block-content" style="font-size:1.05em; line-height:1.35;">
+					<ul>
+					  <li>LDT provides an analytical framework to predict the one-point PDF of $\kappa$ from first principles.</li>
+					  <li>Valid in the quasi-linear regime: intermediate scales where perturbation theory fails but non-linear collapse is moderate.</li>
+					  <li>Breaks down at small scales where baryons and non-linear coupling dominate.</li>
+					  <li>Assumes statistical isotropy and no baryonic feedback - both under future investigation.</li>
+					</ul>
+				  </div>
+				</div>
+			  </section>
+			  
+			  
+			  <section>
+				<h3 class="slide-title">Filters</h3>
+
+				<!-- Slide 1: Why filter at all? -->
+				<section data-background="#000">
+					<h3 class="slide-title">Why filter at all?</h3>
+					<div class="block" style="font-size:1.4em;">
+					<div class="block-title">Core motivations</div>
+					<div class="block-content" style="line-height:1.5;">
+						<ul style="margin:0;">
+						<li ><b>Pixel domain mixes scales</b> → hard to attribute physics by scale.</li>
+						<li ><b>Filtering = change of basis</b> → separates spatial frequencies; reduces mode mixing.</li>
+						<li ><b>Non-stationarity</b>: WL κ is scale-variant & non-Gaussian → need localization in space+scale.</li>
+						<li ><b>Sparsity</b>: right basis concentrates energy in few coeffs → higher SNR for HOS tails.</li>
+						</ul>
+					</div>
+					</div>
+				</section>
+				
+				<!-- Slide 2: Fourier vs Gaussian vs Starlet -->
+				<section data-background="#000">
+					<h3 class="slide-title">Fourier vs Gaussian vs Starlet</h3>
+					<div class="block" style="font-size:1.3em;">
+					<div class="block-title">Comparative view</div>
+					<div class="block-content" style="line-height:1.35;">
+						<ul style="margin:0;">
+						<li><b>Fourier</b>: perfect spectral selectivity, but <i>global</i> (no spatial localization).</li>
+						<li><b>Gaussian</b>: low-pass; simple, but mixes nearby scales and blurs features.</li>
+						<li><b>Starlet (à trous)</b>: isotropic, undecimated, shift-invariant multiscale bands.</li>
+						<li>Update rules: \( c_{j+1}=c_j * h_j \), \( w_{j+1}=c_j - c_{j+1} \); reconstruct with \( \sum_j w_j + c_J \).</li>
+						</ul>
+					</div>
+					</div>
+				</section>
+				
+				<!-- Slide 3: Does filtering bias inference? -->
+				<section data-background="#000">
+					<h3 class="slide-title">Does filtering bias inference?</h3>
+					<div class="block" style="font-size:1.3em;">
+					<div class="block-title">Inference integrity</div>
+					<div class="block-content" style="line-height:1.35;">
+						<ul style="margin:0;">
+						<li>Use <b>theory-tracked summaries</b> (e.g., wavelet \( \ell_1 \) per scale) with a modelled covariance.</li>
+						<li>Filtering is part of the <b>summary definition</b>; inference remains unbiased if the forward model matches.</li>
+						<li>Diagnostics: reconstruction error, cross-scale leakage, and null tests on Gaussian mocks.</li>
+						</ul>
+					</div>
+					</div>
+					<aside class="notes">
+					Stress that any compression is safe if the forward model & covariance reflect the same pipeline.
+					</aside>
+				</section>
+				
+				<section data-background="#000">
+					<h3 class="slide-title">Learning optimal filters vs fixed multiscale starlet</h3>
+				  
+					<div class="block" style="margin:0;">
+					  <div class="block-content" style="font-size:1.5em; line-height:1.4;">
+						<ul style="margin:0;">
+						  <li class="fragment">
+							<b>Learned filters in cosmology:</b>  
+							– D’Isanto & Polsterer (2018), “Deep learning photometric redshifts” (A&A 620 A87).  
+							– Peter & McQuinn (2016), “Deep network cosmological parameter inference from convergence maps” (MNRAS 475 894).  
+						  </li>
+						  <!-- <li class="fragment">
+							Both studies show improved constraints by learning summaries/filters from simulations rather than using traditional handcrafted ones.
+						  </li> -->
+						  <li class="fragment">
+							<b>Trade-offs of learned filters:</b>  
+							– Address one task but become ©training-dataset dependent.  
+							– Lose scale-by-scale interpretability and analytic covariance modelling.
+						  </li>
+						  <li class="fragment">
+							<b>Why we retain the starlet:</b>  
+							– Isotropic, undecimated multiresolution bands (clear physics per scale)  
+							– Fast algorithmic complexity O(N J)  
+							– Amenable to analytic summary–modelling and systematic control for pipelines like Euclid.
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </section>
+			  </section>
+
+			  <section data-background="#000">
+				<h3 class="slide-title">Why $\ell_1$ instead of $\ell_2$ on wavelet coefficients?</h3>
+			  
+				<div class="block" style="margin:0;">
+				  <div class="block-content" style="font-size:1.18em; line-height:1.42;">
+					<ul style="margin:0;">
+			  
+					  <li class="fragment">
+						<b>Robust to tails</b>: $\ell_2$ squares values → dominated by rare extremes;
+						$\ell_1$ grows linearly → preserves cosmological tail information.
+					  </li>
+			  
+					  <li class="fragment">
+						<b>Sparsity</b>: non-Gaussian structure is sparse in wavelets;
+						$\ell_1$ concentrates information, $\ell_2$ dilutes it across many small modes.
+					  </li>
+			  
+					  <li class="fragment">
+						<b>Noise behaviour</b>: shape noise is small-amplitude;
+						$\ell_2$ amplifies it quadratically, $\ell_1$ keeps it sub-dominant.
+					  </li>
+			  
+					  <li class="fragment">
+						<b>Cost vs alignment</b>: $\ell_1$ is harder to optimise (non-smooth),
+						but its geometry matches the physics of the field we measure.
+					  </li>
+			  
+					</ul>
+			  
+					<p class="fragment" style="margin-top:.8em; color:#6bdcff;">
+					  → $\ell_1$ maximizes cosmological signal-to-noise on non-Gaussian structure.
+					</p>
+				  </div>
+				</div>
+			  </section>
+			  
+
+			  <section data-background="#000">
+				<h3 class="slide-title">PDF vs wavelet $\ell_1$: differentiability matters</h3>
+			  
+				<div class="block" style="font-size:1.0em;">
+				  <div class="block-title">Key distinction</div>
+				  <div class="block-content" style="line-height:1.35;">
+					<ul>
+					  <li><b>Histogram / PDF (measured)</b> is a <b>piecewise-constant</b> functional of samples → zero/undefined gradients at bin edges.</li>
+					  <li><b>Wavelet $\ell_1 = \sum |w_i|$</b> is <b>sub-differentiable everywhere</b>.</li>
+					  <li>Thus, $\ell_1$ can flow gradients in any <b>differentiable forward / inverse pipeline</b>; PDFs cannot without reparametrization tricks.</li>
+					  <li>Interpretation: PDF is a <b>descriptive</b> statistic; $\ell_1$ is also an <b>optimizable functional</b> of the field.</li>
+					  <li>For theory-based inference, $\ell_1$ is easier to <b>model, differentiate, and propagate</b> through analytic pipelines.</li>
+					</ul>
+				  </div>
+				</div>
+			  </section>
+			  
+			  <section data-background="#000">
+				<h3 class="slide-title">What has been done for the PDF covariance — and what this implies for $\ell_{1}$</h3>
+			  
+				<div class="block" style="margin:0;">
+				  <div class="block-content" style="font-size:1.2em; line-height:1.4;">
+					<ul style="margin:0;">
+			  
+					  <li class="fragment">
+						Build a semi-analytic model for the PDF covariance (halo-model / perturbative)  
+						and calibrate it against simulations <span style="color:#888;">(Sun+2022)</span>.
+					  </li>
+			  
+					  <li class="fragment">
+						Use simulation ensembles to capture non-Gaussian off-diagonals  
+						and correct the theory in the tails where sampling noise is largest  
+						<span style="color:#888;">(D’Amico+2020)</span>.
+					  </li>
+			  
+					  <li class="fragment">
+						Combine theory+simulation in a hybrid covariance to avoid the known  
+						failure of Gaussian covariance for 1-pt summaries.
+					  </li>
+			  
+					  <li class="fragment">
+						<b>Implication for our work:</b> the same steps (theory core + simulation correction)  
+						can be applied to build a full covariance model for the <b>wavelet $\ell_{1}$-norm</b>.
+					  </li>
+			  
+					</ul>
+				  </div>
+				</div>
+			  </section>
+
+			  <section data-background="#000">
+				<h3 class="slide-title">Cosmologies where theory is not working</h3>
+			  
+				<div style="display:grid; grid-template-columns:46% 54%; gap:18px; align-items:start;">
+			  
+				  <!-- LEFT BLOCK: table -->
+				  <div class="block" style="margin:0;">
+					<div class="block-title">HALOFIT validity ranges (from Mead+2020)</div>
+					<div class="block-content" style="font-size:1.05em; line-height:1.42;">
+			  
+					  <table style="font-size:0.95em; border-collapse:collapse;">
+						<tr><td><b>$\Omega_m$</b></td><td>0.21 - 0.40</td></tr>
+						<tr><td><b>$\omega_b$</b></td><td>0.02 - 0.024</td></tr>
+						<tr><td><b>$\omega_c$</b></td><td>0.10 - 0.13</td></tr>
+						<tr><td><b>$A_s/10^{-9}$</b></td><td>1.72 - 2.58</td></tr>
+						<tr><td><b>$n_s$</b></td><td>0.85 - 1.05</td></tr>
+						<tr><td><b>$h$</b></td><td>-</td></tr>
+						<tr><td><b>$w_0$</b></td><td>-1.05 - -0.95</td></tr>
+					  </table>
+			  
+					</div>
+				  </div>
+			  
+				  <!-- RIGHT: scatter figure -->
+				  <figure style="margin:0; text-align:center;">
+					<img src="assets/invalidcosmos.png"
+						 class="plain"
+						 style="width:100%; max-height:60vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.35);" />
+					<figcaption style="font-size:0.95em; color:#aaa; margin-top:4px;">
+					  Points where theory fails
+					</figcaption>
+				  </figure>
+			  
+				</div>
+			  </section>
+			  
+			  
+			  
+			  
+			  
+
+			  
+
+
+<!-- ######################################################################################################################################################################### -->
+
+			</div>
+		</div>
+
+	<script src="reveal.js/dist/reveal.js"></script>
+	<script src="reveal.js/plugin/notes/notes.js"></script>
+	<script src="reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="reveal.js/plugin/highlight/highlight.js"></script>
+	<script src="reveal.js/plugin/math/math.js"></script>
+
+	
+	<script>
+		Reveal.initialize({
+			controls: true,
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: 'c/t', // Current / Total
+			hash: true,			
+			transition: 'fade', // Use 'fade', 'slide', or 'none'
+			width: 1280,
+			height: 720,
+			margin: 0.09,
+			minScale: 0.2,
+			maxScale: 1.5,
+			autoPlayMedia: true,
+			hashOneBasedIndex: true,
+			plugins: [
+				RevealMarkdown,
+				RevealHighlight,
+				RevealNotes,
+				RevealMath
+			],
+			
+			dependencies: [{
+				src: 'reveal.js/plugin/markdown/marked.js'
+			},
+			{
+				src: 'reveal.js/plugin/markdown/markdown.js'
+			},
+			{
+				src: 'reveal.js/plugin/notes/notes.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/math/math.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-d3/reveald3.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/Chart.min.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/csv2chart.js'
+			},
+			{
+				src: 'reveal.js/plugin/highlight/highlight.js',
+				async: true
+			},
+			]
+		});
+	</script>
+
+  
+  <script type="text/javascript" id="MathJax-script" async
+	src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  
+  <script>
+    (function(){
+      function placeNodes(){
+        const slide = document.getElementById('lcdm-slide');
+        if (!slide || !slide.classList.contains('present')) return;
+        const svg = slide.querySelector('svg');
+        const path = svg.querySelector('#lcdm-arc');
+        const L = path.getTotalLength();
+        svg.querySelectorAll('g.node').forEach(g => {
+          const t = Math.min(1, Math.max(0, parseFloat(g.dataset.t || 0.5)));
+          const p = path.getPointAtLength(L * t);
+          g.setAttribute('transform', `translate(${p.x},${p.y})`);
+        });
+      }
+      // On load, resize, and when entering the slide
+      if (window.Reveal) {
+        Reveal.on('ready', placeNodes);
+        Reveal.on('slidechanged', placeNodes);
+      }
+      window.addEventListener('resize', placeNodes);
+      // small delay to ensure layout settled
+      setTimeout(placeNodes, 0);
+    })();
+  </script>
+  
+  
+  <style>
+	/* Styles from the first block */
+	.reveal .slides {
+		/* border: 5px solid red;
+		min-height: 100%;
+		width: 128mm;
+		height: 96mm; */
+	}
+	.reveal .slide-title {
+		border-left: 5px solid white;
+		text-align: left;
+		margin-left: 20px;
+		padding-left: 20px;
+		font-size: 2.0em;
+	}
+
+	.reveal .alert {
+		color: #FFAA7F;
+		font-weight: bold;
+	}
+
+	.reveal .new-container {
+		/* Your CSS properties for the container go here */
+		border: 1px solid #000; /* Example border for visualization */
+		padding: 10px; /* Example padding */
+		background-color: #191919; /* Example background color */
+	}
+
+	.reveal .circle-container {
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+	}
+
+	.reveal .another-container {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #000;
+		background-color: #191919;
+		padding: 10px;
+		margin-left: 100px;
+		width: 1050px;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	.reveal .circle {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		background-color: #1b1a1a;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		border: 2px solid transparent;
+		transition: border 0.3s;
+	}
+
+
+	.reveal .text-on-right {
+		/* Your styles for the text on the right go here */
+		float: right;
+		margin-right: 20px;
+	}
+
+	.reveal .flow-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.reveal .square {
+		width: 200px;
+		height: 200px;
+		background-color: #0693f1;
+		border: 2px solid #2980b9;
+		text-align: center;
+		align-items: center;
+		line-height: 100px;
+		color: #fff;
+		justify-content: center;
+		border-radius: 20px;
+		margin: 0 20px
+	}
+
+	/* .reveal .arrow - The definition in the third style block seems different (for a general layout, not flow chart)
+	   The one below is for a flowchart arrow. Kept this one for the specific structure, but noted the conflict. */
+	.reveal .arrow {
+		width: 100px; /* Adjust the length of the arrow as needed */
+		height: 2px;
+		background-color: #2980b9;
+		position: relative;
+	}
+
+	.reveal .arrow::before {
+		content: "";
+		position: absolute;
+		top: -5px; /* Adjust the position of the arrowhead */
+		right: -15px; /* Adjust the position of the arrowhead */
+		border-width: 5px;
+		border-style: solid;
+		border-color: transparent transparent transparent #2980b9;
+	}
+
+	.reveal .watermark {
+		position: fixed;
+		bottom: 45px;
+		right: 90px;
+		opacity: 0.8;
+		z-index: 99;
+		color: rgb(234, 230, 230);
+	}
+
+	/* Bigger, crisper slide numbers */
+	.reveal .slide-number {
+		/* your existing positioning kept */
+		font-size: 0.7em !important;   /* bump this to taste: 1.6–2.2em */
+		font-weight: 700;
+		line-height: 1.0;
+		letter-spacing: .02em;
+	
+		padding: 10px 14px;            /* give it some breathing room */
+		border-radius: 12px;
+	
+		color: #eaf2ff;
+		background: rgba(0,0,0,.45);
+		border: 1px solid rgba(255,255,255,.18);
+		box-shadow: 0 6px 18px rgba(0,0,0,.35);
+	}
+  
+
+	/* Styles from the second block (Title Slide) */
+	.title-slide {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100vh;
+	}
+
+	.logo-header {
+		position: absolute;
+		top: 20px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 0 40px;
+		box-sizing: border-box;
+	}
+
+	/* === Unified footer: fixed at bottom, centered logos, clean text === */
+	.logo-footer {
+		position: fixed;
+		bottom: -15em;
+		left: 0;
+		width: 90%;
+		z-index: 1000;
+	
+		display: flex;
+		flex-direction: column;   /* text above logos */
+		align-items: center;
+		justify-content: center;
+		gap: 6px;                 /* space between text and logos */
+		padding-bottom: 8px;
+		background: transparent;  /* transparent so it blends with any slide */
+		pointer-events: none;     /* doesn’t block clicks on slides */
+	}
+	
+	.logo-footer .footer-text {
+		font-size: 0.95rem;
+		color: #a8b2c7;
+		font-weight: 500;
+		opacity: 0.9;
+		pointer-events: none;
+	}
+	
+	.logo-footer .footer-logos {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 22px;
+		pointer-events: none;
+	}
+	
+	.logo-footer .footer-logos img {
+		height: 35px;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		background: none !important;
+		filter: none !important;
+		object-fit: contain;
+		pointer-events: auto; /* allow right-click/save on logos */
+	}
+  
+  
+	/* keep logos original (no rounding/shadow/border) */
+	img.plain{
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		border: none !important;
+		background: transparent !important;
+		filter: none !important;
+		object-fit: contain;
+		pointer-events: auto; /* allow right-click/save on logos if needed */
+	}
+	
+	/* If Reveal/theme adds rounding to all images, nuke it here too */
+	.reveal img{
+		border-radius: 0; box-shadow: none; border: none;
+	}
+
+	.affiliation {
+		margin-top: 2em;
+		font-size: 0.8em;
+	}
+
+	.logos img {
+		max-height: 60px;
+		margin: 0 15px;
+	}
+
+	/* Styles from the third block (General Layout/Boxes) */
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: #111;
+		color: white;
+		font-family: Arial, sans-serif;
+		text-align: center;
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.title {
+		font-size: 1.5em;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	.container {
+		display: flex;
+		align-items: center;
+		gap: 40px;
+	}
+
+	.box {
+		background: linear-gradient(to bottom, #f8f8f8, #ddd);
+		color: black;
+		padding: 20px 40px;
+		border-radius: 12px;
+		font-size: 1.5em;
+		font-weight: bold;
+		box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.2);
+	}
+
+	.arrow {
+		font-size: 2em;
+	}
+
+	.subtext {
+		font-size: 0.9em;
+		color: #3faf61;
+		margin-top: 5px;
+	}
+
+	.highlight_box {
+		background: linear-gradient(to bottom, #9784e3, #d5bef7); /* Warm highlight */
+		box-shadow: 0px 0px 15px rgba(167, 158, 175, 0.8); /* Glow effect */
+		color: black;
+		font-weight: bold;
+	}
+
+	.iteration {
+		margin-top: 20px;
+		font-size: 1.2em;
+		font-style: italic;
+		border-top: 2px solid white;
+		padding-top: 10px;
+		width: 80%;
+	}
+
+	.container_ {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.row_ {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.square_big {
+		background: linear-gradient(to bottom, #f8f8f8, #ddd);
+		color: black;
+		padding: 20px; /* Reduce padding to avoid affecting square shape */
+		border-radius: 10px;
+		font-weight: bold;
+		width: 200px; /* Set fixed width */
+		height: 200px; /* Set fixed height */
+		text-align: center;
+		display: flex; /* Use flexbox to center text */
+		justify-content: center;
+		align-items: center;
+		box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.2);
+	}
+
+	.square_small {
+		background: linear-gradient(to bottom, #f8f8f8, #ddd);
+		color: black;
+		padding: 20px; /* Reduce padding to avoid affecting square shape */
+		border-radius: 10px;
+		font-weight: bold;
+		width: 120px; /* Set fixed width */
+		height: 120px; /* Set fixed height */
+		text-align: center;
+		display: flex; /* Use flexbox to center text */
+		justify-content: center;
+		align-items: center;
+		box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.2);
+	}
+
+	.underline-text {
+		margin-top: 20px;
+		font-style: italic;
+		font-size: 18px;
+		border-top: 1px solid white;
+		padding-top: 10px;
+		width: 60%;
+		text-align: center;
+	}
+
+	.word-cloud {
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 20px;
+		text-align: center;
+	}
+
+	.word {
+		font-weight: bold;
+		line-height: 1.2;
+	}
+
+	.small {
+		font-size: 1.5rem;
+	}
+
+	.medium {
+		font-size: 2.2rem;
+	}
+
+	.large {
+		font-size: 3rem;
+	}
+
+	.qr {
+		margin-left: auto; /* pushes QR image to the far right in the stack */
+	}
+
+	/* Styles from the fourth block (Overlay Card) */
+	.overlay-card {
+		background: rgba(0,0,0,.55);
+		border: 1px solid rgba(255,255,255,.12);
+		border-radius: 14px;
+		padding: 18px 22px;
+		box-shadow: 0 10px 30px rgba(0,0,0,.35);
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	/* Styles from the fifth block (Fig Fit) */
+	.fig-fit {
+		height: 20vh; /* tune: 55–65vh */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		border-radius: 12px;
+		background: rgba(255,255,255,.03);
+		border: 1px solid rgba(255,255,255,.12);
+		box-shadow: 0 10px 28px rgba(0,0,0,.35);
+		padding: 10px;
+	}
+
+	.fig-fit img {
+		max-width: 100%;
+		max-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: contain; /* prevents seepage */
+		border-radius: 8px;
+	}
+
+	/* Styles from the sixth block (Slimmer/Fig Narrow) */
+	/* turn off chrome just for slides that opt-in */
+	.reveal.state-plain .slides section.present .card,
+	.reveal.state-plain .slides section.present .block,
+	.reveal.state-plain .slides section.present .title-band {
+		background: none !important;
+		border: none !important;
+		box-shadow: none !important;
+		backdrop-filter: none !important;
+	}
+
+	/* slimmer equation + bullets */
+	.eq-small {
+		font-size: 0.95em;
+	}
+
+	.bullets-tight {
+		font-size: 0.98rem;
+		line-height: 1.25;
+	}
+
+	/* figure constrained, centered, never overflows */
+	.fig-narrow {
+		width: 78%; /* reduce overall footprint */
+		max-height: 52vh; /* tune 48–58vh to taste */
+		margin: 10px auto 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		border-radius: 12px;
+	}
+
+	.fig-narrow img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		display: block;
+	}
+
+	.fig-caption {
+		position: absolute;
+		right: 18px;
+		bottom: 8px;
+		font-size: .95rem;
+		color: #72b5ec;
+	}
+
+	/* Styles from the seventh block (Theme Tokens & Base) */
+	/* ---- Theme tokens ---- */
+	:root {
+		--bg: #0b1020; /* canvas */
+		--surface: #11182b; /* cards */
+		--surface-2: #0f1628; /* darker cards */
+		--ink: #eaf2ff; /* main text */
+		--muted: #a8b2c7; /* secondary text */
+		--accent: #6bdcff; /* primary accent */
+		--accent-2: #a78bfa; /* secondary accent */
+		--ok: #3dd68c; /* good */
+		--warn: #ffd166; /* warm */
+		--danger: #ff6b6b; /* danger */
+		--ring: rgba(107, 220, 255, .25);
+		--radius: 18px;
+		--shadow: 0 10px 30px rgba(0,0,0,.35);
+		--mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		--sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+	}
+
+	/* ---- Base canvas ---- */
+	body {
+		background: radial-gradient(1200px 800px at 60% -10%, #101937 0%, var(--bg) 55%) no-repeat fixed;
+	}
+
+	.reveal {
+		color: var(--ink);
+		font-family: var(--sans);
+	}
+
+	.reveal a {
+		color: var(--accent);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(107,220,255,.35);
+	}
+
+	.reveal a:hover {
+		filter: brightness(1.1);
+		border-bottom-color: var(--accent);
+	}
+
+	/* ---- Slide chrome ---- */
+	.reveal .slides {
+		text-align: left;
+	}
+
+	.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+		line-height: 1.15;
+		letter-spacing: .2px;
+	}
+
+	.reveal h1 {
+		font-weight: 800;
+	}
+
+	.reveal h2, .reveal h3 {
+		font-weight: 700;
+	}
+
+	.reveal p, .reveal li {
+		color: var(--ink);
+		font-size: 1.0em;
+	}
+
+	.reveal small, .reveal .small {
+		color: var(--muted);
+	}
+
+	/* Nicer bullets */
+	.reveal ul {
+		padding-left: 1.2em;
+		font-size: 1.0em;
+	}
+
+	.reveal ul > li {
+		margin: .35em 0;
+		position: relative;
+		list-style: none;
+	}
+
+	.reveal ul > li::before {
+		content: "";
+		width: .55em;
+		height: .55em;
+		border-radius: 6px;
+		background: linear-gradient(135deg, var(--accent), var(--accent-2));
+		box-shadow: 0 0 0 4px rgba(107,220,255,.08);
+		display: inline-block;
+		margin-right: .55em;
+		transform: translateY(2px);
+	}
+
+	/* ---- Card / block (Kept theme definitions) ---- */
+	.card, .reveal .block {
+		background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+		border: 1px solid rgba(255,255,255,.08);
+		backdrop-filter: blur(6px);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow);
+		padding: 18px 22px;
+	}
+
+	.reveal .block-title {
+		background-color: #333333;
+		padding: 8px 35px 8px 14px;
+		color: #FFAA7F;
+		font-weight: bold;
+		font-size: 1.4em;
+	}
+
+	.reveal .block-content {
+		color: var(--ink);
+	}
+
+	/* ---- Slide section headers ---- */
+	.section-title {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		margin: 0 0 18px 0;
+	}
+
+	.section-title .bar {
+		width: 8px;
+		height: 28px;
+		border-radius: 10px;
+		background: linear-gradient(180deg, var(--accent), var(--accent-2));
+		box-shadow: 0 0 0 6px rgba(107,220,255,.08);
+	}
+
+	.section-title h3 {
+		margin: 0;
+	}
+
+	/* ---- Pills / chips ---- */
+	.pill {
+		display: inline-flex;
+		align-items: center;
+		gap: .5ch;
+		padding: 6px 10px;
+		border-radius: 999px;
+		background: rgba(107,220,255,.12);
+		color: var(--ink);
+		border: 1px solid rgba(107,220,255,.25);
+		font-weight: 600;
+		letter-spacing: .2px;
+	}
+
+	/* ---- Grids ---- */
+	.grid {
+		display: grid;
+		gap: 18px;
+	}
+
+	.grid.cols-2 {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.grid.cols-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.v-center {
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	.center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* ---- Image polish ---- */
+	.img, .reveal img, .reveal video {
+		border-radius: 14px;
+		box-shadow: var(--shadow);
+		border: 1px solid rgba(255,255,255,.08);
+	}
+
+	/* ---- Title / footer bands ---- */
+	.title-band {
+		background: linear-gradient(135deg, rgba(107,220,255,.12), rgba(167,139,250,.12));
+		border: 1px solid rgba(255,255,255,.12);
+		border-radius: 22px;
+		padding: 24px 28px;
+		box-shadow: var(--shadow);
+	}
+
+	.logo-row {
+		display: flex;
+		gap: 26px;
+		align-items: center;
+		flex-wrap: wrap;
+		opacity: .95;
+	}
+
+	/* ---- Progress & slide numbers ---- */
+	.reveal .progress {
+		height: 6px;
+		background: rgba(255,255,255,.07);
+	}
+
+	.reveal .progress span {
+		background: linear-gradient(90deg, var(--accent), var(--accent-2));
+		box-shadow: 0 0 12px rgba(107,220,255,.35);
+	}
+
+	/* Ensure the container is on top and has no transition */
+	/* ---- Progress & slide numbers ---- */
+	.reveal .slide-number {
+		background: rgba(0,0,0,.4);
+		border: 1px solid rgba(255,255,255,.15);
+		padding: 6px 10px;
+		border-radius: 10px;
+		color: var(--muted);
+		
+		/* MOVED TO LEFT */
+		position: fixed;
+		right: auto;
+		left: 40px;
+		bottom: 40px;
+		
+		/* AGGRESSIVE FIX */
+		transition: none !important;
+		z-index: 100 !important;
+	}
+
+	/* Additional aggressive fix for overlapping text inside the number box */
+	.reveal .slide-number *,
+	.reveal .slide-number:before,
+	.reveal .slide-number:after {
+		transition: none !important;
+		animation: none !important;
+		opacity: 1 !important;
+	}
+
+	/* ---- Inverted slides (Kept theme definition) ---- */
+	.inverted, .reveal .inverted {
+		filter: none;
+		background: radial-gradient(900px 500px at 50% -10%, #0a0f1d 0%, #04070f 60%);
+	}
+
+	.inverted h2, .inverted p, .inverted li {
+		color: #f5f7ff;
+	}
+
+	/* ---- Math/code accents ---- */
+	.reveal code, .code {
+		font-family: var(--mono);
+		color: #dfe8ff;
+	}
+
+	.math-accent {
+		color: var(--accent-2);
+		font-weight: 700;
+	}
+
+	/* ---- Utilities ---- */
+	.muted {
+		color: var(--muted);
+	}
+
+	.callout-ok {
+		border-left: 6px solid var(--ok);
+		padding-left: 14px;
+	}
+
+	.callout-warn {
+		border-left: 6px solid var(--warn);
+		padding-left: 14px;
+	}
+
+	.callout-danger {
+		border-left: 6px solid var(--danger);
+		padding-left: 14px;
+	}
+
+	/* Make big hero backgrounds read better */
+	[data-background-image] .title-band {
+		background: rgba(10,16,32,.55);
+		border-color: rgba(255,255,255,.15);
+	}
+
+	/* Tighter space on widescreens */
+	.reveal .slides section {
+		padding-right: 10px;
+	}
+
+	.white-center {
+		position: relative;
+	}
+
+	.white-center .centerbox {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.white-center .centerbox>* {
+		color: #000;
+		margin: 0;
+	}
+
+	/* compact lists */
+	.tight>li {
+		margin: .32em 0;
+	}
+
+	/* blue highlight (uses your accent if defined) */
+	.hl-blue {
+		color: var(--accent, #4db8ff);
+	}
+
+	/* optional: card look if you don't already have it (same as card, so removed extra definition) */
+	.card {
+		background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+		border: 1px solid rgba(255,255,255,.08);
+		border-radius: 18px;
+		backdrop-filter: blur(6px);
+		box-shadow: 0 10px 30px rgba(0,0,0,.35);
+		padding: 15px 15px;
+	} 
+</style>
+
+<style>
+	.watermark-small{
+	  position:absolute;
+	  right:18px;
+	  bottom:14px;
+	  pointer-events:none;
+	  z-index:2;
+	  font-size:2.4rem;     /* smaller */
+	  font-weight:700;
+	  letter-spacing:.12em;
+	  color:#fff;
+	  opacity:0.06;         /* more faded */
+	  text-shadow:0 0 4px rgba(0,0,0,.25);
+	}
+
+	/* same bottom as your slide number (you set 40px earlier) */
+	.global-footer-text{
+		position: fixed;
+		bottom: 40px;         /* match .reveal .slide-number bottom */
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 0.95rem;
+		color: #a8b2c7;
+		opacity: .9;
+		z-index: 1000;
+		pointer-events: none;
+		display: none;        /* hidden on title slide via JS below */
+	}
+  
+	  
+  </style>
+
+  <script>
+	(function(){
+	  function toggleVF(){
+		const el = document.getElementById('vf');
+		const i = Reveal.getIndices().h || 0;   // current horizontal slide index
+		el.style.display = (i > 0) ? 'block' : 'none'; // show from 2nd slide onward
+	  }
+	  Reveal.on('ready', toggleVF);
+	  Reveal.on('slidechanged', toggleVF);
+	})();
+	</script>
+	
+  
+  
+
+</body>
+</html>

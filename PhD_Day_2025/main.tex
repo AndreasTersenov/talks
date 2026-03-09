@@ -1,0 +1,962 @@
+%                                                                 aa.dem
+% AA vers. 9.1, LaTeX class for Astronomy & Astrophysics
+%                                                       (c) EDP Sciences
+%-----------------------------------------------------------------------
+%
+%\documentclass[referee]{aa} % for a referee version
+%\documentclass[onecolumn]{aa} % for a paper on 1 column  
+%\documentclass[longauth]{aa} % for the long lists of affiliations
+%\documentclass[letter]{aa} % for the letters
+%\documentclass[bibyear]{aa} % if the references are not structured
+%                              according to the author-year natbib style
+
+%
+\documentclass{aa}  
+
+%
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{txfonts}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[options]{hyperref}
+% To add links in your PDF file, use the package "hyperref"
+% with options according to your LaTeX or PDFLaTeX drivers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Custom imports
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{arydshln}
+\usepackage{tikz}
+\usepackage{pifont}
+
+\usetikzlibrary{positioning}
+
+% Custom commands
+\input{inputs/mycommands.tex}
+\input{inputs/mycommands_specific.tex}
+
+\newtheorem{hypothesis}{Hypothesis}{\bfseries}{\itshape}
+
+%
+\begin{document}
+
+\title{A plug-and-play approach with fast uncertainty quantification for weak lensing mass mapping}
+
+    \author{
+            H. Leterme\inst{1,2, \thanks{\texttt{hubert.leterme@ensicaen.fr}}}
+        \and
+            A. Tersenov\inst{2,3,\thanks{\texttt{atersenov@physics.uoc.gr}}}
+        \and
+            J. Fadili\inst{1}
+        \and
+            J.-L. Starck\inst{2,3}
+    }
+
+   \institute{Université Caen Normandie, ENSICAEN, CNRS, Normandie Univ, GREYC UMR 6072, F-14000 Caen, France
+        \and
+          Universit\'e Paris-Saclay, Universit\'e Paris Cit\'e, CEA, CNRS, AIM, 91191, Gif-sur-Yvette, France
+         \and
+             Institutes of Computer Science and Astrophysics, Foundation for Research and Technology Hellas (FORTH), Heraklion, Greece       
+             }
+             
+   %\date{Received September 15, 1996; accepted March 16, 1997}
+
+% \abstract{}{}{}{}{}
+% 5 {} token are mandatory
+ 
+\abstract
+% context heading (optional)
+% {} leave it empty if necessary  
+{}
+% aims heading (mandatory)
+{}
+% methods heading (mandatory)
+{}
+% results heading (mandatory)
+{}
+% conclusions heading (optional), leave it empty if necessary
+{}
+
+\keywords{cosmology: observations -- methods: statistical -- gravitational lensing: weak}
+
+%\titlerunning{A plug-and-play approach with conformal predictions for weak lensing mass mapping}
+%\titlerunning{Leterme et al}
+
+\maketitle
+
+%
+%________________________________________________________________
+
+
+%\tableofcontents
+
+
+\section{Introduction}
+\label{sec:intro}
+
+In the coming years, new observational instruments, such as the Euclid space telescope and the Vera C.\@ Rubin Observatory, will produce galaxy catalogs of unprecedented precision and extensive sky coverage. These surveys are expected to enhance our understanding of large-scale structures in the Universe and to refine existing models of its formation.
+
+One key application is to map the distribution of dark matter using weak gravitational lensing, by exploiting the distortion of galaxy images in presence of inhomonegeous mass distribution between the galaxy and the observer \citep{Kaiser1993}.
+The reconstructed mass maps are then used to constrain the plausible ranges of cosmological parameters for the $\Lambda$CDM model using simulation-based inference \tocheck\addref \todo[\bf JLS: no, SBI is not yet very used, not necessary to mention SBI].   This task is particularly relevant in light of recent cosmological tensions, arising from significant discrepancies between different methods used to estimate key cosmological parameters such as $H_0$ \citep{Valentino2021} or $\sigma_8$ \citep{Asgari2021, Heymans2021}. \todo[\bf JLS: I don't think we should mention tension, as we don't address them in the following. Rather mention that Andreas paper shows a significant impact of mass mapping (150 percent improvement in the FOM) when doing inference from a HOS such as the l1-norm, and that mass mapping is therefore important. Then introduce that DeepLearning has been recently proposed, DeepMass and DeepPosterior, then explain that DeepMass is fast but need retraining and DeepPosterior doesn't it retraining but is slow. Then describe what you do in this paper. In fact 2.3 is your introduction ! iit should be moved here.]
+A precise and reliable estimation of these parameters could either help resolve these tensions or, conversely, confirm them, potentially revealing fundamental limitations of the $\Lambda$CDM model itself.
+
+Since astronomical observations are inherently noisy due to the (unknown) intrinsic galaxy ellipticities, the problem of mass mapping is an ill-posed inverse problem, which requires incorporating prior knowledge of the underlying physics \citep{Lanusse2016,Starck2021}, or using deep learning models trained on simulated datasets \citep{Jeffrey2020,Remy2023,Whitney2024}. To effectively contribute to resolving cosmological tensions, it is essential to leverage state-of-the-art statistical methodologies and to rigorously quantify uncertainty. Indeed, errors introduced at this stage can propagate into the estimation of cosmological parameters, potentially amplifying discrepancies \citep{Tersenov2025}. \todo[check with Andreas: this paper shows that the choice of mass mapping method has an influence on the plausible areas of cosmological parameters, but does it say something about the impact of errors?]
+
+In this paper, we introduce a novel iterative deep learning-based method for weak lensing mass mapping that is fast at inference and does not require retraining for each new galaxy survey. Our approach builds on the plug-and-play (PnP) framework \citep{Venkatakrishnan2013}, enabling efficient reconstruction while integrating knowledge of the underlying physics. While PnP methods have been widely used in computational imaging and physical modeling \citep{Kamilov2023}, their theoretical foundations have been---to some extent---established in recent years \citep{Ryu2019,Terris2020,Hurault2022,Ebner2024}. In particular, convergence to a fixed point has been proven under additional assumptions involving the non-expansiveness of the denoiser \tocheck. Beyond applying this approach specifically to the mass mapping problem, our key contribution is to show that a carefully chosen algorithm design---including the data-fidelity term---allows training a deep denoiser on white Gaussian noise with a standard deviation independent of the observation. This enables a high degree of flexibility across surveys while achieving accurate reconstructions in just a few iterations. Additionally, we introduce a fast uncertainty quantification (UQ) approach to the PnP framework, which takes advantage of moment networks \citep{Jeffrey2020a}. We demonstrate the effectiveness of this method through experiments on the $\kappa$TNG \citep{Osato2021} and CosmoSLICS \citep{Harnois-Deraps2019} simulated datasets, and compare them to the state of the art. Finally, we calibrate the per-pixel uncertainty bounds via Conformalized Quantile Regression (CQR) \citep{Romano2019}, in order to get coverage guarantees on the reconstructed mass maps.
+
+This paper is organized as follows. In Sect.~\ref{sec:background}, we provide background information on the mass mapping problem and the existing data-driven reconstruction methods. In Sect.~\ref{sec:pnp}, we introduce our proposed PnP approach. In Sect.~\ref{sec:uq}, we present our UQ methodology. Specifically, we introduce our proposed error bar estimation method based on moment networks in Sect.~\ref{subsec:uq_mn}, whereas we present the calibration method based on CQR in Sect.~\ref{subsec:uq_cqr}. In Section~\ref{sec:experiments}, we present the results of our experiments. Finally, in Section~\ref{sec:concl}, we conclude and discuss future work.
+
+\section{Background on weak lensing mass mapping}
+\label{sec:background}
+
+In this paper, deterministic vectors are denoted with bold lower-case Greek or Latin letters ($\convmap$), while random vectors are represented with bold sans-serif capital letters ($\convmapRand$). Deterministic matrices are indicated by standard bold capital letters ($\convToShear$). Furthermore, indexing is done using brackets ($\convmap[k]$,  $\convmapRand[k]$, or $\convToShear[k,\, l]$).
+
+\subsection{The mass mapping problem}
+\label{subsec:background_mm}
+
+This section provides a brief overview of the weak lensing mass mapping problem, for which a comprehensive review has been proposed by \citet{Kilbinger2015}. The objective is to recover a convergence map $\convmap \in \mathR^{\imgsize^2}$, which causes isotropic dilations of background galaxies, from a shear map $\shearmap \in \mathC^{\imgsize^2}$, which induces anisotropic stretching. Both fields are discretized over a square grid of size $\imgsize \times \imgsize$, with $\imgsize \in \mathN$, and represented as flattened one-dimensional vectors. In the weak lensing regime, the convergence is proportional to the projected mass along the line of sight between the background galaxies and the observer \citep{Kaiser1993}. Reconstructing the convergence field is thus equivalent to estimating the projected mass distribution.
+
+In practice, only variations in $\convmap$ around its mean value can be recovered, due to mass-sheet degeneracy. Similarly, only the variations in $\shearmap$ around its mean value contribute to the reconstruction. We therefore assume, without loss of generality, that both $\convmap$ and $\shearmap$ are zero-centered. Under this assumption, a first-order relationship between shear and convergence can be expressed as:
+\begin{equation}
+    \shearmap = \convToShear \convmap,
+\label{eq:invprob0}
+\end{equation}
+where $\convToShear \in \mathC^{\imgsize^2 \times \imgsize^2}$ is a linear operator known as the inverse Kaiser-Squires (KS) filter. It is defined as:
+\begin{equation}
+    \convToShear := \fouriermatrHerm\fourierConvToShear\fouriermatr,
+\end{equation}
+where $\fouriermatr$ and its Hermitian transpose $\fouriermatrHerm \in \mathC^{\imgsize^2 \times \imgsize^2}$ represent the two-dimensional discrete Fourier and inverse Fourier transforms, respectively. Moreover, $\fourierConvToShear \in \mathC^{\imgsize^2 \times \imgsize^2}$ is a diagonal matrix satisfying $\fourierConvToShear[0,\, 0] = 0$, and for all $(k_1,\, k_2) \in \oneto{\imgsize}^2 \setminus \{(0,\, 0)\}$,%
+\begin{equation}
+    \fourierConvToShear\left[
+        \imgsize k_1 + k_2,\, \imgsize k_1 + k_2
+    \right] := \frac{(k_1 + i k_2)^2}{k_1^2 + k_2^2}.
+\end{equation}
+Due to $\fourierConvToShear$ being zero at the zero frequency, the operator $\convToShear$ is not invertible. Its kernel is the subspace of constant vectors, whereas its image is the subspace of zero-mean vectors. The pseudo-inverse of $\convToShear$ is its conjugate transpose $\convToShearHerm$, which shares the same kernel and image. Therefore, the convergence map can be recovered via:
+\begin{equation}
+    \convmap = \convToShearHerm \shearmap,
+\end{equation}
+yielding an exact reconstruction within the above restriction.
+
+A direct observation of the shear, however, is infeasible in practice. Instead, a noisy estimator is derived by averaging galaxy ellipticities within each pixel. Then, Eq.~\eqref{eq:invprob0} becomes:
+\begin{equation}
+    \shearmap = \mask\convToShear \convmap + \noise,
+\label{eq:invprob_masked}
+\end{equation}
+where $\mask \in \tuple{0}{1}^{\imgsize^2 \times \imgsize^2}$ is a diagonal matrix encoding the observational mask (\eg, survey boundaries or contamination from bright stars in the foreground), and $\noise \in \mathC^{\imgsize^2}$ is a realization of proper complex Gaussian noise $\noiseRand$ with zero mean and diagonal covariance matrix $\covmatrNoise \in \mathR^{\imgsize^2 \times \imgsize^2}$. For any pixel $k \in \smalloneto{\imgsize^2}$ where $\mask[k,\, k] = 1$, the variance is given by:
+\begin{equation}
+    \covmatrNoise[k,\, k] = \stdval_{\ellip}^2 / \ngalperpix{k},
+\label{eq:covmatrnoise}
+\end{equation}
+where $\stdval_{\ellip}^2 \in \mathR_+$ is the variance of intrinsic ellipticities, and $\ngalperpix{k}$ is the number of galaxies observed in pixel $k$.
+
+For pixels $k \in \smalloneto{\imgsize^2}$ such that $\mask[k,\, k] = 0$ (\ie, within masked regions), we adopt a strategy similar to that proposed by \citet{Starck2021,Remy2023} \tocheck: the noise variance $\covmatrNoise[k,\, k]$ is artificially set to a very high value in order to reduce the signal-to-noise ratio (S/N) to near zero.
+Then, Eq.~\eqref{eq:invprob_masked} can be approximated by:
+\begin{equation}
+    \shearmap = \convToShear \convmap + \noise.
+\label{eq:invprob}
+\end{equation}
+In the remaining of the paper, pixels outside and within the mask are referred to as active pixels and masked pixels, respectively.
+
+\subsection{Related work}
+\label{subsec:background_relatedwork}
+
+\subsubsection{Classical approaches}
+\label{subsubsec:background_relatedwork_classical}
+
+The most simple solution to the mass mapping problem has been proposed by \citet{Kaiser1993}. It consists of a simple pseudo-inversion of the linear operator $\convToShear$, followed by Gaussian smoothing to reduce the noise.
+More recent approaches have proposed solving minimization problems of the form
+\begin{equation}
+    \convmapEstimate \in \argmin_{\convmap'} \datafidelity_{\shearmap}(\convmap') + \regfun(\convmap'),
+\label{eq:minprob}
+\end{equation}
+where $\datafidelity_{\shearmap}(\convmap')$ represents a data fidelity term measuring the resemblance between $\shearmap$ and $\convToShear\convmap'$, while $\regfun(\convmap')$ denotes a handcrafted regularization term penalizing unexpected solutions. Notable examples include iterative Wiener filtering, a forward-backward splitting (FBS) algorithm with $\ell^2$ regularization corresponding to a Gaussian prior \citep{Bobin2012}; the GLIMPSE2D algorithm, which enforces sparsity in a wavelet dictionary \citep{Lanusse2016}; and the MCALens algorithm \citep{Starck2021}, which models the solution as a combination of a Gaussian and a sparse component.
+
+\subsubsection{Data-driven approaches}
+\label{subsubsec:background_relatedwork_dl}
+
+Deep learning models have been trained to implicitly estimate the data distribution from large datasets of simulated convergence maps. Considering a Bayesian point of view, where $\convmap$ is the outcome of a random vector $\convmapRand$ with unknown distribution, the inverse problem \eqref{eq:invprob_masked} becomes:
+\begin{equation}
+    \shearmapRand = \convToShear \convmapRand + \noiseRand,
+\label{eq:invprob_randbayes}
+\end{equation}
+where $\shearmapRand$ denotes the random vector from which $\shearmap$ is drawn.
+
+Among the deep-learning-based approaches, DeepMass \citep{Jeffrey2020} implements a U-Net architecture that takes as input a naive estimate of $\convmap$ such as the KS or Wiener solution, and outputs an enhanced estimate $\convmapEstimate_{\deepmass}$. The network is trained on a dataset $\trainingsetMM$, where $\convmap_i$ represent mock convergence maps generated through simulations, and $\shearmap_i$ are the corresponding noisy shear maps satisfying Eq.~\eqref{eq:invprob_masked}. The output of the network can then be interpreted as an approximation of the posterior mean, or minimum mean square error (MMSE) estimate:
+\begin{equation}
+    \condexpval{\convmapRand}{\shearmapRand=\shearmap} := \int \convmap' \, \condpriorpdf{\cond{\convmapRand}{\shearmapRand}}{\convmap'}{\shearmap} \, \rmd\convmap',
+    \label{eq:pmean}
+\end{equation}
+where $\condpriorpdf{\cond{\convmapRand}{\shearmapRand}}{\cdot}{\shearmap} \propto \condpriorpdf{\cond{\shearmapRand}{\convmapRand}}{\shearmap}{\cdot} \priorpdf{\convmapRand}{\cdot}$ denotes the posterior probability density function (PDF) given an observation $\shearmapRand = \shearmap$.
+
+Alternatively, DeepPosterior \citep{Remy2023} generates samples from the posterior $\condpriorpdf{\cond{\convmapRand}{\shearmapRand}}{\cdot}{\shearmap}$ by using a Markov chain Monte-Carlo (MCMC) algorithm. In this approach, the prior $\priorpdf{\convmapRand}{\cdot}$ is implicitly learned by a U-Net via neural score matching. Then, averaging over the samples yields a point estimate $\convmapEstimate_{\deepposterior}$ which also approximates the posterior mean \eqref{eq:pmean}. This method provides a straightforward UQ method, by computing order-2 statistics over the samples.
+
+Finally, a recent study by \citet{Whitney2024} introduced an alternative sampling method based on a conditional generative adversarial network (GAN), achieving comparably accurate results while significantly reducing generation time per sample. This approach is referred to as MMGAN.
+\todo[cite \citet{Shirasaki2019,Shirasaki2021}?] \todo[cite \citet{AoyamaDenoisingWeak2025}?]
+
+\subsection{Current limitations}
+\label{subsec:background_limitations}
+
+The deep learning-based approaches discussed above yield the most accurate estimates among mass mapping methods. However, they are significantly more computationally and memory intensive. With upcoming stage-IV surveys such as Euclid and Rubin, vast amounts of data are set to be delivered, requiring fast, flexible and accurate mass mapping methods. DeepMass offers fast inference, as a single forward pass through the U-Net suffices to produce a point estimate from an initial, computationally inexpensive estimate derived from a noisy observation. However, the network must be retrained for each new survey because its inputs depend on the noise covariance matrix $\covmatrNoise$, which in turn depends on the number of observed galaxies in each pixel. In contrast, DeepPosterior requires only one training phase, independent of $\covmatrNoise$, but inference is slow since multiple samples must be drawn to obtain a single point estimate. MMGAN improves upon inference speed by reducing the generation time per sample; however, like DeepPosterior, it still requires multiple samples for a single estimate. Furthermore, like DeepMass and unlike DeepPosterior, its training phase remains dependent on $\covmatrNoise$.
+
+In this paper, we propose a novel deep learning-based mass mapping method called PnPMass. Like DeepMass, our approach generates point estimates without requiring posterior sampling and, like DeepPosterior, eliminates the need to retrain the network for each new survey. This is achieved through an iterative PnP algorithm with carefully-chosen parameters, presented in Sect.~\ref{sec:pnp}. Additionally, in Sect.~\ref{sec:uq}, we introduce a UQ method that does not rely on sampling. More specifically, we adapt the moment network approach by \citet{Jeffrey2020a}, originally developed for end-to-end deep-learning-based reconstruction methods like DeepMass, to our framework. Our experiments, described in Sect.~\ref{sec:experiments}, demonstrate that our approach produces point estimates with accuracy comparable to existing methods in just a few iterations---far fewer than the large number of samples required by DeepPosterior or MMGAN. Furthermore, our UQ method requires only one additional iteration to compute per-pixel error bars. The main contributions of this paper, along with a qualitative comparison to existing data-driven mass mapping methods, are summarized in Table~\ref{table:qualitative_comp}. \todo[move this section to the introduction]
+
+\begin{table}
+    \caption{Qualitative comparison of mass mapping methods.}
+    \label{table:qualitative_comp}
+    \vspace{-5pt}
+    \small
+    \centering
+	\setlength{\tabcolsep}{4pt}
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabular}{l | c c c c c}
+        \hline\hline
+		& Accurate & Flexible & Fast rec. & Fast UQ \\
+		\hline
+		DeepMass & \cmark & \xmark$^\ast$ & \cmark & \cmark \\
+		DeepPosterior & \cmark & \cmark & \xmark\xmark & \xmark\xmark \\
+		MMGAN & \cmark & \xmark$^\ast$ & \xmark$^\dagger$ & \xmark$^\dagger$ \\
+		\hline
+		\textbf{PnPMass (ours)} & \cmark & \cmark & \cmark & \cmark \\
+        \hline
+	\end{tabular}
+    \begin{minipage}{\linewidth}
+    \vspace{5pt}
+    \footnotesize
+    \textbf{Notes.} 
+    $^\ast$Requires specific retraining for each new observation.
+    $^\dagger$Offers faster sampling than DeepPosterior, but still relies on sampling.
+    \end{minipage}
+\end{table}
+
+\section{Proposed approach based on plug-and-play}
+\label{sec:pnp}
+
+For simplicity, we consider a real-valued formulation of the mass mapping problem, where we introduce:
+\begin{equation}
+    \tilde\shearmap := \begin{pmatrix}
+        \Real\shearmap \\ \Imag\shearmap
+    \end{pmatrix} \in \mathR^{2\imgsize^2},
+    \qquad
+    \tilde\noise := \begin{pmatrix}
+        \Real\noise \\ \Imag\noise
+    \end{pmatrix} \in \mathR^{2\imgsize^2},
+\end{equation}
+\begin{equation}
+    \tilde\convToShear := \begin{pmatrix}
+        \Real\convToShear \\ \Imag\convToShear
+    \end{pmatrix} \in \mathR^{2\imgsize^2 \times \imgsize^2},
+    \quad
+    \tilde\covmatrNoise := \frac12\begin{pmatrix}
+        \covmatrNoise & \bzero \\
+        \bzero & \covmatrNoise
+    \end{pmatrix} \in \mathR^{2\imgsize^2 \times 2\imgsize^2}.
+\end{equation}
+Then, Eq.~\eqref{eq:invprob_masked} becomes:
+\begin{equation}
+    \tilde\shearmap = \tilde\convToShear \convmap + \tilde\noise,
+\label{eq:invprob_lifted}
+\end{equation}
+where $\tilde\noise$ is a realization of $\tilde\noiseRand \sim \MN(\bzero,\, \tilde\covmatrNoise)$.
+
+In Sect.~\ref{subsec:pnp_fixedpoint}, we introduce a fixed-point iteration composed of a ``forward'' step involving a linear operator $\tilde\genericop$ and a step size $\stepsize > 0$, followed by a ``backward'' step using a deep denoiser $\deepmodelTrained$. Sect.~\ref{subsec:pnp_smallresidual}, establishes properties on $\deepmodelTrained$ that enable accurate recovery of the convergence map $\convmap$ from the noisy input $\shearmap$. In Sect.~\ref{subsec:pnp_operator}, we show how a suitable choice of $\tilde\genericop$ allows the denoiser to be trained on white Gaussian noise, independently of the matrix $\tilde\covmatrNoise$. Sect.~\ref{subsec:pnp_stepsize} then derives bounds on $\stepsize$ to ensure convergence to a fixed point. Finally, Sect.~\ref{subsec:pnp_fb}, interprets our method as a PnP algorithm \citep{Venkatakrishnan2013} applied to FBS, a proximal gradient descent scheme introduced by \citet{Combettes2005}. As discussed in that section, we purposely avoid framing our approach within an optimization setting, as doing so may be misleading in the PnP context.
+
+\subsection{Fixed-point iteration}
+\label{subsec:pnp_fixedpoint}
+
+Given an observation $\tilde\shearmap \in \mathR^{2\imgsize^2}$, we introduce a ``forward'' operator $\forward_{\tilde\shearmap}: \mathR^{\imgsize^2} \to \mathR^{\imgsize^2}$, defined as follows:
+\begin{equation}
+    \forward_{\tilde\shearmap}: \convmap' \mapsto \convmap' + \stepsize\tilde\genericop(\tilde\shearmap - \tilde\convToShear\convmap'),
+\label{eq:forwardop}
+\end{equation}
+where $\tilde\genericop \in \mathR^{\imgsize^2 \times 2\imgsize^2}$ denotes a linear operator to be defined and $\stepsize > 0$ denotes a step size. We also consider a deep denoiser $\deepmodelTrained: \mathR^{\imgsize^2} \to \mathR^{\imgsize^2}$ parameterized by $\hat\paramDeepmodel$.
+Then, we denote by $\fixedpointiter_{\tilde\shearmap}$ an operator combining the forward step and the denoiser:
+\begin{equation}
+    \fixedpointiter_{\tilde\shearmap} := \deepmodelTrained \circ \forward_{\tilde\shearmap}.
+\label{eq:fixpointoperator}
+\end{equation}
+Next, we state the following hypotheses:
+\begin{enumerate}
+    \item The denoiser $\deepmodelTrained$ is non-expansive (\ie, $\lipschitzcst$-Lipschitz-continuous with $\lipschitzcst \leq 1$);
+    \item $\image\deepmodelTrained \subset (\ker\tilde\convToShear)^\perp$. According to Sect.~\ref{subsec:background_mm}, this condition is equivalent to state that $\deepmodelTrained$ produces zero-mean outputs;
+    \item $\tilde\genericop\tilde\convToShear$ is positive semidefinite and strongly monotone;
+    \item The step size $\stepsize$ satisfies
+    \begin{equation}
+        0 < \stepsize < \frac{2}{\norm{\tilde\genericop\tilde\convToShear}},
+    \label{eq:stepsize}
+    \end{equation}
+    where $\norm{\cdot}$ denotes the spectral norm.
+\end{enumerate}
+Then, using Banach's theorem \addref, we can show that the operator $\fixedpointiter_{\tilde\shearmap}$ admits a unique zero-mean fixed point $\convmapEstimate \in (\ker\tilde\convToShear)^\perp$. Moreover, the series $(\convmapEstimate^{(k)})_{k \in \mathN}$ defined, for any $k \in \mathN$, by
+\begin{equation}
+    \convmapEstimate^{(k+1)} := \fixedpointiter_{\tilde\shearmap}(\convmapEstimate^{(k)}),
+\end{equation}
+converges towards $\convmapEstimate$ in the following sense:
+\begin{equation}
+    \lim_{k \to \infty}\normtwo{\convmapEstimate^{(k)} - \convmapEstimate} = 0.
+\end{equation}
+
+\subsection{Toward accurate reconstructions}
+\label{subsec:pnp_smallresidual}
+
+Assessing whether the fixed point $\convmapEstimate$ lies sufficiently close to the true convergence map $\convmap$ is a challenging question that falls beyond the scope of this paper. The quality of the reconstruction depends critically on the noise level, since a low S/N can cause signal and noise to be easily confused. In this section, we informally establish a necessary condition on the denoiser $\deepmodelTrained$ to allow for a small residual $\residualEstimate := \convmapEstimate - \convmap$. Specifically, we assume that%
+\begin{equation}
+    \normtwo{\residualEstimate} \ll \normtwo{\convmap} \qqand \normtwo{\residualEstimate} \ll \normtwo{\noise}.
+\label{eq:smallresidual}
+\end{equation}
+Having
+\begin{equation}
+    \smallnormtwo{\tilde\noise} = \smallnormtwo{\noise} \qand \smallnorm{\tilde\convToShear} = \smallnorm{\convToShear} = 1,
+\end{equation}
+it follows that
+\begin{equation}
+    \smallnormtwo{\tilde\convToShear\residualEstimate} \leq \smallnorm{\tilde\convToShear} \, \smallnormtwo{\residualEstimate} = \normtwo{\residualEstimate} \ll \normtwo{\tilde\noise},
+\end{equation}
+which implies that the S/N associated with $\tilde\convToShear\residualEstimate$ is close to zero.
+Under these assumptions, we get, by applying the forward step to the fixed point $\convmapEstimate$:
+\begin{align}
+    \forward_{\tilde\shearmap}(\convmapEstimate)
+        &= \convmap + \residualEstimate + \stepsize\tilde\genericop\bigl(
+            -\tilde\convToShear\residualEstimate + \tilde\noise
+        \bigr) \\
+        &\approx \convmap + \stepsize\tilde\genericop\tilde\noise.
+\label{eq:fixedpointcondition}
+\end{align}
+Note that the above approximation is not valid near masked regions, for which the S/N is very small. We will nevertheless ignore this caveat in the remaining of the paper.
+
+Therefore, applying the operator $\fixedpointiter_{\tilde\shearmap}$ introduced in Eq.~\eqref{eq:fixpointoperator} to the fixed point $\convmapEstimate$ yields
+\begin{align}
+    \convmapEstimate
+        &\approx \deepmodelTrained\bigl(
+            \convmap + \stepsize\tilde\genericop\tilde\noise
+        \bigr).
+\end{align}
+Thus, $\deepmodelTrained$ acts as a denoiser on the true convergence map $\convmap$ corrupted by a Gaussian noise $\noise_0 := \stepsize\tilde\genericop\tilde\noise \in \mathR^{\imgsize^2}$, which is an outcome of
+\begin{equation}
+    \noiseRand_0 := \stepsize\tilde\genericop\tilde\noiseRand \sim \MN(\bzero,\, \covmatrNoise_0),\qwith \covmatrNoise_0 := \stepsize^2\tilde\genericop\tilde\covmatrNoise\tilde\genericop^\top.
+\label{eq:pnpnoise}
+\end{equation}
+In practice, $\deepmodelTrained$ can be implemented as a deep denoiser trained on a dataset $(\convmap_{0,\, i},\, \convmap_i)_{i=1}^{\sizeTrainingset}$, where the ground truth convergence maps $\convmap_i$ are generated from simulations based on the $\Lambda$CDM model, and the corresponding inputs $\convmap_{0,\, i}$ are computed from $\convmap_i$ by adding a Gaussian noise $\noise_{0,\, i}$ following the same distribution as $\noise_0$.
+
+% According to Sect.~\ref{subsec:background_mm}, this condition is equivalent to state that $\deepmodelTrained$ produces zero-mean outputs;
+
+\subsection{Choice of operator}
+\label{subsec:pnp_operator}
+
+One of the main objectives of this paper is to implement a mass mapping method whose training phase is independent of the noise covariance matrix $\tilde\covmatrNoise$. Consequently, the matrix $\covmatrNoise_0$ introduced in Eq.~\eqref{eq:pnpnoise} should also be independent of $\tilde\covmatrNoise$.
+To this end, we propose using the following operator:
+\begin{equation}
+    \tilde\genericop := \tildeConvToShearTransp\tilde\covmatrNoise^{-1/2},
+\label{eq:genericop}
+\end{equation}
+and the forward step becomes:
+\begin{equation}
+    \forward_{\tilde\shearmap}: \convmap' \mapsto \convmap' + \stepsize\tildeConvToShearTransp\tilde\covmatrNoise^{-1/2}(\tilde\shearmap - \tilde\convToShear\convmap'),
+\label{eq:forwardop2}
+\end{equation}
+
+First, we notice that $\tilde\genericop\tilde\convToShear := \tildeConvToShearTransp\tilde\covmatrNoise^{-1/2}\tilde\convToShear$ is positive semidefinite and strongly monotone \tocheck, which is one of the sufficient conditions to guarantee convergence to a fixed point. Furthermore, we get
+\begin{equation}
+    \covmatrNoise_0 = \stepsize^2\tildeConvToShearTransp\tilde\convToShear.
+\end{equation}
+In Appendix~\todo, we establish the following identities:
+\begin{equation}
+    \tildeConvToShearTransp\tilde\convToShear = \Real(\convToShearHerm\convToShear) \qqand \convToShearHerm\convToShear = \BBI - \frac1{\imgsize^2},
+\end{equation}
+where the constant $1 / \imgsize^2$ is subtracted from all matrix elements. In practice, the image size $\imgsize$ is sufficiently large to neglect the non-diagonal elements. Therefore, we approximate:%
+\begin{equation}
+    \covmatrNoise_0 \approx \stepsize^2 \BBI.
+\label{eq:covmatrwhitenoise}
+\end{equation}
+Thus, the denoiser must handle white Gaussian noise with a standard deviation equal to the step size $\stepsize$, for which we now explain how to select an appropriate value.
+
+We note that, at each iteration, the forward step \eqref{eq:forwardop2} leaves the value of masked pixels $k$ nearly unchanged, since the variance is set to a very large value, as explained in Sect.~\ref{subsec:background_mm}. Thus, the value assigned to $\shearmap[k]$ has very little impact on the output of the algorithm and can be chosen arbitrarily. In practice, we can therefore assign the following values within the mask:
+\begin{equation}
+    \covmatrNoise[k,\, k] = \infty \qqand \shearmap[k] = 0.
+\label{eq:maskedpixels}
+\end{equation}
+This is equivalent to replacing $\convToShear$ by $\mask\convToShear$ at each iteration \todo[unclear].
+
+\subsection{Step size selection}
+\label{subsec:pnp_stepsize}
+
+As discussed in Sect.~\ref{subsec:pnp_fixedpoint}, convergence to a fixed point is guaranteed under certain conditions, one of which requires the step size $\stepsize$ to satisfy Eq.~\eqref{eq:stepsize}. Substituting the expression for $\tilde\genericop$ from Eq.~\eqref{eq:genericop}, this condition becomes:
+\begin{equation}
+    0 < \stepsize < \frac{2}{\bignorm{\tildeConvToShearTransp\tilde\covmatrNoise^{-1/2}\tilde\convToShear}}.
+\label{eq:stepsize2}
+\end{equation}
+The spectral norm in the denominator can be accurately estimated via power iteration. To obtain a rough estimate of the upper-bound for $\stepsize$, we observe that
+\begin{align}
+    \bignorm{\tildeConvToShearTransp\tilde\covmatrNoise^{-1/2}\tilde\convToShear}
+        &\leq \bignorm{\tildeConvToShearTransp}\, \bignorm{\tilde\covmatrNoise^{-1/2}}\, \bignorm{\tilde\convToShear} & \mbox{\todo[explain]} \\
+        &= \bignorm{\tilde\covmatrNoise^{-1/2}} = 1 / \min_k \tilde\stdval_k,
+\end{align}
+where $\tilde\stdval_k := \tilde\covmatrNoise[k,\, k]^{1/2}$ denotes the noise standard deviation at pixel $k$ \tocheck. From Eq.~\eqref{eq:stepsize2}, we therefore get the following tighter upper bound:
+\begin{equation}
+    0 < \stepsize < 2 \min_k \tilde\stdval_k.
+\label{eq:stepsize3}
+\end{equation}
+The choice of step size $\stepsize$ is thus essentially governed by the smallest noise level in the input shear map---that is, the pixel with the highest number of observed galaxies.
+
+As shown in Sect.~\ref{subsec:pnp_operator}, the denoiser must handle Gaussian noise with standard deviation $\stepsize$, whose upper bound is determined by $\covmatrNoise$. However, we aim to keep the training phase independent of this covariance matrix. One possible solution would be to select a small enough value of $\stepsize$ to cover a broad range of survey conditions. Yet, as confirmed by our experiments, this would lead to slower convergence and degraded reconstruction quality. A more flexible approach is to train the network $\deepmodelParameterized$ using a wide range of noise levels, enabling it to adapt to different noise conditions during inference.
+% Additionally, training the network on a broader set of input images can further improve its robustness to distribution shifts.
+
+\subsection{Additional properties for the denoiser}
+\label{subsec:pnp_denoiserprops}
+
+Generating training data via simulation requires selecting a set of cosmological parameters, which implicitly shapes the prior distribution form which convergence map samples are drawn. If the chosen parameters diverge significantly from the true, unknown cosmology that one want to infer, the trained denoiser may struggle to generalize and thus fail to produce accurate reconstructions. One way to overcome this is to generate training data across a distribution of plausible cosmologies, enhancing the network's robustness to distributional shifts. In Sect.~\todo, we evaluate this robustness empirically using CosmoSLICS simulations.
+
+The first condition introduced in Sect.~\ref{subsec:pnp_fixedpoint} involves the non-expansiveness of the denoiser. This property can be encouraged during training by introducing a regularization term that controls the spectral norm of the Jacobian \citep{Pesquet2021}. In this work however, we simply assume that the trained denoiser satisfies this condition without the need for regularizing.
+
+A specific feature of the weak lensing mass mapping problem is that convergence maps can only be recovered up to an additive constant due to mass-sheet degeneracy, as discussed in Sect.~\ref{subsec:background_mm}. Consequently, we seek zero-mean solutions, in alignment with the second condition described in Sect.~\ref{subsec:pnp_fixedpoint}. This property can be enforced during training, either by adding an $\ell^2$-penalty to the loss function, or by explicitly mean-centering the output in the final layer. In our implementation, we adopt the second strategy.
+
+\subsection{Analogy with the forward-backward splitting algorithm}
+\label{subsec:pnp_fb}
+
+We assume the existence of a convex, lower semicontinuous regularization function $\regfun$ such that
+\begin{equation}
+    \deepmodelTrained(\convmap') = \prox_{\stepsize\regfun}(\convmap'),
+\label{eq:deepmodelasprox}
+\end{equation}
+where the proximal operator is defined as
+\begin{equation}
+    \prox_{\stepsize\regfun}: \convmap' \mapsto \argmin_{\convmap''} \frac12 \normtwo{\convmap'' - \convmap'}^2 + \stepsize\regfun(\convmap'').
+\end{equation}
+Under this assumption, the fixed-point iteration introduced in Eq.~\eqref{eq:fixpointoperator} becomes:
+\begin{equation}
+    \fixedpointiter_{\tilde\shearmap}: \convmap' \mapsto \prox_{\stepsize\regfun}\left[
+        \convmap' - \stepsize\nabla\!\datafidelity_{\tilde\shearmap}(\convmap')
+    \right],
+\label{eq:fixpointoperator_prox}
+\end{equation}
+where we have considered the following data fidelity term:
+\begin{equation}
+    \datafidelity_{\tilde\shearmap}: \convmap' \mapsto \frac12\norm{\tilde\shearmap - \tilde\convToShear\convmap'}_{\tilde\covmatrNoise^{-1/2}}^2.
+    % = (\tilde\shearmap - \tilde\convToShear\convmap')^\top \tilde\covmatrNoise^{-1/2} (\tilde\shearmap - \tilde\convToShear\convmap').
+\label{eq:datafidelity}
+\end{equation}
+Equation~\eqref{eq:fixpointoperator_prox} corresponds to a single iteration of the FBS algorithm.
+It can be decomposed into a forward step (gradient descent with respect to the data fidelity term) and a backward step (proximal mapping with respect to the regularization term).
+If the step size $\stepsize$ satisfies condition \eqref{eq:stepsize2} (involving a Lipschitz constant of $\nabla\!\datafidelity_{\tilde\shearmap}$), then the sequence converges to a solution $\convmapEstimate$ of the following minimization problem---similar in form to Eq.~\eqref{eq:minprob}:
+\begin{equation}
+    \convmapEstimate \in \argmin_{\convmap'} \datafidelity_{\tilde\shearmap}(\convmap') + \regfun(\convmap').
+\label{eq:minprob2}
+\end{equation}
+% If $\regfun$ is not convex, additional conditions can be stated to ensure convergence toward a critical point \addref.
+
+A well-known case of FBS is the iterative shrinkage thresholding algorithm (ISTA) \citep{Blumensath2008}, commonly used when $\regfun$ represents a sparse $l1$-regularization term, as in the lasso minimization problem. In this case, the proximal operator takes the form of a soft-thresholding operator. In a cosmological context, another relevant application is the iterative Wiener filtering algorithm \citep{Bobin2012} (see Sect.~\ref{subsubsec:background_relatedwork_classical}), which takes advantage of the FBS algorithm to address the computational issues in evaluating the closed-form Wiener solution when the noise is non-stationary. In this approach, the forward and backward steps involve linear operators computed in the spatial domain on the one hand, and in the Fourier or spherical harmonic domain on the other hand. FBS has also been applied in conjunction with morphological component analysis (MCA) \citep{Bobin2007} to generate weak lensing mass estimates that combine a Gaussian component and a sparse component in a wavelet dictionary \citep{Starck2021} (see Sect.~\ref{subsubsec:background_relatedwork_classical}).
+
+Although proximal operators can be seen as a specific class of denoisers, there is no reason to assume that $\deepmodelTrained$ approximates a proximal operator. At best, the network can be constrained to behave like the resolvent of a maximally monotone set-valued operator $A: \mathR^{\imgsize^2} \rightrightarrows \mathR^{\imgsize^2}$ \citep{Terris2020}. Then, hypothesis \eqref{eq:deepmodelasprox} holds if and only if $A = \stepsize\partial\regfun$ for some function $g$, where $\partial$ represents the subdifferential. However, this property is by no means guaranteed. Consequently, PnP algorithms such as PnPMass are not expected to solve any optimization problem in general, hence the fixed-point perspective that we have adopted in this paper. Nevertheless, the family of algorithms from which PnPMass is derived are usually referred to as PnP-FBS in the literature \citep{Ryu2019,Ebner2024}.
+
+It is worth noting that the data fidelity term defined in Eq.~\eqref{eq:datafidelity} does not correspond to the negative log-likelihood typically used in Bayesian frameworks: the Mahalanobis norm would be defined with respect to $\tilde\covmatrNoise^{-1}$ rather than $\tilde\covmatrNoise^{-1/2}$. Furthermore, the regularization function $\regfun$ does not necessarily correspond to a negative log-prior PDF. As a result, $\convmapEstimate$ should not be interpreted as a maximum a posteriori (MAP) estimate, even if Eq.~\eqref{eq:deepmodelasprox} is satisfied. For a detailed discussion about the limitations of Bayesian interpretations in the context of regularized variational problems, see \citet{Starck2013}.
+
+
+% In the remaining of the paper, the forward and backward operators are referred to as $\forward_{\shearmap}$ and $\backward$, respectively:
+% \begin{equation}
+%     \convmapEstimate^{(k)} = \backward\Bigl(
+%         \forward_{\shearmap}(\convmapEstimate^{(k-1)})
+%     \Bigr).
+% \end{equation}
+% We also denote by $\convmapEstimate_0^{(k)}$ the output of the forward step at the $k$-th iteration:
+% \begin{equation}
+%     \convmapEstimate_0^{(k)} := \forward_{\shearmap}(\convmapEstimate^{(k-1)}) = \convmapEstimate^{(k-1)} - \stepsize \gradDatafidelity_{\shearmap}(\convmapEstimate^{(k-1)}).
+% \label{eq:fb_forward}
+% \end{equation}
+
+% \section*{\red{***BEYOND THIS POINT, WORK IN PROGRESS***}}
+
+\section{Uncertainty quantification}
+\label{sec:uq}
+
+In Sect.~\ref{subsec:uq_mn}, we introduce a fast UQ method for PnPMass. This approach is based on moment networks, originally proposed by \citet{Jeffrey2020a} to quantify uncertainty in non-iterative reconstruction methods such as DeepMass. To the best of our knowledge, this is the first UQ method within the PnP framework that does not rely on ensembles or posterior sampling \tocheck, both of which are computationally intensive. For instance, some methods quantify uncertainty in model parameters by training multiple networks \citep{Shi2021,Terris2024}, while \citet{Laumont2022} introduced a technique for posterior sampling that combines PnP with Langevin dynamics. \todo[other related work?]
+% In contrast, DeepPosterior and MMGAN fundamentally rely on posterior sampling.
+
+Next, in Sect.~\ref{subsec:uq_cqr}, we describe the CQR algorithm \citep{Romano2019}, which was adapted for mass mapping in a previous work \citep{LetermeDistributionfreeUncertainty2025}. This method serves as a postprocessing step that can be applied to any reconstruction method with an initial uncertainty estimate, providing per-pixel coverage guarantees without relying on prior assumptions about the data distribution.
+
+\subsection{Uncertainty estimation with moment networks}
+\label{subsec:uq_mn}
+
+In Sect.~\ref{subsubsec:uq_mn_deepmass}, we review the main principles of posterior variance estimation using moment networks, as described by \citet{Jeffrey2020a}. Then, in Sect.~\ref{subsubsec:uq_mn_pnp}, we extend this approach to the PnP framework and provide theoretical insights supporting its use. Finally, in Sect.~\ref{subsubsec:uq_mn_errbars}, we explain how to get error bars from the estimated posterior variance.
+
+\subsubsection{Background: Moment networks for DeepMass}
+\label{subsubsec:uq_mn_deepmass}
+
+We adopt a Bayesian point of view, where the ground truth $\convmap$ and noisy observation $\tilde\shearmap$ are drawn from the random vectors $\convmapRand$ and $\tilde\shearmapRand$, respectively.
+Next, we consider a deep learning model $\deepmodelTrained$ trained on a simulated dataset $\trainingsetMMLifted$, where the pairs $(\tilde\shearmap_i,\, \convmap_i)$ are assumed to be sampled from the same distribution as $(\tilde\shearmap,\, \convmap)$. When the network is trained with an MSE loss, and given appropriate model complexity and a sufficiently large training set, the network tends to minimize the expected $\ell^2$-norm between the reconstruction and the ground truth:
+\begin{align}
+    \deepmodelTrained
+        &\in \argmin_{\deepmodel \, \text{meas.}} \Expval\Bigl[\bignormtwo{
+            \deepmodel(\tilde\shearmapRand) - \convmapRand
+        }^2\Bigr].
+        % &= \argmin_{\deepmodel \, \text{meas.}} \iint \bignormtwo{
+        %     \deepmodel(\shearmap') - \convmap'
+        % }^2 \, \condpriorpdf{\cond{\shearmapRand}{\convmapRand}}{\shearmap'}{\convmap'} \priorpdf{\convmapRand}{\convmap'} \, \rmd \shearmap' \rmd \convmap',
+\label{eq:minmse}
+\end{align}
+% where, as a reminder, $\condpriorpdf{\cond{\shearmapRand}{\convmapRand}}{\shearmap'}{\convmap'}$ corresponds to the likelihood PDF introduced in Eq.~\eqref{eq:likelihood}.
+Under this assumption, it can be shown that $\deepmodelTrained(\tilde\shearmap)$ corresponds to the posterior mean introduced in Eq.~\eqref{eq:pmean}:
+\begin{equation}
+    \deepmodelTrained(\tilde\shearmap) = \bigcondexpval{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap}.
+\label{eq:approx_pmean}
+\end{equation}
+
+We can extend this reasoning to estimate higher-order moments, including the posterior variance per pixel:
+\begin{equation}
+    \bigcondvar{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap} := \Bigcondexpval{
+        \Bigl(
+            \convmapRand - \bigcondexpval{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap}
+        \Bigr)^2}{\tilde\shearmapRand=\tilde\shearmap}.
+    \label{eq:pvar}
+\end{equation}
+To this end, we consider a new model $\deepmodelbisTrained$ trained on a dataset $(\tilde\shearmap_i,\, \varmap_i)_{i=1}^{\sizeTrainingset}$, where we have defined the following targets:
+\begin{equation}
+    \varmap_i := \left(
+        \convmap_i - \deepmodelTrained(\tilde\shearmap_i)
+    \right)^2 \in \mathR_+^{\imgsize^2}.
+\end{equation}
+Then, similar to Eq.~\eqref{eq:minmse}, under appropriate assumptions, this new model tends to minimize the following quantity:
+\begin{align}
+    \deepmodelbisTrained
+        \in \argmin_{\deepmodelbis \, \text{meas.}} \Expval\left[\normtwo{
+            \deepmodelbis(\tilde\shearmapRand) - \left(
+                \convmapRand - \deepmodelTrained(\tilde\shearmapRand)
+            \right)^2
+        }^2\right],
+\end{align}
+and, similar to Eq.~\eqref{eq:approx_pmean}, we get:
+\begin{equation}
+    \deepmodelbisTrained(\tilde\shearmap) = \Bigcondexpval{
+        \left(
+            \convmapRand - \deepmodelTrained(\tilde\shearmapRand)
+        \right)^2
+    }{\tilde\shearmapRand=\tilde\shearmap}.
+\end{equation}
+Finally, assuming that Eq.~\eqref{eq:approx_pmean} holds, $\deepmodelbisTrained(\shearmap)$ satisfies:
+\begin{equation}
+    \deepmodelbisTrained(\shearmap) = \bigcondvar{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap}.
+\end{equation}
+The corresponding model is referred to as an order-2 moment network.
+
+\subsubsection{Adaptation to PnPMass}
+\label{subsubsec:uq_mn_pnp}
+
+The moment network approach is not directly applicable to the PnP framework because we do not want to train a network on a dataset that depends on the noise covariance matrix $\tilde\covmatrNoise$, as explained in Sect.~\ref{subsec:background_limitations}. However, we will see that, within the settings presented in Sect.~\ref{sec:pnp}, the posterior variance can be estimated with an order-2 moment network trained on white Gaussian noise.
+
+We consider a deep denoiser $\deepmodelTrained$ trained on $(\convmap_{0,\, i},\, \convmap_i)_{i=1}^{\sizeTrainingset}$, as detailed in Sect.~\ref{subsec:pnp_smallresidual}. Assuming that the network is trained with an MSE loss, we follow a similar reasoning as in Sect.~\ref{subsubsec:uq_mn_deepmass}. Given appropriate model complexity and a sufficiently large training set, we get, for any noisy input $\convmap_0$,
+\begin{equation}
+    \deepmodelTrained(\convmap_0) = \condexpval{\convmapRand}{\convmapRand_0=\convmap_0},
+\label{eq:approx_pmean_denoiser}
+\end{equation}
+where we have denoted:
+\begin{equation}
+    \convmapRand_0 := \convmapRand + \noiseRand_0,
+\label{eq:convmaprand0}
+\end{equation}
+with $\noiseRand_0$ being introduced in Eq.~\eqref{eq:pnpnoise}. According to Eq.~\eqref{eq:covmatrwhitenoise}, we can consider $\noiseRand_0$ as a white Gaussian noise:
+\begin{equation}
+    \noiseRand_0 \sim \MN(\bzero,\, \stepsize^2).
+\end{equation}
+Therefore, $\noiseRand_0$ only weakly depends on $\tilde\covmatrNoise$ via $\stepsize$---see \eqref{eq:stepsize2}. To eliminate any kind of dependence, the network can be trained on a range of noise levels, as explained in Sect.~\ref{subsec:pnp_stepsize}.
+Then, considering a new model $\deepmodelbisTrained$ trained on $(\convmap_{0,\, i},\, \varmap_i)_{i=1}^{\sizeTrainingset}$, with
+\begin{equation}
+    \varmap_i := \left(
+        \convmap_i - \deepmodelTrained(\convmap_{0,\, i})
+    \right)^2,
+\label{eq:groundtruth_order2}
+\end{equation}
+we get:
+\begin{equation}
+    \deepmodelbisTrained(\convmap_0) = \condvar{\convmapRand}{\convmapRand_0=\convmapRand_0}.
+\label{eq:approx_pvar_denoiser}
+\end{equation}
+
+Next, we want to show that, after reaching a sufficient number of iterations, the outputs of $\deepmodelTrained$ and $\deepmodelbisTrained$ approximate the posterior mean and variance, respectively, given an observation $\tilde\shearmapRand = \tilde\shearmap$. To this end, we denote by $\pnpmass$ the operator mapping any observation $\tilde\shearmap$ to the corresponding fixed point $\convmapEstimate = \pnpmass(\tilde\shearmap)$, and we introduce:
+\begin{equation}
+    \pnpmass_0: \tilde\shearmap \mapsto \forward_{\tilde\shearmap}\bigl(
+        \pnpmass(\tilde\shearmap)
+    \bigr),
+\label{eq:pnpmass0}
+\end{equation}
+where $\forward_{\tilde\shearmap}$ denotes the forward step as introduced in Eq.~\eqref{eq:forwardop2}. We assume that $\pnpmass_0$ is injective.
+We want to establish the following approximations:
+\begin{equation}
+    \deepmodelTrained(\convmap_0) \approx \bigcondexpval{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap}
+\label{eq:pmean_pnpmass}
+\end{equation}
+and
+\begin{equation}
+    \deepmodelbisTrained(\convmap_0) \approx \bigcondvar{\convmapRand}{\tilde\shearmapRand=\tilde\shearmap},
+\label{eq:pvar_pnpmass}
+\end{equation}
+with $\convmap_0 := \pnpmass_0(\tilde\shearmap)$.
+First, combining Eqs.~\eqref{eq:fixedpointcondition}, \eqref{eq:pnpnoise} and \eqref{eq:pnpmass0} yields the following approximation:
+\begin{equation}
+    \pnpmass_0(\tilde\shearmapRand) \approx \convmapRand + \noiseRand_0 = \convmapRand_0.
+\label{eq:fixedpointcondition_rand}
+\end{equation}
+% Equation~\eqref{eq:fixedpointcondition_rand} states that, after a sufficient number of iterations, the output of the forward step approximates the ground truth convergence map corrupted by a white Gaussian noise.
+By using Eqs.~\eqref{eq:approx_pmean_denoiser} and \eqref{eq:approx_pvar_denoiser} with $\convmap_0 := \pnpmass_0(\tilde\shearmap)$, and applying approximation \eqref{eq:fixedpointcondition_rand} to the results, we get, respectively:
+\begin{equation}
+    \deepmodelTrained(\pnpmass_0(\tilde\shearmap)) \approx \bigcondexpval{\convmapRand}{\pnpmass_0(\tilde\shearmapRand)=\pnpmass_0(\tilde\shearmap)}
+\end{equation}
+and
+\begin{equation}
+    \deepmodelbisTrained(\pnpmass_0(\tilde\shearmap)) \approx \bigcondvar{\convmapRand}{\pnpmass_0(\tilde\shearmapRand)=\pnpmass_0(\tilde\shearmap)}.
+\end{equation}
+Finally, since $\pnpmass_0$ is injective, we get Eqs.~\eqref{eq:pmean_pnpmass} and \eqref{eq:pvar_pnpmass}, respectively. We notice that $\deepmodelTrained(\convmap_0)$ corresponds to the fixed point $\convmapEstimate$, which therefore approximately corresponds to the posterior mean. Additionally, we introduce $\varmapEstimate := \deepmodelbisTrained(\convmap_0)$, which approximately corresponds to the posterior variance.
+
+Thus, computing $\varmapEstimate$ only requires one additional forward-backward iteration once the fixed point $\convmapEstimate$ has been estimated, using $\deepmodelbisTrained$ instead of $\deepmodelTrained$ as the backward operator. The corresponding algorithm is summarized in Fig.~\ref{fig:pnpmass}.
+\input{inputs/flowchart}
+
+\subsubsection{Estimation of per-pixel error bars}
+\label{subsubsec:uq_mn_errbars}
+
+In this section, we seek per-pixel error bars corresponding to a miscoverage rate equal to $\alpha \in \zeroexcloneexcl$. Specifically, we want to get a lower bound $\convmapEstimateLow$ and an upper bound $\convmapEstimateHigh$ such that, for any $k \in \smalloneto{\imgsize^2}$,
+\begin{equation}
+    \condproba{\convmapRand[k] \notin \interval{\convmapEstimateLow[k]}{\convmapEstimateHigh[k]}}{\tilde\shearmapRand = \tilde\shearmap} \leq \alpha.
+\label{eq:miscoveragerate}
+\end{equation}
+To this end, we adopt the following heuristic approach. We make the bold assumption that the marginal posterior distribution per pixel is Gaussian, with mean and variance given by $\convmapEstimate$ and $\varmapEstimate$, respectively. Then, we consider the following bounds:
+\begin{equation}
+    \convmapEstimateLow := \convmapEstimate - \cdf^{-1}\left(
+        1 - \frac{\alpha}{2}
+    \right) \, \varmapEstimate
+    \qand
+    \convmapEstimateHigh := \convmapEstimate + \cdf^{-1}\left(
+        1 - \frac{\alpha}{2}
+    \right) \, \varmapEstimate,
+\label{eq:errbars}
+\end{equation}
+where $\cdf$ denotes the cumulative distribution function (CDF) of the normal distribution $\MN(0,\, 1)$. Then, under the assumption stated above, Eq.~\eqref{eq:miscoveragerate} is satisfied.
+
+\subsection{Calibration with conformal predictions}
+\label{subsec:uq_cqr}
+
+In Sect.~\ref{subsec:uq_mn}, we have seen how to estimate the posterior variance using order-2 moment networks, and to derive per-pixel error bars corresponding to a user-defined miscoverage rate $\alpha$. However, several hypotheses have been made to achieve this goal:
+\begin{itemize}
+    \item[--] Equations~\eqref{eq:approx_pmean_denoiser} and \eqref{eq:approx_pvar_denoiser} state that the networks $\deepmodelTrained$ and $\deepmodelbisTrained$ compute the posterior mean and variance given $\convmapRand_0 = \convmap_0$, respectively. However, in practice this property is only approximately satisfied, given appropriate assumptions about the model complexity and quality of the training data.
+    \item[--] According to Eq.~\eqref{eq:fixedpointcondition_rand}, after reaching a high enough number of iterations, the output of the forward step corresponds to the ground truth $\convmap$ corrupted by a white Gaussian noise of standard deviation $\stepsize$. However, this property relies on the assumption that the fixed point $\convmapEstimate$ of PnPMass lies close enough to $\convmap$, which is not necessarily true in practice, especially near masked regions where the S/N is very small.
+    \item[--] Per-pixel error bars have been derived from the variance estimate, under a Gaussian assumption for the posterior distribution, making them only rough uncertainty estimates.
+\end{itemize}
+
+For all these reasons, the miscoverage rate \eqref{eq:miscoveragerate} may not hold exactly in practice. In this section, we present a calibration method directly inspired from CQR \citep{Romano2019}, for which we can obtain coverage guarantees that do not depend on any assumption on the models or the data distribution. The choice of this method over other calibration approaches such as risk-controlling prediction sets \citep{Angelopoulos2022c}, based on concentration inequalities, is motivated by the fact that it explicitly avoids overconservative solutions, making it suitable in a context where one want to get error bars as tight as possible. We refer readers to \citet{LetermeDistributionfreeUncertainty2025} for a detailed discussion on this topic.
+
+We consider a calibration set $\calibrationsetMMLifted$ of size $\sizeCalibrationset \in \mathN$. For each pair $(\tilde\shearmap_i,\, \convmap_i)$, we compute lower and upper bounds $(\convmapEstimateLow_i,\, \convmapEstimateHigh_i)$ using PnPMass and our trained order-2 moment network. Then, we compute a vector of conformity scores, denoted by $\calibparamVec_i \in \mathR^{\imgsize^2}$, defined, for each pixel $k \in \smalloneto{\imgsize^2}$, by:
+\begin{equation}
+    \calibparamVec_i[k] = \max\left(
+        \convmapEstimateLow[k] - \convmap_i[k],\, \convmap_i[k] - \convmapEstimateHigh[k]
+    \right).
+\end{equation}
+Then, the calibration vector $\calibparamVec$ is obtained by computing, for each pixel, the $(1 - \alpha)(1 + 1/\sizeCalibrationset)$-th empirical quantile of $(\calibparamVec_i[k])_{i=\sizeTrainingset + 1}^{\sizeTrainingset + \sizeCalibrationset}$. The term $(1 + 1/\sizeCalibrationset)$, which accounts for finite-sample correction, imposes a lower bound to the target error rate: $\alpha \geq 1 / (\sizeCalibrationset + 1)$.
+Finally, the calibrated bounds are defined as follows:
+\begin{equation}
+    \convmapEstimateLowCQR := \convmapEstimateLow - \calibparamVec \qqand \convmapEstimateHighCQR := \convmapEstimateHigh + \calibparamVec.
+\end{equation}
+
+We denote by $\convmapEstimateLowCQRRand$ and $\convmapEstimateHighCQRRand$ the random vectors from which $\convmapEstimateLowCQR$ and $\convmapEstimateHighCQR$ are drawn. Their random nature come from $\tilde\shearmapRand$, from which the noisy observation is drawn, as well as $\calibrationsetMMLiftedRand$, from which the calibration set is drawn. If $\calibrationsetMMLiftedRand \cup \{(\tilde\shearmapRand,\, \convmapRand)\}$ are exchangeable (\eg, \iid), then we have the following coverage property at pixel $k$:
+\begin{equation}
+    \alpha - \frac1{\sizeCalibrationset + 1} \leq \Proba\left\{
+        \convmapRand[k] \notin \interval{\convmapEstimateLowCQRRand[k]}{\convmapEstimateHighCQRRand[k]}
+    \right\} \leq \alpha.
+\label{eq:miscoveragerate_cqr}
+\end{equation}
+By averaging over all pixels, we conclude that the expected miscoverage rate---the proportion of pixels falling outside the predicted bounds---lies between these two bounds.
+
+In addition to the existence of a lower bound preventing overconservative solutions, Eq.~\eqref{eq:miscoveragerate_cqr} presents a major difference compared with Eq.~\eqref{eq:miscoveragerate}: the probability of error is marginalized over all possible outcomes of $\tilde\shearmapRand$. Consequently, some inputs may lead to errors more likely than others. Moreover, the coverage guarantee provided in Eq.~\eqref{eq:miscoveragerate_cqr} is also marginalized over the distribution of calibration sets. Therefore, accidentally picking an out-of-distribution calibration set may lead to a higher error rate than expected. This effect can be mitigated by increasing the size of the calibration set.
+
+\section{Experimental settings}
+\label{sec:experiments}
+
+\subsection{Datasets}
+\label{subsec:experiments_datasets}
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[height=0.16\textheight]{img/kappa.pdf}
+        \caption{}
+        \label{subfig:convshear_conv}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[height=0.16\textheight]{img/gamma.pdf}
+        \caption{}
+        \label{subfig:convshear_shear_re}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[height=0.16\textheight]{img/gamma_noisy.pdf}
+        \caption{}
+        \label{subfig:convshear_shear_im}
+    \end{subfigure}
+    \caption{Example of mock convergence map obtained from $\kappa$TNG simulations (a), and the real part of the corresponding clean (b) and noisy (c) shear map. The COSMOS boundaries are delimited in white.
+    }
+    \label{fig:convshear}
+\end{figure*}
+
+In order to generate the training, validation, calibration and test sets, the ground truth convergence maps $\convmap_i$ were obtained using two simulated datasets: $\kappa$TNG and CosmoSLICS, as described below. We computed linear combinations of convergence maps according to a predefined redshift distribution, following the same procedure as \citet{LetermeDistributionfreeUncertainty2025}.
+
+For the training and validation sets, the noisy inputs $\convmap_{0,\, i}$ were obtained from $\convmap_i$ by adding a white Gaussian noise with a standard deviation uniformly drawn within the interval $[0.1,\, 0.2]$ \todo[change that?]. The choice for this particular interval is explained in Sect.~\ref{subsubsec:experiments_impl_pnpmass} \todo. At each training epoch, a new noise realization was drawn, with a newly-picked noise level.
+For the calibration and test sets, the noisy shear maps $\shearmap_i$ were computed from $\convmap_i$ using Eq.~\eqref{eq:invprob_masked}. The mask $\mask$ and covariance matrix $\covmatrNoise$ were obtained by binning the weak lensing ``S10'' shear catalog created by \citet{Schrabback2010} at the $\kappa$TNG resolution ($0.29$ arcmin per pixel), and then applying Eq.~\eqref{eq:covmatrnoise}. The intrinsic standard deviation $\stdval_{\ellip}$ was estimated from the measured ellipticities and set to $0.39$. % This is the shape dispersion for $Sigma$, not $\tilde\Sigma$! Otherwise, it would be equal to $0.28$ (divided by $\sqrt{2}$).
+Regarding masked pixels $k$, we assigned $\covmatrNoise[k,\, k]$ to infinity and $\shearmap_i[k]$ to zero, following Eq.~\eqref{eq:maskedpixels}.
+
+The S10 catalog is based on observations conducted by the NASA/ESA \textit{Hubble} Space Telescope targeting the COSMOS field \citep{Scoville2007} as well as photometric redshift measurements from \citet{Mobasher2007}. It contains an average of $32$ galaxies per square arcminute over a wide range of redshifts, which is consistent with what is expected from forthcoming surveys such as \textit{Euclid}. This number excludes the galaxies with redshifts below $3.45 \times 10^{-2}$ and above $2.57$ for the sake of consistency with the $\kappa$TNG dataset \todo[what about CosmoSLICS?]\todo[only exclude redshifts above $2.6$?]. It also ignores the masked pixels, without any observed galaxy.
+An example of mock convergence map $\convmap_i$ from $\kappa$TNG, and the corresponding noisy shear map $\shearmap_i$, is provided in Fig.~\ref{fig:convshear}.
+
+\subsubsection{$\kappa$TNG cosmological hydrodynamic simulations}
+
+The $\kappa$TNG cosmological hydrodynamic simulations \citep{Osato2021} include realizations of $5 \times 5 \deg^2$ convergence maps for various source redshifts up to $z = 2.6$, at a $0.29$ arcmin per pixel resolution, assuming a flat $\Lambda$CDM universe. Only one set of cosmological parameters was used to run the simulations: $H_0 = 67.74 \km\cdot\s^{-1}\cdot\Mpc^{-1}$, $\Omega_{\baryon} = 0.0486$, $\Omega_{\matter} = 0.3089$, $n_{\spectralindex} = 0.9667$, and $\sigma_8 = 0.8159$. For training and validation, we respectively used $98$ and $2$ nearly independent realizations generated from a given lensing potential, that we randomly rotated and cropped to $384 \times 384$ pixels, until we reached $70\,560$ images for training and $1\,440$ for validation. For calibration and testing, we used $25$ nearly independent realizations generated from another lensing potential, that we simply cropped to $384 \times 384$ pixels in a non-overlapping way (accounting for the COSMOS boundaries). We then obtained $125$ images for testing and $100$ images for calibration. \todo[extract images from augmented dataset for calibration as well?]
+
+\subsubsection{CosmoSLICS}
+
+In practice, the true set of cosmological parameters is unknown; the ultimate goal is precisely to restrict the range of plausible values for these parameters. A possible solution to avoid biases in our reconstruction is to train the denoiser on a dataset where the mock convergence maps are generated from a prior distribution of cosmological parameters. Additionally, we would like to test the robustness of our approach with respect to distribution shifts. To these ends, we used the CosmoSLICS dataset, \todo[describe the dataset].
+
+Note that, in this case, the coverage guarantee stated in Eq.~\eqref{eq:miscoveragerate_cqr} is marginalized over the distribution of cosmological parameters and may not hold for a specific cosmology. This caveat could be mitigated---although not entirely solved---by applying conditional conformal prediction, as explained in \todo.
+
+\subsection{Other implementation details}
+
+\subsubsection{Parameters for PnPMass}
+\label{subsubsec:experiments_impl_pnpmass}
+
+With the specific value of $\covmatrNoise$ introduced in Sect.~\ref{subsec:experiments_datasets}, the step size $\stepsize$ must be chosen between $0$ and $0.149$, according to Eq.~\eqref{eq:stepsize2}. The upper bound was estimated using the power iteration method. To assess the sensitivity of PnPMass to this parameter, we have tested several values of $\stepsize$ between these bounds, and slightly beyond \todo[start from a smaller step size?].
+
+\subsubsection{Uncertainty quantification parameters}
+\label{subsubsec:experiments_impl_uq}
+
+We selected a target error rate $\alpha$ such that $\cdf^{-1}\!\left(
+    1 - \alpha/2
+\right) = 2$, where the CDF $\cdf$ was introduced in Eq.~\eqref{eq:errbars}. This setting, referred to as $2\sigma$-confidence, corresponds to $\alpha \approx 0.046$. We note that higher confidence levels require larger calibration sets due to the finite-sample correction: The CQR algorithm selects the $(1 - \alpha)(1 + 1/\sizeCalibrationset)$-th empirical quantile of the conformity scores, which by definition must remain below $100\%$. Consequently, a $2\sigma$-confidence requires at least $\sizeCalibrationset = 21$ calibration samples, versus $\sizeCalibrationset = 370$ at $3\sigma$ and $\sizeCalibrationset = 15\,787$ at $4\sigma$.
+
+\subsubsection{Denoiser training and PnPMass implementation}
+\label{subsubsec:experiments_impl_training}
+
+We trained a CNN-based model called DRUNet \citep{ZhangPlugandPlayImage2022} on the one hand, and a Swin Transformer-based model called SUNet \citep{Fan2022} on the other hand. To enforce zero-mean solutions, a mean centering layer was added to the output of both models.
+Unlike SUNet, DRUNet is noise level aware, meaning that it takes as input the noisy images along with the desired noise standard deviation, which is set to the step size $\stepsize$ during inference with PnPMass, according to Eq.~\eqref{eq:covmatrwhitenoise}.
+As confirmed by our experiments, although SUNet is expected to produce near state-of-the-art results on denoising tasks for which it has been explicitly trained, DRUNet is known to produce more accurate solutions in a PnP context. This behavior can be explained by the noise-aware property of DRUNet, whereas SUNet must infer the noise level from input images alone, possibly amplifying errors at each iteration. We note that this setting is also more consistent with the assumption made in Eq.~\eqref{eq:deepmodelasprox} to justify the analogy with the FBS algorithm, since both sides of the equation---involving the denoiser $\deepmodelTrained(\cdot,\, \stepsize)$ to the left and the proximal mapping $\prox_{\stepsize\regfun}$ to the right---depend on the step size~$\stepsize$.
+
+Both models were trained using Adam with an $\ell^2$-loss, on $20$ epochs for $\kappa$TNG and $100$ epochs for CosmoSLICS \todo[also show results with $\ell^1$-loss?]. For each input image and each epoch, the noise standard deviation were randomly picked between $0.1$ and $0.2$ \todo[train between $0$ and $0.2$?]. The learning rate was decreased by a factor of $10$ four times during training. Other model and training parameters are reported in Table~\ref{table:trainingparams}.
+
+% Tabular summarizing the training parameters
+\begin{table}
+    \caption{Model and training hyperparameters.}
+    \label{table:trainingparams}
+    \vspace{-5pt}
+    \small
+    \centering
+	\setlength{\tabcolsep}{4pt}
+	\renewcommand{\arraystretch}{1.1}
+    \begin{tabular}{r|c|c}
+        \hline\hline
+        & DRUNet & SUNet \\
+        \hline
+        Nb of train.\@ parameters ($\times 10^6$) & $1.16^\ast$ & $7.25^\ast$ \\
+        Noise level aware & \cmark & \xmark \\
+        Batch size & $32$ & $16$ \\
+        Initial learning rate & $10^{-4}$ & $10^{-3}$ \\
+        \hline
+    \end{tabular}
+    \begin{minipage}{\linewidth}
+    \vspace{5pt}
+    \footnotesize
+    \textbf{Notes.} 
+    $^\ast$In order to reduce computational costs, both models were implemented in a version lighter than originally proposed, with a smaller number of intermediate channels.
+    \end{minipage}
+\end{table}
+
+Regarding UQ, order-2 moment networks $\deepmodelbisTrained$ were trained using the same architectures and training parameters as the denoiser, except for the final layer, where mean centering was replaced by ReLU to enforce nonnegative solutions. The training set was built from the same dataset as the denoiser $\deepmodelTrained$, the ground truth being obtained from Eq.~\eqref{eq:groundtruth_order2}.
+
+Our implementation is based on the DeepInverse library \citep{TachellaDeepInverseDeep2023},\footnote{\url{https://deepinv.github.io/deepinv/index.html}} with PyTorch backend.
+
+\section{Results and discussion}
+
+\begin{figure*}
+	\centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/pnpmass_iterations_drunet.pdf}
+        \vspace{-8pt}
+        \caption{}
+        \label{subfig:pnpmass_iterations_drunet}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/pnpmass_iterations_sunet.pdf}
+        \vspace{-8pt}
+        \caption{}
+        \label{subfig:pnpmass_iterations_sunet}
+    \end{subfigure}
+    \vspace{-5pt}
+    \caption{Evolution of the RMSE along PnPMass iterations computed on the $\kappa$TNG test set. (a) DRUNet: The RMSE decreases during the first three iterations, before stabilizing or increasing. The reconstruction accuracy improves with increasing step size---within the admissible bounds. (b) SUNet: The RMSE generally increases after the first iteration, leading to a reconstruction accuracy significantly degraded compared with DRUNet. \todo[Move Fig. 3b to the appendix? As well as explanation about noise-aware property of DRUNet?]}
+\label{fig:pnpmass_iterations}
+\end{figure*}
+
+\subsection{Reconstruction accuracy}
+
+\subsubsection{PnPMass iterations}
+
+We have run PnPMass for $8$ iterations and plotted the evolution of the root-mean-square error (RMSE), for various step sizes $\stepsize$, using DRUNet and SUNet. The RMSE is restricted to active pixels. The results are shown in Fig.~\ref{fig:pnpmass_iterations}.
+
+First, we observe that SUNet produces significantly degraded solutions compared with DRUNet. As explained in Sect.~\ref{subsubsec:experiments_impl_training}, this phenomenon is consistent with the fact that SUNet is noise unaware, and must therefore infer the noise level from the input images, which may amplify errors at each iteration.
+Focusing on DRUNet, we observe that the RMSE decreases significantly during the first three iterations, and then stabilizes or even increases, depending on the value of $\stepsize$.
+Therefore, for our subsequent experiments, early stopping was applied after only $3$ iterations.
+Moreover, this experiment confirms our intuition that $\stepsize$ must be chosen near the upper bound from Eq.~\eqref{eq:stepsize2} to yield the most accurate results.
+% to get a point estimate $\convmapEstimate$, before running an additional iteration using the order-2 moment network $\deepmodelbisTrained$ instead of $\deepmodelTrained$, to get a variance estimate $\varmapEstimate$.
+
+\subsubsection{Benchmark against other approaches}
+
+We have compared the performance of the Wiener, MCALens, DeepMass and PnPMass algorithms in terms of reconstruction accuracy (RMSE for active pixels). The results are displayed in Table~\ref{table:rmse}. We observe that PnPMass competes with state-of-the-art methods such as DeepMass. Note that we haven't reproduced the results for DeepPosterior or MMGAN. However, as claimed by their authors, these methods are expected to perform similarly to DeepMass, and therefore we expect similar results.
+
+\begin{table}
+    \caption{Reconstruction accuracy.}             
+    \label{table:rmse}
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \vspace{-5pt}
+    \small
+    \begin{centering}
+    \small
+    \begin{tabular}{ r | r r r r }
+        \hline\hline
+        & \multicolumn{4}{c}{RMSE ($\times 10^{-3}$)} \\
+        \multicolumn{1}{c|}{Dataset} & \multicolumn{1}{c}{Wiener$^\ast$} & \multicolumn{1}{c}{MCALens$^\star$} & \multicolumn{1}{c}{DeepMass$^\dagger$} & \multicolumn{1}{c}{\textbf{PnPMass}$^\ddagger$} \\
+        \hline
+        $\kappa$TNG & $18.3 \pm 1.2$ & $18.0 \pm 1.0$ & $\mathbf{17.5 \pm 0.9}$ & $\mathbf{17.5 \pm 0.9}$ \\
+        CosmoSLICS &  \\
+        \hline
+    \end{tabular}
+    \end{centering}
+    \begin{minipage}{\linewidth}
+        \vspace{5pt}
+        \footnotesize
+        \textbf{Notes.} 
+        The RMSE was computed over active pixels, for each test example. Then, the mean and standard deviation were computed over the test set. $^\ast$Wiener was run for $12$ iterations. $^\star$MCALens was run for $100$ iterations, with a $5\sigma$-detection threshold. $^\dagger$DeepMass was trained on a UNet architecture with $280$k parameters, following \citet{Jeffrey2020}. $^\ddagger$PnPMass was run for $3$ iterations with a step size $\stepsize = 0.14$, using DRUNet as the denoiser. \todo[Step size for Wiener and MCALens?]\todo[Power spectrum]
+    \end{minipage}
+\end{table}
+
+\subsection{Uncertainty quantification results}
+
+For each mass mapping method introduced above and each example in the $\kappa$TNG test set, we computed the lower and upper bounds before and after calibration. Then, we measured the empirical miscoverage rate, that is, the percentage of active pixels falling outside the predicted bounds.
+For Wiener and MCALens, the error bars were simply initialized to $0$ before calibration. Regarding DeepMass and PnPMass, the error bars before calibration were obtained using appropriate order-2 moment networks, as described in Sects.~\ref{subsubsec:uq_mn_deepmass} and \ref{subsubsec:uq_mn_pnp}, respectively.
+The results are displayed in Fig.~\ref{fig:miscoveragerate}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\columnwidth]{img/miscoveragerate.pdf}
+    \vspace{-10pt}
+    \caption{Empirical miscoverage rate before and after calibration with CQR, computed over active pixels for each test example from the $\kappa$TNG dataset. The mass mapping algorithms were run with the same parameters as in Table~\ref{table:rmse}.
+    The theoretical bounds for CQR introduced in Eq.~\eqref{eq:miscoveragerate_cqr} are represented by the yellow area, whereas the target $\alpha$ is represented by the red dashed horizontal line.
+    For Wiener and MCALens, the error bars before calibration were simply set to $0$; therefore the miscoverage rate is only displayed after calibration. Regarding DeepMass and PnPMass, the error bars before calibration were obtained using appropriate order-2 moment networks.}
+    \label{fig:miscoveragerate}
+\end{figure}
+
+We observe that, in our example, DeepMass does not even need calibration, since the error bars initialized with the moment network approach leads to a miscoverage rate close to the target $\alpha$.
+\todo[check calibration for DeepMass]
+However, regarding PnPMass, the moment network approach only yields approximate error bars, as explained in Sect.~\ref{subsec:uq_cqr}, which explains the miscoverage rate being slightly above the target $\alpha$. Therefore, calibration is needed in this case.
+
+Note that we could have initialized the error bars to $0$ for all mass mapping methods, eliminating the need for training a second deep neural network for DeepMass and PnPMass. However, the resulting error bars after calibration would be independent of the input images for each given pixel location, leading to higher miscoverage rates near peak values, as observed in Fig.~\ref{fig:convestimates} for Wiener and MCALens. Moreover, their size would be larger to compensate for the poorer initialization. \todo[run experiments?]
+
+A visual example of a reconstructed convergence map together with its prediction bounds is provided in Fig.~\ref{fig:convestimates}, whereas a scatter plot summarizing the various metrics discussed in this study is presented in Fig.~\ref{fig:summary}. Both figures are based on the $\kappa$TNG test set. \todo[add comments]
+
+\begin{figure*}
+    \centering
+    \small
+    \vspace{-8pt}
+    \begin{tikzpicture}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Point estimates
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \node (wiener) {\includegraphics[height=0.19\textwidth, trim={0 0 50pt 0}, clip]{img/wiener.png}};
+        \node[anchor=west, xshift=15pt] (mcalens) at (wiener.east) {\includegraphics[height=0.19\textwidth, trim={0 0 50pt 0}, clip]{img/mcalens.png}};
+        \node[anchor=west, xshift=15pt] (deepmass) at (mcalens.east) {\includegraphics[height=0.19\textwidth, trim={0 0 50pt 0}, clip]{img/deepmass.png}};
+        \node[anchor=west, xshift=15pt] (pnpmass) at (deepmass.east) {\includegraphics[height=0.19\textwidth]{img/pnpmass.png}};
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Bounds
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \node[anchor=north, yshift=9pt] (wiener_low) at (wiener.south) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/wiener_addcqr_low.png}};
+        \node[anchor=west, xshift=15pt] (mcalens_low) at (wiener_low.east) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/mcalens_addcqr_low.png}};
+        \node[anchor=west, xshift=15pt] (deepmass_low) at (mcalens_low.east) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/deepmass_addcqr_low.png}};
+        \node[anchor=west, xshift=15pt] (pnpmass_low) at (deepmass_low.east) {\includegraphics[height=0.19\textwidth]{img/pnpmass_addcqr_low.png}};
+
+        \node[anchor=north, yshift=9pt] (wiener_high) at (wiener_low.south) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/wiener_addcqr_high.png}};
+        \node[anchor=west, xshift=15pt] (mcalens_high) at (wiener_high.east) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/mcalens_addcqr_high.png}};
+        \node[anchor=west, xshift=15pt] (deepmass_high) at (mcalens_high.east) {\includegraphics[height=0.19\textwidth, trim={0 0 52pt 0}, clip]{img/deepmass_addcqr_high.png}};
+        \node[anchor=west, xshift=15pt] (pnpmass_high) at (deepmass_high.east) {\includegraphics[height=0.19\textwidth]{img/pnpmass_addcqr_high.png}};
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Captions (columns)
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \node (wiener caption) at (wiener.north) {Wiener$^\ast$};
+        \node (mcalens caption) at (mcalens.north) {MCALens$^\ast$};
+        \node (deepmass caption) at (deepmass.north) {DeepMass$^\dagger$};
+        \node[xshift=-12pt] (pnpmass caption) at (pnpmass.north) {\textbf{PnPMass (ours)}$^\dagger$};
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Captions (rows)
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \node[xshift=-2pt, rotate=90] (pointestimate 1) at (wiener.west) {$\convmapEstimate$};
+
+        \node[xshift=-2pt, rotate=90] (nocalib low 1) at (wiener_low.west) {$\convmapEstimateLowCQR - \convmap$};
+        \node[xshift=-2pt, rotate=90] (nocalib high 1) at (wiener_high.west) {$\convmapEstimateHighCQR - \convmap$};
+
+        \end{tikzpicture}
+    \vspace{-8pt}
+    \caption{Top row: Point estimate, $\convmapEstimate$. Bottom rows: Lower and upper bounds, $\convmapEstimateLowCQR$ and $\convmapEstimateHighCQR$, after calibration with CQR, for each mass mapping method. The algorithms were run with the same parameters as in Table~\ref{table:rmse}. The $\kappa$TNG dataset was used for both training and inference. For visualization purpose, the bounds have been centered with respect to the ground truth $\convmap$, which is displayed in Fig.~\ref{fig:convshear}. $^\ast$Zero-sized error bars before calibration. $^\dagger$Error bars before calibration obtained using appropriate order-2 moment networks. \todo[replace PNG by PDF files]}
+    \label{fig:convestimates}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[trim=0 0 0 7pt, clip, width=\columnwidth]{img/summary.pdf}
+    \caption{Mean length of prediction intervals plotted against reconstruction accuracy, before and after calibration. The marker colors indicate empirical miscoverage rates. The metrics are computed over the $\kappa$TNG test set. As in Fig.~\ref{fig:miscoveragerate}, Wiener and MCALens results are only displayed after calibration, since their error bars were initialized to $0$. \todo[update DeepMass]
+    %Moreover, DeepMass does not need calibration since the error bars initialized with the moment network approach lead to a miscoverage rate close to the target $\alpha$. However, the size of the error bars are slightly underestimated for PnPMass, which is corrected by calibration.
+    }
+    \label{fig:summary}
+\end{figure}
+
+\subsection{Ablation study: Robustness to distribution shifts}
+
+To assess the robustness of our approach to distribution shifts, we have conducted an ablation study by training the denoiser on a subset of CosmosSLICS where we have excluded half of the cosmologies, and then testing on the other half. \todo[add more details] 
+
+\section{Conclusion}
+\label{sec:concl}
+
+\section*{Data availability}
+
+To ensure reproducibility, all software, scripts, and notebooks used in this study are available on GitHub.\footnote{\url{https://github.com/hubert-leterme/weaklensing_uq.git}} \todo[to be updated]
+
+\todo[Re-train models on images of size $384 \times 384$ pixels, for consistency between DRUNet and SUNet]
+\todo[Computation time]
+\todo[Write algorithm]
+
+\begin{acknowledgements}
+    This work was funded by the TITAN ERA Chair project (contract no.\@ 101086741) within the Horizon Europe Framework Program of the European Commission, and the French Agence Nationale de la Recherche (ANR-22-CE31-0014-01 TOSCA and ANR-18-CE31-0009 SPHERES).
+\end{acknowledgements}
+
+% WARNING
+%-------------------------------------------------------------------
+% Please note that we have included the references to the file aa.dem in
+% order to compile it, but we ask you to:
+%
+% - use BibTeX with the regular commands:
+\bibliographystyle{bibtex/aa} % style aa.bst
+\bibliography{bibtex/refs} % your references Yourfile.bib
+%
+% - join the .bib files when you upload your source files
+%-------------------------------------------------------------------
+
+% \begin{appendix}
+
+% \end{appendix}
+
+\end{document}

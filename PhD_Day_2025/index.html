@@ -1,0 +1,2194 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Presentation for PhD Day, Dec 2025</title>
+	<meta name="description" content="A basic template to start a new talk">
+	<meta name="author" content="Andreas Tersenov">
+
+
+	<link rel="stylesheet" href="reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+	<link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+		rel="stylesheet">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Global footer text (hidden on slide 1 via JS below) -->
+			<!-- <div class="global-footer-text" id="vf">Vilasini PhD Defence - 22 October 2025</div> -->
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-background-iframe="background.html">
+				<div class="container">
+					<div class="title" style="border-radius: 20px; background-color:rgba(0, 0, 0, 0.5);">
+						<h2><b class="alert">Weak Lensing Mass Mapping and Higher-Order Statistics for Precision
+								Cosmology</b>
+						</h2>
+						<h3>December 2nd, 2025</h3>
+					</div>
+				</div>
+				<hr>
+				<div style="border-radius: 20px; background-color:rgba(0, 0, 0, 0);">
+					<!-- <div class="container">
+						<div class="col">
+							<div align="left" style="margin-left: 20px;">
+								<h3>Andreas Tersenov</h3>
+								<br>
+								<img src="assets/forth_en1.png" class="plain" height="60"></img>
+								<br>
+							</div>
+						</div>
+
+						<div class="col">
+							<br>
+							<br>
+							<br>
+							<img src="assets/logo-FORTH-IoA_1.png" class="plain" height="70"></img>
+						</div>
+						<div class="col">
+		<br>
+							<br>
+							<br>
+							<img src="assets/logo-FORTH-IoA_2.png" class="plain" height="100"></img>
+						</div>
+						<div class="col">
+							<br>
+							<br>
+							<br>
+							<br>
+							<img src="assets/logo-crete.png" class="plain" height="120"></img>
+						</div>
+					</div>
+					 <div> slides at <a
+							href="https://andreastersenov.github.io/talks/TITAN_Crete_2025/">andreastersenov.github.io/talks/TITAN_Saclay_2025/</a>
+					</div> -->
+					<div class="container">
+						<div class="col">
+							<div align="left" style="margin-left: 20px;">
+								<h3>Andreas Tersenov </h3>
+								<em>PhD Day, December 2nd, 2025</em>
+								<br>
+								<br>
+								<img src="assets/ICS-for-print-en_cropped.png" class="plain" height="80"></img>
+								<br>
+							</div>
+						</div>
+						<div class="col">
+							<br>
+							<br>
+							<br>
+							<br>
+							<img src="assets/oie_DGCLMBA7vVI8.png" class="plain" height="150"></img>
+						</div>
+						<div class="col">
+							<br>
+							<br>
+							<br>
+							<br>
+							<img src="assets/CosmoStatDarkBK.png" class="plain" height="80"></img>
+						</div>
+					</div>
+
+					<!-- <div> <em>if you are seeing this in pdf, a nicer version of the slides is available at</em> <a
+							href="https://andreastersenov.github.io/talks/COLOURS_Saclay_2025/">andreastersenov.github.io/talks/COLOURS_Saclay_2025/</a>
+					</div> -->
+
+				</div>
+			</section>
+
+			<!--########################## MOTIVATION ############################-->
+			<section data-background-video="assets/science-lss.MP4" data-background-video-speed="5">
+				<div style="
+					position:fixed; right:70px; bottom:-750px;  /* bump right to avoid slide number */
+					background:rgba(0,0,0,.55); color:#e9e9f0;
+					padding:3px 8px; border-radius:999px; font-size:.8rem;
+					border:1px solid rgba(255,255,255,.18); z-index:1000;">
+					© Greg Bacon/STScI/NASA Goddard Space Flight Center
+				</div>
+			</section>
+
+			<section data-auto-animate data-background="#000">
+				<h3 class="slide-title">What do we want to know about the Universe?</h3>
+				<div
+					style="display:grid; grid-template-columns:repeat(3,1fr); gap:25px; text-align:center;font-size:1.5em;">
+					<div>
+						<h4 style="color:#66b3ff;">The Beginning</h4>
+						<p>\(A_s, n_s, f_{NL}, \tau...\)</p>
+						<p style="color:#bbb;">Statistics of initial conditions</p>
+					</div>
+					<div>
+						<h4 style="color:#66b3ff;">The Content</h4>
+						<p>\(\Omega_m, \Omega_b, m_\nu,...\)</p>
+						<p style="color:#bbb;">Cosmic ingredients</p>
+					</div>
+					<div>
+						<h4 style="color:#66b3ff;">The Future</h4>
+						<p>\(H_0, \Omega_\Lambda, w_0, w_a...\)</p>
+						<p style="color:#bbb;">Expansion & dynamics</p>
+					</div>
+				</div>
+
+				<!-- ΛCDM block -->
+				<div class="block" style="max-width:1150px; margin:0 auto;">
+					<h3 style="color:#66b3ff;"> ΛCDM model </h3>
+
+					<div class="block-content"
+						style="display:grid; grid-template-columns:50% 50%; align-items:center; gap:10px;">
+						<div style="text-align:left;">
+							<p class="muted small" style="margin-bottom:10px;">
+								The simplest framework that fits almost all cosmological observations with a minimal
+								parameter set.
+							<p>But it is not without its challenges.</p>
+							<ul style="margin-left:20px;">
+								<li>How is matter distributed in the Universe?</li>
+								<li>How does structure grow over time?</li>
+								<li>Cosmological tensions (e.g., \(H_0\)).</li>
+							</ul>
+							</p>
+						</div>
+						<figure style="margin:0;">
+							<img src="assets/dedm_pie_chart.001.jpeg" alt="Energy-matter budget" style="max-width:100%; height:auto; max-height:35vh;
+								   border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,.4);" />
+						</figure>
+					</div>
+				</div>
+			</section>
+
+
+			<section data-auto-animate data-background="#000">
+				<h3 class="slide-title">Probes of the Universe</h3>
+
+				<div class="block" style="max-width:1150px; margin:0 auto;">
+					<div class="block-content"
+						style="display:grid; grid-template-columns:58% 42%; align-items:start; gap:6px;">
+						<div style="justify-self:start; max-width:600px; width:100%;
+									max-height:none; overflow:visible; border-radius:10px;">
+							<table
+								style="width:100%; border-collapse:collapse; font-size:0.85em; line-height:1.3; table-layout:fixed;">
+								<thead>
+									<tr style="background-color:#333333; color:#ffaa7f;">
+										<th style="padding:4px; border-bottom:1px solid #444; width:32%;">Description
+										</th>
+										<th style="padding:4px; border-bottom:1px solid #444; width:20%;">Param.</th>
+										<th style="padding:4px; border-bottom:1px solid #444; width:40%;">Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+								background:var(--bg);
+								box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+											0 0 1px 1px var(--glow);
+								border-radius:8px;">
+										<td style="padding:4px;">Hubble parameter</td>
+										<td style="padding:4px;">\( H_0 \)</td>
+										<td style="padding:4px;">\( 67.66 \pm 0.42\ \mathrm{km\,s^{-1}\,Mpc^{-1}} \)
+										</td>
+									</tr>
+									<tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+										<td style="padding:4px;">Total matter density</td>
+										<td style="padding:4px;">\( \Omega_m \)</td>
+										<td style="padding:4px;">\( 0.3111 \pm 0.0056 \)</td>
+									</tr>
+									<tr>
+										<td style="padding:4px;">Dark matter density</td>
+										<td style="padding:4px;">\( \Omega_c h^2 \)</td>
+										<td style="padding:4px;">\( 0.11933 \pm 0.00091 \)</td>
+									</tr>
+									<tr>
+										<td style="padding:4px;">Baryon density</td>
+										<td style="padding:4px;">\( \Omega_b h^2 \)</td>
+										<td style="padding:4px;">\( 0.02242 \pm 0.00014 \)</td>
+									</tr>
+									<tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+										<td style="padding:4px;">Dark energy density</td>
+										<td style="padding:4px;">\( \Omega_\Lambda \)</td>
+										<td style="padding:4px;">\( 0.6889 \pm 0.0056 \)</td>
+									</tr>
+									<tr style="--glow:#c38bff; --bg:rgba(195,139,255,0.08);
+									background:var(--bg);
+									box-shadow:0 0 0 1px rgba(195,139,255,0.35) inset,
+												0 0 1px 1px var(--glow);
+									border-radius:8px;">
+										<td style="padding:4px;">Power spectrum normalisation</td>
+										<td style="padding:4px;">\( \sigma_8 \)</td>
+										<td style="padding:4px;">\( 0.8102 \pm 0.0060 \)</td>
+									</tr>
+									<tr>
+										<td style="padding:4px;">Spectral index</td>
+										<td style="padding:4px;">\( n_s \)</td>
+										<td style="padding:4px;">\( 0.9665 \pm 0.0038 \)</td>
+									</tr>
+									<tr>
+										<td style="padding:4px;">Reionisation optical depth</td>
+										<td style="padding:4px;">\( \tau \)</td>
+										<td style="padding:4px;">\( 0.0561 \pm 0.0071 \)</td>
+									</tr>
+									<tr>
+										<td style="padding:4px;">Sum of neutrino masses</td>
+										<td style="padding:4px;">\( M_\nu \)</td>
+										<td style="padding:4px;">\( < 0.12\ \mathrm{eV} \)</td>
+									</tr>
+								</tbody>
+							</table>
+							<p style="margin-top:15px; font-size:0.85em; color:#aaa;">
+
+								<a href="https://arxiv.org/abs/1807.06209" target="_blank" rel="noopener">
+									Planck Collaboration, “Planck 2018 results. VI. Cosmological parameters”,
+									<i>A$\&$A</i>
+								</a>
+							</p>
+						</div>
+						<div style="text-align:left;">
+							<p class="muted small" style="margin-bottom:10px;">
+								Different cosmological probes capture different physical aspects of the Universe:
+							</p>
+							<figure
+								style="margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; min-height:60vh;">
+								<img src="assets/probes.png" alt="Cosmological probes overview"
+									style="max-height:80vh; width:auto; object-fit:contain; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.38);"
+									loading="lazy" decoding="async">
+								<figcaption style="font-size:0.95rem; color:#a8b2c7; letter-spacing:.2px;">
+									Key cosmological probes
+									<div style="font-size:0.75rem; color:#777; text-align:center; max-width:80%;">
+										Clockwise: <b>CMB</b> - initial conditions | <b>BAO &amp; SNe</b> - geometry |
+										<b>Galaxy clustering</b> - matter growth | <b>Weak lensing</b> - total matter
+									</div>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section data-auto-animate data-background-video="assets/euclid_intro.mp4" data-background-interactive
+				data-background-video-muted data-background-size="cover" data-background-color="#000">
+				<div style="
+						position:absolute; inset:0;
+						background: radial-gradient(400px 800px at 70% -10%, rgba(0,0,0,.45) 0%, rgba(0,0,0,.78) 65%);
+						pointer-events:none; z-index:0;">
+				</div>
+				<div style="
+						position:absolute; inset:1;
+						display:flex; align-items:center; justify-content:center;
+						padding:3vh 3vw;font-size:1em;   
+						line-height:1.;">
+					<div class="overlay-card" style="
+							max-width:1380px;
+							max-height:88vh;
+							overflow:auto;
+							text-align:left;
+							padding:5vh 5vw;
+							background: rgba(0, 0, 0, 0.3);
+							border-radius: 20px;">
+
+						<h3 class="slide-title" style="font-size:1.6em;">Euclid: Mapping the Dark Universe</h3>
+						<p class="muted small" style="margin:0 0 12px 0;font-size: 1.1em;">
+							ESA mission using <b>lensing + clustering</b> to measure cosmic geometry and growth with
+							<b>percent-level precision</b>.
+
+						</p>
+
+						<div style="
+							display:grid;
+							grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+							gap:6px;
+							text-align:left; font-size:0.9em;">
+							<ul style="margin:0;">
+								<!-- <li >15 000 deg² extragalactic survey (6 years)</li> -->
+								<li><span class="alert">~1.5 billion galaxies </span> with shape + photo-z</li>
+								<li><span class="alert">Joint constraints on \( \Omega_m, \sigma_8, w_0, w_a \)</span>
+								</li>
+							</ul>
+							<ul style="margin:0;">
+								<!-- <li >VIS: optical imaging (550-900 nm) for galaxy shapes (WL)</li> -->
+								<!-- <li >NISP: NIR spectroscopy/photometry for clustering</li> -->
+								<li><span class="alert">Designed for precision dark-energy and gravity tests</span></li>
+							</ul>
+						</div>
+
+						<h4 style="margin:10px 0 8px 0; color:#6bdcff; font-size:1.1em;">Scientific objectives</h4>
+						<div style="
+							display:grid;
+							grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+							gap:14px; font-size:0.9em;">
+							<ul style="margin:0;">
+								<li>Constrain dark-energy EOS \(w_0, w_a\)</li>
+								<!-- <li>Measure growth history and test GR on cosmic scales</li> -->
+								<li>Percent-level constraints on \( \Omega_m, \sigma_8, H_0 \)</li>
+							</ul>
+							<ul style="margin:0;">
+								<li>Map matter distribution via weak-lensing tomography</li>
+								<!-- <li>Break geometry–growth degeneracies with WL × GC</li> -->
+								<li>Enable synergy with LSST, DESI, Planck</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section data-background-video="assets/wl_animation.mp4" data-background-video-loop
+				data-background-video-muted data-background-size="cover" data-background-color="#000">
+			</section>
+
+			<section
+				data-background-image="assets/Euclid_sees_spiral_galaxy_NGC_2188_and_galaxy_cluster_Abell_3381.jpg">
+				<!-- put this anywhere inside the slide section -->
+				<div style="
+				position:fixed; right:70px; bottom:-600px;  /* bump right to avoid slide number */
+				background:rgba(0,0,0,.55); color:#e9e9f0;
+				padding:3px 8px; border-radius:999px; font-size:.8rem;
+				border:1px solid rgba(255,255,255,.18); z-index:1000;">
+					© ESA / Euclid Consortium
+				</div>
+
+			</section>
+			<section data-background-image="assets/shearvskappa_.png">
+			</section>
+
+
+
+			<section data-auto-animate data-background="#000">
+				<h3 class="slide-title">Convergence \( \kappa \)</h3>
+				<div class="block" style="max-width:1150px; margin:0 auto;font-size:1.2em;">
+					<div class="block-content">
+						<!-- <p style="margin-bottom:8px;">
+						  The convergence field \( \kappa(\boldsymbol{\theta}) \) quantifies the <b>isotropic focusing</b> of light bundles by foreground matter; it is proportional to the <b>projected mass density</b>.
+						</p> -->
+						<!-- <p style="text-align:center; margin:8px 0;">
+						  \[
+							\kappa = \tfrac{1}{2}\!\left(\psi_{,xx}+\psi_{,yy}\right)
+							\;\propto\; \Sigma(\boldsymbol{\theta})
+						  \]
+						</p> -->
+						<p style="margin:6px 0;">
+							As a <b>Line-of-sight (LOS) projection</b> of the 3D overdensity:
+						</p>
+						<p style="text-align:center; margin:6px 0; font-size:0.95em;">
+							\[
+							\kappa(\boldsymbol{\theta})
+							= \int_{0}^{\chi_s}\! d\chi\; W(\chi)\,\delta(\chi\,\boldsymbol{\theta},\chi),\qquad
+							W(\chi)=\frac{3H_0^2\Omega_m}{2c^2}\,\frac{\chi(\chi_s-\chi)}{a(\chi)\,\chi_s}.
+							\]
+						</p>
+						<ul class="muted small" style="margin-top:10px;">
+							<li>Encodes both <i>geometry</i> (via \( \chi, a(\chi) \)) and <i>growth</i> (via \( \delta
+								\)).</li>
+						</ul>
+						<img src="assets/WL_mass_map.png" alt="Convergence map" class="img"
+							style="width:80%; height:auto; max-height:40vh; margin-top:12px; border-radius:10px;">
+						<div class="small muted" style="text-align:right; margin-top:4px;">
+							Simulated \( \kappa(\boldsymbol{\theta}) \) map.
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+
+
+			<section data-background="#000">
+				<h3 class="slide-title">The Bayesian Framework for Cosmological Inference</h3>
+
+				<!-- Flow: Parameters → Likelihood → Posterior -->
+				<div
+					style="display:flex; justify-content:center; align-items:center; gap:20px; margin:25px 0; font-size:0.95em;">
+					<div style="background:linear-gradient(145deg,#1a1a1a,#222);
+						   border:1px solid #444; border-radius:8px;
+						   padding:15px 20px; width:130px; text-align:center;
+						   box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+						<b style="color:#6bdcff; font-size:0.9em;">Parameters</b><br>
+						<span style="font-size:1.1em;">\( \boldsymbol{\theta} \)</span>
+					</div>
+
+					<div style="font-size:1.5em; color:#999;">&#8594;</div>
+
+					<div style="background:linear-gradient(145deg,#181818,#202020);
+						   border:1px solid #555; border-radius:8px;
+						   padding:18px 25px; width:220px; text-align:center;
+						   box-shadow:0 4px 15px rgba(0,0,0,0.4);">
+						<b style="color:#ffaa7f; font-size:0.9em;">Likelihood</b><br>
+						<span style="font-size:0.9em;">\( p(x\,|\,\boldsymbol{\theta},\mathcal{M}) \)</span><br>
+						<span style="color:#999; font-size:0.75em;">Forward model of data given parameters</span>
+					</div>
+
+					<div style="font-size:1.5em; color:#999;">&#8594;</div>
+
+					<div style="background:linear-gradient(145deg,#1a1a1a,#222);
+						   border:1px solid #444; border-radius:8px;
+						   padding:15px 20px; width:145px; text-align:center;
+						   box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+						<b style="color:#6bdcff; font-size:0.9em;">Posterior</b><br>
+						<span style="font-size:1.1em;">\( p(\boldsymbol{\theta}\,|\,x,\mathcal{M}) \)</span>
+					</div>
+				</div> <!-- Bayes rule -->
+				<div style="text-align:center; font-size:1.1em; margin-top:15px;">
+					\[
+					p(\boldsymbol{\theta}\,|\,x,\mathcal{M})
+					\propto
+					\underbrace{p(x\,|\,\boldsymbol{\theta},\mathcal{M})}_{\text{likelihood}}
+					\underbrace{p(\boldsymbol{\theta}\,|\,\mathcal{M})}_{\text{prior}}
+					\]
+				</div> <!-- Definitions -->
+				<div style="margin-top:20px;">
+					<div class="block-title" style="font-size:0.95em;">Interpretation</div>
+					<div class="block-content">
+						<ul style="list-style:none; padding-left:0; font-size:0.9em; line-height:1.6;">
+							<li><b style="color:#6bdcff;">Prior</b> - belief about parameters before seeing data.</li>
+							<li><b style="color:#ffaa7f;">Likelihood</b> - probability of data given parameters.</li>
+							<li><b style="color:#6bdcff;">Posterior</b> - updated belief about parameters given data.
+							</li>
+						</ul>
+					</div>
+				</div> <!-- Tractability + segue to simulators -->
+				<div style="margin-top:18px;">
+					<!-- <div style="font-weight:600; color:#ffb6a6;">⟹ Classical Bayesian inference requires tractable posterior evaluation:
+						\( \log p(\boldsymbol{\theta}|x,\mathcal{M}) = \log p(x|\boldsymbol{\theta},\mathcal{M}) + \log p(\boldsymbol{\theta}|\mathcal{M}) + \text{const} \).
+					  </div> -->
+
+					<div style="margin-top:16px;">
+						<!-- <span style="display:block; font-weight:700; color:#e9dcff; border-left:4px solid #996699; padding-left:10px; font-size:1.1em;">
+						  Where do likelihoods come from?
+						</span>
+						<p style="margin-top:6px; color:#bbb; font-size:1.02em;">
+						  In practice (e.g., weak lensing), data are generated by complex <b>simulation models</b>, making analytic likelihoods intractable.
+						</p> -->
+						<!-- <span style="display:block; font-weight:700; color:#6bdcff; border-left:4px solid #6bdcff; padding-left:10px; font-size:1.05em;">
+						  Simulators as Hierarchical Bayesian Models
+						</span>
+						<p style="margin-top:6px; color:#bbb; font-size:1.02em;">
+						  If all latent variables \( z \) were accessible, the joint \( p(x\,|\,z,\boldsymbol{\theta}) \) is explicit, but marginalizing over \( z \) is typically intractable.
+						</p> -->
+					</div>
+				</div>
+			</section>
+
+			<section data-background="#000">
+				<h3 class="slide-title">Inference pipeline</h3>
+
+				<div
+					style="display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;font-size:0.95em;">
+
+					<!-- TOP: two sources, each with its own ↓ -->
+					<div style="display:flex;gap:25px;align-items:flex-start;justify-content:center;">
+
+						<!-- Observed data -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+							<div
+								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+								<b style="color:#6bdcff;font-size:0.9em;">Observed data</b><br>
+								\( \mathbf{d}_{\mathrm{obs}} \)
+							</div>
+							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+						</div>
+
+						<!-- Sim/Theory -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+							<div
+								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+								<b style="color:#ffaa7f;font-size:0.9em;">Simulations / Theory</b><br>
+								\( \mathbf{d}_{\mathrm{pred}}(\boldsymbol{\theta}) \)
+							</div>
+							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+						</div>
+
+					</div>
+
+					<!-- SUMMARY STAT -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:6px;">
+						<div
+							style="background:#202020;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+							<b style="color:#e7e7e7;font-size:0.9em;">Summary statistic</b>
+							\( s(\cdot) \)
+						</div>
+					</div>
+
+					<!-- ↓ to Likelihood -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+					</div>
+
+					<!-- LIKELIHOOD with formula inside -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div
+							style="position:relative;background:#1a1a1a;border:1px solid #555;border-radius:8px;padding:14px 20px;min-width:380px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,0.35);">
+							<b style="color:#ffaa7f;font-size:0.9em;">Likelihood</b><br>
+							\( p\!\left(s_{\mathrm{obs}}\mid\boldsymbol{\theta}\right) \) <br>
+							<span style="color:#ddd; font-size:0.85em;">
+								\[
+								\mathrm{L}(\boldsymbol{\theta})
+								\propto
+								\exp\!\Big[-\tfrac{1}{2}\,\Delta s^{\!\top}\,\mathbf{C}^{-1}\,\Delta s\Big],
+								\quad
+								\Delta s \!=\! s_{\mathrm{obs}}-s_{\mathrm{theory}}(\boldsymbol{\theta})
+								\]
+							</span>
+							<div style="position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
+									  background:#2a2a2a;border:1px solid #555;border-radius:999px;
+									  padding:2px 10px;font-size:0.8em;color:#bbb;">MCMC</div>
+						</div>
+					</div>
+
+					<!-- ↓ to Inference -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:12px;">
+						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+					</div>
+
+					<!-- INFERENCE -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div
+							style="background:#171717;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+							<b style="color:#6bdcff;font-size:0.9em;">Inference</b><br>
+							\( p\!\left(\boldsymbol{\theta}\mid s_{\mathrm{obs}}\right) \)
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+
+
+			<section data-background="#000">
+				<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+				<div
+					style=" display:grid; grid-template-columns:50% 50%; align-items:center; gap:10px; margin-top:20px; ">
+					<!-- <div> -->
+					<video src="assets/shear_correlation_animation.mp4" autoplay loop muted playsinline
+						style="width:90%; border:1px solid #333; border-radius:12px; box-shadow:0 0 24px rgba(0,0,0,0.5); background:#000;">
+					</video>
+					<!-- </div>				   -->
+					<div style="
+						  background:rgba(20,20,20,0.85);
+						  border-left:4px solid #6bdcff;
+						  border-radius:12px;
+						  padding:20px 28px;
+						  box-shadow:0 8px 20px rgba(0,0,0,.4);
+						  font-size:1.2em;
+						">
+						<div class="block-title"
+							style="background:#333; color:#FFAA7F; border-radius:8px; padding:8px 12px; margin:-8px -4px 10px;">
+							Concept
+						</div>
+						<div class="block-content" style="line-height:1.28;">
+							<ul style="margin:0;">
+								<li>Measure galaxy ellipticities \( \epsilon \) .</li>
+								<li>Compute the 2-pt functions.</li>
+								<li>Run MCMC with an analytic likelihood to recover posteriors:
+									<div style="margin-top:6px;">
+										\[
+										p(\theta \mid x)\;\propto\;
+										\underbrace{p(x \mid \theta)}_{\text{likelihood}}\,
+										\underbrace{p(\theta)}_{\text{prior}}
+										\]
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+			</section>
+			<section data-background="#000">
+				<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+				<div
+					style=" display:grid; grid-template-columns:50% 50%; align-items:center; gap:15px; margin-top:20px; ">
+					<div>
+						<img src="assets/kids_cls_constraint.jpeg"
+							style="width:52%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+
+						<div style="text-align:center; font-size:1.2em; color:#888;">
+							KiDS-1000 cosmic shear constraints using 2-point functions only
+							(<a href="https://academic.oup.com/mnras/article/515/2/1942/6625643" target="_blank"
+								style="color:#6bdcff;">Asgari et al. 2022</a>)
+						</div>
+					</div>
+					<div style="
+						  background:rgba(20,20,20,0.85);
+						  border-left:4px solid #6bdcff;
+						  border-radius:12px;
+						  padding:20px 28px;
+						  box-shadow:0 8px 20px rgba(0,0,0,.4);
+						  font-size:1.2em;
+						">
+						<div class="block-title"
+							style="background:#333; color:#FFAA7F; border-radius:8px; padding:8px 12px; margin:-8px -4px 10px;">
+							Concept
+						</div>
+						<div class="block-content" style="line-height:1.28;">
+							<ul style="margin:0;">
+								<li>Measure galaxy ellipticities \( \epsilon \) .</li>
+								<li>Compute the 2-pt functions.</li>
+								<li>Run MCMC with an analytic likelihood to recover posteriors:
+									<div style="margin-top:6px;">
+										\[
+										p(\theta \mid x)\;\propto\;
+										\underbrace{p(x \mid \theta)}_{\text{likelihood}}\,
+										\underbrace{p(\theta)}_{\text{prior}}
+										\]
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="fragment" style="
+						margin-top:14px;
+						background:rgba(20,20,20,0.85);
+						border-left:4px solid #FFAA7F;
+						border-radius:12px;
+						padding:12px 16px;
+						box-shadow:0 6px 16px rgba(0,0,0,.35);
+						text-align:center;
+						font-size:1.20em;
+						">
+					<strong style="font-size:1.2em;">…but is this sufficient?</strong>
+				</div>
+
+			</section>
+
+
+
+			<section data-background="#000">
+				<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+				<img src="assets/pk_lss.png"
+					style="width:85%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+				<br>
+				<br>
+			</section>
+
+			<section data-background="#000">
+				<h3 class="slide-title">Traditional Approach: The 2-Point Route</h3>
+				<img src="assets/2pt-phase-amp.png"
+					style="width:82%; height:auto; max-height:38vh; display:block; margin:25px auto; border-radius:10px; box-shadow:0 0 15px rgba(255,255,255,0.08);">
+				<ul style="font-size:1.5em">
+					<li>Efficient, but lose <b>non-Gaussian</b> info.</li>
+					<li><span style="color:#ffaa7f;">Non-Gaussian structure</span> lives in higher orders.</li>
+					<li>To access it → go beyond 2-pt: <b>Higher-Order Statistics (HOS)</b> (bispectrum, peak counts,
+						Minkowski Functionals etc).</li>
+				</ul>
+
+			</section>
+
+			<section data-background="#000">
+				<h3 class="slide-title">Indeed, HOS can tighten constraints significantly</h3>
+
+				<div style="display:flex; justify-content:center; align-items:center; margin-top:30px;">
+					<img src="assets/Virg1_.png" alt="Dark contours" style="max-width:90%; max-height:75vh; 
+								border-radius:20px;
+								box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+				</div>
+			</section>
+
+
+
+			<section data-background="#000">
+				<h3 class="slide-title">Simulation-Based Inference</h3>
+
+				<div style="display:flex; justify-content:center; align-items:center; margin-top:30px;">
+					<img src="assets/SBI_for_baryons.png" alt="Simulation-Based Inference Diagram" style="max-width:90%; max-height:75vh; 
+								border-radius:20px;
+								box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h2>Le problème en question</h2>
+				<div style="font-size: 1.2em; line-height: 1.6em;">
+					<ul>
+						<li><strong>Weak lensing inference</strong> with higher-order statistics (HOS) often relies on
+							<b class="alert">mass maps</b>.
+						</li>
+						<li>Producing these maps is an <span style="color: #e63946;"><strong>ill-posed inverse
+									problem</strong></span> — there is no unique solution.</li>
+						<li>Current surveys use <span style="color: #457b9d;">simplistic algorithms</span> because they
+							are computationally efficient.</li>
+					</ul>
+
+					<p class="fragment fade-in">
+						This raises an important question:
+					</p>
+					<blockquote class="fragment fade-in">
+						<b class="alert">Does the choice of mass mapping algorithm affect the inferred cosmological
+							parameters? </b>
+						<br>
+						Or does it not matter, as long as the same operator is applied to both data and simulations?
+					</blockquote>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">
+					<em class="alert">How to test this properly?</em>
+				</h3>
+				<br>
+				<p>
+					We need to create a pipeline that can:
+
+					<img src="assets/pipeline_white2.png" class="plain" />
+					<!-- <ul>
+					<li>Use it to investigate the impact of <b class="alert">mass mapping algorithms</b> on
+						cosmology constraints.</li>
+					<li>Use it on <b class="alert">UNIONS/CFIS</b> data to get observational constraints on
+						cosmology.</li>
+					<li>Use it to test <b class="alert">novel mass mapping methods</b></li>
+				</ul> -->
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+
+				<!-- ################################################################################################### -->
+
+				<section data-background-image="assets/gravitational-lensing-diagram.jpg">
+					<div class="fragment fade-up">
+						<h3 class="slide-title"><b class="alert"
+								style="border-radius: 10px; background-color:rgba(0, 0, 0, 0.8);">$\,$Introduction -
+								Weak
+								Lensing$\,$</b></h3>
+					</div>
+
+					<div class="fragment fade-up">
+						<div class="container" style="border-radius: 20px; background-color:rgba(0, 0, 0, 0.7)" ;>
+
+
+							<div class="col">
+								<ul>
+									<li><b class="alert">WL</b> = Observational technique in cosmology for studying the
+										matter
+										distribution in the universe</li>
+									<br>
+									<li><b class="alert">Principle:</b>
+										deflection of light from distant galaxies by gravitational fields &rarr; causes
+										image
+										distortion</li>
+									<br>
+									<li><b class="alert">Weak &rarr; </b> subtle & coherent distortions of background
+										galaxy
+										shapes
+									</li>
+									<!-- add a space between this and the next bullets -->
+									<!-- <br class="extra-space"></li> -->
+								</ul>
+							</div>
+							<div class="col">
+								<img src="assets/strong_vs_weak_lensing.png" class="plain" style="height: 300px;"></img>
+							</div>
+						</div>
+						<br>
+
+						<div class="fragment fade-up">
+							<div class="block">
+								<div class="block-title"></div>
+								<div class="block-content">
+									<ul style="list-style-type: square">
+										<li>WL provides a <span style="color: #49b649;">direct measurement of the
+												gravitational
+												distortion</span>.</li>
+										<li>WL enables us to <span style="color:  #49b649;">probe the cosmic
+												structure</span>,
+											<span style="color: #49b649;">investigate the nature of dark matter</span>,
+											and
+											<span style="color: #49b649;">constrain cosmological parameters</span>.
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<aside class="notes">
+						WL, a subtle bending of light from distant galaxies by intervening mass, serves
+						as a powerful probe into the dark sector of the universe, offering insights into the evolution
+						of dark-matter structures, as well as helping distinguish between dark energy and models of
+						modified gravity. By examining the shear and convergence fields derived from galaxy images, it
+						is
+						possible to map the distribution of dark matter and infer the properties of dark energy and the
+						nature of gravity on cosmic scales
+					</aside>
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section>
+					<h3 class="slide-title"> Shear & Convergence</h3>
+					<img src="assets/WL_distortions.png" alt="Weak Lensing Distortions" style="width:auto" ;
+						height="300">
+					<div class="fragment fade-up">
+						<div class="container">
+							<div class="col">
+								<div class="block">
+									<div class="block-title" style="text-align: center;">Convergence $\kappa$
+									</div>
+									<div class="block-content">
+										$$ \kappa = \frac{1}{2} (\partial_1 \partial_1 + \partial_2 \partial_2) \psi =
+										\frac12
+										\nabla^2 \psi $$
+										<hr style="height:6px; visibility:hidden;" />
+										<p style="text-align: center;"> &xrarr; <span style="color: red"> difficult to
+												measure
+											</span> </p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="block">
+									<div class="block-title" style="text-align: center;">Shear $\gamma$
+									</div>
+									<div class="block-content">
+										$$ \gamma_1 = \frac{1}{2} (\partial_1 \partial_1 - \partial_2 \partial_2) \psi,
+										\,\,
+										\gamma_2 = \partial_1 \partial_2 \psi $$
+										<p style="text-align: center;"> &xrarr; can be measured by statistical analysis
+											of
+											galaxy shapes </p>
+									</div>
+								</div>
+							</div>
+						</div>
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section data-background-image="assets/shear_background.jpg" data-visibility="hidden">
+					<h3 class="slide-title"> <b class="alert">Shear estimation</b></h3>
+					<div class="fragment fade-up">
+						<img class="plain" data-src="assets/great.jpg" />
+
+						<div class="block ">
+							<div class="block-title">
+								Galaxy shapes as estimators for gravitational shear
+							</div>
+							<div class="block-content">
+								$$ e = \gamma + e_i \qquad \mbox{ with } \qquad e_i \sim \mathcal{N}(0, I)$$
+								<ul>
+									<li> We are trying the measure the <b class="alert"> ellipticity $e$</b> of
+										galaxies as an estimator for the <b class="alert">gravitational shear $\gamma$
+										</b>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Relation between <b class="alert">$\kappa$</b> and <b class="alert">$\gamma$</b>
+				</h3>
+				<span class="fragment fade-in">
+					<img src="assets/Relation_btw_kappa_and_gamma.pdf" alt="Relation between $\kappa$ and $\gamma$"
+						style="width:auto" ; height="300">
+				</span>
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<ul>
+								<li>From <b class="alert">convergence</b> to <b class="alert">shear</b>: $\,\, \gamma_i
+									=
+									\hat{P}_i \kappa$</li>
+								<li>From <b class="alert">shear</b> to <b class="alert">convergence</b>: $\,\, \kappa =
+									\hat{P}_1 \gamma_1 + \hat{P}_2 \gamma_2$</li>
+							</ul>
+						</div>
+					</div>
+					<br>
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">
+								</div>
+								<div class="block-content">
+									<span style="color: gray;"> $$ \hat{P}_1(k)=\dfrac{k_1^2 - k_2^2}{k^2}, \,\,
+										\hat{P}_2(k)=\dfrac{2k_1k_2}{k^2} $$ </span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>
+				<div class="container">
+					<div class="col">
+						Shear <b class="alert">$\gamma$</b><br>
+						<img data-src="assets/shear_cat1.png" style="width:450px;"></img>
+					</div>
+
+					<div class="col fragment fade-up">
+						Convergence <b class="alert">$\kappa$</b><br>
+						<img data-src="assets/kappa.png" style="width:450px;"></img>
+					</div>
+				</div>
+
+				<div style="position:relative; width:1000px; height:100px; margin:0 auto;">
+					<div class="fragment current-visible plain fade-up"
+						style="position:absolute;top:0;left:0;width:1000px;">
+						$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 = \partial_1
+						\partial_2 \ \Psi \quad;\quad \kappa = \frac{1}{2} (\partial_1^2 + \partial_2^2) \ \Psi$$
+					</div>
+					<div class="fragment current-visible plain fade-up"
+						style="position:absolute;top:0;left:0;width:1000px;">
+						$$\boxed{\gamma = \mathbf{P} \kappa}$$
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Kaiser-Squires inversion</h3>
+				<ul>
+					<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an estimate of
+						the convergence from measurements of the shear
+
+						$$\kappa = \dfrac12 \Delta \psi, \,\, \gamma_1 = \dfrac12 \left( \partial_1^2 \psi -
+						\partial_2^2 \psi \right), \,\, \gamma_2 = \partial_1 \partial_2 \psi $$
+						$$\Rightarrow \kappa = \Delta^{-1} \left[ \left( \partial_1^2 - \partial_2^2 \right)
+						\gamma_1 +
+						2\partial_1 \partial_2 \gamma_2 \right] $$
+
+					</li>
+				</ul>
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title"> Kaiser-Squires estimator:
+								</div>
+								<div class="block-content">
+									$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2 k_1
+									k_2}{k^2}\right)\left(\tilde{\gamma}_1+i
+									\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i \tilde{\gamma}_2\right)
+									$$
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence E
+						and B
+						modes. </em>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">From galaxies to mass maps</h3>
+				<img src="assets/from_galaxies_to_mass_maps.pdf"> </img>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Mass mapping as an inverse problem</h3>
+				<br>
+				<ul>
+					<li>Binned data: $\gamma = F^* P F \, \kappa$</li>
+					<li>Unbinned data: $\gamma = T^* P F \, \kappa$</li>
+				</ul>
+				<br>
+				<br>
+				<em> <small>$T =$ Non Equispaced Disctrete Fourier Transform (NDFT) </small> </em>
+				<br><br><br>
+				<div class="block">
+					<div class="block-title">
+					</div>
+					<div class="block-content" align="center">
+						$$ \tilde{\boldsymbol{\kappa}}=\min _{\boldsymbol{\kappa}}\|\boldsymbol{\gamma}-\mathbf{A}
+						\boldsymbol{\kappa}\|_{\boldsymbol{\Sigma}_n}^2 $$
+						with $\mathbf{A} = \boldsymbol{F} \mathbf{P} \boldsymbol{F}^* $
+					</div>
+				</div>
+				<br><br><br>
+
+				<span style="color: red;">There is no unique and stable solution, it is an ill-posed problem.</span>
+			</section>
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Kaiser-Squires inversion</h3>
+				<div class="block; fragment fade-in">
+					<div class="block-title"> Advantages:
+					</div>
+					<div class="block-content">
+						<ul>
+							<li>Simple <em class="alert">linear</em> operator</li>
+
+							<li>Very easy to implement in Fourier space</li>
+
+							<li>Optimal, in theory</li>
+						</ul>
+					</div>
+				</div>
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title"> Practical difficulties:</div>
+								<div class="block-content">
+									<ul>
+										<li>Shear measurements are discrete, <b class="alert">noisy</b>, and <b
+												class="alert">irregularly sampled</b> </li>
+										<br>
+										<li>We actually measure the <i class="alert">reduced shear</i>: $g =
+											\gamma/(1-\kappa)$</li>
+										<br>
+										<li>Masks and integration over a subset of $\mathbb{R}^2$ lead to border errors
+											&rArr; <b class="alert">missing data problem</b></li>
+										<br>
+										<li>Convergence is recoverable up to a constant &rArr; <b
+												class="alert">mass-sheet
+												degeneracy problem</b> </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<img src="assets/residual_kappa.pdf" alt="Kaiser-Squires inversion" style="width:auto" ;
+								height="500">
+						</div>
+					</div>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Inpainting</h3>
+				<ul>
+					<li><b class="alert">Inpainting methods</b> &rarr; techniques to fill in missing data in images by
+						estimating the missing values from the known ones.</li>
+					<li>A way to deal with the <b class="alert">missing data problem</b> in mass mapping and
+						with the <b class="alert">border effects</b> in the convergence field.</li>
+					<li>Implement a <b class="alert">sparse inpainting</b> based on the DCT (assume that
+						the full $\kappa$-field is sparse in the DCT dictionary &rarr; apply an iterative thresholding
+						algorithm to recover the missing data).</li>
+
+					</li>
+				</ul>
+
+				<img src="assets/Inpainting.pdf" alt="Inpainting" style="width:auto">
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<section>
+					<h3 class="slide-title">Bayesian reconstruction</h3>
+
+					<span class="fragment fade-in">
+						<div class="block">
+							<div class="block-content">
+								<ul>
+									<li>Mass mapping problem &rarr; statistical inference problem</li>
+									<li><b class="alert">Goal</b>: infer most probable value of $\kappa$-field given
+										observed
+										shear data
+									</li>
+								</ul>
+							</div>
+						</div>
+						$$ \underbrace{p(\boldsymbol{\kappa} \mid \boldsymbol{\gamma}, \mathcal{M})}_{\text {Posterior
+						}}
+						\propto \underbrace{p(\gamma \mid \boldsymbol{\kappa}, \mathcal{M})}_{\text {likelihood }} \,\,
+						\underbrace{p(\boldsymbol{\kappa} \mid \mathcal{M})}_{\text {prior }} $$
+						<small> $\mathcal{M}$: cosmological model </small>
+					</span>
+
+					<br>
+					<span class="fragment fade-in">
+						<div class="block">
+							<div class="block-content">
+								<ul>
+									<li><b class="alert">Maximum A Posteriori solution:</b>
+										$\hat{x} = \arg \max_x \, \log p(y|x) + \log p(x)$
+									</li>
+								</ul>
+							</div>
+						</div>
+					</span>
+					<br>
+
+					<span class="fragment fade-in">
+						<div class="block">
+							<div class="block-content">
+								<ul>
+									<li>
+										<b class="alert">In practice:</b> this is usually solved iteratively by
+										alternating two steps:
+										<ul>
+											<li>Move toward better data fit (gradient of likelihood)</li>
+											<li>Enforce the prior using a <b>proximal operator</b></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</span>
+					<br>
+					<span class="fragment fade-in">
+						<div class="block">
+							<div class="block-title"> Proximal operator</div>
+							<div class="block-content">
+								<ul>
+									<li>
+										Acts as a "smart denoiser" by finding the closest solution that satisfies the
+										prior.
+									</li>
+									<li>
+										<em>Example</em>: sparsity prior &rarr; proximal operator performs thresholding
+										to enforce sparsity in the solution.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</span>
+
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section data-visibility="hidden">
+					<h3 class="slide-title">Wiener filter</h3>
+					<ul>
+						<li>Assumes <b class="alert">prior</b> on $\kappa$ &rarr; <b class="alert">Gaussian random
+								field</b> $p_{\rm Gauss}(\kappa) = \frac{1}{\sqrt{\det 2\pi \mathbf{S}}} \exp{\left( -
+							\frac12 \tilde{\kappa}^{\dagger} \mathbf{S}^{-1} \tilde{\kappa} \right)}$</li>
+						<br>
+						<li>Likelihood (assuming uncorrelated, Gaussian noise) &rarr; also <b class="alert">Gaussian</b>
+							$p(\mathbf{\gamma} | \kappa) = \frac{1}{\sqrt{2\pi\det \mathbf{N}}} \exp{\left[ -\frac12
+							(\mathbf{\gamma - \mathbf{A} \mathbf{\kappa}})^{\dagger} \mathbf{N}^{-1} ( \gamma -
+							\mathbf{A}
+							\mathbf{\kappa} ) \right]}$</li>
+						<br>
+						<li>The Gaussian prior <em class="alert">encodes the assumption</em> that the fluctuations in
+							the
+							$\kappa$-field are well described by a Gaussian random field, with <b class="alert">power
+								spectrum</b> given by the cosmological model</li>
+					</ul>
+					<br><br>
+					<div class="block">
+						<div class="block-title">Convergence power spectrum</div>
+						<div class="block-content">
+							$$ \langle \tilde{\kappa}(\boldsymbol{k}) \tilde{\kappa}^*(\boldsymbol{k}') \rangle =
+							(2\pi)^2
+							\delta_D(\boldsymbol{k} - \boldsymbol{k}') P_{\kappa}(k) $$
+							Stat. measure of the spatial distribution of the convergence field &rarr; quantifies the
+							amplitude of the fluctuations in κ as function of their spatial scale
+
+						</div>
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section data-visibility="hidden">
+					<h3 class="slide-title">Wiener filter</h3>
+					<div class="block">
+						<div class="block-title">Wiener solution of the inverse problem</div>
+						<div class="block-content">$$\hat{\kappa}_{\text {wiener }}=\arg \min _\kappa\left\|\Sigma^{-1 /
+							2}\left(\gamma-\mathbf{F}^* \mathbf{P F} \kappa\right)\right\|_2^2+\log p_{\text {Gaussian
+							}}(\kappa)$$</div>
+					</div>
+					<br>
+					<ul>
+						<li>This solution corresponds to the <b class="alert">maximum a posteriori</b> (MAP) solution
+							under
+							the assumption of a Gaussian prior on $\kappa$, and it matches the <b class="alert">mean</b>
+							of
+							the Gaussian posterior.</li>
+					</ul>
+
+					<br> <br>
+					<div class="block">
+						<div class="block-title">Wiener reconstruction</div>
+						<div class="block-content">$$\hat{\kappa}_{\text {wiener }}=\mathbf{S} \mathbf{P}^{\dagger}
+							\left[\mathbf{P} \mathbf{S} \mathbf{P}^{\dagger} + \mathbf{N} \right]^{-1} \tilde{\gamma}$$
+						</div>
+					</div>
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section data-visibility="hidden">
+					<h3 class="slide-title">Sparse recovery</h3>
+					<ul>
+						<li>Decomposes the signal into another domain (dictionary), where it is <b
+								class="alert">sparse</b>
+						</li>
+						<br>
+						<li>Implement the <em class="alert">wavelet transform</em> &rarr; decomposes the signal into <b
+								class="alert">wavelet functions</b> (waveforms of limited duration with an average value
+							of
+							zero)</li>
+					</ul>
+					<img src="assets/starlet_vs_gaussian_scales_multiplots.pdf" alt="Wavelets of different scales"
+						style="width: auto;">
+					<ul>
+						<li>Use <b class="alert">starlet wavelets</b> &rarr; represent well structures resembling the
+							$\kappa$ of a <b class="alert">DM halo</b> (positive & isotropic)</li>
+						<br>
+						<li>The application of sparsity prior <em class="alert">enforces</em> a cosmological model where
+							the
+							matter field is a combination of spherically symmetric DM halos</li>
+					</ul>
+				</section>
+
+				<!-- ################################################################################################### -->
+
+				<section>
+					<h3 class="slide-title">MCALens</h3>
+					<ul>
+						<li>Models $\kappa$-field as a sum of a <b class="alert">Gaussian</b> and <b
+								class="alert">non-Gaussian</b> component
+							$$\boxed{\kappa = \underbrace{\kappa_{\rm NG}}_{\text{Standard Wiener filter approach}} +
+							\underbrace{\kappa_\rm G}_{\text{Modified wavelet approach}}}$$
+							$$\min _{\kappa_G, \kappa_{N G}}\left\|\gamma-\mathbf{A}\left(\kappa_G+\kappa_{N
+							G}\right)\right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)+C_{\mathrm{NG}}\left(\kappa_{N
+							G}\right) $$ </li>
+						<br>
+						<li><b class="alert">MCA</b> (morphological Component Analysis) performs an alternating
+							minimization
+							scheme:
+							<br><br>
+							<ul>
+								<li>Estimate $\mathbf{\kappa}_{\mathrm{G}}$ assuming $\mathbf{\kappa}_{\mathrm{NG}}$ is
+									known: $$\min _{\kappa_G}\left\|\left(\gamma-\mathbf{A}\kappa_{N G}\right)
+									-\mathbf{A}\kappa_{G} \right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)$$
+								</li>
+								<li>Estimate $\mathbf{\kappa}_{\mathrm{NG}}$ assuming $\mathbf{\kappa}_{\mathrm{G}}$ is
+									known: $$\min _{\kappa_{NG}}\left\|\left(\gamma-\mathbf{A}\kappa_{G}\right)
+									-\mathbf{A}\kappa_{NG}
+									\right\|_{\Sigma_n}^2+C_{\mathrm{NG}}\left(\kappa_{NG}\right)$$
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Overview of mass mapping methods</h3>
+				<ul>
+					<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr; Gaussian
+						random field, Likelihood
+						&rarr; Gaussian, Solution &rarr; corresponds to MAP for gaussian $\kappa$</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">Sparse recovery</b>: Prior on $\kappa$ &rarr;
+						sparse in wavelet basis, Enforces
+						model where matter field is a combination of DM halos</li>
+					</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">MCALens</b>:
+						Models $\kappa$-field as sum of a Gaussian and a non-Gaussian component, Uses Morphological
+						Component Analysis</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">Deep Learning Methods</b>:
+						<ul>
+							<li><b>DeepMass</b>: CNN with a U-Net-based architecture, prior from simulations</li>
+							<li><b>DeepPosterior</b>: Probabilistic mass mapping with deep generative models,
+								Prior from
+								2pt statistics modelling at large scales &
+								Deep Learning on simulations for small scales, Sampling with Annealed HMC</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> Does the choice of mass-mapping method matter for cosmology? </h2>
+
+				<img src="assets/QR_mass_mapping_impact.png" alt="QR mass mapping impact" style="width: 200px;">
+				<br>
+				A. Tersenov, L. Baumont, J.L. Starck, M. Kilbinger, <a
+					href="https://doi.org/10.1051/0004-6361/202553707">doi.org/10.1051/0004-6361/202553707</a>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Mass mapping methods: </h3>
+				<div class="container">
+					<div class="col" style="width: 1000px;">
+						<img src="assets/mass_maps_(ks_iks_mca)_transparent_dark.pdf" alt="Summary statistics"
+							width="800px">
+					</div>
+					<div class="col" style="width: 100px;">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{ll}
+							\hline \hline
+							\text{Method} & \text{RMSE} \downarrow \\
+							\hline
+							\text{KS } & 1.1 \times 10^{-2} \\
+							\text{iKS } & 1.1 \times 10^{-2} \\
+							\text{MCALens} & 9.8 \times 10^{-3} \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+			</section>
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Higher Order Statistics: <b class="alert">Peak Counts</b></h3>
+				<img src="assets/cosmology_with_maps.pdf" alt="Cosmology with maps" style="height: 450px;">
+
+				<div class="block">
+					<div class="block-content">
+						<ul>
+							<li> <b class="alert">Peaks</b>: local maxima of the SNR field $\nu =
+								\dfrac{\left(\mathcal{W} \ast \kappa \right)(\theta_{\rm ker})}{\sigma_n^{\rm filt}}$
+							</li>
+							<br>
+							<li> Peaks trace regions where the value of <b class="alert">$\kappa$ is high</b> &rarr;
+								they are associated to
+								<b class="alert">massive structures</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Peak funtions</h3>
+				<ul>
+					<li class="fragment fade-in">The <b class="alert">peak function</b> is the <b class="alert">number
+							of
+							peaks</b> in a map as a function of the <b class="alert">SNR</b> $\nu$</li>
+				</ul>
+				<img class="fragment fade-in" src="assets/PC_hist_all_methods_ks_iks_mca_dark2.pdf" alt="">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet peaks</h3>
+				<ul>
+					<!-- <li class="fragment fade-in">To access the signal in the $\kappa$-maps at <em class="alert">small
+							scales</em>, where they are
+						dominated by noise &rarr; need to <em class="alert">filter</em> them </li> -->
+
+					<li class="fragment fade-in">We consider a <b class="alert">multi-scale analysis</b> compared to a
+						single-scale analysis
+					</li>
+
+					<li class="fragment fade-in">Apply (instead of Gaussian filter) a <b class="alert">starlet
+							transform</b> &rarr; allows us to
+						represent an image $I$ as a sum of wavelet coefficient images and a coarse resolution image
+						<!-- $$I(x,y) = c_J(x,y) + \sum_{j=1}^{j_{\rm max}} w_j(x,y) $$  -->
+					</li>
+				</ul>
+
+				<span class="fragment fade-in">
+					<img src="assets/starlet_transform.pdf" alt="Starlet transform" style="height: 250px;">
+				</span>
+
+
+				<span class="fragment fade-in">
+					<ul>
+						<li> Allows for the <b class="alert">simultaneous</b> processing of data at different scales
+							&rarr;
+							<b class="alert">efficiency</b>
+						</li>
+
+						<li> Each wavelet band covers a different frequency range, which leads to an almost <b
+								class="alert">diagonal peak count covariance matrix</b> </li>
+					</ul>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Wavelet peak funtions</h3>
+				<img src="assets/MSPC_hist_ks_iks_mca_4_scales_dark.pdf" alt="">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Starlet $\ell_1$-norm</h3>
+				<ul>
+					<li class="fragment fade-in">New higher order summary statistic for weak lensing observables </li>
+					<li class="fragment fade-in">Provides a fast multi-scale calculation of the full void and peak
+						distribution</li>
+					<li class="fragment fade-in"><b class="alert">$\ell_1$-norm</b> = sum of absolute values of the
+						starlet decomposition
+						coefficients of a weak lensing map </li>
+				</ul>
+
+				<span class="fragment fade-in">
+					<img src="assets/wavelet_l1_norm.pdf" alt="Wavelet l1 norm" style="height: 200px;">
+
+					$$ \boxed{ \ell_1^{j,i} = \sum_{u=1}^{\textrm{\# coef}(\mathcal{S}_{i,j})} \left| \mathcal{S}_{j,i}
+					[u]
+					\right| = \| \mathcal{S}_{j,i} \|_1} \, , \,\, \mathcal{S}_{j,i} = \{ w_{j,k}/B_i w_{j,k} B_{i+1}
+					\}$$
+
+				</span>
+
+				<div class="block; fragment fande-in">
+					<div class="block-title"></div>
+					<div class="block-content">
+						<span style="color: #49b649;">
+							<ul>
+								<li> Information encoded in <b class="alert">all</b> pixels
+								</li>
+
+								<li>Automatically includes peaks and voids</li>
+
+								<li>Multi-scale approach</li>
+
+								<li>Avoids the problem of defining peaks and voids</li>
+							</ul>
+						</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+
+
+			<!-- ################################################################################################### -->
+			<section>
+				<h3 class="slide-title">Inference with HOS</h3>
+				<ul>
+					<li class="fragment fade-in"> Use <b class="alert">$\texttt{cosmoSLICS}$</b> simulations: suite
+						designed for the analysis of WL data beyond the standard 2pt cosmic shear
+					</li>
+					<br>
+					<li class="fragment fade-in"> <b class="alert">$\texttt{cosmoSLICS}$</b> cover a wide parameter
+						space in
+						$\left[ \Omega_m, \sigma_8,
+						w_0, h \right]$.</li>
+					<br>
+					<li class="fragment fade-in">For <b class="alert">Bayesian inference</b> &rarr; use a <b
+							class="alert">Gaussian
+							likelihood</b> for a cosmology independent covariance, and a <b class="alert">flat
+							prior</b>. </li>
+					<br>
+					<li class="fragment fade-in">To have a prediction of each HOS <b class="alert">given a new set of
+							parameters</b>&rarr; employ
+						an interpolation with <b class="alert">Gaussian Process Regressor</b> (GPR)</li>
+				</ul>
+				<br><br><br>
+				<!-- <div class="block; fragment fade-in">
+					<div class="block-title">
+						Gaussian Process
+					</div>
+					<div class="block-content">
+						<ul>
+							<li> A Gaussian process is a collection of random variables, any finite number of which have
+								a joint Gaussian distribution.</li>
+							<li> Assumes <em class="alert">smoothness</em> between parameters with close values </li>
+							<li> Computes the prediction for peak counts at a new point in parameter space</li>
+						</ul>
+
+					</div> -->
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Noise & Covariance</h3>
+				<ul>
+					<li>We consider <b class="alert">Gaussian</b>, but <b class="alert">non-white</b> noise &rarr; the
+						noise depends on the <b class="alert">number of galaxies</b> in each pixel $$\sigma_n =
+						\dfrac{\sigma_{\epsilon}}{\sqrt{2 n_{\rm gal} A_{\rm pix}}}$$</li>
+					<li>We incorporate <b class="alert">masks</b>
+					</li>
+					<li>Calculate covariance: $$ \boxed{C_{ij} = \sum_{r=1}^N \dfrac{\left( x_i^r - \mu_i \right) \left(
+						x_j^r - \mu_j \right)}{N-1}} \, , \,\,\,\mu_i = \dfrac{1}{N} \sum_r x_i^r $$ </li>
+				</ul>
+				<img src="assets/Correlation_Matrices_SSPC_ks_mca_dark.pdf" alt="Covariance" style="height: 230px;">
+				<img src="assets/Correlation_Matrices_MSPC_ks_mca_dark.pdf" alt="Covariance" style="height: 230px;">
+				<!-- <br>
+				<small class="alert">Starlet filter tends to make the covariance matrix more diagonal</small> -->
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">From data to contours</h3>
+				<img src="assets/data_to_contours2.pdf" alt="Contours" style="width:auto">
+				<div class="block">
+
+					<div class="block-content">
+						<ul>
+							<li> <b class="alert">$\mu$</b>: expected theoretical prediction, <b class="alert">$d$</b>:
+								data array (mean over realizations of a HOS), <b class="alert">$C$</b>: covariance
+								matrix </li>
+
+						</ul>
+					</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> So does the choice of the mass mapping algorithm matter for the final constraints?</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">The (standard) mono-scale peak counts</h3>
+				<div class="container">
+					<div class="col">
+						<img src="assets/triangle_plot_merged_sm04_sspc_GPypred_dark.pdf" alt="Mono-scale peak counts"
+							style="width:auto">
+					</div>
+					<div class="col">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{lcccc}
+							\hline \hline
+							\text{FoM} & \text{KS} & \text{iKS} & \text{MCALens} \\
+							\hline \hline
+							\left(\Omega_m, h\right) & 476 & 453 & 450 \\
+							\left(\Omega_m, w_0\right) & 152 & 141 & 233 \\
+							\left(\Omega_m, \sigma_8\right) & 1323 & 1285 & 1740 \\
+							\left(h, w_0\right) & 55 & 63 & 87 \\
+							\left(h, \sigma_8\right) & 336 & 292 & 293 \\
+							\left(w_0, \sigma_8\right) & 75 & 72 & 124 \\
+							\hline
+							\left(\Omega_m, h, w_0, \sigma_8\right) & 492 & 444 & 578 \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet multi-scale peak counts</h3>
+				<div class="container">
+					<div class="col">
+						<img src="assets/countours_all_methods_MSPC_6scales_dark.pdf"
+							alt="Wavelet multi-scale peak counts" style="width:auto">
+					</div>
+					<div class="col">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{lcccc}
+							\hline \hline
+							\text{FoM} & \text{KS} & \text{iKS} & \text{MCALens} \\
+							\hline \hline
+							\left(\Omega_m, h\right) & 670 & 702 & 2159 \\
+							\left(\Omega_m, w_0\right) & 247 & 244 & 1051 \\
+							\left(\Omega_m, \sigma_8\right) & 2414 & 2517 & 9039 \\
+							\left(h, w_0\right) & 82 & 80 & 259 \\
+							\left(h, \sigma_8\right) & 411 & 433 & 1335 \\
+							\left(w_0, \sigma_8\right) & 131 & 129 & 577 \\
+							\hline
+							\left(\Omega_m, h, w_0, \sigma_8\right) & 758 & 755 & 1947 \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Where does this improvement come from?</h3>
+				<img src="assets/countours_ks_different_scales_dark.pdf" alt="Wavelet multi-scale peak counts"
+					style="width:auto">
+				<img src="assets/countours_mca_different_scales_dark.pdf" alt="Wavelet multi-scale peak counts"
+					style="width:auto" class="fragment fade-in">
+			</section>
+			<!-- ################################################################################################### -->
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Summary statistics</h3>
+				<img src="assets/summary_statistics.pdf" alt="Summary statistics" style="width:auto">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> Part 2 </h2>
+				<h3> A plug-and-play approach with fast uncertainty quantification for
+					weak lensing mass mapping </h3>
+				<br>
+				H. Leterme,
+				A. Tersenov,
+				J. Fadili, and J.-L. Starck (in prep.)
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Wait... what about Deep Learning for Mass Mapping?</h3>
+				<br>
+				<p class="fragment fade-in">Yep, people have tried it! ...And it works!</p>
+				<p class="fragment fade-in">Example: DeepMass</p>
+				<img src="assets/DeepMassIdea.png" alt="Deep Mass Idea" style="width:auto" class="fragment fade-in">
+				<p class="fragment fade-in">So what's the problem?</p>
+			</section>
+
+
+			<!-- ################################################################# ################################## -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Deep Learning for Mass Mapping?</h3>
+				<br>
+				<table border="1" style="border-collapse: collapse; text-align: center;">
+					<thead>
+						<tr style="background-color: #f2f2f2;">
+							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Mass mapping
+									method</b></th>
+							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Type</b></th>
+							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Accurate</b></th>
+							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Flexible</b></th>
+							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Fast rec.</b></th>
+							<th style="padding: 10px;"><b class="alert">Fast UQ</b></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="color: #aaaaaa;">
+							<td style="padding: 10px; border-right: 1px solid #000;">Iterative Wiener</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Model-driven (Gaus. prior)</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px;">✗</td>
+						</tr>
+						<tr style="color: #aaaaaa;">
+							<td style="padding: 10px; border-right: 1px solid #000;">MCALens</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Model-driven (Gaus. + sparse)</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">≈</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
+							<td style="padding: 10px;">✗</td>
+						</tr>
+						<tr>
+							<td style="padding: 10px; border-right: 1px solid #000;">DeepMass</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (UNet)</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;"><b>✗</b>*</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px;">✓</td>
+						</tr>
+						<tr>
+							<td style="padding: 10px; border-right: 1px solid #000;">DeepPosterior</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (UNet + MCMC)</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
+							<td style="padding: 10px;">✗</td>
+						</tr>
+						<tr>
+							<td style="padding: 10px; border-right: 1px solid #000;">MMGAN</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (GAN)</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;"><b>✗</b>*</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">≈</td>
+							<td style="padding: 10px;">≈</td>
+						</tr>
+						<tr style="background-color: #e6f3ff; font-weight: bold;" class="fragment">
+							<td style="padding: 10px; border-right: 1px solid #000;">What we'd like</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">Data-driven</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
+							<td style="padding: 10px;">✓</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Plug-and-Play Mass Mapping</h3>
+
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title"> Main idea:</div>
+								<div class="block-content">
+									<ul>
+										<li> <em>Use PnP framework:</em> replace <b class="alert">prox</b> by an
+											on-the-shelf <b class="alert">deep denoiser</b> trained on simulations</li>
+										$$ \kappa^{n+1} = \mathrm{prox}_{\tau g} \left( \kappa^n - \tau \nabla
+										f(\kappa^n) \right) $$
+										$$ \kappa^{n+1} = F_{\Theta} \left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}
+										\kappa^n - \gamma \right) \right) $$
+										$$ \kappa^{n+1} = \mathrm{Denoiser} \left( \kappa^n + \mathrm{Data \, residual}
+										\right) $$
+										<li> Series <b class="alert">converges</b> towards a <b class="alert">fixed
+												point</b> $\hat{\kappa}$</li>
+										<li> If we choose $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ &rarr; training phase
+											independent of the noise covariance matrix</li>
+								</div>
+							</div>
+							<br>
+
+						</div>
+						<div class="col">
+							<img src="assets/PnP_FB_diagram.png" alt="PnP Mass Mapping" style="width:420px">
+							<br>
+							<br>
+							<em>Instead of explicitly writing down a prior, we learn what a "likely" $\kappa$ looks like
+								from simulations and enforce it through denoising.</em>
+						</div>
+					</div>
+				</span>
+
+			</section>
+
+
+			<!-- ################################################################################################### -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Implementation</h3>
+
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Training</div>
+								<div class="block-content">
+									<ul>
+										<li>Denoiser models implemented: <b class="alert">DRUNet</b> & <b
+												class="alert">SUNet</b></li>
+										<li>Trained on <b class="alert">κTNG</b> and <b class="alert">cosmoSLICS</b>
+											simulations, using pairs of $(\kappa_{\rm
+											true}, \gamma_{\rm obs})$ as training
+											data</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<img src="assets/PnP_iterations.png" alt="PnP Iterations" style="width:400px">
+						</div>
+					</div>
+				</span>
+
+				<img src="assets/Mass_mapping_RMSE_comparison.png" alt="Mass Mapping RMSE Comparison" style="width:auto"
+					class="fragment fade-in">
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">How do we estimate uncertainties?</h3>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Step 1</div>
+						<div class="block-content">
+
+							<ul>
+								<li>
+									We train a second neural network to estimate the <b>posterior variance</b> of
+									$\kappa$:
+									$$ \arg\min_{\Omega} \mathbb{E} \left[ \left\| G_{\Omega}(\gamma) - \big(\kappa -
+									F_{\Theta}(\gamma) \big)^2 \right\|^2_2 \right] $$
+								</li>
+								<li>
+									Trained on simulated pairs $(\kappa, \gamma)$, just like the denoiser — but now
+									focused on uncertainty.
+								</li>
+								<li>This gives fast, pixel-wise error bars</li>
+								<li>
+									Uncertainty estimation is fast — just one extra iteration after κ̂ is computed
+									&rarr; adds almost no overhead
+								</li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Step 2</div>
+						<div class="block-content">
+							<ul>
+								<li>Neural networks tend to produce miscalibrated uncertainties.</li>
+								<li>We apply conformal quantile regression (CQR) to adjust uncertainty intervals so they
+									have guaranteed statistical coverage.</li>
+								<li>CQR uses a held-out calibration set to compute a correction factor for each pixel.
+								</li>
+								<li> Result: Reliable, data-driven uncertainty maps — with built-in coverage guarantees.
+								</li>
+							</ul>
+
+						</div>
+					</div>
+				</span>
+
+			</section>
+
+			<!-- ################################################################################################### -->
+			<!-- ################################################################################################### -->
+
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Uncertainty bounds</h3>
+
+
+				<img src="assets/Uncertainty_bounds.png" alt="Uncertainty Bounds" style="width: 850px;"
+					class="fragment fade-in">
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<img src="assets/error_bar_calibration.png" alt="Error Bar Calibration" style="width:420px">
+						</div>
+						<div class="col">
+							<img src="assets/miscoverage_rate.png" alt="Miscoverage Rate" style="width:650px">
+						</div>
+					</div>
+				</span>
+
+
+			</section>
+
+			<!-- ################################################################################################### -->
+			<section data-background-color="#ffffff" class="light-slide">
+				<h3 class="slide-title">Conclusions</h3>
+				<span class="fragment fade-in">
+					<div class="block">
+
+						<div class="block-content">
+							<ul>
+								<li>Investigated how different <b class="alert">mass mapping algorithms</b> affect <b
+										class="alert">cosmological inference</b>
+									using HOS from WL data.</li>
+								<li>Constructed <b class="alert">new mass mapping algorithm</b> based on the <b
+										class="alert">PnP</b> formalism.</li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Results</div>
+						<div class="block-content">
+							<ul>
+								<li> With a <b class="alert">state-of-the-art</b> mass-mapping method (MCALens) we
+									managed to get
+									$\sim 157\%$ improvement in FoM over KS.
+								</li>
+								<li> Increase in constraining power comes from the more accurate recovery of the <b
+										class="alert">smaller scales</b>.</li>
+								<li><b class="alert">Wavelet Peak Counts</b>: Provide tighter constraints than
+									single-scale peak counts.</li>
+								<li> <b class="alert">PnP Mass Mapping</b>: </li>
+								<ul>
+									<li>Provides a <b class="alert">fast</b>, <b class="alert">flexible</b>, and <b
+											class="alert">accurate</b> mass mapping
+										algorithm that can be used with any denoiser.</li>
+									<li>Provides <b class="alert">fast</b> and <b class="alert">reliable</b>
+										uncertainties using <b class="alert">moment networks</b> and <b
+											class="alert">conformal quantile regression</b>.</li>
+								</ul>
+
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title"> Takeaway</div>
+						<div class="block-content">
+							<ul>
+								<li><b class="alert">Mass-mapping Matters</b>: Choosing an advanced mass mapping method
+									significantly enhances constraints on cosmological parameters from HOS.</li>
+							</ul>
+						</div>
+
+					</div>
+				</span>
+			</section>
+
+
+		</div>
+	</div>
+
+	<style>
+		/* .reveal .slides {
+			border: 5px solid red;
+			min-height: 100%;
+			width: 128mm;
+			height: 96mm;
+		} */
+
+		/* .reveal .block {
+			background-color: #191919;
+			margin-left: 20px;
+			margin-right: 20px;
+			text-align: left;
+			padding-bottom: 0.1em;
+		} */
+
+		.card,
+		.reveal .block {
+			background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+			border: 1px solid rgba(255, 255, 255, .08);
+			backdrop-filter: blur(6px);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 18px 22px;
+		}
+
+		.reveal .block-title {
+			background-color: #333333;
+			padding: 8px 35px 8px 14px;
+			color: #FFAA7F;
+			font-weight: bold;
+			font-size: 1.4em;
+		}
+
+		.reveal .block-content {
+			color: var(--ink);
+		}
+
+		.reveal .slide-title {
+			border-left: 5px solid white;
+			text-align: left;
+			margin-left: 20px;
+			padding-left: 20px;
+		}
+
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 0 0 18px 0;
+		}
+
+		.reveal .alert {
+			color: #FFAA7F;
+			font-weight: bold;
+		}
+
+		.reveal .inverted {
+			filter: invert(100%);
+		}
+
+		/* Styles for the light slide */
+		.light-slide,
+		.light-slide div,
+		.light-slide p,
+		.light-slide li,
+		.light-slide span,
+		.light-slide em,
+		.light-slide i,
+		.light-slide b {
+			color: #333333 !important;
+			/* Default text color for light slide */
+		}
+
+		.light-slide h1,
+		.light-slide h2,
+		.light-slide h3,
+		.light-slide h4,
+		.light-slide h5,
+		.light-slide h6 {
+			color: #000000 !important;
+			/* Black headings */
+		}
+
+		.light-slide .slide-title {
+			border-left-color: #000000 !important;
+			/* Black border for slide title */
+			color: #000000 !important;
+		}
+
+		.light-slide .alert {
+			/* This class is used for emphasis */
+			color: #d9534f !important;
+			/* A bootstrap 'danger' like red */
+		}
+
+		.light-slide .block {
+			background-color: #f9f9f9 !important;
+			/* Very light grey for block background */
+			border: 1px solid #dddddd !important;
+		}
+
+		.light-slide .block-title {
+			background-color: #eeeeee !important;
+			/* Light grey for block title */
+			color: #d9534f !important;
+			/* Alert color for title text */
+		}
+
+		/* .light-slide .block-content is intentionally left out to inherit general text color or .alert color */
+		.light-slide a,
+		.light-slide a:hover {
+			color: #007bff !important;
+			/* Standard blue for links */
+		}
+	</style>
+
+
+	<script src="reveal.js/dist/reveal.js"></script>
+	<script src="reveal.js/plugin/notes/notes.js"></script>
+	<script src="reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="reveal.js/plugin/highlight/highlight.js"></script>
+	<script src="reveal.js/plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			controls: true,
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: 'c/t',
+			hash: true,
+			transition: 'slide',
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 1200,
+			height: 720,
+
+			// Factor of the display size that should remain empty around the content
+			margin: 0.1,
+
+			// Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 1.5,
+
+			autoPlayMedia: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+
+			dependencies: [{
+				src: 'reveal.js/plugin/markdown/marked.js'
+			},
+			{
+				src: 'reveal.js/plugin/markdown/markdown.js'
+			},
+			{
+				src: 'reveal.js/plugin/notes/notes.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/math/math.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-d3/reveald3.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/Chart.min.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/csv2chart.js'
+			},
+			{
+				src: 'reveal.js/plugin/highlight/highlight.js',
+				async: true
+			},
+			]
+		});
+	</script>
+</body>
+
+</html>
