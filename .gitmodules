@@ -28,3 +28,6 @@
 [submodule "JournalClub_Montreal_2026/reveal.js"]
 	path = JournalClub_Montreal_2026/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "PhD_Day_2025/reveal.js"]
+	path = PhD_Day_2025/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
