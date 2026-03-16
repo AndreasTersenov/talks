@@ -31,3 +31,6 @@
 [submodule "PhD_Day_2025/reveal.js"]
 	path = PhD_Day_2025/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "ENS_seminar_2026/reveal.js"]
+	path = ENS_seminar_2026/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
