@@ -34,3 +34,6 @@
 [submodule "ENS_seminar_2026/reveal.js"]
 	path = ENS_seminar_2026/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "LAM_2026/reveal.js"]
+	path = LAM_2026/reveal.js
+	url = https://github.com/EiffL/reveal.js.git

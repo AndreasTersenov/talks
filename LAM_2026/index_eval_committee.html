@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>PhD Progress for Grant Evaluation Committee</title>
+  <meta name="description"
+    content="7-minute overview of PhD results: mass mapping, higher-order statistics, and cosmological inference">
+  <meta name="author" content="Andreas Tersenov">
+
+  <link rel="stylesheet" href="reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css">
+  <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-background-iframe="background.html">
+        <div class="hero">
+          <h2>PhD Results Overview</h2>
+          <h3>Mass Mapping, Higher-Order Statistics, and Cosmological Inference</h3>
+          <p>European Grant Evaluation Committee</p>
+          <p>Andreas Tersenov | March 2026</p>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Why this work matters</h3>
+        <div class="card">
+          <ul>
+            <li>Goal: constrain cosmological models using weak gravitational lensing observations.</li>
+            <li>Challenge: the signal is noisy and indirect; it is hard to extract robust information and translate it
+              into constraints on cosmology.</li>
+            <li>Context: this work is directly connected to major survey programs, including <b>Euclid</b> and
+              <b>UNIONS</b>, where I contribute as a team member.
+            </li>
+            <li>My PhD focus:
+              <ul>
+                <li>More reliable mass reconstruction (mass mapping)</li>
+                <li>More informative measurements (Higher-Order Statistics)</li>
+                <li>More robust parameter estimation (cosmological inference)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <p class="timing">7-minute roadmap: 3 projects, 3 key results.</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Project 1: Does reconstruction method change the science?</h3>
+        <div class="two-col">
+          <div class="card">
+            <p><b>Question:</b> if we change the mass-mapping algorithm, do cosmological constraints change?</p>
+            <p><b>What I tested:</b> same data, same inference pipeline, different mapping methods.</p>
+            <p><b>Main result:</b> yes, method choice matters significantly for final constraints.</p>
+            <ul>
+              <li>Advanced mapping (MCALens) improved the Figure of Merit by about <b>157%</b> vs standard KS.</li>
+              <li>Gain comes mostly from better recovery of small-scale, non-Gaussian information.</li>
+            </ul>
+          </div>
+          <div class="media-box">
+            <img src="assets/mass_maps_(ks_iks_mca)_transparent_dark.pdf" alt="Mass mapping comparison">
+            <img src="assets/countours_all_methods_MSPC_6scales_dark.pdf" alt="Constraint comparison">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Project 2: PnPMass (fast, flexible reconstruction)</h3>
+        <div class="two-col">
+          <div class="card">
+            <p><b>Problem:</b> classical methods can be slow, rigid, or hard to calibrate.</p>
+            <p><b>My contribution:</b> a Plug-and-Play method (PnPMass):</p>
+            <ul>
+              <li>Uses physics-based data consistency step</li>
+              <li>Uses deep denoiser as learned prior</li>
+              <li>Works with different noise conditions without retraining core solver</li>
+            </ul>
+            <p><b>Outcome:</b> improved map quality and practical usability.</p>
+          </div>
+          <div class="media-box">
+            <img src="assets/PnP_FB_diagram.png" alt="PnP diagram">
+            <img src="assets/Mass_mapping_RMSE_comparison1.png" alt="RMSE comparison">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Project 2 (continued): Fast uncertainty maps</h3>
+        <div class="card">
+          <ul>
+            <li>Beyond one best map, we also need <b>confidence</b> in each pixel.</li>
+            <li>I trained an auxiliary network to estimate uncertainty, then calibrated it with conformal methods.</li>
+            <li>Result: uncertainty intervals are both <b>fast</b> and <b>statistically reliable</b>.</li>
+          </ul>
+        </div>
+        <div class="media-row">
+          <img src="assets/Uncertainty_bounds.png" alt="Uncertainty bounds">
+          <img src="assets/miscoverage_rate1.png" alt="Calibration quality">
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Project 3: Baryonic feedback and robust inference (SBI)</h3>
+        <div class="two-col">
+          <div class="card">
+            <p><b>Problem:</b> astrophysical baryonic effects can mimic cosmology and bias results.</p>
+            <p><b>Approach:</b> Simulation-Based Inference (SBI) with neural density estimation.</p>
+            <ul>
+              <li>Compared standard 2-point statistic and higher-order statistics.</li>
+              <li>Quantified bias as surveys become larger and more precise.</li>
+              <li>Designed mitigation via targeted scale cuts.</li>
+            </ul>
+          </div>
+          <div class="media-box">
+            <img src="assets/SBI_pipeline.png" alt="SBI pipeline">
+            <img src="assets/nsigma_vs_mask_area_all_stats_lmax1024_dark.pdf" alt="Baryonic bias vs area">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Project 3: Key takeaways</h3>
+        <div class="card">
+          <ul>
+            <li>Baryonic bias increases with survey area; at Stage IV precision it is non-negligible.</li>
+            <li>After safe scale cuts, higher-order statistics remain highly competitive.</li>
+            <li>Starlet-based summary statistics can still outperform standard power spectrum constraints on safe
+              scales.</li>
+          </ul>
+        </div>
+        <div class="media-row single">
+          <img src="assets/triangle_plot_subset_baryonified_lmax400_peaks_l1_scales234_dark.pdf"
+            alt="Posteriors after mitigation">
+        </div>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Training and Career Impact</h3>
+        <div class="card emphasis">
+          <ul>
+            <li><b>Secondments:</b> every year, 3-month research stays at CEA Saclay with direct collaboration on
+              methods and analysis.</li>
+            <li><b>Dissemination:</b> conference participation and invited presentations to share project results with
+              the community.</li>
+            <li><b>Career development:</b> advanced training in data analysis, scientific software, international
+              collaboration, and project communication.</li>
+            <li><b>Outcome:</b> secured a 3-year postdoctoral fellowship at the University of Virginia.</li>
+          </ul>
+        </div>
+        <p class="closing">The project delivered both scientific results and strong professional development.</p>
+      </section>
+
+      <section>
+        <h3 class="slide-title">Overall PhD impact</h3>
+        <div class="card emphasis">
+          <ol>
+            <li><b>Methodological:</b> demonstrated that mass-mapping choice directly impacts inferred cosmology.</li>
+            <li><b>Algorithmic:</b> developed PnPMass for accurate reconstruction with fast, calibrated uncertainty.
+            </li>
+            <li><b>Inference robustness:</b> quantified baryonic systematics and validated practical mitigation in SBI.
+            </li>
+          </ol>
+        </div>
+        <p class="closing">Main message: more reliable maps + richer statistics + robust inference = stronger
+          cosmological conclusions.</p>
+        <p class="closing">For Stage IV surveys (Euclid, Rubin, Roman), this means analyses can use more of the
+          available information while keeping systematic bias under control.</p>
+        <p class="closing">In practice, these methods help turn higher statistical precision into trustworthy
+          cosmological constraints.</p>
+      </section>
+
+      <section data-background-iframe="background.html">
+        <div class="hero">
+          <h2>Thank you</h2>
+          <p>Questions welcome</p>
+          <p class="small">Backup details available if needed</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <style>
+    .reveal {
+      font-size: 34px;
+    }
+
+    .hero {
+      margin: 8% auto;
+      width: 85%;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      border-top: 4px solid #ffaa7f;
+    }
+
+    .slide-title {
+      text-align: left;
+      border-left: 6px solid #ffaa7f;
+      padding-left: 16px;
+      margin-left: 12px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-top: 3px solid #ffaa7f;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 10px 12px;
+      text-align: left;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+      font-size: 0.78em;
+      line-height: 1.28;
+    }
+
+    .card.emphasis {
+      font-size: 0.8em;
+      background: #171717;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .media-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+    }
+
+    .media-box img {
+      width: 100%;
+      max-height: 31vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .media-row {
+      margin: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .media-row.single {
+      grid-template-columns: 1fr;
+    }
+
+    .media-row img {
+      width: 100%;
+      max-height: 35vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .timing {
+      margin-top: 10px;
+      color: #ffaa7f;
+      font-size: 0.65em;
+    }
+
+    .closing {
+      margin-top: 12px;
+      color: #ffaa7f;
+      font-size: 0.72em;
+    }
+
+    .small {
+      font-size: 0.65em;
+      opacity: 0.9;
+    }
+
+    .reveal ul,
+    .reveal ol {
+      margin-top: 0.2em;
+    }
+
+    .reveal ul li,
+    .reveal ol li {
+      margin-bottom: 0.28em;
+    }
+
+    .reveal strong,
+    .reveal b {
+      color: #ffaa7f;
+    }
+
+    @media (max-width: 1000px) {
+      .reveal {
+        font-size: 28px;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .media-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script src="reveal.js/dist/reveal.js"></script>
+  <script src="reveal.js/plugin/notes/notes.js"></script>
+  <script src="reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="reveal.js/plugin/math/math.js"></script>
+  <script>
+    Reveal.initialize({
+      controls: true,
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      transition: 'slide',
+      width: 1200,
+      height: 720,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 1.5,
+      autoPlayMedia: true,
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath]
+    });
+  </script>
+</body>
+
+</html>
