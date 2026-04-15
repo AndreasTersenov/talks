@@ -838,29 +838,91 @@
 					</div>
 			</section>
 
+			<!-- ##################################################################################################### -->
 
+			<section data-background="#000">
+				<h3 class="slide-title">Inference pipeline</h3>
 
-			<!-- ################################################################################################### -->
+				<div
+					style="display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;font-size:0.95em;">
 
-			<section data-visibility="hidden">
-				<h3 class="slide-title">Higher Order Statistics: <b class="alert">Peak Counts</b></h3>
-				<img src="assets/cosmology_with_maps.pdf" alt="Cosmology with maps" style="height: 450px;">
+					<!-- TOP: two sources, each with its own ↓ -->
+					<div style="display:flex;gap:25px;align-items:flex-start;justify-content:center;">
 
-				<div class="block">
-					<div class="block-content">
-						<ul>
-							<li> <b class="alert">Peaks</b>: local maxima of the SNR field $\nu =
-								\dfrac{\left(\mathcal{W} \ast \kappa \right)(\theta_{\rm ker})}{\sigma_n^{\rm filt}}$
-							</li>
-							<br>
-							<li> Peaks trace regions where the value of <b class="alert">$\kappa$ is high</b> &rarr;
-								they are associated to
-								<b class="alert">massive structures</b>
-							</li>
-						</ul>
+						<!-- Observed data -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+							<div
+								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+								<b style="color:#6bdcff;font-size:0.9em;">Observed data</b><br>
+								\( \mathbf{d}_{\mathrm{obs}} \)
+							</div>
+							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+						</div>
+
+						<!-- Sim/Theory -->
+						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+							<div
+								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+								<b style="color:#ffaa7f;font-size:0.9em;">Simulations / Theory</b><br>
+								\( \mathbf{d}_{\mathrm{pred}}(\boldsymbol{\theta}) \)
+							</div>
+							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+						</div>
+
 					</div>
+
+					<!-- SUMMARY STAT -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:6px;">
+						<div
+							style="background:#202020;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+							<b style="color:#e7e7e7;font-size:0.9em;">Summary statistic</b>
+							\( s(\cdot) \)
+						</div>
+					</div>
+
+					<!-- ↓ to Likelihood -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+					</div>
+
+					<!-- LIKELIHOOD with formula inside -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div
+							style="position:relative;background:#1a1a1a;border:1px solid #555;border-radius:8px;padding:14px 20px;min-width:380px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,0.35);">
+							<b style="color:#ffaa7f;font-size:0.9em;">Likelihood</b><br>
+							\( p\!\left(s_{\mathrm{obs}}\mid\boldsymbol{\theta}\right) \) <br>
+							<span style="color:#ddd; font-size:0.85em;">
+								\[
+								\mathrm{L}(\boldsymbol{\theta})
+								\propto
+								\exp\!\Big[-\tfrac{1}{2}\,\Delta s^{\!\top}\,\mathbf{C}^{-1}\,\Delta s\Big],
+								\quad
+								\Delta s \!=\! s_{\mathrm{obs}}-s_{\mathrm{theory}}(\boldsymbol{\theta})
+								\]
+							</span>
+							<div style="position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
+									  background:#2a2a2a;border:1px solid #555;border-radius:999px;
+									  padding:2px 10px;font-size:0.8em;color:#bbb;">MCMC</div>
+						</div>
+					</div>
+
+					<!-- ↓ to Inference -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:12px;">
+						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
+					</div>
+
+					<!-- INFERENCE -->
+					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
+						<div
+							style="background:#171717;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+							<b style="color:#6bdcff;font-size:0.9em;">Inference</b><br>
+							\( p\!\left(\boldsymbol{\theta}\mid s_{\mathrm{obs}}\right) \)
+						</div>
+					</div>
+
 				</div>
 			</section>
+
 
 			<!-- ################################################################################################### -->
 
@@ -983,6 +1045,29 @@
 				</ul>
 				<img class="fragment fade-in" src="assets/PC_hist_all_methods_ks_iks_mca_dark2.pdf" alt="">
 			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Higher Order Statistics: <b class="alert">Peak Counts</b></h3>
+				<img src="assets/cosmology_with_maps.pdf" alt="Cosmology with maps" style="height: 450px;">
+
+				<div class="block">
+					<div class="block-content">
+						<ul>
+							<li> <b class="alert">Peaks</b>: local maxima of the SNR field $\nu =
+								\dfrac{\left(\mathcal{W} \ast \kappa \right)(\theta_{\rm ker})}{\sigma_n^{\rm filt}}$
+							</li>
+							<br>
+							<li> Peaks trace regions where the value of <b class="alert">$\kappa$ is high</b> &rarr;
+								they are associated to
+								<b class="alert">massive structures</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
 
 			<!-- ################################################################################################### -->
 
@@ -1116,91 +1201,6 @@
 						</ul>
 
 					</div> -->
-			</section>
-
-			<!-- ##################################################################################################### -->
-
-			<section data-background="#000">
-				<h3 class="slide-title">Inference pipeline</h3>
-
-				<div
-					style="display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap;font-size:0.95em;">
-
-					<!-- TOP: two sources, each with its own ↓ -->
-					<div style="display:flex;gap:25px;align-items:flex-start;justify-content:center;">
-
-						<!-- Observed data -->
-						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-							<div
-								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
-								<b style="color:#6bdcff;font-size:0.9em;">Observed data</b><br>
-								\( \mathbf{d}_{\mathrm{obs}} \)
-							</div>
-							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
-						</div>
-
-						<!-- Sim/Theory -->
-						<div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-							<div
-								style="background:#1c1c1c;border:1px solid #444;border-radius:8px;padding:12px 18px;min-width:170px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
-								<b style="color:#ffaa7f;font-size:0.9em;">Simulations / Theory</b><br>
-								\( \mathbf{d}_{\mathrm{pred}}(\boldsymbol{\theta}) \)
-							</div>
-							<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
-						</div>
-
-					</div>
-
-					<!-- SUMMARY STAT -->
-					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:6px;">
-						<div
-							style="background:#202020;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
-							<b style="color:#e7e7e7;font-size:0.9em;">Summary statistic</b>
-							\( s(\cdot) \)
-						</div>
-					</div>
-
-					<!-- ↓ to Likelihood -->
-					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
-						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
-					</div>
-
-					<!-- LIKELIHOOD with formula inside -->
-					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
-						<div
-							style="position:relative;background:#1a1a1a;border:1px solid #555;border-radius:8px;padding:14px 20px;min-width:380px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,0.35);">
-							<b style="color:#ffaa7f;font-size:0.9em;">Likelihood</b><br>
-							\( p\!\left(s_{\mathrm{obs}}\mid\boldsymbol{\theta}\right) \) <br>
-							<span style="color:#ddd; font-size:0.85em;">
-								\[
-								\mathrm{L}(\boldsymbol{\theta})
-								\propto
-								\exp\!\Big[-\tfrac{1}{2}\,\Delta s^{\!\top}\,\mathbf{C}^{-1}\,\Delta s\Big],
-								\quad
-								\Delta s \!=\! s_{\mathrm{obs}}-s_{\mathrm{theory}}(\boldsymbol{\theta})
-								\]
-							</span>
-							<div style="position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
-									  background:#2a2a2a;border:1px solid #555;border-radius:999px;
-									  padding:2px 10px;font-size:0.8em;color:#bbb;">MCMC</div>
-						</div>
-					</div>
-
-					<!-- ↓ to Inference -->
-					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:12px;">
-						<div style="font-size:1.3em;color:#666;line-height:1;">&#8595;</div>
-					</div>
-
-					<!-- INFERENCE -->
-					<div style="flex-basis:100%;display:flex;justify-content:center;margin-top:4px;">
-						<div
-							style="background:#171717;border:1px solid #444;border-radius:8px;padding:12px 20px;min-width:380px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
-							<b style="color:#6bdcff;font-size:0.9em;">Inference</b><br>
-							\( p\!\left(\boldsymbol{\theta}\mid s_{\mathrm{obs}}\right) \)
-						</div>
-					</div>
-
-				</div>
 			</section>
 
 
@@ -1921,6 +1921,50 @@
 
 			<!-- ################################################################################################### -->
 
+			<section data-background="#000">
+				<h3 class="slide-title">SBI with Neural Density Estimation</h3>
+				<div class="container" style="align-items:center; margin-top:0.3em;">
+					<div class="col" style="flex:1.15;">
+						<div class="block fragment fade-in">
+							<div class="block-title">Why SBI?</div>
+							<div class="block-content">
+								<ul style="font-size:0.9em;">
+									<li>We can run a simulator, but do not have a tractable likelihood $p(x\mid\theta)$.
+									</li>
+									<li>Goal: learn the posterior <b class="alert">directly</b> from simulated pairs
+										$(\theta, x)$.</li>
+									<li>Neural density estimators approximate $q_\phi(\theta\mid x)$ and enable fast
+										amortized inference.</li>
+								</ul>
+							</div>
+						</div>
+						<br>
+						<div class="block fragment fade-in">
+							<div class="block-title">Normalizing Flows (NPE)</div>
+							<div class="block-content" style="font-size:0.88em;">
+								$$ z \sim \mathcal{N}(0,I),\qquad \theta = f_\phi(z; x),\qquad
+								q_\phi(\theta\mid x) = p(z)\left|\det\frac{\partial f_\phi^{-1}}{\partial \theta}\right|
+								$$
+								<div class="fragment fade-in" style="margin-top:0.3em;">
+									MAF stacks simple invertible transforms to model complex posteriors.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col" style="flex:0.85; text-align:center;">
+						<div class="fragment fade-in"
+							style="border:1px solid #444; border-radius:10px; padding:8px; background:rgba(255,255,255,0.03);">
+							<img src="assets/NDE.gif" alt="Normalizing flow animation"
+								style="width:100%; border-radius:8px; box-shadow:0 4px 18px rgba(0,0,0,0.45);">
+							<small style="color:#999; display:block; margin-top:0.35em;">An example of Neural Density
+								Estimation using RealNVP (c) S. Guerrini</small>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
 			<section>
 				<h3 class="slide-title">Simulation-Based Inference Pipeline</h3>
 
@@ -2010,7 +2054,7 @@
 			<!-- ################################################################################################### -->
 
 			<section>
-				<h3 class="slide-title">HOS Remain Information-Rich</h3>
+				<h3 class="slide-title">Are HOS still useful?</h3>
 				<div class="container" style="align-items: center; margin-top: 0.2em;">
 					<div class="col fragment fade-in" style="flex: 1.2;">
 						<img src="assets/triangle_plot_subset_baryonified_lmax400_peaks_l1_scales234_dark.pdf"
