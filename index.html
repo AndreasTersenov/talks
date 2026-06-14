@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andreas Tersenov — Talks</title>
+  <meta name="description"
+    content="Public talks by Andreas Tersenov on weak gravitational lensing, mass mapping, higher-order statistics, and simulation-based inference.">
+  <meta name="author" content="Andreas Tersenov">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --void: #070a12;
+      --panel: #0c121e;
+      --line: #1a2231;
+      --ink: #ece6da;
+      --mute: #828ea2;
+      --faint: #545f73;
+      --accent: #e7a24c;
+      --accent-soft: rgba(231, 162, 76, .14);
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--void);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* signature: shear-whisker field, faded toward the page */
+    #shear {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 60rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---- hero ---- */
+    .hero { padding: clamp(5rem, 14vh, 11rem) 0 clamp(3.5rem, 8vh, 6rem); }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-weight: 300;
+      font-size: clamp(2.9rem, 8vw, 5.5rem);
+      line-height: .98;
+      letter-spacing: -.015em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--mute);
+    }
+
+    .lede {
+      margin-top: 1.8rem;
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      font-weight: 300;
+      color: #cfc9bd;
+    }
+
+    .affil {
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .04em;
+      color: var(--faint);
+    }
+
+    /* ---- talks ---- */
+    .talks { padding-bottom: 6rem; }
+
+    .talks > .eyebrow {
+      color: var(--faint);
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
+    }
+
+    .year {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      color: var(--faint);
+      padding: 2.4rem 0 .4rem;
+    }
+
+    .talk {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr auto;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--line);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color .25s;
+    }
+
+    .talk:hover { border-color: var(--accent); }
+
+    .talk:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .talk__date {
+      font-family: var(--mono);
+      font-size: .8rem;
+      color: var(--mute);
+      letter-spacing: .02em;
+      padding-top: .3rem;
+    }
+
+    .talk__venue {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .45rem;
+    }
+
+    .talk__title {
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -.005em;
+      color: var(--ink);
+      transition: color .25s;
+    }
+
+    .talk:hover .talk__title { color: var(--accent); }
+
+    .talk__go {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      color: var(--faint);
+      transform: translateX(-.3rem);
+      opacity: 0;
+      transition: transform .25s, opacity .25s, color .25s;
+      align-self: center;
+    }
+
+    .talk:hover .talk__go,
+    .talk:focus-visible .talk__go {
+      opacity: 1;
+      transform: translateX(0);
+      color: var(--accent);
+    }
+
+    /* ---- footer ---- */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 0 4rem;
+      font-family: var(--mono);
+      font-size: .76rem;
+      letter-spacing: .03em;
+      color: var(--faint);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      justify-content: space-between;
+    }
+
+    footer a { color: var(--mute); text-decoration: none; border-bottom: 1px solid var(--line); }
+    footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+    @media (max-width: 560px) {
+      .talk { grid-template-columns: 1fr auto; }
+      .talk__date { grid-column: 1; padding-top: 0; margin-bottom: .55rem; order: -1; }
+      .talk__body { grid-column: 1 / -1; }
+      .talk__go { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="shear" aria-hidden="true"></canvas>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Andreas Tersenov</div>
+      <h1>Reconstructing the<br><em>non-Gaussian Universe</em></h1>
+      <p class="lede">Talks on weak gravitational lensing, mass mapping, higher-order statistics, and
+        simulation-based inference.</p>
+      <p class="affil">Computational cosmology · University of Crete · CEA&nbsp;Paris-Saclay</p>
+    </header>
+
+    <main class="talks">
+      <div class="eyebrow">Talks &amp; seminars</div>
+
+      <div class="year">2026</div>
+
+      <a class="talk" href="LAM_2026/">
+        <span class="talk__date">16 Apr 2026</span>
+        <span class="talk__body">
+          <span class="talk__venue">LAM coffee club · Marseille</span>
+          <span class="talk__title">Reconstructing the Non-Gaussian Universe: Mass Mapping, Higher-Order Statistics, and SBI in Weak Lensing</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="ENS_seminar_2026/">
+        <span class="talk__date">17 Mar 2026</span>
+        <span class="talk__body">
+          <span class="talk__venue">ENS scattering club · Paris</span>
+          <span class="talk__title">Reconstructing the Non-Gaussian Universe: Mass Mapping, Higher-Order Statistics, and SBI in Weak Lensing</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="JournalClub_Montreal_2026/">
+        <span class="talk__date">09 Mar 2026</span>
+        <span class="talk__body">
+          <span class="talk__venue">Ciela Institute · Montréal</span>
+          <span class="talk__title">Weak Lensing Mass Mapping, Higher-Order Statistics, and Cosmology Inference</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <div class="year">2025</div>
+
+      <a class="talk" href="PhD_Day_2025/">
+        <span class="talk__date">02 Dec 2025</span>
+        <span class="talk__body">
+          <span class="talk__venue">PhD Day</span>
+          <span class="talk__title">Weak Lensing Mass Mapping and Higher-Order Statistics for Precision Cosmology</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="COLOURS_Saclay_2025/">
+        <span class="talk__date">11 Jun 2025</span>
+        <span class="talk__body">
+          <span class="talk__venue">COLOURS workshop · Saclay</span>
+          <span class="talk__title">Impact of Weak Lensing Mass-Mapping Algorithms on Cosmology Inference</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="CCA_Predoc_2025/">
+        <span class="talk__date">28 Mar 2025</span>
+        <span class="talk__body">
+          <span class="talk__venue">CCA · Flatiron Institute</span>
+          <span class="talk__title">Advanced Inference in Weak Lensing: Mass Mapping and Higher-Order Statistics for Precision Cosmology</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="TITAN_Saclay_2025/">
+        <span class="talk__date">16 Jan 2025</span>
+        <span class="talk__body">
+          <span class="talk__venue">TITAN meeting · Saclay</span>
+          <span class="talk__title">Impact of Weak Lensing Mass-Mapping Algorithms on Cosmology Inference</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <div class="year">2024</div>
+
+      <a class="talk" href="UNIONS_Paris_2024/">
+        <span class="talk__date">24 Jun 2024</span>
+        <span class="talk__body">
+          <span class="talk__venue">UNIONS meeting · Paris</span>
+          <span class="talk__title">Impact of Mass Mapping for Cosmological Parameter Estimation</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="TITAN_Eval_2024/">
+        <span class="talk__date">12 Jun 2024</span>
+        <span class="talk__body">
+          <span class="talk__venue">TITAN review</span>
+          <span class="talk__title">Mass Mapping &amp; Higher-Order Statistics — Project Review</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="TITAN_Crete_2024/">
+        <span class="talk__date">06 Jun 2024</span>
+        <span class="talk__body">
+          <span class="talk__venue">TITAN meeting · FORTH, Crete</span>
+          <span class="talk__title">Impact of Mass Mapping for Cosmological Parameter Estimation</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="AstroML_JC_Mar24/">
+        <span class="talk__date">26 Apr 2024</span>
+        <span class="talk__body">
+          <span class="talk__venue">IA-FORTH journal club</span>
+          <span class="talk__title">Journal club — paper discussion</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="talk" href="TITAN_Saclay_2024/">
+        <span class="talk__date">Feb 2024</span>
+        <span class="talk__body">
+          <span class="talk__venue">TITAN meeting · Saclay</span>
+          <span class="talk__title">Mass-Mapping Algorithms and Higher-Order Statistics</span>
+        </span>
+        <span class="talk__go" aria-hidden="true">&rarr;</span>
+      </a>
+    </main>
+
+    <footer>
+      <span>Slides built with reveal.js · shear field is the tangential signal around two unseen mass peaks</span>
+      <a href="https://github.com/AndreasTersenov/talks">Source on GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    // Deterministic weak-lensing shear field: tiny ticks oriented along the
+    // tangential shear of two off-axis mass peaks. No randomness, no animation.
+    (function () {
+      var c = document.getElementById('shear');
+      if (!c || !c.getContext) return;
+      var ctx = c.getContext('2d');
+
+      function draw() {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var w = window.innerWidth;
+        var h = Math.min(window.innerHeight * 1.1, 900);
+        c.style.height = h + 'px';
+        c.width = w * dpr;
+        c.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        var peaks = [
+          { x: w * 0.24, y: h * 0.34, m: 1.0 },
+          { x: w * 0.82, y: h * 0.62, m: 0.65 }
+        ];
+        var step = w < 600 ? 30 : 38;
+
+        for (var gy = step * 0.5; gy < h; gy += step) {
+          for (var gx = step * 0.5; gx < w; gx += step) {
+            var sx = 0, sy = 0;
+            for (var i = 0; i < peaks.length; i++) {
+              var p = peaks[i];
+              var dx = gx - p.x, dy = gy - p.y;
+              var r2 = dx * dx + dy * dy;
+              var g = p.m * 5200 / (r2 + 5200);
+              var phi = Math.atan2(dy, dx);
+              sx += g * Math.cos(2 * phi);
+              sy += g * Math.sin(2 * phi);
+            }
+            var ang = Math.atan2(sy, sx) / 2 + Math.PI / 2;
+            var mag = Math.min(Math.sqrt(sx * sx + sy * sy), 1);
+            var len = 6 + mag * 9;
+            ctx.save();
+            ctx.translate(gx, gy);
+            ctx.rotate(ang);
+            ctx.strokeStyle = 'rgba(150,168,196,' + (0.05 + mag * 0.22).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(-len, 0);
+            ctx.lineTo(len, 0);
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+
+      draw();
+      var t;
+      window.addEventListener('resize', function () {
+        clearTimeout(t);
+        t = setTimeout(draw, 150);
+      });
+    })();
+  </script>
+</body>
+
+</html>
