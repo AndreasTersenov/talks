@@ -10,14 +10,20 @@ its root (document at /<TalkDir>/<file>.html):
   - external (http/https/protocol-relative/data/mailto/tel/js) and pure
     anchors (`#/3`) are skipped.
 
+Catches three failure modes, two of which are silent on macOS:
+
+  - MISSING : the file does not exist at all (a genuine broken link);
+  - CASE    : the file exists but with different casing -- resolves on a
+              case-insensitive macOS disk but 404s on GitHub Pages (Linux);
+  - EMPTY   : the file exists but is 0 bytes (renders as a broken image).
+
 Run from the repo root:
 
-    python3 tools/check-asset-links.py            # summary + unresolved list
+    python3 tools/check-asset-links.py            # summary + problem list
     python3 tools/check-asset-links.py --quiet    # summary only
 
-Exit code is the number of unresolved references (capped at 1), so it doubles
-as a CI gate. The stable, sorted `MISSING ...` output is meant to be diffed
-before/after a change.
+Exit code is non-zero if any problem is found, so it doubles as a CI gate.
+The stable, sorted output is meant to be diffed before/after a change.
 """
 from __future__ import annotations
 
@@ -72,27 +78,49 @@ def resolve(html: Path, ref: str) -> Path | None:
     return (html.parent / ref).resolve()
 
 
+def case_exact(target: Path) -> bool:
+    """True only if every path component matches the on-disk casing — the check
+    `Path.exists()` skips on a case-insensitive filesystem."""
+    try:
+        rel = target.relative_to(REPO)
+    except ValueError:
+        return target.exists()
+    cur = REPO
+    for part in rel.parts:
+        if not cur.is_dir() or part not in {p.name for p in cur.iterdir()}:
+            return False
+        cur = cur / part
+    return True
+
+
 def main() -> int:
     quiet = "--quiet" in sys.argv
-    missing: list[tuple[str, str]] = []
+    problems: list[tuple[str, str, str]] = []  # (kind, html, ref)
     checked = 0
     for html in iter_html():
+        hrel = str(html.relative_to(REPO))
         for ref in refs_in(html):
             target = resolve(html, ref)
             if target is None:
                 continue
             checked += 1
             if not target.exists():
-                missing.append((str(html.relative_to(REPO)), ref))
+                problems.append(("MISSING", hrel, ref))
+            elif not case_exact(target):
+                problems.append(("CASE   ", hrel, ref))
+            elif target.is_file() and target.stat().st_size == 0:
+                problems.append(("EMPTY  ", hrel, ref))
 
-    missing.sort()
+    problems.sort()
     if not quiet:
-        for html_rel, ref in missing:
-            print(f"MISSING  {html_rel}  ->  {ref}")
+        for kind, hrel, ref in problems:
+            print(f"{kind}  {hrel}  ->  {ref}")
         print("-" * 60)
+    by_kind = {k.strip(): sum(1 for p in problems if p[0] == k) for k in ("MISSING", "CASE   ", "EMPTY  ")}
     print(f"decks scanned: {len(iter_html())}   refs checked: {checked}   "
-          f"unresolved: {len(missing)}")
-    return 0 if not missing else 1
+          f"problems: {len(problems)}  "
+          f"(missing={by_kind['MISSING']} case={by_kind['CASE']} empty={by_kind['EMPTY']})")
+    return 0 if not problems else 1
 
 
 if __name__ == "__main__":
