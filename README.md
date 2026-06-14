@@ -1,21 +1,48 @@
 # talks
-Repository of public talks
 
+Repository of public talks. Each top-level directory is a standalone
+[reveal.js](https://revealjs.com) deck, published to GitHub Pages at
+`https://andreastersenov.github.io/talks/<TalkDir>/`. All decks share **one
+`assets/` folder at the repo root**, referenced from each deck as `../assets/…`.
 
-Creating a new Presentation:
-  - Create a new branch, make a copy of `template`, and `cd` there
-  - git submodule current version of reveal.js
+## Previewing locally
+
+Served from the repo root (so the shared `../assets/` paths resolve):
+
+```bash
+npm install            # first time only — installs live-server
+npm start              # http://localhost:8000 with live-reload
+```
+
+Then open `http://localhost:8000/<TalkDir>/` (e.g. `/LAM_2026/`). Export a PDF
+from `/<TalkDir>/?print-pdf`.
+
+No-dependency fallback (manual refresh): `python3 -m http.server 8000` at the
+repo root.
+
+After cloning: `git submodule update --init --recursive`.
+
+## Creating a new presentation
+
+  - Make a copy of a recent talk directory (it already wires up the current
+    reveal.js fork and theme). **Delete the copied `assets/` folder** — assets
+    live at the repo root now.
+  - Point the reveal.js submodule:
+
     ```
-    $ git submodule add https://github.com/EiffL/reveal.js.git
-    $ cd reveal.js
-    $ git submodule update --init --recursive
+    $ git submodule add https://github.com/EiffL/reveal.js.git <TalkDir>/reveal.js
+    $ cd <TalkDir>/reveal.js && git submodule update --init --recursive
     ```
-  - copy `package.json` and `gulpfile.js` from  the `reveal.js` folder to the talk directory
-  - Update/install npm modules to make sure it  works with this version:
-    ```
-    $ npm install
-    ```
-  - Start the server:
-    ```
-    $ npm start
-    ```
+
+  - Reference figures as `../assets/…`; drop any new images into the root
+    `assets/` folder.
+  - Preview from the repo root (`npm start`, open `/<TalkDir>/`).
+
+## Checking asset links
+
+```bash
+python3 tools/check-asset-links.py
+```
+
+Resolves every deck's local references as a browser served from the repo root
+would, and lists any that don't exist.

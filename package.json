@@ -1,0 +1,12 @@
+{
+  "name": "talks",
+  "private": true,
+  "description": "Andreas Tersenov — public talks. reveal.js decks sharing one root assets/ folder.",
+  "scripts": {
+    "start": "live-server --port=8000",
+    "serve": "live-server --port=8000"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
