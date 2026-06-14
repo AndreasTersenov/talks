@@ -37,11 +37,12 @@ After cloning, hydrate the reveal.js submodules: `git submodule update --init --
 
 Shared assets live in the root `assets/`, split into type subfolders —
 `logos/`, `backgrounds/`, `diagrams/`, `figures/`, `photos/`, `videos/`,
-`misc/`. Decks reference them with a **relative parent path including the
-subfolder**:
+`misc/` — and `figures/` is split further into `maps/`, `posteriors/`,
+`statistics/`, `matrices/`. Decks reference them with a **relative parent path
+including the subfolder(s)**:
 
 ```html
-<img src="../assets/figures/result.png">  <!-- NOT "assets/…", NOT "/assets/…" -->
+<img src="../assets/figures/maps/kappa.png">  <!-- NOT "assets/…", NOT "/assets/…" -->
 ```
 
 This resolves correctly both locally (served from root → `/assets/…`) and on
