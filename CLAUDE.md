@@ -35,17 +35,21 @@ After cloning, hydrate the reveal.js submodules: `git submodule update --init --
 
 ## Asset references — the load-bearing convention
 
-Decks reference shared assets with a **relative parent path**:
+Shared assets live in the root `assets/`, split into type subfolders —
+`logos/`, `backgrounds/`, `diagrams/`, `figures/`, `photos/`, `videos/`,
+`misc/`. Decks reference them with a **relative parent path including the
+subfolder**:
 
 ```html
-<img src="../assets/figure.png">          <!-- NOT "assets/…", NOT "/assets/…" -->
+<img src="../assets/figures/result.png">  <!-- NOT "assets/…", NOT "/assets/…" -->
 ```
 
 This resolves correctly both locally (served from root → `/assets/…`) and on
 GitHub Pages (`/talks/assets/…`). Do **not** reintroduce a per-talk `assets/`
 folder, an absolute `/assets/…` path, or a symlink — **GitHub Pages does not
 publish symlinks**, which is the bug that originally forced per-talk copies.
-New images go straight into the root `assets/` folder.
+New images go into the matching `assets/<category>/` subfolder; `docs/asset-map.tsv`
+records the current filename→category assignment.
 
 Verify after editing refs:
 
@@ -93,7 +97,8 @@ branch-per-talk flow is no longer followed — see git history). To scaffold:
 2. Re-point the reveal.js submodule (`git submodule add
    https://github.com/EiffL/reveal.js.git <TalkDir>/reveal.js`, then
    `git submodule update --init --recursive`).
-3. Reference figures as `../assets/…`; drop new images into the root `assets/`.
+3. Reference figures as `../assets/<category>/…`; drop new images into the
+   matching `assets/<category>/` subfolder.
 4. Preview from the repo root (`npm start`, open `/<TalkDir>/`) and run
    `python3 tools/check-asset-links.py`.
 

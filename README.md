@@ -34,8 +34,9 @@ After cloning: `git submodule update --init --recursive`.
     $ cd <TalkDir>/reveal.js && git submodule update --init --recursive
     ```
 
-  - Reference figures as `../assets/…`; drop any new images into the root
-    `assets/` folder.
+  - Reference figures as `../assets/<category>/…` (the root `assets/` folder is
+    split into `logos/`, `backgrounds/`, `diagrams/`, `figures/`, `photos/`,
+    `videos/`, `misc/`); drop new images into the matching subfolder.
   - Preview from the repo root (`npm start`, open `/<TalkDir>/`).
 
 ## Checking asset links
