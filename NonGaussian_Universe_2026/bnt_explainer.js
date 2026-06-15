@@ -1000,8 +1000,10 @@
     var cv = this.canvas, ctx = cv.getContext("2d");
     var W = cv._cssW, H = cv._cssH, dpr = cv._dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    var cell = Math.min(58, (H - 70) / 4), grid = cell * 4, vmax = 1.0;
-    var midY = H * 0.40;
+    // reserve vertical room for the matrix titles (above) and the verdict (below),
+    // then centre the matrices so nothing clips at the panel edges
+    var cell = Math.min(62, (H - 120) / 4), grid = cell * 4, vmax = 1.0;
+    var midY = Math.max(grid / 2 + 36, Math.min(H * 0.50, H - grid / 2 - 34));
     var leftX = W * 0.10, rightX = W * 0.56;
 
     // left: C-hat (always)

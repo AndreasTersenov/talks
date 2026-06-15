@@ -16,7 +16,6 @@
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
   text-align: left;
-  height: 100%;
   box-sizing: border-box;
   padding: 0 2.2% 0;
 }
@@ -41,7 +40,7 @@
   grid-template-columns: 1fr 232px;
   gap: 14px;
   align-items: stretch;
-  height: 460px;
+  height: 540px;      /* taller than before so the slide is not top-heavy; reveal centres it */
 }
 .bnt-slide .bnt-main {
   position: relative;
