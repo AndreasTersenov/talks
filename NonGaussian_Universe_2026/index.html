@@ -32,8 +32,8 @@
         <div class="bnt-stage">
           <div class="bnt-main">
             <canvas class="bnt-cloud" width="1520" height="1200"
-                    aria-label="A fixed cloud of map pixels with rotating measuring axes and their shadows"></canvas>
-            <div class="bnt-cloud-tag">the cloud — all the information — never moves</div>
+                    aria-label="A fixed point cloud of map pixels with rotating measuring axes and their 1-D projections"></canvas>
+            <div class="bnt-cloud-tag">the point cloud (all the information) never moves</div>
           </div>
 
           <div class="bnt-side">
@@ -48,13 +48,6 @@
         </div>
 
         <div class="bnt-caption" aria-live="polite"></div>
-
-        <p class="bnt-footnote">
-          Auto+cross <em>power spectra</em> are <em>exactly</em> BNT-invariant
-          (Ĉ′ = B Ĉ Bᵀ). This collapse is specific to <em>per-map non-Gaussian</em>
-          statistics — the ℓ1-norm, peaks. &nbsp;·&nbsp;
-          ℓ1+product &amp; CNN (ResNet18) arms, matched best-NDE; whitening from the L1-auto arm.
-        </p>
 
         <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
 
@@ -73,7 +66,7 @@
         <div class="bnt-stage">
           <div class="bnt-main">
             <canvas class="bnt-mech-lines" width="1520" height="1100"
-              aria-label="Four tomographic map field-lines: nearly identical deep field, then BNT differences them into a shallow map plus thin slices with amplified correlated noise; the CNN reconstructs the deep map"></canvas>
+              aria-label="Four tomographic map tiles sharing one common signal, then BNT differences them into a shallow map plus thin slices with amplified correlated noise; the CNN reconstructs the common signal"></canvas>
           </div>
           <div class="bnt-side">
             <div class="bnt-meter bnt-mech-ladder" aria-label="recovery ladder"></div>
@@ -86,17 +79,11 @@
           </div>
         </div>
         <div class="bnt-caption" aria-live="polite"></div>
-        <p class="bnt-footnote">
-          Recovery ladder = <b>L1-auto arm</b>: auto-only 0.15× · +cross 0.22× · CNN 0.93× ·
-          whitening 1.06× (FoM₃ vs no-BNT). Cross channel ≈ ξᵢⱼ. Noise amplification =
-          row norms of B (×1, 1.41, 1.82, 1.62); correlation −0.71 from B Bᵀ.
-        </p>
         <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
         <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
         <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
         <span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
         <span class="fragment bnt-frag" data-bnt-act="5" aria-hidden="true"></span>
-        <span class="fragment bnt-frag" data-bnt-act="6" aria-hidden="true"></span>
       </section>
 
       <!-- ============ SLIDE 3 — the 2-point rule ============ -->
@@ -110,11 +97,6 @@
           </div>
         </div>
         <div class="bnt-caption" aria-live="polite"></div>
-        <p class="bnt-footnote">
-          P7 (<i>BNT_THEORY_DEEP_DIVE</i> §1.5): the full auto+cross 2-point datavector is a
-          lossless, invertible repackaging under B (Ĉ′ = B Ĉ Bᵀ) — auto-only is not. The
-          ℓ1 / peaks collapse (previous slides) is the higher-order, autos-only member of this family.
-        </p>
         <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
         <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
         <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>

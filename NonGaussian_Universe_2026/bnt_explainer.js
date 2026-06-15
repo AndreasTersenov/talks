@@ -97,29 +97,29 @@
 
   /* Captions + meter copy per act (talk-ready; concise). */
   var ACT_COPY = {
-    1: { cap: "Four tomographic maps = one <b>cloud of pixels</b> in channel-space. " +
-              "The <span class='c-l1'>ℓ1-norm</span> of a map is the cloud's " +
-              "<b>shadow</b> on that axis. The cloud is stretched along a " +
-              "<span class='c-deep'>deep common mode</span>, with a non-Gaussian tail of " +
-              "<span class='c-peak'>rare high-κ peaks</span> — so both shadows are <b>rich</b>.",
+    1: { cap: "Each pixel is a point in 4-channel space; together the pixels form a " +
+              "<b>point cloud</b>. The <span class='c-l1'>ℓ1-norm</span> of one map is its " +
+              "<b>projection</b> onto that axis (a 1-D marginal). The cloud is elongated " +
+              "along a <span class='c-deep'>deep common mode</span>, with a non-Gaussian tail of " +
+              "<span class='c-peak'>rare high-κ peaks</span>, so both projections are <b>rich</b>.",
          ratio: "1.00×", abs: "FoM₃ 3045  ·  ℓ1 + product", marg: "" },
     2: { cap: "<b>BNT re-orients the measuring axes</b> off the deep mode, onto thin, " +
-              "signal-poor slices (with amplified, correlated noise). The shadows " +
-              "<b>flatten toward noise</b> — FoM₃ collapses to 0.26×. " +
-              "<b>The cloud hasn't moved.</b>",
+              "signal-poor slices (with amplified, correlated noise). The projections " +
+              "<b>flatten toward noise</b> and FoM₃ collapses to 0.26×. " +
+              "<b>The cloud has not moved.</b>",
          ratio: "0.26×", abs: "3045 → 779", marg: "σ(σ₈) +65%  (calibrated loss)" },
-    3: { cap: "So where did it go? The cosmology lives in the cloud's <b>shape</b> — " +
+    3: { cap: "So where did it go? The cosmology lives in the cloud's <b>shape</b>, " +
               "the <b>relations between maps</b>. In this frame, no single-map " +
-              "histogram can see it.",
-         ratio: "0.26×", abs: "3045 → 779", marg: "info is intact — just off-axis" },
+              "projection can see it.",
+         ratio: "0.26×", abs: "3045 → 779", marg: "info is intact, just off-axis" },
     4: { cap: "The <span class='c-cnn'>CNN mixes channels first</span>, so it can draw " +
-              "<b>its own axis back along the cloud</b> (undo B for free) — rich again, " +
-              "FoM₃ ≈ 0.96×. <b>Basis-robust, not “smarter.”</b>",
+              "<b>its own axis back along the cloud</b> (undo B for free) and read it richly " +
+              "again, FoM₃ ≈ 0.96×. <b>Basis-robust, not “smarter.”</b>",
          ratio: "0.96×", abs: "3326 → 3186  ·  CNN", marg: "channel-mixing ⇒ frame-agnostic" },
-    5: { cap: "<b>Whitening</b> rotates to a <b>different clean frame</b> — the per-map " +
-              "shadows come back, FoM₃ recovers to <b>1.06×</b>. " +
+    5: { cap: "<b>Whitening</b> rotates to a <b>different clean frame</b> and the per-map " +
+              "projections come back, FoM₃ recovers to <b>1.06×</b>. " +
               "Nothing was lost; the collapse was the <b>frame</b>.",
-         ratio: "1.06×", abs: "fully recovered", marg: "σ(σ₈) back to no-BNT  ·  any sane frame feeds the ℓ1" }
+         ratio: "1.06×", abs: "fully recovered", marg: "σ(σ₈) back to no-BNT" }
   };
 
   /* ===================== deterministic toy cloud ========================== */
@@ -514,13 +514,12 @@
       ctx.stroke();
     }
 
-    // flag the kept shallow map once nulling has happened
+    // flag the kept shallow map once nulling has happened (left-anchored so it never clips)
     if (m > 0.55) {
-      var keptX = x0 + (0.30 / zMax) * (x1 - x0);
-      label(ctx, "kept (shallow)", keptX, Y(depthN[0]) - 8, ramp[0], "center", 10.5, true);
+      label(ctx, "kept (shallow)", x0 + 2, Y(depthN[0]) - 8, ramp[0], "left", 10.5, true);
     }
 
-    var capNo = "deep kernels — nested, overlapping at low z (redundant)";
+    var capNo = "deep, nested kernels overlapping at low z (redundant)";
     var capYes = "1 shallow map + 3 thin lens-z slices (signal-poor)";
     if (this.kernCapEl) this.kernCapEl.innerHTML = (m < 0.5) ? capNo : capYes;
   };
@@ -671,10 +670,20 @@
     return moving;
   }
   function lerp(a, b, t) { return a + (b - a) * t; }
-  // neutral diverging cell colour (teal +, purple −) — distinct from the method colours
+  // neutral diverging cell colour (teal +, purple −), distinct from the method colours
   function cellColor(v, vmax) {
     var t = Math.max(0, Math.min(1, Math.abs(v) / vmax));
     return hexA(v >= 0 ? "#1b9e77" : "#7b6cae", 0.10 + 0.85 * t);
+  }
+  // viridis colormap for the convergence-map tiles (perceptual, colourblind-safe)
+  var VIRIDIS = [[68,1,84],[72,40,120],[62,74,137],[49,104,142],[38,130,142],
+                 [31,158,137],[53,183,121],[110,206,88],[181,222,43],[253,231,37]];
+  function viridis(t) {
+    t = t < 0 ? 0 : (t > 1 ? 1 : t);
+    var x = t * (VIRIDIS.length - 1), i = Math.floor(x), f = x - i;
+    if (i >= VIRIDIS.length - 1) return VIRIDIS[VIRIDIS.length - 1];
+    var a = VIRIDIS[i], b = VIRIDIS[i + 1];
+    return [Math.round(a[0] + (b[0]-a[0])*f), Math.round(a[1] + (b[1]-a[1])*f), Math.round(a[2] + (b[2]-a[2])*f)];
   }
 
   /* ===================================================================== *
@@ -691,7 +700,7 @@
     this.ladderEl   = root.querySelector(".bnt-mech-ladder");
     this.captionEl  = root.querySelector(".bnt-caption");
     this.covCapEl   = root.querySelector(".bnt-mech-cov-cap");
-    this.nActs = 6;
+    this.nActs = 5;
     this.data = this._buildData();
     this.cur = this._stateForAct(1);
     this.tgt = this._stateForAct(1);
@@ -705,49 +714,59 @@
   MechEngine.prototype.resize = function () { fitCanvas(this.lineCanvas); fitCanvas(this.covCanvas); };
 
   MechEngine.MECH_COPY = {
-    1: "Four tomographic maps are nearly the <b>same deep field</b> (+ small increments) — strongly <b>redundant</b>. Their shape noise is <b>independent</b>, equal in every bin.",
-    2: "<b>BNT</b> differences them (κ′ᵢ = Σⱼ Bᵢⱼ κⱼ): the shared deep field <b>cancels</b> → one shallow map + three <b>thin slices</b> with little signal left per map.",
-    3: "The independent noise is mixed too — <b>amplified</b> (×1, 1.4, 1.8, 1.6) and now <b>correlated</b> between maps (−0.71). Each nulled map: tiny signal under big noise.",
-    4: "Look closely: the <span class='c-deep'>same feature</span> sits <b>coherently across</b> the 'noisy' maps. The information moved into the <b>relations between maps</b> — a per-map <span class='c-l1'>ℓ1</span> can't see it → <b>0.15×</b>.",
-    5: "Adding the <b>cross / product</b> channel (≈ ξᵢⱼ, a <b>2-point</b> cross) restores the 2-point part → <b>0.22×</b>. But even the <i>complete</i> 2-point sector recovers only <b>~38%</b> — the rest is higher-order (non-Gaussian) cross-bin info a pairwise product can't carry.",
-    6: "The <span class='c-cnn'>CNN</span> mixes channels in its first layer — it applies <b>B⁻¹ for free</b>, rebuilds the deep field and reads the cross-map coherence → <b>0.93×</b>. Any clean frame (<b>whitening</b>) → <b>1.06×</b>. <b>Basis-robust, not “smarter.”</b>"
+    1: "Four tomographic maps mostly share <b>one common signal</b> (plus small increments), so they are strongly <b>redundant</b>. Their shape noise is <b>independent</b>, equal in every bin.",
+    2: "<b>BNT</b> differences them (κ′ᵢ = Σⱼ Bᵢⱼ κⱼ): the common signal <b>cancels</b>, leaving one shallow map and three thin <b>slices</b>. The structure is now <b>gone from each map</b>, not hidden inside it.",
+    3: "The noise is mixed too: <b>amplified</b> (×1, 1.4, 1.8, 1.6) and <b>correlated</b> (−0.71). Each nulled map is tiny signal under big noise, so a per-map <span class='c-l1'>ℓ1</span> sees almost nothing (<b>0.15×</b>).",
+    4: "<b>Cross maps</b> help only partly (<b>0.22×</b>): they are fixed <b>pairwise</b> products (product = zero-lag joint, conv = 2-point), recovering the pairwise share, not the higher-order multi-bin info. The ℓ1 is <b>nonlinear</b>, so no finite set of products is complete; capturing all of it needs the full tree of higher moments (triplets, quadruplets, …).",
+    5: "But BNT was <b>linear</b>, so you need none of that tree: <b>recombine</b> the maps (κ = B⁻¹κ′) and the common signal <b>returns</b>. The <span class='c-cnn'>CNN</span> does exactly this in its first layer, for free (<b>0.93×</b>); any clean frame (<b>whitening</b>) gives <b>1.06×</b>. The information was in the <b>joint</b>, not any single map."
   };
 
   MechEngine.prototype._buildData = function () {
-    var rng = mulberry32(70707), N = 200, xs = [], f = [];
-    for (var s = 0; s < N; s++) {
-      var x = s / (N - 1); xs.push(x);
-      var base = 0.55 * (Math.sin(2 * Math.PI * (x * 1.2 + 0.1)) + 0.7 * Math.sin(2 * Math.PI * (x * 2.3 + 0.4)));
-      var peak = 0.95 * Math.exp(-Math.pow((x - 0.34) / 0.024, 2)) +
-                 0.75 * Math.exp(-Math.pow((x - 0.69) / 0.021, 2));   // non-Gaussian peaks
-      f.push(0.5 * base + peak);
+    // 2-D toy convergence fields: a shared deep field (a few Gaussian "peak"
+    // blobs) seen by all four bins at increasing depth (redundant) + small
+    // per-bin increments + independent shape noise. BNT is then applied per
+    // pixel with the real B; the CNN reconstruction is B^-1(BNT) = the deepest
+    // original map.
+    var rng = mulberry32(70707), G = 44;
+    var blobs = [
+      { x: 0.30, y: 0.32, a: 1.20, s: 0.085 },
+      { x: 0.67, y: 0.58, a: 1.00, s: 0.075 },
+      { x: 0.48, y: 0.78, a: 0.72, s: 0.100 },
+      { x: 0.80, y: 0.26, a: 0.62, s: 0.090 }
+    ];
+    var f = new Array(G * G);
+    for (var yy = 0; yy < G; yy++) for (var xx = 0; xx < G; xx++) {
+      var X = xx / (G - 1), Y = yy / (G - 1), v = 0.16 * Math.sin(2 * Math.PI * (X * 1.3 + Y * 0.7));
+      for (var bI = 0; bI < blobs.length; bI++) {
+        var b = blobs[bI], dx = X - b.x, dy = Y - b.y;
+        v += b.a * Math.exp(-(dx * dx + dy * dy) / (2 * b.s * b.s));
+      }
+      f[yy * G + xx] = v;
     }
     var w = [0.55, 0.78, 1.0, 1.18], sigma = 0.30;
-    var xobs = [[], [], [], []], noise = [[], [], [], []];
+    var xobs = [[], [], [], []];
     for (var i = 0; i < 4; i++) {
-      for (var s2 = 0; s2 < N; s2++) {
-        var g = 0.16 * Math.sin(2 * Math.PI * (xs[s2] * (2 + i) + i * 0.6));
-        var nz = gaussian(rng); noise[i].push(nz);
-        xobs[i].push(w[i] * f[s2] + g + sigma * nz);
+      for (var p = 0; p < G * G; p++) {
+        var inc = 0.10 * Math.sin(2 * Math.PI * ((p % G) / (G - 1) * (1.5 + i) + i * 0.5));
+        xobs[i].push(w[i] * f[p] + inc + sigma * gaussian(rng));
       }
     }
     var xb = [[], [], [], []];
-    for (var s3 = 0; s3 < N; s3++) {
-      var bv = matVec(BNT_B, [xobs[0][s3], xobs[1][s3], xobs[2][s3], xobs[3][s3]]);
+    for (var p2 = 0; p2 < G * G; p2++) {
+      var bv = matVec(BNT_B, [xobs[0][p2], xobs[1][p2], xobs[2][p2], xobs[3][p2]]);
       for (var i3 = 0; i3 < 4; i3++) xb[i3].push(bv[i3]);
     }
-    // CNN reconstruction of the deep map = B^-1 (BNT maps) = the original deepest map
-    return { N: N, xs: xs, xobs: xobs, xb: xb, recon: xobs[3] };
+    return { G: G, xobs: xobs, xb: xb, recon: xobs[3] };
   };
 
   MechEngine.prototype._stateForAct = function (act) {
     return {
-      kmorph: act >= 2 ? 1 : 0,
-      lAuto:  act >= 3 ? 1 : 0,
-      coh:    act === 4 ? 1 : 0,
-      lCross: act >= 5 ? 1 : 0,
-      lCNN:   act >= 6 ? 1 : 0,
-      recon:  act >= 6 ? 1 : 0
+      base:   1,                  // ladder: ℓ1 no-BNT reference (always shown)
+      kmorph: act >= 2 ? 1 : 0,   // BNT applied
+      lAuto:  act >= 3 ? 1 : 0,   // ladder: ℓ1 auto
+      lCross: act >= 4 ? 1 : 0,   // ladder: +cross
+      lCNN:   act >= 5 ? 1 : 0,   // ladder: CNN + whitening
+      recon:  act >= 5 ? 1 : 0    // B^-1 reconstruction tile
     };
   };
   MechEngine.prototype.goTo = function (act) {
@@ -768,62 +787,76 @@
   };
   MechEngine.prototype._frame = function () {
     var moving = tweenStep(this.cur, this.tgt,
-      ["kmorph", "lAuto", "coh", "lCross", "lCNN", "recon"], 0.12);
-    this._drawLines(); this._drawCov(); this._updateLadder();
+      ["base", "kmorph", "lAuto", "lCross", "lCNN", "recon"], 0.12);
+    this._drawTiles(); this._drawCov(); this._updateLadder();
     if (moving) requestAnimationFrame(this._loop); else this.running = false;
   };
 
-  MechEngine.prototype._drawLines = function () {
+  // grayscale heatmap of one GxG field into a reusable offscreen canvas
+  MechEngine.prototype._tileImage = function (vals, G) {
+    if (!this._off) { this._off = document.createElement("canvas"); this._off.width = G; this._off.height = G; }
+    var octx = this._off.getContext("2d"), img = octx.createImageData(G, G);
+    var lo = -0.8, hi = 2.0;
+    for (var p = 0; p < G * G; p++) {
+      var t = (vals[p] - lo) / (hi - lo);
+      var c = viridis(t);                         // high κ → yellow peaks, low → deep purple
+      var o = p * 4; img.data[o] = c[0]; img.data[o + 1] = c[1]; img.data[o + 2] = c[2]; img.data[o + 3] = 255;
+    }
+    octx.putImageData(img, 0, 0);
+    return this._off;
+  };
+
+  // four κ map tiles (redundant → BNT slices), then the B^-1 reconstruction tile
+  MechEngine.prototype._drawTiles = function () {
     var cv = this.lineCanvas, ctx = cv.getContext("2d");
     var W = cv._cssW, H = cv._cssH, dpr = cv._dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    var d = this.data, m = this.cur.kmorph, recon = this.cur.recon;
-    var padL = 54, padR = 12, padT = 10, padB = 8;
-    var bandH = (H - padT - padB) / 4, x0 = padL, x1 = W - padR;
-    var amp = bandH * 0.30;
-    function X(s) { return x0 + (s / (d.N - 1)) * (x1 - x0); }
+    ctx.imageSmoothingEnabled = false;
+    var d = this.data, m = this.cur.kmorph, recon = this.cur.recon, G = d.G;
 
-    // coherence band (act 4): mark where the shared feature sits
-    if (this.cur.coh > 0.02) {
-      var bx = X(0.34 * (d.N - 1));
-      ctx.fillStyle = hexA(C_DEEP, 0.12 * this.cur.coh);
-      ctx.fillRect(bx - 14, padT, 28, H - padT - padB);
-    }
+    var pad = 16, gap = 12, topGap = 32;
+    var leftW = W * 0.52;
+    var tile = Math.min((leftW - pad * 2 - gap) / 2, (H - pad - topGap * 2 - gap) / 2);
+    var ox = pad, oy = pad + topGap;
+    var pos = [[ox, oy], [ox + tile + gap, oy],
+               [ox, oy + tile + gap + topGap], [ox + tile + gap, oy + tile + gap + topGap]];
 
+    label(ctx, m < 0.5 ? "4 maps: one common signal (redundant)"
+                       : "BNT: common signal cancelled (1 shallow + 3 slices)",
+          ox, pad + 4, C_INK, "left", 13.5, true);
+
+    var tileFade = 1 - 0.4 * recon;
     for (var k = 0; k < 4; k++) {
-      var yMid = padT + bandH * (k + 0.5);
-      // baseline
-      ctx.strokeStyle = hexA(C_MUTE, 0.30); ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(x0, yMid); ctx.lineTo(x1, yMid); ctx.stroke();
-      // label
-      var lab = m > 0.5 ? "κ′" + (k + 1) : "κ" + (k + 1);
-      label(ctx, lab, x0 - 12, yMid, m > 0.5 ? C_L1 : C_INK, "right", 13, true);
-      if (m > 0.5 && k === 0) label(ctx, "kept", x0 - 12, yMid + 15, C_MUTE, "right", 10, false);
-      // the field line (lerp no-BNT -> BNT)
-      var fade = recon > 0.02 ? (1 - 0.62 * recon) : 1;
-      ctx.strokeStyle = hexA(m > 0.5 ? C_L1 : "#3a5670", 0.9 * fade);
-      ctx.lineWidth = 1.6;
-      ctx.beginPath();
-      for (var s = 0; s < d.N; s++) {
-        var v = lerp(d.xobs[k][s], d.xb[k][s], m);
-        var y = yMid - v * amp;
-        if (s === 0) ctx.moveTo(X(s), y); else ctx.lineTo(X(s), y);
-      }
-      ctx.stroke();
+      var vals = new Array(G * G);
+      for (var p = 0; p < G * G; p++) vals[p] = lerp(d.xobs[k][p], d.xb[k][p], m);
+      var off = this._tileImage(vals, G), px = pos[k][0], py = pos[k][1];
+      ctx.save(); ctx.globalAlpha = tileFade;
+      ctx.drawImage(off, px, py, tile, tile);
+      ctx.restore();
+      var kept = (m > 0.5 && k === 0);
+      ctx.strokeStyle = hexA(m > 0.5 ? C_L1 : C_MUTE, m > 0.5 ? 0.85 : 0.5);
+      ctx.lineWidth = kept ? 2.6 : 1.2;
+      ctx.strokeRect(px, py, tile, tile);
+      label(ctx, (m > 0.5 ? "κ′" : "κ") + (k + 1), px + 3, py - 9,
+            m > 0.5 ? C_L1 : C_INK, "left", 13, true);
+      if (kept) label(ctx, "kept (shallow)", px + tile, py - 9, C_MUTE, "right", 10.5, false);
     }
 
-    // CNN reconstruction overlay (act 6): B^-1 combine -> the deep map, rich again
+    // act 5: recombine the slices (B^-1) → the deep field reappears (the CNN's move)
     if (recon > 0.02) {
-      var yC = padT + (H - padT - padB) * 0.5;
       ctx.save(); ctx.globalAlpha = recon;
+      var rx = leftW + 6, ay = oy + tile * 0.5;
       ctx.strokeStyle = C_CNN; ctx.lineWidth = 2.6;
-      ctx.beginPath();
-      for (var s2 = 0; s2 < d.N; s2++) {
-        var y2 = yC - d.recon[s2] * (bandH * 0.62);
-        if (s2 === 0) ctx.moveTo(X(s2), y2); else ctx.lineTo(X(s2), y2);
-      }
-      ctx.stroke();
-      label(ctx, "CNN: B⁻¹ combine → deep map rebuilt", x0 + 6, padT + 12, C_CNN, "left", 13, true);
+      ctx.beginPath(); ctx.moveTo(rx, ay); ctx.lineTo(rx + 54, ay); ctx.stroke();
+      arrowHead(ctx, [rx + 54, ay], 0, C_CNN);
+      label(ctx, "B⁻¹ combine", rx + 26, ay - 13, C_CNN, "center", 12.5, true);
+      var rt = Math.min(tile * 1.7, W - (rx + 66) - pad, H - pad - topGap * 2);
+      var rtx = rx + 66, rty = oy + topGap;
+      var off2 = this._tileImage(d.recon, G);
+      ctx.drawImage(off2, rtx, rty, rt, rt);
+      ctx.strokeStyle = C_CNN; ctx.lineWidth = 2.8; ctx.strokeRect(rtx, rty, rt, rt);
+      label(ctx, "common signal rebuilt", rtx + rt / 2, rty - 9, C_CNN, "center", 13.5, true);
+      label(ctx, "(the CNN does this for free)", rtx + rt / 2, rty + rt + 15, C_CNN, "center", 11.5, false);
       ctx.restore();
     }
   };
@@ -849,12 +882,12 @@
   MechEngine.prototype._buildLadder = function () {
     // recovery ladder, L1-auto arm (M3): auto -> +cross -> CNN -> whitening
     this._rungs = [
-      { key: "lAuto",  ratio: 0.15, name: "ℓ1<br>auto",   color: C_L1 },
-      { key: "lCross", ratio: 0.22, name: "+cross",        color: C_L1 },
-      { key: "lCNN",   ratio: 0.93, name: "CNN",           color: C_CNN },
-      { key: "lCNN",   ratio: 1.06, name: "whiten",        color: C_L1, hatch: true }
+      { key: "base",   ratio: 1.00, name: "no-BNT", color: C_L1 },
+      { key: "lAuto",  ratio: 0.15, name: "auto",   color: C_L1 },
+      { key: "lCross", ratio: 0.22, name: "+cross", color: C_L1 },
+      { key: "lCNN",   ratio: 0.93, name: "CNN",    color: C_CNN }
     ];
-    var html = '<div class="bnt-meter-title">recovery — FoM₃ / no-BNT</div>' +
+    var html = '<div class="bnt-meter-title">FoM₃ / no-BNT</div>' +
       '<div class="bnt-meter-plot"><div class="bnt-bars">' +
       '<div class="bnt-baseline"><span>1.00×</span></div>';
     for (var i = 0; i < this._rungs.length; i++) {
@@ -917,11 +950,11 @@
   }
   TwoPtEngine.prototype.resize = function () { fitCanvas(this.canvas); };
   TwoPtEngine.TP_COPY = {
-    1: "The <b>two-point</b> information is the full set of <b>auto- AND cross-spectra</b> — a 4×4 matrix <b>Ĉ</b>.",
-    2: "BNT is linear: it sends <b>Ĉ → B Ĉ Bᵀ</b>. A different matrix — but a <b>known, invertible</b> map.",
-    3: "So multiply back: <b>Ĉ = B⁻¹ Ĉ′ B⁻ᵀ</b>. <span class='c-deep'>Nothing is lost</span> — <b>auto+cross power spectra are exactly BNT-invariant</b> (identical posteriors).",
-    4: "But keep only the <b>diagonal</b> (auto-spectra alone) and you discard the off-diagonals — <b>you can't rebuild Ĉ</b>. Auto-only 2-point is <b>not</b> invariant.",
-    5: "<b>The rule:</b> a statistic survives BNT iff you can reassemble it from what you measured. <b>Auto+cross 2-pt: yes, exactly.</b> Per-map histograms / <span class='c-l1'>ℓ1</span> / peaks (autos only): <b>no</b> — that's the collapse."
+    1: "The <b>two-point</b> information is the full set of <b>auto- and cross-spectra</b>, a 4×4 matrix <b>Ĉ</b>.",
+    2: "BNT is linear: it sends <b>Ĉ → B Ĉ Bᵀ</b>. A different matrix, but a <b>known, invertible</b> map.",
+    3: "So multiply back: <b>Ĉ = B⁻¹ Ĉ′ B⁻ᵀ</b>. <span class='c-deep'>Nothing is lost</span>: <b>auto+cross power spectra are exactly BNT-invariant</b> (identical posteriors).",
+    4: "Keep only the <b>diagonal</b> (auto-spectra alone) and you discard the off-diagonals, so <b>you cannot rebuild Ĉ</b>. Auto-only 2-pt fails by <b>incompleteness</b> (cheap to fix: add the cross-spectra back).",
+    5: "<b>The rule:</b> survives BNT ⇔ you can reassemble it. <b>Auto+cross 2-pt: yes</b>, it is <b>linear and complete</b> (B just relabels it, Ĉ↦BĈBᵀ). The <span class='c-l1'>ℓ1</span> / peaks: <b>no</b>, because B mixes the maps and <i>then</i> the histogram throws away the joint (a <b>mix-then-marginalize</b>); no per-channel set closes. That is the collapse."
   };
   TwoPtEngine.prototype._stateForAct = function (act) {
     return { showCp: act >= 2 ? 1 : 0, showInv: act >= 3 ? 1 : 0, showAuto: act >= 4 ? 1 : 0 };
