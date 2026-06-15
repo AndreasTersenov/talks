@@ -50,11 +50,21 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.bnt-slide .bnt-cloud {
+.bnt-slide .bnt-cloud,
+.bnt-slide .bnt-mech-lines,
+.bnt-slide .bnt-tp-canvas {
   display: block;
   width: 100%;
   height: 100%;
 }
+
+/* slide 2/3 helpers */
+.bnt-slide .bnt-stage--wide { grid-template-columns: 1fr; }
+.bnt-slide .bnt-mech-cov { display: block; width: 100%; height: 116px; }
+.bnt-slide .bnt-mech-ladder .bnt-bars { gap: 9px; }
+.bnt-slide .bnt-mech-ladder .bnt-bar { width: 40px; }
+.bnt-slide .bnt-mech-ladder .bnt-bar-ratio { font-size: 12.5px; }
+.bnt-slide .bnt-mech-ladder .bnt-bar-name { font-size: 11px; bottom: -30px; line-height: 1.05; }
 .bnt-slide .bnt-cloud-tag {
   position: absolute;
   left: 12px; bottom: 10px;
@@ -210,6 +220,7 @@
 .bnt-slide .bnt-caption .c-l1   { color: var(--c-l1);  font-weight: 700; }
 .bnt-slide .bnt-caption .c-cnn  { color: var(--c-cnn); font-weight: 700; }
 .bnt-slide .bnt-caption .c-deep { color: var(--c-deep); font-weight: 700; }
+.bnt-slide .bnt-caption .c-peak { color: #b8860b; font-weight: 700; }
 .bnt-slide .bnt-actno {
   display: inline-block;
   font-size: 13px;

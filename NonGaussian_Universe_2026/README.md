@@ -37,19 +37,35 @@ xdg-open index.html      # or just double-click it
 Step with **→ / Space / click** (advance an act), **← / Shift-Tab** (step back),
 **R** or the *↻ replay* button (auto-replay the whole sequence on the current slide).
 
-## The five acts (advance on click)
+## Three slides
+
+This deck holds **three** independent explainer slides (each its own
+`data-bnt-explainer` `<section>`; `BNTExplainer.attach(Reveal)` wires all of them):
+
+1. **`cloud`** — "shadows of a rotating cloud" (the geometric / frame intuition). 5 acts.
+2. **`mechanism`** — "signal & noise under BNT: who can read it." How B scatters the
+   redundant deep signal into thin slices and turns independent noise into
+   amplified, correlated noise; why the per-map ℓ1 goes blind, why the cross channel
+   only half-helps (2-point share ≈ 0.38), and how the CNN un-mixes (B⁻¹) to recover.
+   6 acts, with a recovery ladder (auto 0.15× → +cross 0.22× → CNN 0.93× → whiten 1.06×).
+3. **`twopoint`** — "what survives BNT: the 2-point rule." Ĉ → B Ĉ Bᵀ is invertible →
+   auto+cross power spectra are **exactly** invariant; auto-only keeps just the
+   diagonal → can't invert → not invariant. 5 acts.
+
+### Slide 1 — the five acts (advance on click)
 
 | Act | What happens | FoM₃ meter |
 |-----|--------------|-----------|
-| 1 | Maps → a fixed **cloud** of pixels; the ℓ1 is its **shadow** on each axis. The cloud is elongated along a **deep common mode** → both shadows rich. | ℓ1 **1.00×** (3045) |
+| 1 | Maps → a fixed **cloud** of pixels; the ℓ1 is its **shadow** on each axis. The cloud is elongated along a **deep common mode**, with a non-Gaussian tail of rare high-κ peaks → both shadows rich. | ℓ1 **1.00×** (3045) |
 | 2 | **BNT re-orients the measuring axes** off the deep mode onto thin, signal-poor slices (+ amplified noise) → shadows go blank. *The cloud never moves.* | ℓ1 **0.26×** (779) |
 | 3 | Where did it go? Into the cloud's **shape** — the relations *between* maps. No single-map histogram sees it in this frame. | ℓ1 0.26× |
 | 4 | The **CNN mixes channels first** → draws its own axis back along the cloud (undo B for free) → rich again. **Basis-robust, not "smarter."** | CNN **0.96×** (3186) |
 | 5 | **Whitening** rotates to a *different clean frame* → shadows back → recovers **1.06×**. Nothing was lost; the collapse was the **frame**. | ℓ1 **1.06×** |
 
-The lensing-kernel inset morphs (Act 2) from 4 broad overlapping kernels n(z)
-into 1 broad map + 3 thin slices — *why* the cloud is elongated and the nulled
-axes are signal-poor.
+The lensing-kernel inset morphs (Act 2) from four **deep, nested** kernels `q(z)`
+(overlapping at low z = the deep common mode) into **1 shallow map + 3 thin
+lens-z slices** — *why* the cloud is elongated and the nulled axes are signal-poor.
+(The kept map is bin 1, the *shallowest* — not a broad map.)
 
 ## Drop it into your real deck
 

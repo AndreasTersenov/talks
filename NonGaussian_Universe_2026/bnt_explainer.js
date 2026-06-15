@@ -100,8 +100,8 @@
     1: { cap: "Four tomographic maps = one <b>cloud of pixels</b> in channel-space. " +
               "The <span class='c-l1'>ℓ1-norm</span> of a map is the cloud's " +
               "<b>shadow</b> on that axis. The cloud is stretched along a " +
-              "<span class='c-deep'>deep common mode</span> (the bins are deep and " +
-              "overlapping), so both shadows are <b>rich</b>.",
+              "<span class='c-deep'>deep common mode</span>, with a non-Gaussian tail of " +
+              "<span class='c-peak'>rare high-κ peaks</span> — so both shadows are <b>rich</b>.",
          ratio: "1.00×", abs: "FoM₃ 3045  ·  ℓ1 + product", marg: "" },
     2: { cap: "<b>BNT re-orients the measuring axes</b> off the deep mode, onto thin, " +
               "signal-poor slices (with amplified, correlated noise). The shadows " +
@@ -315,12 +315,22 @@
       var my = pt.L * dHat[1] + pt.S * pHat[1];
       var s = P(mx, my);
       if (pt.peak) {
-        ctx.fillStyle = hexA(C_PEAK, 0.95);
-        ctx.beginPath(); ctx.arc(s[0], s[1], 2.6, 0, 2 * Math.PI); ctx.fill();
+        // graded by amplitude so the gold points read as the TAIL of one cloud,
+        // not a separate population (rare high-kappa peaks = the non-Gaussian signal)
+        var pr = 2.0 + Math.min(2.3, (pt.L - 1.9) * 0.9);
+        ctx.fillStyle = hexA(C_PEAK, 0.92);
+        ctx.beginPath(); ctx.arc(s[0], s[1], pr, 0, 2 * Math.PI); ctx.fill();
       } else {
         ctx.fillStyle = hexA(C_CLOUD, 0.5);
         ctx.beginPath(); ctx.arc(s[0], s[1], 1.7, 0, 2 * Math.PI); ctx.fill();
       }
+    }
+
+    // label the non-Gaussian tail (the gold points) — geometric acts only
+    if (this.cur.joint < 0.4) {
+      var pk = P(2.55 * dHat[0], 2.55 * dHat[1]);
+      label(ctx, "rare high-κ peaks", pk[0] + 13, pk[1] + 18, C_PEAK, "left", 12, true);
+      label(ctx, "(non-Gaussian tail)", pk[0] + 13, pk[1] + 33, C_PEAK, "left", 11, false);
     }
 
     // --- the two per-map measuring axes + their shadows ---
@@ -435,11 +445,15 @@
   };
 
   /* ============================ kernel inset ============================== */
-  /* Four broad, heavily-overlapping lensing kernels n(z) (no-BNT) morph into
-   * 1 broad map + 3 thin lens-redshift slices (BNT) -- the physical reason the
-   * cloud is elongated (deep shared field) and the nulled axes are signal-poor.
-   * kmorph in [0,1] interpolates. Colours are a neutral sequential ramp so they
-   * never read as the method colours. */
+  /* Lensing efficiency kernels q(z_lens). NO-BNT: four DEEP kernels, each
+   * integrating lensing from z=0 up to its source bin -> nested, heavily
+   * overlapping at low z (the shared deep field = the "deep common mode";
+   * higher bins reach deeper and stronger). BNT keeps bin 1 -- "the shallowest,
+   * weakest bin" (B row 1 = (1,0,0,0)) -- a low-z shallow kernel, and turns the
+   * other three into THIN lens-z shells (the nulled differences). So the BNT
+   * frame is "1 shallow map + 3 thin slices", NOT "1 broad + 3 thin".
+   * (BNT_THEORY_DEEP_DIVE.md §0/§1.2.) kmorph in [0,1] interpolates. Colours are
+   * a neutral sequential ramp so they never read as the method colours. */
   Engine.prototype._drawKernels = function () {
     var canvas = this.kernCanvas, ctx = canvas.getContext("2d");
     var W = canvas._cssW, H = canvas._cssH, dpr = canvas._dpr;
@@ -447,10 +461,9 @@
     ctx.clearRect(0, 0, W, H);
 
     var m = this.cur.kmorph;
-    var padL = 30, padR = 8, padT = 8, padB = 22;
+    var padL = 14, padR = 8, padT = 8, padB = 22;
     var x0 = padL, x1 = W - padR, y0 = H - padB, yTop = padT;
     var zMin = 0, zMax = 2.0;
-    function X(z) { return x0 + (z - zMin) / (zMax - zMin) * (x1 - x0); }
     function Y(v) { return y0 - v * (y0 - yTop); }    // v in [0,1]
 
     // axis
@@ -458,46 +471,57 @@
     ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
     label(ctx, "z", x1 - 4, y0 + 15, C_MUTE, "right", 12, false);
 
-    // four kernels: broad overlapping (m=0) -> 1 broad + 3 thin shells (m=1)
-    var broadMu = [0.45, 0.70, 0.98, 1.30], broadW = 0.46;
-    var thinNu  = [0.45, 0.78, 1.12, 1.48];
-    var thinW   = [0.42, 0.085, 0.085, 0.085];   // kernel 0 stays broad (kept map)
-    var ramp = ["#c7d3df", "#9fb2c6", "#6f88a6", "#42607f"];
+    // no-BNT: nested deep kernels (arch rising from 0, increasing reach+depth)
+    var zReach = [0.72, 1.12, 1.55, 1.95];     // each bin's source horizon
+    var depthN = [0.40, 0.58, 0.78, 1.00];     // deeper bins lens more (taller)
+    // BNT: bin 1 kept (= its no-BNT kernel); bins 2-4 -> thin lens-z shells
+    var shellZ = [0.0, 0.78, 1.18, 1.60];      // shell centres (index 0 unused)
+    var shellA = [0.0, 0.74, 0.86, 0.98];      // shell heights
+    var shellW = 0.055;
+    var ramp = ["#b9863a", "#9fb2c6", "#6f88a6", "#42607f"]; // bin1 warm = "kept"
+
+    function qNoBNT(i, z) {                       // nested arch, 0..zReach[i]
+      var t = z / zReach[i];
+      if (t <= 0 || t >= 1) return 0;
+      return depthN[i] * Math.sin(Math.PI * t);
+    }
+    function qBNT(i, z) {
+      if (i === 0) return qNoBNT(0, z);           // kept shallow map
+      var d = (z - shellZ[i]) / shellW;
+      return shellA[i] * Math.exp(-0.5 * d * d);  // thin shell
+    }
 
     for (var i = 0; i < 4; i++) {
-      var mu = broadMu[i] + (thinNu[i] - broadMu[i]) * m;
-      var w  = broadW + (thinW[i] - broadW) * m;
-      // area-preserving-ish: thin shells get taller
-      var amp = (0.62) * (broadW / w) * 0.62;
-      amp = Math.min(amp, 1.0);
-      var amp0 = 0.62;
-      amp = amp0 + (amp - amp0) * m;
-
       ctx.beginPath();
-      var started = false;
-      for (var px = x0; px <= x1; px += 2) {
-        var z = zMin + (px - x0) / (x1 - x0) * (zMax - zMin);
-        var v = amp * Math.exp(-((z - mu) * (z - mu)) / (2 * w * w));
+      var started = false, px, z, v;
+      for (px = x0; px <= x1; px += 2) {
+        z = zMin + (px - x0) / (x1 - x0) * (zMax - zMin);
+        v = (1 - m) * qNoBNT(i, z) + m * qBNT(i, z);
         var yy = Y(v);
         if (!started) { ctx.moveTo(px, yy); started = true; } else { ctx.lineTo(px, yy); }
       }
       ctx.lineTo(x1, y0); ctx.lineTo(x0, y0); ctx.closePath();
-      ctx.fillStyle = hexA(ramp[i], 0.38);
+      ctx.fillStyle = hexA(ramp[i], 0.34);
       ctx.fill();
       ctx.strokeStyle = hexA(ramp[i], 0.95); ctx.lineWidth = 1.6;
       ctx.beginPath();
       started = false;
-      for (var px2 = x0; px2 <= x1; px2 += 2) {
-        var z2 = zMin + (px2 - x0) / (x1 - x0) * (zMax - zMin);
-        var v2 = amp * Math.exp(-((z2 - mu) * (z2 - mu)) / (2 * w * w));
-        var yy2 = Y(v2);
-        if (!started) { ctx.moveTo(px2, yy2); started = true; } else { ctx.lineTo(px2, yy2); }
+      for (px = x0; px <= x1; px += 2) {
+        z = zMin + (px - x0) / (x1 - x0) * (zMax - zMin);
+        v = (1 - m) * qNoBNT(i, z) + m * qBNT(i, z);
+        if (!started) { ctx.moveTo(px, Y(v)); started = true; } else { ctx.lineTo(px, Y(v)); }
       }
       ctx.stroke();
     }
 
-    var capNo = "deep, overlapping kernels (redundant)";
-    var capYes = "1 broad map + 3 thin slices (signal-poor)";
+    // flag the kept shallow map once nulling has happened
+    if (m > 0.55) {
+      var keptX = x0 + (0.30 / zMax) * (x1 - x0);
+      label(ctx, "kept (shallow)", keptX, Y(depthN[0]) - 8, ramp[0], "center", 10.5, true);
+    }
+
+    var capNo = "deep kernels — nested, overlapping at low z (redundant)";
+    var capYes = "1 shallow map + 3 thin lens-z slices (signal-poor)";
     if (this.kernCapEl) this.kernCapEl.innerHTML = (m < 0.5) ? capNo : capYes;
   };
 
@@ -588,7 +612,407 @@
     ctx.restore();
   }
 
+  Engine.prototype.resize = function () {
+    this._setupCanvas(this.cloudCanvas);
+    this._setupCanvas(this.kernCanvas);
+  };
+
+  /* ===================================================================== *
+   *  SHARED: canvas fit, 4x4 matrix algebra, the BNT operator, tween step  *
+   * ===================================================================== */
+  function fitCanvas(canvas) {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = canvas.getBoundingClientRect();
+    var cssW = rect.width || (canvas.width / 2), cssH = rect.height || (canvas.height / 2);
+    canvas._cssW = cssW; canvas._cssH = cssH; canvas._dpr = dpr;
+    canvas.width = Math.round(cssW * dpr); canvas.height = Math.round(cssH * dpr);
+  }
+  // the pipeline's nulling matrix (tomo4_bnt_v1; BNT_THEORY_DEEP_DIVE.md §"Notation")
+  var BNT_B = [[ 1,      0,      0,     0],
+               [-1,      1,      0,     0],
+               [ 0.452, -1.452,  1,     0],
+               [ 0,      0.251, -1.251, 1]];
+  function matVec(M, v) {
+    var o = [0, 0, 0, 0];
+    for (var i = 0; i < 4; i++) { for (var j = 0; j < 4; j++) o[i] += M[i][j] * v[j]; }
+    return o;
+  }
+  function matMul(A, B) {
+    var C = [];
+    for (var i = 0; i < 4; i++) { C.push([0, 0, 0, 0]);
+      for (var j = 0; j < 4; j++) { for (var k = 0; k < 4; k++) C[i][j] += A[i][k] * B[k][j]; } }
+    return C;
+  }
+  function transpose(M) {
+    var T = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+    for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) T[i][j] = M[j][i];
+    return T;
+  }
+  function invert4(M) {                         // Gauss-Jordan
+    var a = [];
+    for (var i = 0; i < 4; i++) { a.push(M[i].slice().concat([0,0,0,0])); a[i][4 + i] = 1; }
+    for (var c = 0; c < 4; c++) {
+      var piv = a[c][c];
+      for (var k = 0; k < 8; k++) a[c][k] /= piv;
+      for (var r = 0; r < 4; r++) { if (r === c) continue;
+        var f = a[r][c]; for (var k2 = 0; k2 < 8; k2++) a[r][k2] -= f * a[c][k2]; }
+    }
+    var inv = []; for (var i2 = 0; i2 < 4; i2++) inv.push(a[i2].slice(4, 8));
+    return inv;
+  }
+  var BNT_Binv = invert4(BNT_B);
+  var BNT_BBt  = matMul(BNT_B, transpose(BNT_B));   // noise covariance after BNT
+  function tweenStep(cur, tgt, keys, smooth) {
+    var moving = false;
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i], d = tgt[k] - cur[k];
+      if (Math.abs(d) > 1e-4) { cur[k] += d * smooth; moving = true; } else cur[k] = tgt[k];
+    }
+    return moving;
+  }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  // neutral diverging cell colour (teal +, purple −) — distinct from the method colours
+  function cellColor(v, vmax) {
+    var t = Math.max(0, Math.min(1, Math.abs(v) / vmax));
+    return hexA(v >= 0 ? "#1b9e77" : "#7b6cae", 0.10 + 0.85 * t);
+  }
+
+  /* ===================================================================== *
+   *  SLIDE 2 — "Signal & noise under BNT: who can read it"  (#3 + #4)       *
+   *  The mechanism: B scatters the redundant deep signal into thin slices   *
+   *  and turns independent noise into amplified, correlated noise. The      *
+   *  per-map ell-1 goes blind; the cross channel restores only the 2-point  *
+   *  share; the CNN un-mixes (B^-1) and recovers. All from the real B.      *
+   * ===================================================================== */
+  function MechEngine(root) {
+    this.root = root;
+    this.lineCanvas = root.querySelector(".bnt-mech-lines");
+    this.covCanvas  = root.querySelector(".bnt-mech-cov");
+    this.ladderEl   = root.querySelector(".bnt-mech-ladder");
+    this.captionEl  = root.querySelector(".bnt-caption");
+    this.covCapEl   = root.querySelector(".bnt-mech-cov-cap");
+    this.nActs = 6;
+    this.data = this._buildData();
+    this.cur = this._stateForAct(1);
+    this.tgt = this._stateForAct(1);
+    this.act = 1; this.running = false; this.autoTimer = null;
+    fitCanvas(this.lineCanvas); fitCanvas(this.covCanvas);
+    this._buildLadder(); this._applyCopy(1);
+    var self = this;
+    this._loop = function () { self._frame(); };
+    window.addEventListener("resize", function () { self.resize(); });
+  }
+  MechEngine.prototype.resize = function () { fitCanvas(this.lineCanvas); fitCanvas(this.covCanvas); };
+
+  MechEngine.MECH_COPY = {
+    1: "Four tomographic maps are nearly the <b>same deep field</b> (+ small increments) — strongly <b>redundant</b>. Their shape noise is <b>independent</b>, equal in every bin.",
+    2: "<b>BNT</b> differences them (κ′ᵢ = Σⱼ Bᵢⱼ κⱼ): the shared deep field <b>cancels</b> → one shallow map + three <b>thin slices</b> with little signal left per map.",
+    3: "The independent noise is mixed too — <b>amplified</b> (×1, 1.4, 1.8, 1.6) and now <b>correlated</b> between maps (−0.71). Each nulled map: tiny signal under big noise.",
+    4: "Look closely: the <span class='c-deep'>same feature</span> sits <b>coherently across</b> the 'noisy' maps. The information moved into the <b>relations between maps</b> — a per-map <span class='c-l1'>ℓ1</span> can't see it → <b>0.15×</b>.",
+    5: "Adding the <b>cross / product</b> channel (≈ ξᵢⱼ, a <b>2-point</b> cross) restores the 2-point part → <b>0.22×</b>. But even the <i>complete</i> 2-point sector recovers only <b>~38%</b> — the rest is higher-order (non-Gaussian) cross-bin info a pairwise product can't carry.",
+    6: "The <span class='c-cnn'>CNN</span> mixes channels in its first layer — it applies <b>B⁻¹ for free</b>, rebuilds the deep field and reads the cross-map coherence → <b>0.93×</b>. Any clean frame (<b>whitening</b>) → <b>1.06×</b>. <b>Basis-robust, not “smarter.”</b>"
+  };
+
+  MechEngine.prototype._buildData = function () {
+    var rng = mulberry32(70707), N = 200, xs = [], f = [];
+    for (var s = 0; s < N; s++) {
+      var x = s / (N - 1); xs.push(x);
+      var base = 0.55 * (Math.sin(2 * Math.PI * (x * 1.2 + 0.1)) + 0.7 * Math.sin(2 * Math.PI * (x * 2.3 + 0.4)));
+      var peak = 0.95 * Math.exp(-Math.pow((x - 0.34) / 0.024, 2)) +
+                 0.75 * Math.exp(-Math.pow((x - 0.69) / 0.021, 2));   // non-Gaussian peaks
+      f.push(0.5 * base + peak);
+    }
+    var w = [0.55, 0.78, 1.0, 1.18], sigma = 0.30;
+    var xobs = [[], [], [], []], noise = [[], [], [], []];
+    for (var i = 0; i < 4; i++) {
+      for (var s2 = 0; s2 < N; s2++) {
+        var g = 0.16 * Math.sin(2 * Math.PI * (xs[s2] * (2 + i) + i * 0.6));
+        var nz = gaussian(rng); noise[i].push(nz);
+        xobs[i].push(w[i] * f[s2] + g + sigma * nz);
+      }
+    }
+    var xb = [[], [], [], []];
+    for (var s3 = 0; s3 < N; s3++) {
+      var bv = matVec(BNT_B, [xobs[0][s3], xobs[1][s3], xobs[2][s3], xobs[3][s3]]);
+      for (var i3 = 0; i3 < 4; i3++) xb[i3].push(bv[i3]);
+    }
+    // CNN reconstruction of the deep map = B^-1 (BNT maps) = the original deepest map
+    return { N: N, xs: xs, xobs: xobs, xb: xb, recon: xobs[3] };
+  };
+
+  MechEngine.prototype._stateForAct = function (act) {
+    return {
+      kmorph: act >= 2 ? 1 : 0,
+      lAuto:  act >= 3 ? 1 : 0,
+      coh:    act === 4 ? 1 : 0,
+      lCross: act >= 5 ? 1 : 0,
+      lCNN:   act >= 6 ? 1 : 0,
+      recon:  act >= 6 ? 1 : 0
+    };
+  };
+  MechEngine.prototype.goTo = function (act) {
+    act = Math.max(1, Math.min(this.nActs, act));
+    this.act = act; this.tgt = this._stateForAct(act); this._applyCopy(act); this.start();
+  };
+  MechEngine.prototype.snapTo = function (act) { this.cur = this._stateForAct(act); this.goTo(act); };
+  MechEngine.prototype.start = function () {
+    if (!this.running) { this.running = true; requestAnimationFrame(this._loop); }
+  };
+  MechEngine.prototype.autoplay = function () {
+    var self = this; if (this.autoTimer) clearInterval(this.autoTimer);
+    this.snapTo(1); var a = 1;
+    this.autoTimer = setInterval(function () {
+      a += 1; if (a > self.nActs) { clearInterval(self.autoTimer); self.autoTimer = null; return; }
+      self.goTo(a);
+    }, 2600);
+  };
+  MechEngine.prototype._frame = function () {
+    var moving = tweenStep(this.cur, this.tgt,
+      ["kmorph", "lAuto", "coh", "lCross", "lCNN", "recon"], 0.12);
+    this._drawLines(); this._drawCov(); this._updateLadder();
+    if (moving) requestAnimationFrame(this._loop); else this.running = false;
+  };
+
+  MechEngine.prototype._drawLines = function () {
+    var cv = this.lineCanvas, ctx = cv.getContext("2d");
+    var W = cv._cssW, H = cv._cssH, dpr = cv._dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    var d = this.data, m = this.cur.kmorph, recon = this.cur.recon;
+    var padL = 54, padR = 12, padT = 10, padB = 8;
+    var bandH = (H - padT - padB) / 4, x0 = padL, x1 = W - padR;
+    var amp = bandH * 0.30;
+    function X(s) { return x0 + (s / (d.N - 1)) * (x1 - x0); }
+
+    // coherence band (act 4): mark where the shared feature sits
+    if (this.cur.coh > 0.02) {
+      var bx = X(0.34 * (d.N - 1));
+      ctx.fillStyle = hexA(C_DEEP, 0.12 * this.cur.coh);
+      ctx.fillRect(bx - 14, padT, 28, H - padT - padB);
+    }
+
+    for (var k = 0; k < 4; k++) {
+      var yMid = padT + bandH * (k + 0.5);
+      // baseline
+      ctx.strokeStyle = hexA(C_MUTE, 0.30); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x0, yMid); ctx.lineTo(x1, yMid); ctx.stroke();
+      // label
+      var lab = m > 0.5 ? "κ′" + (k + 1) : "κ" + (k + 1);
+      label(ctx, lab, x0 - 12, yMid, m > 0.5 ? C_L1 : C_INK, "right", 13, true);
+      if (m > 0.5 && k === 0) label(ctx, "kept", x0 - 12, yMid + 15, C_MUTE, "right", 10, false);
+      // the field line (lerp no-BNT -> BNT)
+      var fade = recon > 0.02 ? (1 - 0.62 * recon) : 1;
+      ctx.strokeStyle = hexA(m > 0.5 ? C_L1 : "#3a5670", 0.9 * fade);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      for (var s = 0; s < d.N; s++) {
+        var v = lerp(d.xobs[k][s], d.xb[k][s], m);
+        var y = yMid - v * amp;
+        if (s === 0) ctx.moveTo(X(s), y); else ctx.lineTo(X(s), y);
+      }
+      ctx.stroke();
+    }
+
+    // CNN reconstruction overlay (act 6): B^-1 combine -> the deep map, rich again
+    if (recon > 0.02) {
+      var yC = padT + (H - padT - padB) * 0.5;
+      ctx.save(); ctx.globalAlpha = recon;
+      ctx.strokeStyle = C_CNN; ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      for (var s2 = 0; s2 < d.N; s2++) {
+        var y2 = yC - d.recon[s2] * (bandH * 0.62);
+        if (s2 === 0) ctx.moveTo(X(s2), y2); else ctx.lineTo(X(s2), y2);
+      }
+      ctx.stroke();
+      label(ctx, "CNN: B⁻¹ combine → deep map rebuilt", x0 + 6, padT + 12, C_CNN, "left", 13, true);
+      ctx.restore();
+    }
+  };
+
+  MechEngine.prototype._drawCov = function () {
+    var cv = this.covCanvas, ctx = cv.getContext("2d");
+    var W = cv._cssW, H = cv._cssH, dpr = cv._dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    var m = this.cur.kmorph, grid = Math.min(W, H) - 8, cell = grid / 4;
+    var ox = (W - grid) / 2, oy = (H - grid) / 2, vmax = 3.4;
+    for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) {
+      var I = (i === j) ? 1 : 0;
+      var v = lerp(I, BNT_BBt[i][j], m);
+      ctx.fillStyle = cellColor(v, vmax);
+      ctx.fillRect(ox + j * cell + 1, oy + i * cell + 1, cell - 2, cell - 2);
+    }
+    ctx.strokeStyle = hexA(C_MUTE, 0.4); ctx.lineWidth = 1;
+    ctx.strokeRect(ox, oy, grid, grid);
+    if (this.covCapEl) this.covCapEl.innerHTML = (m < 0.5)
+      ? "white: independent, equal σ" : "amplified + correlated (B Bᵀ)";
+  };
+
+  MechEngine.prototype._buildLadder = function () {
+    // recovery ladder, L1-auto arm (M3): auto -> +cross -> CNN -> whitening
+    this._rungs = [
+      { key: "lAuto",  ratio: 0.15, name: "ℓ1<br>auto",   color: C_L1 },
+      { key: "lCross", ratio: 0.22, name: "+cross",        color: C_L1 },
+      { key: "lCNN",   ratio: 0.93, name: "CNN",           color: C_CNN },
+      { key: "lCNN",   ratio: 1.06, name: "whiten",        color: C_L1, hatch: true }
+    ];
+    var html = '<div class="bnt-meter-title">recovery — FoM₃ / no-BNT</div>' +
+      '<div class="bnt-meter-plot"><div class="bnt-bars">' +
+      '<div class="bnt-baseline"><span>1.00×</span></div>';
+    for (var i = 0; i < this._rungs.length; i++) {
+      var r = this._rungs[i];
+      html += '<div class="bnt-bar" data-rung="' + i + '">' +
+        '<div class="bnt-bar-fill"' + (r.hatch ? ' style="background-image:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(255,255,255,.6) 3px,rgba(255,255,255,.6) 5px);"' : '') + '></div>' +
+        '<div class="bnt-bar-ratio"></div><div class="bnt-bar-name">' + r.name + '</div></div>';
+    }
+    html += '</div></div>';
+    this.ladderEl.innerHTML = html;
+    var bars = this.ladderEl.querySelectorAll(".bnt-bar");
+    this._bars = [];
+    for (var b = 0; b < bars.length; b++) {
+      this._bars.push({
+        el: bars[b],
+        fill: bars[b].querySelector(".bnt-bar-fill"),
+        ratio: bars[b].querySelector(".bnt-bar-ratio")
+      });
+      bars[b].querySelector(".bnt-bar-fill").style.background = this._rungs[b].hatch
+        ? C_L1 : this._rungs[b].color;
+    }
+    this.ladderEl.querySelector(".bnt-baseline").style.bottom = (1.0 / 1.2 * 100) + "%";
+  };
+  MechEngine.prototype._updateLadder = function () {
+    var RMAX = 1.2;
+    for (var i = 0; i < this._rungs.length; i++) {
+      var r = this._rungs[i], shown = this.cur[r.key];
+      var bar = this._bars[i];
+      bar.fill.style.height = (r.ratio / RMAX * 100 * Math.max(0, Math.min(1, shown))) + "%";
+      bar.ratio.textContent = shown > 0.5 ? (r.ratio.toFixed(2) + "×") : "";
+      bar.ratio.style.color = r.color;
+      bar.el.style.opacity = 0.25 + 0.75 * Math.max(0, Math.min(1, shown));
+    }
+  };
+  MechEngine.prototype._applyCopy = function (act) {
+    this.captionEl.innerHTML = '<span class="bnt-actno">' + act + '/' + this.nActs + '</span>' +
+      MechEngine.MECH_COPY[act];
+  };
+
+  /* ===================================================================== *
+   *  SLIDE 3 — "What survives BNT: the 2-point rule"  (#5)                  *
+   *  C-hat -> B C-hat B^T is invertible (B known) -> auto+cross 2-pt is     *
+   *  EXACTLY invariant. Keep only the diagonal (auto-only) -> can't invert  *
+   *  -> not invariant. Per-map higher-order stats live on the wrong side.   *
+   * ===================================================================== */
+  function TwoPtEngine(root) {
+    this.root = root;
+    this.canvas = root.querySelector(".bnt-tp-canvas");
+    this.captionEl = root.querySelector(".bnt-caption");
+    this.nActs = 5;
+    // a plausible SPD auto+cross spectrum matrix and its BNT transform
+    this.C = [];
+    for (var i = 0; i < 4; i++) { this.C.push([]); for (var j = 0; j < 4; j++) this.C[i].push(Math.pow(0.62, Math.abs(i - j))); }
+    this.Cp = matMul(matMul(BNT_B, this.C), transpose(BNT_B));
+    this.cur = this._stateForAct(1); this.tgt = this._stateForAct(1);
+    this.act = 1; this.running = false; this.autoTimer = null;
+    fitCanvas(this.canvas); this._applyCopy(1);
+    var self = this; this._loop = function () { self._frame(); };
+    window.addEventListener("resize", function () { self.resize(); });
+  }
+  TwoPtEngine.prototype.resize = function () { fitCanvas(this.canvas); };
+  TwoPtEngine.TP_COPY = {
+    1: "The <b>two-point</b> information is the full set of <b>auto- AND cross-spectra</b> — a 4×4 matrix <b>Ĉ</b>.",
+    2: "BNT is linear: it sends <b>Ĉ → B Ĉ Bᵀ</b>. A different matrix — but a <b>known, invertible</b> map.",
+    3: "So multiply back: <b>Ĉ = B⁻¹ Ĉ′ B⁻ᵀ</b>. <span class='c-deep'>Nothing is lost</span> — <b>auto+cross power spectra are exactly BNT-invariant</b> (identical posteriors).",
+    4: "But keep only the <b>diagonal</b> (auto-spectra alone) and you discard the off-diagonals — <b>you can't rebuild Ĉ</b>. Auto-only 2-point is <b>not</b> invariant.",
+    5: "<b>The rule:</b> a statistic survives BNT iff you can reassemble it from what you measured. <b>Auto+cross 2-pt: yes, exactly.</b> Per-map histograms / <span class='c-l1'>ℓ1</span> / peaks (autos only): <b>no</b> — that's the collapse."
+  };
+  TwoPtEngine.prototype._stateForAct = function (act) {
+    return { showCp: act >= 2 ? 1 : 0, showInv: act >= 3 ? 1 : 0, showAuto: act >= 4 ? 1 : 0 };
+  };
+  TwoPtEngine.prototype.goTo = function (act) {
+    act = Math.max(1, Math.min(this.nActs, act));
+    this.act = act; this.tgt = this._stateForAct(act); this._applyCopy(act); this.start();
+  };
+  TwoPtEngine.prototype.snapTo = function (act) { this.cur = this._stateForAct(act); this.goTo(act); };
+  TwoPtEngine.prototype.start = function () {
+    if (!this.running) { this.running = true; requestAnimationFrame(this._loop); }
+  };
+  TwoPtEngine.prototype.autoplay = function () {
+    var self = this; if (this.autoTimer) clearInterval(this.autoTimer);
+    this.snapTo(1); var a = 1;
+    this.autoTimer = setInterval(function () {
+      a += 1; if (a > self.nActs) { clearInterval(self.autoTimer); self.autoTimer = null; return; }
+      self.goTo(a);
+    }, 2600);
+  };
+  TwoPtEngine.prototype._frame = function () {
+    var moving = tweenStep(this.cur, this.tgt, ["showCp", "showInv", "showAuto"], 0.12);
+    this._draw();
+    if (moving) requestAnimationFrame(this._loop); else this.running = false;
+  };
+  TwoPtEngine.prototype._matrix = function (ctx, M, ox, oy, cell, vmax, autoOnly) {
+    for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) {
+      var off = (i !== j);
+      var greyed = autoOnly && off;
+      ctx.fillStyle = greyed ? hexA(C_MUTE, 0.12) : cellColor(M[i][j], vmax);
+      ctx.fillRect(ox + j * cell + 1.5, oy + i * cell + 1.5, cell - 3, cell - 3);
+      if (greyed) {
+        ctx.strokeStyle = hexA(C_MUTE, 0.5); ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(ox + j*cell + 4, oy + i*cell + 4);
+        ctx.lineTo(ox + (j+1)*cell - 4, oy + (i+1)*cell - 4); ctx.stroke();
+      }
+    }
+    ctx.strokeStyle = hexA(C_INK, 0.5); ctx.lineWidth = 1.4;
+    ctx.strokeRect(ox, oy, cell * 4, cell * 4);
+  };
+  TwoPtEngine.prototype._draw = function () {
+    var cv = this.canvas, ctx = cv.getContext("2d");
+    var W = cv._cssW, H = cv._cssH, dpr = cv._dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    var cell = Math.min(58, (H - 70) / 4), grid = cell * 4, vmax = 1.0;
+    var midY = H * 0.40;
+    var leftX = W * 0.10, rightX = W * 0.56;
+
+    // left: C-hat (always)
+    this._matrix(ctx, this.C, leftX, midY - grid / 2, cell, vmax, false);
+    label(ctx, "Ĉ  (auto + cross)", leftX + grid / 2, midY - grid / 2 - 16, C_INK, "center", 15, true);
+
+    // forward arrow + C'
+    if (this.cur.showCp > 0.02) {
+      ctx.save(); ctx.globalAlpha = this.cur.showCp;
+      var ay = midY - 12, ax0 = leftX + grid + 14, ax1 = rightX - 14;
+      ctx.strokeStyle = C_INK; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(ax0, ay); ctx.lineTo(ax1, ay); ctx.stroke();
+      arrowHead(ctx, [ax1, ay], 0, C_INK);
+      label(ctx, "× B ( · ) Bᵀ", (ax0 + ax1) / 2, ay - 12, C_INK, "center", 13, true);
+      this._matrix(ctx, this.Cp, rightX, midY - grid / 2, cell, vmax, this.cur.showAuto > 0.5);
+      label(ctx, this.cur.showAuto > 0.5 ? "Ĉ′  (auto-only kept)" : "Ĉ′ = B Ĉ Bᵀ",
+            rightX + grid / 2, midY - grid / 2 - 16, C_INK, "center", 15, true);
+      ctx.restore();
+    }
+    // reverse arrow + exact
+    if (this.cur.showInv > 0.02 && this.cur.showAuto < 0.5) {
+      ctx.save(); ctx.globalAlpha = this.cur.showInv;
+      var by = midY + 14, bx0 = rightX - 14, bx1 = leftX + grid + 14;
+      ctx.strokeStyle = C_DEEP; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(bx0, by); ctx.lineTo(bx1, by); ctx.stroke(); ctx.setLineDash([]);
+      arrowHead(ctx, [bx1, by], Math.PI, C_DEEP);
+      label(ctx, "× B⁻¹ ( · ) B⁻ᵀ  →  exact ✓", (bx0 + bx1) / 2, by + 14, C_DEEP, "center", 13, true);
+      ctx.restore();
+    }
+    // auto-only verdict
+    if (this.cur.showAuto > 0.5) {
+      label(ctx, "off-diagonals gone → can't invert  ✗",
+            rightX + grid / 2, midY + grid / 2 + 24, C_L1, "center", 14, true);
+    }
+    // legend
+    label(ctx, "teal + / purple −", W - 12, H - 12, C_MUTE, "right", 11, false);
+  };
+  TwoPtEngine.prototype._applyCopy = function (act) {
+    this.captionEl.innerHTML = '<span class="bnt-actno">' + act + '/' + this.nActs + '</span>' +
+      TwoPtEngine.TP_COPY[act];
+  };
+
   /* ====================== reveal.js integration =========================== */
+  var ENGINES = { cloud: Engine, mechanism: MechEngine, twopoint: TwoPtEngine };
   var BNTExplainer = {
     _engines: [],
 
@@ -598,7 +1022,9 @@
         var nodes = document.querySelectorAll("[data-bnt-explainer]");
         for (var i = 0; i < nodes.length; i++) {
           if (nodes[i]._bntEngine) continue;
-          var eng = new Engine(nodes[i]);
+          var kind = nodes[i].getAttribute("data-bnt-kind") || "cloud";
+          var Klass = ENGINES[kind] || Engine;
+          var eng = new Klass(nodes[i]);
           nodes[i]._bntEngine = eng;
           self._engines.push({ section: nodes[i], engine: eng });
           self._wireReplay(nodes[i], eng);
@@ -615,10 +1041,7 @@
         Reveal.on("fragmenthidden", function () { self._syncFromReveal(Reveal); });
         Reveal.on("slidechanged",   function () {
           // re-measure canvases (reveal lays the slide out on entry) then sync
-          self._engines.forEach(function (e) {
-            e.engine._setupCanvas(e.engine.cloudCanvas);
-            e.engine._setupCanvas(e.engine.kernCanvas);
-          });
+          self._engines.forEach(function (e) { if (e.engine.resize) e.engine.resize(); });
           self._syncFromReveal(Reveal);
         });
       }

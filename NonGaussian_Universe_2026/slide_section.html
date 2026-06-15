@@ -23,9 +23,9 @@
     <div class="bnt-side">
       <div class="bnt-meter" aria-label="FoM3 meter"></div>
       <div class="bnt-kernels-wrap">
-        <div class="bnt-kernels-title">lensing kernels n(z)</div>
+        <div class="bnt-kernels-title">lensing kernels q(z)</div>
         <canvas class="bnt-kernels" width="640" height="360"
-                aria-label="Lensing efficiency kernels morphing from broad overlapping to one broad plus thin slices"></canvas>
+                aria-label="Lensing efficiency kernels morphing from deep overlapping to one shallow map plus three thin lens-redshift slices"></canvas>
         <div class="bnt-kernels-caption"></div>
       </div>
     </div>
@@ -43,6 +43,60 @@
   <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
 
   <!-- Fragment markers: act 1 = default; these step to 2,3,4,5 -->
+  <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="5" aria-hidden="true"></span>
+</section>
+
+<!-- ============ SLIDE 2 — mechanism (signal & noise; #3 + #4) ============ -->
+<section class="bnt-slide" data-bnt-explainer data-bnt-kind="mechanism">
+  <h3 class="bnt-title">Signal &amp; noise under BNT: <span class="hl-l1">who can read it</span></h3>
+  <div class="bnt-stage">
+    <div class="bnt-main">
+      <canvas class="bnt-mech-lines" width="1520" height="1100"
+        aria-label="Four tomographic map field-lines: nearly identical deep field, then BNT differences them into a shallow map plus thin slices with amplified correlated noise; the CNN reconstructs the deep map"></canvas>
+    </div>
+    <div class="bnt-side">
+      <div class="bnt-meter bnt-mech-ladder" aria-label="recovery ladder"></div>
+      <div class="bnt-kernels-wrap">
+        <div class="bnt-kernels-title">noise covariance</div>
+        <canvas class="bnt-mech-cov" width="320" height="320"
+          aria-label="Noise covariance: identity (white) morphing to B Bᵀ (amplified, correlated)"></canvas>
+        <div class="bnt-kernels-caption bnt-mech-cov-cap"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bnt-caption" aria-live="polite"></div>
+  <p class="bnt-footnote">
+    Recovery ladder = <b>L1-auto arm</b>: auto-only 0.15× · +cross 0.22× · CNN 0.93× ·
+    whitening 1.06× (FoM₃ vs no-BNT). Cross channel ≈ ξᵢⱼ. Noise amplification =
+    row norms of B (×1, 1.41, 1.82, 1.62); correlation −0.71 from B Bᵀ.
+  </p>
+  <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
+  <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="5" aria-hidden="true"></span>
+  <span class="fragment bnt-frag" data-bnt-act="6" aria-hidden="true"></span>
+</section>
+
+<!-- ============ SLIDE 3 — the 2-point rule (#5) ============ -->
+<section class="bnt-slide" data-bnt-explainer data-bnt-kind="twopoint">
+  <h3 class="bnt-title">What survives BNT: <span class="hl-l1">the 2-point rule</span></h3>
+  <div class="bnt-stage bnt-stage--wide">
+    <div class="bnt-main">
+      <canvas class="bnt-tp-canvas" width="2200" height="1040"
+        aria-label="The auto+cross spectrum matrix C transforms invertibly as B C B-transpose, so it is exactly recoverable; keeping only the diagonal (auto-only) cannot be inverted back"></canvas>
+    </div>
+  </div>
+  <div class="bnt-caption" aria-live="polite"></div>
+  <p class="bnt-footnote">
+    P7 (<i>BNT_THEORY_DEEP_DIVE</i> §1.5): the full auto+cross 2-point datavector is a
+    lossless, invertible repackaging under B (Ĉ′ = B Ĉ Bᵀ) — auto-only is not. The
+    ℓ1 / peaks collapse (previous slides) is the higher-order, autos-only member of this family.
+  </p>
+  <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
   <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
   <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
   <span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
