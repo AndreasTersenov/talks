@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preprint — refined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #07080b; color: #e7e8ec; font-family: "IBM Plex Sans", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+    h1 { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; margin: 0 0 0.4rem; }
+    .lead { color: #9aa0ad; max-width: 72ch; font-size: 0.95rem; margin: 0 0 0.3rem; }
+    .mono { font-family: "IBM Plex Mono", monospace; }
+    .sect { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6f7686; margin: 2.6rem 0 0.8rem; border-top: 1px solid #20242e; padding-top: 0.8rem; }
+
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
+    .modecap { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6f7686; margin: 0 0 0.35rem; }
+
+    /* ---------- the slide ---------- */
+    .slide {
+      aspect-ratio: 16 / 9; border-radius: 12px; padding: 1.5rem 1.8rem 1.2rem;
+      overflow: hidden; position: relative; display: flex; flex-direction: column;
+      background: var(--bg); color: var(--fg); font-family: var(--body); border: 1px solid var(--edge);
+      --accent: #2f49c0;
+    }
+    .slide.dark  { --bg: #15161b; --fg: #e8e6e1; --muted: #989488; --surface: #1d1f26; --edge: rgba(255,255,255,0.12); --hair: rgba(255,255,255,0.16); --accent: #7d92ff; }
+    .slide.light { --bg: #f7f5f0; --fg: #1c1c22; --muted: #6a6760; --surface: #ffffff; --edge: rgba(0,0,0,0.13); --hair: rgba(0,0,0,0.16); --accent: #2f49c0; }
+
+    /* running head — like a journal page */
+    .runhead { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--hair); padding-bottom: 0.5rem; }
+    .runhead .r { color: var(--accent); }
+
+    .st { font-family: var(--display, var(--body)); font-weight: 600; font-size: clamp(1.1rem, 2.7vw, 1.6rem); letter-spacing: -0.01em; margin: 0.9rem 0 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; }
+    .st .s { font-family: var(--mono); font-weight: 500; font-size: 0.62em; color: var(--accent); }
+    .st-rule { width: 46px; height: 2px; background: var(--accent); margin: 0.55rem 0 0; }
+
+    .cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.1rem; flex: 1; min-height: 0; margin-top: 1rem; }
+
+    /* academic boxed callout: ruled box + small-caps tab */
+    .box { border: 1px solid var(--edge); border-radius: 7px; background: var(--surface); align-self: start; }
+    .box > .tab { font-family: var(--mono); font-size: 0.56rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); padding: 0.45rem 0.75rem 0.3rem; border-bottom: 1px dashed var(--hair); }
+    .box > .body { padding: 0.45rem 0.8rem 0.55rem; }
+    .box ul { margin: 0; padding-left: 1.05rem; }
+    .box li { margin: 0.24rem 0; font-size: clamp(0.7rem, 1.5vw, 0.83rem); }
+    .box li::marker { color: var(--accent); }
+
+    .side { display: flex; flex-direction: column; justify-content: center; gap: 0.85rem; }
+    .result { border-left: 2px solid var(--accent); padding-left: 0.7rem; }
+    .result .num { font-weight: 700; font-size: clamp(1.5rem, 4vw, 2.15rem); line-height: 1; }
+    .result .lab { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+    .cap { font-family: var(--mono); font-size: 0.58rem; line-height: 1.4; color: var(--muted); }
+    .cap b { color: var(--accent); font-weight: 500; }
+    .alert { color: var(--accent); font-weight: 600; }
+
+    .foot { display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--hair); font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.08em; color: var(--muted); }
+
+    /* ---------- option strips ---------- */
+    .opts { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .opt { background: #0e1016; border: 1px solid #20242e; border-radius: 10px; padding: 0.9rem; width: 215px; }
+    .opt .name { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: #c7cad2; margin-bottom: 0.6rem; }
+    .opt .name span { color: #6f7686; }
+    .mini { border-radius: 7px; padding: 0.7rem 0.8rem; background: var(--bg); color: var(--fg); border: 1px solid var(--edge); }
+    .mini .mt { font-weight: 600; font-size: 0.82rem; display: flex; align-items: baseline; gap: 0.35rem; font-family: var(--mf, "IBM Plex Sans"); }
+    .mini .mt .s { font-family: "IBM Plex Mono", monospace; font-size: 0.62em; color: var(--accent); }
+    .mini .mtab { font-family: "IBM Plex Mono", monospace; font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-top: 0.5rem; border-top: 1px dashed var(--hair); padding-top: 0.35rem; }
+    .mini.light { --bg: #f7f5f0; --fg: #1c1c22; --edge: rgba(0,0,0,0.13); --hair: rgba(0,0,0,0.16); }
+    .mini.dark  { --bg: #15161b; --fg: #e8e6e1; --edge: rgba(255,255,255,0.12); --hair: rgba(255,255,255,0.16); margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Preprint — refined</h1>
+    <p class="lead">The paper-as-deck idea, taken seriously: a journal running head, §-section marks, your block reimagined as a
+      ruled callout with a small-caps tab, a result rule, a figure-caption style, hairlines, lots of air. Restrained — no
+      gradients, no green. Below the hero, pick the two open calls: <b>accent colour</b> and <b>heading face</b>.</p>
+
+    <div class="sect">The hero · cobalt · IBM Plex · dark + light</div>
+    <div class="pair">
+      <div>
+        <p class="modecap">Dark slide</p>
+        <div class="slide dark">
+          <div class="runhead"><span>Reconstructing the Non-Gaussian Universe</span><span class="r">§2 · Method</span></div>
+          <div class="st"><span class="s">§2</span> The 2-Point Route</div>
+          <div class="st-rule"></div>
+          <div class="cols">
+            <div class="box">
+              <div class="tab">Concept</div>
+              <div class="body"><ul>
+                <li>Measure galaxy ellipticities ε</li>
+                <li>Compute the 2-pt functions</li>
+                <li>Run MCMC with an analytic likelihood</li>
+              </ul></div>
+            </div>
+            <div class="side">
+              <div class="result"><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+              <div class="cap"><b>Fig. 1</b> — shear correlation ξ±(θ); the Gaussian route leaves the <span class="alert">non-Gaussian</span> tail on the table.</div>
+            </div>
+          </div>
+          <div class="foot"><span>A. Tersenov · LAM coffee club</span><span>12 / 49</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="modecap">Light slide</p>
+        <div class="slide light">
+          <div class="runhead"><span>Reconstructing the Non-Gaussian Universe</span><span class="r">§2 · Method</span></div>
+          <div class="st"><span class="s">§2</span> The 2-Point Route</div>
+          <div class="st-rule"></div>
+          <div class="cols">
+            <div class="box">
+              <div class="tab">Concept</div>
+              <div class="body"><ul>
+                <li>Measure galaxy ellipticities ε</li>
+                <li>Compute the 2-pt functions</li>
+                <li>Run MCMC with an analytic likelihood</li>
+              </ul></div>
+            </div>
+            <div class="side">
+              <div class="result"><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+              <div class="cap"><b>Fig. 1</b> — shear correlation ξ±(θ); the Gaussian route leaves the <span class="alert">non-Gaussian</span> tail on the table.</div>
+            </div>
+          </div>
+          <div class="foot"><span>A. Tersenov · LAM coffee club</span><span>12 / 49</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sect">Pick the accent (shown light + dark)</div>
+    <div class="opts">
+      <div class="opt">
+        <div class="name">Cobalt <span>· #2f49c0 / #7d92ff</span></div>
+        <div class="mini light" style="--accent:#2f49c0"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+        <div class="mini dark" style="--accent:#7d92ff"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Indigo <span>· #4f46e5 / #a5a3ff</span></div>
+        <div class="mini light" style="--accent:#4338ca"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+        <div class="mini dark" style="--accent:#a5a3ff"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Steel-slate <span>· #34507e / #8aa3d6</span></div>
+        <div class="mini light" style="--accent:#34507e"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+        <div class="mini dark" style="--accent:#8aa3d6"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Oxblood <span>· #8b2d3f / #d98593</span></div>
+        <div class="mini light" style="--accent:#8b2d3f"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+        <div class="mini dark" style="--accent:#cf6f7e"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+    </div>
+
+    <div class="sect">Pick the heading face (the body stays IBM Plex Sans)</div>
+    <div class="opts">
+      <div class="opt">
+        <div class="name">IBM Plex Sans <span>· coherent</span></div>
+        <div class="mini light" style="--accent:#2f49c0;--mf:'IBM Plex Sans'"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Source Serif 4 <span>· journal</span></div>
+        <div class="mini light" style="--accent:#2f49c0;--mf:'Source Serif 4'"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Newsreader <span>· softer serif</span></div>
+        <div class="mini light" style="--accent:#2f49c0;--mf:'Newsreader'"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+      <div class="opt">
+        <div class="name">Space Grotesk <span>· techy sans</span></div>
+        <div class="mini light" style="--accent:#2f49c0;--mf:'Space Grotesk'"><div class="mt"><span class="s">§2</span> The 2-Point Route</div><div class="mtab">Concept</div></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

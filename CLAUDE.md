@@ -88,13 +88,62 @@ Each talk directory holds:
 - Math / Markdown / Highlight plugins are enabled in the `Reveal.initialize`
   block, so `$…$` math and ```` ```lang ```` code fences work in slides.
 
+## The "Preprint" theme (new — opt-in, for new talks)
+
+A refreshed light+dark theme lives in **`assets/themes/talks.css`** (+
+`assets/themes/theme-switch.js`), loaded as an overlay *after* the submodule's
+`darkenergy.css`. It's a paper/preprint aesthetic: cobalt accent (`#7d92ff` dark
+/ `#2f49c0` light), **Source Serif 4** headings, **IBM Plex Sans** body, **IBM
+Plex Mono** labels, ruled `.block` callouts, hairlines. It is **opt-in** — only
+decks that link it use it; existing decks keep `darkenergy`. **`PREPRINT_TEMPLATE/`
+is the reference deck** (a migrated copy of `LAM_2026`, dark + light, exercising
+every component — and representative of the real slide/plot types).
+
+Wire it into a deck — in `<head>`, AFTER the darkenergy `<link>`:
+
+```html
+<link rel="stylesheet" href="../assets/themes/talks.css">
+```
+
+and at body end, **BEFORE** the `reveal.js/dist/reveal.js` script (it must run
+before `Reveal.initialize`):
+
+```html
+<script src="../assets/themes/theme-switch.js"></script>
+```
+
+**Per-slide light/dark (authoring-time, PDF-safe).** Tag a section to match
+whether its figure was made for a light or dark background:
+
+```html
+<section data-theme="light"> … </section>   <!-- cobalt on warm paper -->
+<section> … </section>                        <!-- dark is the default -->
+```
+
+It's scoped per `<section>`, not a global toggle, so each slide self-themes and
+PDF export stays correct. `class="light-slide"` is a legacy alias.
+
+**Component classes** (token-driven, both modes): `slide-title` (serif title +
+cobalt rule; optional `<span class="sec">§2</span>`), `block` + `block-title` +
+`block-content` (ruled callout with a small-caps mono tab), `kicker` (mono
+eyebrow), `callout` / `takeaway` (left-rule box with a `label`), `stat` (`num` +
+`label` result rule), `runhead` (journal running head; `.r` = right side),
+`alert` (accent text), `title-card` (title lockup). `container`/`col` still work.
+
+**Do not inline-style colours.** A stylesheet can't override `style="color:#…"`,
+so hardcoded hex in a `style=""` attribute is invisible to the theme. Use the
+classes/tokens (`var(--accent)`, `var(--surface)`, `var(--fg-muted)`, …), not hex.
+
 ## Creating a new talk
 
 Recent practice commits new talks straight to `main` (the README's older
 branch-per-talk flow is no longer followed — see git history). To scaffold:
 
-1. Copy a recent talk (e.g. `ENS_seminar_2026/`) to a new `<TalkDir>/`. **Delete
-   any `assets/` folder it brings along** — assets are shared at the root now.
+1. Copy a recent talk to a new `<TalkDir>/`. **For the new Preprint theme, copy
+   `PREPRINT_TEMPLATE/`** (you inherit the theme wiring + representative slide
+   archetypes); for the classic look copy a `darkenergy` deck (e.g.
+   `ENS_seminar_2026/`). **Delete any `assets/` folder it brings along** — assets
+   are shared at the root now.
 2. Re-point the reveal.js submodule (`git submodule add
    https://github.com/EiffL/reveal.js.git <TalkDir>/reveal.js`, then
    `git submodule update --init --recursive`).

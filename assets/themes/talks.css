@@ -1,0 +1,237 @@
+/**
+ * talks.css — shared "Preprint" theme for the talks decks.
+ *
+ * The look: a paper/arXiv-preprint aesthetic — Source Serif 4 headings, IBM Plex
+ * Sans body, IBM Plex Mono labels, a single cobalt accent, ruled callout boxes
+ * with small-caps mono tabs, hairlines, generous air. Restrained and serious.
+ *
+ * It maps onto the deck's EXISTING classes (.slide-title, .block, .block-title,
+ * .block-content, .alert, .container/.col) so real slides adopt it with no
+ * rewrite. Component selectors carry an extra `.slides section` qualifier so they
+ * out-specify any leftover inline `.reveal .block { … }` during rollout.
+ *
+ * PER-SLIDE LIGHT/DARK (authoring-time, PDF-safe)
+ *   Every colour is a token scoped to the *section*, so each slide self-themes
+ *   and PDF export (all slides at once) stays correct:
+ *       <section>                     → dark   (default)
+ *       <section data-theme="light">  → light  (cobalt on warm paper)
+ *       <section data-theme="dark">   → dark   (explicit)
+ *   `.light-slide` is kept as a legacy alias. The matching slide *background* is
+ *   set by theme-switch.js. This is authoring-time, not a live toggle.
+ *
+ *   Wire-up: in <head> AFTER the darkenergy link
+ *       <link rel="stylesheet" href="../assets/themes/talks.css">
+ *   and at body end, BEFORE the reveal.js library script
+ *       <script src="../assets/themes/theme-switch.js"></script>
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap');
+
+:root {
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --r-main-font: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --r-heading-font: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --r-heading-font-weight: 600;
+  --r-heading-letter-spacing: -0.01em;
+  --r-heading-text-transform: none;
+  --r-heading1-size: 2.6em;
+  --r-heading2-size: 1.8em;
+  --r-heading3-size: 1.35em;
+  --r-heading4-size: 1em;
+  --r-background-color: #15161b;   /* default dark viewport */
+  --r-link-color: #7d92ff;
+  --r-link-color-hover: #a5b3ff;
+}
+
+/* ============================================================
+ * Per-slide theme tokens — dark default, light flips them
+ * ============================================================ */
+.reveal .slides section {
+  --accent: #7d92ff;          /* cobalt, dark tint */
+  --accent-ink: #93a4ff;      /* a touch brighter as text on dark */
+  --fg: #e8e6e1;
+  --fg-muted: #989488;
+  --bg: #15161b;
+  --surface: #1d1f26;
+  --edge: rgba(255, 255, 255, 0.12);
+  --hair: rgba(255, 255, 255, 0.16);
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.40);
+  --code-bg: #0e0f13;
+  --code-edge: rgba(255, 255, 255, 0.08);
+  --title-veil: rgba(21, 22, 27, 0.62);
+}
+.reveal .slides section[data-theme="light"],
+.reveal .slides section.light-slide {
+  --accent: #2f49c0;          /* cobalt, deep — reads on paper */
+  --accent-ink: #2a43b3;
+  --fg: #1c1c22;
+  --fg-muted: #6a6760;
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --edge: rgba(0, 0, 0, 0.13);
+  --hair: rgba(0, 0, 0, 0.16);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --code-bg: #15161b;         /* code blocks stay dark even on a light slide */
+  --code-edge: rgba(255, 255, 255, 0.08);
+  --title-veil: rgba(247, 245, 240, 0.80);
+}
+
+/* ============================================================
+ * Apply tokens to text — per section (PDF export self-themes)
+ * ============================================================ */
+.reveal .slides section { color: var(--fg); }
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6 { color: var(--fg); }
+.reveal .slides section a { color: var(--accent-ink); border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.reveal .slides section a:hover { border-bottom-color: var(--accent); }
+.reveal .slides section ::selection { background: var(--accent); color: var(--bg); }
+
+.reveal .slides section ul li::marker,
+.reveal .slides section ol li::marker { color: var(--accent); }
+.reveal .slides section ul li,
+.reveal .slides section ol li { margin-bottom: 0.35em; }
+
+/* ============================================================
+ * Your components, remapped to the Preprint look
+ * ============================================================ */
+.reveal .slides section .slide-title {
+  border-left: 4px solid var(--accent);
+  padding-left: 18px;
+  margin-left: 20px;
+  text-align: left;
+  font-weight: 600;
+}
+.reveal .slides section .slide-title .sec {   /* optional <span class="sec">§2</span> */
+  font-family: var(--mono); font-weight: 500; font-size: 0.6em; color: var(--accent); margin-right: 0.4em;
+}
+.reveal .slides section .alert { color: var(--accent-ink); font-weight: 600; }
+.reveal .slides section .inverted { filter: invert(100%); }
+
+/* .block → a ruled academic callout with a small-caps mono tab */
+.reveal .slides section .block {
+  background: var(--surface);
+  margin: 0 20px;
+  text-align: left;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.reveal .slides section .block-title {
+  background: transparent;
+  color: var(--accent);
+  padding: 10px 16px 6px;
+  border-bottom: 1px dashed var(--hair);
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.62em;
+}
+.reveal .slides section .block-content { padding: 10px 16px; }
+
+/* optional journal running head: <div class="runhead"><span>title</span><span class="r">§2</span></div> */
+.reveal .slides section .runhead {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 0.42em; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fg-muted); border-bottom: 1px solid var(--hair); padding-bottom: 0.4em; margin-bottom: 0.7em;
+}
+.reveal .slides section .runhead .r { color: var(--accent); }
+
+/* ============================================================
+ * Base elements — hairline / paper aesthetic
+ * ============================================================ */
+.reveal .slides section blockquote {
+  width: 80%;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 0.6em 1em;
+  font-style: italic;
+}
+.reveal .slides section blockquote .attrib,
+.reveal .slides section blockquote cite {
+  display: block; margin-top: 0.4em; font-style: normal;
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg-muted);
+}
+
+.reveal .slides section pre { width: 90%; box-shadow: var(--shadow); border-radius: 8px; }
+.reveal .slides section pre code {
+  background: var(--code-bg); border: 1px solid var(--code-edge);
+  border-radius: 8px; padding: 0.7em 1em; font-size: 1em; color: #e8e6e1;
+}
+.reveal .slides section :not(pre) > code {
+  background: var(--surface); border: 1px solid var(--hair);
+  border-radius: 5px; padding: 0.05em 0.35em; font-size: 0.85em; color: var(--fg);
+}
+
+.reveal .slides section table th { border-bottom: 2px solid var(--accent); }
+.reveal .slides section table th,
+.reveal .slides section table td { border-color: var(--hair); padding: 0.3em 0.7em; }
+
+.reveal .slides section hr { border: 0; border-top: 1px solid var(--hair); height: 0; }
+.reveal .slides section hr.accent-rule,
+.reveal .slides section .title-card hr {
+  width: 46px; height: 2px; background: var(--accent); border: 0; margin: 0.3em 0 0.6em;
+}
+
+.reveal .slides section img.plain,
+.reveal .slides section .plain img { background: transparent; border: 0; box-shadow: none; }
+
+/* ============================================================
+ * Labels, figures, callouts, result rule, title lockup
+ * ============================================================ */
+.reveal .slides section .kicker {
+  display: block; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5em;
+}
+.reveal .slides section figure { margin: 16px 0; }
+.reveal .slides section figcaption {
+  margin-top: 0.4em; font-family: var(--mono); font-size: 0.56em; line-height: 1.4; color: var(--fg-muted);
+}
+.reveal .slides section figcaption b { color: var(--accent); font-weight: 500; }
+
+.reveal .slides section .callout,
+.reveal .slides section .takeaway {
+  text-align: left; max-width: 92%; margin: 16px auto; padding: 0.6em 1em;
+  background: var(--surface); border: 1px solid var(--edge); border-left: 3px solid var(--accent); border-radius: 8px;
+}
+.reveal .slides section .takeaway { border-left-width: 4px; }
+.reveal .slides section .callout .label,
+.reveal .slides section .takeaway .label {
+  display: block; margin-bottom: 0.3em; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+}
+
+/* .stat → a result rule (number in heading serif, accent left rule) */
+.reveal .slides section .stat { text-align: left; border-left: 2px solid var(--accent); padding-left: 0.7em; }
+.reveal .slides section .stat .num { display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 2.4em; line-height: 1; color: var(--fg); }
+.reveal .slides section .stat .label { display: block; margin-top: 0.3em; font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+
+.reveal .slides section .hl { background: linear-gradient(transparent 60%, color-mix(in srgb, var(--accent) 26%, transparent) 60%); padding: 0 0.06em; }
+
+.reveal .slides section .title-card {
+  display: inline-block; text-align: left; max-width: 84%; margin: 0 auto; padding: 1.1em 1.5em;
+  background: var(--title-veil); border: 1px solid var(--edge); border-radius: 14px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.reveal .slides section .title-card h2 { font-size: 1.7em; margin: 0 0 0.1em; }
+.reveal .slides section .title-card .subtitle { font-style: italic; font-weight: 400; color: var(--fg-muted); margin: 0.15em 0 0; }
+.reveal .slides section .affil { font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.02em; color: var(--fg-muted); }
+
+/* ============================================================
+ * Deck chrome (not per-slide) — cobalt
+ * ============================================================ */
+.reveal .progress { color: #7d92ff; height: 3px; }
+.reveal .controls { color: #7d92ff; }
+.reveal .slide-number { background: transparent; color: #989488; font-family: var(--mono); font-size: 0.42em; }
+
+@media print {
+  .reveal .slides section .title-card { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

@@ -37,3 +37,6 @@
 [submodule "LAM_2026/reveal.js"]
 	path = LAM_2026/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "PREPRINT_TEMPLATE/reveal.js"]
+	path = PREPRINT_TEMPLATE/reveal.js
+	url = https://github.com/EiffL/reveal.js.git

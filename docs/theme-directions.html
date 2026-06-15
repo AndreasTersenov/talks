@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme directions — talks redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: #07080b; color: #e7e8ec;
+      font-family: "Inter", system-ui, sans-serif; line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+    .lead h1 { font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: 1.7rem; letter-spacing: -0.02em; margin: 0 0 0.4rem; }
+    .lead p { color: #9aa0ad; max-width: 70ch; margin: 0 0 0.4rem; font-size: 0.95rem; }
+    .lead .mono { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: #6f7686; }
+
+    .dir { margin: 3rem 0 0; }
+    .dir-head { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+    .dir-head .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: #07080b; background: #e7e8ec; border-radius: 5px; padding: 0.15rem 0.5rem; }
+    .dir-head h2 { font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
+    .dir-head .desc { color: #9aa0ad; font-size: 0.9rem; }
+    .swatches { display: flex; gap: 0.4rem; margin: 0.7rem 0 1rem; align-items: center; }
+    .sw { width: 26px; height: 26px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.14); }
+    .swatches .lbl { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; color: #6f7686; margin-left: 0.3rem; }
+
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 860px) { .pair { grid-template-columns: 1fr; } }
+    .modecap { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6f7686; margin: 0 0 0.35rem; }
+
+    /* ---- the slide card ---- */
+    .slide {
+      aspect-ratio: 16 / 9; border-radius: 12px; padding: 1.5rem 1.7rem;
+      overflow: hidden; position: relative; display: flex; flex-direction: column;
+      background: var(--bg); color: var(--fg); font-family: var(--body);
+      border: 1px solid var(--edge);
+    }
+    .slide .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.55rem; }
+    .slide .st {
+      font-family: var(--display); font-weight: 600; font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+      letter-spacing: -0.01em; color: var(--fg); margin: 0 0 0.9rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .slide .cols { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1rem; flex: 1; min-height: 0; }
+    .slide .block { background: var(--surface); border: 1px solid var(--edge); border-radius: 9px; overflow: hidden; align-self: start; }
+    .slide .bt { font-family: var(--mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding: 0.45rem 0.7rem; border-bottom: 1px solid var(--edge); }
+    .slide .bc { padding: 0.5rem 0.7rem; }
+    .slide ul { margin: 0; padding-left: 1.05rem; }
+    .slide li { margin: 0.22rem 0; font-size: clamp(0.7rem, 1.5vw, 0.82rem); }
+    .slide li::marker { color: var(--accent); }
+    .slide .side { display: flex; flex-direction: column; justify-content: center; gap: 0.7rem; }
+    .slide .num { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1; color: var(--accent); }
+    .slide .lab { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+    .slide .note { font-size: clamp(0.68rem, 1.4vw, 0.78rem); color: var(--muted); margin: 0; }
+    .slide .alert { color: var(--accent); font-weight: 600; }
+
+    /* =====================================================================
+     * Direction A — "Plate": survey-plate navy + luminous teal, grotesque,
+     * star-chart fiducials. Cool, precise, instrument-like.
+     * ===================================================================== */
+    [data-k="plate"] { --display: "Space Grotesk", sans-serif; --body: "Inter", sans-serif; --mono: "IBM Plex Mono", monospace; }
+    [data-k="plate"] .dark  { --bg: #0a0e1a; --surface: #141a2c; --fg: #e6e9f0; --muted: #8a93a8; --accent: #5ad1c4; --edge: rgba(255,255,255,0.10); }
+    [data-k="plate"] .light { --bg: #f4f1ea; --surface: #fffdf8; --fg: #16202e; --muted: #5d6678; --accent: #0e8a86; --edge: rgba(0,0,0,0.10); }
+    /* signature: faint coordinate-dot grid + a "+" fiducial before titles */
+    [data-k="plate"] .slide::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(var(--accent) 0.7px, transparent 0.7px);
+      background-size: 22px 22px; opacity: 0.07;
+    }
+    [data-k="plate"] .st::before { content: "✛"; color: var(--accent); font-family: var(--mono); font-size: 0.8em; }
+
+    /* =====================================================================
+     * Direction B — "Spectra": magma-colormap signature. Violet-black, a
+     * magenta/plum accent, and the gradient scale-bar everyone knows.
+     * ===================================================================== */
+    [data-k="spectra"] { --display: "Hanken Grotesk", sans-serif; --body: "Inter", sans-serif; --mono: "IBM Plex Mono", monospace; }
+    [data-k="spectra"] .dark  { --bg: #0c0a12; --surface: #181426; --fg: #ece8f2; --muted: #968fa8; --accent: #f06595; --edge: rgba(255,255,255,0.10); }
+    [data-k="spectra"] .light { --bg: #faf7fb; --surface: #ffffff; --fg: #1a1424; --muted: #6b6076; --accent: #9c2d6e; --edge: rgba(0,0,0,0.10); }
+    /* signature: a magma gradient bar on the block + under the title */
+    [data-k="spectra"] .block { border-top: 0; position: relative; }
+    [data-k="spectra"] .block::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, #6a2c91, #c0367a, #f0824a, #f4c95b); }
+    [data-k="spectra"] .st { padding-bottom: 0.35rem; border-bottom: 2px solid transparent; border-image: linear-gradient(90deg, #6a2c91, #c0367a, #f0824a) 1; width: max-content; max-width: 100%; }
+    [data-k="spectra"] .k { background: linear-gradient(90deg, #6a2c91, #c0367a, #f0824a, #f4c95b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* =====================================================================
+     * Direction C — "Preprint": elevated notebook. Warm paper / charcoal,
+     * one cobalt accent, the IBM Plex family, § section marks, hairlines.
+     * ===================================================================== */
+    [data-k="preprint"] { --display: "IBM Plex Sans", sans-serif; --body: "IBM Plex Sans", sans-serif; --mono: "IBM Plex Mono", monospace; }
+    [data-k="preprint"] .dark  { --bg: #15161b; --surface: #1d1f26; --fg: #e8e6e1; --muted: #989488; --accent: #7d92ff; --edge: rgba(255,255,255,0.12); }
+    [data-k="preprint"] .light { --bg: #f7f5f0; --surface: #ffffff; --fg: #1c1c22; --muted: #6a6760; --accent: #2f49c0; --edge: rgba(0,0,0,0.13); }
+    /* signature: § section number, airy, hairline block, no fill on header */
+    [data-k="preprint"] .slide { padding: 1.6rem 1.8rem; }
+    [data-k="preprint"] .st::before { content: "§1"; font-family: var(--mono); font-weight: 500; font-size: 0.72em; color: var(--accent); }
+    [data-k="preprint"] .block { border-radius: 6px; }
+    [data-k="preprint"] .bt { background: transparent; color: var(--muted); border-bottom-style: dashed; }
+    [data-k="preprint"] .bt .x { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="lead">
+      <h1>Three directions for the deck</h1>
+      <p>Each is shown on the same realistic slide — your <span style="font-family:'IBM Plex Mono',monospace">slide-title</span> +
+        <span style="font-family:'IBM Plex Mono',monospace">.block</span> "Concept" anatomy — in <b>dark</b> and <b>light</b>, so you can
+        judge colour, type, and the signature detail. They're deliberately different from each other and from what you have now.
+        Pick one (or mix — e.g. "Plate's palette, Preprint's section marks") and I'll build it into the real theme.</p>
+      <p class="mono">No red-on-white anywhere. Light accents chosen to actually sit well on paper: teal, plum, cobalt.</p>
+    </div>
+
+    <!-- ============ A · PLATE ============ -->
+    <div class="dir" data-k="plate">
+      <div class="dir-head">
+        <span class="tag">A</span>
+        <h2>Plate</h2>
+        <span class="desc">survey-plate navy + luminous teal · Space Grotesk · star-chart "✛" fiducials and a faint coordinate-dot grid</span>
+      </div>
+      <div class="swatches">
+        <div class="sw" style="background:#0a0e1a"></div>
+        <div class="sw" style="background:#5ad1c4"></div>
+        <div class="sw" style="background:#f4f1ea"></div>
+        <div class="sw" style="background:#0e8a86"></div>
+        <span class="lbl">#0a0e1a · #5ad1c4 — teal &nbsp;|&nbsp; ivory #f4f1ea · #0e8a86 — deep teal</span>
+      </div>
+      <div class="pair">
+        <div>
+          <p class="modecap">Dark slide</p>
+          <div class="slide dark">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt">Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="modecap">Light slide</p>
+          <div class="slide light">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt">Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ B · SPECTRA ============ -->
+    <div class="dir" data-k="spectra">
+      <div class="dir-head">
+        <span class="tag">B</span>
+        <h2>Spectra</h2>
+        <span class="desc">the magma colormap as identity · Hanken Grotesk · gradient scale-bar on titles &amp; blocks, magenta→plum accent</span>
+      </div>
+      <div class="swatches">
+        <div class="sw" style="background:#0c0a12"></div>
+        <div class="sw" style="background:linear-gradient(90deg,#6a2c91,#c0367a,#f0824a,#f4c95b)"></div>
+        <div class="sw" style="background:#f06595"></div>
+        <div class="sw" style="background:#faf7fb"></div>
+        <div class="sw" style="background:#9c2d6e"></div>
+        <span class="lbl">violet-black · magma gradient · plum #9c2d6e on cool white</span>
+      </div>
+      <div class="pair">
+        <div>
+          <p class="modecap">Dark slide</p>
+          <div class="slide dark">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt">Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="modecap">Light slide</p>
+          <div class="slide light">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt">Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ C · PREPRINT ============ -->
+    <div class="dir" data-k="preprint">
+      <div class="dir-head">
+        <span class="tag">C</span>
+        <h2>Preprint</h2>
+        <span class="desc">the elevated notebook · IBM Plex family · cobalt accent, § section marks, hairlines, generous air</span>
+      </div>
+      <div class="swatches">
+        <div class="sw" style="background:#15161b"></div>
+        <div class="sw" style="background:#7d92ff"></div>
+        <div class="sw" style="background:#f7f5f0"></div>
+        <div class="sw" style="background:#2f49c0"></div>
+        <span class="lbl">warm charcoal · #7d92ff &nbsp;|&nbsp; warm paper #f7f5f0 · cobalt #2f49c0</span>
+      </div>
+      <div class="pair">
+        <div>
+          <p class="modecap">Dark slide</p>
+          <div class="slide dark">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt"><span class="x">▸</span> Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="modecap">Light slide</p>
+          <div class="slide light">
+            <div class="k">Traditional approach</div>
+            <div class="st">The 2-Point Route</div>
+            <div class="cols">
+              <div class="block">
+                <div class="bt"><span class="x">▸</span> Concept</div>
+                <div class="bc"><ul>
+                  <li>Measure galaxy ellipticities ε</li>
+                  <li>Compute the 2-pt functions</li>
+                  <li>Run MCMC with an analytic likelihood</li>
+                </ul></div>
+              </div>
+              <div class="side">
+                <div><div class="num">×2.4</div><div class="lab">tighter S₈ vs 2-pt</div></div>
+                <p class="note">Beyond the Gaussian: <span class="alert">peaks</span> &amp; wavelets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

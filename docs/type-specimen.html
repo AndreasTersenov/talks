@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Type specimen — talks theme refresh</title>
+
+  <!-- All candidate faces, loaded for real -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Proper inline math (this is how the real reveal math plugin renders it) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body, {delimiters:[{left:'\\(',right:'\\)',display:false}]});"></script>
+
+  <style>
+    /* ---- palette tokens (the actual proposed values) ---- */
+    html[data-mode="dark"] {
+      --bg: #0e1117; --surface: #161b22; --fg: #e8eaed; --fg-muted: #9aa4b2;
+      --accent: #e7a24c; --link: #e7a24c; --rule: rgba(255,255,255,.12);
+      --card-edge: rgba(255,255,255,.07); --page: #06080c;
+    }
+    html[data-mode="light"] {
+      --bg: #faf8f4; --surface: #f0ece4; --fg: #1a1d21; --fg-muted: #5b6470;
+      --accent: #e7a24c; --link: #9a5b16; --rule: rgba(0,0,0,.12);
+      --card-edge: rgba(0,0,0,.08); --page: #ece7df;
+    }
+
+    /* ---- per-direction font assignment ---- */
+    .typeA  { --display: "Fraunces", Georgia, serif; --display-feat: "opsz" 144; }
+    .typeAp { --display: "Newsreader", Georgia, serif; --display-feat: "opsz" 72; }
+    .typeB  { --display: "Space Grotesk", "Inter", sans-serif; --display-feat: normal; }
+    :root { --body: "Inter", system-ui, sans-serif; --mono: "IBM Plex Mono", monospace; }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--page); color: var(--fg);
+      font-family: var(--body);
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .bar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .75rem 1.25rem;
+      background: color-mix(in srgb, var(--page) 86%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono); font-size: .72rem; letter-spacing: .04em;
+      color: var(--fg-muted);
+    }
+    .bar strong { color: var(--fg); font-weight: 500; }
+    .bar button {
+      font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
+      text-transform: uppercase; cursor: pointer;
+      color: var(--bg); background: var(--accent);
+      border: 0; border-radius: 6px; padding: .5rem .9rem;
+    }
+    .bar .hint { opacity: .8; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+
+    /* ---- a realistic 16:9 slide card ---- */
+    .slide {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--bg); color: var(--fg);
+      border: 1px solid var(--card-edge); border-radius: 14px;
+      padding: clamp(1.5rem, 4.5vw, 3.25rem);
+      margin: 0 0 2.25rem;
+      display: flex; flex-direction: column;
+      box-shadow: 0 24px 60px -30px rgba(0,0,0,.6);
+      transition: background .35s ease, color .35s ease, border-color .35s ease;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      font-family: var(--mono); font-size: clamp(.6rem, 1.4vw, .8rem);
+      letter-spacing: .2em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: .9rem;
+    }
+    .rule { width: 84px; height: 2px; background: var(--accent); border: 0; margin: 0 0 1.1rem; }
+
+    h1 {
+      font-family: var(--display); font-feature-settings: var(--display-feat);
+      font-weight: 600; line-height: 1.04; letter-spacing: -.02em;
+      font-size: clamp(1.8rem, 5.6vw, 3.4rem);
+      margin: 0 0 .35rem;
+    }
+    h1 .accent { color: var(--accent); }
+    .subtitle {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      color: var(--fg-muted); font-size: clamp(.95rem, 2.3vw, 1.35rem);
+      margin: 0 0 1.2rem; line-height: 1.25;
+    }
+    .body { font-size: clamp(.8rem, 1.7vw, 1.02rem); line-height: 1.5; max-width: 46ch; color: var(--fg); }
+    .body a, .link { color: var(--link); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--link) 45%, transparent); }
+    .alert { color: var(--accent); font-weight: 600; }
+
+    .row { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+
+    .stat { line-height: 1; }
+    .stat .num { font-family: var(--display); font-feature-settings: var(--display-feat); font-weight: 700; font-size: clamp(1.8rem, 5vw, 3rem); color: var(--accent); }
+    .stat .label { font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-muted); margin-top: .35rem; }
+
+    .author { font-size: clamp(.72rem, 1.5vw, .95rem); }
+    .author .name { font-weight: 600; }
+    .author .affil { font-family: var(--mono); font-size: .66rem; letter-spacing: .03em; color: var(--fg-muted); margin-top: .25rem; }
+
+    code { font-family: var(--mono); font-size: .82em; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; padding: .08em .4em; }
+
+    .tag {
+      position: absolute; right: 1rem; bottom: .85rem;
+      font-family: var(--mono); font-size: .6rem; letter-spacing: .08em;
+      color: var(--fg-muted); text-transform: uppercase; opacity: .7;
+    }
+
+    .preamble { font-family: var(--mono); font-size: .72rem; line-height: 1.7; color: var(--fg-muted); letter-spacing: .02em; margin: 0 auto 2rem; max-width: 1000px; padding: 0 1.25rem; }
+    .preamble b { color: var(--accent); font-weight: 500; }
+  </style>
+</head>
+
+<body>
+  <div class="bar">
+    <div><strong>Type specimen</strong> · talks theme refresh — same slide, three type systems</div>
+    <div>
+      <span class="hint">palette:</span>
+      <button id="toggle">Dark ⇄ Light</button>
+    </div>
+  </div>
+
+  <p class="preamble">
+    Three candidate type directions for the new theme, each applied to the same realistic title slide,
+    in the actual proposed palette. Press the button (or <b>T</b>) to flip dark ⇄ light — this also
+    previews the in-deck switch. Body face is <b>Inter</b> and code/labels are <b>IBM Plex Mono</b> in
+    all three; only the <b>display face for headings</b> changes. Judge the headline + the big number.
+  </p>
+
+  <main>
+    <!-- A · Fraunces -->
+    <section class="slide typeA">
+      <div class="eyebrow">Apr 16 2026 · LAM Coffee Club</div>
+      <hr class="rule">
+      <h1>Reconstructing the <span class="accent">Non-Gaussian</span> Universe</h1>
+      <p class="subtitle">Mass mapping, higher-order statistics &amp; SBI in weak lensing</p>
+      <p class="body">Beyond the power spectrum: <span class="alert">peaks</span>, the wavelet \(\ell_1\)-norm
+        and Minkowski functionals recover the information Gaussian summaries leave on the table —
+        if the <span class="link">baryonic systematics</span> are kept under control.</p>
+      <div class="row">
+        <div class="stat"><div class="num">×2.4</div><div class="label">tighter S₈ vs. 2-pt</div></div>
+        <div class="author"><div class="name">Andreas Tersenov</div><div class="affil">FORTH · U. Crete · CEA Paris-Saclay</div></div>
+      </div>
+      <span class="tag">A · Fraunces + Inter + IBM Plex Mono</span>
+    </section>
+
+    <!-- A′ · Newsreader -->
+    <section class="slide typeAp">
+      <div class="eyebrow">Apr 16 2026 · LAM Coffee Club</div>
+      <hr class="rule">
+      <h1>Reconstructing the <span class="accent">Non-Gaussian</span> Universe</h1>
+      <p class="subtitle">Mass mapping, higher-order statistics &amp; SBI in weak lensing</p>
+      <p class="body">Beyond the power spectrum: <span class="alert">peaks</span>, the wavelet \(\ell_1\)-norm
+        and Minkowski functionals recover the information Gaussian summaries leave on the table —
+        if the <span class="link">baryonic systematics</span> are kept under control.</p>
+      <div class="row">
+        <div class="stat"><div class="num">×2.4</div><div class="label">tighter S₈ vs. 2-pt</div></div>
+        <div class="author"><div class="name">Andreas Tersenov</div><div class="affil">FORTH · U. Crete · CEA Paris-Saclay</div></div>
+      </div>
+      <span class="tag">A′ · Newsreader + Inter + IBM Plex Mono</span>
+    </section>
+
+    <!-- B · Space Grotesk -->
+    <section class="slide typeB">
+      <div class="eyebrow">Apr 16 2026 · LAM Coffee Club</div>
+      <hr class="rule">
+      <h1>Reconstructing the <span class="accent">Non-Gaussian</span> Universe</h1>
+      <p class="subtitle">Mass mapping, higher-order statistics &amp; SBI in weak lensing</p>
+      <p class="body">Beyond the power spectrum: <span class="alert">peaks</span>, the wavelet \(\ell_1\)-norm
+        and Minkowski functionals recover the information Gaussian summaries leave on the table —
+        if the <span class="link">baryonic systematics</span> are kept under control.</p>
+      <div class="row">
+        <div class="stat"><div class="num">×2.4</div><div class="label">tighter S₈ vs. 2-pt</div></div>
+        <div class="author"><div class="name">Andreas Tersenov</div><div class="affil">FORTH · U. Crete · CEA Paris-Saclay</div></div>
+      </div>
+      <span class="tag">B · Space Grotesk + Inter + IBM Plex Mono</span>
+    </section>
+  </main>
+
+  <script>
+    const html = document.documentElement;
+    const flip = () => html.dataset.mode = html.dataset.mode === 'dark' ? 'light' : 'dark';
+    document.getElementById('toggle').addEventListener('click', flip);
+    addEventListener('keydown', e => { if (e.key.toLowerCase() === 't') flip(); });
+  </script>
+</body>
+</html>
+</parameter>
+</invoke>
