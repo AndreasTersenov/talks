@@ -1,0 +1,71 @@
+<!-- =========================================================================
+     Neural-summary explainer — drop-in reveal.js <section>s  (v2)
+     -------------------------------------------------------------------------
+     Two sibling slides (regression / VMIM), three acts each. To use:
+       <head>:  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+                <link rel="stylesheet" href="neural_summaries.css">
+       before </body>:
+                <script src="vendor/katex/katex.min.js"></script>
+                <script src="vendor/katex/contrib/auto-render.min.js"></script>
+                <script src="neural_summaries.js"></script>
+       after Reveal.initialize(...):  NeuralSummaries.attach(Reveal);
+     (A real deck that already loads the reveal math plugin / KaTeX can skip the
+     KaTeX <script>/<link> lines.) Independent of bnt_explainer.{css,js}.
+     Each slide: act 1 = default; the two .ns-frag markers step to acts 2 and 3.
+========================================================================== -->
+
+<!-- ============ SLIDE 1 — regression (MSE) ============ -->
+<section class="ns-slide" data-ns-explainer data-ns-kind="regression">
+  <h3 class="ns-title">Training a neural summary I:
+    <span class="hl-mse">regression (MSE)</span></h3>
+  <div class="ns-pipe">
+    <div class="ns-box"><div class="role">simulator</div><div class="math">\(\theta\sim\) prior</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--map"><img class="ns-map" src="assets/kappa_patch.png" alt="example convergence-map patch"><div class="role">map \(x\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--net"><div class="role">network</div><div class="math">\(f_\phi\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--out"><div class="role">estimate</div><div class="math">\(\hat\theta\)</div></div>
+  </div>
+  <div class="ns-objective ns-objective--mse">\[\mathcal{L}=\mathbb{E}\,\big\lVert\,\theta-f_\phi(x)\,\big\rVert^{2}\]</div>
+  <div class="ns-lower">
+    <div class="ns-caption" aria-live="polite"></div>
+    <div class="ns-plot">
+      <div class="ns-plot-title">parameter space&nbsp; \(\theta\)</div>
+      <canvas class="ns-plot-canvas" width="744" height="452"></canvas>
+    </div>
+  </div>
+  <button class="ns-replay" type="button" title="Replay (R)">↻&nbsp;replay</button>
+  <span class="fragment ns-frag" aria-hidden="true"></span>
+  <span class="fragment ns-frag" aria-hidden="true"></span>
+</section>
+
+<!-- ============ SLIDE 2 — VMIM ============ -->
+<section class="ns-slide" data-ns-explainer data-ns-kind="vmim">
+  <h3 class="ns-title">Training a neural summary II:
+    <span class="hl-vmim">VMIM</span></h3>
+  <div class="ns-pipe">
+    <div class="ns-box"><div class="role">simulator</div><div class="math">\(\theta\sim\) prior</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--map"><img class="ns-map" src="assets/kappa_patch.png" alt="example convergence-map patch"><div class="role">map \(x\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--net"><div class="role">network</div><div class="math">\(f_\phi\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box"><div class="role">summary</div><div class="math">\(t\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--flow"><div class="role">flow</div><div class="math">\(q_\psi(\theta\mid t)\)</div></div>
+    <span class="ns-arrow">&rarr;</span>
+    <div class="ns-box ns-box--out vmim"><div class="role">posterior</div><div class="math">\(p(\theta\mid t)\)</div></div>
+  </div>
+  <div class="ns-objective ns-objective--vmim">\[\max_{\phi,\psi}\; I(t;\theta)\;=\;\max_{\phi,\psi}\;\mathbb{E}\,\log q_\psi\!\big(\theta\mid f_\phi(x)\big)\]</div>
+  <div class="ns-lower">
+    <div class="ns-caption" aria-live="polite"></div>
+    <div class="ns-plot">
+      <div class="ns-plot-title">parameter space&nbsp; \(\theta\)</div>
+      <canvas class="ns-plot-canvas" width="744" height="452"></canvas>
+    </div>
+  </div>
+  <button class="ns-replay" type="button" title="Replay (R)">↻&nbsp;replay</button>
+  <span class="fragment ns-frag" aria-hidden="true"></span>
+  <span class="fragment ns-frag" aria-hidden="true"></span>
+</section>
