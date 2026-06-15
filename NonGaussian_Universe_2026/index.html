@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BNT explainer — The Non-Gaussian Universe</title>
+
+  <!-- Vendored reveal.js (offline-safe) -->
+  <link rel="stylesheet" href="vendor/reveal/dist/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/dist/theme/white.css">
+
+  <!-- This slide's own styling (deck-theme independent) -->
+  <link rel="stylesheet" href="bnt_explainer.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===================================================================
+           BEGIN DROP-IN SECTION
+           Copy everything between BEGIN/END into your real reveal.js deck,
+           include bnt_explainer.css + bnt_explainer.js, and call
+           BNTExplainer.attach(Reveal) after Reveal.initialize(...).
+           Act 1 is the slide's default state; the four .fragment markers
+           advance to acts 2-5 on each click / arrow-right / space.
+      ==================================================================== -->
+      <section class="bnt-slide" data-bnt-explainer>
+        <h3 class="bnt-title">Same information, a different frame:
+          why <span class="hl-l1">BNT collapses the&nbsp;ℓ1-norm</span>
+          but&nbsp;not the <span class="hl-cnn">CNN</span></h3>
+
+        <div class="bnt-stage">
+          <div class="bnt-main">
+            <canvas class="bnt-cloud" width="1520" height="1200"
+                    aria-label="A fixed cloud of map pixels with rotating measuring axes and their shadows"></canvas>
+            <div class="bnt-cloud-tag">the cloud — all the information — never moves</div>
+          </div>
+
+          <div class="bnt-side">
+            <div class="bnt-meter" aria-label="FoM3 meter"></div>
+            <div class="bnt-kernels-wrap">
+              <div class="bnt-kernels-title">lensing kernels n(z)</div>
+              <canvas class="bnt-kernels" width="640" height="360"
+                      aria-label="Lensing efficiency kernels morphing from broad overlapping to one broad plus thin slices"></canvas>
+              <div class="bnt-kernels-caption"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bnt-caption" aria-live="polite"></div>
+
+        <p class="bnt-footnote">
+          Auto+cross <em>power spectra</em> are <em>exactly</em> BNT-invariant
+          (Ĉ′ = B Ĉ Bᵀ). This collapse is specific to <em>per-map non-Gaussian</em>
+          statistics — the ℓ1-norm, peaks. &nbsp;·&nbsp;
+          ℓ1+product &amp; CNN (ResNet18) arms, matched best-NDE; whitening from the L1-auto arm.
+        </p>
+
+        <button class="bnt-replay" type="button" title="Replay the sequence (R)">↻&nbsp;replay</button>
+
+        <!-- Fragment markers: act 1 = default; these step to 2,3,4,5 -->
+        <span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
+        <span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
+        <span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
+        <span class="fragment bnt-frag" data-bnt-act="5" aria-hidden="true"></span>
+      </section>
+      <!-- ===================== END DROP-IN SECTION ===================== -->
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal/dist/reveal.js"></script>
+  <script src="bnt_explainer.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      transition: 'fade',
+      width: 1280,
+      height: 720,
+      margin: 0.035,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+    // Wire the animation to reveal's fragment navigation.
+    BNTExplainer.attach(Reveal);
+  </script>
+</body>
+</html>
