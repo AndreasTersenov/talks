@@ -53,7 +53,7 @@
 					<div class="col"><img src="../assets/logos/oie_DGCLMBA7vVI8.png" class="plain" height="118"></div>
 					<div class="col"><img src="../assets/logos/CosmoStatDarkBK.png" class="plain" height="62"></div>
 				</div>
-				<p class="affil">Andreas Tersenov &middot; FORTH &middot; U. Crete &middot; CEA Paris-Saclay &nbsp;&middot;&nbsp; slides: andreastersenov.github.io/talks/</p>
+				<p class="affil" style="font-size:0.72em; color:var(--fg);"><b class="alert">Andreas Tersenov</b> &middot; FORTH &middot; U. Crete &middot; CEA Paris-Saclay &nbsp;&middot;&nbsp; slides: andreastersenov.github.io/talks/</p>
 				<aside class="notes">Tersenov, Guerrini, Kilbinger, Starck (Part 1) + the l1-vs-CNN SBI work (Part 2). One story: the optimal tomographic strategy.</aside>
 			</section>
 
@@ -134,9 +134,9 @@
 			</section>
 
 
-			<!-- S5 (peak counts, adapted from the LAM deck); light slide, cosmology_with_maps.pdf -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Higher-order statistic I: <b class="alert">wavelet peak counts</b></h3>
+			<!-- S5 (peak counts, adapted from the LAM deck); DARK slide -->
+			<section>
+				<h3 class="slide-title tight"><span class="sec">§1</span> Higher-order statistic I: <b class="alert">peak counts</b></h3>
 				<img class="plain" src="../assets/diagrams/cosmology_with_maps.pdf" style="max-height:400px;" alt="convergence maps with peaks marked, the lensing power spectrum, and the peak-count curve">
 				<div class="block" style="margin-top:0.2em;">
 					<div class="block-content" style="font-size:0.74em;">
@@ -151,7 +151,7 @@
 			</section>
 
 
-			<!-- S5b (wavelet peaks, adapted from the LAM deck); DARK slide (starlet_transform.pdf) -->
+			<!-- S5b (wavelet peaks, adapted from the LAM deck); DARK slide -->
 			<section>
 				<h3 class="slide-title tight"><span class="sec">§1</span> Wavelet peaks: a multi-scale peak count via the starlet transform</h3>
 				<img class="plain" src="../assets/diagrams/starlet_transform.pdf" style="max-height:300px;" alt="starlet decomposition: a map as a sum of wavelet bands plus a coarse map">
@@ -160,6 +160,7 @@
 						<ul>
 							<li>Multi-scale, not single-scale</li>
 							<li><b class="alert">Starlet transform</b>: a map as a sum of wavelet-coefficient images plus a coarse map</li>
+							<li>Processes all scales <b class="alert">simultaneously</b>, for efficiency</li>
 							<li>Each band is a different frequency range, so the peak-count covariance is nearly diagonal</li>
 						</ul>
 					</div>
@@ -168,7 +169,7 @@
 			</section>
 
 
-			<!-- S6 (l1-norm, adapted from the LAM deck); DARK slide (figure has light labels) -->
+			<!-- S6 (l1-norm, adapted from the LAM deck); DARK slide -->
 			<section>
 				<h3 class="slide-title tight"><span class="sec">§1</span> Higher-order statistic II: the starlet <b class="alert">&#8467;1-norm</b></h3>
 				<img class="plain" src="../assets/figures/statistics/wavelet_l1_norm.pdf" style="max-height:230px;" alt="starlet decomposition of a convergence map across scales">
@@ -177,6 +178,7 @@
 					<div class="block-content" style="font-size:0.74em;">
 						<ul>
 							<li>Sum of <b class="alert">absolute starlet coefficients</b>, per scale and SNR bin</li>
+							<li>A <b class="alert">fast, multi-scale</b> measure of the full void and peak distribution</li>
 							<li>Information in <b class="alert">all</b> pixels: peaks and voids, the full convergence PDF</li>
 							<li>No discrete-feature definition</li>
 						</ul>
@@ -340,7 +342,7 @@
 					</div>
 					<div class="col" style="flex:0.85;">
 						<div class="callout" style="max-width:100%;">
-							<span class="label">the hinge of the whole talk</span>
+							<span class="label">the hinge</span>
 							<ul style="font-size:0.8em;">
 								<li>BNT is <em>invertible</em>: no information can truly be lost</li>
 								<li>Yet a Euclid forecast (<b>Vinciguerra et al. 2026</b>) still saw inflated BNT contours, even with explicit cross-bin HOS; recovering the SNR is "highly non-trivial"</li>
@@ -361,7 +363,7 @@
 					<span class="kicker">Part 2 of 2</span>
 					<h2>Learned vs analytical,<br>and can we trust it?</h2>
 					<hr class="accent-rule" style="margin:0.5em auto;">
-					<p class="lead">The analytical &#8467;1-norm vs a learned CNN, calibration, and the BNT puzzle resolved.</p>
+					<p class="lead">The analytical &#8467;1-norm vs a learned CNN, calibration, and the answer to the BNT puzzle.</p>
 				</div>
 				<aside class="notes">Transition. Part 1 (the baryonic-feedback paper) established the l1-norm as a strong analytical HOS, resilient to cheap scale cuts, but BNT breaks it and leaves the puzzle. Part 2 (this work) asks the two questions the conference cares about: is the learned summary better, and can we trust either's contours?</aside>
 			</section>
@@ -461,7 +463,7 @@
 					<ul>
 						<li>Same &kappa; maps &rarr; <span style="color:var(--l1);font-weight:600">&#8467;1-norm</span> or <span style="color:var(--cnn);font-weight:600">CNN-VMIM</span> &rarr; the <em>same</em> flow NDE &rarr; posterior</li>
 						<li>Flat-sky <b>10&deg; patches</b> (cross-maps physically buildable), both arms calibrated</li>
-						<li>Not undertraining: <b>324k patches, 899 cosmologies</b></li>
+						<li><b>324k patches, 899 cosmologies</b></li>
 					</ul>
 				</div>
 				<!-- TRIM-FOLD: p2_methods_flatsky_inputs (the auto + cross channels) / p2_methods_l1_vs_cosmology -->
@@ -474,10 +476,16 @@
 				<h3 class="slide-title tight"><span class="sec">§2</span> The analytical &#8467;1-norm almost reaches the optimal CNN (<span class="alert">~7%</span>): The hand-built &#8467;1+product is <em class="alert">near-sufficient</em></h3>
 				<div class="container" style="align-items:center;">
 					<div class="col">
-						<div class="fig"><img class="plain" src="../assets/figures/posteriors/p2_M1_corner_matched.pdf" style="max-height:440px;" alt="matched-NDE L1 vs CNN posterior contours that nearly coincide, with a FoM3-bar inset (2448, 3045, 3293, ~7%)"><p class="cap" style="text-align:center; margin-top:0.3em;">&#8467;1 and CNN posteriors nearly coincide</p></div>
+												<div class="fig">
+							<div class="r-stack">
+								<img class="plain" src="../assets/figures/posteriors/p2_M1_corner_matched_step1_l1.pdf" style="max-height:440px;" alt="matched-NDE L1+product posterior, with the FoM3 inset">
+								<img class="plain fragment" src="../assets/figures/posteriors/p2_M1_corner_matched_step2_l1cnn.pdf" style="max-height:440px;" alt="L1 and CNN matched-NDE posteriors nearly coincide (~7%)">
+							</div>
+							<p class="cap" style="text-align:center; margin-top:0.3em;">&#8467;1 and CNN posteriors nearly coincide</p>
+						</div>
 					</div>
 					<div class="col">
-						<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M1_violin_fom3.pdf" style="max-height:430px;" alt="per-patch FoM3 distribution for L1+product versus CNN: medians 3045 and 3326, near-identical spread"><p class="cap" style="text-align:center; margin-top:0.3em;">near-identical FoM3 across patches (3045 vs 3326)</p></div>
+						<div class="fig fragment"><img class="plain" src="../assets/figures/statistics/p2_M1_violin_fom3.pdf" style="max-height:430px;" alt="per-patch FoM3 distribution for L1+product versus CNN: medians 3045 and 3326, near-identical spread"><p class="cap" style="text-align:center; margin-top:0.3em;">near-identical FoM3 across patches (3045 vs 3326)</p></div>
 					</div>
 				</div>
 		
@@ -516,15 +524,22 @@
 				<h3 class="slide-title tight"><span class="sec">§2</span> BNT revisited: the per-bin &#8467;1 collapses (0.26&times;), the channel-mixing CNN is lossless (0.96&times;)</h3>
 				<div class="container" style="align-items:center;">
 					<div class="col" style="flex:0 0 54%;">
-						<div class="fig"><img class="plain" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way.pdf" style="max-height:450px;" alt="matched-NDE BNT posterior corners with a FoM3-bar inset: L1-BNT balloons, CNN-BNT stays tight (0.26x vs 0.96x)"></div>
+												<div class="fig">
+							<div class="r-stack">
+								<img class="plain" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step1_l1nobnt.pdf" style="max-height:450px;" alt="L1 no-BNT posterior">
+								<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step2_nobnt_pair.pdf" style="max-height:450px;" alt="L1 and CNN no-BNT, both tight (the tie)">
+								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step3_l1bnt.pdf" style="max-height:450px;" alt="the per-bin L1 balloons under BNT (0.26x)">
+								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step4_all.pdf" style="max-height:450px;" alt="the channel-mixing CNN stays tight under BNT (0.96x)">
+							</div>
+						</div>
 					</div>
 					<div class="col">
 						<div class="takeaway" style="max-width:100%;">
-							<span class="label">same NDE, opposite fates</span>
+							<span class="label">Same transform, opposite fates</span>
 							<ul>
-								<li>Per-channel <span style="color:var(--l1);font-weight:600">&#8467;1+product</span> <b>collapses</b>: 3045 &rarr; 779 (<b>0.26&times;</b>; &sigma;<sub>8</sub> +65%)</li>
-								<li>Channel-mixing <span style="color:var(--cnn);font-weight:600">CNN</span> is <b>lossless</b>: 3326 &rarr; 3186 (<b>0.96&times;</b>)</li>
-								<li>The collapse is itself <em>calibrated</em>: a real loss</li>
+								<li class="fragment" data-fragment-index="2">Per-channel <span style="color:var(--l1);font-weight:600">&#8467;1+product</span> <b>collapses</b>: 3045 &rarr; 779 (<b>0.26&times;</b>; &sigma;<sub>8</sub> +65%)</li>
+								<li class="fragment" data-fragment-index="3">Channel-mixing <span style="color:var(--cnn);font-weight:600">CNN</span> is <b>lossless</b>: 3326 &rarr; 3186 (<b>0.96&times;</b>)</li>
+								<li class="fragment" data-fragment-index="4">The collapse is itself <em>calibrated</em>: a real loss</li>
 							</ul>
 						</div>
 					</div>
@@ -660,11 +675,15 @@
 					The hand-built &#8467;1-norm <b class="alert">nearly matches the optimal learned summary (~7%)</b>, and both are calibrated.
 				</div>
 				<div class="takeaway" style="max-width:94%; margin-top:0.45em;">
-					<span class="label">the twist &middot; BNT</span>
+					<span class="label">BNT</span>
 					The apparent BNT break is a <b class="alert">frame artifact</b>: a channel-mixing compressor, or one fixed rotation, recovers it.
 				</div>
-				<p class="cap" style="text-align:center; margin-top:0.7em;">Next: a flat-sky cross for the CNN &middot; an end-to-end CNN+BNT baryon-mitigation demo &middot; calibration at scale for Stage IV.<br>Thanks: Guerrini, Starck, Kilbinger &middot; CosmoGridV1 &middot; based on Learn2Map (Zeghal).</p>
-				<aside class="notes">Back to the title: do baryons break HOS? No. Recap the three (Part 1 baryons, Part 2 learned-vs-analytical, the BNT twist). Round-table tee-up: these are exactly the Wednesday questions, one data point on each. Systematics humility: controlled methods study; real-world robustness (IA, source clustering, photo-z) needs the work others present. Generalization: the l1 and one-point PDF and the basis-dependence lesson carry to 21cm/EoR. End forcefully, loop back to the opening question.</aside>
+				<div class="callout" style="max-width:94%; margin-top:0.5em;">
+					<span class="label">the bigger question</span>
+					And can we trust higher-order weak lensing? <b class="alert">Getting there</b>...
+				</div>
+				<!-- <p class="cap" style="text-align:center; margin-top:0.7em;">Next: a flat-sky cross for the CNN &middot; an end-to-end CNN+BNT baryon-mitigation demo &middot; calibration at scale for Stage IV.<br>Thanks: Guerrini, Starck, Kilbinger &middot; CosmoGridV1 &middot; based on Learn2Map (Zeghal).</p> -->
+				<!-- <aside class="notes">Back to the title: do baryons break HOS? No. Recap the three (Part 1 baryons, Part 2 learned-vs-analytical, the BNT twist). Round-table tee-up: these are exactly the Wednesday questions, one data point on each. Systematics humility: controlled methods study; real-world robustness (IA, source clustering, photo-z) needs the work others present. Generalization: the l1 and one-point PDF and the basis-dependence lesson carry to 21cm/EoR. End forcefully, loop back to the opening question.</aside> -->
 			</section>
 
 
@@ -694,6 +713,24 @@
 					</figure>
 				</div>
 				<aside class="notes">Fold beat. The same linear mixing that nulls the signal correlates the originally-independent shape noise across bins; the noise floor rises and the maps visibly degrade. This is what inflates the HOS contours.</aside>
+			</section>
+
+
+			<!-- Backup: noiseless companion to the BNT maps slide -->
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">§1</span> The same maps, noiseless: BNT cleanly redistributes the signal</h3>
+				<div class="figcol" style="margin-top:0.3em;">
+					<figure class="fig">
+						<img class="plain" src="../assets/figures/maps/p1_maps_before_noiseless.pdf" alt="noiseless tomographic maps before BNT">
+						<figcaption>before BNT (noiseless)</figcaption>
+					</figure>
+					<figure class="fig">
+						<img class="plain" src="../assets/figures/maps/p1_maps_after_bnt_noiseless.pdf" alt="noiseless maps after BNT">
+						<figcaption>after BNT (noiseless)</figcaption>
+					</figure>
+				</div>
+				<p class="caveat">Without shape noise, BNT is a clean, invertible redistribution of the signal (the deep common mode becomes one shallow map plus thin slices). The contour inflation comes from the correlated noise it introduces, not from any lost signal.</p>
+				<aside class="notes">Noiseless companion (backup). On the signal alone, BNT just reorganizes the information: invertible, lossless. Pair with the noisy slide to show the damage is in the noise, not the signal.</aside>
 			</section>
 
 

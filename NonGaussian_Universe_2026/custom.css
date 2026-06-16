@@ -16,6 +16,11 @@
    (Only img.plain figures; the black tomography flipbook and the <video> are not .plain, so untouched.) */
 .reveal .slides section img.plain { border-radius: 10px; }
 
+/* dark "mat" for figures whose labels are light (the magma starlet / l1 panels) so they
+   stay readable on a light slide */
+.reveal .slides section .darkmat { display: inline-block; background: #15161b; border: 1px solid var(--edge); border-radius: 12px; padding: 12px 16px; box-shadow: var(--shadow); margin: 0 auto; }
+.reveal .slides section .darkmat img { box-shadow: none; margin: 0; }
+
 /* ---- figure layouts ---------------------------------------------------- */
 .reveal .slides section .fig          { margin: 0 auto; }
 .reveal .slides section .fig img      { display: block; margin: 0 auto; max-height: 500px; width: auto; }
