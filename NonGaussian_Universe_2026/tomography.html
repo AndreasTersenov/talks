@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tomography explainer — The Non-Gaussian Universe</title>
+  <link rel="stylesheet" href="vendor/reveal/dist/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/dist/theme/white.css">
+  <link rel="stylesheet" href="tomography.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Tomography: 9-frame build on a BLACK background.
+           Frame 1 is the default state; the 8 .fragment frames step on, each
+           crossfading over the previous. -->
+      <section class="tomo-slide" data-background-color="#000000">
+        <div class="tomo-stage">
+          <img class="tomo-frame"                  src="assets/tomography/01.png" alt="tomography frame 1">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/02.png" alt="tomography frame 2">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/03.png" alt="tomography frame 3">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/04.png" alt="tomography frame 4">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/05.png" alt="tomography frame 5">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/06.png" alt="tomography frame 6">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/07.png" alt="tomography frame 7">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/08.png" alt="tomography frame 8">
+          <img class="tomo-frame stacked fragment" src="assets/tomography/09.png" alt="tomography frame 9">
+        </div>
+        <div class="tomo-credit">Credit: Justine Zeghal</div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true, controls: true, progress: true, slideNumber: false,
+      transition: 'fade', width: 1280, height: 720, margin: 0.02,
+      minScale: 0.2, maxScale: 2.0
+    });
+  </script>
+</body>
+</html>
