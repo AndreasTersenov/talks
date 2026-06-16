@@ -1,0 +1,112 @@
+/* ===========================================================================
+ * custom.css — deck-local styles for "Do Baryons Break HOS?" (Non-Gaussian 2026)
+ * Build-in-deck illustrations + figure layouts. Uses the Preprint theme TOKENS
+ * (var(--accent), var(--fg), var(--surface), ...) so it self-themes per slide.
+ * Method identity uses the LOCKED Wong hex only: CNN blue #0072B2, L1 vermillion
+ * #D55E00 (color = method; never theme chrome).
+ * ======================================================================== */
+
+:root {
+  --cnn:  #0072B2;   /* Wong blue       — learned / CNN */
+  --l1:   #D55E00;   /* Wong vermillion — analytical / l1-norm */
+  --ps:   #6c7884;   /* neutral grey    — power spectrum / baseline */
+}
+
+/* white-bg figures read as bright cards on the paper slide: round their corners like the blocks.
+   (Only img.plain figures; the black tomography flipbook and the <video> are not .plain, so untouched.) */
+.reveal .slides section img.plain { border-radius: 10px; }
+
+/* ---- figure layouts ---------------------------------------------------- */
+.reveal .slides section .fig          { margin: 0 auto; }
+.reveal .slides section .fig img      { display: block; margin: 0 auto; max-height: 500px; width: auto; }
+.reveal .slides section .fig-sm img   { max-height: 360px; }
+.reveal .slides section .fig-tall img { max-height: 560px; }
+.reveal .slides section .figrow       { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.reveal .slides section .figrow img   { max-height: 430px; width: auto; }
+.reveal .slides section .figcol       { display: flex; flex-direction: column; align-items: center; gap: 0.3em; }
+.reveal .slides section .figcol img   { max-height: 240px; max-width: 94%; width: auto; }
+.reveal .slides section .figcol figcaption { text-align: center; }
+
+/* ---- Part 1 / Part 2 section divider (dark, punctuation) ---------------- */
+.reveal .slides section .part-divider { text-align: center; max-width: 82%; margin: 0 auto; }
+.reveal .slides section .part-divider .kicker { text-align: center; }
+.reveal .slides section .part-divider h2 { font-size: 2.1em; line-height: 1.12; margin: 0.15em 0; }
+.reveal .slides section .part-divider hr.accent-rule { margin-left: auto; margin-right: auto; }
+.reveal .slides section .part-divider .lead { font-size: 0.92em; color: var(--fg-muted); margin-top: 0.65em; line-height: 1.4; }
+.reveal .slides section .figrow .arrow{ font-size: 2.4em; color: var(--accent); flex: 0 0 auto; }
+.reveal .slides section .cap          { font-family: var(--mono); font-size: 0.46em; line-height: 1.4; color: var(--fg-muted); margin-top: 0.5em; }
+.reveal .slides section .cap b        { color: var(--accent); font-weight: 500; }
+
+/* a compact honesty/caveat note (honesty flags travel onto the slide) */
+.reveal .slides section .caveat {
+  font-family: var(--mono); font-size: 0.46em; line-height: 1.45; color: var(--fg-muted);
+  border-left: 2px solid var(--accent); padding: 0.2em 0 0.2em 0.7em; margin: 0.6em auto 0; max-width: 90%; text-align: left;
+}
+.reveal .slides section .caveat b { color: var(--accent-ink); font-weight: 600; }
+
+/* method legend chips */
+.reveal .slides section .legend { display: flex; gap: 1.2em; justify-content: center; font-family: var(--mono); font-size: 0.5em; margin-top: 0.4em; }
+.reveal .slides section .legend .k { display: inline-flex; align-items: center; gap: 0.4em; }
+.reveal .slides section .legend .sw { width: 26px; height: 0; border-top-width: 4px; border-top-style: solid; display: inline-block; }
+.reveal .slides section .legend .sw.cnn { border-color: var(--cnn); }
+.reveal .slides section .legend .sw.l1  { border-color: var(--l1);  border-top-style: solid; }
+.reveal .slides section .legend .sw.l1.hatch { border-top-style: dashed; }
+
+/* ---- S2: trust checklist ---------------------------------------------- */
+.reveal .slides section .skeptic { display: flex; gap: 26px; align-items: center; }
+.reveal .slides section .skeptic .who { flex: 0 0 auto; text-align: center; }
+.reveal .slides section .skeptic .who .face { font-size: 86px; line-height: 1; }
+.reveal .slides section .skeptic .who .role { font-family: var(--mono); font-size: 0.42em; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); margin-top: 0.4em; }
+.reveal .slides section .bubble {
+  position: relative; background: var(--surface); border: 1px solid var(--edge); border-radius: 14px;
+  padding: 0.7em 1em; font-style: italic; font-size: 0.9em; box-shadow: var(--shadow); max-width: 380px;
+}
+.reveal .slides section .bubble::after {
+  content: ""; position: absolute; left: -16px; top: 38px; border: 9px solid transparent;
+  border-right-color: var(--surface); filter: drop-shadow(-1px 0 0 var(--edge));
+}
+.reveal .slides section .checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45em 1.6em; text-align: left; }
+.reveal .slides section .checklist li { font-size: 0.7em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg-muted); margin: 0; }
+.reveal .slides section .checklist li .mk { font-family: var(--mono); font-weight: 600; flex: 0 0 1.4em; }
+.reveal .slides section .checklist li.addr   { color: var(--fg); font-weight: 600; }
+.reveal .slides section .checklist li.addr .mk { color: var(--accent); }     /* this talk takes it on */
+.reveal .slides section .checklist li.free   { color: var(--fg); }
+.reveal .slides section .checklist li.free .mk { color: var(--cnn); }         /* SBI removes for free */
+.reveal .slides section .checklist li .tag { font-family: var(--mono); font-size: 0.62em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-left: 0.3em; }
+.reveal .slides section .checklist li.free .tag { color: var(--cnn); }
+
+/* ---- SVG illustration frames (S3 tomography, S5 peaks, S6 l1) ---------- */
+.reveal .slides section .svgfig { display: block; margin: 0 auto; }
+.reveal .slides section .svgfig text { font-family: var(--mono); fill: var(--fg-muted); }
+.reveal .slides section .svgfig .axis { stroke: var(--hair); stroke-width: 1.5; }
+.reveal .slides section .svgfig .lab  { fill: var(--fg); }
+.reveal .slides section .svgfig .accent { fill: var(--accent); }
+
+/* ---- S17: cost / benefit balance -------------------------------------- */
+.reveal .slides section .balance { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: stretch; }
+.reveal .slides section .pan { background: var(--surface); border: 1px solid var(--edge); border-radius: 10px; padding: 0.7em 1em; text-align: left; }
+.reveal .slides section .pan h4 { font-family: var(--mono); font-size: 0.6em; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.4em; }
+.reveal .slides section .pan.benefit { border-top: 3px solid var(--l1); }
+.reveal .slides section .pan.benefit h4 { color: var(--l1); }
+.reveal .slides section .pan.cost { border-top: 3px solid var(--cnn); }
+.reveal .slides section .pan.cost h4 { color: var(--cnn); }
+.reveal .slides section .pan ul { margin: 0; padding-left: 1.1em; }
+.reveal .slides section .pan li { font-size: 0.62em; margin-bottom: 0.3em; }
+.reveal .slides section .pan .big { font-family: var(--r-heading-font); font-weight: 600; font-size: 2.2em; line-height: 1; color: var(--l1); }
+.reveal .slides section .thumb { margin-top: 0.6em; }
+
+/* tighten figure-slide titles a touch so big figures fit under them */
+.reveal .slides section .slide-title.tight { font-size: 1.15em; margin-bottom: 0.3em; }
+
+/* ---- S3: tomography build-up (Justine Zeghal screenshots, black bg flipbook) ---- */
+.reveal .slides section .tomo-flip { position: relative; width: 1000px; max-width: 90%; margin: 0.15em auto 0; aspect-ratio: 3000 / 1418; }
+.reveal .slides section .tomo-flip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: transparent; border: 0; box-shadow: none; margin: 0; }
+.reveal .slides section .tomo-note { font-size: 0.5em; color: #d2d6db; max-width: 84%; margin: 0.5em auto 0; text-align: center; line-height: 1.35; }
+.reveal .slides section .tomo-note em { color: var(--accent-ink); font-style: normal; font-weight: 600; }
+.reveal .slides section .tomo-credit { position: absolute; right: 22px; bottom: 12px; font-family: var(--mono); font-size: 0.4em; letter-spacing: 0.05em; color: #8b9099; }
+
+/* ---- S2 (revised): centered skeptic + uniform 3-col checklist ---------- */
+.reveal .slides section .checklist3 { list-style: none; margin: 0.5em auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, max-content); justify-content: center; gap: 0.6em 1.9em; text-align: left; }
+.reveal .slides section .checklist3 li { font-size: 0.82em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg); margin: 0; }
+.reveal .slides section .checklist3 li::before { content: "\25CB"; color: var(--accent); font-size: 0.8em; flex: 0 0 auto; }
+.reveal .slides section .checklist3 li::marker { content: none; }
