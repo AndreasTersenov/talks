@@ -137,7 +137,7 @@
 			<!-- S5 (peak counts, adapted from the LAM deck); DARK slide -->
 			<section>
 				<h3 class="slide-title tight"><span class="sec">§1</span> Higher-order statistic I: <b class="alert">peak counts</b></h3>
-				<img class="plain" src="../assets/diagrams/cosmology_with_maps.pdf" style="max-height:400px;" alt="convergence maps with peaks marked, the lensing power spectrum, and the peak-count curve">
+				<img class="plain" src="../assets/diagrams/cosmology_with_maps.png" style="max-height:400px;" alt="convergence maps with peaks marked, the lensing power spectrum, and the peak-count curve">
 				<div class="block" style="margin-top:0.2em;">
 					<div class="block-content" style="font-size:0.74em;">
 						<ul>
@@ -154,7 +154,7 @@
 			<!-- S5b (wavelet peaks, adapted from the LAM deck); DARK slide -->
 			<section>
 				<h3 class="slide-title tight"><span class="sec">§1</span> Wavelet peaks: a multi-scale peak count via the starlet transform</h3>
-				<img class="plain" src="../assets/diagrams/starlet_transform.pdf" style="max-height:300px;" alt="starlet decomposition: a map as a sum of wavelet bands plus a coarse map">
+				<img class="plain" src="../assets/diagrams/starlet_transform.png" style="max-height:300px;" alt="starlet decomposition: a map as a sum of wavelet bands plus a coarse map">
 				<div class="block" style="margin-top:0.25em;">
 					<div class="block-content" style="font-size:0.78em;">
 						<ul>
@@ -172,7 +172,7 @@
 			<!-- S6 (l1-norm, adapted from the LAM deck); DARK slide -->
 			<section>
 				<h3 class="slide-title tight"><span class="sec">§1</span> Higher-order statistic II: the starlet <b class="alert">&#8467;1-norm</b></h3>
-				<img class="plain" src="../assets/figures/statistics/wavelet_l1_norm.pdf" style="max-height:230px;" alt="starlet decomposition of a convergence map across scales">
+				<img class="plain" src="../assets/figures/statistics/wavelet_l1_norm.png" style="max-height:230px;" alt="starlet decomposition of a convergence map across scales">
 				<div style="font-size:0.9em; margin:0.15em 0;">$$ \ell_1^{\,j,i} \;=\; \sum_{u} \left| \mathcal{S}_{j,i}[u] \right| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1 $$</div>
 				<div class="block">
 					<div class="block-content" style="font-size:0.74em;">
@@ -225,7 +225,7 @@
 					<li class="fragment fade-in">$C_\ell$: requires an aggressive cut at $\ell \lesssim 400$ &rarr; <b class="alert">discards most signal</b></li>
 					<li class="fragment fade-in">Starlet: contamination <b class="alert">isolated in one scale</b> &rarr; removing just the finest wavelet band is sufficient across <em>all</em> survey areas</li>
 				</ul>
-				<img class="plain fragment fade-in" src="../assets/figures/statistics/nsigma_vs_upper_cut_masks.pdf" style="max-height:300px; display:block; margin:0 auto;" alt="parameter tension versus upper scale cut, for different survey masks">
+				<img class="plain fragment fade-in" src="../assets/figures/statistics/nsigma_vs_upper_cut_masks.png" style="max-height:300px; display:block; margin:0 auto;" alt="parameter tension versus upper scale cut, for different survey masks">
 				<div class="block fragment fade-in" style="margin-top:0.5em;">
 					<div class="block-content" style="font-size:0.78em;">We run this analysis as a function of survey area: more area means smaller statistical errors, and thus higher sensitivity to bias.</div>
 				</div>
@@ -238,7 +238,7 @@
 				<h3 class="slide-title tight"><span class="sec">§1</span> Baryonic Bias Scales with Survey Area</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
 					<div class="col fragment fade-in" style="flex:1.35;">
-						<img class="plain" src="../assets/figures/statistics/nsigma_vs_mask_area_all_stats_lmax1024.pdf" style="max-height:280px;" alt="parameter tension in sigma versus survey area for all statistics">
+						<img class="plain" src="../assets/figures/statistics/nsigma_vs_mask_area_all_stats_lmax1024.png" style="max-height:280px;" alt="parameter tension in sigma versus survey area for all statistics">
 						<ul style="font-size:0.78em;">
 							<li class="fragment fade-in">At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ already shows $\sim 2\sigma$ tension</li>
 							<li class="fragment fade-in">At <b class="alert">full sky</b>: tension exceeds $3\sigma$ for <em>all</em> statistics</li>
@@ -246,7 +246,7 @@
 						</ul>
 					</div>
 					<div class="col" style="flex:1.2;">
-						<img class="plain fragment fade-in" src="../assets/figures/posteriors/triangle_plot_subset_baryonified_PS_1024_diff_areas.pdf" style="max-height:380px;" alt="power spectrum posterior contours, biased by baryons, for different survey areas">
+						<img class="plain fragment fade-in" src="../assets/figures/posteriors/triangle_plot_subset_baryonified_PS_1024_diff_areas.png" style="max-height:380px;" alt="power spectrum posterior contours, biased by baryons, for different survey areas">
 					</div>
 				</div>
 				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2) C_l already shows ~2 sigma; at full sky tension exceeds 3 sigma for all statistics (lmax=1024); HOS are more sensitive than C_l, they live on the contaminated small scales.</aside>
@@ -258,7 +258,7 @@
 				<h3 class="slide-title tight"><span class="sec">§1</span> Are HOS still useful?</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
 					<div class="col fragment fade-in" style="flex:1.2;">
-						<img class="plain" src="../assets/figures/posteriors/triangle_plot_subset_baryonified_lmax400_peaks_l1_scales234.pdf" style="max-height:400px;" alt="posterior contours on baryon-safe scales: power spectrum, peaks, and l1-norm">
+						<img class="plain" src="../assets/figures/posteriors/triangle_plot_subset_baryonified_lmax400_peaks_l1_scales234.png" style="max-height:400px;" alt="posterior contours on baryon-safe scales: power spectrum, peaks, and l1-norm">
 					</div>
 					<div class="col" style="flex:0.85;">
 						<div class="block fragment fade-in">
@@ -305,12 +305,12 @@
 				<h3 class="slide-title tight"><span class="sec">§1</span> The BNT transform localizes each tomographic bin in redshift (a linear nulling)</h3>
 				<div class="figrow" style="margin-top:0.2em;">
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.pdf" style="max-height:235px;" alt="standard lensing efficiency kernels: broad and overlapping across redshift">
+						<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.png" style="max-height:235px;" alt="standard lensing efficiency kernels: broad and overlapping across redshift">
 						<figcaption>standard: broad, overlapping</figcaption>
 					</figure>
 					<span class="arrow">&rarr;</span>
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.pdf" style="max-height:235px;" alt="BNT lensing efficiency kernels: nulled and localized per bin">
+						<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.png" style="max-height:235px;" alt="BNT lensing efficiency kernels: nulled and localized per bin">
 						<figcaption>BNT: nulled, localized</figcaption>
 					</figure>
 				</div>
@@ -336,7 +336,7 @@
 				<div class="container" style="align-items:center; margin-top:0.2em;">
 					<div class="col" style="flex:1.25;">
 						<figure class="fig">
-							<img class="plain" src="../assets/figures/posteriors/p1_BRIDGE_bnt_inflates_l1.pdf" style="max-height:430px;" alt="l1-norm contours: BNT inflated versus safe-scale and all-scale">
+							<img class="plain" src="../assets/figures/posteriors/p1_BRIDGE_bnt_inflates_l1.png" style="max-height:430px;" alt="l1-norm contours: BNT inflated versus safe-scale and all-scale">
 							<figcaption>The per-bin HOS contours <b>inflate dramatically</b> (gray = BNT; the noise mixing raises the floor).</figcaption>
 						</figure>
 					</div>
@@ -457,7 +457,7 @@
 			<!-- S10 — figure: p2_pipeline_schematic -->
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§2</span> The comparison, done fairly: same maps, same flow, both calibrated</h3>
-				<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline_schematic.pdf" style="max-height:380px;" alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior"></div>
+				<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline_schematic.png" style="max-height:380px;" alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior"></div>
 				<div class="takeaway" style="max-width:92%;">
 					<span class="label">apples to apples</span>
 					<ul>
@@ -478,14 +478,14 @@
 					<div class="col">
 												<div class="fig">
 							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p2_M1_corner_matched_step1_l1.pdf" style="max-height:440px;" alt="matched-NDE L1+product posterior, with the FoM3 inset">
-								<img class="plain fragment" src="../assets/figures/posteriors/p2_M1_corner_matched_step2_l1cnn.pdf" style="max-height:440px;" alt="L1 and CNN matched-NDE posteriors nearly coincide (~7%)">
+								<img class="plain" src="../assets/figures/posteriors/p2_M1_corner_matched_step1_l1.png" style="max-height:440px;" alt="matched-NDE L1+product posterior, with the FoM3 inset">
+								<img class="plain fragment" src="../assets/figures/posteriors/p2_M1_corner_matched_step2_l1cnn.png" style="max-height:440px;" alt="L1 and CNN matched-NDE posteriors nearly coincide (~7%)">
 							</div>
 							<p class="cap" style="text-align:center; margin-top:0.3em;">&#8467;1 and CNN posteriors nearly coincide</p>
 						</div>
 					</div>
 					<div class="col">
-						<div class="fig fragment"><img class="plain" src="../assets/figures/statistics/p2_M1_violin_fom3.pdf" style="max-height:430px;" alt="per-patch FoM3 distribution for L1+product versus CNN: medians 3045 and 3326, near-identical spread"><p class="cap" style="text-align:center; margin-top:0.3em;">near-identical FoM3 across patches (3045 vs 3326)</p></div>
+						<div class="fig fragment"><img class="plain" src="../assets/figures/statistics/p2_M1_violin_fom3.png" style="max-height:430px;" alt="per-patch FoM3 distribution for L1+product versus CNN: medians 3045 and 3326, near-identical spread"><p class="cap" style="text-align:center; margin-top:0.3em;">near-identical FoM3 across patches (3045 vs 3326)</p></div>
 					</div>
 				</div>
 		
@@ -500,11 +500,11 @@
 				<h3 class="slide-title tight"><span class="sec">§2</span> Can we trust it? Every arm passes the same TARP + SBC tests reasonably</h3>
 				<div class="figrow" style="margin-top:0.3em;">
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p2_M1_calibration_tarp.pdf" style="max-height:340px;" alt="TARP-DRP coverage on the diagonal for both arms">
+						<img class="plain" src="../assets/figures/statistics/p2_M1_calibration_tarp.png" style="max-height:340px;" alt="TARP-DRP coverage on the diagonal for both arms">
 						<figcaption>TARP-DRP coverage: on the diagonal</figcaption>
 					</figure>
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p2_M1_calibration_sbc.pdf" style="max-height:340px;" alt="SBC rank uniformity within the band for both arms">
+						<img class="plain" src="../assets/figures/statistics/p2_M1_calibration_sbc.png" style="max-height:340px;" alt="SBC rank uniformity within the band for both arms">
 						<figcaption>SBC ranks: flat within the 99.5% band</figcaption>
 					</figure>
 				</div>
@@ -526,10 +526,10 @@
 					<div class="col" style="flex:0 0 54%;">
 												<div class="fig">
 							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step1_l1nobnt.pdf" style="max-height:450px;" alt="L1 no-BNT posterior">
-								<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step2_nobnt_pair.pdf" style="max-height:450px;" alt="L1 and CNN no-BNT, both tight (the tie)">
-								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step3_l1bnt.pdf" style="max-height:450px;" alt="the per-bin L1 balloons under BNT (0.26x)">
-								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step4_all.pdf" style="max-height:450px;" alt="the channel-mixing CNN stays tight under BNT (0.96x)">
+								<img class="plain" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step1_l1nobnt.png" style="max-height:450px;" alt="L1 no-BNT posterior">
+								<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step2_nobnt_pair.png" style="max-height:450px;" alt="L1 and CNN no-BNT, both tight (the tie)">
+								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step3_l1bnt.png" style="max-height:450px;" alt="the per-bin L1 balloons under BNT (0.26x)">
+								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_M3_corner_bnt_4way_step4_all.png" style="max-height:450px;" alt="the channel-mixing CNN stays tight under BNT (0.96x)">
 							</div>
 						</div>
 					</div>
@@ -704,11 +704,11 @@
 				<h3 class="slide-title tight"><span class="sec">§1</span> You can see it in the maps: BNT trades deep signal for amplified, correlated noise</h3>
 				<div class="figcol" style="margin-top:0.3em;">
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/maps/p1_maps_before_noisy.pdf" alt="noisy tomographic maps before BNT">
+						<img class="plain" src="../assets/figures/maps/p1_maps_before_noisy.png" alt="noisy tomographic maps before BNT">
 						<figcaption>before BNT</figcaption>
 					</figure>
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/maps/p1_maps_after_bnt_noisy.pdf" alt="noisy maps after BNT, visibly degraded SNR">
+						<img class="plain" src="../assets/figures/maps/p1_maps_after_bnt_noisy.png" alt="noisy maps after BNT, visibly degraded SNR">
 						<figcaption>after BNT: the SNR collapses</figcaption>
 					</figure>
 				</div>
@@ -721,11 +721,11 @@
 				<h3 class="slide-title tight"><span class="sec">§1</span> The same maps, noiseless: BNT cleanly redistributes the signal</h3>
 				<div class="figcol" style="margin-top:0.3em;">
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/maps/p1_maps_before_noiseless.pdf" alt="noiseless tomographic maps before BNT">
+						<img class="plain" src="../assets/figures/maps/p1_maps_before_noiseless.png" alt="noiseless tomographic maps before BNT">
 						<figcaption>before BNT (noiseless)</figcaption>
 					</figure>
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/maps/p1_maps_after_bnt_noiseless.pdf" alt="noiseless maps after BNT">
+						<img class="plain" src="../assets/figures/maps/p1_maps_after_bnt_noiseless.png" alt="noiseless maps after BNT">
 						<figcaption>after BNT (noiseless)</figcaption>
 					</figure>
 				</div>
@@ -737,7 +737,7 @@
 			<!-- S14 ★ — figure: p2_M2_cross_deleaking -->
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§2</span> Where the cross-bin information lives: the &kappa;<sub>i</sub>&kappa;<sub>j</sub> product buys ~20% (and the full-sphere 4&times; was leakage)</h3>
-				<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M2_cross_deleaking_nofullsphere.pdf" style="max-height:410px;" alt="L1 cross-map arms: auto, plus conv, plus product, plus both (no full-sphere bar)"></div>
+				<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M2_cross_deleaking_nofullsphere.png" style="max-height:410px;" alt="L1 cross-map arms: auto, plus conv, plus product, plus both (no full-sphere bar)"></div>
 				<div class="takeaway" style="max-width:90%;">
 					<span class="label">add the cross-bin physics carefully</span>
 					<ul>
@@ -754,7 +754,7 @@
 			<!-- S16 ★ — figure: p2_M3_bnt_whitening; close the Vinciguerra loop -->
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§2</span> The clincher: a frame artifact, not lost information (one rotation recovers &#8467;1, 1.06&times;)</h3>
-				<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M3_bnt_whitening.pdf" style="max-height:400px;" alt="no-BNT, BNT collapsed, and whitened (recovered to 1.06x) per arm"></div>
+				<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M3_bnt_whitening.png" style="max-height:400px;" alt="no-BNT, BNT collapsed, and whitened (recovered to 1.06x) per arm"></div>
 				<div class="takeaway" style="max-width:92%;">
 					<span class="label">the information was never lost</span>
 					<ul>
@@ -773,12 +773,12 @@
 				<h3 class="slide-title tight"><span class="sec">§3</span> One story: the optimal tomographic strategy (BNT becomes viable once the summary mixes bins)</h3>
 				<div class="figrow" style="margin-top:0.2em;">
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/posteriors/p1_BRIDGE_bnt_inflates_l1.pdf" style="max-height:320px;" alt="per-bin l1 contours inflate under BNT">
+						<img class="plain" src="../assets/figures/posteriors/p1_BRIDGE_bnt_inflates_l1.png" style="max-height:320px;" alt="per-bin l1 contours inflate under BNT">
 						<figcaption>problem: the per-bin &#8467;1 inflates under BNT</figcaption>
 					</figure>
 					<span class="arrow">&rarr;</span>
 					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p2_M3_bnt_whitening.pdf" style="max-height:320px;" alt="whitening recovers the l1 information">
+						<img class="plain" src="../assets/figures/statistics/p2_M3_bnt_whitening.png" style="max-height:320px;" alt="whitening recovers the l1 information">
 						<figcaption>resolution: mix the bins, or re-rotate</figcaption>
 					</figure>
 				</div>
