@@ -469,3 +469,37 @@
 
 /* figures fill the frame */
 .reveal .slides section .mixfig svg.jd { width: 330px; height: 354px; }
+
+/* =====================================================================
+   THE WAVELET-STATISTICS SLIDE  (.statpair, .l1formula)
+   Two one-point statistics side by side under the starlet row.
+   ===================================================================== */
+/* The pair sits one level below the starlet row, so it gets a clear break above
+   it and its two items are sized to their content -- NOT flex:1, which would give
+   each half the slide and push a narrow figure out to the margin. */
+.reveal .slides section .statpair {
+  display: flex; justify-content: center; align-items: flex-start;
+  gap: 3.4em; margin: 1.5em auto 0;
+}
+.reveal .slides section .statpair .col {
+  flex: 0 0 auto; width: 31%;
+  display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section .statpair .kicker { margin-bottom: 0.55em; text-align: center; width: 100%; }
+/* The map and the formula box must be the same height, or the two captions
+   sit on different lines. An inline <img> also carries baseline descender
+   space below it, which is where the extra ~40px came from. */
+.reveal .slides section .statpair .col img { display: block; height: 200px; width: auto; margin: 0; }
+.reveal .slides section .statpair .cap {
+  font-family: var(--r-main-font);
+  font-size: 0.66em; line-height: 1.35; color: var(--fg);
+  max-width: 100%; margin: 0.5em auto 0; text-align: center;
+}
+/* the l1 definition, sized to sit at the same optical weight as the peak map */
+.reveal .slides section .l1formula {
+  display: flex; align-items: center; justify-content: center;
+  height: 200px; margin: 0; font-size: 1.02em;
+}
+/* KaTeX display math carries its own vertical margin, which would make this box
+   taller than the peak map next to it and knock the two captions out of line. */
+.reveal .slides section .l1formula .katex-display { margin: 0; }

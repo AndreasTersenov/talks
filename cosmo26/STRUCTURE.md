@@ -310,6 +310,18 @@ it would jitter. It has its own slide.
 
 Still to do: nothing on figures. `bnt_explainer.js` still hardcodes the superseded ladder (§7).
 
+**S3 is built (2026-08-20).** The three June methods slides — peak counts, wavelet peaks, the
+ℓ1-norm — are compressed into one, on the principle rather than the constructions: *both are
+one-point statistics made multi-scale by the same starlet transform.* The starlet row runs across
+the top (thesis intro F5b), then two fragments — the peak map with its maxima circled (thesis
+intro N3, cropped to the map interior) and the ℓ1 definition. Entry state shows the principle
+alone, so the two readings arrive as separate beats.
+
+One caveat carried in the speaker notes: the F5b figure labels its bands 1.2′–9.4′, a thesis
+illustration at a finer pixel scale. **Our analysis uses the four finest dyadic bands, ≈10′–80′,
+and drops j = 1.** Do not read the figure's numbers aloud. Regenerating F5b at the deck's own
+scales would remove the trap entirely.
+
 The guidelines forbid tables on slides, and the results that matter most are currently tables.
 
 1. **The ladder graphic — the deck's single most important asset.** Four rungs labelled by *what

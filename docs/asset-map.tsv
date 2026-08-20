@@ -221,3 +221,5 @@ p2_bnt_learned.png	posteriors	paper render 2026-08
 p2_fisher.png	statistics	paper render 2026-08
 p2_l1_hist_vs_s8.png	statistics	paper render 2026-08
 p2_l1_joint_cellmap.png	statistics	paper render 2026-08
+starlet_row_decomposition.png	diagrams	thesis intro F5b, 300 dpi
+kappa_peaks_circled.png	maps	thesis intro N3, left panel cropped, 300 dpi
