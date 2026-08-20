@@ -128,8 +128,7 @@
   border-bottom: 1px dashed var(--hair);
   font-family: var(--mono);
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.07em;
   font-size: 0.62em;
 }
 .reveal .slides section .block-content { padding: 10px 16px; }
@@ -137,7 +136,7 @@
 /* optional journal running head: <div class="runhead"><span>title</span><span class="r">§2</span></div> */
 .reveal .slides section .runhead {
   display: flex; justify-content: space-between; align-items: baseline;
-  font-family: var(--mono); font-size: 0.42em; letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 0.42em; letter-spacing: 0.07em;
   color: var(--fg-muted); border-bottom: 1px solid var(--hair); padding-bottom: 0.4em; margin-bottom: 0.7em;
 }
 .reveal .slides section .runhead .r { color: var(--accent); }
@@ -184,12 +183,17 @@
 .reveal .slides section img.plain,
 .reveal .slides section .plain img { background: transparent; border: 0; box-shadow: none; }
 
+/* House rule: no automatic uppercasing anywhere. Small-caps-by-CSS reads as
+ * machine-set and makes slides look generated; label case is authored in the
+ * markup instead. Letter-spacing is kept, but tightened for lowercase.
+ * ============================================================ */
+
 /* ============================================================
  * Labels, figures, callouts, result rule, title lockup
  * ============================================================ */
 .reveal .slides section .kicker {
   display: block; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5em;
+  letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5em;
 }
 .reveal .slides section figure { margin: 16px 0; }
 .reveal .slides section figcaption {
@@ -206,13 +210,13 @@
 .reveal .slides section .callout .label,
 .reveal .slides section .takeaway .label {
   display: block; margin-bottom: 0.3em; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  letter-spacing: 0.07em; color: var(--accent);
 }
 
 /* .stat → a result rule (number in heading serif, accent left rule) */
 .reveal .slides section .stat { text-align: left; border-left: 2px solid var(--accent); padding-left: 0.7em; }
 .reveal .slides section .stat .num { display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 2.4em; line-height: 1; color: var(--fg); }
-.reveal .slides section .stat .label { display: block; margin-top: 0.3em; font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+.reveal .slides section .stat .label { display: block; margin-top: 0.3em; font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.06em; color: var(--fg-muted); }
 
 .reveal .slides section .hl { background: linear-gradient(transparent 60%, color-mix(in srgb, var(--accent) 26%, transparent) 60%); padding: 0 0.06em; }
 
