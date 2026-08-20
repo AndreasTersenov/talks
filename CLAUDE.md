@@ -11,6 +11,21 @@ All decks share a **single `assets/` folder at the repo root** and reference it
 with a relative `../assets/…` path. Each talk is published to GitHub Pages at
 `https://andreastersenov.github.io/talks/<TalkDir>/`.
 
+## Building the content of a talk — read this first
+
+`docs/TALK-GUIDELINES.md` is the standing guidance for **what to say, in what order, and what to
+put on the screen while saying it**: audience/message framing, the ABT narrative spine, per-format
+time budgets (15-min contributed / 30-min invited / 60-min colloquium), the assertion–evidence
+slide standard, figures-for-talks-are-not-figures-for-papers, delivery and Q&A, plus build/day-before/day-of
+checklists and a `STRUCTURE.md` template. Read it before planning or restructuring any deck; this
+file (CLAUDE.md) only covers the mechanics.
+
+Two conventions it establishes that live inside each deck directory:
+
+- `<TalkDir>/STRUCTURE.md` — the running order and time budget, agreed **before** slide surgery.
+- `<TalkDir>/PAPER_FACTS.md` — a number ledger, when the talk is built from papers still in flux.
+  No number reaches a slide unless it is in the ledger with a source line.
+
 ## Working on a talk (local preview)
 
 The dev server is served from the **repo root** (not from inside a talk dir —
@@ -129,6 +144,11 @@ cobalt rule; optional `<span class="sec">§2</span>`), `block` + `block-title` +
 eyebrow), `callout` / `takeaway` (left-rule box with a `label`), `stat` (`num` +
 `label` result rule), `runhead` (journal running head; `.r` = right side),
 `alert` (accent text), `title-card` (title lockup). `container`/`col` still work.
+
+**Typography house rules** (see `docs/TALK-GUIDELINES.md` §4.3b): **no `text-transform:
+uppercase`** anywhere — the theme was purged of it, and CSS-driven caps read as machine-set;
+author labels in lowercase mono with ~0.06em tracking. **No `&middot;` separators** — use a
+comma, a break, or whitespace. Peer items get bordered cards, not bullets.
 
 **Do not inline-style colours.** A stylesheet can't override `style="color:#…"`,
 so hardcoded hex in a `style=""` attribute is invisible to the theme. Use the
