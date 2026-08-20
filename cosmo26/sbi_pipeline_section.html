@@ -1,0 +1,47 @@
+<!-- =========================================================================
+     SBI pipeline explainer — drop-in reveal.js <section>
+     -------------------------------------------------------------------------
+     The wavelet-summary NPE pipeline assembling across five clicks. To use:
+       <head>:  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+                <link rel="stylesheet" href="sbi_pipeline.css">
+       before </body>:
+                <script src="vendor/katex/katex.min.js"></script>
+                <script src="vendor/katex/contrib/auto-render.min.js"></script>
+                <script src="sbi_pipeline.js"></script>
+       after Reveal.initialize(...):  SBIPipeline.attach(Reveal);
+     (A deck that already loads the reveal math plugin / KaTeX can skip the KaTeX
+     lines.) Needs assets/{cosmogrid_box,wavelet_scales_stats,jax_logo}.png.
+     Act 1 = default; the four .sbi-frag markers step to acts 2..5.
+========================================================================== -->
+<section class="sbi-slide" data-sbi-explainer>
+  <h3 class="sbi-title">The inference pipeline:
+    <span class="hl">neural posterior estimation</span></h3>
+
+  <div class="sbi-stage">
+    <canvas class="sbi-canvas" width="2360" height="1104"
+      aria-label="The SBI pipeline assembling: cosmoGRID kappa-maps, plus noise and a wavelet transform into wavelet-scale maps and summary statistics, conditioning a conditional MAF that maps a Gaussian into the posterior"></canvas>
+
+    <img class="sbi-img" data-appear="1" src="../assets/diagrams/cosmogrid_box.png"
+         alt="cosmoGRID kappa-maps" style="left:10.5%; top:65%; width:15%;">
+    <img class="sbi-img" data-appear="2" src="../assets/diagrams/wavelet_scales_stats.png"
+         alt="wavelet-scale maps and summary statistics" style="left:46%; top:66%; width:46%;">
+
+    <div class="sbi-lbl sbi-lbl--mut" data-appear="2" style="left:20.5%; top:55%;">+ noise<br>wavelet transform</div>
+
+    <div class="sbi-lbl sbi-lbl--cond" data-appear="3" style="left:70%; top:56%;">condition</div>
+    <div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:15%; top:5%;">Gaussian<span class="sub">\(\mathcal{N}(0,\mathbf{1})\)</span></div>
+    <div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:40%; top:5%;">Density estimator<span class="sub">conditional MAF</span></div>
+    <div class="sbi-lbl sbi-lbl--head" data-appear="4" style="left:62%; top:5%;">Posterior<span class="sub">\(p(\theta\mid x)\)</span></div>
+
+    <div class="sbi-lbl sbi-lbl--obj" data-appear="5" style="left:91.5%; top:40%;">
+      <div class="ot">training objective</div>\(\mathcal{L}=-\log p_\phi(\theta\mid x)\)</div>
+    <img class="sbi-img" data-appear="5" src="../assets/logos/jax_logo.png" alt="JAX" style="left:91.5%; top:52%; width:7.5%;">
+  </div>
+
+  <div class="sbi-caption" aria-live="polite"></div>
+  <button class="sbi-replay" type="button" title="Replay (R)">↻&nbsp;replay</button>
+  <span class="fragment sbi-frag" aria-hidden="true"></span>
+  <span class="fragment sbi-frag" aria-hidden="true"></span>
+  <span class="fragment sbi-frag" aria-hidden="true"></span>
+  <span class="fragment sbi-frag" aria-hidden="true"></span>
+</section>

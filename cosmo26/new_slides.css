@@ -1,0 +1,471 @@
+/* ===========================================================================
+   new_slides.css — components for the slides proposed in STRUCTURE.md
+   Token-driven (light + dark). Method colours are the locked Wong pair from
+   custom.css: --cnn #0072B2 (learned), --l1 #D55E00 (analytical).
+   =========================================================================== */
+
+/* ---------- shared: a small mono eyebrow above a component ---------- */
+.reveal .slides section .axis-note {
+  font-family: var(--mono);
+  font-size: 0.66em;
+  text-align: left;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  margin: 0 0 0.5em;
+}
+
+/* =====================================================================
+   1. QUESTION SLIDE  (.qlist)
+   Three questions; each can carry an answer that appears later.
+   ===================================================================== */
+.reveal .slides section .qlist { list-style: none; margin: 0.3em 0 0; padding: 0; }
+
+.reveal .slides section .qlist > li {
+  display: grid;
+  grid-template-columns: 2.4em 1fr;
+  column-gap: 0.7em;
+  align-items: baseline;
+  padding: 0.8em 0 0.8em;
+  border-top: 1px solid var(--hair);
+  margin: 0;
+}
+.reveal .slides section .qlist > li:last-child { border-bottom: 1px solid var(--hair); }
+
+.reveal .slides section .qlist .qn {
+  font-family: var(--mono);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.reveal .slides section .qlist .qtext {
+  font-size: 0.98em;
+  line-height: 1.28;
+  color: var(--fg);
+}
+.reveal .slides section .qlist .qans {
+  grid-column: 2;
+  font-size: 0.84em;
+  line-height: 1.32;
+  color: var(--fg);
+  font-weight: 500;
+  margin-top: 0.22em;
+  display: flex;
+  gap: 0.5em;
+  align-items: baseline;
+}
+.reveal .slides section .qlist .qans .tick { font-size: 1.1em; line-height: 1; color: var(--accent); font-weight: 700; }
+.reveal .slides section .qlist .qans b { color: var(--accent); font-weight: 700; }
+
+/* a question that has been answered recedes; its answer stays lit */
+.reveal .slides section .qlist > li.done .qtext { color: var(--fg-muted); }
+
+/* =====================================================================
+   2. THE LADDER  (.ladder)
+   Four rungs, labelled by WHAT THE SUMMARY READS. Used twice: standard
+   frame (nearly flat at the top) and nulled frame (steep).
+   ===================================================================== */
+.reveal .slides section .ladder { margin: 0.2em 0 0; }
+
+.reveal .slides section .ladder .rung {
+  display: grid;
+  grid-template-columns: 12.5em 1fr 4.6em;
+  column-gap: 0.9em;
+  align-items: center;
+  padding: 0.30em 0;
+}
+
+.reveal .slides section .ladder .reads {
+  text-align: right;
+  font-size: 0.68em;
+  line-height: 1.18;
+  color: var(--fg);
+}
+.reveal .slides section .ladder .reads .sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78em;
+  color: var(--fg-muted);
+  margin-top: 0.15em;
+}
+
+.reveal .slides section .ladder .track {
+  position: relative;
+  height: 2.05em;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+}
+.reveal .slides section .ladder .bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 2px 0 0 2px;
+  background: var(--l1);
+}
+.reveal .slides section .ladder .rung.learned .bar {
+  background: repeating-linear-gradient(-45deg,
+    var(--cnn) 0 7px, transparent 7px 13px);
+  border: 2px solid var(--cnn);
+  border-right-width: 3px;
+}
+
+/* grayscale-safe second channel: the learned rung is outlined, the analytical solid */
+.reveal .slides section .ladder .rung.learned .track { border-color: var(--cnn); border-width: 2px; }
+
+.reveal .slides section .ladder .val {
+  font-family: var(--mono);
+  font-size: 0.74em;
+  font-weight: 600;
+  text-align: left;
+  color: var(--l1);
+}
+.reveal .slides section .ladder .rung.learned .val { color: var(--cnn); }
+
+
+/* =====================================================================
+   3. ANALYTICAL vs LEARNED LEDGER  (.ledger)
+   ===================================================================== */
+.reveal .slides section .tie-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 0.42em 0.9em;
+  margin: 0 auto 0.75em;
+  max-width: 88%;
+}
+.reveal .slides section .tie-strip .lbl {
+  font-family: var(--mono);
+  font-size: 0.62em;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+}
+.reveal .slides section .tie-strip .eq { font-size: 0.78em; color: var(--fg); }
+.reveal .slides section .tie-strip .eq b.a { color: var(--l1); }
+.reveal .slides section .tie-strip .eq b.b { color: var(--cnn); }
+
+.reveal .slides section .ledger { display: flex; gap: 1.1em; align-items: stretch; }
+.reveal .slides section .ledger .col {
+  flex: 1 1 0;
+  border: 1px solid var(--edge);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 0.6em 0.85em 0.7em;
+}
+.reveal .slides section .ledger .col.ana { border-top: 3px solid var(--l1); }
+.reveal .slides section .ledger .col.lrn { border-top: 3px solid var(--cnn); }
+.reveal .slides section .ledger .col h4 {
+  font-family: var(--mono);
+  font-size: 0.64em;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+}
+.reveal .slides section .ledger .col.ana h4 { color: var(--l1); }
+.reveal .slides section .ledger .col.lrn h4 { color: var(--cnn); }
+.reveal .slides section .ledger .col ul { list-style: none; margin: 0; padding: 0; }
+.reveal .slides section .ledger .col li {
+  font-size: 0.70em;
+  line-height: 1.3;
+  margin: 0 0 0.42em;
+  padding-left: 1.05em;
+  position: relative;
+  color: var(--fg);
+}
+.reveal .slides section .ledger .col li::before {
+  position: absolute; left: 0; top: 0;
+  font-family: var(--mono);
+  font-weight: 600;
+}
+.reveal .slides section .ledger .col.ana li::before { content: "+"; color: var(--l1); }
+.reveal .slides section .ledger .col.lrn li::before { content: "\2212"; color: var(--cnn); }
+
+/* =====================================================================
+   4. THE PER-CHANNEL vs CHANNEL-MIXING SCHEMATIC  (.mixfig)
+   ===================================================================== */
+.reveal .slides section .mixfig { display: flex; gap: 2.2em; justify-content: center; align-items: flex-start; }
+.reveal .slides section .mixfig .side { flex: 1 1 0; text-align: center; }
+.reveal .slides section .mixfig .side h4 {
+  font-family: var(--mono);
+  font-size: 0.64em;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.55em;
+  font-weight: 600;
+}
+.reveal .slides section .mixfig .side.ana h4 { color: var(--l1); }
+.reveal .slides section .mixfig .side.lrn h4 { color: var(--cnn); }
+.reveal .slides section .mixfig .verdict {
+  font-size: 0.70em;
+  line-height: 1.3;
+  color: var(--fg);
+  margin-top: 0.5em;
+}
+.reveal .slides section .mixfig .verdict b { color: var(--accent); }
+
+/* .withfig: one real figure flanked by the two reading-mode captions */
+.reveal .slides section .mixfig.withfig { align-items: center; gap: 1.6em; }
+.reveal .slides section .mixfig.withfig .side { flex: 0 1 22%; }
+.reveal .slides section .mixfig.withfig .fig { flex: 0 0 auto; margin: 0; }
+.reveal .slides section .mixfig.withfig .verdict { margin-top: 0; }
+
+/* =====================================================================
+   5. SVG CHART CHROME (shared by the ratio chart)
+   ===================================================================== */
+.reveal .slides section svg.chart { display: block; margin: 0 auto; }
+.reveal .slides section svg.chart .ax      { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.chart .grid    { stroke: var(--hair); stroke-width: 1; stroke-dasharray: 3 4; }
+.reveal .slides section svg.chart .tick    { fill: var(--fg-muted); font-family: var(--mono); font-size: 15px; }
+.reveal .slides section svg.chart .axlabel { fill: var(--fg); font-family: var(--mono); font-size: 16px; letter-spacing: 0.06em; }
+.reveal .slides section svg.chart .refline { stroke: var(--fg-muted); stroke-width: 2; stroke-dasharray: 6 5; }
+.reveal .slides section svg.chart .reftext { fill: var(--fg-muted); font-family: var(--mono); font-size: 15px; }
+.reveal .slides section svg.chart .ser-l1   { stroke: var(--l1);  stroke-width: 4; fill: none; }
+.reveal .slides section svg.chart .ser-pk   { stroke: var(--fg-muted); stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+.reveal .slides section svg.chart .dot-l1   { fill: var(--l1); }
+.reveal .slides section svg.chart .dot-pk   { fill: var(--fg-muted); }
+.reveal .slides section svg.chart .val-l1   { fill: var(--l1); font-family: var(--mono); font-size: 17px; font-weight: 600; }
+.reveal .slides section svg.chart .val-pk   { fill: var(--fg-muted); font-family: var(--mono); font-size: 15px; }
+
+/* ladder: the ceiling note, right-aligned under the learned rung */
+.reveal .slides section .ladder .ceilnote {
+  font-family: var(--mono);
+  font-size: 0.62em;
+  color: var(--cnn);
+  text-align: right;
+  padding-right: 5.6em;
+  margin: 0.15em 0 0;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================================
+   6. JOINT-DISTRIBUTION PANELS (S8)
+   ===================================================================== */
+.reveal .slides section svg.jd .frame { fill: var(--surface); stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.jd .jdlab { fill: var(--fg-muted); font-family: var(--mono); font-size: 15px; }
+.reveal .slides section .mixfig .verdict b { color: var(--accent); }
+.reveal .slides section svg.jd .mb.l1  { fill: var(--l1);  }
+.reveal .slides section svg.jd .mb.cnn { fill: var(--l1);  }
+.reveal .slides section svg.jd .pt     { fill: var(--cnn); opacity: 0.72; }
+
+/* =====================================================================
+   7. THE TWO OPEN QUESTIONS  (S2)
+   ===================================================================== */
+.reveal .slides section .obstacles { display: flex; gap: 1.3em; align-items: stretch; margin-top: 0.35em; }
+.reveal .slides section .obstacles .ob {
+  flex: 1 1 0;
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--accent);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 0.65em 0.9em 0.8em;
+  display: flex;
+  flex-direction: column;
+}
+.reveal .slides section .obstacles .ob h4 {
+  font-family: var(--mono);
+  font-size: 0.64em;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 0.55em;
+  font-weight: 600;
+}
+.reveal .slides section .obstacles .ob .vis { text-align: center; margin: 0 0 0.6em; }
+.reveal .slides section .obstacles .ob .vis video,
+.reveal .slides section .obstacles .ob .vis img {
+  display: block; margin: 0 auto; border-radius: 6px; max-height: 180px; width: auto;
+}
+.reveal .slides section .obstacles .ob p {
+  font-size: 0.70em;
+  line-height: 1.32;
+  color: var(--fg);
+  margin: 0;
+  text-align: left;
+}
+.reveal .slides section .obstacles .ob p + p { margin-top: 0.45em; }
+.reveal .slides section .obstacles .ob p.dim { color: var(--fg-muted); }
+
+/* the "which summary?" pipeline glyph */
+.reveal .slides section svg.pipe .box   { fill: var(--surface); stroke: var(--edge); stroke-width: 2; }
+.reveal .slides section svg.pipe .qbox  { fill: var(--surface); stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 5; }
+.reveal .slides section svg.pipe .qmark { fill: var(--accent); font-family: var(--r-heading-font); font-size: 46px; font-weight: 600; }
+.reveal .slides section svg.pipe .arrow { stroke: var(--fg-muted); stroke-width: 2.5; fill: none; }
+.reveal .slides section svg.pipe .lab   { fill: var(--fg-muted); font-family: var(--mono); font-size: 14px; }
+.reveal .slides section svg.pipe .web   { stroke: var(--fg-muted); stroke-width: 1.2; fill: none; opacity: 0.8; }
+.reveal .slides section svg.pipe .ell   { stroke: var(--fg-muted); stroke-width: 2; fill: none; }
+
+/* the pipeline glyph, laid out in HTML so the map can be a real thumbnail */
+.reveal .slides section .pipeflow { display: flex; align-items: center; justify-content: center; gap: 0.5em; }
+.reveal .slides section .pipeflow figure { margin: 0; text-align: center; }
+.reveal .slides section .pipeflow img {
+  display: block; width: 92px; height: 92px; object-fit: cover;
+  border-radius: 5px; border: 1px solid var(--edge); margin: 0 auto;
+}
+.reveal .slides section .pipeflow .qbox {
+  width: 92px; height: 92px; border-radius: 5px;
+  border: 3px dashed var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--r-heading-font); font-size: 2.0em; font-weight: 600; color: var(--accent);
+  background: var(--surface);
+}
+.reveal .slides section .pipeflow figcaption {
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg-muted); margin-top: 0.35em;
+}
+.reveal .slides section .pipeflow .arw { color: var(--fg-muted); font-size: 1.1em; line-height: 1; padding-bottom: 1.1em; }
+
+/* =====================================================================
+   8. THE SCALE AXIS — where the information and the systematic both live
+   ===================================================================== */
+.reveal .slides section svg.scales .frameline { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.scales .band      { fill: var(--accent); opacity: 0.10; }
+.reveal .slides section svg.scales .cut       { fill: url(#hatch); stroke: var(--fg-muted); stroke-width: 2; }
+.reveal .slides section svg.scales .info      { stroke: var(--accent);    stroke-width: 4; fill: none; }
+.reveal .slides section svg.scales .feed      { stroke: var(--fg-muted);  stroke-width: 4; fill: none; stroke-dasharray: 10 6; }
+.reveal .slides section svg.scales .infofill  { fill: var(--accent);   opacity: 0.13; }
+.reveal .slides section svg.scales .feedfill  { fill: var(--fg-muted); opacity: 0.13; }
+.reveal .slides section svg.scales .lab       { fill: var(--fg); font-family: var(--mono); font-size: 16px; }
+.reveal .slides section svg.scales .lab.acc   { fill: var(--accent); font-weight: 600; }
+.reveal .slides section svg.scales .lab.mut   { fill: var(--fg-muted); }
+.reveal .slides section svg.scales .axlab     { fill: var(--fg-muted); font-family: var(--mono); font-size: 16px; letter-spacing: 0.04em; }
+.reveal .slides section svg.scales .bandlab   { fill: var(--accent); font-family: var(--mono); font-size: 20px; font-weight: 600; letter-spacing: 0.06em; }
+
+/* lead line above a component */
+.reveal .slides section .lead-line {
+  font-size: 0.78em;
+  line-height: 1.34;
+  color: var(--fg);
+  max-width: 92%;
+  margin: 0.2em auto 0.5em;
+  text-align: center;
+}
+.reveal .slides section .lead-line b { color: var(--accent); }
+
+/* the act-2 opener: pipeline glyph at full size */
+.reveal .slides section .pipeflow.big img,
+.reveal .slides section .pipeflow.big .qbox { width: 200px; height: 200px; }
+.reveal .slides section .pipeflow.big .qbox { font-size: 3.8em; }
+.reveal .slides section .pipeflow.big { gap: 1.1em; }
+.reveal .slides section .pipeflow.big figcaption { font-size: 0.66em; margin-top: 0.5em; }
+.reveal .slides section .pipeflow.big .arw { font-size: 1.8em; padding-bottom: 1.4em; }
+
+/* the S2 question box: keep it emphatic but not dominant */
+.reveal .slides section .callout.q2 { font-size: 0.88em; }
+
+/* hand-drawn wobble, so nobody reads the schematic as a measurement */
+.reveal .slides section svg.scales .sketch { filter: url(#roughen); }
+.reveal .slides section svg.scales .sketchline { filter: url(#roughen-line); }
+.reveal .slides section svg.scales .schematic-note {
+  fill: var(--fg-muted); font-family: var(--mono); font-size: 14px; font-style: italic;
+}
+
+/* the act-1 core questions */
+.reveal .slides section .coreq {
+  display: flex; flex-direction: column; gap: 0.5em;
+  margin: 0.6em auto 0; max-width: 94%;
+}
+.reveal .slides section .coreq .qcard {
+  position: relative;
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--accent);
+  border-radius: 5px;
+  background: var(--surface);
+  padding: 0.55em 1em 0.6em;
+  text-align: left;
+}
+.reveal .slides section .coreq .qtab {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62em;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+.reveal .slides section .coreq .qcard p {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.32;
+  color: var(--fg);
+}
+.reveal .slides section .coreq li .n {
+  font-family: var(--mono); font-weight: 600; color: var(--accent);
+}
+
+/* handwritten wobble for text — gentler than the one used on the strokes */
+.reveal .slides section svg.scales text { filter: url(#roughen-text); }
+
+/* ===========================================================================
+   HOUSE TYPE FLOOR
+   Nothing on a content slide sits below 0.62em (~26px at the 1200x720 base,
+   ~42px on a 1920 projector). If something will not fit at that size, the
+   slide has too much on it - cut content, do not shrink type.
+   =========================================================================== */
+
+/* breathing room between the assertion headline and whatever follows it */
+.reveal .slides section h3.slide-title,
+.reveal .slides section .slide-title.tight { margin-bottom: 0.75em; }
+
+/* the lead line under a title is body text, not a caption */
+.reveal .slides section .lead-line { font-size: 0.8em; line-height: 1.38; }
+
+/* =====================================================================
+   9. COMPACT LADDER + MARGINALS  (the headline slide)
+   The ladder is a supporting graphic, not the slide. It shares the row
+   with the marginal uncertainties, which carry the "tie on every axis"
+   claim that FoM3 alone cannot.
+   ===================================================================== */
+.reveal .slides section .twoup { display: flex; gap: 1.5em; align-items: flex-start; }
+.reveal .slides section .twoup .left  { flex: 1 1 56%; }
+.reveal .slides section .twoup .right { flex: 1 1 44%; }
+
+.reveal .slides section .ladder.compact .rung { padding: 0.16em 0; grid-template-columns: 10.5em 1fr 3.9em; column-gap: 0.6em; }
+.reveal .slides section .ladder.compact .track { height: 1.5em; }
+.reveal .slides section .ladder.compact .reads { font-size: 0.62em; }
+.reveal .slides section .ladder.compact .val   { font-size: 0.66em; }
+
+/* marginal-uncertainty comparison */
+.reveal .slides section .marg { border: 1px solid var(--edge); border-radius: 5px; background: var(--surface); padding: 0.6em 0.9em 0.7em; }
+.reveal .slides section .marg .mhead {
+  display: grid; grid-template-columns: 4.6em 1fr 1fr; column-gap: 0.3em;
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg-muted);
+  padding-bottom: 0.3em; border-bottom: 1px solid var(--hair); margin-bottom: 0.35em;
+}
+.reveal .slides section .marg .mhead .a { color: var(--l1);  font-weight: 600; text-align: right; }
+.reveal .slides section .marg .mhead .b { color: var(--cnn); font-weight: 600; text-align: right; }
+.reveal .slides section .marg .mrow {
+  display: grid; grid-template-columns: 4.6em 1fr 1fr; column-gap: 0.3em;
+  align-items: baseline; padding: 0.2em 0;
+}
+.reveal .slides section .marg .mrow .p { font-size: 0.72em; color: var(--fg); }
+.reveal .slides section .marg .mrow .v {
+  font-family: var(--mono); font-size: 0.72em; text-align: right; color: var(--fg);
+}
+.reveal .slides section .marg .mnote {
+  font-size: 0.66em; color: var(--fg-muted);
+  margin: 0.6em 0 0; line-height: 1.38; text-align: left;
+}
+
+/* the ledger wants height, not width */
+.reveal .slides section .ledger .col { padding: 1.05em 1.2em 1.2em; }
+.reveal .slides section .ledger .col li { margin: 0 0 0.6em; padding-left: 1.15em; }
+.reveal .slides section .tie-strip { padding: 0.6em 1.1em; margin-bottom: 1em; }
+.reveal .slides section .tie-strip .eq { font-size: 0.92em; }
+
+/* a single short line under a visual: the one text element a content slide gets */
+.reveal .slides section .oneline {
+  font-size: 0.86em; line-height: 1.36; color: var(--fg);
+  max-width: 94%; margin: 0.9em auto 0; text-align: left;
+  border-left: 4px solid var(--accent);
+  padding: 0.15em 0 0.15em 0.8em;
+}
+.reveal .slides section .oneline b { color: var(--accent); font-weight: 600; }
+.reveal .slides section .oneline .a { color: var(--l1); font-weight: 600; }
+.reveal .slides section .oneline .b { color: var(--cnn); font-weight: 600; }
+
+/* ledger items become phrases, not sentences */
+.reveal .slides section .ledger .col li { font-size: 0.84em; margin: 0 0 0.7em; line-height: 1.3; }
+
+/* figures fill the frame */
+.reveal .slides section .mixfig svg.jd { width: 330px; height: 354px; }

@@ -193,3 +193,31 @@ w2_after_BNT.png	figures	statistics
 wavelet_l1_norm.pdf	figures	statistics
 wavelets.pdf	figures	statistics
 wl_animation.mp4	videos	-
+p1_bnt_inflates_l1/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
+p1_bnt_ps_lossless/step1..2.png	posteriors	build-up, 2 frames, paper render 2026-08
+p1_contours_baryon_safe_14k/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
+p1_contours_vs_area_ps/step1..6.png	posteriors	build-up, 6 frames, paper render 2026-08
+p2_bnt_analytic/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
+p2_corner_cnn_vs_l1/step1..4.png	posteriors	build-up, 4 frames, paper render 2026-08
+p1_bias_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
+p1_fom_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
+p1_hos_frac_diff_l1/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
+p1_ps_bias_vs_lmax/step1..2.png	statistics	build-up, 2 frames, paper render 2026-08
+p1_ps_frac_diff/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
+p1_starlet_scale_ell/step1..5.png	statistics	build-up, 5 frames, paper render 2026-08
+p2_ablation/step1..2.png	statistics	build-up, 2 frames, paper render 2026-08
+p2_cp_fom3_bars/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
+p2_sbc/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
+p2_tarp/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
+p2_tarp_bnt/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
+p2_pipeline.png	diagrams	paper render 2026-08
+p1_tomo_maps_noiseless_bnt.png	maps	paper render 2026-08
+p1_tomo_maps_noiseless_standard.png	maps	paper render 2026-08
+p1_tomo_maps_noisy_bnt.png	maps	paper render 2026-08
+p1_tomo_maps_noisy_standard.png	maps	paper render 2026-08
+p2_data_flatlocal.png	maps	paper render 2026-08
+p1_contours_baryon_safe_fullsky.png	posteriors	paper render 2026-08
+p2_bnt_learned.png	posteriors	paper render 2026-08
+p2_fisher.png	statistics	paper render 2026-08
+p2_l1_hist_vs_s8.png	statistics	paper render 2026-08
+p2_l1_joint_cellmap.png	statistics	paper render 2026-08
