@@ -171,6 +171,45 @@ No existing build-up frame pairs those two arms alone (the sequence is auto → 
 CNN), so the slide currently carries `p2_corner_cnn_vs_l1/step1.png` (auto-only) as a marked
 placeholder. Andreas is producing the render.
 
+### Act 3 — nulling, in two slides (2026-08-21)
+
+| # | slide |
+|---|---|
+| 14 | Nulling promises localized scale cuts — on a per-bin ℓ1-norm it inflates the contours instead |
+| 15 | The information is recoverable — by the summary that reads the bins jointly |
+| 16 | Three questions, answered |
+
+**Framing, corrected by Andreas.** The nulling work is *not* extra corroboration for act 2's
+joint-reading result. It is a separate investigation with its own contribution: whether BNT — a
+promising route to redshift-localized scale cuts — is usable with map-based higher-order
+statistics, the finding that it inflates their contours, and the demonstration of what recovers
+the information. The slides are framed as that question and its answer, not as "the law again".
+
+Six June slides collapse into these two. Slide 14 carries the motivation (kernels before/after),
+the failure (the inflated per-bin ℓ1) and the paradox that sets up slide 15 — a fixed invertible
+matrix, and yet 16% retained. Slide 15 carries the retention ladder with its four rungs and the
+real nulled-frame corner beside it, then the practical message: nulling costs a higher-order
+analysis nothing provided some stage of the pipeline reads the bins jointly.
+
+Two beats bought for one sentence each: the cross-spectra clause is **planted** on 14 (for the
+power spectrum nulling is lossless, provided the cross-spectra are kept) and **cashed** on 15
+(the two-point case was this ladder's first rung all along), and the counter-intuition — the
+nulling is designed to *de-correlate* the bins, and joint reading matters more there, not less.
+
+**The animation is not retired, only deferred.** `bnt_explainer.js` (the cloud, mechanism and
+two-point blocks) stays in the file. Andreas wants to see these two static slides against the
+clock first and may still want an animated treatment of the kernel overlap and the nulling.
+The argument against, for the record: the setup would cost 60–90 s of a ~150 s act, and a static
+before/after of the kernels conveys "broad and overlapping → narrow and localized" in seconds.
+Where motion would genuinely add something is the noise-correlation mechanism — signal cancels,
+independent shape noise adds — but that explains why nulling *hurts*, and the punchline is that
+it needn't, so it belongs in Q&A.
+
+**Main flow is now 16 slides.** Over the 14-slide budget. The trims identified, in order of
+least damage: fold slide 4 (the SBI pipeline) into one spoken sentence on slide 3, and merge
+slides 5 and 6 (bias-vs-area and scale cuts) into one. Neither touches a result. Take them after
+a timed run-through, not before.
+
 ### Beat notes
 
 **S2 — do not motivate; go straight to what is unresolved.** This room already grants that the

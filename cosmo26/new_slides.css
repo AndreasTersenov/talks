@@ -503,3 +503,10 @@
 /* KaTeX display math carries its own vertical margin, which would make this box
    taller than the peak map next to it and knock the two captions out of line. */
 .reveal .slides section .l1formula .katex-display { margin: 0; }
+
+/* A .cap that carries a sentence rather than a label wants the body face;
+   the deck's default .cap is mono, which reads as a code block in prose. */
+.reveal .slides section .cap.prose {
+  font-family: var(--r-main-font);
+  font-size: 0.68em; line-height: 1.4; color: var(--fg);
+}

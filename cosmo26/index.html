@@ -430,6 +430,125 @@
 				<aside class="notes">THE headline. Build it arm by arm: auto-only 2448, plus the product cross-maps 3045, the joint l1 3371, and then the CNN lands at 3326 - on top of the joint l1, not above it. Say precisely what that means and what it does not: a TIE, never a win. The CNN's coverage is mildly conservative, which plausibly accounts for the joint l1 sitting a hair above. And "sufficient as far as we can measure" - both summaries appear to saturate the information the maps make accessible. VMIM trains the network to maximise the mutual information between its summary and the parameters, so it is an estimate of the CEILING, not just another statistic; a hand-built statistic reaching that ceiling is a sufficiency result. Referee aside if pushed: getting the CNN there took an expressive flow (RealNVP, +36%) and a better architecture (resnet18, +6%); the deeper net overfits at 899 cosmologies, so "you trained it wrong" does not hold. The per-mock violins are in backup if anyone wants the population rather than the medians.</aside>
 			</section>
 
+			<!-- ============ ACT 3, beat 1 — nulling: the promise and the problem ============
+			     Condensed from the June slides 22 (tomography), 23 (what BNT does) and
+			     24 (it inflates the per-bin contours). Its own investigation, not a corollary. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§3</span> Nulling promises <em class="alert">localized</em> scale cuts &mdash; on a per-bin &#8467;1-norm it inflates the contours instead</h3>
+
+				<div class="container" style="align-items:center; margin-top:0.25em;">
+					<div class="col" style="flex:1.02;">
+						<div class="kicker" style="text-align:center;">the promise</div>
+						<div class="figrow" style="margin-top:0.3em;">
+							<figure class="fig">
+								<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.png" style="max-height:200px;"
+								     alt="standard lensing efficiency kernels: broad and overlapping across redshift">
+								<figcaption>broad, overlapping</figcaption>
+							</figure>
+							<span class="arrow">&rarr;</span>
+							<figure class="fig">
+								<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.png" style="max-height:200px;"
+								     alt="BNT lensing efficiency kernels: nulled and localized in redshift">
+								<figcaption>nulled, localized</figcaption>
+							</figure>
+						</div>
+						<p class="cap prose" style="text-align:center; margin-top:0.5em; max-width:36ch; margin-left:auto; margin-right:auto;">
+							A fixed angular scale stops mixing redshifts, so the cut can go <b>only where the systematic is</b></p>
+					</div>
+
+					<div class="col fragment fade-in" style="flex:0.98;">
+						<div class="kicker" style="text-align:center;">the problem</div>
+						<figure class="fig" style="margin-top:0.3em;">
+							<div class="r-stack">
+								<img class="plain" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step1.png" style="max-height:340px;"
+								     alt="the l1-norm posterior in the BNT basis, visibly inflated against the same statistic in the standard basis">
+								<img class="plain fragment" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step2.png" style="max-height:340px;" alt="">
+								<img class="plain fragment" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step3.png" style="max-height:340px;" alt="">
+							</div>
+							<figcaption>blue = the &#8467;1-norm in the nulled basis</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<p class="oneline fragment fade-in">A fixed, <b>invertible</b> matrix &mdash; so nothing can have been lost. And yet the per-bin &#8467;1-norm keeps <b class="alert">16%</b> of its figure of merit.</p>
+
+				<aside class="notes">SAY: this is the third thing we looked at, and it stands on its own. Nulling - the BNT transform, Bernardeau, Nishimichi and Taruya 2014 - is a linear re-mixing of the tomographic bins that cancels the low-redshift lensing efficiency. Why anyone wants it: standard lensing kernels are broad and overlapping, so one angular scale mixes low-z small scales with high-z large ones, and an angular cut throws away clean high-z information along with the contamination. Null the bins and each transformed field is localized in redshift, so the baryon sensitivity lands in ONE transformed bin and you cut scales only there. That is a genuinely promising way to do scale cuts. CLICK. Applied to a map-based higher-order statistic it backfires: the same mixing correlates the originally-independent shape noise across bins, the noise floor rises, and the contours inflate - worse than standard tomography even with conservative cuts. PLANT, as a minor technical aside: for the power spectrum it IS lossless, PROVIDED you keep the cross-spectra between transformed bins. Do not explain that yet - it pays off on the next slide. Then the paradox, and PAUSE: this is a fixed invertible matrix, the Jacobian cancels in Bayes, the Fisher information is unchanged, the posterior from the full field is identical in both frames - and yet the l1-norm keeps 16 percent. NAME Vinciguerra et al. 2026 (Euclid): they hit the same wall keeping tomographic maps for bin combinations up to quadruplets, and concluded that recovering the SNR is "highly non-trivial".</aside>
+			</section>
+
+
+			<!-- ============ ACT 3, beat 2 — the answer: how to get the information back ============
+			     Condensed from the June slides 29 (retention ladder) and 30 (the CNN is unaffected).
+			     Reuses the act-2 rung labels deliberately: same four summaries, nulled frame. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§3</span> The information is recoverable &mdash; by the summary that reads the bins <em class="alert">jointly</em></h3>
+				<div class="twoup">
+					<div class="left" style="flex:1 1 50%;">
+						<p class="axis-note">figure of merit retained under the nulling</p>
+						<div class="ladder compact">
+							<div class="rung fragment fade-in" data-fragment-index="1">
+								<div class="reads">one bin at a time<span class="sub">&#8467;1, auto-maps</span></div>
+								<div class="track"><div class="bar" style="width:14.7%"></div></div>
+								<div class="val">0.16&#215;</div>
+							</div>
+							<div class="rung fragment fade-in" data-fragment-index="2">
+								<div class="reads">+ one derived field per pair<span class="sub">&#8467;1 + product cross-maps</span></div>
+								<div class="track"><div class="bar" style="width:22.1%"></div></div>
+								<div class="val">0.24&#215;</div>
+							</div>
+							<div class="rung fragment fade-in" data-fragment-index="3">
+								<div class="reads">each pair's full 2-D distribution<span class="sub">joint &#8467;1-norm</span></div>
+								<div class="track"><div class="bar" style="width:66.2%"></div></div>
+								<div class="val">0.72&#215;</div>
+							</div>
+							<div class="rung learned fragment fade-in" data-fragment-index="4">
+								<div class="reads">all four channels at once<span class="sub">CNN, VMIM-trained</span></div>
+								<div class="track"><div class="bar" style="width:88.3%"></div></div>
+								<div class="val">0.96&#215;</div>
+							</div>
+						</div>
+						<p class="cap prose" style="margin-top:0.6em;">Same four summaries as before. In the standard frame they spanned 38%; here, a factor of <b>six</b>.</p>
+					</div>
+					<div class="right" style="flex:1 1 50%;">
+						<p class="axis-note">the analytical arms, nulled frame over standard</p>
+						<figure class="fig">
+							<div class="r-stack">
+								<img class="plain" src="../assets/figures/posteriors/p2_bnt_analytic/step1.png" style="max-height:400px;"
+								     alt="posteriors in the nulled frame: the auto-only l1 balloons, retaining 0.16 of its figure of merit, then the product and joint arms tighten">
+								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_bnt_analytic/step2.png" style="max-height:400px;" alt="">
+								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_bnt_analytic/step3.png" style="max-height:400px;" alt="">
+							</div>
+							<figcaption>dashed = nulled frame; the inset bar is the same ladder</figcaption>
+						</figure>
+					</div>
+				</div>
+				<p class="oneline fragment fade-in">So nulling can be kept as a mitigation at <b>no cost in constraining power</b> &mdash; provided some stage of the pipeline reads the bins jointly. And the power spectrum was this ladder's <b class="alert">first rung all along</b>.</p>
+				<aside class="notes">SAY: so we asked what it takes to get the information back, and ran the same four summaries through the nulled frame. Per-bin l1 keeps 0.16. Add one derived field per pair - the product cross-maps - and it is 0.24, better but nowhere near. The joint l1-norm, the statistic we built two slides ago, keeps 0.72. The CNN, which reads all four channels natively, keeps 0.96. The practical message, and this is the result that matters for anyone planning a nulled analysis: nulling need not cost a higher-order analysis anything, PROVIDED some stage of the pipeline reads the bins jointly. CASH the clause from the previous slide: the power spectrum survives the transform for exactly this reason - auto PLUS cross spectra are closed under C-hat maps to B C-hat B-transpose and so exactly invariant, while the auto-spectra alone keep only the diagonal and are not. The two-point case was the first rung of this same ladder all along. COUNTER-INTUITION worth saying out loud: the nulling is designed precisely to DE-correlate the bins, and joint reading matters more there, not less. HONEST RESIDUAL: 0.72, not 0.96 - the remainder is genuine three- and four-bin structure that a pairwise statistic cannot reach, and that is the one place the network keeps an advantage. The CNN corner and the calibration of every BNT posterior are in backup.</aside>
+			</section>
+
+
+			<!-- ============ close ============ -->
+			<section data-theme="light">
+				<h3 class="slide-title tight">Three questions, answered</h3>
+				<ul class="qlist">
+					<li class="done">
+						<span class="qn">Q1</span>
+						<span class="qtext">Does baryonic feedback put the non-Gaussian information out of reach?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Cut every contaminated scale and the &#8467;1-norm is still &#215;1.8 tighter at Stage IV, &#215;2.6 at full sky.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q2</span>
+						<span class="qtext">Do we need deep learning to extract it?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Read the bins jointly and a fixed wavelet statistic matches the optimal compressor, with no training.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q3</span>
+						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. The inflation was the frame, not lost information.</span></span>
+					</li>
+				</ul>
+				<p class="oneline fragment fade-in">What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.</p>
+				<aside class="notes">Land all three, then the honest residual, then the practical message: nulling stays usable as a mitigation for redshift-localised systematics provided some stage of the pipeline reads the bins jointly. Leave this slide up during questions.</aside>
+			</section>
 
 
 			<!-- ##########  NOT YET ORDERED - act 3, the BNT block and the closes.
@@ -548,74 +667,9 @@
 
 
 			<!-- ============ S13 — A3: the ladder, nulled frame ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">Q3</span> The same ladder, amplified: what survives the nulling tracks <em class="alert">how jointly the bins are read</em></h3>
-				<div class="twoup">
-					<div class="left" style="flex:1 1 50%;">
-						<p class="axis-note">figure of merit retained under the nulling</p>
-						<div class="ladder compact">
-							<div class="rung fragment fade-in" data-fragment-index="1">
-								<div class="reads">one bin at a time<span class="sub">&#8467;1, auto-maps</span></div>
-								<div class="track"><div class="bar" style="width:14.7%"></div></div>
-								<div class="val">0.16&#215;</div>
-							</div>
-							<div class="rung fragment fade-in" data-fragment-index="2">
-								<div class="reads">+ one derived field per pair<span class="sub">&#8467;1 + product cross-maps</span></div>
-								<div class="track"><div class="bar" style="width:22.1%"></div></div>
-								<div class="val">0.24&#215;</div>
-							</div>
-							<div class="rung fragment fade-in" data-fragment-index="3">
-								<div class="reads">each pair's full 2-D distribution<span class="sub">joint &#8467;1-norm</span></div>
-								<div class="track"><div class="bar" style="width:66.2%"></div></div>
-								<div class="val">0.72&#215;</div>
-							</div>
-							<div class="rung learned fragment fade-in" data-fragment-index="4">
-								<div class="reads">all four channels at once<span class="sub">CNN, VMIM-trained</span></div>
-								<div class="track"><div class="bar" style="width:88.3%"></div></div>
-								<div class="val">0.96&#215;</div>
-							</div>
-						</div>
-					</div>
-					<div class="right" style="flex:1 1 50%;">
-						<p class="axis-note">the analytical arms, nulled frame over standard</p>
-						<figure class="fig">
-							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p2_bnt_analytic/step1.png" style="max-height:430px;"
-								     alt="posteriors in the nulled frame: the auto-only l1 balloons, retaining 0.16 of its figure of merit">
-								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_bnt_analytic/step2.png" style="max-height:430px;" alt="">
-								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_bnt_analytic/step3.png" style="max-height:430px;" alt="">
-							</div>
-							<figcaption>dashed = nulled frame; the inset bar is the same ladder</figcaption>
-						</figure>
-					</div>
-				</div>
-				<p class="oneline fragment fade-in">Keep the cross-information and the nulling costs you nothing. The power spectrum
-					was this ladder's <b>first rung all along</b>.</p>
-				<aside class="notes">SAY: auto PLUS cross spectra are closed under C-hat maps to B C-hat B-transpose, so they are exactly invariant, while the auto-spectra alone keep only the diagonal and are not. A3 and the loop closing. Same rung labels as S9 - flat there, steep here. Then cash the cross-spectra clause planted at S11. Note the counter-intuition: nulling was designed to de-correlate the bins, and joint reading matters MORE there. Tick Q3.</aside>
-			</section>
+			
 			<!-- ============ S14 — conclusions: the question slide, answered ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight">Three questions, answered</h3>
-				<ul class="qlist">
-					<li class="done">
-						<span class="qn">Q1</span>
-						<span class="qtext">Does baryonic feedback put the non-Gaussian information out of reach?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Cut every contaminated scale and the &#8467;1-norm is still &#215;1.8 tighter at Stage IV, &#215;2.6 at full sky.</span></span>
-					</li>
-					<li class="done">
-						<span class="qn">Q2</span>
-						<span class="qtext">Do we need deep learning to extract it?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Read the bins jointly and a fixed wavelet statistic matches the optimal compressor, with no training.</span></span>
-					</li>
-					<li class="done">
-						<span class="qn">Q3</span>
-						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. The inflation was the frame, not lost information.</span></span>
-					</li>
-				</ul>
-				<p class="oneline fragment fade-in">What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.</p>
-				<aside class="notes">Land all three, then the honest residual, then the practical message: nulling stays usable as a mitigation for redshift-localised systematics provided some stage of the pipeline reads the bins jointly. Leave this slide up during questions.</aside>
-			</section>
+			
 
 			<!-- S2 (revised): 2pt-skeptic + uniform trust checklist (no highlighting, no legend, no caveat) -->
 			<section data-theme="light">
@@ -689,82 +743,16 @@
 
 
 			<!-- Tomography (Justine Zeghal), moved into Act 1 after the 3x slide. BLACK bg flipbook -->
-			<section data-background-color="#000000">
-				<h3 class="slide-title tight"><span class="sec">§1</span> But could we do better than that? Weak lensing tomography</h3>
-				<div class="tomo-flip">
-					<img src="../assets/diagrams/tomography/tomo_1.png" alt="observer and the matter distribution">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_2.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_3.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_4.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_5.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_6.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_7.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_8.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_9.png" alt="the source galaxies as tomographic convergence maps, one per redshift bin">
-				</div>
-				<div class="tomo-credit">Credit: Justine Zeghal</div>
-				<aside class="notes">On baryon-safe scales the l1-norm already beats the power spectrum 3x. Could we do better by exploiting the tomographic structure, the redshift bins? The sources are sliced in redshift into per-bin convergence maps; the lensing kernels are broad and overlap, so the bins share information. The natural way to push further is to re-mix the bins: the BNT transform (next slide).</aside>
-			</section>
+			
 
 
 			<!-- BNT transform: before/after lensing kernels + what it does -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§1</span> The BNT transform localizes each tomographic bin in redshift (a linear nulling)</h3>
-				<div class="figrow" style="margin-top:0.2em;">
-					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.png" style="max-height:235px;" alt="standard lensing efficiency kernels: broad and overlapping across redshift">
-						<figcaption>standard: broad, overlapping</figcaption>
-					</figure>
-					<span class="arrow">&rarr;</span>
-					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.png" style="max-height:235px;" alt="BNT lensing efficiency kernels: nulled and localized per bin">
-						<figcaption>BNT: nulled, localized</figcaption>
-					</figure>
-				</div>
-				<div class="block" style="margin-top:0.3em;">
-					<div class="block-title">what BNT does, after Bernardeau, Nishimichi &amp; Taruya 2014</div>
-					<div class="block-content" style="font-size:0.72em;">
-						<ul>
-							<li>A linear, <b class="alert">invertible</b> nulling of the tomographic bins</li>
-							<li>Standard kernels are broad and overlapping, so a fixed angular scale &#8467; mixes many physical scales and redshifts</li>
-							<li>BNT nulls the low-z lensing efficiency, <b class="alert">localizing each field in redshift</b> (thin lens-z slices), which sharpens the angular-scale &#8596; physical-scale mapping for clean scale cuts</li>
-						</ul>
-					</div>
-				</div>
-				<p class="caveat">Our use here: isolate the low-z, small-scale systematics (baryonic feedback) to specific bins, and cut scales only where needed, instead of discarding data everywhere.</p>
-				<aside class="notes">The BNT transform (Bernardeau, Nishimichi and Taruya 2014) is a linear, invertible nulling scheme that reorganizes the tomographic data into redshift-localized fields. Standard lensing kernels are broad and overlapping, so a fixed angular multipole mixes physical scales and redshifts (low-z non-linear with high-z linear). BNT subtracts weighted lower-redshift bins to null the low-z lensing efficiency, de-projecting the signal so each transformed field probes a narrow lens-redshift range; this sharpens the angular-scale to physical-scale mapping and enables targeted scale cuts. It is a general technique (dynamics, geometry, systematics, nonlinear-scale control); we use it here to isolate low-z baryonic feedback. For the power spectrum it is effectively lossless with the full cross-covariance; for map-based HOS it backfires (next slide).</aside>
-			</section>
+			
 
 
 			<!-- S9 ★ — THE HINGE. figure: p1_bnt_kernels + before/after maps + p1_bnt_inflates_l1 build-up;
 			     name Vinciguerra et al. (2026) -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§1</span> But applied to map-based HOS, BNT inflates the per-bin contours</h3>
-				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col" style="flex:1.25;">
-						<figure class="fig">
-							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step1.png" style="max-height:420px;"
-								     alt="the l1-norm posterior in the BNT basis, visibly inflated">
-								<img class="plain fragment" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step2.png" style="max-height:420px;" alt="">
-								<img class="plain fragment" src="../assets/figures/posteriors/p1_bnt_inflates_l1/step3.png" style="max-height:420px;" alt="">
-							</div>
-							<figcaption>Blue = the &#8467;1-norm in the BNT basis. The per-bin HOS contours <b>inflate dramatically</b>; the noise mixing raises the floor.</figcaption>
-						</figure>
-					</div>
-					<div class="col" style="flex:0.85;">
-						<div class="callout" style="max-width:100%;">
-							<span class="label">the hinge</span>
-							<ul style="font-size:0.8em;">
-								<li>BNT is <em>invertible</em>: no information can truly be lost</li>
-								<li>Yet a Euclid forecast (<b>Vinciguerra et al. 2026</b>) still saw inflated BNT contours, even with explicit cross-bin HOS; recovering the SNR is "highly non-trivial"</li>
-								<li>Is the information really lost, or are we just analyzing it wrong?</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<aside class="notes">The natural way to exploit smaller scales: BNT, a linear invertible re-mixing of the bins that nulls the low-z lensing efficiency, so baryon sensitivity localizes to one transformed bin and you cut scales only there (recall the overlapping kernels from S3). In Paper I we tried it; for map-based HOS it backfires: the same mixing correlates the originally-independent shape noise, the noise floor rises, the HOS contours inflate. The puzzle carries us into Part 2. NAME Vinciguerra (Simone is in the room, Wed): "a recent Euclid forecast found this persists even with explicit cross-components; I will come back to that."</aside>
-			</section>
+			
 
 			<!-- DIVIDER — Part 1 / Part 2 (dark slide, chapter break) -->
 			<section>
@@ -869,48 +857,11 @@
 			</section>
 
 			<!-- S15 ★ — figure: p2_bnt_analytic build-up (0.16x / 0.24x / 0.72x) + p2_bnt_learned (0.96x) -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§2</span> BNT revisited: what survives tracks how jointly the bins are read &mdash; 0.16&times;, 0.24&times;, 0.72&times;, 0.96&times;</h3>
-				<div class="container" style="align-items:center;">
-					<div class="col" style="flex:0 0 54%;">
-												<div class="fig">
-							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p2_bnt_analytic/step1.png" style="max-height:450px;"
-								     alt="the auto-only l1 posterior balloons in the nulled frame, retaining 0.16 of its figure of merit">
-								<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p2_bnt_analytic/step2.png" style="max-height:450px;" alt="">
-								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_bnt_analytic/step3.png" style="max-height:450px;" alt="">
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="takeaway" style="max-width:100%;">
-							<span class="label">Same transform, opposite fates</span>
-							<ul>
-								<li class="fragment" data-fragment-index="1">Per-channel <span style="color:var(--l1);font-weight:600">&#8467;1+product</span> <b>collapses</b>: 3045 &rarr; 718 (<b>0.24&times;</b>); &sigma;(&sigma;<sub>8</sub>) 0.077 &rarr; 0.133</li>
-								<li class="fragment" data-fragment-index="2">The <span style="color:var(--l1);font-weight:600">joint &#8467;1</span> keeps most of it: 3371 &rarr; 2424 (<b>0.72&times;</b>)</li>
-								<li class="fragment" data-fragment-index="3">Channel-mixing <span style="color:var(--cnn);font-weight:600">CNN</span> is <b>lossless</b>: 3326 &rarr; 3186 (<b>0.96&times;</b>)</li>
-								<li class="fragment" data-fragment-index="4">The collapse is itself <em>calibrated</em>: a real loss, not over-confidence</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<aside class="notes">Rerun Paper I's BNT experiment with both summaries through the same matched NDE (apples to apples with M1). The retention ladder: auto-only 0.16x, l1+product 0.24x, joint l1 0.72x, CNN 0.96x. What survives tracks how jointly the summary reads the bins. The collapse is calibrated (honest loss, not over-confidence). Then hand off to the intuition block for WHY. S16 will CONFIRM the block, not re-explain it.</aside>
-			</section>
+			
 
 
 			<!-- companion to the BNT-revisited slide: the learned arm, on its own axes -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§2</span> The channel-mixing CNN does not notice the transform at all (<span class="alert">0.96&times;</span>)</h3>
-				<div class="fig">
-					<img class="plain" src="../assets/figures/posteriors/p2_bnt_learned.png" style="max-height:420px;"
-					     alt="the CNN posterior in the standard and the nulled frame, the two contours lying on top of each other">
-				</div>
-				<div class="takeaway" style="max-width:88%;">
-					<span class="label">same maps, same transform, no cost</span>
-					Feeding the network the nulled maps gives the same first layer with kernels <b>KB</b>, so &ldquo;undo the nulling&rdquo; is one configuration of the first layer &mdash; available before any non-linearity, at no capacity cost. The 4% shortfall is an optimisation residual, not lost information.
-				</div>
-				<aside class="notes">The counterpart to the previous slide, on its own axes because the two figures do not share a frame. This is the closure criterion in practice: f maps to f-composed-with-B is a bijection of the network class onto itself, so the CNN is immune for free. Contrast with the per-channel l1, which fails structurally: under B it becomes "mix the channels, then take a single-channel marginal histogram", and marginalising after mixing is irreversible.</aside>
-			</section>
+			
 
 			<!-- =============================================================================
 			     BNT-INTUITION BLOCK (Andreas's, ~4-5 min): integrated bnt_explainer
@@ -1296,6 +1247,39 @@
 				</div>
 				<p class="caveat">The answer to &ldquo;FoM<sub>3</sub> is fragile in a degenerate parameter space&rdquo;: the marginals are quoted alongside it, and this is the population rather than a point. The &plusmn; on the medians is the spread over three independently trained compressors, the dominant source of run-to-run variability.</p>
 				<aside class="notes">Reach for this if someone doubts the tie is robust, or asks about FoM3 as a summary. The overlap of the three violins is the point.</aside>
+			</section>
+
+
+			<!-- recovered to backup when act 3 was condensed (2026-08-21) -->
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">§2</span> The channel-mixing CNN does not notice the transform at all (<span class="alert">0.96&times;</span>)</h3>
+				<div class="fig">
+					<img class="plain" src="../assets/figures/posteriors/p2_bnt_learned.png" style="max-height:420px;"
+					     alt="the CNN posterior in the standard and the nulled frame, the two contours lying on top of each other">
+				</div>
+				<div class="takeaway" style="max-width:88%;">
+					<span class="label">same maps, same transform, no cost</span>
+					Feeding the network the nulled maps gives the same first layer with kernels <b>KB</b>, so &ldquo;undo the nulling&rdquo; is one configuration of the first layer &mdash; available before any non-linearity, at no capacity cost. The 4% shortfall is an optimisation residual, not lost information.
+				</div>
+				<aside class="notes">The counterpart to the previous slide, on its own axes because the two figures do not share a frame. This is the closure criterion in practice: f maps to f-composed-with-B is a bijection of the network class onto itself, so the CNN is immune for free. Contrast with the per-channel l1, which fails structurally: under B it becomes "mix the channels, then take a single-channel marginal histogram", and marginalising after mixing is irreversible.</aside>
+			</section>
+
+
+			<section data-background-color="#000000">
+				<h3 class="slide-title tight"><span class="sec">§1</span> But could we do better than that? Weak lensing tomography</h3>
+				<div class="tomo-flip">
+					<img src="../assets/diagrams/tomography/tomo_1.png" alt="observer and the matter distribution">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_2.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_3.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_4.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_5.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_6.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_7.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_8.png" alt="">
+					<img class="fragment" src="../assets/diagrams/tomography/tomo_9.png" alt="the source galaxies as tomographic convergence maps, one per redshift bin">
+				</div>
+				<div class="tomo-credit">Credit: Justine Zeghal</div>
+				<aside class="notes">On baryon-safe scales the l1-norm already beats the power spectrum 3x. Could we do better by exploiting the tomographic structure, the redshift bins? The sources are sliced in redshift into per-bin convergence maps; the lensing kernels are broad and overlap, so the bins share information. The natural way to push further is to re-mix the bins: the BNT transform (next slide).</aside>
 			</section>
 
 
