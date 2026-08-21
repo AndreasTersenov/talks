@@ -439,15 +439,15 @@
 				<div class="container" style="align-items:center; margin-top:0.25em;">
 					<div class="col" style="flex:1.02;">
 						<div class="kicker" style="text-align:center;">the promise</div>
-						<div class="figrow" style="margin-top:0.3em;">
+						<div class="figstack" style="margin-top:0.35em;">
 							<figure class="fig">
-								<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.png" style="max-height:200px;"
+								<img class="plain" src="../assets/figures/statistics/p1_kernels_standard.png"
 								     alt="standard lensing efficiency kernels: broad and overlapping across redshift">
 								<figcaption>broad, overlapping</figcaption>
 							</figure>
-							<span class="arrow">&rarr;</span>
+							<span class="arrow">&darr;</span>
 							<figure class="fig">
-								<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.png" style="max-height:200px;"
+								<img class="plain" src="../assets/figures/statistics/p1_bnt_kernels.png"
 								     alt="BNT lensing efficiency kernels: nulled and localized in redshift">
 								<figcaption>nulled, localized</figcaption>
 							</figure>
@@ -509,15 +509,21 @@
 						<p class="cap prose" style="margin-top:0.6em;">Same four summaries as before. In the standard frame they spanned 38%; here, a factor of <b>six</b>.</p>
 					</div>
 					<div class="right" style="flex:1 1 50%;">
-						<p class="axis-note">the analytical arms, nulled frame over standard</p>
+						<p class="axis-note">nulled frame over standard</p>
 						<figure class="fig">
 							<div class="r-stack">
 								<img class="plain" src="../assets/figures/posteriors/p2_bnt_analytic/step1.png" style="max-height:400px;"
 								     alt="posteriors in the nulled frame: the auto-only l1 balloons, retaining 0.16 of its figure of merit, then the product and joint arms tighten">
 								<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p2_bnt_analytic/step2.png" style="max-height:400px;" alt="">
 								<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p2_bnt_analytic/step3.png" style="max-height:400px;" alt="">
+								<!-- the learned arm has different axes, so it cannot overlay the analytical ones:
+								     it arrives on an opaque backing that covers them. A cut, not a build-up. -->
+								<div class="swapcover fragment" data-fragment-index="4">
+									<img class="plain" src="../assets/figures/posteriors/p2_bnt_learned.png" style="max-height:400px;"
+									     alt="the CNN posterior in the standard and the nulled frame, the two contours lying on top of each other">
+								</div>
 							</div>
-							<figcaption>dashed = nulled frame; the inset bar is the same ladder</figcaption>
+							<figcaption>dashed = the nulled frame</figcaption>
 						</figure>
 					</div>
 				</div>
