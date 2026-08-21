@@ -134,29 +134,42 @@ and it is the most satisfying thing available in either paper.
 
 ## 5. The running order
 
-| # | slide — assertion headline | min | act |
-|---|---|---|---|
-| S1 | Title | 0.5 | |
-| S2 | The non-Gaussian information and the worst small-scale systematic live on the same scales | 1.0 | 1 **Q1** |
-| S3 | The starlet ℓ1-norm reads the whole convergence PDF, scale by scale — and SBI needs no likelihood | 1.0 | 1 |
-| S4 | Unmodeled feedback biases every statistic at Stage IV — 2.2σ for the power spectrum, 3.6σ for higher-order | 1.25 | 1 |
-| S5 | The contamination sits in a single wavelet band: with no feedback model at all, cutting it leaves the ℓ1-norm ×1.8 tighter than the power spectrum | 1.5 | 1 ★ **A1** |
-| S6 | So the ℓ1-norm survives the cut — but is it the right statistic at all? | 0.75 | 2 **Q2** |
-| S7 | Same maps, same flow, both calibrated — against a compressor trained to be optimal | 0.75 | 2 |
-| S8 | Read bin by bin, the ℓ1-norm trails — the network mixes the four bins in its first layer, and it does not | 1.0 | 2 |
-| S9 | Build joint reading in and it reaches the ceiling: **3371 against 3326** | 1.75 | 2 ★ **A2** |
-| S10 | Given the same constraining power, everything else decides | 1.0 | 2 ★ |
-| S11 | Nulling localises the kernels in redshift, and for the power spectrum it is lossless — provided the cross-spectra are kept | 1.0 | 3 |
-| S12 | The same transform destroys the ℓ1-norm — and it is linear and invertible, so nothing can have been lost | 1.0 | 3 ★ **Q3** |
-| S13 | The same ladder, amplified — and the power spectrum was its first rung all along: 0.16, 0.24, 0.72, 0.96 | 1.5 | 3 ★ **A3** |
-| S14 | Conclusions — the three questions, answered | 1.0 | |
-| | **total** | **14.0** | |
+**Agreed with Andreas 2026-08-21.** Beats 1–10 are settled; act 3 and the closes are not yet
+ordered and sit after a banner in `index.html`, in their previous relative order. Nothing has
+been deleted — everything unplaced is still in the file.
 
-Act 1 (with title) 5.25 · **Act 2 5.25** · Act 3 3.5 · close 1.0. 14 slides, 0.5–1.0 min of slack
-against the 15-minute slot.
+| # | slide | act |
+|---|---|---|
+| 1 | Title | |
+| 2 | The non-Gaussian information and the worst small-scale systematic live on the same scales | 1 **Q1** |
+| 3 | Peak counts and the ℓ1-norm are one-point statistics on the same starlet decomposition | 1 |
+| 4 | The inference pipeline: neural posterior estimation | 1 |
+| 5 | Baryonic bias scales with survey area | 1 |
+| 6 | Mitigation: scale cuts | 1 |
+| 7 | Are HOS still useful? | 1 ★ **A1** |
+| 8 | So the ℓ1-norm survives the cut — but is it the right statistic at all? | 2 **Q2** |
+| 9 | Training a neural summary: VMIM | 2 |
+| 10 | The comparison, done fairly: same maps, same flow, both calibrated | 2 |
+| 11 | Read bin by bin, the ℓ1-norm trails the network | 2 |
+| 12 | Two ways to hand a fixed statistic the cross-bin information | 2 |
+| 13 | Read the bins jointly and the ℓ1-norm reaches the optimal CNN: 3371 against 3326 | 2 ★ **A2** |
 
-Note there is **no standalone question slide** — see §3. Each act opens with its own question as
-the slide assertion (S2, S6, S12), and S14 gathers all three.
+Two changes from the earlier draft worth recording, both Andreas's:
+
+**Bias-before-mitigation.** The bias-vs-area slide now comes *before* the scale cuts, so the
+problem is felt arriving before the fix is offered.
+
+**Beat 10 is three slides, not one.** The old single "the tie" slide asserted the result without
+earning it. The sequence is now: the gap (auto-only ℓ1 against the CNN) → why it exists and the
+two routes to closing it (explicit cross-maps, or reading each pair jointly) → the result, with
+every arm building up on one corner plot. The cross-map ladder on slide 12 deliberately shows
+**step 1 only** — the cross-map arm without the joint-ℓ1 point — so slide 13 still has something
+to reveal. The per-mock violins moved to backup: they restate slide 13's medians and cost a beat.
+
+**Open: slide 11 needs a figure.** An auto-only ℓ1 posterior against the CNN, matched pipeline.
+No existing build-up frame pairs those two arms alone (the sequence is auto → +product → joint →
+CNN), so the slide currently carries `p2_corner_cnn_vs_l1/step1.png` (auto-only) as a marked
+placeholder. Andreas is producing the render.
 
 ### Beat notes
 

@@ -39,6 +39,10 @@
 	<div class="reveal">
 		<div class="slides">
 
+
+			<!-- ##########  MAIN FLOW - agreed order, beats 1-10  ########## -->
+
+
 			<!-- =============================================================================
 			     S1 — TITLE  (default/dark theme: light text over the particles sky backdrop)
 			============================================================================== -->
@@ -59,24 +63,6 @@
 				</div>
 				<p class="affil" style="font-size:0.72em; color:var(--fg);"><b class="alert">Andreas Tersenov</b> &nbsp; FORTH, U. Crete, CEA Paris-Saclay &nbsp;&nbsp; slides: andreastersenov.github.io/talks/</p>
 				<aside class="notes">COSMO-26, 15 min + 3 Q. Paper I: Tersenov, Guerrini, Starck, Kilbinger (A&amp;A, resubmitted). Paper II: Tersenov, Starck, Kilbinger (in prep).</aside>
-			</section>
-
-
-
-			<!-- ##################################################################################
-			     ###  NEW SLIDES — proposed backbone per STRUCTURE.md (2026-08-19).
-			     ###  Nothing below this block has been deleted or hidden; the June deck follows
-			     ###  intact after the "ACT 0" banner. Slide ids match STRUCTURE.md §5.
-			     ################################################################################## -->
-
-			<section data-theme="light">
-				<div class="part-divider">
-					<span class="kicker">proposed — see STRUCTURE.md &sect;5</span>
-					<hr class="accent-rule">
-					<h2>New slides</h2>
-					<p class="lead">The backbone of the COSMO-26 talk. The June deck follows, untouched.</p>
-				</div>
-				<aside class="notes">Review block. These are the slides that did not exist yet. Old deck is unchanged after this.</aside>
 			</section>
 
 
@@ -150,6 +136,306 @@
 			</section>
 
 
+			<!-- Wavelet statistics: three slides (peaks / wavelet peaks / l1-norm) compressed
+			     into one, on the shared principle. Figures: thesis intro F5b (starlet row) and
+			     N3 (peak map, left panel cropped). White background: both are black ink on white. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§1</span> Peak counts and the &#8467;1-norm are <em class="alert">one-point</em> statistics on the same starlet decomposition</h3>
+
+				<figure class="fig" style="margin:0.1em 0 0;">
+					<img class="plain" src="../assets/diagrams/starlet_row_decomposition.png" style="width:74%; max-width:100%;"
+					     alt="the starlet transform: a convergence map written as the sum of four wavelet-coefficient bands plus a coarse map, each band isolating one angular scale">
+					<figcaption>the <b>starlet transform</b>: one map as a sum of bands, each isolating a single angular scale</figcaption>
+				</figure>
+
+				<div class="statpair">
+					<div class="col fragment fade-in">
+						<div class="kicker">wavelet peak counts</div>
+						<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
+						     alt="a smoothed convergence map with its signal-to-noise peaks circled">
+						<p class="cap">local maxima of the SNR field, counted per SNR bin &mdash; only the <b>discrete</b> features</p>
+					</div>
+					<div class="col fragment fade-in">
+						<div class="kicker">starlet &#8467;1-norm</div>
+						<div class="l1formula">$$\ell_1^{\,j,i} \;=\; \sum_{u} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$</div>
+						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &mdash; every pixel, peaks <em>and</em> voids, with no feature to define</p>
+					</div>
+				</div>
+
+				<aside class="notes">SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of pixel values - and both are made multi-scale by the same starlet transform, which writes the map as a sum of bands, each isolating one angular scale. That matters twice: each band covers a different frequency range so the covariance is nearly diagonal, and a systematic confined to small scales lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features. The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out loud.</aside>
+			</section>
+
+
+			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
+			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
+				<h3 class="sbi-title">The inference pipeline: <span class="hl">neural posterior estimation</span></h3>
+				<div class="sbi-stage">
+					<canvas class="sbi-canvas" width="2360" height="1104"
+						aria-label="The SBI pipeline assembling: cosmoGRID kappa-maps, plus noise and a wavelet transform into wavelet-scale maps and summary statistics, conditioning a conditional MAF that maps a Gaussian into the posterior"></canvas>
+					<img class="sbi-img" data-appear="1" src="../assets/diagrams/cosmogrid_box.png"
+						alt="cosmoGRID kappa-maps" style="left:10.5%; top:65%; width:15%;">
+					<img class="sbi-img" data-appear="2" src="../assets/diagrams/wavelet_scales_stats.png"
+						alt="wavelet-scale maps and summary statistics" style="left:46%; top:66%; width:46%;">
+					<div class="sbi-lbl sbi-lbl--mut" data-appear="2" style="left:20.5%; top:55%;">+ noise<br>wavelet transform</div>
+					<div class="sbi-lbl sbi-lbl--cond" data-appear="3" style="left:70%; top:56%;">condition</div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:15%; top:5%;">Gaussian<span class="sub">\(\mathcal{N}(0,\mathbf{1})\)</span></div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:40%; top:5%;">Density estimator<span class="sub">conditional MAF</span></div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="4" style="left:62%; top:5%;">Posterior<span class="sub">\(p(\theta\mid x)\)</span></div>
+					<div class="sbi-lbl sbi-lbl--obj" data-appear="5" style="left:91.5%; top:40%;">
+						<div class="ot">training objective</div>\(\mathcal{L}=-\log p_\phi(\theta\mid x)\)</div>
+					<img class="sbi-img" data-appear="5" src="../assets/logos/jax_logo.png" alt="JAX" style="left:91.5%; top:52%; width:7.5%;">
+				</div>
+				<div class="sbi-caption" aria-live="polite"></div>
+				<button class="sbi-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<aside class="notes">The SBI pipeline for Part 1: CosmoGridV1 kappa-maps, add Euclid-like noise and apply the wavelet transform to get wavelet-scale maps and the summary statistics (the l1-norm), then condition a conditional MAF (NPE) that maps a Gaussian to the posterior p(theta|x); trained by minimizing -log p_phi(theta|x). JAX stack.</aside>
+			</section>
+
+
+			<!-- Baryonic Bias Scales with Survey Area (LAM version, light) -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§1</span> Baryonic Bias Scales with Survey Area</h3>
+				<div class="container" style="align-items:center; margin-top:0.2em;">
+					<div class="col fragment fade-in" style="flex:1.35;">
+						<div class="r-stack">
+							<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step1.png" style="max-height:270px;"
+							     alt="baryon tension in sigma versus survey area, power spectrum first">
+							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/statistics/p1_bias_vs_area/step2.png" style="max-height:270px;" alt="">
+							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/statistics/p1_bias_vs_area/step3.png" style="max-height:270px;" alt="">
+						</div>
+						<ul style="font-size:0.78em;">
+							<li class="fragment fade-in" data-fragment-index="2">At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b class="alert">3.6&sigma;</b></li>
+							<li class="fragment fade-in" data-fragment-index="3">At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b class="alert">6&sigma;</b></li>
+							<li class="fragment fade-in" data-fragment-index="4">HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the baryonically-contaminated small scales</li>
+						</ul>
+					</div>
+					<div class="col" style="flex:1.2;">
+						<div class="r-stack fragment fade-in">
+							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png" style="max-height:370px;"
+							     alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
+							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
+						</div>
+					</div>
+				</div>
+				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above 6 (lmax=1024). HOS are more sensitive than C_l, they live on the contaminated small scales.</aside>
+			</section>
+
+
+			<!-- Mitigation: Scale Cuts (LAM version, light) -->
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">§1</span> Mitigation: Scale Cuts</h3>
+				<ul style="font-size:0.82em; margin-bottom:0.5em;">
+					<li class="fragment fade-in">Goal: bring tension <b class="alert">below 0.3$\sigma$</b></li>
+					<li class="fragment fade-in">$C_\ell$: needs an <b class="alert">area-dependent</b> cut, $\ell_{\rm max} = 860$ at 2,000 deg&sup2; down to <b class="alert">340</b> at full sky &rarr; discards most of the signal</li>
+					<li class="fragment fade-in">Starlet: contamination <b class="alert">isolated in one scale</b> &rarr; removing just the finest wavelet band is sufficient across <em>all</em> survey areas</li>
+				</ul>
+				<div class="r-stack fragment fade-in">
+					<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step1.png" style="max-height:270px;"
+					     alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, against the 0.3 sigma threshold">
+					<img class="plain fragment" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png" style="max-height:270px;" alt="">
+				</div>
+				<div class="block fragment fade-in" style="margin-top:0.5em;">
+					<div class="block-content" style="font-size:0.78em;">We run this analysis as a function of survey area: more area means smaller statistical errors, and thus higher sensitivity to bias.</div>
+				</div>
+				<aside class="notes">Scale-cut mitigation. Goal: tension below 0.3 sigma. The power spectrum needs an area-dependent cut, lmax 860 at 2,000 deg2 falling to 340 at full sky, discarding most of the signal; the starlet l1 isolates the contamination in the single finest wavelet scale, so removing just that band suffices across all survey areas. We quantify this as a function of survey area next.</aside>
+			</section>
+
+
+			<!-- Are HOS still useful? (LAM version of the safe-scales slide, light) -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§1</span> Are HOS still useful?</h3>
+				<div class="container" style="align-items:center; margin-top:0.2em;">
+					<div class="col fragment fade-in" style="flex:1.2;">
+						<div class="r-stack">
+							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png" style="max-height:390px;"
+							     alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
+							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png" style="max-height:390px;" alt="">
+							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png" style="max-height:390px;" alt="">
+						</div>
+					</div>
+					<div class="col" style="flex:0.85;">
+						<div class="block fragment fade-in">
+							<div class="block-title">On baryon-safe scales</div>
+							<div class="block-content"><ul style="font-size:0.78em;">
+								<li>Starlet $\ell_1$-norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at Stage IV, <b class="alert">&times;2.6</b> at full sky</li>
+								<li>Peak counts <em>lose</em> to $C_\ell$ below Stage IV (&times;0.46 at 2,000 deg&sup2;)</li>
+								<li>HOS <b class="alert">still useful</b>: non-Gaussian signal persists even after the fine-scale cut</li>
+							</ul></div>
+						</div>
+						<div class="block fragment fade-in" style="margin-top:0.5em;">
+							<div class="block-title">Takeaway</div>
+							<div class="block-content"><ul style="font-size:0.78em;">
+								<li>Baryonic effects are a <b class="alert">dominant systematic</b>, biasing parameter estimation</li>
+								<li>HOS are not merely deep-non-linear probes: they robustly recover information on <b class="alert">quasi-linear scales</b></li>
+							</ul></div>
+						</div>
+					</div>
+				</div>
+				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at Stage IV and x2.61 at full sky; say the peak-count caveat out loud (x0.46 at 2,000 deg2), it buys credibility; HOS remain useful, the non-Gaussian signal persists after the fine-scale cut. Takeaway: baryons are a dominant systematic; HOS are robust tools on quasi-linear scales, not just deep non-linear probes.</aside>
+			</section>
+
+
+			<!-- ============ ACT 2 OPENER — which summary should we compute? ============ -->
+			<section data-theme="light">
+				<h3 class="slide-title tight">So the &#8467;1-norm survives the cut &mdash; but <em class="alert">is it the right statistic at all?</em></h3>
+				<div class="pipeflow big" style="margin:0.5em 0 0.7em;">
+					<figure>
+						<img src="../assets/figures/maps/kappa_patch.png" alt="tomographic convergence map">
+						<figcaption>&#954; maps</figcaption>
+					</figure>
+					<span class="arw">&rarr;</span>
+					<figure>
+						<div class="qbox">?</div>
+						<figcaption>summary</figcaption>
+					</figure>
+					<span class="arw">&rarr;</span>
+					<figure>
+						<svg viewBox="0 0 150 150" width="200" height="200" role="img" aria-label="posterior contours">
+							<ellipse cx="75" cy="75" rx="58" ry="34" transform="rotate(-30 75 75)"
+							         fill="none" stroke="var(--fg-muted)" stroke-width="2.5"/>
+							<ellipse cx="75" cy="75" rx="33" ry="18" transform="rotate(-30 75 75)"
+							         fill="none" stroke="var(--fg-muted)" stroke-width="2.5"/>
+						</svg>
+						<figcaption>cosmology</figcaption>
+					</figure>
+				</div>
+				<p class="oneline fragment fade-in">Learned compressors are called near-optimal, but benchmarked against the
+					<b>power spectrum</b> &mdash; which any non-Gaussian summary already beats.</p>
+				<aside class="notes">SAY: peaks, Minkowski functionals, the scattering transform, wavelets - and increasingly a neural network trained to compress the maps. It has rarely been tested against a strong hand-crafted higher-order statistic under matched conditions. Act 2 opener. This question is GENERATED by the answer to act 1 - do not ask it earlier. The summary is the unknown in the middle of the pipeline. Then the honest gap: learned compressors are benchmarked against the wrong thing. That is what this comparison fixes.</aside>
+			</section>
+
+			<!-- ============ S11b — VMIM ============ -->
+			<section class="ns-slide" data-theme="light" data-ns-explainer data-ns-kind="vmim">
+				<h3 class="ns-title">Training a neural summary II:
+					<span class="hl-vmim">VMIM</span></h3>
+				<div class="ns-pipe">
+					<div class="ns-box"><div class="role">simulator</div><div class="math">\(\theta\sim\) prior</div></div>
+					<span class="ns-arrow">&rarr;</span>
+					<div class="ns-box ns-box--map"><img class="ns-map" src="../assets/figures/maps/kappa_patch.png" alt="example convergence-map patch"><div class="role">map \(x\)</div></div>
+					<span class="ns-arrow">&rarr;</span>
+					<div class="ns-box ns-box--net"><div class="role">network</div><div class="math">\(f_\phi\)</div></div>
+					<span class="ns-arrow">&rarr;</span>
+					<div class="ns-box"><div class="role">summary</div><div class="math">\(t\)</div></div>
+					<span class="ns-arrow">&rarr;</span>
+					<div class="ns-box ns-box--flow"><div class="role">flow</div><div class="math">\(q_\psi(\theta\mid t)\)</div></div>
+					<span class="ns-arrow">&rarr;</span>
+					<div class="ns-box ns-box--out vmim"><div class="role">posterior</div><div class="math">\(p(\theta\mid t)\)</div></div>
+				</div>
+				<div class="ns-objective ns-objective--vmim">\[\max_{\phi,\psi}\; I(t;\theta)\;=\;\max_{\phi,\psi}\;\mathbb{E}\,\log q_\psi\!\big(\theta\mid f_\phi(x)\big)\]</div>
+				<div class="ns-lower">
+					<div class="ns-caption" aria-live="polite"></div>
+					<div class="ns-plot">
+						<div class="ns-plot-title">parameter space&nbsp; \(\theta\)</div>
+						<canvas class="ns-plot-canvas" width="744" height="452"></canvas>
+					</div>
+				</div>
+				<button class="ns-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
+				<span class="fragment ns-frag" aria-hidden="true"></span>
+				<span class="fragment ns-frag" aria-hidden="true"></span>
+			</section>
+
+			<!-- S10 — figure: p2_pipeline -->
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">§2</span> The comparison, done fairly: same maps, same flow, both calibrated</h3>
+				<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline.png" style="max-height:380px;" alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior"></div>
+				<div class="takeaway" style="max-width:92%;">
+					<span class="label">apples to apples</span>
+					<ul>
+						<li>Same &kappa; maps &rarr; <span style="color:var(--l1);font-weight:600">&#8467;1-norm</span> or <span style="color:var(--cnn);font-weight:600">CNN-VMIM</span> &rarr; the <em>same</em> flow NDE &rarr; posterior</li>
+						<li>Flat-sky <b>10&deg; patches</b> (cross-maps physically buildable), both arms calibrated</li>
+						<li><b>324k patches, 899 cosmologies</b></li>
+					</ul>
+				</div>
+				<!-- TRIM-FOLD: p2_methods_flatsky_inputs (the auto + cross channels) / p2_methods_l1_vs_cosmology -->
+				<aside class="notes">Two summaries of the same maps through the same flow NDE to a posterior. Flat-sky 10 deg patches so any cross-maps are physically buildable (unlike a full-sphere build), both arms calibrated, ample data (324k patches, 899 cosmologies) so any gap is the compressor, not data scarcity.</aside>
+			</section>
+
+			<!-- ============ ACT 2, beat 1 — the gap: read bin by bin, the l1 trails ============
+			     FIGURE NEEDED from Andreas: auto-only l1 against the CNN, matched pipeline.
+			     Placeholder below is step1 of the 4-arm build-up (auto-only, grey) so the
+			     deck stays valid; swap the src when the real render lands. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§2</span> Read <em class="alert">bin by bin</em>, the &#8467;1-norm trails the network</h3>
+				<div class="container" style="align-items:center; margin-top:0.3em;">
+					<div class="col" style="flex:1.1;">
+						<figure class="fig">
+							<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step1.png" style="max-height:420px;"
+							     alt="matched-pipeline posteriors: the auto-only l1-norm against the CNN">
+							<figcaption>PLACEHOLDER &mdash; auto-only &#8467;1 (awaiting the &#8467;1-vs-CNN render)</figcaption>
+						</figure>
+					</div>
+					<div class="col" style="flex:0.9;">
+						<div class="callout" style="max-width:100%;">
+							<span class="label">the gap, and its one cause</span>
+							<ul>
+								<li>The network mixes all four channels in its <b>first convolutional layer</b>, so inter-bin information is available to it by construction</li>
+								<li>A statistic evaluated <b>one bin at a time</b> sees only the one-dimensional marginals</li>
+								<li>Structural, not a question of quality &mdash; and fixable</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<aside class="notes">SAY: the lensing kernels overlap while the shape noise is independent, so the bins carry genuinely correlated information. The network gets it for free - all four maps enter the first convolutional layer together. A statistic computed bin by bin cannot see it, however good the statistic is. So this is a structural gap, not a quality gap, and that is what makes it fixable. Do not editorialise about the network being better. FoM3 2448 against 3326. Next slide: the two ways to close it.</aside>
+			</section>
+
+
+			<!-- ============ ACT 2, beat 2 — two routes to the cross-bin information ============ -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§2</span> Two ways to hand a fixed statistic the <em class="alert">cross-bin</em> information</h3>
+				<div class="container" style="align-items:flex-start; margin-top:0.4em;">
+					<div class="col fragment fade-in">
+						<div class="kicker" style="text-align:center;">build explicit cross-maps</div>
+						<figure class="fig">
+							<img class="plain" src="../assets/figures/statistics/p2_ablation/step1.png" style="max-height:300px;"
+							     alt="the cross-map ladder in figure of merit: auto 2448, plus convolution 2671, plus product 3045, both 3255">
+							<figcaption>a derived field per pair: the product &kappa;<sub>i</sub>&kappa;<sub>j</sub> buys <b>+24%</b>, a convolution <b>+9%</b></figcaption>
+						</figure>
+					</div>
+					<div class="col fragment fade-in">
+						<div class="kicker" style="text-align:center;">or read each pair jointly</div>
+						<figure class="fig">
+							<img class="plain" src="../assets/figures/statistics/p2_l1_joint_cellmap.png" style="max-height:300px;"
+							     alt="the joint distribution of signal-to-noise wavelet coefficients for a pair of tomographic bins, with its two one-dimensional marginals">
+							<figcaption>the <b>joint &#8467;1-norm</b>: sum the &#8467;1 weight in each cell of the (u<sub>i</sub>, u<sub>j</sub>) plane</figcaption>
+						</figure>
+					</div>
+				</div>
+				<p class="oneline fragment fade-in">The joint &#8467;1 needs <b>no cross-map channel at all</b> &mdash; it is built from the four auto-maps.</p>
+				<aside class="notes">SAY: two routes. Route one, the obvious one: build an explicit cross-map for each pair and run the same statistic on it. The product kappa_i kappa_j is the pairwise correlation and buys +24 percent; a convolution buys +9 and is unstable across training realisations. Route two, and this is the new statistic in the paper: keep the four auto-maps, but instead of one histogram per bin, lay a fixed K by K grid over the joint plane of SNR-normalised coefficients for each bin PAIR and sum the l1 weight, one half of |u_i| plus |u_j|, in each cell. K = 10, six bin pairs, concatenated over scales. Summing the absolute value rather than counting pixels is what makes it the 2-D analogue of the l1-norm rather than a joint PDF estimate. CAVEAT if asked: pairwise is the ceiling - with K^4 cells a 4-D histogram is almost everywhere empty, and the residual gap to the CNN is exactly the genuine 3- and 4-bin structure.</aside>
+			</section>
+
+
+			<!-- ============ ACT 2, beat 3 — the result: every l1 arm against the CNN ============
+			     figure: p2_corner_cnn_vs_l1, 4-step build-up. Violins moved to backup. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§2</span> Read the bins jointly and the analytical &#8467;1-norm <em class="alert">reaches the optimal CNN</em>: 3371 against 3326</h3>
+				<div class="fig" style="margin-top:0.3em;">
+					<div class="r-stack">
+						<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step1.png" style="max-height:470px;"
+						     alt="matched-pipeline posteriors: the auto-only l1 first, then plus product cross-maps, then the joint l1, then the CNN landing on top of it; the FoM3 bar inset fills in alongside">
+						<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step2.png" style="max-height:470px;" alt="">
+						<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step3.png" style="max-height:470px;" alt="">
+						<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step4.png" style="max-height:470px;" alt="">
+					</div>
+				</div>
+				<p class="oneline fragment fade-in">A <b>tie</b>, not a win &mdash; and it holds on every parameter, over 9,000 mock observations.</p>
+				<!-- referee aside (verbal): RealNVP +36%, resnet18 +6%, deeper net overfits at 899 cosmologies -->
+				<aside class="notes">THE headline. Build it arm by arm: auto-only 2448, plus the product cross-maps 3045, the joint l1 3371, and then the CNN lands at 3326 - on top of the joint l1, not above it. Say precisely what that means and what it does not: a TIE, never a win. The CNN's coverage is mildly conservative, which plausibly accounts for the joint l1 sitting a hair above. And "sufficient as far as we can measure" - both summaries appear to saturate the information the maps make accessible. VMIM trains the network to maximise the mutual information between its summary and the parameters, so it is an estimate of the CEILING, not just another statistic; a hand-built statistic reaching that ceiling is a sufficiency result. Referee aside if pushed: getting the CNN there took an expressive flow (RealNVP, +36%) and a better architecture (resnet18, +6%); the deeper net overfits at 899 cosmologies, so "you trained it wrong" does not hold. The per-mock violins are in backup if anyone wants the population rather than the medians.</aside>
+			</section>
+
+
+
+			<!-- ##########  NOT YET ORDERED - act 3, the BNT block and the closes.
+			     Kept in their previous relative order; nothing here is deleted.  ########## -->
+
+
 			<!-- ============ S6 — A1: the baryon-safe floor ============ -->
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">Q1</span> With <em class="alert">no feedback model at all</em>, cutting every contaminated scale still leaves the &#8467;1-norm ahead of the power spectrum</h3>
@@ -190,58 +476,6 @@
 				</svg>
 				<p class="oneline fragment fade-in">A <b>floor</b>: no feedback model, every contaminated scale discarded.</p>
 				<aside class="notes">SAY: peak counts actually LOSE to the power spectrum below Stage IV, x0.46 at 2,000 deg2, and the dyadic wavelet cut is coarse, so these numbers are conservative. A1. The framing is the result: most conservative treatment available. HOS still 1.8x at Stage IV, 2.6x full sky. Say the peak-count caveat out loud - it buys credibility. Then tick Q1 on the question slide.</aside>
-			</section>
-
-
-			<!-- ============ ACT 2 OPENER — which summary should we compute? ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight">So the &#8467;1-norm survives the cut &mdash; but <em class="alert">is it the right statistic at all?</em></h3>
-				<div class="pipeflow big" style="margin:0.5em 0 0.7em;">
-					<figure>
-						<img src="../assets/figures/maps/kappa_patch.png" alt="tomographic convergence map">
-						<figcaption>&#954; maps</figcaption>
-					</figure>
-					<span class="arw">&rarr;</span>
-					<figure>
-						<div class="qbox">?</div>
-						<figcaption>summary</figcaption>
-					</figure>
-					<span class="arw">&rarr;</span>
-					<figure>
-						<svg viewBox="0 0 150 150" width="200" height="200" role="img" aria-label="posterior contours">
-							<ellipse cx="75" cy="75" rx="58" ry="34" transform="rotate(-30 75 75)"
-							         fill="none" stroke="var(--fg-muted)" stroke-width="2.5"/>
-							<ellipse cx="75" cy="75" rx="33" ry="18" transform="rotate(-30 75 75)"
-							         fill="none" stroke="var(--fg-muted)" stroke-width="2.5"/>
-						</svg>
-						<figcaption>cosmology</figcaption>
-					</figure>
-				</div>
-				<p class="oneline fragment fade-in">Learned compressors are called near-optimal, but benchmarked against the
-					<b>power spectrum</b> &mdash; which any non-Gaussian summary already beats.</p>
-				<aside class="notes">SAY: peaks, Minkowski functionals, the scattering transform, wavelets - and increasingly a neural network trained to compress the maps. It has rarely been tested against a strong hand-crafted higher-order statistic under matched conditions. Act 2 opener. This question is GENERATED by the answer to act 1 - do not ask it earlier. The summary is the unknown in the middle of the pipeline. Then the honest gap: learned compressors are benchmarked against the wrong thing. That is what this comparison fixes.</aside>
-			</section>
-
-
-			<!-- ============ S8 — the gap and its one cause ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">Q2</span> Read bin by bin, the &#8467;1-norm trails &mdash; the network mixes the four bins in its first layer, and it does not</h3>
-				<div class="mixfig withfig">
-					<div class="side ana">
-						<h4>what a per-channel statistic sees</h4>
-						<p class="verdict">only the <b>one-dimensional marginals</b> &mdash; the curves in the margins, one histogram per bin</p>
-					</div>
-					<figure class="fig">
-						<img class="plain" src="../assets/figures/statistics/p2_l1_joint_cellmap.png" style="max-height:430px;"
-						     alt="the joint distribution of signal-to-noise wavelet coefficients for a pair of tomographic bins, with its two one-dimensional marginals">
-					</figure>
-					<div class="side lrn">
-						<h4>what is actually there</h4>
-						<p class="verdict">each pair's <b>full two-dimensional distribution</b> &mdash; the structure between the bins</p>
-					</div>
-				</div>
-				<p class="oneline fragment fade-in">The whole gap, and it is structural: FoM<sub>3</sub> <span class="a">2448</span> against <span class="b">3326</span>.</p>
-				<aside class="notes">SAY: the lensing kernels overlap while the shape noise is independent, so the bins carry correlated information. The network mixes all four channels in its first layer and reads it; a statistic evaluated one bin at a time cannot. The gap is structural, not a quality difference. This is the idea the rest of the talk runs on: joint reading. Do not editorialise about the network being better.</aside>
 			</section>
 
 
@@ -382,9 +616,6 @@
 				<p class="oneline fragment fade-in">What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.</p>
 				<aside class="notes">Land all three, then the honest residual, then the practical message: nulling stays usable as a mitigation for redshift-localised systematics provided some stage of the pipeline reads the bins jointly. Leave this slide up during questions.</aside>
 			</section>
-			<!-- ###############  END NEW SLIDES  ############### -->
-
-			<!-- ############################  ACT 0 — framing + trust agenda  ############################ -->
 
 			<!-- S2 (revised): 2pt-skeptic + uniform trust checklist (no highlighting, no legend, no caveat) -->
 			<section data-theme="light">
@@ -407,9 +638,6 @@
 				</ul>
 				<aside class="notes">We are all optimizing statistics, going to higher order. But the two-point community is not convinced: the flagship Stage-III/IV analyses still run on 2pt, and our results are treated as proofs of concept. What would make HOS trustworthy enough to lead a flagship analysis? A checklist the community keeps raising. This talk takes several head-on (systematics, method limits, a validation standard, simplicity); SBI removes covariance and the Gaussian-likelihood assumption for free. This checklist is essentially Wednesday round table.</aside>
 			</section>
-
-
-			<!-- ############################  ACT 1 — baryonic feedback & HOS (Paper I)  ############################ -->
 
 			<!-- Part 1 divider (dark, chapter break) -->
 			<section>
@@ -457,152 +685,6 @@
 				</div>
 				<!-- TRIM-FOLD: P(k) suppression curve p1_baryon_impact_ps.pdf can drop in if time allows -->
 				<aside class="notes">Hook (reused from the LAM deck): Stage IV is no longer statistics-limited but systematics-limited; the sharpest small-scale systematic is baryonic feedback (AGN, SNe), which suppresses matter where the constraining power lives and where models disagree. The two questions the talk answers: (1) how does unmodeled feedback bias our non-Gaussian statistics? (2) after safe scale cuts, do HOS still outperform the power spectrum? Toolkit: CosmoGridV1, 4 bins, paired DMO + baryonified maps, Euclid-like noise, SBI (NPE + MAF). Mitigation options, both unappealing: model the feedback (models diverge) or cut scales (lose signal).</aside>
-			</section>
-
-
-			<!-- Wavelet statistics: three slides (peaks / wavelet peaks / l1-norm) compressed
-			     into one, on the shared principle. Figures: thesis intro F5b (starlet row) and
-			     N3 (peak map, left panel cropped). White background: both are black ink on white. -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Peak counts and the &#8467;1-norm are <em class="alert">one-point</em> statistics on the same starlet decomposition</h3>
-
-				<figure class="fig" style="margin:0.1em 0 0;">
-					<img class="plain" src="../assets/diagrams/starlet_row_decomposition.png" style="width:74%; max-width:100%;"
-					     alt="the starlet transform: a convergence map written as the sum of four wavelet-coefficient bands plus a coarse map, each band isolating one angular scale">
-					<figcaption>the <b>starlet transform</b>: one map as a sum of bands, each isolating a single angular scale</figcaption>
-				</figure>
-
-				<div class="statpair">
-					<div class="col fragment fade-in">
-						<div class="kicker">wavelet peak counts</div>
-						<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
-						     alt="a smoothed convergence map with its signal-to-noise peaks circled">
-						<p class="cap">local maxima of the SNR field, counted per SNR bin &mdash; only the <b>discrete</b> features</p>
-					</div>
-					<div class="col fragment fade-in">
-						<div class="kicker">starlet &#8467;1-norm</div>
-						<div class="l1formula">$$\ell_1^{\,j,i} \;=\; \sum_{u} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$</div>
-						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &mdash; every pixel, peaks <em>and</em> voids, with no feature to define</p>
-					</div>
-				</div>
-
-				<aside class="notes">SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of pixel values - and both are made multi-scale by the same starlet transform, which writes the map as a sum of bands, each isolating one angular scale. That matters twice: each band covers a different frequency range so the covariance is nearly diagonal, and a systematic confined to small scales lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features. The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out loud.</aside>
-			</section>
-
-
-			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
-			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
-				<h3 class="sbi-title">The inference pipeline: <span class="hl">neural posterior estimation</span></h3>
-				<div class="sbi-stage">
-					<canvas class="sbi-canvas" width="2360" height="1104"
-						aria-label="The SBI pipeline assembling: cosmoGRID kappa-maps, plus noise and a wavelet transform into wavelet-scale maps and summary statistics, conditioning a conditional MAF that maps a Gaussian into the posterior"></canvas>
-					<img class="sbi-img" data-appear="1" src="../assets/diagrams/cosmogrid_box.png"
-						alt="cosmoGRID kappa-maps" style="left:10.5%; top:65%; width:15%;">
-					<img class="sbi-img" data-appear="2" src="../assets/diagrams/wavelet_scales_stats.png"
-						alt="wavelet-scale maps and summary statistics" style="left:46%; top:66%; width:46%;">
-					<div class="sbi-lbl sbi-lbl--mut" data-appear="2" style="left:20.5%; top:55%;">+ noise<br>wavelet transform</div>
-					<div class="sbi-lbl sbi-lbl--cond" data-appear="3" style="left:70%; top:56%;">condition</div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:15%; top:5%;">Gaussian<span class="sub">\(\mathcal{N}(0,\mathbf{1})\)</span></div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:40%; top:5%;">Density estimator<span class="sub">conditional MAF</span></div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="4" style="left:62%; top:5%;">Posterior<span class="sub">\(p(\theta\mid x)\)</span></div>
-					<div class="sbi-lbl sbi-lbl--obj" data-appear="5" style="left:91.5%; top:40%;">
-						<div class="ot">training objective</div>\(\mathcal{L}=-\log p_\phi(\theta\mid x)\)</div>
-					<img class="sbi-img" data-appear="5" src="../assets/logos/jax_logo.png" alt="JAX" style="left:91.5%; top:52%; width:7.5%;">
-				</div>
-				<div class="sbi-caption" aria-live="polite"></div>
-				<button class="sbi-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<aside class="notes">The SBI pipeline for Part 1: CosmoGridV1 kappa-maps, add Euclid-like noise and apply the wavelet transform to get wavelet-scale maps and the summary statistics (the l1-norm), then condition a conditional MAF (NPE) that maps a Gaussian to the posterior p(theta|x); trained by minimizing -log p_phi(theta|x). JAX stack.</aside>
-			</section>
-
-
-			<!-- Mitigation: Scale Cuts (LAM version, light) -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Mitigation: Scale Cuts</h3>
-				<ul style="font-size:0.82em; margin-bottom:0.5em;">
-					<li class="fragment fade-in">Goal: bring tension <b class="alert">below 0.3$\sigma$</b></li>
-					<li class="fragment fade-in">$C_\ell$: needs an <b class="alert">area-dependent</b> cut, $\ell_{\rm max} = 860$ at 2,000 deg&sup2; down to <b class="alert">340</b> at full sky &rarr; discards most of the signal</li>
-					<li class="fragment fade-in">Starlet: contamination <b class="alert">isolated in one scale</b> &rarr; removing just the finest wavelet band is sufficient across <em>all</em> survey areas</li>
-				</ul>
-				<div class="r-stack fragment fade-in">
-					<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step1.png" style="max-height:270px;"
-					     alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, against the 0.3 sigma threshold">
-					<img class="plain fragment" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png" style="max-height:270px;" alt="">
-				</div>
-				<div class="block fragment fade-in" style="margin-top:0.5em;">
-					<div class="block-content" style="font-size:0.78em;">We run this analysis as a function of survey area: more area means smaller statistical errors, and thus higher sensitivity to bias.</div>
-				</div>
-				<aside class="notes">Scale-cut mitigation. Goal: tension below 0.3 sigma. The power spectrum needs an area-dependent cut, lmax 860 at 2,000 deg2 falling to 340 at full sky, discarding most of the signal; the starlet l1 isolates the contamination in the single finest wavelet scale, so removing just that band suffices across all survey areas. We quantify this as a function of survey area next.</aside>
-			</section>
-
-
-			<!-- Baryonic Bias Scales with Survey Area (LAM version, light) -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Baryonic Bias Scales with Survey Area</h3>
-				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" style="flex:1.35;">
-						<div class="r-stack">
-							<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step1.png" style="max-height:270px;"
-							     alt="baryon tension in sigma versus survey area, power spectrum first">
-							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/statistics/p1_bias_vs_area/step2.png" style="max-height:270px;" alt="">
-							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/statistics/p1_bias_vs_area/step3.png" style="max-height:270px;" alt="">
-						</div>
-						<ul style="font-size:0.78em;">
-							<li class="fragment fade-in" data-fragment-index="2">At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b class="alert">3.6&sigma;</b></li>
-							<li class="fragment fade-in" data-fragment-index="3">At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b class="alert">6&sigma;</b></li>
-							<li class="fragment fade-in" data-fragment-index="4">HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the baryonically-contaminated small scales</li>
-						</ul>
-					</div>
-					<div class="col" style="flex:1.2;">
-						<div class="r-stack fragment fade-in">
-							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png" style="max-height:370px;"
-							     alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
-							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
-						</div>
-					</div>
-				</div>
-				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above 6 (lmax=1024). HOS are more sensitive than C_l, they live on the contaminated small scales.</aside>
-			</section>
-
-
-			<!-- Are HOS still useful? (LAM version of the safe-scales slide, light) -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Are HOS still useful?</h3>
-				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" style="flex:1.2;">
-						<div class="r-stack">
-							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png" style="max-height:390px;"
-							     alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
-							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png" style="max-height:390px;" alt="">
-							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png" style="max-height:390px;" alt="">
-						</div>
-					</div>
-					<div class="col" style="flex:0.85;">
-						<div class="block fragment fade-in">
-							<div class="block-title">On baryon-safe scales</div>
-							<div class="block-content"><ul style="font-size:0.78em;">
-								<li>Starlet $\ell_1$-norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at Stage IV, <b class="alert">&times;2.6</b> at full sky</li>
-								<li>Peak counts <em>lose</em> to $C_\ell$ below Stage IV (&times;0.46 at 2,000 deg&sup2;)</li>
-								<li>HOS <b class="alert">still useful</b>: non-Gaussian signal persists even after the fine-scale cut</li>
-							</ul></div>
-						</div>
-						<div class="block fragment fade-in" style="margin-top:0.5em;">
-							<div class="block-title">Takeaway</div>
-							<div class="block-content"><ul style="font-size:0.78em;">
-								<li>Baryonic effects are a <b class="alert">dominant systematic</b>, biasing parameter estimation</li>
-								<li>HOS are not merely deep-non-linear probes: they robustly recover information on <b class="alert">quasi-linear scales</b></li>
-							</ul></div>
-						</div>
-					</div>
-				</div>
-				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at Stage IV and x2.61 at full sky; say the peak-count caveat out loud (x0.46 at 2,000 deg2), it buys credibility; HOS remain useful, the non-Gaussian signal persists after the fine-scale cut. Takeaway: baryons are a dominant systematic; HOS are robust tools on quasi-linear scales, not just deep non-linear probes.</aside>
 			</section>
 
 
@@ -684,9 +766,6 @@
 				<aside class="notes">The natural way to exploit smaller scales: BNT, a linear invertible re-mixing of the bins that nulls the low-z lensing efficiency, so baryon sensitivity localizes to one transformed bin and you cut scales only there (recall the overlapping kernels from S3). In Paper I we tried it; for map-based HOS it backfires: the same mixing correlates the originally-independent shape noise, the noise floor rises, the HOS contours inflate. The puzzle carries us into Part 2. NAME Vinciguerra (Simone is in the room, Wed): "a recent Euclid forecast found this persists even with explicit cross-components; I will come back to that."</aside>
 			</section>
 
-
-			<!-- ############################  ACT 2 — learned vs analytical, reliability (Paper II)  ############################ -->
-
 			<!-- DIVIDER — Part 1 / Part 2 (dark slide, chapter break) -->
 			<section>
 				<div class="part-divider">
@@ -752,88 +831,6 @@
 				<button class="ns-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
 				<span class="fragment ns-frag" aria-hidden="true"></span>
 				<span class="fragment ns-frag" aria-hidden="true"></span>
-			</section>
-
-			<!-- ============ S11b — VMIM ============ -->
-			<section class="ns-slide" data-theme="light" data-ns-explainer data-ns-kind="vmim">
-				<h3 class="ns-title">Training a neural summary II:
-					<span class="hl-vmim">VMIM</span></h3>
-				<div class="ns-pipe">
-					<div class="ns-box"><div class="role">simulator</div><div class="math">\(\theta\sim\) prior</div></div>
-					<span class="ns-arrow">&rarr;</span>
-					<div class="ns-box ns-box--map"><img class="ns-map" src="../assets/figures/maps/kappa_patch.png" alt="example convergence-map patch"><div class="role">map \(x\)</div></div>
-					<span class="ns-arrow">&rarr;</span>
-					<div class="ns-box ns-box--net"><div class="role">network</div><div class="math">\(f_\phi\)</div></div>
-					<span class="ns-arrow">&rarr;</span>
-					<div class="ns-box"><div class="role">summary</div><div class="math">\(t\)</div></div>
-					<span class="ns-arrow">&rarr;</span>
-					<div class="ns-box ns-box--flow"><div class="role">flow</div><div class="math">\(q_\psi(\theta\mid t)\)</div></div>
-					<span class="ns-arrow">&rarr;</span>
-					<div class="ns-box ns-box--out vmim"><div class="role">posterior</div><div class="math">\(p(\theta\mid t)\)</div></div>
-				</div>
-				<div class="ns-objective ns-objective--vmim">\[\max_{\phi,\psi}\; I(t;\theta)\;=\;\max_{\phi,\psi}\;\mathbb{E}\,\log q_\psi\!\big(\theta\mid f_\phi(x)\big)\]</div>
-				<div class="ns-lower">
-					<div class="ns-caption" aria-live="polite"></div>
-					<div class="ns-plot">
-						<div class="ns-plot-title">parameter space&nbsp; \(\theta\)</div>
-						<canvas class="ns-plot-canvas" width="744" height="452"></canvas>
-					</div>
-				</div>
-				<button class="ns-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
-				<span class="fragment ns-frag" aria-hidden="true"></span>
-				<span class="fragment ns-frag" aria-hidden="true"></span>
-			</section>
-
-			<!-- S10 — figure: p2_pipeline -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§2</span> The comparison, done fairly: same maps, same flow, both calibrated</h3>
-				<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline.png" style="max-height:380px;" alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior"></div>
-				<div class="takeaway" style="max-width:92%;">
-					<span class="label">apples to apples</span>
-					<ul>
-						<li>Same &kappa; maps &rarr; <span style="color:var(--l1);font-weight:600">&#8467;1-norm</span> or <span style="color:var(--cnn);font-weight:600">CNN-VMIM</span> &rarr; the <em>same</em> flow NDE &rarr; posterior</li>
-						<li>Flat-sky <b>10&deg; patches</b> (cross-maps physically buildable), both arms calibrated</li>
-						<li><b>324k patches, 899 cosmologies</b></li>
-					</ul>
-				</div>
-				<!-- TRIM-FOLD: p2_methods_flatsky_inputs (the auto + cross channels) / p2_methods_l1_vs_cosmology -->
-				<aside class="notes">Two summaries of the same maps through the same flow NDE to a posterior. Flat-sky 10 deg patches so any cross-maps are physically buildable (unlike a full-sphere build), both arms calibrated, ample data (324k patches, 899 cosmologies) so any gap is the compressor, not data scarcity.</aside>
-			</section>
-
-
-			<!-- S12 ★ — figure: p2_corner_cnn_vs_l1 (4-step build-up) + p2_cp_fom3_bars (3-step) -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§2</span> Read the bins jointly and the analytical &#8467;1-norm <em class="alert">reaches the optimal CNN</em>: 3371 against 3326, a tie</h3>
-				<div class="container" style="align-items:center;">
-					<div class="col">
-												<div class="fig">
-							<div class="r-stack">
-								<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step1.png" style="max-height:440px;"
-								     alt="matched-pipeline posteriors: the auto-only l1 first, then plus product cross-maps, then the joint l1, then the CNN landing on top of it; the FoM3 bar inset fills in alongside">
-								<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step2.png" style="max-height:440px;" alt="">
-								<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step3.png" style="max-height:440px;" alt="">
-								<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step4.png" style="max-height:440px;" alt="">
-							</div>
-							<p class="cap" style="text-align:center; margin-top:0.3em;">the joint &#8467;1 and the CNN posteriors coincide</p>
-						</div>
-					</div>
-					<div class="col">
-						<div class="fig fragment">
-							<div class="r-stack">
-								<img class="plain" src="../assets/figures/statistics/p2_cp_fom3_bars/step1.png" style="max-height:400px;"
-								     alt="per-mock distributions of the three marginal uncertainties and the figure of merit, for the l1 plus product, joint l1 and CNN arms">
-								<img class="plain fragment" src="../assets/figures/statistics/p2_cp_fom3_bars/step2.png" style="max-height:400px;" alt="">
-								<img class="plain fragment" src="../assets/figures/statistics/p2_cp_fom3_bars/step3.png" style="max-height:400px;" alt="">
-							</div>
-							<p class="cap" style="text-align:center; margin-top:0.3em;">the tie holds on every parameter: 3045, <b>3371</b>, 3326</p>
-						</div>
-					</div>
-				</div>
-		
-				<!-- referee aside (verbal): RealNVP +36%, resnet18 +6%, deeper net overfits at 899 cosmologies -->
-				<aside class="notes">
-					Direct answer to Wednesday's round table (optimal vs interpretable, physics-based vs learned): the interpretable hand-built statistic essentially matches the learned optimum once you control the estimator, both calibrated. Referee aside (verbal): getting the CNN there took an expressive flow (RealNVP, +36%) and a better architecture (resnet18, +6%); the deeper net overfits at 899 cosmologies, so "you trained it wrong" does not hold. HONESTY: this is a TIE, not a win - joint l1 3371 +/- 96 against the CNN 3326 +/- 30, and the CNN coverage is mildly conservative, which plausibly accounts for the gap. Never say we beat it.
-				</aside>
 			</section>
 
 			<!-- S13 ★ — figure: p2_tarp (4-step) + p2_sbc (3-step) -->
@@ -1028,9 +1025,6 @@
 				<aside class="notes">A mini-conclusion. The CNN does not beat the joint l1 at all - 3371 against 3326, a tie, both calibrated - and getting the network even to the tie was expensive and treacherous: architecture search, a very large dataset, and a string of unphysical-information traps that tighten contours dishonestly AND largely escape TARP and SBC (calibrated-looking and still wrong). l1 has none of this. Counterweight where the answer leans yes: BNT, where the channel-mixing CNN keeps the full information for free. Panel tee-up: "if NN statistics aren't interpretable but pass every validation test, should we care?" with the sharp twist that some failure modes pass every test and are still wrong. Full 6-trap catalog in backup.</aside>
 			</section>
 
-
-			<!-- ############################  ACT 3 — synthesis  ############################ -->
-
 			<!-- Conclusion (redesigned) -->
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§3</span> Do baryons break HOS? No.</h3>
@@ -1053,6 +1047,10 @@
 				<!-- <p class="cap" style="text-align:center; margin-top:0.7em;">Next: a flat-sky cross for the CNN, an end-to-end CNN+BNT baryon-mitigation demo , calibration at scale for Stage IV.<br>Thanks: Guerrini, Starck, Kilbinger , CosmoGridV1 , based on Learn2Map (Zeghal).</p> -->
 				<!-- <aside class="notes">Back to the title: do baryons break HOS? No. Recap the three (Part 1 baryons, Part 2 learned-vs-analytical, the BNT twist). Round-table tee-up: these are exactly the Wednesday questions, one data point on each. Systematics humility: controlled methods study; real-world robustness (IA, source clustering, photo-z) needs the work others present. Generalization: the l1 and one-point PDF and the basis-dependence lesson carry to 21cm/EoR. End forcefully, loop back to the opening question.</aside> -->
 			</section>
+
+
+			<!-- ##########  BACKUP  ########## -->
+
 
 
 			<!-- ================= BACKUP (for Q&A; not in the main flow) ================= -->
@@ -1285,6 +1283,20 @@
 				<aside class="notes">The answer to "why 10 degree patches" and to "how many mocks". The cross-map construction has to be patch-local to be physically realisable, which is the other half of the reason.</aside>
 			</section>
 
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">backup</span> The tie, per mock rather than at the median</h3>
+				<div class="fig">
+					<div class="r-stack">
+						<img class="plain" src="../assets/figures/statistics/p2_cp_fom3_bars/step1.png" style="max-height:330px;"
+						     alt="per-mock distributions of the three marginal uncertainties and the figure of merit, for the l1 plus product, joint l1 and CNN arms">
+						<img class="plain fragment" src="../assets/figures/statistics/p2_cp_fom3_bars/step2.png" style="max-height:330px;" alt="">
+						<img class="plain fragment" src="../assets/figures/statistics/p2_cp_fom3_bars/step3.png" style="max-height:330px;" alt="">
+					</div>
+					<figcaption>&#963;(&Omega;<sub>m</sub>), &#963;(&#963;<sub>8</sub>), &#963;(w<sub>0</sub>) and FoM<sub>3</sub> across 9,000 mocks &mdash; medians 3045, <b>3371</b>, 3326</figcaption>
+				</div>
+				<p class="caveat">The answer to &ldquo;FoM<sub>3</sub> is fragile in a degenerate parameter space&rdquo;: the marginals are quoted alongside it, and this is the population rather than a point. The &plusmn; on the medians is the spread over three independently trained compressors, the dominant source of run-to-run variability.</p>
+				<aside class="notes">Reach for this if someone doubts the tie is robust, or asks about FoM3 as a summary. The overlap of the three violins is the point.</aside>
+			</section>
 
 
 		</div>
