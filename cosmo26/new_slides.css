@@ -646,3 +646,18 @@
    ridge, which is the one feature the slide exists to show. */
 .reveal .slides section .jointdef { font-size: 0.76em; margin-top: 0.5em; }
 .reveal .slides section .jointdef .katex-display { margin: 0; }
+
+/* a citation tag in the bottom-right of a results slide. Exempt from the type
+   floor: it is provenance, not content, and the full references are on the
+   conclusions slide where people photograph them. */
+.reveal .slides section .srcref {
+  position: absolute; right: 0; bottom: 0;
+  font-family: var(--mono); font-size: 0.55em; letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+.reveal .slides section .refs {
+  font-family: var(--mono); font-size: 0.6em; line-height: 1.5;
+  color: var(--fg-muted); text-align: left; margin: 1.1em 0 0;
+  padding-left: 0.8em; border-left: 1px solid var(--hair);
+}
+.reveal .slides section .refs em { font-style: italic; }
