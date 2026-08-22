@@ -583,7 +583,7 @@
 .reveal .slides section .routes .route .rcap {
   font-family: var(--mono); font-size: 0.62em; line-height: 1.42;
   color: var(--fg-muted); text-align: center;
-  margin: 0.6em 0 0; min-height: 3.3em; max-width: 97%;
+  margin: 0.55em 0 0; max-width: 97%;
 }
 .reveal .slides section .routes .route .rcap b { color: var(--accent); font-weight: 500; }
 
@@ -616,7 +616,7 @@
    aspect ratio to the asset's, and the image fills it exactly. */
 .reveal .slides section .plane .planefig {
   grid-column: 2; grid-row: 1; position: relative; display: block;
-  width: 300px; aspect-ratio: 820 / 849; line-height: 0;
+  width: 344px; aspect-ratio: 820 / 849; line-height: 0;
 }
 /* reveal's own sheet caps every slide image at max-width/max-height 95%, which
    would render the image at 95% of the box the overlay is measured against */
@@ -641,5 +641,5 @@
    go on top of the cell map: at a size that fits inside the 242px panel the type
    falls well under the house floor, and the plate would land on the diagonal
    ridge, which is the one feature the slide exists to show. */
-.reveal .slides section .jointdef { font-size: 0.82em; margin-top: 0.35em; }
+.reveal .slides section .jointdef { font-size: 0.76em; margin-top: 0.5em; }
 .reveal .slides section .jointdef .katex-display { margin: 0; }
