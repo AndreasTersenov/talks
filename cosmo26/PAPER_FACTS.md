@@ -171,6 +171,8 @@ joint ℓ1 sitting a hair above it — **call it a tie, never a win.**
 | joint ℓ1 | 3371 ± 96 | 2424 ± 208 | **0.72** |
 | CNN | 3326 ± 30 | 3186 ± 52 | **0.96** |
 
+**How 0.96 is shown on the slide (2026-08-22, Andreas).** The act-3 ladder renders the CNN rung as a **full bar labelled `~1×`**, not `0.96×`. 0.96 is within its error of unity, and the claim the slide is making is *approximately lossless under the nulling*; a two-decimal figure invites the audience to read a real 4% loss that the measurement does not support. The ladder is scaled so a full track is 1.0, which makes the other three rungs read directly as the fraction retained. The exact value stays here and in the speaker notes for Q&A.
+
 For ℓ1+product under BNT: σ(σ8) **0.077 → 0.133**, σ(w0) **0.229 → 0.300**.
 
 **One law instead of four results:** *what a summary retains under the nulling tracks how
