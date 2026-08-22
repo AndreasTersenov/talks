@@ -224,27 +224,29 @@
 						</div>
 					</div>
 				</div>
-				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above 6 (lmax=1024). HOS are more sensitive than C_l, they live on the contaminated small scales.</aside>
+				<p class="footnote">measured at full map resolution: $\ell_{\rm max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
+				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above 6. IMPORTANT: all of this is at FULL MAP RESOLUTION - lmax 1024 for the power spectrum, every wavelet band for the HOS - i.e. no scale cuts yet. That is the point: this is what you get if you use everything the maps offer. HOS are more sensitive than C_l because they live on the contaminated small scales.</aside>
 			</section>
 
 
 			<!-- Mitigation: Scale Cuts (LAM version, light) -->
 			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§1</span> Mitigation: Scale Cuts</h3>
+				<h3 class="slide-title tight"><span class="sec">§1</span> Buying back an unbiased inference costs $C_\ell$ <em class="alert">most of its multipole range</em>, and the starlet its <em class="alert">finest band</em></h3>
 				<ul style="font-size:0.82em; margin-bottom:0.5em;">
-					<li class="fragment fade-in">Goal: bring tension <b class="alert">below 0.3$\sigma$</b></li>
-					<li class="fragment fade-in">$C_\ell$: needs an <b class="alert">area-dependent</b> cut, $\ell_{\rm max} = 860$ at 2,000 deg&sup2; down to <b class="alert">340</b> at full sky &rarr; discards most of the signal</li>
-					<li class="fragment fade-in">Starlet: contamination <b class="alert">isolated in one scale</b> &rarr; removing just the finest wavelet band is sufficient across <em>all</em> survey areas</li>
+					<li class="fragment fade-in">Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
+					<li class="fragment fade-in">$C_\ell$ takes a <b class="alert">sliding</b> cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b class="alert">340</b> at full sky</li>
+					<li class="fragment fade-in">The starlet concentrates the contamination in its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
 				</ul>
 				<div class="r-stack fragment fade-in">
 					<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step1.png" style="max-height:270px;"
 					     alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, against the 0.3 sigma threshold">
 					<img class="plain fragment" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png" style="max-height:270px;" alt="">
 				</div>
-				<div class="block fragment fade-in" style="margin-top:0.5em;">
-					<div class="block-content" style="font-size:0.78em;">We run this analysis as a function of survey area: more area means smaller statistical errors, and thus higher sensitivity to bias.</div>
+				<div class="cutpair fragment fade-in">
+					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut tuned to each area</span></div>
+					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole bands only, so we cut more than we need</span></div>
 				</div>
-				<aside class="notes">Scale-cut mitigation. Goal: tension below 0.3 sigma. The power spectrum needs an area-dependent cut, lmax 860 at 2,000 deg2 falling to 340 at full sky, discarding most of the signal; the starlet l1 isolates the contamination in the single finest wavelet scale, so removing just that band suffices across all survey areas. We quantify this as a function of survey area next.</aside>
+				<aside class="notes">Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power spectrum gets a SLIDING lmax - it can be tuned to keep exactly the multipoles that are safe at each area, from 860 at 2,000 down to 340 at full sky, which is a large fraction of the range removed but it is removed precisely. The starlet gets a different kind of cut: the contamination concentrates in the finest band, so dropping j=1 is enough at every area - but because the bands are dyadic, whole-band removal is the ONLY cut available. That is a blunt instrument: at the smaller footprints it certainly throws away uncontaminated quasi-linear information that a finer filter bank would have kept. So the wavelet cut is not "better", it is coarser and therefore conservative. A sqrt-2 or non-dyadic filter bank would allow an area-tuned cut and recover more. One genuine advantage the HOS do have: they are binned in signal-to-noise as well as scale, and the baryonic response sits in the positive tail, so in principle the contamination can be removed where it sits rather than by removing a whole band. We leave that to future work.</aside>
 			</section>
 
 
