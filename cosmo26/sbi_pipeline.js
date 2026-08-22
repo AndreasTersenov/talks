@@ -84,8 +84,8 @@
       {delimiters:[{left:"\\(",right:"\\)",display:false}],throwOnError:false});}catch(e){}};
 
   Engine.COPY={
-    1:"We take <b>cosmoGRID V1</b> forward simulations: spherical convergence maps \\(\\kappa\\) at known cosmologies \\(\\theta\\).",
-    2:"Add <span class='c-warm'>shape noise</span> and a <span class='c-warm'>wavelet transform</span>, then measure <b>summary statistics</b> on each scale: the data vector \\(x\\).",
+    1:"We take <b>cosmoGRID V1</b> simulations: spherical convergence maps \\(\\kappa\\) at known cosmologies \\(\\theta\\).",
+    2:"Add <span class='c-warm'>shape noise</span> and a <span class='c-warm'>wavelet transform</span> \\(\\rightarrow\\) measure <b>summary statistics</b> on each scale (the data vector \\(x\\)).",
     3:"Those summaries <b>condition</b> a neural density estimator, a <span class='c-acc'>conditional MAF</span>.",
     4:"The flow turns a simple Gaussian \\(\\mathcal{N}(0,1)\\) into the <span class='c-acc'>posterior</span> \\(p(\\theta\\mid x)\\).",
     5:"Trained by maximizing the log-probability of the true parameters: \\(\\mathcal{L}=-\\log p_\\phi(\\theta\\mid x)\\)."
