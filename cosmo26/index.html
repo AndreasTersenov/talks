@@ -383,16 +383,16 @@
 					</div>
 					<div class="col" style="flex:0.82;">
 						<div class="callout fragment fade-in" data-fragment-index="1" style="max-width:100%;">
-							<span class="label">the gap, and its one cause</span>
+							<span class="label">the gap</span>
 							<ul>
-								<li>The network mixes all four channels in its <b>first convolutional layer</b>, so inter-bin information is available to it by construction</li>
-								<li>A statistic evaluated <b>one bin at a time</b> sees only the one-dimensional marginals</li>
-								<li>Structural, not a question of quality &mdash; and fixable</li>
+								<li>The learned summary is <b class="alert">36% ahead</b> in FoM<sub>3</sub></li>
+								<li>But they are not reading the same thing: the $\ell_1$-norm <b>one bin at a time</b>, the network <b>all four maps together</b></li>
+								<li>So close that asymmetry, and see how much of the gap goes with it</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<aside class="notes">SAY: the lensing kernels overlap while the shape noise is independent, so the bins carry genuinely correlated information. The network gets it for free - all four maps enter the first convolutional layer together. A statistic computed bin by bin cannot see it, however good the statistic is. So this is a structural gap, not a quality gap, and that is what makes it fixable. Do not editorialise about the network being better. FoM3 2448 against 3326. Next slide: the two ways to close it.</aside>
+				<aside class="notes">SAY: read the result plainly first - the CNN posterior is tighter, FoM3 3326 against 2448, about 36 per cent. Do not editorialise about the network being better, and do NOT yet claim to know why. THEN point at the asymmetry in how the comparison is set up: the lensing kernels overlap while the shape noise is independent, so the bins carry genuinely correlated information; all four maps enter the network's first convolutional layer together, while the l1-norm is computed one channel at a time and only ever sees the one-dimensional marginals. That is an observation about the setup, not yet a diagnosis - it might account for all of the gap, some of it, or none. The next two slides close the asymmetry and measure what happens, which is the honest way to find out.</aside>
 			</section>
 
 
