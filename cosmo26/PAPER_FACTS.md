@@ -238,6 +238,54 @@ contours are an honest report of a real loss in that representation, not over-co
 
 ---
 
+## 3b. Two claims that must be phrased the paper's way
+
+These are not number errors, they are **framing** errors, and both were on slides until
+2026-08-20. Neither survives contact with the paper.
+
+### The two scale cuts are not like for like
+
+Wrong: *"$C_\ell$ needs an area-dependent cut that discards most of the signal; the starlet
+isolates the contamination in one scale, so removing one band suffices"* — which reads as the
+wavelet cut being cleverer.
+
+Right (§`sec:scale_cuts`): the power spectrum gets a **sliding** $\ell_{\rm max}$, tuned to keep
+exactly what is safe at each area. The starlet gets a **quantised** cut, because the dyadic bands
+increase by powers of two and whole-band removal is the only option available. Dropping $j=1$
+suffices everywhere, but at the smaller footprints it *"likely discards more uncontaminated,
+quasi-linear information than strictly necessary."* A √2-resolution or non-dyadic filter bank
+would allow an area-tuned cut and retain more.
+
+So the wavelet cut is **coarser and therefore conservative**, not better. The genuine wavelet
+property is that the contamination *concentrates* in one band. The genuine HOS advantage the
+paper does claim is different: peaks and the ℓ1-norm are binned in **signal-to-noise as well as
+scale**, and the baryonic response sits in the positive tail, so in principle the contamination
+can be cut where it sits rather than by removing a band. Left to future work.
+
+### Peak counts do not "lose"
+
+Wrong: *"peak counts lose to $C_\ell$ below Stage IV (×0.46 at 2,000 deg²)"*.
+
+Right (§`sec:info_content`): they **reach approximate parity** with the power spectrum at Stage
+IV-like areas (×1.07) and slightly exceed it at full sky (×1.17); at smaller areas they trail.
+And the reason is largely the cut, not the statistic — *"the quantized wavelet cut removes a
+larger fraction of the peak-count information than the sliding $\ell_{\rm max}$ cut removes from
+the PS, and this penalty is most severe where the PS cut is loosest."*
+
+Also load-bearing, and easy to omit: *"in the ($\Omega_{\rm m}$, $w_0$) and ($\sigma_8$, $w_0$)
+planes the degeneracy directions of both HOS differ from that of the PS, so the statistics are
+partly complementary. The peak counts therefore add information despite reaching a figure of
+merit comparable to that of the PS."* Comparable FoM is not redundancy.
+
+### And one wording fix on the starlet itself
+
+The starlet bands are **band-passes that overlap substantially** (App. `app:starlet_ell`:
+*"Adjacent bands overlap substantially, so the half-power ranges indicate where each band
+dominates"*). They are labelled by a characteristic angular size; they do not "isolate a single
+angular scale".
+
+---
+
 ## 4. Open calls — flagged, not silently resolved
 
 ### 4.1 The whitening result is not in Paper II
