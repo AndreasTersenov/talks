@@ -157,7 +157,12 @@
 					</div>
 					<div class="col fragment fade-in">
 						<div class="kicker">starlet &#8467;1-norm</div>
-						<div class="l1formula">$$\ell_1^{\,j,i} \;=\; \sum_{u} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$</div>
+						<div class="l1formula">
+							<div>
+								$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
+								<p class="defline">$\mathcal{S}_{j,i}$ &mdash; the coefficients of scale $j$ whose SNR falls in bin $i$</p>
+							</div>
+						</div>
 						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &rarr; encodes information from every pixel (peaks, voids, ...)</p>
 					</div>
 				</div>

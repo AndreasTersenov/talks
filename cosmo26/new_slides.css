@@ -510,6 +510,12 @@
 /* KaTeX display math carries its own vertical margin, which would make this box
    taller than the peak map next to it and knock the two captions out of line. */
 .reveal .slides section .l1formula .katex-display { margin: 0; }
+/* one plain-language line under the formula: what the set S_{j,i} actually is.
+   It lives inside the fixed 200px formula box, so it costs no column height. */
+.reveal .slides section .defline {
+  font-size: 0.62em; line-height: 1.4; color: var(--fg-muted);
+  text-align: center; margin: 0.9em 0 0;
+}
 
 /* A .cap that carries a sentence rather than a label wants the body face;
    the deck's default .cap is mono, which reads as a code block in prose. */
