@@ -369,15 +369,19 @@
 			<section data-theme="light" data-background-color="#ffffff">
 				<h3 class="slide-title tight"><span class="sec">§2</span> Read <em class="alert">bin by bin</em>, the &#8467;1-norm trails the network</h3>
 				<div class="container" style="align-items:center; margin-top:0.3em;">
-					<div class="col" style="flex:1.1;">
+					<div class="col" style="flex:1.28;">
 						<figure class="fig">
-							<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step1.png" style="max-height:420px;"
-							     alt="matched-pipeline posteriors: the auto-only l1-norm against the CNN">
-							<figcaption>PLACEHOLDER &mdash; auto-only &#8467;1 (awaiting the &#8467;1-vs-CNN render)</figcaption>
+							<div class="r-stack">
+								<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1_auto_only/step1.png" style="max-height:530px;"
+								     alt="matched-pipeline posterior for the auto-only l1-norm, with its figure of merit at 2448">
+								<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1_auto_only/step2.png" style="max-height:530px;"
+								     alt="the CNN posterior added: tighter, with a figure of merit of 3326 against the l1-norm's 2448">
+							</div>
+							<figcaption>same maps, same flow, both calibrated &mdash; only the summary changes</figcaption>
 						</figure>
 					</div>
-					<div class="col" style="flex:0.9;">
-						<div class="callout" style="max-width:100%;">
+					<div class="col" style="flex:0.82;">
+						<div class="callout fragment fade-in" data-fragment-index="1" style="max-width:100%;">
 							<span class="label">the gap, and its one cause</span>
 							<ul>
 								<li>The network mixes all four channels in its <b>first convolutional layer</b>, so inter-bin information is available to it by construction</li>
