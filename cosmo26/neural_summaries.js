@@ -194,26 +194,26 @@
   ctrlProto(VmimEngine.prototype);
   VmimEngine.prototype.COPY = {
     1: "<ul class='ns-bul'>" +
-         "<li>Same goal: compress the map to a <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
-         "<li>\\(t\\) is any code; a flow \\(q_\\psi(\\theta\\mid t)\\) rebuilds the full posterior</li>" +
-         "<li>Train both to keep <b>maximal information</b> about \\(\\theta\\) (objective above)</li>" +
+         "<li>A network compresses the map to a <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
+         "<li>\\(t\\) is just a code; a flow \\(q_\\psi(\\theta\\mid t)\\) turns it into a posterior</li>" +
+         "<li>Both are trained <b>together</b>, rewarded whenever the flow puts high probability on the <b>true</b> \\(\\theta\\)</li>" +
        "</ul>",
     2: "<ul class='ns-bul'>" +
-         "<li>Maximizing \\(I(t;\\theta)\\) reshapes the flow to match \\(p(\\theta\\mid x)\\)</li>" +
-         "<li>At the optimum, \\(t\\) is a <b>sufficient statistic</b></li>" +
-         "<li>\\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
+         "<li>So the network learns to keep <b>whatever helps</b> the flow do that</li>" +
+         "<li>\\(q_\\psi\\) is pulled onto the true \\(p(\\theta\\mid x)\\), degeneracy and all &mdash; no assumed shape</li>" +
+         "<li>That is what \"maximise the information \\(I(t;\\theta)\\)\" means in practice</li>" +
        "</ul>",
     3: "<ul class='ns-bul'>" +
-         "<li>Regression keeps only the <span class='c-mse'>mean</span> (dot)</li>" +
-         "<li>VMIM keeps the <span class='c-vmim'>full shape</span></li>" +
-         "<li>Gaussian: they agree; <b>non-Gaussian</b>: VMIM stays sufficient</li>" +
+         "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
+         "<li>This is the <b>ceiling</b> our comparison is measured against</li>" +
+         "<li>Not another statistic &mdash; an estimate of what is extractable</li>" +
        "</ul>"
   };
   VmimEngine.prototype._stateForAct = function (a) {
-    return { qbend: a >= 2 ? 1 : 0, mse: a >= 3 ? 1 : 0 };
+    return { qbend: a >= 2 ? 1 : 0, suff: a >= 3 ? 1 : 0 };
   };
   VmimEngine.prototype._frame = function () {
-    var moving = tweenStep(this.cur, this.tgt, ["qbend", "mse"], 0.12);
+    var moving = tweenStep(this.cur, this.tgt, ["qbend", "suff"], 0.12);
     this._draw(); if (moving) requestAnimationFrame(this._loop); else this.running = false;
   };
   VmimEngine.prototype._draw = function () {
@@ -230,11 +230,11 @@
     var Q = { cx: cx, cy: cy, sx: lerp(rR, sx, qb), sy: lerp(rR, sy, qb), bend: 0.62 * qb, rot: 0 };
     drawPosterior(ctx, Q, C_VMIM, 1, false);
     clabel(ctx, "qψ(θ|t)", cx + sx * 1.05 + 8, cy, C_VMIM, 15, "left", true);
-    // act 3: the MSE mean dot, for contrast
-    if (st.mse > 0.01) { ctx.save(); ctx.globalAlpha = st.mse;
-      ctx.fillStyle = C_MSE; ctx.beginPath(); ctx.arc(cx, cy, 7, 0, 2 * Math.PI); ctx.fill();
-      ctx.lineWidth = 2; ctx.strokeStyle = "#fff"; ctx.stroke();
-      clabel(ctx, "MSE mean", cx + 13, cy + 19, C_MSE, 14.5, "left", true); ctx.restore(); }
+    // act 3: the two curves coincide -> t is sufficient
+    if (st.suff > 0.01) { ctx.save(); ctx.globalAlpha = st.suff;
+      clabel(ctx, "p(θ|x) = p(θ|t)", cx, H - 30, C_VMIM, 16.5, "center", true);
+      clabel(ctx, "sufficient", cx, H - 52, C_OK, 14.5, "center", true);
+      ctx.restore(); }
   };
 
   /* ---- KaTeX auto-render (offline; vendored) ---------------------------- */
