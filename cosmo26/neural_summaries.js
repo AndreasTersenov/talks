@@ -22,36 +22,49 @@
   "use strict";
 
   var C_MSE = "#E69F00", C_VMIM = "#0072B2", C_GREY = "#8a96a3",
-      C_INK = "#1b2733", C_MUTE = "#8b95a0", C_OK = "#1d7a54";
+    C_INK = "#1b2733", C_MUTE = "#8b95a0", C_OK = "#1d7a54";
 
   /* ------------------------------- helpers ------------------------------- */
-  function mulberry32(s) { return function () {
-    s |= 0; s = (s + 0x6D2B79F5) | 0; var t = Math.imul(s ^ (s >>> 15), 1 | s);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
-  function gaussian(rng) { var u = 1 - rng(), v = rng();
-    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function mulberry32(s) {
+    return function () {
+      s |= 0; s = (s + 0x6D2B79F5) | 0; var t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function gaussian(rng) {
+    var u = 1 - rng(), v = rng();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
-  function hexA(hex, a) { var r = parseInt(hex.substr(1, 2), 16), g = parseInt(hex.substr(3, 2), 16),
-    b = parseInt(hex.substr(5, 2), 16); return "rgba(" + r + "," + g + "," + b + "," + a + ")"; }
+  function hexA(hex, a) {
+    var r = parseInt(hex.substr(1, 2), 16), g = parseInt(hex.substr(3, 2), 16),
+    b = parseInt(hex.substr(5, 2), 16); return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+  }
   function fitCanvas(c) {
     var dpr = Math.min(window.devicePixelRatio || 1, 2), r = c.getBoundingClientRect();
     var w = r.width || (c.width / 2), h = r.height || (c.height / 2);
     c._w = w; c._h = h; c._dpr = dpr; c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
   }
-  function tweenStep(cur, tgt, keys, sm) { var moving = false;
-    for (var i = 0; i < keys.length; i++) { var k = keys[i], d = tgt[k] - cur[k];
-      if (Math.abs(d) > 1e-4) { cur[k] += d * sm; moving = true; } else cur[k] = tgt[k]; } return moving; }
+  function tweenStep(cur, tgt, keys, sm) {
+    var moving = false;
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i], d = tgt[k] - cur[k];
+      if (Math.abs(d) > 1e-4) { cur[k] += d * sm; moving = true; } else cur[k] = tgt[k];
+    } return moving;
+  }
   function clabel(ctx, txt, x, y, color, size, align, bold) {
     ctx.save(); ctx.fillStyle = color; ctx.textAlign = align || "left"; ctx.textBaseline = "middle";
     ctx.font = (bold ? "700 " : "400 ") + (size || 13) + "px ui-sans-serif, system-ui, sans-serif";
     ctx.fillText(txt, x, y); ctx.restore();
   }
-  var VIRIDIS = [[68,1,84],[72,40,120],[62,74,137],[49,104,142],[38,130,142],
-                 [31,158,137],[53,183,121],[110,206,88],[181,222,43],[253,231,37]];
-  function viridis(t) { t = t < 0 ? 0 : (t > 1 ? 1 : t); var x = t * 9, i = Math.floor(x), f = x - i;
+  var VIRIDIS = [[68, 1, 84], [72, 40, 120], [62, 74, 137], [49, 104, 142], [38, 130, 142],
+  [31, 158, 137], [53, 183, 121], [110, 206, 88], [181, 222, 43], [253, 231, 37]];
+  function viridis(t) {
+    t = t < 0 ? 0 : (t > 1 ? 1 : t); var x = t * 9, i = Math.floor(x), f = x - i;
     if (i >= 9) return VIRIDIS[9]; var a = VIRIDIS[i], b = VIRIDIS[i + 1];
-    return [a[0] + (b[0]-a[0])*f, a[1] + (b[1]-a[1])*f, a[2] + (b[2]-a[2])*f]; }
+    return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f];
+  }
 
   /* ---- a smooth convergence-map thumbnail (viridis Gaussian random field) */
   function renderMap(canvas) {
@@ -61,10 +74,12 @@
     var ctx = canvas.getContext("2d"), img = ctx.createImageData(G, G);
     for (var yy = 0; yy < G; yy++) for (var xx = 0; xx < G; xx++) {
       var X = xx / (G - 1), Y = yy / (G - 1), v = 0.2 + 0.15 * Math.sin(6.0 * (X + 0.6 * Y));
-      for (var bi = 0; bi < blobs.length; bi++) { var bb = blobs[bi], dx = X - bb.x, dy = Y - bb.y;
-        v += bb.a * Math.exp(-(dx * dx + dy * dy) / (2 * bb.s * bb.s)); }
+      for (var bi = 0; bi < blobs.length; bi++) {
+        var bb = blobs[bi], dx = X - bb.x, dy = Y - bb.y;
+        v += bb.a * Math.exp(-(dx * dx + dy * dy) / (2 * bb.s * bb.s));
+      }
       var c = viridis((v - 0.1) / 1.7), o = (yy * G + xx) * 4;
-      img.data[o] = c[0]; img.data[o+1] = c[1]; img.data[o+2] = c[2]; img.data[o+3] = 255;
+      img.data[o] = c[0]; img.data[o + 1] = c[1]; img.data[o + 2] = c[2]; img.data[o + 3] = 255;
     }
     ctx.putImageData(img, 0, 0);
   }
@@ -81,9 +96,11 @@
   }
   function contourPath(ctx, P, r) {
     ctx.beginPath();
-    for (var i = 0; i <= 64; i++) { var phi = i / 64 * 2 * Math.PI;
+    for (var i = 0; i <= 64; i++) {
+      var phi = i / 64 * 2 * Math.PI;
       var p = ptOf(P, r * Math.cos(phi), r * Math.sin(phi));
-      if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); }
+      if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]);
+    }
     ctx.closePath();
   }
   function drawPosterior(ctx, P, color, alpha, fill) {
@@ -121,16 +138,23 @@
   }
   function ctrlProto(P) {
     P.resize = function () { fitCanvas(this.plot); this._draw(); };
-    P.goTo = function (act) { act = Math.max(1, Math.min(this.nActs, act));
-      this.act = act; this.tgt = this._stateForAct(act); this._applyCopy(act); this.start(); };
+    P.goTo = function (act) {
+      act = Math.max(1, Math.min(this.nActs, act));
+      this.act = act; this.tgt = this._stateForAct(act); this._applyCopy(act); this.start();
+    };
     P.snapTo = function (act) { this.cur = this._stateForAct(act); this.goTo(act); };
     P.start = function () { if (!this.running) { this.running = true; requestAnimationFrame(this._loop); } };
-    P.autoplay = function () { var s = this; if (this.autoTimer) clearInterval(this.autoTimer);
+    P.autoplay = function () {
+      var s = this; if (this.autoTimer) clearInterval(this.autoTimer);
       this.snapTo(1); var a = 1; this.autoTimer = setInterval(function () {
-        a += 1; if (a > s.nActs) { clearInterval(s.autoTimer); s.autoTimer = null; return; } s.goTo(a); }, 2600); };
-    P._applyCopy = function (act) { var c = this.COPY[act]; if (!c) return;
+        a += 1; if (a > s.nActs) { clearInterval(s.autoTimer); s.autoTimer = null; return; } s.goTo(a);
+      }, 2600);
+    };
+    P._applyCopy = function (act) {
+      var c = this.COPY[act]; if (!c) return;
       this.captionEl.innerHTML = c;
-      renderMath(this.captionEl); };
+      renderMath(this.captionEl);
+    };
   }
 
   /* ======================= SLIDE 1 — Regression ========================== */
@@ -138,20 +162,20 @@
   ctrlProto(RegressionEngine.prototype);
   RegressionEngine.prototype.COPY = {
     1: "<ul class='ns-bul'>" +
-         "<li>A lensing map has \\(\\sim\\!10^4\\) pixels: too many to infer from directly</li>" +
-         "<li>Compress it into a low-dimensional <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
-         "<li><b>Regression:</b> train the network to predict the parameters (loss above)</li>" +
-       "</ul>",
+      "<li>A lensing map has \\(\\sim\\!10^4\\) pixels: too many to infer from directly</li>" +
+      "<li>Compress it into a low-dimensional <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
+      "<li><b>Regression:</b> train the network to predict the parameters (loss above)</li>" +
+      "</ul>",
     2: "<ul class='ns-bul'>" +
-         "<li>Optimum: the posterior <b>mean</b>, \\(\\hat\\theta=\\mathbb{E}[\\theta\\mid x]\\)</li>" +
-         "<li>A compact, information-rich summary</li>" +
-         "<li>Gaussian \\(\\Rightarrow\\) mean is <b>sufficient</b> \\(\\Rightarrow\\) <span class='c-ok'>lossless</span></li>" +
-       "</ul>",
+      "<li>Optimum: the posterior <b>mean</b>, \\(\\hat\\theta=\\mathbb{E}[\\theta\\mid x]\\)</li>" +
+      "<li>A compact, information-rich summary</li>" +
+      "<li>Gaussian \\(\\Rightarrow\\) mean is <b>sufficient</b> \\(\\Rightarrow\\) <span class='c-ok'>lossless</span></li>" +
+      "</ul>",
     3: "<ul class='ns-bul'>" +
-         "<li>But the mean is <b>not always sufficient</b></li>" +
-         "<li>Same mean, different shape \\(\\Rightarrow\\) same summary</li>" +
-         "<li>The <span class='c-mse'>non-Gaussian</span> information is lost</li>" +
-       "</ul>"
+      "<li>But the mean is <b>not always sufficient</b></li>" +
+      "<li>Same mean, different shape \\(\\Rightarrow\\) same summary</li>" +
+      "<li>The <span class='c-mse'>non-Gaussian</span> information is lost</li>" +
+      "</ul>"
   };
   RegressionEngine.prototype._stateForAct = function (a) {
     return { suff: a >= 2 ? 1 : 0, twin: a >= 3 ? 1 : 0 };
@@ -194,20 +218,21 @@
   ctrlProto(VmimEngine.prototype);
   VmimEngine.prototype.COPY = {
     1: "<ul class='ns-bul'>" +
-         "<li>A network compresses the map to a <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
-         "<li>\\(t\\) is just a code; a flow \\(q_\\psi(\\theta\\mid t)\\) turns it into a posterior</li>" +
-         "<li>Both are trained <b>together</b>, rewarded whenever the flow puts high probability on the <b>true</b> \\(\\theta\\)</li>" +
-       "</ul>",
+      "<li>A network compresses the map to a <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
+      "<li>\\(t\\) is just a code; a flow \\(q_\\psi(\\theta\\mid t)\\) turns it into a posterior</li>" +
+      "<li>Both are trained <b>together</b>, rewarded whenever the flow puts high probability on the <b>true</b> \\(\\theta\\)</li>" +
+      "</ul>",
     2: "<ul class='ns-bul'>" +
-         "<li>So the network learns to keep <b>whatever helps</b> the flow do that</li>" +
-         "<li>\\(q_\\psi\\) is pulled onto the true \\(p(\\theta\\mid x)\\), degeneracy and all &mdash; no assumed shape</li>" +
-         "<li>That is what \"maximise the information \\(I(t;\\theta)\\)\" means in practice</li>" +
-       "</ul>",
-    3: "<ul class='ns-bul'>" +
-         "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
-         "<li>This is the <b>ceiling</b> our comparison is measured against</li>" +
-         "<li>Not another statistic &mdash; an estimate of what is extractable</li>" +
-       "</ul>"
+      "<li>So the network learns to keep <b>whatever helps</b> the flow do that</li>" +
+      "<li>\\(q_\\psi\\) is pulled onto the true \\(p(\\theta\\mid x)\\) </li>" +
+      //  "<li>That is what \"maximise the information \\(I(t;\\theta)\\)\" means in practice</li>" +
+      "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
+      "</ul>",
+    // 3: "<ul class='ns-bul'>" +
+    //      "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
+    //  "<li>This is the <b>ceiling</b> our comparison is measured against</li>" +
+    //  "<li>Not another statistic &mdash; an estimate of what is extractable</li>" +
+    // "</ul>"
   };
   VmimEngine.prototype._stateForAct = function (a) {
     return { qbend: a >= 2 ? 1 : 0, suff: a >= 3 ? 1 : 0 };
@@ -231,10 +256,12 @@
     drawPosterior(ctx, Q, C_VMIM, 1, false);
     clabel(ctx, "qψ(θ|t)", cx + sx * 1.05 + 8, cy, C_VMIM, 15, "left", true);
     // act 3: the two curves coincide -> t is sufficient
-    if (st.suff > 0.01) { ctx.save(); ctx.globalAlpha = st.suff;
+    if (st.suff > 0.01) {
+      ctx.save(); ctx.globalAlpha = st.suff;
       clabel(ctx, "p(θ|x) = p(θ|t)", cx, H - 30, C_VMIM, 16.5, "center", true);
       clabel(ctx, "sufficient", cx, H - 52, C_OK, 14.5, "center", true);
-      ctx.restore(); }
+      ctx.restore();
+    }
   };
 
   /* ---- KaTeX auto-render (offline; vendored) ---------------------------- */
@@ -243,7 +270,7 @@
       try {
         global.renderMathInElement(el, {
           delimiters: [{ left: "\\(", right: "\\)", display: false },
-                       { left: "\\[", right: "\\]", display: true }],
+          { left: "\\[", right: "\\]", display: true }],
           throwOnError: false
         });
       } catch (e) { /* leave raw on failure */ }
@@ -273,21 +300,27 @@
       else if (Reveal) Reveal.on("ready", init);
       else document.addEventListener("DOMContentLoaded", init);
       if (Reveal) {
-        Reveal.on("fragmentshown",  function () { self._sync(Reveal); });
+        Reveal.on("fragmentshown", function () { self._sync(Reveal); });
         Reveal.on("fragmenthidden", function () { self._sync(Reveal); });
-        Reveal.on("slidechanged",   function () {
+        Reveal.on("slidechanged", function () {
           self._engines.forEach(function (e) { if (e.engine.resize) e.engine.resize(); });
-          self._sync(Reveal); });
+          self._sync(Reveal);
+        });
       }
       document.addEventListener("keydown", function (ev) {
-        if (ev.key === "r" || ev.key === "R") { var on = self._cur(Reveal); if (on) on.autoplay(); } });
+        if (ev.key === "r" || ev.key === "R") { var on = self._cur(Reveal); if (on) on.autoplay(); }
+      });
     },
-    _wireReplay: function (s, eng) { var b = s.querySelector(".ns-replay");
-      if (b) b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); eng.autoplay(); }); },
-    _cur: function (Reveal) { if (!Reveal) return this._engines[0] && this._engines[0].engine;
+    _wireReplay: function (s, eng) {
+      var b = s.querySelector(".ns-replay");
+      if (b) b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); eng.autoplay(); });
+    },
+    _cur: function (Reveal) {
+      if (!Reveal) return this._engines[0] && this._engines[0].engine;
       var c = Reveal.getCurrentSlide();
       for (var i = 0; i < this._engines.length; i++) if (this._engines[i].section === c) return this._engines[i].engine;
-      return null; },
+      return null;
+    },
     _sync: function (Reveal) {
       this._engines.forEach(function (e) {
         var frags = e.section.querySelectorAll(".ns-frag"), shown = 0;
