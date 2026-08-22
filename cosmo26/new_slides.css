@@ -591,8 +591,8 @@
 .reveal .slides section .xmap { display: flex; align-items: center; gap: 0.5em; }
 .reveal .slides section .xmap .pair { display: flex; flex-direction: column; align-items: center; gap: 0.1em; }
 .reveal .slides section .xmap figure { margin: 0; text-align: center; }
-.reveal .slides section .xmap img { display: block; width: 124px; height: auto; border: 1px solid var(--edge); }
-.reveal .slides section .xmap .out img { width: 172px; }
+.reveal .slides section .xmap img { display: block; width: 118px; height: auto; border: 1px solid var(--edge); }
+.reveal .slides section .xmap .out img { width: 164px; }
 .reveal .slides section .xmap figcaption {
   font-family: var(--mono); font-size: 0.62em; color: var(--fg);
   margin-top: 0.16em; line-height: 1.2;
@@ -616,7 +616,7 @@
    aspect ratio to the asset's, and the image fills it exactly. */
 .reveal .slides section .plane .planefig {
   grid-column: 2; grid-row: 1; position: relative; display: block;
-  width: 316px; aspect-ratio: 820 / 849; line-height: 0;
+  width: 300px; aspect-ratio: 820 / 849; line-height: 0;
 }
 /* reveal's own sheet caps every slide image at max-width/max-height 95%, which
    would render the image at 95% of the box the overlay is measured against */
@@ -636,3 +636,10 @@
   font-family: var(--mono); font-size: 0.62em; line-height: 1.5;
   color: var(--fg-muted); text-align: center;
 }
+
+/* the joint l1-norm's definition, under the column it belongs to. It does NOT
+   go on top of the cell map: at a size that fits inside the 242px panel the type
+   falls well under the house floor, and the plate would land on the diagonal
+   ridge, which is the one feature the slide exists to show. */
+.reveal .slides section .jointdef { font-size: 0.82em; margin-top: 0.35em; }
+.reveal .slides section .jointdef .katex-display { margin: 0; }
