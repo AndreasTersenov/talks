@@ -1,7 +1,7 @@
 # SPEAKER SCRIPT — COSMO-26, Leiden
 
-**15 min + 3 for questions.** The script is 2,116 words. That is **15:07 at 140 words per minute**
-and **14:06 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
+**15 min + 3 for questions.** The script is 2,186 words. That is **15:37 at 140 words per minute**
+and **14:34 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
 it once. Much of the room works in a second or third language, so 140 is the rate worth aiming for
 — which means **plan on making the first tier of cuts below**. Do not decide that from reading; run
 it timed, then cut.
@@ -18,11 +18,13 @@ survive verbatim, because they are the ones carrying a claim you do not want to 
 
 ---
 
-## 1 — Title · 0:39
+## 1 — Title · 0:49
 
 〔Face the room. Do not look at the screen — you know what it says.〕
 
-Thanks very much. I'm Andreas Tersenov, from FORTH, in Crete, and the CosmoStat lab at CEA Paris-Saclay.
+Thanks very much. I'm Andreas Tersenov, a PhD student at FORTH in Crete and the CosmoStat lab at
+CEA Paris-Saclay. This is work with Sacha Guerrini, Jean-Luc Starck and Martin Kilbinger, across two
+papers, and both should be on arXiv in September.
 
 Stage IV surveys, Euclid first among them, will measure the lensing field with unprecedented
 precision. Exploiting that fully takes statistics that go beyond two-point functions and Gaussian
@@ -34,13 +36,14 @@ enough to bias the answer without anyone noticing.
 
 ---
 
-## 2 — The problem, and two questions · 1:17
+## 2 — The problem, and two questions · 1:28
 
 〔Turn to the schematic and orient the room to the axes, then turn back. This is the one slide where
 turning around is licensed.〕
 
-Here is the tension. Angular scale runs along the bottom: large linear scales left, small
-non-linear scales right.
+In order to be able to trust our HOS results, we need to carefully investigate how they are affected by systematics, on the contour level.
+
+And here is the tension. Angular scale runs along the bottom: large linear scales left, small non-linear scales right.
 
 The first curve is the non-Gaussian information beyond the two-point function. It grows towards
 smaller scales and peaks somewhere in the middle. The second is roughly how our small-scale
@@ -219,7 +222,7 @@ shape noise is independent. A per-channel statistic never sees it.
 
 ---
 
-## 12 — Two routes · 1:35
+## 12 — Two routes · 1:37
 
 One way to capture it is to build the missing channel. For each pair of bins, multiply the two maps
 pixel by pixel: the product lights up only where both have structure in the same place. Six pairs,
@@ -235,8 +238,8 @@ figure are.
 it.〕
 
 **▲** But two separate histograms can never tell you whether the bins are large in the same places.
-It is like knowing the distribution of heights and the distribution of weights, and never learning
-that taller people are heavier. That lives in the plane, not in the margins.
+It is the same gap as between two auto-spectra and the cross-spectrum: knowing each field on its own
+does not tell you how the two vary together. That lives in the plane, not in the margins.
 
 [CLICK] So we use the plane. Lay a fixed grid over it, drop every pixel into the cell its pair of
 coefficients points at, and add up the ℓ1 weight landing in each cell. That is the joint ℓ1-norm.
@@ -309,7 +312,7 @@ transformed bins.
 
 ---
 
-## 16 — Conclusions · 0:48
+## 16 — Conclusions · 0:54
 
 Three questions, three answers.
 
@@ -323,7 +326,9 @@ Can nulling then be used with higher-order statistics? Yes, provided the summary
 jointly. The inflation was the frame, not lost information.
 
 **▲** What is left to the network is the genuinely three- and four-bin structure a pairwise
-statistic cannot reach. Thank you.
+statistic cannot reach.
+
+[CLICK] Both papers are on the screen, and both go on arXiv in September. Thank you.
 
 〔Stop. Do not add a coda. Take the applause and turn to the chair.〕
 
