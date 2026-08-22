@@ -199,6 +199,7 @@ p1_contours_baryon_safe_14k/step1..3.png	posteriors	build-up, 3 frames, paper re
 p1_contours_vs_area_ps/step1..6.png	posteriors	build-up, 6 frames, paper render 2026-08
 p2_bnt_analytic/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
 p2_corner_cnn_vs_l1/step1..4.png	posteriors	build-up, 4 frames, paper render 2026-08
+p2_corner_cnn_vs_l1_auto_only/step1..2.png	posteriors	build-up, 2 frames, l1 auto-only then +CNN, paper render 2026-08
 p1_bias_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_fom_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_hos_frac_diff_l1/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
