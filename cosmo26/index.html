@@ -70,7 +70,7 @@
 			<!-- ============ S2 — the practical question for Part 1 ============ -->
 			<section data-theme="light">
 				<h3 class="slide-title tight">The non-Gaussian information and the worst small-scale systematic <em class="alert">live on the same scales</em></h3>
-				<p class="lead-line">To be able to <b class="alert">trust</b> our HOS results we must investigate each systematic <b>at the contour level</b>.</p>
+				<p class="lead-line">To be able to <b class="alert">trust</b> our HOS results we must investigate how they are affected by each systematic <b>at the contour level</b>.</p>
 				<svg class="scales" viewBox="0 0 760 286" width="1000" height="376" role="img"
 				     aria-label="schematic: the non-Gaussian information peaks at intermediate scales while baryonic feedback rises at the smallest; how much must be removed decides whether anything is left">
 					<defs>
@@ -463,7 +463,7 @@
 			     Condensed from the June slides 22 (tomography), 23 (what BNT does) and
 			     24 (it inflates the per-bin contours). Its own investigation, not a corollary. -->
 			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> Nulling promises <em class="alert">localized</em> scale cuts &mdash; on a per-bin &#8467;1-norm it inflates the contours instead</h3>
+				<h3 class="slide-title tight"><span class="sec">§3</span> Nulling promises <em class="alert">localized</em> scale cuts... For HOS it inflates the contours instead</h3>
 
 				<div class="container" style="align-items:center; margin-top:0.25em;">
 					<div class="col" style="flex:0.82;">
@@ -498,7 +498,7 @@
 					</div>
 				</div>
 
-				<p class="oneline fragment fade-in">A fixed, <b>invertible</b> matrix &mdash; so nothing can have been lost. And yet the per-bin &#8467;1-norm keeps <b class="alert">16%</b> of its figure of merit.</p>
+				<p class="oneline fragment fade-in">BNT = a fixed, <b>invertible</b> transform &rarr; nothing can have been lost...</p>
 
 				<aside class="notes">SAY: this is the third thing we looked at, and it stands on its own. Nulling - the BNT transform, Bernardeau, Nishimichi and Taruya 2014 - is a linear re-mixing of the tomographic bins that cancels the low-redshift lensing efficiency. Why anyone wants it: standard lensing kernels are broad and overlapping, so one angular scale mixes low-z small scales with high-z large ones, and an angular cut throws away clean high-z information along with the contamination. Null the bins and each transformed field is localized in redshift, so the baryon sensitivity lands in ONE transformed bin and you cut scales only there. That is a genuinely promising way to do scale cuts. CLICK. Applied to a map-based higher-order statistic it backfires: the same mixing correlates the originally-independent shape noise across bins, the noise floor rises, and the contours inflate - worse than standard tomography even with conservative cuts. PLANT, as a minor technical aside: for the power spectrum it IS lossless, PROVIDED you keep the cross-spectra between transformed bins. Do not explain that yet - it pays off on the next slide. Then the paradox, and PAUSE: this is a fixed invertible matrix, the Jacobian cancels in Bayes, the Fisher information is unchanged, the posterior from the full field is identical in both frames - and yet the l1-norm keeps 16 percent. NAME Vinciguerra et al. 2026 (Euclid): they hit the same wall keeping tomographic maps for bin combinations up to quadruplets, and concluded that recovering the SNR is "highly non-trivial".</aside>
 			</section>
@@ -555,7 +555,7 @@
 						</figure>
 					</div>
 				</div>
-				<p class="oneline fragment fade-in" data-fragment-index="5">So nulling can be kept as a mitigation at <b>no cost in constraining power</b> &mdash; provided some stage of the pipeline reads the bins jointly. And the power spectrum was this ladder's <b class="alert">first rung all along</b>.</p>
+				<p class="oneline fragment fade-in" data-fragment-index="5">So nulling can be kept as a mitigation at <b>no cost in constraining power</b>, provided some stage of the pipeline reads the bins jointly. And the power spectrum was this ladder's <b class="alert">first rung all along</b>.</p>
 				<aside class="notes">SAY: so we asked what it takes to get the information back, and ran the same four summaries through the nulled frame. Per-bin l1 keeps 0.16. Add one derived field per pair - the product cross-maps - and it is 0.24, better but nowhere near. The joint l1-norm, the statistic we built two slides ago, keeps 0.72. The CNN, which reads all four channels natively, is essentially untouched by the transform: the measured value is 0.96 +/- the quoted error, consistent with 1, which is why the slide says approximately 1 rather than a false-precision 0.96. Quote it as "no measurable loss", and give the number only if asked. The practical message, and this is the result that matters for anyone planning a nulled analysis: nulling need not cost a higher-order analysis anything, PROVIDED some stage of the pipeline reads the bins jointly. CASH the clause from the previous slide: the power spectrum survives the transform for exactly this reason - auto PLUS cross spectra are closed under C-hat maps to B C-hat B-transpose and so exactly invariant, while the auto-spectra alone keep only the diagonal and are not. The two-point case was the first rung of this same ladder all along. COUNTER-INTUITION worth saying out loud: the nulling is designed precisely to DE-correlate the bins, and joint reading matters more there, not less. HONEST RESIDUAL: the joint l1 keeps 0.72, not all of it - the remainder is genuine three- and four-bin structure that a pairwise statistic cannot reach, and that is the one place the network keeps an advantage. The CNN corner and the calibration of every BNT posterior are in backup.</aside>
 			</section>
 
@@ -577,7 +577,7 @@
 					<li class="done">
 						<span class="qn">Q3</span>
 						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. The inflation was the frame, not lost information.</span></span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. There is no loss of information, and the inflation is a frame artifact.</span></span>
 					</li>
 				</ul>
 				<p class="oneline fragment fade-in">What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.</p>
