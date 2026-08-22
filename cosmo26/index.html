@@ -519,23 +519,23 @@
 						<div class="ladder compact">
 							<div class="rung fragment fade-in" data-fragment-index="1">
 								<div class="reads">one bin at a time<span class="sub">&#8467;1, auto-maps</span></div>
-								<div class="track"><div class="bar" style="width:14.7%"></div></div>
+								<div class="track"><div class="bar" style="width:16%"></div></div>
 								<div class="val">0.16&#215;</div>
 							</div>
 							<div class="rung fragment fade-in" data-fragment-index="2">
 								<div class="reads">+ one derived field per pair<span class="sub">&#8467;1 + product cross-maps</span></div>
-								<div class="track"><div class="bar" style="width:22.1%"></div></div>
+								<div class="track"><div class="bar" style="width:24%"></div></div>
 								<div class="val">0.24&#215;</div>
 							</div>
 							<div class="rung fragment fade-in" data-fragment-index="3">
 								<div class="reads">each pair's full 2-D distribution<span class="sub">joint &#8467;1-norm</span></div>
-								<div class="track"><div class="bar" style="width:66.2%"></div></div>
+								<div class="track"><div class="bar" style="width:72%"></div></div>
 								<div class="val">0.72&#215;</div>
 							</div>
 							<div class="rung learned fragment fade-in" data-fragment-index="4">
 								<div class="reads">all four channels at once<span class="sub">CNN, VMIM-trained</span></div>
-								<div class="track"><div class="bar" style="width:88.3%"></div></div>
-								<div class="val">0.96&#215;</div>
+								<div class="track"><div class="bar" style="width:100%"></div></div>
+								<div class="val">~1&#215;</div>
 							</div>
 						</div>
 						<p class="cap prose" style="margin-top:0.6em;">Same four summaries as before. In the standard frame they spanned 38%; here, a factor of <b>six</b>.</p>
@@ -560,7 +560,7 @@
 					</div>
 				</div>
 				<p class="oneline fragment fade-in">So nulling can be kept as a mitigation at <b>no cost in constraining power</b> &mdash; provided some stage of the pipeline reads the bins jointly. And the power spectrum was this ladder's <b class="alert">first rung all along</b>.</p>
-				<aside class="notes">SAY: so we asked what it takes to get the information back, and ran the same four summaries through the nulled frame. Per-bin l1 keeps 0.16. Add one derived field per pair - the product cross-maps - and it is 0.24, better but nowhere near. The joint l1-norm, the statistic we built two slides ago, keeps 0.72. The CNN, which reads all four channels natively, keeps 0.96. The practical message, and this is the result that matters for anyone planning a nulled analysis: nulling need not cost a higher-order analysis anything, PROVIDED some stage of the pipeline reads the bins jointly. CASH the clause from the previous slide: the power spectrum survives the transform for exactly this reason - auto PLUS cross spectra are closed under C-hat maps to B C-hat B-transpose and so exactly invariant, while the auto-spectra alone keep only the diagonal and are not. The two-point case was the first rung of this same ladder all along. COUNTER-INTUITION worth saying out loud: the nulling is designed precisely to DE-correlate the bins, and joint reading matters more there, not less. HONEST RESIDUAL: 0.72, not 0.96 - the remainder is genuine three- and four-bin structure that a pairwise statistic cannot reach, and that is the one place the network keeps an advantage. The CNN corner and the calibration of every BNT posterior are in backup.</aside>
+				<aside class="notes">SAY: so we asked what it takes to get the information back, and ran the same four summaries through the nulled frame. Per-bin l1 keeps 0.16. Add one derived field per pair - the product cross-maps - and it is 0.24, better but nowhere near. The joint l1-norm, the statistic we built two slides ago, keeps 0.72. The CNN, which reads all four channels natively, is essentially untouched by the transform: the measured value is 0.96 +/- the quoted error, consistent with 1, which is why the slide says approximately 1 rather than a false-precision 0.96. Quote it as "no measurable loss", and give the number only if asked. The practical message, and this is the result that matters for anyone planning a nulled analysis: nulling need not cost a higher-order analysis anything, PROVIDED some stage of the pipeline reads the bins jointly. CASH the clause from the previous slide: the power spectrum survives the transform for exactly this reason - auto PLUS cross spectra are closed under C-hat maps to B C-hat B-transpose and so exactly invariant, while the auto-spectra alone keep only the diagonal and are not. The two-point case was the first rung of this same ladder all along. COUNTER-INTUITION worth saying out loud: the nulling is designed precisely to DE-correlate the bins, and joint reading matters more there, not less. HONEST RESIDUAL: the joint l1 keeps 0.72, not all of it - the remainder is genuine three- and four-bin structure that a pairwise statistic cannot reach, and that is the one place the network keeps an advantage. The CNN corner and the calibration of every BNT posterior are in backup.</aside>
 			</section>
 
 

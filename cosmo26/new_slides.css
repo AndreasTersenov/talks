@@ -101,6 +101,9 @@
   left: 0; top: 0; bottom: 0;
   border-radius: 2px 0 0 2px;
   background: var(--l1);
+  /* the learned rung's bar carries a 2-3px border and runs to width:100%,
+     so its border has to sit inside the track rather than overhang it */
+  box-sizing: border-box;
 }
 .reveal .slides section .ladder .rung.learned .bar {
   background: repeating-linear-gradient(-45deg,
