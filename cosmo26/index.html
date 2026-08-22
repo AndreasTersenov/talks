@@ -254,33 +254,36 @@
 			<section data-theme="light" data-background-color="#ffffff">
 				<h3 class="slide-title tight"><span class="sec">§1</span> Are HOS still useful?</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" style="flex:1.2;">
+					<div class="col fragment fade-in" style="flex:1.45;">
 						<div class="r-stack">
-							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png" style="max-height:390px;"
+							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png" style="max-height:480px;"
 							     alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
-							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png" style="max-height:390px;" alt="">
-							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png" style="max-height:390px;" alt="">
+							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png" style="max-height:480px;" alt="">
+							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png" style="max-height:480px;" alt="">
 						</div>
 					</div>
-					<div class="col" style="flex:0.85;">
+					<div class="col" style="flex:0.8;">
 						<div class="block fragment fade-in">
 							<div class="block-title">On baryon-safe scales</div>
 							<div class="block-content"><ul style="font-size:0.78em;">
 								<li>Starlet $\ell_1$-norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at Stage IV, <b class="alert">&times;2.6</b> at full sky</li>
-								<li>Peak counts <em>lose</em> to $C_\ell$ below Stage IV (&times;0.46 at 2,000 deg&sup2;)</li>
-								<li>HOS <b class="alert">still useful</b>: non-Gaussian signal persists even after the fine-scale cut</li>
+								<li>Different degeneracy directions in the $w_0$ planes &rarr; HOS always <b class="alert">complementary</b> to $C_\ell$</li>
 							</ul></div>
 						</div>
 						<div class="block fragment fade-in" style="margin-top:0.5em;">
 							<div class="block-title">Takeaway</div>
 							<div class="block-content"><ul style="font-size:0.78em;">
-								<li>Baryonic effects are a <b class="alert">dominant systematic</b>, biasing parameter estimation</li>
-								<li>HOS are not merely deep-non-linear probes: they robustly recover information on <b class="alert">quasi-linear scales</b></li>
+								<li>HOS are not merely deep-non-linear probes: the signal persists on <b class="alert">quasi-linear scales</b></li>
+								<li>A <b class="alert">floor</b>: 
+								<ul>	
+							<li>our whole-band cut is <b class="alert">not optimised</b>, </li>
+							<li>better baryon modelling will push the analysis <b class="alert">deeper into the non-linear regime</b>, where the HOS gain is larger</li>
+							</ul>
 							</ul></div>
 						</div>
 					</div>
 				</div>
-				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at Stage IV and x2.61 at full sky; say the peak-count caveat out loud (x0.46 at 2,000 deg2), it buys credibility; HOS remain useful, the non-Gaussian signal persists after the fine-scale cut. Takeaway: baryons are a dominant systematic; HOS are robust tools on quasi-linear scales, not just deep non-linear probes.</aside>
+				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at Stage IV and x2.61 at full sky. Be precise about the peak counts: they reach approximate parity with the power spectrum at Stage IV-like areas (x1.07) and slightly exceed it at full sky (x1.17); at the smaller footprints they trail it. Do NOT say they "lose". The reason they trail is largely the cut, not the statistic: the quantised whole-band removal takes out a larger fraction of the peak-count information than the sliding lmax takes from the power spectrum, and that penalty is worst exactly where the power-spectrum cut is loosest. And even at comparable figure of merit they are not redundant - in the planes involving w0 their degeneracy directions differ from the power spectrum, so they add information a joint analysis would use. Takeaway: baryons are a dominant systematic; HOS are robust on quasi-linear scales, not just deep non-linear probes; and everything here is a floor that a finer filter bank or an SNR-space cut would raise.</aside>
 			</section>
 
 
