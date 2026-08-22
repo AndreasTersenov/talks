@@ -162,9 +162,20 @@ problem is felt arriving before the fix is offered.
 **Beat 10 is three slides, not one.** The old single "the tie" slide asserted the result without
 earning it. The sequence is now: the gap (auto-only ℓ1 against the CNN) → why it exists and the
 two routes to closing it (explicit cross-maps, or reading each pair jointly) → the result, with
-every arm building up on one corner plot. The cross-map ladder on slide 12 deliberately shows
-**step 1 only** — the cross-map arm without the joint-ℓ1 point — so slide 13 still has something
-to reveal. The per-mock violins moved to backup: they restate slide 13's medians and cost a beat.
+every arm building up on one corner plot. The per-mock violins moved to backup: they restate
+slide 13's medians and cost a beat.
+
+**Slide 12 carries no numbers (2026-08-22, Andreas).** It first showed the ablation ladder,
+which made it a *result* slide standing where the *construction* belongs — the audience was
+told the cross-maps buy +24 % before being told what a cross-map is. It now shows the two
+constructions and nothing else: κ₁ × κ₂ = κ₁κ₂ for route 1, and the (u_i, u_j) coefficient plane
+with its centre masked until the reveal for route 2, so that the two axis histograms — which are
+literally the per-bin ℓ1-norm — are all the audience can see until the plane arrives. The whole
+ladder is cashed on slide 13, whose four-step corner build already contains every arm the
+ablation figure had. The hinge sentence, and the reason the joint ℓ1 exists at all, is the
+closing line: *a cross-map collapses each pair into one field before the statistic is taken.*
+The convolution cross-map is verbal only (paper §3.5, +9 %, unstable across realisations);
+showing both operators cost a panel and bought nothing the argument needs.
 
 **Open: slide 11 needs a figure.** An auto-only ℓ1 posterior against the CNN, matched pipeline.
 No existing build-up frame pairs those two arms alone (the sequence is auto → +product → joint →

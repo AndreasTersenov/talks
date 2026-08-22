@@ -554,3 +554,79 @@
 .reveal .slides section .cutpair .w  { font-weight: 600; color: var(--accent); }
 .reveal .slides section .cutpair .ar { color: var(--fg-muted); }
 .reveal .slides section .cutpair .t  { color: var(--fg-muted); }
+
+/* =====================================================================
+   TWO ROUTES TO THE INTER-BIN INFORMATION  (.routes)
+   Slide 12, act 2. The slide's job is the CONSTRUCTION, not the score:
+   route 1 manufactures a channel (kappa_i * kappa_j), route 2 rewrites the
+   statistic (the coefficient plane of a bin pair). Every number stays on
+   slide 13, which is the payoff - see STRUCTURE.md 5.
+   ===================================================================== */
+.reveal .slides section .routes {
+  display: flex; gap: 1.5em; align-items: stretch; margin-top: 0.1em;
+}
+.reveal .slides section .routes .route {
+  flex: 1 1 0; display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section .routes .route > .kicker { text-align: center; margin-bottom: 0.5em; }
+.reveal .slides section .routes .route .body {
+  flex: 1 1 auto; display: flex; align-items: center; justify-content: center;
+}
+/* both captions reserve the same height, so the route-2 reveal cannot
+   reflow the column underneath it (the slide-15 lesson) */
+.reveal .slides section .routes .route .rcap {
+  font-family: var(--mono); font-size: 0.62em; line-height: 1.42;
+  color: var(--fg-muted); text-align: center;
+  margin: 0.6em 0 0; min-height: 3.3em; max-width: 97%;
+}
+.reveal .slides section .routes .route .rcap b { color: var(--accent); font-weight: 500; }
+
+/* -- route 1: the cross-map construction ----------------------------- */
+.reveal .slides section .xmap { display: flex; align-items: center; gap: 0.5em; }
+.reveal .slides section .xmap .pair { display: flex; flex-direction: column; align-items: center; gap: 0.1em; }
+.reveal .slides section .xmap figure { margin: 0; text-align: center; }
+.reveal .slides section .xmap img { display: block; width: 124px; height: auto; border: 1px solid var(--edge); }
+.reveal .slides section .xmap .out img { width: 172px; }
+.reveal .slides section .xmap figcaption {
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg);
+  margin-top: 0.16em; line-height: 1.2;
+}
+.reveal .slides section .xmap .op { font-size: 0.9em; color: var(--accent); font-weight: 600; line-height: 1; }
+
+/* -- route 2: the coefficient plane, axis labels re-set in HTML ------- */
+.reveal .slides section .plane {
+  display: grid; grid-template-columns: auto auto; gap: 0.25em 0.4em;
+  align-items: center; justify-items: center;
+}
+.reveal .slides section .plane .ylab,
+.reveal .slides section .plane .xlab {
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg); letter-spacing: 0.06em;
+}
+.reveal .slides section .plane .ylab { grid-column: 1; grid-row: 1; writing-mode: vertical-rl; transform: rotate(180deg); }
+.reveal .slides section .plane .xlab { grid-column: 2; grid-row: 2; }
+/* the overlay below is positioned in per-cent of this box, so the box must NOT
+   be left to auto-sizing (grid blockification + reveal's default img margin
+   made it 30px taller and wider than the image). Pin the width and lock the
+   aspect ratio to the asset's, and the image fills it exactly. */
+.reveal .slides section .plane .planefig {
+  grid-column: 2; grid-row: 1; position: relative; display: block;
+  width: 316px; aspect-ratio: 820 / 849; line-height: 0;
+}
+/* reveal's own sheet caps every slide image at max-width/max-height 95%, which
+   would render the image at 95% of the box the overlay is measured against */
+.reveal .slides section .plane .planefig img {
+  display: block; width: 100%; height: 100%; margin: 0;
+  max-width: none; max-height: none;
+}
+/* geometry measured off p2_l1_joint_cellmap_tight.png (820x849): the 2-D
+   panel sits at 0.85%/22.5% and is 76.6% x 76.8% of the image box */
+.reveal .slides section .plane .mask {
+  position: absolute; left: 0.85%; top: 22.5%; width: 76.6%; height: 76.8%;
+  box-sizing: border-box;   /* the 1.1em side padding is inside the panel, not added to it */
+  background: var(--surface); border: 1px dashed var(--edge);
+  display: flex; align-items: center; justify-content: center; padding: 0 1.1em;
+}
+.reveal .slides section .plane .mask span {
+  font-family: var(--mono); font-size: 0.62em; line-height: 1.5;
+  color: var(--fg-muted); text-align: center;
+}

@@ -395,29 +395,47 @@
 			</section>
 
 
-			<!-- ============ ACT 2, beat 2 — two routes to the cross-bin information ============ -->
+			<!-- ============ ACT 2, beat 2 — how the inter-bin information is reached ============
+			     Construction only. Every figure of merit lives on beat 3; this slide used to
+			     carry the ablation ladder, which made it a result slide with no mechanism. -->
 			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§2</span> Two ways to hand a fixed statistic the <em class="alert">cross-bin</em> information</h3>
-				<div class="container" style="align-items:flex-start; margin-top:0.4em;">
-					<div class="col fragment fade-in">
-						<div class="kicker" style="text-align:center;">build explicit cross-maps</div>
-						<figure class="fig">
-							<img class="plain" src="../assets/figures/statistics/p2_ablation/step1.png" style="max-height:300px;"
-							     alt="the cross-map ladder in figure of merit: auto 2448, plus convolution 2671, plus product 3045, both 3255">
-							<figcaption>a derived field per pair: the product &kappa;<sub>i</sub>&kappa;<sub>j</sub> buys <b>+24%</b>, a convolution <b>+9%</b></figcaption>
-						</figure>
+				<h3 class="slide-title tight"><span class="sec">§2</span> Two routes to the inter-bin information: <em class="alert">build the missing map</em>, or <em class="alert">read the pair jointly</em></h3>
+				<div class="routes">
+
+					<div class="route">
+						<span class="kicker">route 1 &mdash; change the input</span>
+						<div class="body">
+							<div class="xmap">
+								<div class="pair">
+									<figure><img src="../assets/figures/maps/p2_crossmap_build/k1.png" alt="the convergence map of tomographic bin 1"><figcaption>$\kappa_1$</figcaption></figure>
+									<span class="op">&times;</span>
+									<figure><img src="../assets/figures/maps/p2_crossmap_build/k2.png" alt="the convergence map of tomographic bin 2"><figcaption>$\kappa_2$</figcaption></figure>
+								</div>
+								<span class="op">=</span>
+								<figure class="out"><img src="../assets/figures/maps/p2_crossmap_build/prod12.png" alt="the pointwise product of the two maps: near-zero almost everywhere, bright where both bins have structure"><figcaption>$\kappa_1\kappa_2$</figcaption></figure>
+							</div>
+						</div>
+						<p class="rcap">multiply the two bins pixel by pixel &mdash; bright only where <b>both</b> have structure. Six such channels, one per bin pair, each read by the same &#8467;1-norm.</p>
 					</div>
-					<div class="col fragment fade-in">
-						<div class="kicker" style="text-align:center;">or read each pair jointly</div>
-						<figure class="fig">
-							<img class="plain" src="../assets/figures/statistics/p2_l1_joint_cellmap.png" style="max-height:300px;"
-							     alt="the joint distribution of signal-to-noise wavelet coefficients for a pair of tomographic bins, with its two one-dimensional marginals">
-							<figcaption>the <b>joint &#8467;1-norm</b>: sum the &#8467;1 weight in each cell of the (u<sub>i</sub>, u<sub>j</sub>) plane</figcaption>
-						</figure>
+
+					<div class="route fragment fade-in" data-fragment-index="1">
+						<span class="kicker">route 2 &mdash; change the statistic</span>
+						<div class="body">
+							<div class="plane">
+								<span class="ylab">bin <i>j</i> coefficient</span>
+								<span class="planefig">
+									<img src="../assets/figures/statistics/p2_l1_joint_cellmap_tight.png" alt="the joint plane of wavelet coefficients for a bin pair, with the two one-dimensional histograms along its edges">
+									<span class="mask fragment fade-out" data-fragment-index="2"><span>the per-bin &#8467;1-norm<br>only ever sees the<br>two axis histograms</span></span>
+								</span>
+								<span class="xlab">bin <i>i</i> coefficient</span>
+							</div>
+						</div>
+						<p class="rcap">at each pixel the two bins give a coefficient <b>pair</b>; each cell holds the &#8467;1 weight of the pixels landing in it &mdash; 10&times;10 cells, six pairs, four scales.</p>
 					</div>
+
 				</div>
-				<p class="oneline fragment fade-in">The joint &#8467;1 needs <b>no cross-map channel at all</b> &mdash; it is built from the four auto-maps.</p>
-				<aside class="notes">SAY: two routes. Route one, the obvious one: build an explicit cross-map for each pair and run the same statistic on it. The product kappa_i kappa_j is the pairwise correlation and buys +24 percent; a convolution buys +9 and is unstable across training realisations. Route two, and this is the new statistic in the paper: keep the four auto-maps, but instead of one histogram per bin, lay a fixed K by K grid over the joint plane of SNR-normalised coefficients for each bin PAIR and sum the l1 weight, one half of |u_i| plus |u_j|, in each cell. K = 10, six bin pairs, concatenated over scales. Summing the absolute value rather than counting pixels is what makes it the 2-D analogue of the l1-norm rather than a joint PDF estimate. CAVEAT if asked: pairwise is the ceiling - with K^4 cells a 4-D histogram is almost everywhere empty, and the residual gap to the CNN is exactly the genuine 3- and 4-bin structure.</aside>
+				<p class="oneline fragment fade-in" data-fragment-index="3">A cross-map collapses each pair into <b>one field</b> before the statistic is taken. The <b>joint &#8467;1-norm</b> keeps the whole plane, and needs no new map at all.</p>
+				<aside class="notes">SAY: the gap is structural, so there are exactly two places to intervene - the input, or the statistic. ROUTE 1, the obvious one: manufacture the missing channel. For each bin pair, multiply the two maps pixel by pixel; the product is near zero almost everywhere and lights up only where the two bins have coincident structure, so its spatial mean is the zero-lag cross-correlation and its one-point statistics carry the higher joint structure of the pair. Six pairs, six new channels, and the SAME l1-norm runs on each. Built patch-locally, from the patch's own two maps, so a survey observing only that patch could actually form them. IF ASKED: we also test a convolution cross-map, the flat-sky analogue of the harmonic product; it is patch-wide, so its variance sits in a few tens of large-scale modes and it mostly re-supplies two-point information the autos already have. ROUTE 2: leave the four maps alone and change what the statistic reads. At a given scale, every pixel gives the four bins' coefficients at once. The per-bin l1-norm is the |.|-weighted 1-D histogram of each - literally the two curves on the edges of this figure. Lay a fixed 10 by 10 grid on the pair plane instead and sum half of |u_i| plus |u_j| in each cell: that is the joint l1-norm. Summing the absolute value rather than counting pixels is what keeps it an l1-norm rather than a joint PDF estimate. THE POINT, and it is the reason the joint l1 exists: the product map reduces a bin pair to a single derived field BEFORE the statistic is taken; the joint l1-norm never reduces it. CAVEAT if asked: pairwise is the ceiling a patch can populate - a 4-D histogram over K^4 cells against 80x80 pixels is almost everywhere empty, so genuine 3- and 4-bin structure stays with the network. Numbers next slide.</aside>
 			</section>
 
 
