@@ -1,7 +1,7 @@
 # SPEAKER SCRIPT — COSMO-26, Leiden
 
-**15 min + 3 for questions.** The script is 2,186 words. That is **15:37 at 140 words per minute**
-and **14:34 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
+**15 min + 3 for questions.** The script is 2,194 words. That is **15:40 at 140 words per minute**
+and **14:38 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
 it once. Much of the room works in a second or third language, so 140 is the rate worth aiming for
 — which means **plan on making the first tier of cuts below**. Do not decide that from reading; run
 it timed, then cut.
@@ -36,7 +36,7 @@ enough to bias the answer without anyone noticing.
 
 ---
 
-## 2 — The problem, and two questions · 1:28
+## 2 — The problem, and two questions · 1:31
 
 〔Turn to the schematic and orient the room to the axes, then turn back. This is the one slide where
 turning around is licensed.〕
@@ -51,8 +51,11 @@ systematics behave, baryonic feedback above all: gas pushed around by AGN and su
 on large scales, then rising steeply on exactly the scales we want.
 
 Modelling them is an active area, but not yet reliable enough to trust, so the standard response is
-to cut those scales. The shaded band is how far the cut has to reach. [CLICK] If we are lucky it is the narrow one and we keep most of the
-signal. If we are not, it is the wide one, and the question becomes whether anything is left at all.
+to cut those scales. The question is how far that cut has to reach.
+
+[CLICK] If we are lucky, only the smallest scales are affected. We cut them and most of the
+non-Gaussian information is still there. [CLICK] If we are not, the contamination reaches much
+further, and once it is cut there may be nothing beyond-Gaussian left worth having.
 
 〔Pause. Then, more slowly — these two sentences set up the first half of the talk.〕
 

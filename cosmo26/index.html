@@ -92,12 +92,15 @@
 						</filter>
 					</defs>
 
-					<!-- how far the contamination reaches: the two scenarios -->
-					<g class="fragment fade-out" data-fragment-index="1">
+					<!-- How far the contamination reaches, in two steps. The slide opens on the
+					     curves alone so the room reads the figure before it is asked a question
+					     about it; fade-in-then-out shows the optimistic band only while it is the
+					     current fragment, so the pessimistic one replaces it rather than stacking. -->
+					<g class="fragment fade-in-then-out" data-fragment-index="1">
 						<rect class="cut sketch" x="520" y="30" width="215" height="156"/>
 						<text class="bandlab" x="627" y="22" text-anchor="middle">optimistic</text>
 					</g>
-					<g class="fragment fade-in" data-fragment-index="1">
+					<g class="fragment fade-in" data-fragment-index="2">
 						<rect class="cut sketch" x="290" y="30" width="445" height="156"/>
 						<text class="bandlab" x="512" y="22" text-anchor="middle">pessimistic</text>
 					</g>
@@ -133,7 +136,7 @@
 						<p>Once those scales are cut, is there <b class="alert">any constraining power left to gain</b> over the power spectrum?</p>
 					</div>
 				</div>
-				<aside class="notes">SAY: higher-order statistics are usually demonstrated on clean simulations; Stage IV is systematics-limited, so what decides whether we can use them is how they behave under contamination. Baryonic feedback - AGN and supernovae - pushes gas out of haloes and suppresses matter on small scales, mimicking a cosmological signal, exactly where the constraining power lives and where the feedback models disagree most with each other. Point at the figure: both the extra information and the contamination live at small scales. Now, the conservative response is to throw the affected scales away. The question is how much that costs. OPTIMISTIC: only the smallest scales are affected, we cut them, and most of the non-Gaussian information is still there. CLICK. PESSIMISTIC: the contamination reaches much further, and once you cut it there is nothing beyond-Gaussian left worth having - the power spectrum would do just as well. Which of these is true is an empirical question, and it is the first thing we measured.</aside>
+				<aside class="notes">SAY: higher-order statistics are usually demonstrated on clean simulations; Stage IV is systematics-limited, so what decides whether we can use them is how they behave under contamination. Baryonic feedback - AGN and supernovae - pushes gas out of haloes and suppresses matter on small scales, mimicking a cosmological signal, exactly where the constraining power lives and where the feedback models disagree most with each other. Point at the figure and let the room read it before any band appears: both the extra information and the contamination live at small scales. Now, the conservative response is to throw the affected scales away. The question is how much that costs. CLICK - OPTIMISTIC: only the smallest scales are affected, we cut them, and most of the non-Gaussian information is still there. CLICK - PESSIMISTIC: the contamination reaches much further, and once you cut it there is nothing beyond-Gaussian left worth having - the power spectrum would do just as well. Which of these is true is an empirical question, and it is the first thing we measured.</aside>
 			</section>
 
 
