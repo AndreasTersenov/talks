@@ -530,3 +530,27 @@
    opaque backing so the frames underneath are covered, with a little bleed
    because the two renders are not exactly the same width. */
 .reveal .slides section .swapcover { background: #ffffff; padding: 18px 26px; }
+
+/* a provenance footnote: the configuration a result was measured at */
+.reveal .slides section .footnote {
+  font-family: var(--mono); font-size: 0.62em; color: var(--fg-muted);
+  margin: 0.7em auto 0; text-align: center; max-width: 92%;
+}
+.reveal .slides section .footnote b { color: var(--fg-muted); font-weight: 600; }
+
+/* slide 14: the stacked kernel pair is supporting evidence, so it yields
+   width and height to the posterior it is setting up */
+.reveal .slides section .figstack .fig img { max-height: 132px; width: auto; }
+
+/* the two scale cuts, side by side and short */
+.reveal .slides section .cutpair {
+  display: flex; gap: 2.4em; justify-content: center; align-items: baseline;
+  margin: 0.8em auto 0; max-width: 94%;
+}
+.reveal .slides section .cutpair .ci {
+  display: flex; align-items: baseline; gap: 0.55em;
+  font-size: 0.72em; color: var(--fg);
+}
+.reveal .slides section .cutpair .w  { font-weight: 600; color: var(--accent); }
+.reveal .slides section .cutpair .ar { color: var(--fg-muted); }
+.reveal .slides section .cutpair .t  { color: var(--fg-muted); }
