@@ -442,7 +442,7 @@
 			<!-- ============ ACT 2, beat 3 — the result: every l1 arm against the CNN ============
 			     figure: p2_corner_cnn_vs_l1, 4-step build-up. Violins moved to backup. -->
 			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§2</span> Read the bins jointly and the analytical &#8467;1-norm <em class="alert">reaches the optimal CNN</em>: 3371 against 3326</h3>
+				<h3 class="slide-title tight"><span class="sec">§2</span> Read the bins jointly and the analytical &#8467;1-norm <em class="alert">reaches the optimal CNN</em></h3>
 				<div class="fig" style="margin-top:0.3em;">
 					<div class="r-stack">
 						<img class="plain" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step1.png" style="max-height:470px;"
@@ -452,7 +452,7 @@
 						<img class="plain fragment" src="../assets/figures/posteriors/p2_corner_cnn_vs_l1/step4.png" style="max-height:470px;" alt="">
 					</div>
 				</div>
-				<p class="oneline fragment fade-in">A <b>tie</b>, not a win &mdash; and it holds on every parameter, over 9,000 mock observations.</p>
+				<p class="oneline fragment fade-in">The <b>tie</b> holds on every parameter, over 9,000 mock observations.</p>
 				<!-- referee aside (verbal): RealNVP +36%, resnet18 +6%, deeper net overfits at 899 cosmologies -->
 				<aside class="notes">THE headline. Build it arm by arm: auto-only 2448, plus the product cross-maps 3045, the joint l1 3371, and then the CNN lands at 3326 - on top of the joint l1, not above it. Say precisely what that means and what it does not: a TIE, never a win. The CNN's coverage is mildly conservative, which plausibly accounts for the joint l1 sitting a hair above. And "sufficient as far as we can measure" - both summaries appear to saturate the information the maps make accessible. VMIM trains the network to maximise the mutual information between its summary and the parameters, so it is an estimate of the CEILING, not just another statistic; a hand-built statistic reaching that ceiling is a sufficiency result. Referee aside if pushed: getting the CNN there took an expressive flow (RealNVP, +36%) and a better architecture (resnet18, +6%); the deeper net overfits at 899 cosmologies, so "you trained it wrong" does not hold. The per-mock violins are in backup if anyone wants the population rather than the medians.</aside>
 			</section>
