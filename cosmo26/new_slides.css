@@ -478,12 +478,19 @@
    it and its two items are sized to their content -- NOT flex:1, which would give
    each half the slide and push a narrow figure out to the margin. */
 .reveal .slides section .statpair {
-  display: flex; justify-content: center; align-items: flex-start;
-  gap: 3.4em; margin: 1.5em auto 0;
+  display: flex; justify-content: center; align-items: stretch;
+  gap: 2.2em; margin: 1.2em auto 0;
 }
 .reveal .slides section .statpair .col {
-  flex: 0 0 auto; width: 31%;
+  flex: 0 0 auto; width: 33%;
   display: flex; flex-direction: column; align-items: center;
+  /* each statistic is its own object, boxed so it reads as separate from the
+     starlet row above and from its neighbour */
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 0.7em 0.9em 0.85em;
 }
 .reveal .slides section .statpair .kicker { margin-bottom: 0.55em; text-align: center; width: 100%; }
 /* The map and the formula box must be the same height, or the two captions
