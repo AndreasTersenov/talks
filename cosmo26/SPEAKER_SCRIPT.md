@@ -80,10 +80,10 @@ cosmoGRID gives us each realisation twice, with and without baryonic feedback. S
 
 That shift, in sigma, is on the y-axis, survey area on the x. And it grows with area, essentially because the error bars shrink, so the same systematic becomes more significant.
 
-〔The left figure and all three bullets are up from the start — no clicks until the right-hand
-column. Pace yourself by the bullets, not by the remote.〕
+〔The slide opens on the title alone. The first click brings the whole left column at once — figure,
+all three bullets, footnote — so from there to the right-hand column you are talking, not clicking.〕
 
-At Stage IV, fourteen thousand square degrees, the power spectrum is off by 2.2 sigma, and both
+[CLICK] At Stage IV, fourteen thousand square degrees, the power spectrum is off by 2.2 sigma, and both
 wavelet statistics by 3.6. At full sky the power spectrum passes three and a half, and the
 higher-order statistics go beyond six.
 
@@ -96,9 +96,12 @@ Keep talking over them.〕
 
 ### short version — 0:31
 
-cosmoGRID gives us each realisation with and without baryonic feedback, so we train the flow on the dark-matter-only maps (which is the case of having no baryon model at all) and then feed it a baryonified "observation". We measure the shift of the posteriors, in sigma, which grows with
-survey area — because the error bars shrink. At Stage IV, 2.2 sigma for the power spectrum and 3.6
-for both wavelet statistics. At full sky, beyond six. And no scale cuts have been applied yet.
+[CLICK] cosmoGRID gives us each realisation with and without baryonic feedback, so we train the flow on the dark-matter-only maps (which is the case of having no baryon model at all) and then feed it a baryonified "observation". 
+
+We measure the bias of the posteriors, in sigma, and as we can see,  it becomes very strong pretty quickly with
+survey area — because the error bars shrink. You can see it here on the contours: as the survey area grows, the posteriors tighten and the bias becomes more and more statistically significant.
+
+And, as expected, the higher-order statistics are more biased than the power spectrum, since they are very sensitive to the contaminated small scales.
 
 [CLICK] 〔Then click straight through the right-hand build without stopping, and go to slide 6.〕
 
@@ -126,13 +129,18 @@ fixable, and fairly easily, we just did not do it in this study.
 
 ### short version — 0:33
 
-To bring the bias under 0.3 sigma (which is our threshold), [CLICK] the power spectrum needs a sliding cut: ℓmax from 860 at
-two thousand square degrees down to 340 at full sky, so more than half the range goes. The wavelets
-need only their finest band dropped, at every area. **▲** But keep in mind that whole-band removal is the only cut we have, so it is the blunter instrument, and we are certainly throwing away clean information with it, and in principle we can improve on that. 
+To bring the bias under 0.3 sigma (which is our threshold), [CLICK] we have an iterative scheme to determine the optimal cuts, as you see here. The power spectrum we just find the appropriate ℓmax for every area. 
+
+The wavelets need only their finest band dropped, at every area.
+
+
+*But keep in mind that whole-band removal is the only cut we have, so it is the blunter instrument, and we are certainly throwing away clean information with it, and in principle we can improve on that.*
 
 ---
 
 ## 7 — First answer · 1:03
+
+So, we saw how HOS posteriors are biased by unmodelled baryonic feedback, and how to cut to de-bias them.
 
 Which brings us to the second question: whether anything is left to gain over the power spectrum
 once the cuts are applied. These are the Stage IV posteriors, baryon-safe scales only. Power
@@ -200,11 +208,19 @@ takes all four maps together from its first convolutional layer; the ℓ1-norm i
 Since we cannot use the "cross spectra" approach with HOS, one way to capture the inter-bin information is to build/approximate the missing channel. E.g. for each pair of bins, multiply the two maps pixel by pixel: the product lights up only where both have structure in the same place. This gives six pairs, six new channels, on which we can also compute the ℓ1-norm, and append to the data vector. 
 Another way is to take instead of products *convolutions* of tomographic maps.
 
-[CLICK] The other route leaves the maps alone and changes what the statistic reads. Take two tomographic maps, at one scale. Every pixel of the patch gives you a pair of coefficients, one from each bin. The per-bin ℓ1-norm histograms them separately — those two curves on the edges of the figure.
+[CLICK] The other route changes the statistic instead of the maps. And the idea is one you already
+know from two-point statistics: **▲** two auto-spectra never tell you the cross-spectrum. Same gap
+here.
 
-**▲** But separate histograms never tell you whether the two bins are large in the same places. Same gap as between the auto-spectra and the cross-spectrum.
+〔The plane is still covered at this point, and that blank box is the whole argument. Point at the
+two edge curves, then at the empty middle. Do not explain the construction — the formula and the
+caption arrive on the next click and say it for you.〕
 
-[CLICK]  So why not use the plane instead. Grid it, and add up the ℓ1 weight in each cell. That is the joint ℓ1-norm — and unlike a cross-map, it never collapses the pair into a single field.
+Look at the figure. The two curves on the edges are the per-bin ℓ1-norms, one histogram for each of
+the two bins. Everything in the middle is what they miss — whether the two bins are bright in the
+same places.
+
+[CLICK] **▲** So we measure the middle. That is the joint ℓ1-norm.
 
 Of course, optimally, we would like to be able to do this in the full 4-d tomographic space (not just for pairs of tomographic maps), however simply because of the curse of dimensionallity, pairwise is the best we can do.
 
@@ -277,7 +293,10 @@ transformed bins. -->
 
 ## 16 — Conclusions · 0:54
 
-Three questions, three answers.
+〔Q1 and Q2 are up; Q3 and the two references arrive together on the one click. That click is where
+you hand them the thing you did not have time to show.〕
+
+Two questions, two answers.
 
 Does baryonic feedback put the non-Gaussian information out of reach? No. Cut every contaminated
 scale and the ℓ1-norm is still 1.8 times tighter at Stage IV, 2.6 at full sky.
@@ -285,13 +304,11 @@ scale and the ℓ1-norm is still 1.8 times tighter at Stage IV, 2.6 at full sky.
 Do we need deep learning to extract it? No. Read the bins jointly and a fixed wavelet statistic
 matches a compressor trained to be optimal, with no training and a data vector you can inspect.
 
-Can nulling then be used with higher-order statistics? Yes, provided the summary reads the bins
-jointly. The inflation was the frame, not lost information.
+[CLICK] And the third one, the one I skipped: can nulling then be used with higher-order statistics?
+Yes, provided the summary reads the bins jointly. The inflation was the frame, not lost information.
+**▲** Happy to go through that with anyone in the break.
 
-**▲** What is left to the network is the genuinely three- and four-bin structure a pairwise
-statistic cannot reach.
-
-[CLICK] Both papers are on the screen, and both go on arXiv in September. Thank you.
+Both papers are on the screen, and both go on arXiv in September. Thank you.
 
 〔Stop. Do not add a coda. Take the applause and turn to the chair.〕
 
