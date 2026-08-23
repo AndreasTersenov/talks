@@ -1,7 +1,7 @@
 # SPEAKER SCRIPT — COSMO-26, Leiden
 
-**15 min + 3 for questions.** The script is 2,194 words. That is **15:40 at 140 words per minute**
-and **14:38 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
+**15 min + 3 for questions.** The script is 2,303 words. That is **16:27 at 140 words per minute**
+and **15:21 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
 it once. Much of the room works in a second or third language, so 140 is the rate worth aiming for
 — which means **plan on making the first tier of cuts below**. Do not decide that from reading; run
 it timed, then cut.
@@ -18,7 +18,7 @@ survive verbatim, because they are the ones carrying a claim you do not want to 
 
 ---
 
-## 1 — Title · 0:49
+## 1 — Title · 0:51
 
 〔Face the room. Do not look at the screen — you know what it says.〕
 
@@ -26,33 +26,31 @@ Thanks very much. I'm Andreas Tersenov, a PhD student at FORTH in Crete and the 
 CEA Paris-Saclay. This is work with Sacha Guerrini, Jean-Luc Starck and Martin Kilbinger, across two
 papers, and both should be on arXiv in September.
 
-Stage IV surveys, Euclid first among them, will measure the lensing field with unprecedented
-precision. Exploiting that fully takes statistics that go beyond two-point functions and Gaussian
-likelihoods. And it takes them in a regime that is systematics-limited rather than
-statistics-limited, where the work is controlling astrophysical and instrumental effects subtle
-enough to bias the answer without anyone noticing.
+We all know Stage IV surveys, Euclid first among them, will measure the lensing field with unprecedented precision. Exploiting that **fully** takes statistics that go beyond two-point functions (so to HOS) and beyond Gaussian likelihoods. And it takes them in a regime that is data-limited rather than
+statistics-limited, where the work is controlling astrophysical and instrumental effects subtle enough to bias the inference.
 
 **▲** Those two things pull against each other, and that is where this talk starts.
 
 ---
 
-## 2 — The problem, and two questions · 1:31
+## 2 — The problem, and two questions · 1:44
 
 〔Turn to the schematic and orient the room to the axes, then turn back. This is the one slide where
 turning around is licensed.〕
 
-In order to be able to trust our HOS results, we need to carefully investigate how they are affected by systematics, on the contour level.
+In order to be able to trust any of our HOS results, we need to know exactly how they are affected by systematics, at the level of the cosmological contours.
 
-And here is the tension. Angular scale runs along the bottom: large linear scales left, small non-linear scales right.
+And here on this scematic figure you can see the issue. Angular scale runs along the bottom: large linear scales left, small non-linear scales right.
 
 The first curve is the non-Gaussian information beyond the two-point function. It grows towards
-smaller scales and peaks somewhere in the middle. The second is roughly how our small-scale
-systematics behave, baryonic feedback above all: gas pushed around by AGN and supernovae. Negligible
-on large scales, then rising steeply on exactly the scales we want.
+smaller scales and peaks somewhere in the middle. 
+The second is roughly how our small-scale
+systematics behave, baryonic feedback above all: gas pushed around by AGN and supernovae. On large scales it's negligible, but then it rises steeply on exactly the scales we want to use with HOS.
 
-Modelling them is an active area, but not yet reliable enough to trust, so the standard response is
+Modelling them is an active area, but not yet reliable enough to trust (with many significantly different alternative models), so the standard response is
 to cut those scales. The question is how far that cut has to reach.
 
+So we kinda have two scenaria. 
 [CLICK] If we are lucky, only the smallest scales are affected. We cut them and most of the
 non-Gaussian information is still there. [CLICK] If we are not, the contamination reaches much
 further, and once it is cut there may be nothing beyond-Gaussian left worth having.
@@ -60,39 +58,44 @@ further, and once it is cut there may be nothing beyond-Gaussian left worth havi
 〔Pause. Then, more slowly — these two sentences set up the first half of the talk.〕
 
 So, two questions. **▲** First: how much does unmodelled feedback bias higher-order statistics, and
-how does that get worse as surveys get bigger? Second: once those scales are cut, is there anything
-left to gain over the power spectrum?
+how does that get worse as surveys get bigger? Second: once those scales are cut, is there anything left to gain over the power spectrum?
 
 ---
 
-## 3 — The two statistics · 0:56
+## 3 — The two statistics · 1:27
 
 〔Do not read the band labels off the figure — it is a thesis illustration at a finer pixel scale
 than our analysis, and its arcminute numbers are not ours.〕
 
-In this work, we focus on two families of statistics, both built on the same multi-scale decomposition. We take the convergence map and using the
-starlet wavelet transform write it as a
-sum of band-pass images, each carrying structure of a characteristic angular size. 
+In this work, we focus on two families of statistics, both built on the same multi-scale decomposition. 
+The basica idea is that we take the convergence map and using the starlet wavelet transform decompose it into a sum of band-pass images, each carrying structure of a characteristic angular size. 
 <!-- We use the four finest bands, roughly ten to eighty arcminutes. -->
 
 [CLICK] On each band we can count peaks: local maxima of the signal-to-noise field, binned by
-height. It's been shown to be very sensitive, but it keeps only a subset of the field, the discrete features.
+height. It's been shown to be very sensitive to cosmology, but it keeps only a subset of the field, the discrete features.
 
-[CLICK] The ℓ1-norm generalises that. Instead of counting maxima in a signal-to-noise bin, we sum
+[CLICK] The wavelet ℓ1-norm is a statistic that generalises that. Instead of counting maxima in a signal-to-noise bin, we sum
 the absolute values of every coefficient in it. S-j-i is just the coefficients at scale j whose
 signal-to-noise falls in bin i. Every pixel contributes, voids as well as peaks, and there is no
-feature-detection step to tune. 
+feature-detection step to tune.
+
+〔The sentence that makes the statistic make sense. Worth slowing down for — without it the room
+files this under "yet another wavelet statistic".〕
+
+**▲** The way to think about it: at each scale, this is the amplitude distribution of the
+coefficients. A PDF of the field in wavelet space, Gaussian core and non-Gaussian tails alike. Which
+is why it works as a statistic: it is sensitive to every moment of the field rather than to its
+variance alone, and separately at each scale.
 
 ---
 
-## 4 — The inference pipeline · 0:45
+## 4 — The inference pipeline · 0:47
 
 〔The animation runs on clicks; keep talking over it and do not wait for it.〕
 
 To answer those two questions we need a way from maps to posteriors that assumes no likelihood, and
 the same way for every statistic. So, simulation-based inference. We take the cosmoGRID convergence
-maps at known cosmologies, add shape noise and masks, apply the wavelet transform, and measure each
-statistic. That data vector conditions a normalising flow, which gives us the posterior.
+maps at known cosmologies, add shape noise and masks, apply the starlet transform, and measure each statistic on each wavelet scale. That data vector conditions a normalising flow, which gives us the posterior.
 
 The implementation is our own, in JAX: neural posterior estimation with a conditional masked
 autoregressive flow, trained to maximise the log-probability of the true parameters.
@@ -374,6 +377,9 @@ has asked.
   screen and you talk over it.
 - **§15, the counter-intuition paragraph** (−0:12).
 - **§3, the peak-count paragraph** (−0:13). Peaks then appear only on §7's figure, which is enough.
+- **§3, the "PDF in wavelet space" paragraph** (−0:20). Cut this last of the three: it is what stops
+  the ℓ1-norm sounding arbitrary, and the "why should a hand-built statistic do this well" answer
+  below leans on it.
 
 **Never cut** §7, §13 or the last two paragraphs of §15. They are the three answers the talk exists
 to deliver.
@@ -389,6 +395,18 @@ Getting the network to 3326 took a RealNVP flow rather than a simpler one, and a
 than a plain CNN. Deeper networks overfit at 899 cosmologies. Every retained choice is the best
 performer of its own sweep, and the alternatives land within a few percent through the same flow. If
 anything the comparison is generous to the network.
+
+**"Why should a hand-built statistic do this well?"**
+Because these maps are structurally simpler than the framing suggests. To a good approximation a
+noisy convergence map is a Gaussian random field plus quasi-circular peaks from collapsed
+structures, and most of the morphology beyond that sits below the shape noise. The starlet is
+matched to exactly that: isotropic multiscale atoms that resemble the peaks they have to register,
+and a statistic that reads the full coefficient amplitude distribution scale by scale. The same
+picture shows up in mass mapping, where MCALens — a Gaussian field plus a sparse wavelet component —
+is comparable to deep generative reconstructions. A learned compressor can only beat a fixed
+statistic where the field holds structure the statistic does not encode, and here there is not much
+of it. The honest converse: on a morphologically richer field the balance should tip back towards
+the network.
 
 **"FoM₃ is a fragile summary in a degenerate parameter space."**
 Agreed, which is why the marginals are in the paper alongside it: 0.044, 0.072, 0.223 for the joint
