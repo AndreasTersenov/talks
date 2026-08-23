@@ -209,7 +209,7 @@
 			<section data-theme="light" data-background-color="#ffffff">
 				<h3 class="slide-title tight"><span class="sec">§1</span> Baryonic Bias Scales with Survey Area</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col" style="flex:1.35;">
+					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.35;">
 						<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png" style="max-height:270px;"
 						     alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
 						<ul style="font-size:0.78em;">
@@ -219,18 +219,18 @@
 						</ul>
 					</div>
 					<div class="col" style="flex:1.2;">
-						<div class="r-stack fragment fade-in" data-fragment-index="0">
+						<div class="r-stack fragment fade-in" data-fragment-index="1">
 							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png" style="max-height:370px;"
 							     alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
-							<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="4" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="5" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="4" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="5" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="6" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
 						</div>
 					</div>
 				</div>
-				<p class="footnote">measured at full map resolution: $\ell_{\rm max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
+				<p class="footnote fragment fade-in" data-fragment-index="0">measured at full map resolution: $\ell_{\rm max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
 				<span class="srcref">Tersenov+ 2026, A&amp;A</span>
 				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above 6. IMPORTANT: all of this is at FULL MAP RESOLUTION - lmax 1024 for the power spectrum, every wavelet band for the HOS - i.e. no scale cuts yet. That is the point: this is what you get if you use everything the maps offer. HOS are more sensitive than C_l because they live on the contaminated small scales.</aside>
 			</section>
@@ -579,7 +579,7 @@
 						<span class="qtext">Do we need deep learning to extract it?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Read the bins jointly and a fixed wavelet statistic matches the optimal compressor, with no training.</span></span>
 					</li>
-					<li class="done">
+					<li class="done fragment fade-in" data-fragment-index="0">
 						<span class="qn">Q3</span>
 						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. There is no loss of information, and the inflation is a frame artifact.
@@ -587,7 +587,7 @@
 						</span></span>
 					</li>
 				</ul>
-				<p class="refs fragment fade-in"><b>Mitigating baryonic effects in weak lensing with higher-order statistics</b><br>
+				<p class="refs fragment fade-in" data-fragment-index="0"><b>Mitigating baryonic effects in weak lensing with higher-order statistics</b><br>
 					Tersenov, Guerrini, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; <em>A&amp;A</em>, in press<br>
 					<b>The joint wavelet &#8467;1-norm matches neural compression for tomographic weak-lensing inference</b><br>
 					Tersenov, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; in preparation &nbsp;&nbsp; both on arXiv in September</p>
