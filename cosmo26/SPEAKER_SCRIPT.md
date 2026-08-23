@@ -1,7 +1,7 @@
 # SPEAKER SCRIPT — COSMO-26, Leiden
 
-**15 min + 3 for questions.** The script is 2,303 words. That is **16:27 at 140 words per minute**
-and **15:21 at 150**, so where it lands depends on a rate you will not know until you have rehearsed
+**15 min + 3 for questions.** The script is 2,306 words. That is **16:28 at 140 words per minute**
+and **15:22 at 150**, or **15:10** taking the short paths for slides 5 and 6, so where it lands depends on a rate you will not know until you have rehearsed
 it once. Much of the room works in a second or third language, so 140 is the rate worth aiming for
 — which means **plan on making the first tier of cuts below**. Do not decide that from reading; run
 it timed, then cut.
@@ -89,27 +89,24 @@ variance alone, and separately at each scale.
 
 ---
 
-## 4 — The inference pipeline · 0:47
+## 4 — The inference pipeline · 0:45
 
 〔The animation runs on clicks; keep talking over it and do not wait for it.〕
 
 To answer those two questions we need a way from maps to posteriors that assumes no likelihood, and
 the same way for every statistic. So, simulation-based inference. We take the cosmoGRID convergence
-maps at known cosmologies, add shape noise and masks, apply the starlet transform, and measure each statistic on each wavelet scale. That data vector conditions a normalising flow, which gives us the posterior.
+maps at known cosmologies, add shape noise and masks, apply the starlet transform, and measure each statistic on each wavelet scale. Then concatenate, and that data vector conditions a normalising flow, which gives us the posterior.
 
 The implementation is our own, in JAX: neural posterior estimation with a conditional masked
 autoregressive flow, trained to maximise the log-probability of the true parameters.
 
-Every posterior in this talk has been verified calibrated, with TARP and SBC. I have the coverage
-plots in backup.
+Every posterior in this talk has been verified calibrated, with TARP and SBC.
 
 ---
 
-## 5 — How bad is the bias · 1:16
+## 5 — How bad is the bias · 1:15
 
-cosmoGRID gives us each realisation twice, with and without baryonic feedback. So we train the flow
-on the dark-matter-only maps, which is the case of having no baryon model at all, then feed it a
-baryonified map and watch how far the posterior moves.
+cosmoGRID gives us each realisation twice, with and without baryonic feedback. So we train the flow on the dark-matter-only maps, which is the case of having no baryon model at all, then feed it a baryonified map and watch how far the posterior moves.
 
 〔Turn, name the axes, turn back.〕
 
@@ -119,11 +116,22 @@ the bias grows but because the error bars shrink, so the same systematic becomes
 [CLICK] At Stage IV, fourteen thousand square degrees, the power spectrum is off by 2.2 sigma, and
 both wavelet statistics by 3.6. [CLICK] At full sky the power spectrum passes three and a half, and the higher-order statistics go beyond six.
 
-[CLICK] Two things. The higher-order statistics are the more biased, as you would expect, since
+[CLICK] The higher-order statistics are the more biased, as you would expect, since
 they live on the contaminated small scales. And all of this is at full map resolution. No cuts yet.
 
 [CLICK] And on the right, what that looks like in the contours: the power-spectrum posterior
 tightening and marching away from the truth as the area grows.
+
+### short version — 0:31
+
+〔Use this when you are behind. Both figures stay on screen; you just say less over them. Click
+through all four states at an even pace while you talk rather than stopping on each.〕
+
+cosmoGRID gives us each realisation with and without baryonic feedback, so we train the flow on the
+dark-matter-only maps and then feed it a baryonified one. [CLICK] The shift, in sigma, grows with
+survey area — the bias is the same, the error bars shrink. [CLICK] At Stage IV, 2.2 sigma for the
+power spectrum and 3.6 for both wavelet statistics. [CLICK] At full sky, beyond six. [CLICK] And no
+scale cuts have been applied yet.
 
 ---
 
@@ -147,9 +155,20 @@ removal is the only cut available to us, and at smaller footprints that is overk
 certainly discarding clean information. The wavelet cut is the coarser instrument here. That is
 fixable, and fairly easily, we just did not do it in this study.
 
+### short version — 0:33
+
+〔Keep the last sentence whatever happens. Conceding the point before anyone can raise it is what
+buys you the room for the rest of the talk, and it costs four seconds.〕
+
+To bring the bias under 0.3 sigma, [CLICK] the power spectrum needs a sliding cut: ℓmax from 860 at
+two thousand square degrees down to 340 at full sky, so more than half the range goes. [CLICK] The
+wavelets need only their finest band dropped, at every area. **▲** Not because they are better —
+whole-band removal is the only cut we have, so it is the blunter instrument, and we are certainly
+throwing away clean information with it.
+
 ---
 
-## 7 — First answer · 0:59
+## 7 — First answer · 1:03
 
 Which brings us to the second question: whether anything is left to gain over the power spectrum
 once the cuts are applied. These are the Stage IV posteriors, baryon-safe scales only. Power
@@ -161,7 +180,7 @@ spectrum first. [CLICK] Peak counts. [CLICK] And the ℓ1-norm.
 degeneracy directions in the w0 planes differ from the power spectrum's.
 
 [CLICK] So higher-order statistics are not only deep-non-linear probes. The signal survives on
-quasi-linear scales with no baryon model at all. And this is a floor: our cut is not
+quasi-linear scales with no baryon model at all. And this is a floor. In principle we can do even better than that: our cut is not
 optimised, and as feedback modelling improves the analysis moves back into the non-linear regime,
 where the gain is larger.
 
@@ -345,6 +364,11 @@ statistic cannot reach.
 Calibrated to this version of the script. Rehearse the tiers so that running long degrades in an
 order you chose, rather than by panic on the day.
 
+**Tier 0 — the short paths for §5 and §6, recovering about 1:26.** These are written out under each
+of those sections rather than described here, because they are meant to be *rehearsed*, not
+improvised mid-talk. Slides 5 and 6 are intermediate results: the room needs the numbers and the
+one honest caveat, and nothing else. Take both short paths and the tiers below become optional.
+
 **Tier 1 — recovers about 1:00, and takes the script to 14:00.** Expect to need this.
 
 - **§10 folds into §11** (−0:25). Drop the slide's own paragraph and open §11 with: *"Same maps, same
@@ -395,6 +419,41 @@ Getting the network to 3326 took a RealNVP flow rather than a simpler one, and a
 than a plain CNN. Deeper networks overfit at 899 cosmologies. Every retained choice is the best
 performer of its own sweep, and the alternatives land within a few percent through the same flow. If
 anything the comparison is generous to the network.
+
+**"Why a wavelet decomposition? Why not just smooth with a Gaussian at a few scales and cut there?"**
+Four reasons, and the first two are the ones that matter.
+
+*A Gaussian filter is a low-pass; a starlet band is a compensated band-pass.* Smooth a map at eight
+arcminutes and it still contains every scale above eight arcminutes — the large-scale power is all
+still in there, and it dominates the variance, so the one-point distribution of a smoothed map is
+mostly telling you about scales far larger than the filter. The starlet wavelet integrates to zero,
+so a band carries only the structure at that scale. The coefficient distribution is then *about*
+that scale, which is the whole point of a scale-resolved statistic.
+
+*Gaussian-smoothed maps at different scales are nested; wavelet bands are not.* Everything in the
+four-arcminute map is also in the eight-arcminute map, so statistics measured across a ladder of
+Gaussian filters are strongly correlated, and the covariance is close to singular — you need far
+more simulations to estimate it, and you learn little from each extra scale. The starlet bands are
+approximately decorrelated and the covariance comes out much closer to diagonal (Lin & Kilbinger
+2018; Ajani et al. 2021).
+
+*And specifically on the cut, which is what you are really asking.* The starlet gives an exact
+decomposition: the map is the sum of the bands plus a coarse residual. Dropping j equals one removes
+an entire, identifiable channel from the data vector. There is no equivalent move for a Gaussian
+filter — its transfer function is exp(−k²σ²/2), which is never zero, so contaminated small-scale
+power is present in every smoothed map at some level. You would have to over-smooth to be safe, and
+that throws away clean information along with the contaminated. Our criterion is empirical anyway —
+we measure the residual bias at under 0.3 sigma — precisely because adjacent starlet bands do
+overlap and the cut is not a perfect excision in k.
+
+*Two properties of this particular transform.* It is undecimated, so translation-invariant: peak
+counts on a decimated orthogonal transform would depend on where the pixel grid happens to fall.
+And it is isotropic, so no direction is privileged, which matches the quasi-circular structures a
+convergence map is actually made of. A tensor-product wavelet basis would impose a preferred axis.
+
+〔The honest counterpoint, if pressed: the dyadic ladder is why our cut is quantised and therefore
+coarser than the power spectrum's sliding ℓmax. Concede it — it is the same point you already made
+on slide 6, and a √2 or non-dyadic filter bank would let you tune it.〕
 
 **"Why should a hand-built statistic do this well?"**
 Because these maps are structurally simpler than the framing suggests. To a good approximation a
