@@ -61,8 +61,9 @@
 					<div class="col"><img src="../assets/logos/oie_DGCLMBA7vVI8.png" class="plain" height="118"></div>
 					<div class="col"><img src="../assets/logos/CosmoStatDarkBK.png" class="plain" height="62"></div>
 				</div>
-				<p class="affil" style="font-size:0.72em; color:var(--fg);"><b class="alert">Andreas Tersenov</b> &nbsp; FORTH, U. Crete, CEA Paris-Saclay</p>
-				<p class="affil" style="font-size:0.62em; margin-top:0.35em;">with Sacha Guerrini, Jean-Luc Starck and Martin Kilbinger &nbsp;&nbsp;&nbsp; slides: andreastersenov.github.io/talks/</p>
+				<p class="affil" style="font-size:0.92em; color:var(--fg);"><b class="alert">Andreas Tersenov</b> &nbsp; FORTH, U. Crete, CEA Paris-Saclay</p>
+				<p class="affil" style="font-size:0.66em; margin-top:0.45em;">with Sacha Guerrini, Jean-Luc Starck and Martin Kilbinger<br>
+					slides: https://andreastersenov.github.io/talks/cosmo26/</p>
 				<aside class="notes">COSMO-26, 15 min + 3 Q. Paper I: Tersenov, Guerrini, Starck, Kilbinger (A&amp;A, resubmitted). Paper II: Tersenov, Starck, Kilbinger (in prep).</aside>
 			</section>
 
@@ -208,24 +209,24 @@
 			<section data-theme="light" data-background-color="#ffffff">
 				<h3 class="slide-title tight"><span class="sec">§1</span> Baryonic Bias Scales with Survey Area</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.35;">
+					<div class="col" style="flex:1.35;">
 						<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png" style="max-height:270px;"
 						     alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
 						<ul style="font-size:0.78em;">
-							<li class="fragment fade-in" data-fragment-index="1">At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b class="alert">3.6&sigma;</b></li>
-							<li class="fragment fade-in" data-fragment-index="2">At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b class="alert">6&sigma;</b></li>
-							<li class="fragment fade-in" data-fragment-index="3">HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the baryonically-contaminated small scales</li>
+							<li>At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b class="alert">3.6&sigma;</b></li>
+							<li>At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b class="alert">6&sigma;</b></li>
+							<li>HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the baryonically-contaminated small scales</li>
 						</ul>
 					</div>
 					<div class="col" style="flex:1.2;">
-						<div class="r-stack fragment fade-in" data-fragment-index="4">
+						<div class="r-stack fragment fade-in" data-fragment-index="0">
 							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png" style="max-height:370px;"
 							     alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
-							<img class="plain fragment" data-fragment-index="5" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="6" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="7" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="8" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="9" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="1" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="3" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="4" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="5" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" style="max-height:370px;" alt="">
 						</div>
 					</div>
 				</div>
@@ -239,16 +240,13 @@
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§1</span> Buying back an unbiased inference costs $C_\ell$ <em class="alert">most of its multipole range</em>, and the starlet its <em class="alert">finest band</em></h3>
 				<ul style="font-size:0.82em; margin-bottom:0.5em;">
-					<li class="fragment fade-in">Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-					<li class="fragment fade-in">$C_\ell$ takes a <b class="alert">sliding</b> cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b class="alert">340</b> at full sky</li>
-					<li class="fragment fade-in">The starlet concentrates the contamination in its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
+					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
+					<li class="fragment fade-in" data-fragment-index="0">$C_\ell$ takes a <b class="alert">sliding</b> cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b class="alert">340</b> at full sky</li>
+					<li class="fragment fade-in" data-fragment-index="0">The starlet concentrates the contamination in its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
 				</ul>
-				<div class="r-stack fragment fade-in">
-					<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step1.png" style="max-height:270px;"
-					     alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, against the 0.3 sigma threshold">
-					<img class="plain fragment" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png" style="max-height:270px;" alt="">
-				</div>
-				<div class="cutpair fragment fade-in">
+				<img class="plain fragment fade-in" data-fragment-index="0" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png" style="max-height:270px; display:block; margin:0 auto;"
+				     alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
+				<div class="cutpair fragment fade-in" data-fragment-index="0">
 					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut tuned to each area</span></div>
 					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole bands only, so we cut more than we need</span></div>
 				</div>
@@ -584,12 +582,15 @@
 					<li class="done">
 						<span class="qn">Q3</span>
 						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. There is no loss of information, and the inflation is a frame artifact.</span></span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary reads the bins jointly. There is no loss of information, and the inflation is a frame artifact.
+						What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.
+						</span></span>
 					</li>
 				</ul>
-				<p class="oneline fragment fade-in">What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic cannot reach.</p>
-				<p class="refs fragment fade-in">Tersenov, Guerrini, Starck &amp; Kilbinger, <em>A&amp;A</em>, in press<br>
-					Tersenov, Starck &amp; Kilbinger, in preparation &nbsp;&mdash;&nbsp; both on arXiv in September</p>
+				<p class="refs fragment fade-in"><b>Mitigating baryonic effects in weak lensing with higher-order statistics</b><br>
+					Tersenov, Guerrini, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; <em>A&amp;A</em>, in press<br>
+					<b>The joint wavelet &#8467;1-norm matches neural compression for tomographic weak-lensing inference</b><br>
+					Tersenov, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; in preparation &nbsp;&nbsp; both on arXiv in September</p>
 				<aside class="notes">Land all three, then the honest residual, then the practical message: nulling stays usable as a mitigation for redshift-localised systematics provided some stage of the pipeline reads the bins jointly. Leave this slide up during questions.</aside>
 			</section>
 

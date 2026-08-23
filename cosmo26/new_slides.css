@@ -661,3 +661,5 @@
   padding-left: 0.8em; border-left: 1px solid var(--hair);
 }
 .reveal .slides section .refs em { font-style: italic; }
+/* paper titles carry the full ink; the author lines stay muted under them */
+.reveal .slides section .refs b { color: var(--fg); font-weight: 600; }
