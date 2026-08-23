@@ -1,100 +1,70 @@
 # SPEAKER SCRIPT — COSMO-26, Leiden
 
-**15 min + 3 for questions.** The script is 2,306 words. That is **16:28 at 140 words per minute**
-and **15:22 at 150**, or **15:10** taking the short paths for slides 5 and 6, so where it lands depends on a rate you will not know until you have rehearsed
-it once. Much of the room works in a second or third language, so 140 is the rate worth aiming for
-— which means **plan on making the first tier of cuts below**. Do not decide that from reading; run
-it timed, then cut.
-
-Every number below traces to `PAPER_FACTS.md` and was re-checked against the paper sources on
-2026-08-22. Read `../docs/TALK-GUIDELINES.md` §6 before the first rehearsal.
-
-**How to use this.** The prose is what you say, not a paraphrase of it. Rehearse it out loud once
-without timing, fix whatever your mouth refuses to say, then rehearse timed. The wording will drift
-after that, which is fine — the sentences that matter are marked **▲ land this**, and those should
-survive verbatim, because they are the ones carrying a claim you do not want to soften on the day.
-
-`[CLICK]` marks a fragment advance. `〔stage〕` is a direction, never spoken.
+**15 min + 3 for questions.** 
 
 ---
 
 ## 1 — Title · 0:51
 
-〔Face the room. Do not look at the screen — you know what it says.〕
-
 Thanks very much. I'm Andreas Tersenov, a PhD student at FORTH in Crete and the CosmoStat lab at
 CEA Paris-Saclay. This is work with Sacha Guerrini, Jean-Luc Starck and Martin Kilbinger, across two
 papers, and both should be on arXiv in September.
 
-We all know Stage IV surveys, Euclid first among them, will measure the lensing field with unprecedented precision. Exploiting that **fully** takes statistics that go beyond two-point functions (so to HOS) and beyond Gaussian likelihoods. And it takes them in a regime that is data-limited rather than
-statistics-limited, where the work is controlling astrophysical and instrumental effects subtle enough to bias the inference.
+<!-- So to set up the scene: we all know Stage IV surveys, Euclid first among them, will measure the lensing field with unprecedented precision. Exploiting that **fully** needs statistics that go beyond two-point functions (so HOS) and beyond Gaussian likelihoods. 
+We're also moving from a regime that is 
+statistics-limited into one that is systematics-limited, where the work is controlling astrophysical and instrumental effects that can bias the inference. -->
 
-**▲** Those two things pull against each other, and that is where this talk starts.
+<!-- **▲** Those two things pull against each other, and that is where this talk starts. -->
 
 ---
 
 ## 2 — The problem, and two questions · 1:44
 
-〔Turn to the schematic and orient the room to the axes, then turn back. This is the one slide where
-turning around is licensed.〕
+So to set up the scene:
+As we all know, in WL fields a big part of the information is not gaussian, and therefore not captured by 2pt statistics. So in the community we proliferate HOS and show amazing results with them, in terms of information gain. However...
 
 In order to be able to trust any of our HOS results, we need to know exactly how they are affected by systematics, at the level of the cosmological contours.
 
-And here on this scematic figure you can see the issue. Angular scale runs along the bottom: large linear scales left, small non-linear scales right.
+And here on this schematic figure you can see the issue. 
 
-The first curve is the non-Gaussian information beyond the two-point function. It grows towards
-smaller scales and peaks somewhere in the middle. 
-The second is roughly how our small-scale
-systematics behave, baryonic feedback above all: gas pushed around by AGN and supernovae. On large scales it's negligible, but then it rises steeply on exactly the scales we want to use with HOS.
+The blue curve is the non-Gaussian information beyond the two-point function. It grows towards
+smaller scales, as the field becomes more non-Gaussian. 
+The gray curve is roughly how our small-scale
+systematics behave, for example, baryonic feedback: gas pushed around by AGN and supernovae. On large scales it's negligible, but then it rises steeply on exactly the scales we want to use with HOS.
 
-Modelling them is an active area, but not yet reliable enough to trust (with many significantly different alternative models), so the standard response is
-to cut those scales. The question is how far that cut has to reach.
+Modelling baryons is an active area, but not yet reliable enough to trust, especially for HOS (with many significantly different alternative models), so the standard response is to cut those scales. The question is how far that cut has to reach.
 
 So we kinda have two scenaria. 
 [CLICK] If we are lucky, only the smallest scales are affected. We cut them and most of the
 non-Gaussian information is still there. [CLICK] If we are not, the contamination reaches much
 further, and once it is cut there may be nothing beyond-Gaussian left worth having.
 
-〔Pause. Then, more slowly — these two sentences set up the first half of the talk.〕
-
-So, two questions. **▲** First: how much does unmodelled feedback bias higher-order statistics, and
-how does that get worse as surveys get bigger? Second: once those scales are cut, is there anything left to gain over the power spectrum?
+So, two questions. **▲** First: how does unmodelled feedback bias higher-order statistics;
+and once those scales are cut, is there anything left to gain over the power spectrum?
 
 ---
 
 ## 3 — The two statistics · 1:27
 
-〔Do not read the band labels off the figure — it is a thesis illustration at a finer pixel scale
-than our analysis, and its arcminute numbers are not ours.〕
-
 In this work, we focus on two families of statistics, both built on the same multi-scale decomposition. 
-The basica idea is that we take the convergence map and using the starlet wavelet transform decompose it into a sum of band-pass images, each carrying structure of a characteristic angular size. 
+The basic idea is that we take the weak lensing map and using the starlet wavelet transform decompose it into a sum of band-pass images, each carrying structure of a characteristic angular size. 
 <!-- We use the four finest bands, roughly ten to eighty arcminutes. -->
 
-[CLICK] On each band we can count peaks: local maxima of the signal-to-noise field, binned by
-height. It's been shown to be very sensitive to cosmology, but it keeps only a subset of the field, the discrete features.
+[CLICK] On each band we can count peaks: local maxima of the convergence field, binned by
+height. It's been shown to be very sensitive to cosmology...
+<!-- , but it keeps only a subset of the field, the discrete features. -->
 
-[CLICK] The wavelet ℓ1-norm is a statistic that generalises that. Instead of counting maxima in a signal-to-noise bin, we sum
-the absolute values of every coefficient in it. S-j-i is just the coefficients at scale j whose
-signal-to-noise falls in bin i. Every pixel contributes, voids as well as peaks, and there is no
-feature-detection step to tune.
+[CLICK] The wavelet ℓ1-norm is a statistic that generalises that. Instead of counting maxima in an SNR bin, we sum the absolute values of every wavelet coefficient in it. 
+<!-- S-j-i is just the coefficients at scale j whose signal-to-noise falls in bin i.  -->
+This way the information from every part of the field is retained, not just the peaks. 
 
-〔The sentence that makes the statistic make sense. Worth slowing down for — without it the room
-files this under "yet another wavelet statistic".〕
-
-**▲** The way to think about it: at each scale, this is the amplitude distribution of the
-coefficients. A PDF of the field in wavelet space, Gaussian core and non-Gaussian tails alike. Which
-is why it works as a statistic: it is sensitive to every moment of the field rather than to its
-variance alone, and separately at each scale.
+You can think about it as a sort of PDF in the wavelet space, at each scale, capturing both the field's Gaussian core and non-Gaussian tails. 
 
 ---
 
 ## 4 — The inference pipeline · 0:45
 
-〔The animation runs on clicks; keep talking over it and do not wait for it.〕
-
-To answer those two questions we need a way from maps to posteriors that assumes no likelihood, and
-the same way for every statistic. So, simulation-based inference. We take the cosmoGRID convergence
+To answer those two questions we asked, we need a way from maps to posteriors that assumes no likelihood, and works the same way for every statistic. So, simulation-based inference. We take the cosmoGRID convergence
 maps at known cosmologies, add shape noise and masks, apply the starlet transform, and measure each statistic on each wavelet scale. Then concatenate, and that data vector conditions a normalising flow, which gives us the posterior.
 
 The implementation is our own, in JAX: neural posterior estimation with a conditional masked
@@ -108,46 +78,45 @@ Every posterior in this talk has been verified calibrated, with TARP and SBC.
 
 cosmoGRID gives us each realisation twice, with and without baryonic feedback. So we train the flow on the dark-matter-only maps, which is the case of having no baryon model at all, then feed it a baryonified map and watch how far the posterior moves.
 
-〔Turn, name the axes, turn back.〕
+That shift, in sigma, is on the y-axis, survey area on the x. And it grows with area, essentially because the error bars shrink, so the same systematic becomes more significant.
 
-That shift, in sigma, is on the y-axis, survey area on the x. And it grows with area, not because
-the bias grows but because the error bars shrink, so the same systematic becomes more significant.
+〔The left figure and all three bullets are up from the start — no clicks until the right-hand
+column. Pace yourself by the bullets, not by the remote.〕
 
-[CLICK] At Stage IV, fourteen thousand square degrees, the power spectrum is off by 2.2 sigma, and
-both wavelet statistics by 3.6. [CLICK] At full sky the power spectrum passes three and a half, and the higher-order statistics go beyond six.
+At Stage IV, fourteen thousand square degrees, the power spectrum is off by 2.2 sigma, and both
+wavelet statistics by 3.6. At full sky the power spectrum passes three and a half, and the
+higher-order statistics go beyond six.
 
-[CLICK] The higher-order statistics are the more biased, as you would expect, since
-they live on the contaminated small scales. And all of this is at full map resolution. No cuts yet.
+The higher-order statistics are the more biased, as you would expect, since they live on the
+contaminated small scales. And all of this is at full map resolution. No cuts yet.
 
 [CLICK] And on the right, what that looks like in the contours: the power-spectrum posterior
-tightening and marching away from the truth as the area grows.
+tightening and marching away from the truth as the area grows. 〔Five more clicks, one per area.
+Keep talking over them.〕
 
 ### short version — 0:31
 
-〔Use this when you are behind. Both figures stay on screen; you just say less over them. Click
-through all four states at an even pace while you talk rather than stopping on each.〕
+cosmoGRID gives us each realisation with and without baryonic feedback, so we train the flow on the dark-matter-only maps (which is the case of having no baryon model at all) and then feed it a baryonified "observation". We measure the shift of the posteriors, in sigma, which grows with
+survey area — because the error bars shrink. At Stage IV, 2.2 sigma for the power spectrum and 3.6
+for both wavelet statistics. At full sky, beyond six. And no scale cuts have been applied yet.
 
-cosmoGRID gives us each realisation with and without baryonic feedback, so we train the flow on the
-dark-matter-only maps and then feed it a baryonified one. [CLICK] The shift, in sigma, grows with
-survey area — the bias is the same, the error bars shrink. [CLICK] At Stage IV, 2.2 sigma for the
-power spectrum and 3.6 for both wavelet statistics. [CLICK] At full sky, beyond six. [CLICK] And no
-scale cuts have been applied yet.
+[CLICK] 〔Then click straight through the right-hand build without stopping, and go to slide 6.〕
 
 ---
 
 ## 6 — What the cut costs · 1:06
 
-So we cut, deriving the cut separately at each survey area, with the criterion that the bias comes
+So, to de-bias, we cut, deriving the cut separately at each survey area, with the criterion that the bias comes
 below 0.3 sigma.
+
+〔One click only on this slide, and it brings up everything at once: both remaining bullets, the
+figure in its final form, and the two lines underneath. Click, then talk through it.〕
 
 [CLICK] For the power spectrum that means a sliding ℓmax: 860 at two thousand square degrees,
 falling to 340 at full sky. At Stage IV and beyond, more than half the multipole range goes.
 
-[CLICK] For the wavelets, the contamination concentrates in the single finest band, so dropping
-j equals one is enough at every area. 
-
-〔Slow down here. This is the honest-broker moment and it buys you credibility for the rest of the
-talk.〕
+For the wavelets, the contamination concentrates in the single finest band, so removing
+only this band one is enough at every area. 
 
 **▲** But one important point. The two cuts are not the same kind of object. The power spectrum's
 can be tuned to keep exactly what is safe at each area. Our wavelet bands are dyadic, so whole-band
@@ -157,14 +126,9 @@ fixable, and fairly easily, we just did not do it in this study.
 
 ### short version — 0:33
 
-〔Keep the last sentence whatever happens. Conceding the point before anyone can raise it is what
-buys you the room for the rest of the talk, and it costs four seconds.〕
-
-To bring the bias under 0.3 sigma, [CLICK] the power spectrum needs a sliding cut: ℓmax from 860 at
-two thousand square degrees down to 340 at full sky, so more than half the range goes. [CLICK] The
-wavelets need only their finest band dropped, at every area. **▲** Not because they are better —
-whole-band removal is the only cut we have, so it is the blunter instrument, and we are certainly
-throwing away clean information with it.
+To bring the bias under 0.3 sigma (which is our threshold), [CLICK] the power spectrum needs a sliding cut: ℓmax from 860 at
+two thousand square degrees down to 340 at full sky, so more than half the range goes. The wavelets
+need only their finest band dropped, at every area. **▲** But keep in mind that whole-band removal is the only cut we have, so it is the blunter instrument, and we are certainly throwing away clean information with it, and in principle we can improve on that. 
 
 ---
 
@@ -175,73 +139,57 @@ once the cuts are applied. These are the Stage IV posteriors, baryon-safe scales
 spectrum first. [CLICK] Peak counts. [CLICK] And the ℓ1-norm.
 
 **▲** On those scales the ℓ1-norm reaches a figure of merit 1.8 times the power spectrum's. At full sky (because of the better-adjusted wavelet cut), 2.6.
-
-[CLICK] Peak counts are not as good, but they still carry plenty of complementary information: their
-degeneracy directions in the w0 planes differ from the power spectrum's.
+<!-- 
+[CLICK] Peak counts are not as good, but they still carry plenty of complementary information to PS: their degeneracy directions in the w0 planes differ from the power spectrum's. -->
 
 [CLICK] So higher-order statistics are not only deep-non-linear probes. The signal survives on
-quasi-linear scales with no baryon model at all. And this is a floor. In principle we can do even better than that: our cut is not
-optimised, and as feedback modelling improves the analysis moves back into the non-linear regime,
-where the gain is larger.
+quasi-linear scales with no baryon model at all. And this is a floor. 
+
+In principle we can do even better than that: our cut is not optimised, and as feedback modelling improves the analysis moves back into the non-linear regime, where the gain is larger.
 
 ---
 
 ## 8 — The second question · 1:10
 
-〔Do not put this question on the room cold. The two sentences that set it up are doing the work;
-give them time.〕
+So the ℓ1-norm survives the cut, and on baryon-safe scales it comfortably beats the power spectrum. And it seems like a really strong statistic. 
 
-So the ℓ1-norm survives the cut, and on baryon-safe scales it comfortably beats the power spectrum.
-But beating the power spectrum is a low bar for a non-Gaussian statistic. **▲** The question I
-actually care about is how much of the information in these maps we are getting at all: whether the
-ℓ1-norm is close to everything that is there, or leaving a lot behind.
+But the question is *how strong*. How much of the information in these maps we are leaving on the table. 
 
-For a non-Gaussian field there is no analytic answer to that. What we do have is where much of the
-field has been moving anyway: train a neural network to compress the maps, with an objective that
-makes the summary optimal by construction.
+For a non-Gaussian field there is no analytic answer to that. What we do have is where a practical one: train a neural network to compress the maps, with an objective that
+makes the summary "optimal" by construction. Where it lands is a ceiling we can measure against.
 
-[CLICK] Which cuts both ways. It hands us something to measure against. **▲** And it raises a fair
-question: if a learned summary is already optimal, why hand-build a statistic at all? Except that
-the optimality claim is nearly always made against the power spectrum, and hardly ever against a
-strong hand-crafted higher-order statistic. So we tested it.
+And that is the same question the field has been asking from the other side: if a learned summary is going to do better than any analytic statistic, why hand-build a statistic at all? 
+
+That comparison has mostly been made against the power spectrum. Not against a strong higher-order statistic. So we made it.
 
 ---
 
 ## 9 — The benchmark · 0:42
 
 The compressor we test against is a convolutional network trained with VMIM, inside the same SBI
-pipeline. It reads the four tomographic maps and returns a ten-dimensional summary. Network and flow
-are trained together, and the pair is rewarded whenever the flow puts high probability on the true
+pipeline. It reads the four tomographic maps and returns a low-dimensional summary. The compressor network and the flow
+are trained *together*, and the pair is rewarded whenever the flow puts high probability on the true
 parameters.
 
 That objective is a variational lower bound on the mutual information between the summary and the
 parameters. **▲** So in principle this compressor extracts everything the maps make accessible,
-which is exactly why it is worth measuring against: it is a ceiling, not one more statistic in
-the pile.
+which is exactly why it is worth measuring against: it is essentially a ceiling.
 
 ---
 
 ## 10 — Making it a fair fight · 0:25
 
-The comparison has to be fair, so: the same maps, the same flow, the same compressed dimensionality, both arms verified calibrated. The only thing that changes is the summary.
-
-Flat-sky ten-degree patches. Three hundred and twenty-four thousand of them, across eight hundred
-and ninety-nine cosmologies, so if a gap shows up it is the compressor and not data scarcity.
+The comparison has to be fair, so: we take the same maps (which for every realization is a set of 4 flat-sky, 10 deg tomographic maps corresponding to the same patch), the same flow, the same compressed dimensionality, both arms verified calibrated. *The only thing that changes is the summary.*
 
 ---
 
 ## 11 — The gap · 0:42
+ 
+And here is the first result. In grey, the ℓ1-norm measured on the four tomographic maps. [CLICK] In blue, the
+network. You can see that they are not that far apart, however the network is ahead, by thirty-six percent in the figure of merit.
 
-First result. In grey, the ℓ1-norm measured on the four tomographic maps. [CLICK] In blue, the
-network. The network is ahead, by thirty-six percent in the figure of merit.
-
-〔Read the result plainly. Do not editorialise about the network being better, and do not yet claim
-to know why.〕
-
-Now, the comparison is a bit unfair, because the two are not reading the same thing. The network
-takes all four maps together from its first convolutional layer; the ℓ1-norm is measured one bin at
-a time. And the bins do carry correlated information, since the lensing kernels overlap while the
-shape noise is independent. A per-channel statistic never sees it.
+However, the comparison is a bit unfair, because the two are not reading the same thing. The network
+takes all four maps together from its first convolutional layer; the ℓ1-norm is measured one bin at a time. And the bins do carry correlated information, since the lensing kernels overlap while the shape noise is independent. A per-channel statistic never sees it.
 
 **▲** So let's try to close the asymmetry and find out.
 
@@ -249,28 +197,16 @@ shape noise is independent. A per-channel statistic never sees it.
 
 ## 12 — Two routes · 1:37
 
-One way to capture it is to build the missing channel. For each pair of bins, multiply the two maps
-pixel by pixel: the product lights up only where both have structure in the same place. Six pairs,
-six new channels, the same ℓ1-norm on each, appended to the data vector. A convolution gives a
-second flavour.
+Since we cannot use the "cross spectra" approach with HOS, one way to capture the inter-bin information is to build/approximate the missing channel. E.g. for each pair of bins, multiply the two maps pixel by pixel: the product lights up only where both have structure in the same place. This gives six pairs, six new channels, on which we can also compute the ℓ1-norm, and append to the data vector. 
+Another way is to take instead of products *convolutions* of tomographic maps.
 
-[CLICK] The other route leaves the maps alone and changes what the statistic reads. Take one wavelet
-scale. At every pixel you have four numbers, one per redshift bin, and the per-bin ℓ1-norm
-histograms each of them separately. That is literally what the two curves on the edges of this
-figure are.
+[CLICK] The other route leaves the maps alone and changes what the statistic reads. Take two tomographic maps, at one scale. Every pixel of the patch gives you a pair of coefficients, one from each bin. The per-bin ℓ1-norm histograms them separately — those two curves on the edges of the figure.
 
-〔This is the sentence the slide exists for. Slow down, and point at the two edge curves as you say
-it.〕
+**▲** But separate histograms never tell you whether the two bins are large in the same places. Same gap as between the auto-spectra and the cross-spectrum.
 
-**▲** But two separate histograms can never tell you whether the bins are large in the same places.
-It is the same gap as between two auto-spectra and the cross-spectrum: knowing each field on its own
-does not tell you how the two vary together. That lives in the plane, not in the margins.
+[CLICK]  So why not use the plane instead. Grid it, and add up the ℓ1 weight in each cell. That is the joint ℓ1-norm — and unlike a cross-map, it never collapses the pair into a single field.
 
-[CLICK] So we use the plane. Lay a fixed grid over it, drop every pixel into the cell its pair of
-coefficients points at, and add up the ℓ1 weight landing in each cell. That is the joint ℓ1-norm.
-
-[CLICK] **▲** And that is what separates it from a cross-map, which collapses each pair into a
-single field before the statistic is taken. The joint ℓ1-norm never collapses anything.
+Of course, optimally, we would like to be able to do this in the full 4-d tomographic space (not just for pairs of tomographic maps), however simply because of the curse of dimensionallity, pairwise is the best we can do.
 
 ---
 
@@ -279,11 +215,8 @@ single field before the statistic is taken. The joint ℓ1-norm never collapses 
 Here is what that buys. Auto-only ℓ1-norm. [CLICK] Add the product cross-maps. [CLICK] The joint
 ℓ1-norm. [CLICK] And the CNN, which lands on top of it.
 
-〔Pause before the number. This is the headline of the talk.〕
-
-**▲** 3371 against 3326. What that means is that both summaries appear to saturate the information
-these maps make accessible. And since VMIM estimates the ceiling, a hand-built statistic reaching it
-is a statement about sufficiency.
+**▲** So essentially the joint l1 matches the neural statistic. What that means is that both summaries appear to saturate the information
+these maps make accessible. And since VMIM estimates the ceiling, a hand-built statistic reaching it is a statement about sufficiency.
 
 [CLICK] It holds on every parameter, over nine thousand mock observations.
 
@@ -296,14 +229,16 @@ architecture, and the deeper networks overfit at 899 cosmologies. It is at its o
 
 ## 14 — The third question · 1:08
 
-One more question, and it comes back from the baryon half of the talk.
+There's a third question we looked at, on nulling transforms and BNT — those two slides — which I don't have time for. The answer is on the conclusions slide, and I'd be glad to go through it in the break.
+
+<!-- One more question, and it comes back from the baryon half of the talk.
 
 Scale cuts are partly so expensive because lensing projects a whole range of physical scales onto
 each angular scale, so an angular cut is not a cut in physical scale. Nulling approaches like BNT
 repair that: linear combinations of the tomographic bins, chosen so the kernels become narrow and
-localised in distance. Then a cut can go only where the systematic is.
+localised in redshift. Then a cut can go only where the systematic is.
 
-On the power spectrum it works. We gain about a factor 1.4 in figure of merit at Stage IV, by
+On the power spectrum it works. We demonstrate that we can gain about a factor 1.4 in figure of merit at Stage IV in our setup, by
 cutting only the bin that needs it.
 
 [CLICK] But applied to higher-order statistics, by us and by others, it does this instead. The blue
@@ -320,20 +255,23 @@ And yet the per-bin ℓ1-norm keeps sixteen percent of its figure of merit.
 
 So we ran the same four summaries through the nulled frame.
 
-[CLICK] Per-bin ℓ1-norm: sixteen percent. [CLICK] Add one derived field per pair, the product
+Here you can see how much the contours for each probe inflate if we derive them in the BNT frame.
+
+[CLICK] Per-bin ℓ1-norm: only sixteen percent of the original if derived in BNT space. [CLICK] Add one derived field per pair, the product
 cross-maps: twenty-four. [CLICK] The joint ℓ1-norm, the statistic we built two slides ago:
 seventy-two. [CLICK] And the network, which reads all four channels natively, is lossless within
 the errors.
 
-**▲** What a summary retains under the nulling tracks how jointly it reads the bins. The transform
-correlates the shape noise across the maps, so the constraint stops sitting in any individual
-channel and starts sitting in the structure across them. Which runs against intuition: nulling is
-designed to de-correlate the bins, and joint reading matters more there, not less.
+And this is due to the simple fact that in the BNT frame much more of the cosmological information moves from the auto-maps into the inter-bin structure. So what a summary retains under the nulling tracks how jointly it reads the bins. 
+
+This happens because the transform correlates the shape noise across the maps, so the constraint stops sitting in any individual channel and starts sitting in the structure across them. 
+(Which runs against intuition: nulling is
+designed to de-correlate the bins, and joint reading matters more there, not less.)
 
 [CLICK] **▲** So nulling can be kept as a mitigation at no cost in constraining power, provided some
 stage of the pipeline reads the bins jointly. And notice the power spectrum was the first rung of
 this same ladder all along: it survives the transform only if you keep the cross-spectra between
-transformed bins.
+transformed bins. -->
 
 ---
 
