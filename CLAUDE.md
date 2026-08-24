@@ -20,11 +20,19 @@ slide standard, figures-for-talks-are-not-figures-for-papers, delivery and Q&A, 
 checklists and a `STRUCTURE.md` template. Read it before planning or restructuring any deck; this
 file (CLAUDE.md) only covers the mechanics.
 
-Two conventions it establishes that live inside each deck directory:
+Three conventions it establishes that live inside each deck directory:
 
 - `<TalkDir>/STRUCTURE.md` — the running order and time budget, agreed **before** slide surgery.
 - `<TalkDir>/PAPER_FACTS.md` — a number ledger, when the talk is built from papers still in flux.
   No number reaches a slide unless it is in the ledger with a source line.
+- `<TalkDir>/SPEAKER_SCRIPT.md` — the words actually said, with `[CLICK]` cues, `〔stage〕`
+  directions, timings **measured** from the word count, tiered cut lines, and ranked Q&A answers.
+  Format spec in §11b of the guidelines; `cosmo26/SPEAKER_SCRIPT.md` is the worked example.
+
+`docs/REVEAL-GOTCHAS.md` collects the build-and-animation traps in this stack that have each cost
+real debugging time — fragment ordering, overlay alignment against reveal's 95% image cap, PDF
+export, canvas-under-headless, and the rules for scripted edits to `index.html`. **Read it before
+touching fragments, overlays, or anything that has to survive PDF export.**
 
 ## Working on a talk (local preview)
 

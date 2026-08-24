@@ -727,6 +727,82 @@ Copy into `<TalkDir>/STRUCTURE.md` at the start of a new talk.
 
 ---
 
+## 11b. The speaker script
+
+Written after the COSMO-26 deck (2026-08), where the script turned out to matter more than any
+individual slide. Lives at `<TalkDir>/SPEAKER_SCRIPT.md`.
+
+**Write the words you will say, not a summary of them.** A bullet list of "things to mention" is
+not a script; it collapses the moment you are nervous, which is exactly when you need it. Prose
+also makes the timing measurable, which bullets never are.
+
+### Format
+
+- `[CLICK]` marks a fragment advance, placed in the sentence where it belongs. **These are load-bearing
+  and they go stale.** Every time a build changes, the cues must be resynced — a `[CLICK]` pointing at
+  a fragment that no longer exists is discovered mid-rehearsal, at the worst possible moment.
+- `〔stage directions〕` for anything you do rather than say: where to turn, where to pause, where to
+  point. Never spoken, visually distinct so the eye skips them when reading ahead.
+- `**▲**` on sentences that must survive verbatim as the wording drifts in rehearsal. These are the
+  ones carrying a claim you do not want to soften under pressure — the concession you make before
+  anyone can raise it, the precise statement of a result, the honest caveat.
+- A per-section time in the heading, and a total in the header.
+
+### Time the script, do not estimate it
+
+Count the spoken words (excluding stage directions and off-budget asides) and divide by a rate.
+**140 words per minute** for an audience working largely in a second or third language; 150 if you
+know you speak fast. Recompute after every edit and rewrite the headings from the measurement. An
+estimated timing is worse than none, because it is believed.
+
+The number the script must hit is the **planned** length, not the slot: at 15+3, aim for 14:00.
+
+### Cut lines, in tiers
+
+A talk that is over will be cut, and the only question is whether you chose the cuts in advance or
+panic on the podium. Write the ladder into the script, each item with its measured saving:
+
+- **Tier 0 — short paths.** For intermediate-result slides, write out a *complete short version*
+  alongside the full one. Not a note saying "say less" — the actual shorter prose. A shortcut you
+  have to improvise is a shortcut you will not take when you are behind and slightly rattled.
+- **Tiers 1–3** — individual paragraphs, ordered, with what each buys. Fold a framing slide's
+  paragraph into the next slide's opening sentence: that is usually the cheapest 25 seconds
+  available, because the slide stays on screen and only the narration goes.
+- **Mark what must never be cut** — usually the answers the talk exists to deliver, and the one
+  concession that earns the room's trust.
+
+If the arithmetic will not close, the honest answer is to cut a whole act, not to shave sentences.
+Say out loud that you are skipping it and where the answer lives; an unanswered question on the
+conclusions slide then works as an invitation rather than a gap.
+
+### Q&A preparation, ranked
+
+Write the answers out, ordered by how likely the question is. The first entry should be the
+objection you would raise yourself. Ground each answer in the paper, and include the **honest
+converse** — the conditions under which your result would not hold. An answer that concedes its own
+limits is far stronger than one that does not, and it is the one that survives a hostile follow-up.
+
+Anything that is genuinely interesting but costs more than about fifteen seconds on the slide
+belongs here instead.
+
+### Register
+
+- Rehearse in the register you will deliver in. *Measure*, *infer*, *obtain* — not *get*. Under
+  pressure you fall back on rehearsed habits, so build the right ones.
+- **Ground analogies in the papers rather than inventing them.** An invented analogy reads as
+  cute at a conference and invites a correction; one already in the literature carries authority
+  and usually says it better. Prefer a parallel the room already owns — *"two auto-spectra never
+  tell you the cross-spectrum"* lands instantly where a general-audience metaphor does not.
+- **Do not let a slide diagnose a result before the experiment that tests it.** Report the
+  observation, note the asymmetry, then say what you are going to do about it. Asserting the cause
+  early costs you the payoff two slides later and overclaims.
+- **Scan the finished prose for AI tells** — banned diction, tricolons, hollow closers,
+  negation-then-reversal, em-dash overuse. Mechanically, not by feel; see the `deslop` skill.
+- Lead with the frame, then point at the figure. If the figure is already on screen showing the
+  thing, name what is on it rather than constructing the concept in the abstract first.
+
+---
+
 ## 12. Sources
 
 - Peyton Jones, Hughes & Launchbury, *How to give a good research talk*, SIGPLAN Notices 28(11),
