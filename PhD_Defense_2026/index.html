@@ -1836,48 +1836,37 @@
 				<h3 class="slide-title tight"><span class="sec">&sect;2</span> Error bars from <b class="alert">one extra
 					forward pass</b> &mdash; with a coverage guarantee on top</h3>
 
-				<div class="fixedchain uqchain">
-					<div class="fstep"><div class="fname">shear $\gamma$</div><div class="fsub">the data</div></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep"><div class="fname">$\hat\kappa = F_{\Theta}(\gamma)$</div><div class="fsub">the PnPMass map</div></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep swap"><div class="fname">$\hat\sigma^{2} = G_{\Omega}(\gamma)$</div><div class="fsub">a second network</div></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep swap"><div class="fname">calibrated interval</div><div class="fsub">CQR, held&#8209;out set</div></div>
+				<!-- the chain as a ruled track, not four cards: the two stops we add for the
+				     uncertainty sit on the accented half of the line. -->
+				<div class="uqtrack">
+					<div class="uqstop"><span class="n">shear $\gamma$</span><span class="d"></span><span class="s">the data</span></div>
+					<div class="uqstop"><span class="n">$\hat\kappa = F_{\Theta}(\gamma)$</span><span class="d"></span><span class="s">the PnPMass map</span></div>
+					<div class="uqstop is-new"><span class="n">$\hat\sigma^{2} = G_{\Omega}(\gamma)$</span><span class="d"></span><span class="s">a second network</span></div>
+					<div class="uqstop is-new"><span class="n">calibrated interval</span><span class="d"></span><span class="s">CQR, held&#8209;out set</span></div>
+					<span class="uqspan">what this part of the talk adds</span>
 				</div>
 
-				<div class="container uqpair">
-					<div class="col">
-						<div class="block lecture fragment fade-in" data-fragment-index="1">
-							<div class="block-title">1 &mdash; predict the error</div>
-							<div class="block-content">
-								<p>Train $G_{\Omega}$ to regress the <b>squared residual</b> of the reconstruction:</p>
-								<p class="uqloss">$$\min_{\Omega}\ \mathbb{E}\left[\left\| G_{\Omega}(\gamma) - \big(\kappa - F_{\Theta}(\gamma)\big)^{2} \right\|_2^{2}\right]$$</p>
-								<p>The minimiser of that loss <b>is</b> the posterior variance, pixel by pixel. Same
-									simulated $(\kappa,\gamma)$ pairs as the denoiser. Cost: one forward pass &mdash;
-									no sampling, no MCMC.</p>
-							</div>
-						</div>
+				<div class="uqbody">
+					<div class="uqmain fragment fade-in" data-fragment-index="1">
+						<p class="kicker">first &mdash; predict the error</p>
+						<p>Train $G_{\Omega}$ to regress the <b>squared residual</b> of the reconstruction,</p>
+						<p class="uqloss">$$\min_{\Omega}\ \mathbb{E}\left[\left\| G_{\Omega}(\gamma) - \big(\kappa - F_{\Theta}(\gamma)\big)^{2} \right\|_2^{2}\right]$$</p>
+						<p>and the minimiser of that loss <b>is</b> the posterior variance, pixel by pixel. Same
+							simulated $(\kappa,\gamma)$ pairs as the denoiser; one forward pass, no sampling.</p>
 					</div>
-					<div class="col">
-						<div class="block lecture fragment fade-in" data-fragment-index="2">
-							<div class="block-title">2 &mdash; make it honest</div>
-							<div class="block-content">
-								<p>A network's own variance is <b>not</b> a guarantee. Neural uncertainties are
-									routinely miscalibrated, and nothing in the training loss fixes that.</p>
-								<p><b>Conformal quantile regression</b> takes a held&#8209;out calibration set and
-									rescales the interval at every pixel until the coverage is the coverage claimed.
-									Distribution&#8209;free &mdash; it does not assume the network is right.</p>
-							</div>
-						</div>
+					<div class="uqaside fragment fade-in" data-fragment-index="2">
+						<p class="kicker">then &mdash; make it honest</p>
+						<p>A network's own variance is <b>not</b> a guarantee, and nothing in that loss makes it one.</p>
+						<p><b>Conformal quantile regression</b> rescales the interval at every pixel, against a
+							held&#8209;out calibration set, until the coverage is the coverage claimed &mdash;
+							without assuming the network is right.</p>
 					</div>
 				</div>
 
-				<div class="takeaway fragment fade-in" data-fragment-index="3">
-					<span class="label">what changes</span>
-					Not <i>&ldquo;the network says $\pm\sigma$&rdquo;</i>. A <b class="alert">stated coverage level that
-					holds</b> whether or not the network is well specified.
-				</div>
+				<p class="uqquote fragment fade-in" data-fragment-index="3">
+					Not <i>&ldquo;the network says $\pm\sigma$&rdquo;</i> &mdash; a <b class="alert">stated coverage
+					level that holds</b> whether or not the network is well specified.
+				</p>
 
 				<aside class="notes">
 					SAY: the map is only half a result. Read the chain left to right: the shear goes in, the denoiser

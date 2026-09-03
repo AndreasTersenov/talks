@@ -1634,33 +1634,76 @@
 
 
 /* ---------------------------------------------------------------------------
-   UNCERTAINTY (§2) — new 2026-09-03.  Reuses .fixedchain for the procedure so
-   the room reads the shape before the loss, then two lecture blocks side by
-   side: predict the error, then calibrate it.
+   UNCERTAINTY (§2) — new 2026-09-03, unboxed 2026-09-03.  Deliberately NOT a
+   row of cards over a pair of cards: the deck already leans hard on framed
+   blocks and it had started to read as machine-set.  Here the chain is a ruled
+   track, the two steps are an asymmetric main/aside split with one hairline
+   between them, and the closing line is a pull quote, not a fifth box.
    --------------------------------------------------------------------------- */
-.reveal .slides section.uq .fixedchain.uqchain { margin: 1.1em auto 0; max-width: 94%; }
-.reveal .slides section.uq .uqchain .fname { font-size: 0.72em; }
-.reveal .slides section.uq .uqchain .fsub  { font-size: 0.5em; }
-.reveal .slides section.uq .uqchain .fstep { padding: 0.7em 0.6em; }
 
-.reveal .slides section.uq .container.uqpair {
-	display: flex; gap: 1.1em; margin: 1em auto 0; max-width: 94%; align-items: stretch;
+/* --- the track ---------------------------------------------------------- */
+.reveal .slides section.uq .uqtrack {
+	position: relative;
+	display: grid; grid-template-columns: repeat(4, 1fr);
+	gap: 0 1.6em; margin: 1.6em auto 0; max-width: 92%;
 }
-.reveal .slides section.uq .uqpair .col { flex: 1 1 0; display: flex; }
-.reveal .slides section.uq .uqpair .block.lecture { margin: 0; width: 100%; text-align: left; }
-.reveal .slides section.uq .uqpair .block-title { font-size: 0.7em; }
-.reveal .slides section.uq .uqpair .block-content p {
-	margin: 0.5em 0 0; font-size: 0.5em; line-height: 1.55; color: var(--fg-muted);
+.reveal .slides section.uq .uqstop {
+	display: grid; grid-template-rows: 2.1em 12px auto; justify-items: center; text-align: center;
 }
-.reveal .slides section.uq .uqpair .block-content p:first-child { margin-top: 0; }
-.reveal .slides section.uq .uqpair .block-content p b { color: var(--fg); }
-.reveal .slides section.uq .uqloss {
-	text-align: center; color: var(--fg);
-	margin: 0.55em 0 0.15em !important;
+.reveal .slides section.uq .uqstop .n {
+	align-self: center; font-size: 0.62em; line-height: 1.2; color: var(--fg-muted);
 }
-.reveal .slides section.uq .uqloss .katex { font-size: 1.05em; }
+.reveal .slides section.uq .uqstop.is-new .n { color: var(--fg); }
+.reveal .slides section.uq .uqstop .d {
+	width: 9px; height: 9px; border-radius: 50%; align-self: center;
+	background: var(--bg); border: 1.5px solid var(--fg-muted); z-index: 1;
+}
+.reveal .slides section.uq .uqstop.is-new .d { background: var(--accent); border-color: var(--accent); }
+.reveal .slides section.uq .uqstop .s {
+	margin-top: 0.45em; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
+}
+/* the rule the stops sit on — grey under the pipeline we already have, accent
+   under the two stops this part of the talk adds */
+.reveal .slides section.uq .uqtrack::before,
+.reveal .slides section.uq .uqtrack::after {
+	content: ""; position: absolute; top: calc(2.1em + 6px); height: 0;
+}
+.reveal .slides section.uq .uqtrack::before {
+	left: 6%; right: 6%; border-top: 1px solid var(--edge);
+}
+.reveal .slides section.uq .uqtrack::after {
+	left: 50%; right: 6%; border-top: 1.5px solid var(--accent);
+}
+.reveal .slides section.uq .uqspan {
+	position: absolute; left: 50%; right: 6%; top: 100%; margin-top: 0.55em;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.42em; color: var(--accent);
+	text-align: center;
+}
 
-.reveal .slides section.uq .takeaway {
-	margin: 0.9em auto 0; max-width: 94%; padding: 0.6em 1.1em;
-	font-size: 0.56em; line-height: 1.5; text-align: left;
+/* --- main / aside ------------------------------------------------------- */
+.reveal .slides section.uq .uqbody {
+	display: grid; grid-template-columns: 1.45fr 1fr; gap: 0 2.2em;
+	margin: 2.8em auto 0; max-width: 92%; text-align: left;
 }
+.reveal .slides section.uq .uqaside {
+	padding-left: 2.2em; border-left: 1px solid var(--edge);
+	margin-left: -1.1em;
+}
+.reveal .slides section.uq .uqbody p {
+	margin: 0.55em 0 0; font-size: 0.5em; line-height: 1.6; color: var(--fg-muted);
+}
+.reveal .slides section.uq .uqbody p b { color: var(--fg); }
+.reveal .slides section.uq .uqbody .kicker { margin-bottom: 0.15em; }
+.reveal .slides section.uq .uqloss { text-align: center; margin: 0.35em 0 0.1em !important; }
+.reveal .slides section.uq .uqloss .katex { font-size: 1.05em; color: var(--fg); }
+
+/* --- the closing line, set as a pull quote ------------------------------ */
+.reveal .slides section.uq .uqquote {
+	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
+	border-top: 1px solid var(--edge);
+	font-family: var(--label); font-style: normal;
+	font-size: 0.66em; line-height: 1.45; color: var(--fg); text-align: left;
+}
+.reveal .slides section.uq .uqquote i { color: var(--fg-muted); }
