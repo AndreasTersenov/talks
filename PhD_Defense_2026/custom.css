@@ -1762,3 +1762,10 @@
 .reveal .slides section.uq .uqwhy b { color: var(--fg); }
 .reveal .slides section.uq .uqwhy .kicker { display: inline; margin-right: 0.55em; }
 .reveal .slides section.uq .uqbody { margin-top: 1.3em; }
+
+/* the movement-II divider's subtitle: the h2 carries the claim, this only
+   places the two parts, so it must not compete with it. */
+.reveal .slides section.actopen .movsub {
+	max-width: 68%; margin: 0.6em auto 0;
+	font-size: 0.62em; line-height: 1.5; color: var(--fg-muted);
+}
