@@ -1,0 +1,108 @@
+/* ===========================================================================
+ * Neural-summary explainer — styling (v2: KaTeX + clean vector plots)
+ * Two sibling slides (regression / VMIM) showing HOW each summary is trained.
+ * Crisp HTML/CSS pipeline + LaTeX (KaTeX) math; only the parameter-space plot
+ * and the map thumbnail are <canvas>. Scoped under .ns-slide; independent of
+ * bnt_explainer.{css,js}. Wong palette; colour = METHOD only.
+ * ======================================================================== */
+
+.ns-slide {
+  --c-mse:  #E69F00;   --c-mse-dk:  #8a5a00;   /* regression / MSE */
+  --c-vmim: #0072B2;   --c-vmim-dk: #005a8c;   /* VMIM             */
+  --c-grey: #8a96a3;   /* true posterior */
+  --ink: #1b2733; --mute: #6c7884; --line: #e3e8ed;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  text-align: left;
+}
+.ns-slide * { box-sizing: border-box; }
+
+.ns-slide h3.ns-title {
+  font-size: 28px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em;
+  margin: 0 0 16px; color: var(--ink); text-transform: none;
+}
+.ns-slide .hl-mse  { color: var(--c-mse); }
+.ns-slide .hl-vmim { color: var(--c-vmim); }
+
+/* ------------------------------- pipeline ------------------------------- */
+.ns-slide .ns-pipe {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2px; margin: 0 0 20px;
+}
+.ns-slide .ns-arrow { color: #aeb8c2; font-size: 32px; font-weight: 300; padding: 0 4px; }
+.ns-slide .ns-box {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; min-width: 138px; padding: 19px 21px;
+  background: #fff; border: 1.5px solid #cfd8e0; border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(20,40,60,.06);
+}
+.ns-slide .ns-box .role { font-size: 15px; font-weight: 700; color: var(--mute); letter-spacing: .01em; }
+.ns-slide .ns-box .math { font-size: 25px; line-height: 1; color: #36424e; }
+.ns-slide .ns-box--net  { background: #eef3f7; border-color: #bcd0de; }
+.ns-slide .ns-box--flow { background: #e9f2f8; border-color: #a9cfe6; }
+.ns-slide .ns-box--out  { border-color: #e7c885; }
+.ns-slide .ns-box--out.vmim { border-color: #a9cfe6; }
+.ns-slide .ns-box--out .math   { color: var(--c-mse-dk); }
+.ns-slide .ns-box--out.vmim .math { color: var(--c-vmim-dk); }
+.ns-slide .ns-box--map { padding: 10px; }
+.ns-slide .ns-map {
+  display: block; width: 100px; height: 100px; border-radius: 7px;
+  border: 1px solid #d7dee5; object-fit: cover;
+}
+
+/* ----------------------------- objective -------------------------------- */
+.ns-slide .ns-objective {
+  text-align: center; margin: 0 0 20px; min-height: 24px;
+}
+.ns-slide .ns-objective .katex { font-size: 0.8em; }
+.ns-slide .ns-objective .katex-display { margin: 0; }
+.ns-slide .ns-objective--mse  { color: var(--c-mse-dk); }
+.ns-slide .ns-objective--vmim { color: var(--c-vmim-dk); }
+
+/* ------------------------- lower row: caption + plot -------------------- */
+.ns-slide .ns-lower {
+  display: flex; align-items: center; justify-content: center; gap: 34px; height: 300px;
+}
+.ns-slide .ns-caption {
+  flex: 0 1 540px; align-self: center;
+  font-size: 24px; line-height: 1.4; color: var(--ink);
+}
+.ns-slide .ns-caption b { font-weight: 700; }
+.ns-slide .ns-caption .c-mse  { color: var(--c-mse-dk);  font-weight: 700; }
+.ns-slide .ns-caption .c-vmim { color: var(--c-vmim-dk); font-weight: 700; }
+.ns-slide .ns-caption .c-ok   { color: #1d7a54; font-weight: 700; }
+.ns-slide .ns-caption .ns-bul { margin: 4px 0 0; padding-left: 28px; list-style: none; }
+.ns-slide .ns-caption .ns-bul li {
+  position: relative; font-size: 24px; line-height: 1.35; margin-bottom: 15px;
+}
+.ns-slide .ns-caption .ns-bul li:last-child { margin-bottom: 0; }
+.ns-slide .ns-caption .ns-bul li::before {
+  content: ""; position: absolute; left: -22px; top: 0.62em;
+  width: 8px; height: 8px; border-radius: 2px; background: #c2ccd6;
+}
+.ns-slide .ns-caption .ns-bul .katex { font-size: 1em; }
+.ns-slide .ns-actno {
+  display: inline-block; font-size: 12.5px; font-weight: 800; color: #fff;
+  background: var(--mute); border-radius: 6px; padding: 1px 8px; margin-right: 9px;
+  vertical-align: 2px; font-variant-numeric: tabular-nums;
+}
+.ns-slide .ns-plot {
+  flex: 0 0 auto; width: 452px;
+}
+.ns-slide .ns-plot-title { font-size: 14px; font-weight: 700; color: var(--mute); margin: 0 0 6px 2px; }
+.ns-slide .ns-plot-canvas {
+  display: block; width: 452px; height: 300px;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+}
+
+/* ------------------------------- replay --------------------------------- */
+.ns-slide .ns-replay {
+  position: absolute; right: 0; top: 2px;
+  font: 600 13px ui-sans-serif, system-ui, sans-serif;
+  color: var(--mute); background: #fff; border: 1px solid #d9e0e7;
+  border-radius: 7px; padding: 4px 10px; cursor: pointer; z-index: 5;
+}
+.ns-slide .ns-replay:hover { color: var(--ink); border-color: #b6c0ca; }
+
+.ns-slide .ns-frag { position: absolute; width: 0; height: 0; opacity: 0 !important; pointer-events: none; }

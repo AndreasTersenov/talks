@@ -1,0 +1,85 @@
+/* ===========================================================================
+ * SBI pipeline explainer — styling
+ * One slide that assembles the wavelet-summary NPE pipeline across ~6 clicks:
+ *   cosmoGRID kappa-maps  -> + noise / wavelet transform -> wavelet-scale maps
+ *   -> summary statistics (Stat 1..4) -> condition a conditional MAF
+ *   -> flow maps N(0,1) to the posterior p(theta|x) ; loss = -log p_phi.
+ * Canvas draws the graphics; absolutely-positioned HTML/KaTeX labels fade in
+ * per act. Scoped under .sbi-slide; independent of the other explainer modules.
+ * ======================================================================== */
+
+.sbi-slide {
+  --ink: #1b2733; --mute: #6c7884; --line: #e3e8ed;
+  --accent: #0072B2;        /* flow / inference accent (Wong blue) */
+  --warm:  #d96a1f;         /* forward-model accent (inferno-ish)  */
+  --ok: #1d7a54;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink); text-align: left;
+}
+.sbi-slide * { box-sizing: border-box; }
+
+.sbi-slide h3.sbi-title {
+  font-size: 27px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em;
+  margin: 0 0 6px; color: var(--ink); text-transform: none;
+}
+.sbi-slide .hl { color: var(--accent); }
+
+/* ------------------------------- stage ---------------------------------- */
+.sbi-slide .sbi-stage {
+  position: relative; width: 100%; height: 552px;
+}
+.sbi-slide .sbi-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* positioned raster images (cosmoGRID box, wavelet+stats); fade in per act */
+.sbi-slide .sbi-img {
+  position: absolute; transform: translate(-50%, -50%);
+  opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+}
+.sbi-slide .sbi-img.on { opacity: 1; }
+
+/* positioned labels: centred on their (left,top); fade in per act */
+.sbi-slide .sbi-lbl {
+  position: absolute; transform: translate(-50%, -50%);
+  opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+  white-space: nowrap; text-align: center; line-height: 1.15;
+}
+.sbi-slide .sbi-lbl.on { opacity: 1; }
+.sbi-slide .sbi-lbl--head { font-size: 19px; font-weight: 700; color: var(--ink); }
+.sbi-slide .sbi-lbl--head .sub { display:block; font-size: 14px; font-weight: 600; color: var(--mute); margin-top: 2px; }
+.sbi-slide .sbi-lbl--mut  { font-size: 15px; font-weight: 700; color: var(--mute); }
+.sbi-slide .sbi-lbl--stat { font-size: 15px; font-weight: 600; color: var(--ink); transform: translate(0, -50%); }
+.sbi-slide .sbi-lbl--obj {
+  transform: translate(-50%, -50%); font-size: 16px;
+  background: #eef1f4; border: 1px solid #dde3e9; border-radius: 10px;
+  padding: 6px 11px; text-align: center;
+}
+.sbi-slide .sbi-lbl--obj .ot { font-size: 11px; font-weight: 700; color: var(--mute); margin-bottom: 3px; }
+.sbi-slide .sbi-lbl--obj .katex { font-size: 1em; }
+.sbi-slide .sbi-lbl .katex { font-size: 1em; }
+
+/* vertical "condition" tag */
+.sbi-slide .sbi-lbl--cond { writing-mode: vertical-rl; font-size: 14px; font-weight: 700; color: var(--mute); letter-spacing: .04em; }
+
+/* ------------------------------- caption -------------------------------- */
+.sbi-slide .sbi-caption {
+  font-size: 19px; line-height: 1.34; margin: 6px 2px 0; min-height: 50px; color: var(--ink);
+}
+.sbi-slide .sbi-caption b { font-weight: 700; }
+.sbi-slide .sbi-caption .c-warm { color: var(--warm); font-weight: 700; }
+.sbi-slide .sbi-caption .c-acc  { color: var(--accent); font-weight: 700; }
+.sbi-slide .sbi-actno {
+  display: inline-block; font-size: 12.5px; font-weight: 800; color: #fff;
+  background: var(--mute); border-radius: 6px; padding: 1px 8px; margin-right: 9px;
+  vertical-align: 2px; font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------- replay --------------------------------- */
+.sbi-slide .sbi-replay {
+  position: absolute; right: 0; top: 2px;
+  font: 600 13px ui-sans-serif, system-ui, sans-serif;
+  color: var(--mute); background: #fff; border: 1px solid #d9e0e7;
+  border-radius: 7px; padding: 4px 10px; cursor: pointer; z-index: 6;
+}
+.sbi-slide .sbi-replay:hover { color: var(--ink); border-color: #b6c0ca; }
+
+.sbi-slide .sbi-frag { position: absolute; width: 0; height: 0; opacity: 0 !important; pointer-events: none; }

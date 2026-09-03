@@ -1,0 +1,28 @@
+/* ===========================================================================
+ * Tomography explainer — styling
+ * A black-background slide that reveals Justine Zeghal's 9-frame tomography
+ * build (observer -> cosmic web -> redshift shells -> the 4 convergence maps),
+ * one frame per click. Each frame is a full opaque image flattened on black, so
+ * they are stacked full-bleed and crossfaded via reveal's native fragments.
+ * The slide MUST be black (data-background-color="#000000" on the section).
+ * Scoped under .tomo-slide; no JS required.
+ * ======================================================================== */
+
+.tomo-slide { color: #c9d0d7; }
+
+.tomo-slide .tomo-stage {
+  position: relative; width: 100%; margin: 0 auto;
+  line-height: 0;                       /* kill inline-image gap */
+}
+.tomo-slide .tomo-frame { display: block; width: 100%; }
+/* frames 2..N sit on top of frame 1 and crossfade in */
+.tomo-slide .tomo-frame.stacked { position: absolute; top: 0; left: 0; }
+
+/* reveal fragments: instant-hide -> fade-in; a touch slower for a smooth swap */
+.tomo-slide .tomo-frame.fragment { transition: opacity 0.45s ease; }
+
+.tomo-slide .tomo-credit {
+  line-height: 1.2; text-align: center; margin-top: 10px;
+  color: #8d97a1; font: 400 14px ui-sans-serif, system-ui, -apple-system, sans-serif;
+  letter-spacing: .02em;
+}
