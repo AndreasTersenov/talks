@@ -1,3 +1,8 @@
 node_modules/
 notes/
 .DS_Store
+
+# Reference decks by other people, kept locally for inspiration while building a
+# talk. Not ours to redistribute on a public Pages site, and 442 MB besides —
+# COLOURS_2025_AlexHall.pdf alone is 354 MB, over GitHub's 100 MB file limit.
+PhD_Defense_2026/examples/

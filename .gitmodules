@@ -46,3 +46,6 @@
 [submodule "cosmo26/reveal.js"]
 	path = cosmo26/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "PhD_Defense_2026/reveal.js"]
+	path = PhD_Defense_2026/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
