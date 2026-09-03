@@ -63,12 +63,23 @@ Two things this opened, both written up in `STRUCTURE.md` §5 under the Act 0 ta
   layout moved. Ink covers 90.7 % of frame against the fallbacks' 93.3 % — under 3 % smaller, and
   left uncropped so the slide matches the paper's own framing.
 
-  **Still recoloured fallbacks on live slides:** `Relation_btw_kappa_and_gamma_light` (frame 9),
-  `mass_maps_(ks_iks_mca)_transparent_light` (frame 27), `cosmology_with_maps_light` (42) and
-  `starlet_transform_light` (43). Only frame 27 has a counterpart in the paper folder
-  (`mass_maps.pdf`); the difference there is a **colour cast** — the fallback is brighter and warmer
-  than the published figure — not the halo defect, so it was left for Andreas to rule on. The other
-  three are schematics with no published original.
+  **Four more replaced from Andreas's own re-exports** (2026-09-03): `Relation_btw_kappa_and_gamma_light`
+  (frame 9 — the old one carried a black box behind the lensing potential), `cosmology_with_maps_light`
+  (41), `starlet_transform_light` (42) and `wavelet_l1_norm_light` (43). Same 250 dpi + de-page
+  treatment. Three were aspect-neutral to within 2 %; `cosmology_with_maps` came out 7.5 % wider in
+  aspect, i.e. shorter, so it cannot overflow. **Frame 43 got a NEW file rather than an overwrite**:
+  it had been pointing at `wavelet_l1_norm.png`, which `NonGaussian_Universe_2026` also uses, so the
+  deck was repointed to `wavelet_l1_norm_light.png` and the shared original left alone.
+
+  **One recoloured fallback is left on a live slide:** `mass_maps_(ks_iks_mca)_transparent_light`
+  (frame 27). `mass_maps.pdf` in the paper folder is its counterpart; the difference is a **colour
+  cast** — the fallback is brighter and warmer than the published figure — not the halo defect, so
+  it is left for Andreas to rule on.
+
+  **Two pre-existing markup bugs on frame 43**, LAM-verbatim and untouched by this pass:
+  `class="block; fragment fande-in"` — the stray semicolon means the class is `block;`, so the
+  callout never matches `.block` and renders unstyled, and `fande-in` is a typo for `fade-in`, so
+  that step appears with no animation. Both are visible in the deck. Left for the joint LAM restyle.
   **The Part 1 act divider was deliberately left dark** — dividers are punctuation between
   movements (see the theme map). One attribute if that call is wrong.
 - **Bayes is taught once, at A1.4** (2026-09-02), not twice. The reconstruction slide is now an
