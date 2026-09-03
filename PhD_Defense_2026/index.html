@@ -728,12 +728,13 @@
 						</div>
 						<div class="ip-fan">
 							<!-- Three ACTUALLY different reconstructions of the same field, cropped from
-							     Lanusse's denoiser comparison. Front to back: the truth (sharpest, so it
-							     leads), the Gaussian denoiser, then the denoiser + DAE. All three at full
-							     brightness — no dimming and no filters; they differ for real, so nothing
-							     needs faking. -->
-							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_dae.png" alt="a convergence map from a Gaussian denoiser plus a denoising autoencoder"></div>
-							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_gauss.png" alt="a smooth convergence map from a Gaussian denoiser"></div>
+							     Front to back: the truth (sharpest, so it leads), a noise-dominated
+							     reconstruction, then a heavily smoothed one. Chosen for MAXIMUM visible
+							     spread — sharp / noisy / smooth is the argument, since the room has to see
+							     at a glance that these are very different maps. All at full brightness, no
+							     filters; they differ for real. -->
+							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_gauss.png" alt="a smooth, heavily denoised convergence map"></div>
+							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_noisy.png" alt="a noise-dominated convergence map"></div>
 							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png" alt="one of many convergence maps consistent with the measured shear"></div>
 							<span class="ip-fancap">all reproduce the same shear</span>
 						</div>
