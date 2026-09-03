@@ -1948,18 +1948,19 @@
 					</figure>
 
 					<div class="pr-side">
-						<p class="kicker">how to read it</p>
-						<p>Down and to the left is better: reconstruction error across, size of the calibrated
-							interval up. Colour is the measured miscoverage &mdash; and after calibration every
-							method sits on the target, because that is what conformal prediction guarantees. The
-							only axis left is <b>how tight the bars are</b>, and there PnPMass wins.</p>
+						<ul class="pr-points">
+							<li>down and to the left is better</li>
+							<li>after calibration every method is <b>on target</b> &mdash; that is the guarantee, not a result</li>
+							<li>so the only difference left is <b>bar size</b></li>
+						</ul>
 
-						<p class="kicker fragment fade-in" data-fragment-index="1">why they are tighter</p>
+						<p class="kicker fragment fade-in" data-fragment-index="1">the error bars know where the peaks are</p>
 						<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
-							<img src="../assets/figures/maps/pnpmass_sigma_pair.png"
-								alt="two per-pixel uncertainty maps on the same colour scale: Wiener flat, PnPMass structured">
-							<figcaption><b>Wiener</b> has no data&#8209;dependent uncertainty to offer &mdash; calibration
-								can only add a constant. <b>PnPMass</b> puts its uncertainty where the peaks are.</figcaption>
+							<img src="../assets/figures/maps/pnpmass_kappa_sigma.png"
+								alt="a PnPMass convergence map beside its per-pixel calibrated uncertainty, on the same field">
+							<figcaption>The reconstruction, and its calibrated &sigma; per pixel on the same field. The
+								uncertainty rises exactly where the structure is &mdash; which is what lets the bars be
+								small everywhere else.</figcaption>
 						</figure>
 					</div>
 				</div>
