@@ -71,6 +71,12 @@ Two things this opened, both written up in `STRUCTURE.md` §5 under the Act 0 ta
   it had been pointing at `wavelet_l1_norm.png`, which `NonGaussian_Universe_2026` also uses, so the
   deck was repointed to `wavelet_l1_norm_light.png` and the shared original left alone.
 
+  **The shear thumbnail was converted, not just darkened** (2026-09-03). It was drawn for a black
+  background, so its colormap put the *strong* signal at the bright end — which on cream is the end
+  that disappears. `tools/darkfig-lab-invert.py` inverts CIELAB L\* for every pixel, reversing the
+  ramp so strong whiskers are dark on paper, while a\*/b\* keep the hue a naive 255−RGB inversion
+  would have flipped. One file covers the chain slide, both act dividers and the inverse-problem slide.
+
   **One recoloured fallback is left on a live slide:** `mass_maps_(ks_iks_mca)_transparent_light`
   (frame 27). `mass_maps.pdf` in the paper folder is its counterpart; the difference is a **colour
   cast** — the fallback is brighter and warmer than the published figure — not the halo defect, so
