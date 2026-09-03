@@ -1631,3 +1631,36 @@
 	text-align: right; font-size: 0.42em; color: var(--fg-muted); margin-top: 0.3em;
 }
 .reveal .slides section.despipe .note { font-size: 0.55em; margin-top: 0.6em; max-width: 88%; }
+
+
+/* ---------------------------------------------------------------------------
+   UNCERTAINTY (§2) — new 2026-09-03.  Reuses .fixedchain for the procedure so
+   the room reads the shape before the loss, then two lecture blocks side by
+   side: predict the error, then calibrate it.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.uq .fixedchain.uqchain { margin: 1.1em auto 0; max-width: 94%; }
+.reveal .slides section.uq .uqchain .fname { font-size: 0.72em; }
+.reveal .slides section.uq .uqchain .fsub  { font-size: 0.5em; }
+.reveal .slides section.uq .uqchain .fstep { padding: 0.7em 0.6em; }
+
+.reveal .slides section.uq .container.uqpair {
+	display: flex; gap: 1.1em; margin: 1em auto 0; max-width: 94%; align-items: stretch;
+}
+.reveal .slides section.uq .uqpair .col { flex: 1 1 0; display: flex; }
+.reveal .slides section.uq .uqpair .block.lecture { margin: 0; width: 100%; text-align: left; }
+.reveal .slides section.uq .uqpair .block-title { font-size: 0.7em; }
+.reveal .slides section.uq .uqpair .block-content p {
+	margin: 0.5em 0 0; font-size: 0.5em; line-height: 1.55; color: var(--fg-muted);
+}
+.reveal .slides section.uq .uqpair .block-content p:first-child { margin-top: 0; }
+.reveal .slides section.uq .uqpair .block-content p b { color: var(--fg); }
+.reveal .slides section.uq .uqloss {
+	text-align: center; color: var(--fg);
+	margin: 0.55em 0 0.15em !important;
+}
+.reveal .slides section.uq .uqloss .katex { font-size: 1.05em; }
+
+.reveal .slides section.uq .takeaway {
+	margin: 0.9em auto 0; max-width: 94%; padding: 0.6em 1.1em;
+	font-size: 0.56em; line-height: 1.5; text-align: left;
+}
