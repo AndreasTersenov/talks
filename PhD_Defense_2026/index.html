@@ -2152,8 +2152,6 @@
 				<p class="movsub">Parts 3 and 4 are about the next two: which statistic we compress the map with,
 					and whether the answer survives the systematics.</p>
 
-				<div class="pipeline-slot" data-variant="compact" data-active="summaries inference"></div>
-
 				<aside class="notes">
 					SAY: stop and look at where we are. Both projects so far — does the reconstruction matter, and
 					can we build a better one with honest error bars — live inside a single box of this chain. The
@@ -2161,6 +2159,41 @@
 					the map is a hundred thousand correlated pixels, we have to compress it before any likelihood can
 					touch it, and which statistic we compress with is a scientific choice of its own. Part 3 asks
 					whether that choice survives baryonic feedback. Part 4 builds the statistic that does.
+				</aside>
+			</section>
+
+			<!-- ============ the chain slide again, one step to the right — the twin of the
+			     Act 0 hand-off (`.chainslide`), with the focus click landing on the summary
+			     and the inference instead of on the reconstruction. ============ -->
+			<section class="chainslide" data-theme="light">
+				<h3 class="slide-title tight">Same chain, <em class="alert">one step to the right</em></h3>
+
+				<!-- focus trigger before the slot: the dimming CSS is a general-sibling
+				     selector on this element's `.visible` class. -->
+				<span class="pipe-focus fragment" data-fragment-index="2"></span>
+
+				<div class="pipeline-slot" data-focus-on-fragment="summaries inference"></div>
+
+				<p class="note fragment fade-in" data-fragment-index="1">
+					A map is $10^5$ correlated pixels, so it has to be <b>compressed</b> before any likelihood can
+					touch it &mdash; and which statistic you compress with decides how much of the information
+					survives.
+				</p>
+
+				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
+					Parts 3 and 4 live in <b class="alert">these two steps</b> &mdash; the summary, and the inference
+					that turns it into a posterior. In Part 1 both were nailed down on purpose. Now they are the
+					subject.
+				</p>
+
+				<aside class="notes">
+					Same picture as before the first two parts, and I want you to see the light move. [CLICK] The map
+					is a hundred thousand correlated pixels. No likelihood can touch that directly, so it gets
+					compressed into a summary — and which statistic you compress with decides how much of the
+					information survives the compression. That was held fixed in Part 1 precisely so it could not
+					explain anything that moved. [CLICK] Now it is the subject. These two boxes: the summary, and
+					the inference that turns it into a posterior. Part 3 asks whether the summary survives baryonic
+					feedback. Part 4 builds the one that does.
 				</aside>
 			</section>
 
