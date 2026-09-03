@@ -699,7 +699,7 @@
 					<span class="ip-tag">forward &mdash; the physics</span>
 					<div class="ip-row">
 						<figure class="ip-cell">
-							<img src="../assets/figures/maps/kappa_patch.png" alt="a patch of a convergence map">
+							<img src="../assets/figures/maps/kappa_denoised_thumb.png" alt="a patch of a convergence map">
 							<figcaption>the matter, $\kappa$</figcaption>
 						</figure>
 						<div class="ip-arrow">
@@ -727,9 +727,14 @@
 							<span class="ip-shaft"></span>
 						</div>
 						<div class="ip-fan">
-							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_patch.png" alt=""></div>
-							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_patch.png" alt=""></div>
-							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_patch.png" alt="one of many convergence maps consistent with the measured shear"></div>
+							<!-- Three ACTUALLY different reconstructions of the same field, cropped from
+							     Lanusse's denoiser comparison: the truth, a Gaussian denoiser, and a
+							     Gaussian denoiser plus a DAE. Front to back they run detailed -> smooth,
+							     which is the real disagreement between reconstructions, so the fan no
+							     longer needs CSS filters to fake a difference. -->
+							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_gauss.png" alt="a smooth convergence map from a Gaussian denoiser"></div>
+							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_dae.png" alt="a convergence map from a Gaussian denoiser plus a denoising autoencoder"></div>
+							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png" alt="one of many convergence maps consistent with the measured shear"></div>
 							<span class="ip-fancap">all reproduce the same shear</span>
 						</div>
 						<p class="ip-verdict">Shape noise on every galaxy, holes where the survey has none, and an
@@ -4564,7 +4569,7 @@
 			<div class="arw" aria-hidden="true">&rarr;</div>
 
 			<div class="stage" data-stage="maps">
-				<div class="thumb"><img src="../assets/figures/maps/kappa_patch.png" alt="a reconstructed convergence map"></div>
+				<div class="thumb"><img src="../assets/figures/maps/kappa_denoised_thumb.png" alt="a reconstructed convergence map"></div>
 				<div class="sname">mass maps</div>
 				<div class="ssub">&kappa; from &gamma;</div>
 			</div>
