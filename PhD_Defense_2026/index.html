@@ -2201,8 +2201,69 @@
 			<!-- ################################################################################################### -->
 
 			<section>
-				<section data-theme="light">
-					<h3 class="slide-title">Traditional Approach:The 2-Point Route</h3>
+				<!-- ============ the 2-point baseline — rebuilt 2026-09-03.  The old version
+				     bundled the inference step into the concept list; the inference is its own
+				     teaching slide later, so this one is only about the statistic.  Same
+				     animation: the correlation runs, then it is replaced by what it buys.
+				     The parked original is directly below. ============ -->
+				<section class="twopt" data-theme="light">
+					<h3 class="slide-title tight">The two&#8209;point function is the field's <em class="alert">baseline</em>
+						&mdash; and for a Gaussian field it is <em class="alert">everything</em></h3>
+
+					<div class="tp-grid">
+						<div class="r-stack tp-fig">
+							<video class="fragment fade-out" data-fragment-index="1"
+								src="../assets/videos/shear_correlation_animation.mp4" autoplay loop muted playsinline></video>
+							<figure class="fragment fade-in" data-fragment-index="1">
+								<img src="../assets/figures/posteriors/kids_cls_constraint.jpeg"
+									alt="DES Y3 cosmic shear constraints in the Omega_m, sigma_8, S_8 plane">
+								<!-- NOTE 2026-09-03: the inherited caption said "KiDS-1000 / Asgari et al. 2022",
+								     but the legend in the figure reads DES Y3, harmonic and real space, with and
+								     without shear ratio. Attribution left descriptive until Andreas confirms it. -->
+								<figcaption>DES&nbsp;Y3 cosmic shear, two&#8209;point functions only &mdash; harmonic
+									($C_\ell$) and real space ($\xi_\pm$)</figcaption>
+							</figure>
+						</div>
+
+						<div class="tp-side">
+							<p class="kicker">what it measures</p>
+							<p>How correlated the shear is between pairs of galaxies separated by an angle
+								$\theta$ &mdash; $\xi_\pm(\theta)$, or its harmonic twin $C_\ell$.</p>
+
+							<ul class="points">
+								<li>every flagship cosmic&#8209;shear result &mdash; <b>KiDS&#8209;1000, DES&nbsp;Y3,
+									HSC&nbsp;Y3</b> &mdash; is a two&#8209;point analysis</li>
+								<li>theory predicts it <b>analytically</b>, and its covariance is understood</li>
+								<li>two decades of systematics work &mdash; intrinsic alignments, photo&#8209;z,
+									baryons &mdash; is built around it</li>
+							</ul>
+						</div>
+					</div>
+
+					<p class="pull fragment fade-in" data-fragment-index="2">
+						A Gaussian random field <b>is</b> its power spectrum &mdash; nothing else to know. So the
+						question is not whether the two&#8209;point function is good.
+						<b class="alert">It is whether the late&#8209;time field is Gaussian.</b>
+					</p>
+
+					<aside class="notes">
+						SAY: start from the thing everybody uses. The two-point function asks a simple question — take
+						two galaxies separated by some angle, how correlated are their shapes — and you can measure it
+						in real space as xi-plus-minus or in harmonic space as C-ell. [CLICK] And it works. Every
+						flagship cosmic shear result of the last decade is a two-point analysis: KiDS, DES, HSC. There
+						are good reasons for that. Theory predicts it analytically, we understand its covariance, and
+						twenty years of systematics work — intrinsic alignments, photometric redshifts, baryons — has
+						been built around it. I am not here to tell you it is a bad statistic. [CLICK] Here is the
+						actual issue. For a Gaussian random field the power spectrum is not just a good summary, it is
+						a complete one — the field IS its power spectrum, there is nothing else to know. So the
+						question is never "is the two-point function good". It is "is the field Gaussian".
+					</aside>
+				</section>
+
+				<!-- PARKED — the original version, superseded 2026-09-03: it carried the
+				     inference step, which now has its own slide in Part 3. Kept, not deleted. -->
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title">Traditional approach: the 2-point route</h3>
 					<div
 						style=" display:grid; grid-template-columns:50% 50%; align-items:center; gap:15px; margin-top:20px; ">
 						<div>
@@ -2270,7 +2331,7 @@
 				<!-- ################################################################################################### -->
 
 				<section data-theme="light">
-					<h3 class="slide-title">Traditional Approach:The 2-Point Route</h3>
+					<h3 class="slide-title">Traditional approach: the 2-point route</h3>
 					<img class="plain" src="../assets/diagrams/pk_lss_light.png"
 						style="width:85%; height:auto; max-height:38vh; display:block; margin:25px auto;">
 					<br>
@@ -2280,7 +2341,7 @@
 				<!-- ################################################################################################### -->
 
 				<section data-theme="light">
-					<h3 class="slide-title">Traditional Approach:The 2-Point Route</h3>
+					<h3 class="slide-title">Traditional approach: the 2-point route</h3>
 					<img class="plain" src="../assets/diagrams/2pt-phase-amp_light.png"
 						style="width:82%; height:auto; max-height:38vh; display:block; margin:25px auto;">
 					<ul style="font-size:1.5em">
