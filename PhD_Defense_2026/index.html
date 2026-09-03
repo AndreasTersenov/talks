@@ -362,23 +362,30 @@
 			<section class="kappadef" data-theme="light">
 				<h3 class="slide-title tight">A convergence map carries both <em class="alert">geometry</em> and <em class="alert">growth</em></h3>
 
-				<div class="block lecture">
-					<div class="block-title">A line-of-sight projection of the matter overdensity</div>
-					<div class="block-content">
-						$$\kappa(\boldsymbol{\theta}) \;=\; \int_{0}^{\chi_s}\! d\chi\; W(\chi)\,\delta(\chi\boldsymbol{\theta},\,\chi),
-						\qquad W(\chi) = \frac{3H_0^2\Omega_m}{2c^2}\,\frac{\chi(\chi_s-\chi)}{a(\chi)\,\chi_s}$$
-						<ul class="gloss">
-							<li>$W$ &mdash; <b>geometry</b>: distances, expansion history</li>
-							<li>$\delta$ &mdash; <b>growth</b> of structure</li>
-							<li>both at once &mdash; a test of the model, not a number</li>
-						</ul>
+				<!-- Two columns since 2026-09-03: the figure became the real UNIONS
+				     reconstruction, whose aspect is 1.25 against the simulated strip's 2.76.
+				     Stacked, it would have had to shrink to ~28% of the slide width to keep
+				     the same height. The equation is split across two display lines so it
+				     fits the narrower column. -->
+				<div class="kdrow">
+					<div class="block lecture">
+						<div class="block-title">A line-of-sight projection of the matter overdensity</div>
+						<div class="block-content">
+							$$\kappa(\boldsymbol{\theta}) \;=\; \int_{0}^{\chi_s}\! d\chi\; W(\chi)\,\delta(\chi\boldsymbol{\theta},\,\chi)$$
+							$$W(\chi) = \frac{3H_0^2\Omega_m}{2c^2}\,\frac{\chi(\chi_s-\chi)}{a(\chi)\,\chi_s}$$
+							<ul class="gloss">
+								<li>$W$ &mdash; <b>geometry</b>: distances, expansion history</li>
+								<li>$\delta$ &mdash; <b>growth</b> of structure</li>
+								<li>both at once &mdash; a test of the model, not a number</li>
+							</ul>
+						</div>
 					</div>
-				</div>
 
-				<figure class="kmap">
-					<img src="../assets/figures/maps/WL_mass_map_trim.png" alt="a simulated convergence map: a filamentary field of bright peaks and dark voids across a wide strip of sky">
-					<figcaption>simulated convergence field $\kappa(\boldsymbol{\theta})$</figcaption>
-				</figure>
+					<figure class="kmap">
+						<img src="../assets/figures/maps/unions_mcalens_kappa.png" alt="the convergence map of the UNIONS survey footprint, reconstructed with MCALens: filamentary structure across two disconnected sky patches, with the survey mask left grey">
+						<figcaption><b>UNIONS</b>, reconstructed with <b>MCALens</b> &mdash; the real thing, mask and all</figcaption>
+					</figure>
+				</div>
 
 				<div class="callout fragment fade-in" data-fragment-index="1">
 					<span class="label">and it is the easier object to work with</span>
@@ -392,9 +399,13 @@
 					by how efficiently it lenses — which peaks about halfway to the source. Two things ride in that
 					integral: the geometry, through the distances and the expansion history, and the growth, through
 					delta. That is why a lensing map tests the model rather than measuring one number. And this is what
-					a convergence map looks like — this one is simulated. [CLICK] Then the practical half, and it is
-					the reason we bother reconstructing at all: kappa is a scalar, one number per pixel, while the
-					shear is spin-2 and turns with the frame. Every statistic in this talk is measured on kappa.
+					a convergence map looks like — and this one is real. It is the UNIONS survey, and it is my own
+					reconstruction, made with MCALens, which is one of the methods Part 1 is about. The grey is where
+					the survey has no galaxies; hold on to that, because the mask is one of the two things that make
+					the reconstruction hard. The results later in the talk are measured on simulated fields, because
+					there we know the truth to compare against. [CLICK] Then the practical half, and it is the reason
+					we bother reconstructing at all: kappa is a scalar, one number per pixel, while the shear is
+					spin-2 and turns with the frame. Every statistic in this talk is measured on kappa.
 				</aside>
 			</section>
 

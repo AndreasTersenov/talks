@@ -843,14 +843,22 @@
 .reveal .slides section.kappadef ul.gloss li { margin: 0.24em 0; }
 .reveal .slides section.kappadef ul.gloss b { color: var(--fg); font-weight: 600; }
 
-.reveal .slides section.kappadef .kmap { width: 62%; margin: 0.55em auto 0; }
+/* Two columns from 2026-09-03 — see the note on the slide. */
+.reveal .slides section.kappadef .kdrow {
+	display: flex; align-items: center; justify-content: center;
+	gap: 1.5em; margin: 0.8em auto 0; max-width: 95%;
+}
+.reveal .slides section.kappadef .kdrow .block.lecture { flex: 1 1 44%; margin: 0; }
+.reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.72em; }
+.reveal .slides section.kappadef .kmap { flex: 1 1 54%; width: auto; margin: 0; }
 .reveal .slides section.kappadef .kmap img {
 	display: block; width: 100%; height: auto;
 	border: 0; box-shadow: none; background: transparent;
 }
 /* the trimmed map carries a wider left gutter (the y-axis label) than right, so
    the caption is nudged in to sit under the plot frame rather than the bbox */
-.reveal .slides section.kappadef .kmap figcaption { text-align: right; padding-right: 3.2%; margin-top: 0.3em; }
+.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.46em; }
+.reveal .slides section.kappadef .kmap figcaption b { color: var(--accent); }
 
 /* The second reason we want kappa — a scalar, not a spin-2 field.  Added
    2026-09-03; the slide was already full, so the map came down from 80% to 62%
