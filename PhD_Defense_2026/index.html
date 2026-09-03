@@ -826,92 +826,11 @@
 					</aside>
 				</section>
 
-				<section data-theme="light">
-					<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>
-					<div class="container">
-						<div class="col">
-							Shear <b class="alert">$\gamma$</b><br>
-							<img src="../assets/figures/maps/shear_cat1.png" style="width:450px;"></img>
-						</div>
+				
 
-						<div class="col fragment fade-up">
-							Convergence <b class="alert">$\kappa$</b><br>
-							<img src="../assets/figures/maps/kappa.png" style="width:450px;"></img>
-						</div>
-					</div>
+				
 
-					<div style="position:relative; width:1000px; height:100px; margin:0 auto;">
-						<div class="fragment current-visible plain fade-up"
-							style="position:absolute;top:0;left:0;width:1000px;">
-							$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 = \partial_1
-							\partial_2 \ \Psi \quad;\quad \kappa = \frac{1}{2} (\partial_1^2 + \partial_2^2) \ \Psi$$
-						</div>
-						<div class="fragment current-visible plain fade-up"
-							style="position:absolute;top:0;left:0;width:1000px;">
-							$$\boxed{\gamma = \mathbf{P} \kappa}$$
-						</div>
-					</div>
-				</section>
-
-				<section data-theme="light">
-					<h3 class="slide-title">Kaiser-Squires inversion</h3>
-					<ul>
-						<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an estimate of
-							the convergence from measurements of the shear
-
-							$$\kappa = \dfrac12 \Delta \psi, \,\, \gamma_1 = \dfrac12 \left( \partial_1^2 \psi -
-							\partial_2^2 \psi \right), \,\, \gamma_2 = \partial_1 \partial_2 \psi $$
-							$$\Rightarrow \kappa = \Delta^{-1} \left[ \left( \partial_1^2 - \partial_2^2 \right)
-							\gamma_1 +
-							2\partial_1 \partial_2 \gamma_2 \right] $$
-
-						</li>
-					</ul>
-					<span class="fragment fade-in">
-						<div class="container">
-							<div class="col">
-								<div class="block">
-									<div class="block-title"> Kaiser-Squires estimator:</div>
-									<div class="block-content">
-										$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2 k_1
-										k_2}{k^2}\right)\left(\tilde{\gamma}_1+i
-										\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i \tilde{\gamma}_2\right)
-										$$
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
-						&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence E
-							and B
-							modes. </em>
-					</span>
-				</section>
-
-				<section data-theme="light">
-					<h3 class="slide-title">Mass mapping as an inverse problem</h3>
-					<br>
-					<ul>
-						<li>Binned data:$\gamma = F^* P F \, \kappa$</li>
-						<li>Unbinned data: $\gamma = T^* P F \, \kappa$</li>
-					</ul>
-					<br>
-					<br>
-					<em> <small>$T =$ Non Equispaced Disctrete Fourier Transform (NDFT) </small> </em>
-					<br><br><br>
-					<div class="block">
-						<div class="block-title">
-						</div>
-						<div class="block-content" align="center">
-							$$ \tilde{\boldsymbol{\kappa}}=\min _{\boldsymbol{\kappa}}\|\boldsymbol{\gamma}-\mathbf{A}
-							\boldsymbol{\kappa}\|_{\boldsymbol{\Sigma}_n}^2 $$
-							with $\mathbf{A} = \boldsymbol{F} \mathbf{P} \boldsymbol{F}^* $
-						</div>
-					</div>
-					<br><br><br>
-
-					<span style="color:red;">There is no unique and stable solution, it is an ill-posed problem.</span>
-				</section>
+				
 			</section>
 
 			<!-- ################################################################################################### -->
@@ -1011,210 +930,16 @@
 				     FLAG: the MAP-vs-full-posterior distinction is deferred, not dropped. See
 				     the notes below and STRUCTURE.md.
 				============================================================================== -->
-				<section class="bayes" data-theme="light">
-					<h3 class="slide-title tight">Writing it as inference makes the assumption <em class="alert">explicit</em></h3>
+				
 
-					<div class="anatomy">
-						<div class="term">
-							<div class="teq">$p(\kappa \mid \gamma)$</div>
-							<div class="tname">posterior</div>
-							<div class="tsub">the map we end up with, <em>after</em> seeing the data</div>
-							<div class="trole">what we want</div>
-						</div>
-						<div class="op">&prop;</div>
-						<div class="term">
-							<div class="teq">$p(\gamma \mid \kappa)$</div>
-							<div class="tname">likelihood</div>
-							<div class="tsub">how well a given map explains the shear we measured</div>
-							<div class="trole">physics we already have &mdash; the operator from two slides ago</div>
-						</div>
-						<div class="op">&times;</div>
-						<div class="term prior">
-							<div class="teq">$p(\kappa)$</div>
-							<div class="tname">prior</div>
-							<div class="tsub">what we take a mass map to look like, <em>before</em> we look</div>
-							<div class="trole">the choice &mdash; and the only term that changes</div>
-						</div>
-					</div>
+				
 
-					<div class="fanrow fragment fade-in" data-fragment-index="1" aria-hidden="true">
-						<div></div><div></div><div></div><div></div><div class="riser"></div>
-					</div>
-
-					<div class="priors fragment fade-in" data-fragment-index="1">
-						<div class="pcard">
-							<div class="pname">Wiener filter</div>
-							<div class="passume">&kappa; is a <b>Gaussian</b> random field</div>
-						</div>
-						<div class="pcard fragment fade-in" data-fragment-index="2">
-							<div class="pname">sparse recovery</div>
-							<div class="passume">&kappa; is <b>sparse</b> in a wavelet basis</div>
-						</div>
-						<div class="pcard fragment fade-in" data-fragment-index="3">
-							<div class="pname">MCALens</div>
-							<div class="passume">&kappa; is Gaussian <b>plus</b> non&#8209;Gaussian</div>
-						</div>
-						<div class="pcard learned fragment fade-in" data-fragment-index="4">
-							<div class="pname">deep learning</div>
-							<div class="passume">the prior itself is <b>learned</b> from simulations</div>
-						</div>
-					</div>
-
-					<p class="note carry fragment fade-in" data-fragment-index="5">
-						The same three terms come back in <b>Part 3</b> &mdash; with the cosmological parameters as the
-						unknown, and a likelihood we can no longer write down.
-					</p>
-
-					<aside class="notes">
-						This is the one place Bayes gets taught, so take it slowly and use the room's language.
-						Three pieces. What we want:the map, given the data. What we can write down: how shear comes
-						from mass — we already have that, it is the operator from two slides ago, plus noise. And
-						what we assume before we look: the prior.
-						[CLICK] Kaiser-Squires assumed essentially nothing. Every method that improves on it is a
-						different answer to that one slot — and that is the whole of this chapter.
-						SAY THE CALLBACK when SBI arrives: same formula, but the unknown is three numbers instead of
-						a map, and the likelihood cannot be written down.
-						FLAG, if pressed (Starck): here we take the MOST PROBABLE map, a point estimate. Later we want
-						the whole distribution — Part 2 is where the uncertainty arrives.
-					</aside>
-				</section>
-
-				<section data-theme="light">
-					<h3 class="slide-title">Overview of mass mapping methods</h3>
-					<ul>
-						<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr; Gaussian
-							random field, Likelihood
-							&rarr; Gaussian, Solution &rarr; corresponds to MAP for gaussian $\kappa$</li>
-						<br>
-						<li class="fragment fade-in"><b class="alert">Sparse recovery</b>: Prior on $\kappa$ &rarr;
-							sparse in wavelet basis, Enforces
-							model where matter field is a combination of DM halos</li>
-						</li>
-						<br>
-						<li class="fragment fade-in"><b class="alert">MCALens</b>:
-							Models $\kappa$-field as sum of a Gaussian and a non-Gaussian component, Uses Morphological
-							Component Analysis</li>
-						<br>
-						<li class="fragment fade-in"><b class="alert">Deep Learning Methods</b>:
-							<ul>
-								<li><b>DeepMass</b>: CNN with a U-Net-based architecture, prior from simulations</li>
-								<li><b>DeepPosterior</b>: Probabilistic mass mapping with deep generative models,
-									Prior from
-									2pt statistics modelling at large scales &
-									Deep Learning on simulations for small scales, Sampling with Annealed HMC</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-
-				<section data-theme="light">
-						<h3 class="slide-title">Bayesian reconstruction</h3>
-
-						<span class="fragment fade-in">
-							<div class="block">
-								<div class="block-content">
-									<ul>
-										<li>Mass mapping problem &rarr; statistical inference problem</li>
-										<li><b class="alert">Goal</b>: infer most probable value of $\kappa$-field given
-											observed
-											shear data
-										</li>
-									</ul>
-								</div>
-							</div>
-							$$ \underbrace{p(\boldsymbol{\kappa} \mid \boldsymbol{\gamma}, \mathcal{M})}_{\text {Posterior
-							}}
-							\propto \underbrace{p(\gamma \mid \boldsymbol{\kappa}, \mathcal{M})}_{\text {likelihood }} \,\,
-							\underbrace{p(\boldsymbol{\kappa} \mid \mathcal{M})}_{\text {prior }} $$
-							<small> $\mathcal{M}$: cosmological model </small>
-						</span>
-
-						<br>
-						<span class="fragment fade-in">
-							<div class="block">
-								<div class="block-content">
-									<ul>
-										<li><b class="alert">Maximum A Posteriori solution:</b>
-											$\hat{x} = \arg \max_x \, \log p(y|x) + \log p(x)$
-										</li>
-										<li>
-											<b class="alert">In practice:</b> this is usually solved iteratively by
-											alternating two steps:
-											<ul>
-												<li>Move toward better data fit (gradient of likelihood)</li>
-												<li>Enforce the prior using a <b>proximal operator</b></li>
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</span>
-						<br>
-
-						<!-- <span class="fragment fade-in">
-							<div class="block">
-								<div class="block-content">
-									<ul>
-										<li>
-											<b class="alert">In practice:</b> this is usually solved iteratively by
-											alternating two steps:
-											<ul>
-												<li>Move toward better data fit (gradient of likelihood)</li>
-												<li>Enforce the prior using a <b>proximal operator</b></li>
-											</ul>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</span> -->
-
-						<br>
-						<span class="fragment fade-in">
-							<div class="block">
-								<div class="block-title"> Proximal operator</div>
-								<div class="block-content">
-									<ul>
-										<li>
-											Acts as a "smart denoiser" by finding the closest solution that satisfies the
-											prior.
-										</li>
-										<li>
-											<em>Example</em>: sparsity prior &rarr; proximal operator performs thresholding
-											to enforce sparsity in the solution.
-										</li>
-									</ul>
-								</div>
-							</div>
-						</span>
-
-				</section>
+				
 			</section>
 
 				<!-- ################################################################################################### -->
 
-			<section data-theme="light">
-					<h3 class="slide-title">Sparse recovery</h3>
-					<ul>
-						<li>Decomposes the signal into another domain (dictionary), where it is <b
-								class="alert">sparse</b>
-						</li>
-						<br>
-						<li>Implement the <em class="alert">wavelet transform</em> &rarr; decomposes the signal into <b
-								class="alert">wavelet functions</b> (waveforms of limited duration with an average value
-							of
-							zero)</li>
-					</ul>
-					<img src="../assets/figures/statistics/starlet_vs_gaussian_scales_multiplots.png" alt="Wavelets of different scales"
-						style="width:auto;">
-					<ul>
-						<li>Use <b class="alert">starlet wavelets</b> &rarr; represent well structures resembling the
-							$\kappa$ of a <b class="alert">DM halo</b> (positive & isotropic)</li>
-						<br>
-						<li>The application of sparsity prior <em class="alert">enforces</em> a cosmological model where
-							the
-							matter field is a combination of spherically symmetric DM halos</li>
-					</ul>
-			</section>
+			
 
 				<!-- ################################################################################################### -->
 
@@ -1280,34 +1005,7 @@
 					</aside>
 				</section>
 
-	<section data-theme="light">
-						<h3 class="slide-title">MCALens &mdash; the algebra</h3>
-						<ul>
-							<li>Models $\kappa$-field as a sum of a <b class="alert">Gaussian</b> and <b
-									class="alert">non-Gaussian</b> component
-								$$\boxed{\kappa = \underbrace{\kappa_{\rm G}}_{\text{Gaussian: Wiener filter}} +
-								\underbrace{\kappa_{\rm NG}}_{\text{non-Gaussian: sparse wavelet}}}$$
-								$$\min _{\kappa_G, \kappa_{N G}}\left\|\gamma-\mathbf{A}\left(\kappa_G+\kappa_{N
-								G}\right)\right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)+C_{\mathrm{NG}}\left(\kappa_{N
-								G}\right) $$ </li>
-							<br>
-							<li><b class="alert">MCA</b> (morphological Component Analysis) performs an alternating
-								minimization
-								scheme:<br><br>
-								<ul>
-									<li>Estimate $\mathbf{\kappa}_{\mathrm{G}}$ assuming $\mathbf{\kappa}_{\mathrm{NG}}$ is
-										known:$$\min _{\kappa_G}\left\|\left(\gamma-\mathbf{A}\kappa_{N G}\right)
-										-\mathbf{A}\kappa_{G} \right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)$$
-									</li>
-									<li>Estimate $\mathbf{\kappa}_{\mathrm{NG}}$ assuming $\mathbf{\kappa}_{\mathrm{G}}$ is
-										known:$$\min _{\kappa_{NG}}\left\|\left(\gamma-\mathbf{A}\kappa_{G}\right)
-										-\mathbf{A}\kappa_{NG}
-										\right\|_{\Sigma_n}^2+C_{\mathrm{NG}}\left(\kappa_{NG}\right)$$
-									</li>
-								</ul>
-							</li>
-						</ul>
-				</section>
+	
 			</section>
 			<!-- =============================================================================
 			     THE STAKES — new 2026-09-03.  The Part 1 divider asks the question; this
@@ -1743,37 +1441,7 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-background-color="#ffffff" class="light-slide">
-					<h3 class="slide-title">Implementation</h3>
-
-
-					<span class="fragment fade-in">
-						<div class="container">
-							<div class="col">
-								<div class="block">
-									<div class="block-title">Training</div>
-									<div class="block-content">
-										<ul>
-											<li>Denoiser models implemented: <b class="alert">DRUNet</b> & <b
-													class="alert">SUNet</b></li>
-											<li>Trained on <b class="alert">κTNG</b> and <b class="alert">cosmoSLICS</b>
-												simulations, using pairs of $(\kappa_{\rm
-												true}, \gamma_{\rm obs})$ as training
-												data</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<img src="../assets/figures/statistics/PnP_iterations1.png" alt="PnP Iterations" style="width:350px">
-							</div>
-						</div>
-					</span>
-
-					<img src="../assets/figures/maps/Mass_mapping_RMSE_comparison1.png" alt="Mass Mapping RMSE Comparison"
-						style="width:auto" class="fragment fade-in">
-
-				</section>
+				
 
 			</section>
 
@@ -1845,26 +1513,23 @@
 
 				<p class="uqwhy fragment fade-in" data-fragment-index="1">
 					<span class="kicker">where the spread comes from</span>
-					The map is not a deterministic function of the data. Shape noise and the mask leave a whole family
-					of maps consistent with the shear &mdash; the fan from <b>Part&nbsp;1</b> &mdash; and the prior that
-					picks one of them is a denoiser <b>learned from simulations</b>, so it carries model error of its
-					own. The variance we predict has to cover both.
+					Noise and the mask leave the whole family of maps from <b>Part&nbsp;1</b>, and the prior that picks
+					one of them is <b>learned from simulations</b>. The variance has to cover both.
 				</p>
 
 				<div class="uqbody">
 					<div class="uqmain fragment fade-in" data-fragment-index="1">
 						<p class="kicker">first &mdash; predict the error</p>
-						<p>Train $G_{\Omega}$ to regress the <b>squared residual</b> of the reconstruction,</p>
+						<p>Train $G_{\Omega}$ on the <b>squared residual</b> of the reconstruction,</p>
 						<p class="uqloss">$$\min_{\Omega}\ \mathbb{E}\left[\left\| G_{\Omega}(\gamma) - \big(\kappa - F_{\Theta}(\gamma)\big)^{2} \right\|_2^{2}\right]$$</p>
-						<p>and the minimiser of that loss <b>is</b> the posterior variance, pixel by pixel. Same
-							simulated $(\kappa,\gamma)$ pairs as the denoiser; one forward pass, no sampling.</p>
+						<p>whose minimiser <b>is</b> the posterior variance, pixel by pixel. One forward pass,
+							no sampling.</p>
 					</div>
 					<div class="uqaside fragment fade-in" data-fragment-index="2">
 						<p class="kicker">then &mdash; make it honest</p>
-						<p>A network's own variance is <b>not</b> a guarantee, and nothing in that loss makes it one.</p>
-						<p><b>Conformal quantile regression</b> rescales the interval at every pixel, against a
-							held&#8209;out calibration set, until the coverage is the coverage claimed &mdash;
-							without assuming the network is right.</p>
+						<p>A network's own variance is <b>not</b> a guarantee.</p>
+						<p><b>Conformal quantile regression</b> rescales it pixel by pixel against a
+							held&#8209;out set, until the coverage is the coverage claimed.</p>
 					</div>
 				</div>
 
@@ -1961,38 +1626,30 @@
 
 					<div class="pr-side">
 						<ul class="pr-points">
-							<li>down and to the left is better; after calibration every method is <b>on target</b>
-								&mdash; that is the guarantee, not a result</li>
-							<li><b>accuracy</b>: level with the deep-learning methods, within about 1&thinsp;% of a
-								DeepMass fine&#8209;tuned to this exact mask and noise</li>
-							<li><b>uncertainty</b>: the smallest calibrated interval of every method tested, on all
-								512 maps</li>
-							<li><b>deployability</b>: one trained denoiser, any mask, any noise covariance &mdash;
-								they enter at inference, not in training</li>
+							<li>down and to the left is better &mdash; and after calibration everyone is
+								<b>on target</b></li>
+							<li><b>accuracy</b>: level with the deep&#8209;learning methods</li>
+							<li><b>uncertainty</b>: the smallest bars of any method, all 512 maps</li>
+							<li><b>deployability</b>: any mask, any noise &mdash; at inference, not in training</li>
 						</ul>
 
 						<p class="kicker fragment fade-in" data-fragment-index="1">the error bars know where the peaks are</p>
 						<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
 							<img src="../assets/figures/maps/pnpmass_kappa_sigma.png"
 								alt="a PnPMass convergence map beside its per-pixel calibrated uncertainty, on the same field">
-							<figcaption>The reconstruction, and its calibrated &sigma; per pixel on the same field. The
-								uncertainty rises exactly where the structure is &mdash; which is what lets the bars be
-								small everywhere else.</figcaption>
+							<figcaption>The map, and its calibrated &sigma; on the same field.</figcaption>
 						</figure>
 					</div>
 				</div>
 
 				<p class="pull fragment fade-in" data-fragment-index="2">
-					DeepMass and MMGAN are retrained whenever the footprint or the noise changes &mdash; tens of
-					GPU&#8209;hours each time. PnPMass is trained <b>once</b>. That is the difference between a method
-					that wins a benchmark and one <b class="alert">a survey like Euclid can actually run</b>.
+					DeepMass and MMGAN are retrained whenever the footprint or the noise changes. PnPMass is trained
+					<b>once</b> &mdash; which is what makes it <b class="alert">runnable on a survey like Euclid</b>.
 				</p>
 
 				<p class="pr-note fragment fade-in" data-fragment-index="2">
-					Two honest limits: the coverage guarantee is <b>marginal, not conditional</b> &mdash; what escapes
-					concentrates at the peaks, the same structures Part&nbsp;1 says carry the information &mdash; and
-					&kappa;TNG is a <b>single cosmology</b>. Conditional conformal prediction, and a multi-cosmology
-					test, are the named next steps.
+					Honest limits: coverage is <b>marginal, not conditional</b> &mdash; what escapes concentrates at
+					the peaks &mdash; and &kappa;TNG is a <b>single cosmology</b>.
 				</p>
 
 				<aside class="notes">
@@ -4674,6 +4331,364 @@
 					The highlighted rows are the parameters weak lensing constrains. Lensing is the only probe that measures the total projected mass directly, which is why this thesis is about lensing.
 				</aside>
 			</section>
+
+			<!-- =============================================================================
+			     BACKUP — method detail moved out of the flow 2026-09-03 (Andreas).  These
+			     are reachable: keep pressing right past the end of the talk, or jump by
+			     slide number.  They are the slides a question would send you to, not slides
+			     the talk walks through.
+			============================================================================== -->
+			<section class="altdiv" data-background-color="#000">
+				<div class="part-divider">
+					<span class="kicker">backup &mdash; not part of the talk</span>
+					<h2>Method detail</h2>
+					<hr class="accent-rule" style="margin:0.5em auto;">
+					<p class="lead">Kaiser&ndash;Squires step by step, the Bayesian reconstruction stack, sparse recovery, the MCALens algebra, and the PnPMass implementation. Here for questions.</p>
+				</div>
+				<aside class="notes">If you land here in the talk you have gone too far.</aside>
+			</section>
+
+<section data-theme="light">
+					<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>
+					<div class="container">
+						<div class="col">
+							Shear <b class="alert">$\gamma$</b><br>
+							<img src="../assets/figures/maps/shear_cat1.png" style="width:450px;"></img>
+						</div>
+
+						<div class="col fragment fade-up">
+							Convergence <b class="alert">$\kappa$</b><br>
+							<img src="../assets/figures/maps/kappa.png" style="width:450px;"></img>
+						</div>
+					</div>
+
+					<div style="position:relative; width:1000px; height:100px; margin:0 auto;">
+						<div class="fragment current-visible plain fade-up"
+							style="position:absolute;top:0;left:0;width:1000px;">
+							$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 = \partial_1
+							\partial_2 \ \Psi \quad;\quad \kappa = \frac{1}{2} (\partial_1^2 + \partial_2^2) \ \Psi$$
+						</div>
+						<div class="fragment current-visible plain fade-up"
+							style="position:absolute;top:0;left:0;width:1000px;">
+							$$\boxed{\gamma = \mathbf{P} \kappa}$$
+						</div>
+					</div>
+				</section>
+<section data-theme="light">
+					<h3 class="slide-title">Kaiser-Squires inversion</h3>
+					<ul>
+						<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an estimate of
+							the convergence from measurements of the shear
+
+							$$\kappa = \dfrac12 \Delta \psi, \,\, \gamma_1 = \dfrac12 \left( \partial_1^2 \psi -
+							\partial_2^2 \psi \right), \,\, \gamma_2 = \partial_1 \partial_2 \psi $$
+							$$\Rightarrow \kappa = \Delta^{-1} \left[ \left( \partial_1^2 - \partial_2^2 \right)
+							\gamma_1 +
+							2\partial_1 \partial_2 \gamma_2 \right] $$
+
+						</li>
+					</ul>
+					<span class="fragment fade-in">
+						<div class="container">
+							<div class="col">
+								<div class="block">
+									<div class="block-title"> Kaiser-Squires estimator:</div>
+									<div class="block-content">
+										$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2 k_1
+										k_2}{k^2}\right)\left(\tilde{\gamma}_1+i
+										\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i \tilde{\gamma}_2\right)
+										$$
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence E
+							and B
+							modes. </em>
+					</span>
+				</section>
+<section data-theme="light">
+					<h3 class="slide-title">Mass mapping as an inverse problem</h3>
+					<br>
+					<ul>
+						<li>Binned data:$\gamma = F^* P F \, \kappa$</li>
+						<li>Unbinned data: $\gamma = T^* P F \, \kappa$</li>
+					</ul>
+					<br>
+					<br>
+					<em> <small>$T =$ Non Equispaced Disctrete Fourier Transform (NDFT) </small> </em>
+					<br><br><br>
+					<div class="block">
+						<div class="block-title">
+						</div>
+						<div class="block-content" align="center">
+							$$ \tilde{\boldsymbol{\kappa}}=\min _{\boldsymbol{\kappa}}\|\boldsymbol{\gamma}-\mathbf{A}
+							\boldsymbol{\kappa}\|_{\boldsymbol{\Sigma}_n}^2 $$
+							with $\mathbf{A} = \boldsymbol{F} \mathbf{P} \boldsymbol{F}^* $
+						</div>
+					</div>
+					<br><br><br>
+
+					<span style="color:red;">There is no unique and stable solution, it is an ill-posed problem.</span>
+				</section>
+<section class="bayes" data-theme="light">
+					<h3 class="slide-title tight">Writing it as inference makes the assumption <em class="alert">explicit</em></h3>
+
+					<div class="anatomy">
+						<div class="term">
+							<div class="teq">$p(\kappa \mid \gamma)$</div>
+							<div class="tname">posterior</div>
+							<div class="tsub">the map we end up with, <em>after</em> seeing the data</div>
+							<div class="trole">what we want</div>
+						</div>
+						<div class="op">&prop;</div>
+						<div class="term">
+							<div class="teq">$p(\gamma \mid \kappa)$</div>
+							<div class="tname">likelihood</div>
+							<div class="tsub">how well a given map explains the shear we measured</div>
+							<div class="trole">physics we already have &mdash; the operator from two slides ago</div>
+						</div>
+						<div class="op">&times;</div>
+						<div class="term prior">
+							<div class="teq">$p(\kappa)$</div>
+							<div class="tname">prior</div>
+							<div class="tsub">what we take a mass map to look like, <em>before</em> we look</div>
+							<div class="trole">the choice &mdash; and the only term that changes</div>
+						</div>
+					</div>
+
+					<div class="fanrow fragment fade-in" data-fragment-index="1" aria-hidden="true">
+						<div></div><div></div><div></div><div></div><div class="riser"></div>
+					</div>
+
+					<div class="priors fragment fade-in" data-fragment-index="1">
+						<div class="pcard">
+							<div class="pname">Wiener filter</div>
+							<div class="passume">&kappa; is a <b>Gaussian</b> random field</div>
+						</div>
+						<div class="pcard fragment fade-in" data-fragment-index="2">
+							<div class="pname">sparse recovery</div>
+							<div class="passume">&kappa; is <b>sparse</b> in a wavelet basis</div>
+						</div>
+						<div class="pcard fragment fade-in" data-fragment-index="3">
+							<div class="pname">MCALens</div>
+							<div class="passume">&kappa; is Gaussian <b>plus</b> non&#8209;Gaussian</div>
+						</div>
+						<div class="pcard learned fragment fade-in" data-fragment-index="4">
+							<div class="pname">deep learning</div>
+							<div class="passume">the prior itself is <b>learned</b> from simulations</div>
+						</div>
+					</div>
+
+					<p class="note carry fragment fade-in" data-fragment-index="5">
+						The same three terms come back in <b>Part 3</b> &mdash; with the cosmological parameters as the
+						unknown, and a likelihood we can no longer write down.
+					</p>
+
+					<aside class="notes">
+						This is the one place Bayes gets taught, so take it slowly and use the room's language.
+						Three pieces. What we want:the map, given the data. What we can write down: how shear comes
+						from mass — we already have that, it is the operator from two slides ago, plus noise. And
+						what we assume before we look: the prior.
+						[CLICK] Kaiser-Squires assumed essentially nothing. Every method that improves on it is a
+						different answer to that one slot — and that is the whole of this chapter.
+						SAY THE CALLBACK when SBI arrives: same formula, but the unknown is three numbers instead of
+						a map, and the likelihood cannot be written down.
+						FLAG, if pressed (Starck): here we take the MOST PROBABLE map, a point estimate. Later we want
+						the whole distribution — Part 2 is where the uncertainty arrives.
+					</aside>
+				</section>
+<section data-theme="light">
+					<h3 class="slide-title">Overview of mass mapping methods</h3>
+					<ul>
+						<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr; Gaussian
+							random field, Likelihood
+							&rarr; Gaussian, Solution &rarr; corresponds to MAP for gaussian $\kappa$</li>
+						<br>
+						<li class="fragment fade-in"><b class="alert">Sparse recovery</b>: Prior on $\kappa$ &rarr;
+							sparse in wavelet basis, Enforces
+							model where matter field is a combination of DM halos</li>
+						</li>
+						<br>
+						<li class="fragment fade-in"><b class="alert">MCALens</b>:
+							Models $\kappa$-field as sum of a Gaussian and a non-Gaussian component, Uses Morphological
+							Component Analysis</li>
+						<br>
+						<li class="fragment fade-in"><b class="alert">Deep Learning Methods</b>:
+							<ul>
+								<li><b>DeepMass</b>: CNN with a U-Net-based architecture, prior from simulations</li>
+								<li><b>DeepPosterior</b>: Probabilistic mass mapping with deep generative models,
+									Prior from
+									2pt statistics modelling at large scales &
+									Deep Learning on simulations for small scales, Sampling with Annealed HMC</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+<section data-theme="light">
+						<h3 class="slide-title">Bayesian reconstruction</h3>
+
+						<span class="fragment fade-in">
+							<div class="block">
+								<div class="block-content">
+									<ul>
+										<li>Mass mapping problem &rarr; statistical inference problem</li>
+										<li><b class="alert">Goal</b>: infer most probable value of $\kappa$-field given
+											observed
+											shear data
+										</li>
+									</ul>
+								</div>
+							</div>
+							$$ \underbrace{p(\boldsymbol{\kappa} \mid \boldsymbol{\gamma}, \mathcal{M})}_{\text {Posterior
+							}}
+							\propto \underbrace{p(\gamma \mid \boldsymbol{\kappa}, \mathcal{M})}_{\text {likelihood }} \,\,
+							\underbrace{p(\boldsymbol{\kappa} \mid \mathcal{M})}_{\text {prior }} $$
+							<small> $\mathcal{M}$: cosmological model </small>
+						</span>
+
+						<br>
+						<span class="fragment fade-in">
+							<div class="block">
+								<div class="block-content">
+									<ul>
+										<li><b class="alert">Maximum A Posteriori solution:</b>
+											$\hat{x} = \arg \max_x \, \log p(y|x) + \log p(x)$
+										</li>
+										<li>
+											<b class="alert">In practice:</b> this is usually solved iteratively by
+											alternating two steps:
+											<ul>
+												<li>Move toward better data fit (gradient of likelihood)</li>
+												<li>Enforce the prior using a <b>proximal operator</b></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</span>
+						<br>
+
+						<!-- <span class="fragment fade-in">
+							<div class="block">
+								<div class="block-content">
+									<ul>
+										<li>
+											<b class="alert">In practice:</b> this is usually solved iteratively by
+											alternating two steps:
+											<ul>
+												<li>Move toward better data fit (gradient of likelihood)</li>
+												<li>Enforce the prior using a <b>proximal operator</b></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</span> -->
+
+						<br>
+						<span class="fragment fade-in">
+							<div class="block">
+								<div class="block-title"> Proximal operator</div>
+								<div class="block-content">
+									<ul>
+										<li>
+											Acts as a "smart denoiser" by finding the closest solution that satisfies the
+											prior.
+										</li>
+										<li>
+											<em>Example</em>: sparsity prior &rarr; proximal operator performs thresholding
+											to enforce sparsity in the solution.
+										</li>
+									</ul>
+								</div>
+							</div>
+						</span>
+
+				</section>
+<section data-theme="light">
+					<h3 class="slide-title">Sparse recovery</h3>
+					<ul>
+						<li>Decomposes the signal into another domain (dictionary), where it is <b
+								class="alert">sparse</b>
+						</li>
+						<br>
+						<li>Implement the <em class="alert">wavelet transform</em> &rarr; decomposes the signal into <b
+								class="alert">wavelet functions</b> (waveforms of limited duration with an average value
+							of
+							zero)</li>
+					</ul>
+					<img src="../assets/figures/statistics/starlet_vs_gaussian_scales_multiplots.png" alt="Wavelets of different scales"
+						style="width:auto;">
+					<ul>
+						<li>Use <b class="alert">starlet wavelets</b> &rarr; represent well structures resembling the
+							$\kappa$ of a <b class="alert">DM halo</b> (positive & isotropic)</li>
+						<br>
+						<li>The application of sparsity prior <em class="alert">enforces</em> a cosmological model where
+							the
+							matter field is a combination of spherically symmetric DM halos</li>
+					</ul>
+			</section>
+<section data-theme="light">
+						<h3 class="slide-title">MCALens &mdash; the algebra</h3>
+						<ul>
+							<li>Models $\kappa$-field as a sum of a <b class="alert">Gaussian</b> and <b
+									class="alert">non-Gaussian</b> component
+								$$\boxed{\kappa = \underbrace{\kappa_{\rm G}}_{\text{Gaussian: Wiener filter}} +
+								\underbrace{\kappa_{\rm NG}}_{\text{non-Gaussian: sparse wavelet}}}$$
+								$$\min _{\kappa_G, \kappa_{N G}}\left\|\gamma-\mathbf{A}\left(\kappa_G+\kappa_{N
+								G}\right)\right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)+C_{\mathrm{NG}}\left(\kappa_{N
+								G}\right) $$ </li>
+							<br>
+							<li><b class="alert">MCA</b> (morphological Component Analysis) performs an alternating
+								minimization
+								scheme:<br><br>
+								<ul>
+									<li>Estimate $\mathbf{\kappa}_{\mathrm{G}}$ assuming $\mathbf{\kappa}_{\mathrm{NG}}$ is
+										known:$$\min _{\kappa_G}\left\|\left(\gamma-\mathbf{A}\kappa_{N G}\right)
+										-\mathbf{A}\kappa_{G} \right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)$$
+									</li>
+									<li>Estimate $\mathbf{\kappa}_{\mathrm{NG}}$ assuming $\mathbf{\kappa}_{\mathrm{G}}$ is
+										known:$$\min _{\kappa_{NG}}\left\|\left(\gamma-\mathbf{A}\kappa_{G}\right)
+										-\mathbf{A}\kappa_{NG}
+										\right\|_{\Sigma_n}^2+C_{\mathrm{NG}}\left(\kappa_{NG}\right)$$
+									</li>
+								</ul>
+							</li>
+						</ul>
+				</section>
+<section data-background-color="#ffffff" class="light-slide">
+					<h3 class="slide-title">Implementation</h3>
+
+
+					<span class="fragment fade-in">
+						<div class="container">
+							<div class="col">
+								<div class="block">
+									<div class="block-title">Training</div>
+									<div class="block-content">
+										<ul>
+											<li>Denoiser models implemented: <b class="alert">DRUNet</b> & <b
+													class="alert">SUNet</b></li>
+											<li>Trained on <b class="alert">κTNG</b> and <b class="alert">cosmoSLICS</b>
+												simulations, using pairs of $(\kappa_{\rm
+												true}, \gamma_{\rm obs})$ as training
+												data</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<img src="../assets/figures/statistics/PnP_iterations1.png" alt="PnP Iterations" style="width:350px">
+							</div>
+						</div>
+					</span>
+
+					<img src="../assets/figures/maps/Mass_mapping_RMSE_comparison1.png" alt="Mass Mapping RMSE Comparison"
+						style="width:auto" class="fragment fade-in">
+
+				</section>
 
 				<!-- ################################################################################################### -->
 
