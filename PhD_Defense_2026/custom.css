@@ -1406,8 +1406,8 @@
 	margin: 0; max-width: none; max-height: none; border: 0; box-shadow: none;
 }
 .reveal .slides section.invprob .ip-card.c1 { left: 0;    top: 14px; z-index: 3; }
-.reveal .slides section.invprob .ip-card.c2 { left: 44px; top: 7px;  z-index: 2; opacity: 0.88; }
-.reveal .slides section.invprob .ip-card.c3 { left: 88px; top: 0;    z-index: 1; opacity: 0.72; }
+.reveal .slides section.invprob .ip-card.c2 { left: 44px; top: 7px;  z-index: 2; }
+.reveal .slides section.invprob .ip-card.c3 { left: 88px; top: 0;    z-index: 1; }
 /* The filters that used to fake a difference are gone (2026-09-03): the three
    cards are now genuinely different reconstructions of the same field. */
 .reveal .slides section.invprob .ip-fancap {
