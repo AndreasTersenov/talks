@@ -1843,6 +1843,14 @@
 					<div class="rstop on"><span class="n">calibrated interval</span><span class="d"></span><span class="s">CQR, held&#8209;out set</span></div>
 				</div>
 
+				<p class="uqwhy fragment fade-in" data-fragment-index="1">
+					<span class="kicker">where the spread comes from</span>
+					The map is not a deterministic function of the data. Shape noise and the mask leave a whole family
+					of maps consistent with the shear &mdash; the fan from <b>Part&nbsp;1</b> &mdash; and the prior that
+					picks one of them is a denoiser <b>learned from simulations</b>, so it carries model error of its
+					own. The variance we predict has to cover both.
+				</p>
+
 				<div class="uqbody">
 					<div class="uqmain fragment fade-in" data-fragment-index="1">
 						<p class="kicker">first &mdash; predict the error</p>
@@ -1868,7 +1876,11 @@
 				<aside class="notes">
 					SAY: the map is only half a result. Read the chain left to right: the shear goes in, the denoiser
 					gives the map, and then a second network, trained the same way on the same simulated pairs, gives
-					the error. [CLICK] It is trained to predict the squared residual of the reconstruction, and the
+					the error. [CLICK] Where does the spread even come from — the reconstruction looks deterministic,
+					you put shear in and get a map out. Two sources. The shape noise and the mask leave a whole family
+					of maps consistent with the data — that is the fan from Part 1, and it never went away. And the
+					thing that picks one map out of that family is a denoiser we learned from simulations, so it brings
+					its own model error. Whatever we predict has to cover both. It is trained to predict the squared residual of the reconstruction, and the
 					minimiser of that loss is exactly the posterior variance. One forward pass. No sampling, no MCMC.
 					[CLICK] But a network's own variance is not a guarantee — neural uncertainties are famously
 					overconfident. So we calibrate: conformal quantile regression, a held-out set, a per-pixel
@@ -1937,8 +1949,8 @@
 			     trade-off plot, the mechanism behind it, and the honesty line the committee will
 			     ask about anyway.  Numbers from PAPER_FACTS.md §3. ============ -->
 			<section class="pnpres" data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">&sect;2</span> After calibration, every method covers
-					&mdash; <b class="alert">PnPMass does it with the smallest bars</b></h3>
+				<h3 class="slide-title tight"><span class="sec">&sect;2</span> As accurate as the fine&#8209;tuned
+					networks, with the <b class="alert">smallest calibrated bars</b> &mdash; and no retraining</h3>
 
 				<div class="pr-grid">
 					<figure class="pr-main">
@@ -1949,9 +1961,14 @@
 
 					<div class="pr-side">
 						<ul class="pr-points">
-							<li>down and to the left is better</li>
-							<li>after calibration every method is <b>on target</b> &mdash; that is the guarantee, not a result</li>
-							<li>so the only difference left is <b>bar size</b></li>
+							<li>down and to the left is better; after calibration every method is <b>on target</b>
+								&mdash; that is the guarantee, not a result</li>
+							<li><b>accuracy</b>: level with the deep-learning methods, within about 1&thinsp;% of a
+								DeepMass fine&#8209;tuned to this exact mask and noise</li>
+							<li><b>uncertainty</b>: the smallest calibrated interval of every method tested, on all
+								512 maps</li>
+							<li><b>deployability</b>: one trained denoiser, any mask, any noise covariance &mdash;
+								they enter at inference, not in training</li>
 						</ul>
 
 						<p class="kicker fragment fade-in" data-fragment-index="1">the error bars know where the peaks are</p>
@@ -1966,29 +1983,36 @@
 				</div>
 
 				<p class="pull fragment fade-in" data-fragment-index="2">
-					Within about <b class="alert">1&thinsp;%</b> of a network fine&#8209;tuned to this exact mask and
-					noise &mdash; and the only method here that does not have to be <b>retrained</b> when either changes.
+					DeepMass and MMGAN are retrained whenever the footprint or the noise changes &mdash; tens of
+					GPU&#8209;hours each time. PnPMass is trained <b>once</b>. That is the difference between a method
+					that wins a benchmark and one <b class="alert">a survey like Euclid can actually run</b>.
 				</p>
 
 				<p class="pr-note fragment fade-in" data-fragment-index="2">
-					The guarantee is <b>marginal, not conditional</b>: what escapes the bars concentrates at the peaks
-					&mdash; the same structures Part&nbsp;1 says carry the cosmological information. Conditional
-					conformal prediction is the named fix, and it is open work.
+					Two honest limits: the coverage guarantee is <b>marginal, not conditional</b> &mdash; what escapes
+					concentrates at the peaks, the same structures Part&nbsp;1 says carry the information &mdash; and
+					&kappa;TNG is a <b>single cosmology</b>. Conditional conformal prediction, and a multi-cosmology
+					test, are the named next steps.
 				</p>
 
 				<aside class="notes">
 					SAY: this is the whole result in one plot. Left and down is better — reconstruction error across,
-					the size of the calibrated interval up. The colour is the miscoverage we actually measured, and
-					the thing to notice is that after calibration everybody is on the target. That is not a result,
-					that is the conformal guarantee doing its job. So the comparison is not "who covers" — everyone
-					covers — it is who covers with the tightest bars, and that is PnPMass, on all five hundred and
-					twelve test images. [CLICK] Why? Because the classical methods have no uncertainty of their own
-					to offer; calibration can only give them a constant. Ours predicts an uncertainty map, and it
-					puts it where the peaks are. [CLICK] The trade-off, honestly: we are about one percent behind a
-					network that was fine-tuned to this exact mask and noise level — and we are the only method here
-					that does not have to be retrained when either of those changes. And the guarantee is marginal,
-					not conditional: what escapes concentrates at the peaks, which is exactly where Part 1 said the
-					information lives. That is open work, and I am happy to talk about it.
+					the size of the calibrated interval up. First thing to notice: after calibration everybody is on
+					the target miscoverage. That is not a result, that is the conformal guarantee doing its job. So
+					the comparison is not who covers — everyone covers — it is who covers with the tightest bars.
+					Three things then. Accuracy: we are level with the deep-learning methods, within about one
+					percent of a DeepMass that was fine-tuned to this exact mask and this exact noise. Uncertainty:
+					we have the smallest calibrated interval of anything tested, on all five hundred and twelve test
+					images. And deployability: the mask and the noise covariance enter at inference, not in training,
+					so one trained denoiser covers any configuration. [CLICK] And the uncertainty is not a constant —
+					here is the map next to its own error bars, same field. It rises exactly where the structure is,
+					which is what lets the bars stay small everywhere else. [CLICK] That last point is the one I care
+					about. DeepMass and MMGAN get retrained whenever the footprint or the noise changes — tens of
+					GPU-hours, every time. We train once. That is the difference between a method that wins a
+					benchmark and one Euclid could actually run. Two honest limits, and I would rather say them than
+					be asked: the coverage guarantee is marginal, not conditional — what escapes concentrates at the
+					peaks, which is exactly where Part 1 said the information lives — and kappa-TNG is a single
+					cosmology. Both are named next steps.
 				</aside>
 			</section>
 
