@@ -1322,29 +1322,30 @@
 			<section class="stakes" data-theme="light">
 				<h3 class="slide-title tight">Different assumptions, different maps &mdash; and <em class="alert">nobody had checked</em> whether it mattered</h3>
 
-				<div class="stk-pair">
-					<div class="stk-card">
-						<span class="stk-tag">what the field measured</span>
-						<p class="stk-lead">How close the reconstruction is to the <b>truth</b>.</p>
-						<p class="stk-body">A reconstruction error, computed in simulations, against a map that no real
-							survey ever has. Every method reproduces the shear it was handed &mdash; they differ in what
-							they assume about everything the data leaves open.</p>
+				<!-- a contrast, not two cards: the old comparison set quiet on the left, the
+				     open question given the width and the ink on the right. -->
+				<div class="stk-split">
+					<div class="stk-old">
+						<p class="kicker">how the field compared them</p>
+						<p>How close the reconstruction lands to the <b>truth</b> &mdash; a reconstruction error,
+							computed in simulations, against a map no real survey ever has.</p>
+						<p>Every method reproduces the shear it was handed. What they differ in is what they
+							<b>assume</b> about everything the data leaves open.</p>
 					</div>
-					<div class="stk-card open">
-						<span class="stk-tag">what nobody had measured</span>
-						<p class="stk-lead">Whether that difference <b>survives into the posterior</b>.</p>
-						<p class="stk-body">The map is an intermediate product. Nothing in a reconstruction error tells
-							you what happens to $\Omega_m$, $\sigma_8$ or $w_0$ &mdash; and the posterior is what we
-							actually publish.</p>
+					<div class="stk-new">
+						<p class="kicker">the question nobody had asked</p>
+						<p class="stk-lead">Does that difference <b>survive into the posterior</b>?</p>
+						<p>The map is an intermediate product. Nothing in a reconstruction error tells you what
+							happens to $\Omega_m$, $\sigma_8$ or $w_0$ &mdash; and the posterior is what we actually
+							publish.</p>
 					</div>
 				</div>
 
-				<div class="takeaway fragment fade-in" data-fragment-index="1">
-					<span class="label">why it was worth a paper</span>
-					The question was <b class="alert">open, and actively argued</b>: is a state-of-the-art reconstruction
-					worth building for a survey like <b>Euclid</b> &mdash; or is mass mapping just preprocessing that any
-					method does well enough?
-				</div>
+				<p class="pull fragment fade-in" data-fragment-index="1">
+					The question was <b class="alert">open, and actively argued</b>: is a state&#8209;of&#8209;the&#8209;art
+					reconstruction worth building for a survey like <b>Euclid</b> &mdash; or is mass mapping just
+					preprocessing that any method does well enough?
+				</p>
 
 				<p class="stk-ref fragment fade-in" data-fragment-index="1">
 					<img class="stk-qr plain" src="../assets/misc/QR_mass_mapping_impact.png" alt="QR code to the paper">
@@ -1364,25 +1365,22 @@
 			</section>
 
 			<!-- ============ A1.3 — the pipeline held fixed ============ -->
-			<section data-theme="light">
+			<section class="fixedpipe" data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§1</span> Same simulations, same statistic, same likelihood &mdash;
 					<b class="alert">only the map changes</b></h3>
 
-				<div class="fixedchain">
-					<div class="fstep"><div class="fname">shear catalogue</div><div class="fsub">25 cosmologies, cosmo&#8209;SLICS</div></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep swap"><div class="fname">reconstruction</div><div class="fsub">KS &nbsp;/&nbsp; iKS &nbsp;/&nbsp; MCALens</div></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep"><div class="fname">wavelet peak counts</div><div class="fsub">starlet, 2&prime;&ndash;32&prime; + coarse</div><span class="fwd">which statistic, and why &rarr; Part 3</span></div>
-					<div class="farw">&rarr;</div>
-					<div class="fstep"><div class="fname">emulator + MCMC</div><div class="fsub">&Omega;<sub>m</sub>, &sigma;<sub>8</sub>, h, w<sub>0</sub></div><span class="fwd">how the inference works &rarr; Parts 3&ndash;4</span></div>
+				<!-- the chain as a ruled track: only the stop that varies is on the accent. -->
+				<div class="rail">
+					<div class="rstop"><span class="n">shear catalogue</span><span class="d"></span><span class="s">25 cosmologies, cosmo&#8209;SLICS</span></div>
+					<div class="rstop on"><span class="n">reconstruction</span><span class="d"></span><span class="s">KS &nbsp;/&nbsp; iKS &nbsp;/&nbsp; MCALens</span><span class="tnote">the only thing that varies</span></div>
+					<div class="rstop"><span class="n">wavelet peak counts</span><span class="d"></span><span class="s">starlet, 2&prime;&ndash;32&prime; + coarse</span><span class="s2">which statistic, and why &rarr; Part 3</span></div>
+					<div class="rstop"><span class="n">emulator + MCMC</span><span class="d"></span><span class="s">&Omega;<sub>m</sub>, &sigma;<sub>8</sub>, h, w<sub>0</sub></span><span class="s2">how the inference works &rarr; Parts 3&ndash;4</span></div>
 				</div>
 
-				<div class="callout">
-					<span class="label">the comparison</span>
-					One factor varies. Whatever moves in the posterior is the <b>reconstruction</b> &mdash; not the
-					simulations, not the statistic, not the sampler.
-				</div>
+				<p class="pull">
+					One factor varies. Whatever moves in the posterior is the <b class="alert">reconstruction</b>
+					&mdash; not the simulations, not the statistic, not the sampler.
+				</p>
 
 				<p class="lead-line fragment fade-in" data-fragment-index="1">
 					A map is $10^5$ correlated pixels, so it has to be <b>compressed</b> before any likelihood can touch
@@ -1838,12 +1836,11 @@
 
 				<!-- the chain as a ruled track, not four cards: the two stops we add for the
 				     uncertainty sit on the accented half of the line. -->
-				<div class="uqtrack">
-					<div class="uqstop"><span class="n">shear $\gamma$</span><span class="d"></span><span class="s">the data</span></div>
-					<div class="uqstop"><span class="n">$\hat\kappa = F_{\Theta}(\gamma)$</span><span class="d"></span><span class="s">the PnPMass map</span></div>
-					<div class="uqstop is-new"><span class="n">$\hat\sigma^{2} = G_{\Omega}(\gamma)$</span><span class="d"></span><span class="s">a second network</span></div>
-					<div class="uqstop is-new"><span class="n">calibrated interval</span><span class="d"></span><span class="s">CQR, held&#8209;out set</span></div>
-					<span class="uqspan">what this part of the talk adds</span>
+				<div class="rail">
+					<div class="rstop"><span class="n">shear $\gamma$</span><span class="d"></span><span class="s">the data</span></div>
+					<div class="rstop"><span class="n">$\hat\kappa = F_{\Theta}(\gamma)$</span><span class="d"></span><span class="s">the PnPMass map</span></div>
+					<div class="rstop on"><span class="n">$\hat\sigma^{2} = G_{\Omega}(\gamma)$</span><span class="d"></span><span class="s">a second network</span><span class="tnote">what this part of the talk adds</span></div>
+					<div class="rstop on"><span class="n">calibrated interval</span><span class="d"></span><span class="s">CQR, held&#8209;out set</span></div>
 				</div>
 
 				<div class="uqbody">
@@ -1863,7 +1860,7 @@
 					</div>
 				</div>
 
-				<p class="uqquote fragment fade-in" data-fragment-index="3">
+				<p class="pull fragment fade-in" data-fragment-index="3">
 					Not <i>&ldquo;the network says $\pm\sigma$&rdquo;</i> &mdash; a <b class="alert">stated coverage
 					level that holds</b> whether or not the network is well specified.
 				</p>

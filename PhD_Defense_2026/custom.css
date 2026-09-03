@@ -1512,44 +1512,33 @@
 
 
 /* ---------------------------------------------------------------------------
-   THE STAKES — new 2026-09-03.  Two cards: what the field had measured against
-   what it had not.  The right card is the open one and carries the accent.
+   THE STAKES — rebuilt 2026-09-03.  Was two symmetric cards, which is the most
+   machine-set pattern there is: equal weight says the two things are peers, and
+   they are not.  Now a weighted contrast — the old comparison narrow and quiet
+   on the left, the open question wider and in full ink behind one hairline.
    --------------------------------------------------------------------------- */
-.reveal .slides section.stakes .stk-pair {
-	display: flex; gap: 1.4em; justify-content: center;
-	margin: 1.2em auto 0; max-width: 92%;
+.reveal .slides section.stakes .stk-split {
+	display: grid; grid-template-columns: 1fr 1.35fr; gap: 0 2.4em;
+	margin: 1.7em auto 0; max-width: 92%; text-align: left;
 }
-.reveal .slides section.stakes .stk-card {
-	position: relative; flex: 1 1 0; text-align: left;
-	border: 1px solid var(--edge); border-radius: 10px;
-	padding: 1.25em 1.3em 1.1em;
-	background: color-mix(in srgb, var(--surface) 55%, transparent);
+.reveal .slides section.stakes .stk-new {
+	padding-left: 2.4em; border-left: 1px solid var(--edge); margin-left: -1.2em;
 }
-.reveal .slides section.stakes .stk-card.open {
-	border-color: color-mix(in srgb, var(--accent) 55%, var(--edge));
-	background: color-mix(in srgb, var(--accent) 6%, transparent);
+.reveal .slides section.stakes .stk-split p {
+	margin: 0.55em 0 0; font-size: 0.5em; line-height: 1.6; color: var(--fg-muted);
 }
-.reveal .slides section.stakes .stk-tag {
-	position: absolute; top: -0.66em; left: 1.2em;
-	background: var(--bg); padding: 0 0.55em;
-	font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking);
-	font-size: 0.48em; color: var(--fg-muted);
-}
-.reveal .slides section.stakes .stk-card.open .stk-tag { color: var(--accent); }
+.reveal .slides section.stakes .stk-split p b { color: var(--fg); }
+.reveal .slides section.stakes .stk-split .kicker { margin-bottom: 0.15em; }
+.reveal .slides section.stakes .stk-old .kicker { color: var(--fg-muted); }
 .reveal .slides section.stakes .stk-lead {
-	margin: 0; font-size: 0.62em; line-height: 1.4; color: var(--fg);
+	font-family: var(--label); font-style: normal;
+	font-size: 0.7em !important; line-height: 1.35 !important; color: var(--fg) !important;
+	margin-top: 0.25em !important;
 }
-.reveal .slides section.stakes .stk-card.open .stk-lead b { color: var(--accent); }
-.reveal .slides section.stakes .stk-body {
-	margin: 0.55em 0 0; font-size: 0.5em; line-height: 1.55; color: var(--fg-muted);
-}
-.reveal .slides section.stakes .takeaway {
-	margin: 1.15em auto 0; max-width: 92%; font-size: 0.58em;
-}
+.reveal .slides section.stakes .stk-split .stk-lead b { color: var(--accent); }
 .reveal .slides section.stakes .stk-ref {
-	display: flex; align-items: center; justify-content: center; gap: 0.7em;
-	margin: 0.9em auto 0; font-size: 0.44em; color: var(--fg-muted);
+	display: flex; align-items: center; justify-content: flex-start; gap: 0.7em;
+	max-width: 92%; margin: 1.1em auto 0; font-size: 0.44em; color: var(--fg-muted);
 }
 .reveal .slides section.stakes .stk-qr {
 	width: 46px; height: 46px; margin: 0;
@@ -1634,62 +1623,75 @@
 
 
 /* ---------------------------------------------------------------------------
-   UNCERTAINTY (§2) — new 2026-09-03, unboxed 2026-09-03.  Deliberately NOT a
-   row of cards over a pair of cards: the deck already leans hard on framed
-   blocks and it had started to read as machine-set.  Here the chain is a ruled
-   track, the two steps are an asymmetric main/aside split with one hairline
-   between them, and the closing line is a pull quote, not a fifth box.
-   --------------------------------------------------------------------------- */
+   RAIL and PULL — shared, 2026-09-03.  Two components introduced to get the
+   deck off its one-container habit: every element had become a rounded box with
+   a hairline, so nothing had rank and the whole thing read as machine-set.
 
-/* --- the track ---------------------------------------------------------- */
-.reveal .slides section.uq .uqtrack {
+   .rail  — a pipeline drawn as a ruled line with stops on it instead of a row
+            of cards.  Add .on to the stop(s) the slide is actually about: they
+            take the accent, in the ink AND in the segment of rule under them,
+            so "this is the part that matters" is carried by the drawing.
+            Each stop paints its own segment of the line, so the rule stays
+            continuous however many stops there are.
+   .pull  — a closing line set as a pull quote: one rule above, serif, ranged
+            left.  Replaces the reflex of ending every slide with a fifth box.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .rail {
 	position: relative;
-	display: grid; grid-template-columns: repeat(4, 1fr);
+	display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
 	gap: 0 1.6em; margin: 1.6em auto 0; max-width: 92%;
 }
-.reveal .slides section.uq .uqstop {
+.reveal .slides section .rail .rstop {
+	position: relative;
 	display: grid; grid-template-rows: 2.1em 12px auto; justify-items: center; text-align: center;
 }
-.reveal .slides section.uq .uqstop .n {
+/* the rule: each stop draws its own span of it, plus half the gap either side */
+.reveal .slides section .rail .rstop::before {
+	content: ""; position: absolute; left: -0.8em; right: -0.8em; top: calc(2.1em + 6px);
+	border-top: 1px solid var(--edge);
+}
+.reveal .slides section .rail .rstop:first-child::before { left: 18%; }
+.reveal .slides section .rail .rstop:last-child::before  { right: 18%; }
+.reveal .slides section .rail .rstop.on::before { border-top: 1.5px solid var(--accent); }
+
+.reveal .slides section .rail .rstop .n {
 	align-self: center; font-size: 0.62em; line-height: 1.2; color: var(--fg-muted);
 }
-.reveal .slides section.uq .uqstop.is-new .n { color: var(--fg); }
-.reveal .slides section.uq .uqstop .d {
-	width: 9px; height: 9px; border-radius: 50%; align-self: center;
-	background: var(--bg); border: 1.5px solid var(--fg-muted); z-index: 1;
+.reveal .slides section .rail .rstop.on .n { color: var(--fg); }
+.reveal .slides section .rail .rstop .d {
+	width: 9px; height: 9px; border-radius: 50%; align-self: center; z-index: 1;
+	background: var(--bg); border: 1.5px solid var(--fg-muted);
 }
-.reveal .slides section.uq .uqstop.is-new .d { background: var(--accent); border-color: var(--accent); }
-.reveal .slides section.uq .uqstop .s {
-	margin-top: 0.45em; font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
-}
-/* the rule the stops sit on — grey under the pipeline we already have, accent
-   under the two stops this part of the talk adds */
-.reveal .slides section.uq .uqtrack::before,
-.reveal .slides section.uq .uqtrack::after {
-	content: ""; position: absolute; top: calc(2.1em + 6px); height: 0;
-}
-.reveal .slides section.uq .uqtrack::before {
-	left: 6%; right: 6%; border-top: 1px solid var(--edge);
-}
-.reveal .slides section.uq .uqtrack::after {
-	left: 50%; right: 6%; border-top: 1.5px solid var(--accent);
-}
-.reveal .slides section.uq .uqspan {
-	position: absolute; left: 50%; right: 6%; top: 100%; margin-top: 0.55em;
+.reveal .slides section .rail .rstop.on .d { background: var(--accent); border-color: var(--accent); }
+.reveal .slides section .rail .rstop .s,
+.reveal .slides section .rail .rstop .s2,
+.reveal .slides section .rail .rstop .tnote {
 	font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 0.42em; color: var(--accent);
-	text-align: center;
+	letter-spacing: var(--label-tracking); line-height: 1.35;
 }
+.reveal .slides section .rail .rstop .s  { margin-top: 0.45em; font-size: 0.46em; color: var(--fg-muted); }
+.reveal .slides section .rail .rstop .s2 { margin-top: 0.35em; font-size: 0.4em;  color: var(--fg-muted); opacity: 0.8; }
+.reveal .slides section .rail .rstop .tnote { margin-top: 0.5em; font-size: 0.42em; color: var(--accent); }
 
-/* --- main / aside ------------------------------------------------------- */
+.reveal .slides section .pull {
+	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
+	border-top: 1px solid var(--edge);
+	font-family: var(--label); font-style: normal;
+	font-size: 0.66em; line-height: 1.45; color: var(--fg); text-align: left;
+}
+.reveal .slides section .pull i { color: var(--fg-muted); }
+
+
+/* ---------------------------------------------------------------------------
+   UNCERTAINTY (§2) — the two steps, asymmetric: the loss gets the width, the
+   calibration is an aside behind one hairline.  No cards.
+   --------------------------------------------------------------------------- */
 .reveal .slides section.uq .uqbody {
 	display: grid; grid-template-columns: 1.45fr 1fr; gap: 0 2.2em;
 	margin: 2.8em auto 0; max-width: 92%; text-align: left;
 }
 .reveal .slides section.uq .uqaside {
-	padding-left: 2.2em; border-left: 1px solid var(--edge);
-	margin-left: -1.1em;
+	padding-left: 2.2em; border-left: 1px solid var(--edge); margin-left: -1.1em;
 }
 .reveal .slides section.uq .uqbody p {
 	margin: 0.55em 0 0; font-size: 0.5em; line-height: 1.6; color: var(--fg-muted);
@@ -1699,11 +1701,10 @@
 .reveal .slides section.uq .uqloss { text-align: center; margin: 0.35em 0 0.1em !important; }
 .reveal .slides section.uq .uqloss .katex { font-size: 1.05em; color: var(--fg); }
 
-/* --- the closing line, set as a pull quote ------------------------------ */
-.reveal .slides section.uq .uqquote {
-	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
-	border-top: 1px solid var(--edge);
-	font-family: var(--label); font-style: normal;
-	font-size: 0.66em; line-height: 1.45; color: var(--fg); text-align: left;
+
+/* the forward-pointer paragraph under the rail: a quiet note, so the pull quote
+   above it stays the loudest thing on the slide. */
+.reveal .slides section.fixedpipe .lead-line {
+	max-width: 92%; margin: 0.9em auto 0; text-align: left;
+	font-size: 0.5em !important; line-height: 1.6; color: var(--fg-muted);
 }
-.reveal .slides section.uq .uqquote i { color: var(--fg-muted); }
