@@ -1932,7 +1932,68 @@
 			<!-- ################################################################################################### -->
 			<!-- ################################################################################################### -->
 
-			<section data-background-color="#ffffff" class="light-slide">
+			<!-- ============ PnPMass results — rebuilt 2026-09-03 from the paper (A&A, PnPMass).
+			     Was three stacked figures with no claim on them.  Now one slide: the headline
+			     trade-off plot, the mechanism behind it, and the honesty line the committee will
+			     ask about anyway.  Numbers from PAPER_FACTS.md §3. ============ -->
+			<section class="pnpres" data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">&sect;2</span> After calibration, every method covers
+					&mdash; <b class="alert">PnPMass does it with the smallest bars</b></h3>
+
+				<div class="pr-grid">
+					<figure class="pr-main">
+						<img src="../assets/figures/statistics/pnpmass_uq_summary.png"
+							alt="mean calibrated interval length against reconstruction error for Wiener, MCALens, DeepMass and both PnPMass variants">
+						<figcaption>512 test maps, &kappa;TNG. Circles before calibration, diamonds after.</figcaption>
+					</figure>
+
+					<div class="pr-side">
+						<p class="kicker">how to read it</p>
+						<p>Down and to the left is better: reconstruction error across, size of the calibrated
+							interval up. Colour is the measured miscoverage &mdash; and after calibration every
+							method sits on the target, because that is what conformal prediction guarantees. The
+							only axis left is <b>how tight the bars are</b>, and there PnPMass wins.</p>
+
+						<p class="kicker fragment fade-in" data-fragment-index="1">why they are tighter</p>
+						<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
+							<img src="../assets/figures/maps/pnpmass_sigma_pair.png"
+								alt="two per-pixel uncertainty maps on the same colour scale: Wiener flat, PnPMass structured">
+							<figcaption><b>Wiener</b> has no data&#8209;dependent uncertainty to offer &mdash; calibration
+								can only add a constant. <b>PnPMass</b> puts its uncertainty where the peaks are.</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<p class="pull fragment fade-in" data-fragment-index="2">
+					Within about <b class="alert">1&thinsp;%</b> of a network fine&#8209;tuned to this exact mask and
+					noise &mdash; and the only method here that does not have to be <b>retrained</b> when either changes.
+				</p>
+
+				<p class="pr-note fragment fade-in" data-fragment-index="2">
+					The guarantee is <b>marginal, not conditional</b>: what escapes the bars concentrates at the peaks
+					&mdash; the same structures Part&nbsp;1 says carry the cosmological information. Conditional
+					conformal prediction is the named fix, and it is open work.
+				</p>
+
+				<aside class="notes">
+					SAY: this is the whole result in one plot. Left and down is better — reconstruction error across,
+					the size of the calibrated interval up. The colour is the miscoverage we actually measured, and
+					the thing to notice is that after calibration everybody is on the target. That is not a result,
+					that is the conformal guarantee doing its job. So the comparison is not "who covers" — everyone
+					covers — it is who covers with the tightest bars, and that is PnPMass, on all five hundred and
+					twelve test images. [CLICK] Why? Because the classical methods have no uncertainty of their own
+					to offer; calibration can only give them a constant. Ours predicts an uncertainty map, and it
+					puts it where the peaks are. [CLICK] The trade-off, honestly: we are about one percent behind a
+					network that was fine-tuned to this exact mask and noise level — and we are the only method here
+					that does not have to be retrained when either of those changes. And the guarantee is marginal,
+					not conditional: what escapes concentrates at the peaks, which is exactly where Part 1 said the
+					information lives. That is open work, and I am happy to talk about it.
+				</aside>
+			</section>
+
+			<!-- PARKED — the original three-figure version of the results slide, superseded
+			     2026-09-03.  Kept, not deleted. -->
+			<section data-background-color="#ffffff" class="light-slide" data-visibility="hidden">
 				<h3 class="slide-title">Performance</h3>
 
 

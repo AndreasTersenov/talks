@@ -1708,3 +1708,37 @@
 	max-width: 92%; margin: 0.9em auto 0; text-align: left;
 	font-size: 0.5em !important; line-height: 1.6; color: var(--fg-muted);
 }
+
+
+/* ---------------------------------------------------------------------------
+   PnPMass RESULTS — new 2026-09-03.  The headline plot at size, the mechanism
+   beside it, the honesty line last.  No cards: figures and rules only.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.pnpres .pr-grid {
+	display: grid; grid-template-columns: 1.02fr 1fr; gap: 0 2.2em;
+	margin: 1.2em auto 0; max-width: 94%; align-items: start; text-align: left;
+}
+.reveal .slides section.pnpres figure { margin: 0; }
+.reveal .slides section.pnpres .pr-main img {
+	width: 100%; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpres .pr-sigma { margin-top: 0.5em; }
+.reveal .slides section.pnpres .pr-sigma img {
+	width: 100%; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpres figcaption { font-size: 0.42em; line-height: 1.45; }
+.reveal .slides section.pnpres .pr-side p {
+	margin: 0.4em 0 0; font-size: 0.46em; line-height: 1.6; color: var(--fg-muted);
+}
+.reveal .slides section.pnpres .pr-side p b { color: var(--fg); }
+.reveal .slides section.pnpres .pr-side .kicker { margin: 0 0 0.1em; }
+.reveal .slides section.pnpres .pr-side p + .kicker { margin-top: 0.9em; }
+.reveal .slides section.pnpres .pr-side .kicker + p { margin-top: 0; }
+.reveal .slides section.pnpres .pull { margin-top: 1.2em; }
+.reveal .slides section.pnpres .pr-note {
+	max-width: 94%; margin: 0.65em auto 0; text-align: left;
+	font-size: 0.42em; line-height: 1.6; color: var(--fg-muted);
+}
+.reveal .slides section.pnpres .pr-note b { color: var(--fg); }
