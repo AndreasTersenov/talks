@@ -1036,14 +1036,27 @@
 }
 
 /* --- the focus state: one stage lit, the rest stood down ------------------ */
+/* Reached two ways — immediately (`.is-focused`, from data-active) or on a click
+   (`.focus-armed` + a `.pipe-focus` fragment turning visible earlier in the
+   section). The second form is a plain sibling selector on reveal's own
+   `.visible` class, so the built state exports to PDF correctly. */
+.reveal .slides section .pipeline .stage,
+.reveal .slides section .pipeline .arw {
+	transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
 .reveal .slides section .pipeline.is-focused .stage,
-.reveal .slides section .pipeline.is-focused .arw { opacity: 0.34; }
-.reveal .slides section .pipeline.is-focused .stage.is-active {
+.reveal .slides section .pipeline.is-focused .arw,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .arw { opacity: 0.34; }
+
+.reveal .slides section .pipeline.is-focused .stage.is-active,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage.is-active {
 	opacity: 1;
 	border-color: var(--accent);
 	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
 }
-.reveal .slides section .pipeline.is-focused .stage.is-active .sname { color: var(--accent); }
+.reveal .slides section .pipeline.is-focused .stage.is-active .sname,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage.is-active .sname { color: var(--accent); }
 
 /* --- compact variant, for the act openers --------------------------------- */
 .reveal .slides section .pipeline--compact .thumb { display: none; }
@@ -1074,7 +1087,8 @@
 
 /* An arrow between two lit stages is lit as well: naming two adjacent stages
    means the STEP between them. pipeline.js adds the class; see lightTransitions. */
-.reveal .slides section .pipeline.is-focused .arw.is-active { opacity: 1; color: var(--accent); }
+.reveal .slides section .pipeline.is-focused .arw.is-active,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .arw.is-active { opacity: 1; color: var(--accent); }
 
 /* A0.10 — the hand-off. Nothing but the recalled diagram and one line, so the
    pipeline gets more room here than it does on 0.8, where a note sits under it. */

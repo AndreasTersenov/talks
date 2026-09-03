@@ -519,11 +519,21 @@
 			<section class="chainslide" data-theme="light">
 				<h3 class="slide-title tight">Between the galaxy shapes and the parameters there is a <em class="alert">chain</em></h3>
 
-				<div class="pipeline-slot"></div>
+				<!-- The focus trigger must come BEFORE the slot: the CSS that dims the
+				     pipeline is a general-sibling selector on this element's `.visible`
+				     class. Zero-size, so it changes no layout. -->
+				<span class="pipe-focus fragment" data-fragment-index="2"></span>
+
+				<div class="pipeline-slot" data-focus-on-fragment="shear maps"></div>
 
 				<p class="note fragment fade-in" data-fragment-index="1">
 					Every one of those stages is now built out of <b>learned components</b>, and every one of them
 					can bias the answer, or quietly throw information away, <b>with no internal check noticing</b>.
+				</p>
+
+				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
+					The next two parts live in <b class="alert">one step</b> of it &mdash; shear in, a mass map out.
+					Everything in Parts 1 and 2 is about what happens <b>between those two boxes</b>.
 				</p>
 
 				<aside class="notes">
@@ -533,7 +543,11 @@
 					summary; compared against simulations to infer parameters; and out comes a posterior.
 					Underneath runs the model lane, in the order it actually happens: cosmologies drawn from a
 					prior, run through the simulations, and only then given the systematics. [CLICK] Then the
-					claim, and do not hedge it.
+					claim, and do not hedge it. [CLICK] Now the hand-off, on the same picture: two boxes light up
+					and the rest stands down. The first two questions both live in this one step — shear goes in, a
+					mass map comes out. Question one asks whether the choice of method changes the cosmology;
+					question two builds a reconstruction that is honest about its own uncertainty. Everything for
+					the next twenty minutes is between those two boxes.
 				</aside>
 			</section>
 
@@ -580,13 +594,13 @@
 			</section>
 
 			<!-- =============================================================================
-			     A0.10 — the hand-off into Part 1.  The chain graphic from 0.8 comes back
-			     with ONE step lit: shear maps -> mass maps, arrow included. This is the
-			     recall device doing the job it was built for — the room already knows
-			     this picture, so lighting a piece of it locates the next twenty minutes
-			     without a word of explanation.
+			     PARKED 2026-09-03 — merged INTO the chain slide above. Andreas: "slide 11
+			     should be just an animation of slide 10". The same picture now dims on a
+			     click rather than being redrawn on a second slide, so the room sees one
+			     diagram change rather than two diagrams. Kept here in case the two-slide
+			     form is ever wanted back.
 			============================================================================== -->
-			<section class="handoff" data-theme="light">
+						<section class="handoff" data-theme="light" data-visibility="hidden">
 				<h3 class="slide-title tight">The next two parts live in <em class="alert">one step</em> of that chain</h3>
 
 				<div class="pipeline-slot" data-active="shear maps"></div>

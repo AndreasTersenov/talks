@@ -283,10 +283,9 @@ slides into one · **new** = does not exist. **TEACH** marks a §3b mini-introdu
 | 0.5 | A 1 % distortion, invisible alone, **coherent** across neighbours | the cone again + light rays | rebuild | 1:03 |
 | 0.6 | Euclid: an order of magnitude more statistical power | mission clip + four figures | rebuild | 0:38 |
 | 0.6a | We measure the **shear**. What we want is the **convergence**. | the three distortion panels over the κ and γ definitions | **built** · TEACH · **theme flips to light here** | 1:09 |
-| 0.6b | A convergence map carries both **geometry** and **growth** | the LOS integral over a simulated κ map | **built** · TEACH | 0:45 |
-| 0.8 | Between the shapes and the parameters there is a **chain** | **the master chain graphic** &mdash; a data lane of six stages over a model lane of prior, simulations and systematics | **built** | 1:03 |
-| 0.9 | Four questions about that chain | scoreboard, drawn **on** the chain | built | 0:30 |
-| 0.10 | The next two parts live in **one step** of that chain | the chain again, **shear maps &rarr; mass maps lit**, arrow included | **built** | 0:17 |
+| 0.6b | A convergence map carries both **geometry** and **growth** | the LOS integral beside **the real UNIONS map, Andreas's own MCALens reconstruction** (two columns since 2026-09-03; the figure's 1.25 aspect would not stack) | **built** · TEACH | 0:45 |
+| 0.8 | Between the shapes and the parameters there is a **chain** &mdash; and Part 1 lives in **one step** of it | **the master chain graphic** (a data lane of six stages over a model lane of prior, simulations, systematics), which on a **second click dims and lights shear&rarr;mass maps** | **built** &middot; merged 2026-09-03 | 1:20 |
+| 0.9 | ~~Four questions about that chain~~ | **moved to the conclusions, 2026-09-03** &mdash; upfront it leaned on machinery the room had not met | moved | &mdash; |
 
 *The beat.* A picture of the Universe → the model that fits it, and **how you test a model like
 that** → the probes that do the testing, one of which disagrees → what lensing measures → the survey

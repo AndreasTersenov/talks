@@ -54,9 +54,23 @@
 
 			pipe.classList.add('pipeline--' + (slot.dataset.variant || 'full'));
 
+			// Two ways to focus a pipeline:
+			//   data-active="..."            -> focused from the moment the slide opens
+			//   data-focus-on-fragment="..." -> stages are MARKED now, but the dimming is
+			//                                  held until a .pipe-focus fragment earlier in
+			//                                  the same section becomes visible. The switch
+			//                                  is done in CSS, keyed on reveal's own
+			//                                  `.visible` class, so it survives ?print-pdf —
+			//                                  a JS listener on `fragmentshown` would not,
+			//                                  because print-pdf never fires it.
 			var active = (slot.dataset.active || '').split(/\s+/).filter(Boolean);
+			var deferred = false;
+			if (!active.length && slot.dataset.focusOnFragment) {
+				active = slot.dataset.focusOnFragment.split(/\s+/).filter(Boolean);
+				deferred = true;
+			}
 			if (active.length) {
-				pipe.classList.add('is-focused');
+				pipe.classList.add(deferred ? 'focus-armed' : 'is-focused');
 				active.forEach(function (id) {
 					var el = pipe.querySelector('[data-stage="' + id + '"]');
 					if (el) { el.classList.add('is-active'); }

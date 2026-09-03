@@ -350,7 +350,13 @@ statistical errors shrink by an order of magnitude, they stop being what limits 
 
 ---
 
-## A0.8 — what this thesis is about · 1:03
+## A0.8 — what this thesis is about, and the step Part 1 lives in · 1:20
+
+> **Merged 2026-09-03.** This was two slides and two beats — the chain, then the hand-off with
+> the same chain redrawn and one step lit. Andreas: *"slide eleven should be just an animation
+> of slide ten."* It is now one slide with a second click that dims the diagram and lights the
+> shear→mass-maps step, so the room watches one picture change instead of comparing two.
+> The old hand-off slide is parked, hidden, directly below it in `index.html`.
 
 〔The thesis statement, and the map for everything after it. Walk the diagram left to right
 once, unhurried, touching each box — this is the picture the room sees again at the head of
@@ -376,19 +382,16 @@ noticing.
 I am going to ask four questions about that chain. You will see this picture again at the head
 of every part, with one box lit.
 
+
+[CLICK] 〔The diagram dims and two boxes light. Point at them; do not redraw the picture in
+words — the room can see it.〕
+
+Now the same picture, with one step lit.
+
+The first two parts both live there. Shear goes in; a mass map comes out. **▲** Everything for
+the next twenty minutes is about what happens **between those two boxes**.
 ---
 
-## A0.10 — the hand-off into Part 1 · 0:17
-
-〔The recall device doing the job it was built for. Point at the two lit boxes. Do NOT
-re-read the four questions — they were on screen ten seconds ago.〕
-
-Same picture as three slides ago, with one step lit.
-
-The first two questions both live there. Shear goes in; a mass map comes out. **▲** Everything
-for the next twenty minutes is about what happens between those two boxes.
-
----
 
 ## Cut ladder for Act 0
 
