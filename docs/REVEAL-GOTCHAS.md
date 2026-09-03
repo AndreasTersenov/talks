@@ -165,6 +165,76 @@ Scripted edits to a 1000-line deck have destroyed it once. Rules that have held 
 
 ---
 
+## 8b. A file-order check will not tell you the deck is intact
+
+Content appended **after `</html>`** parses fine, passes every text-level check, and still does not
+reach the deck. The browser closes the document and dumps the rest into `<body>`, outside
+`.reveal` — so reveal never sees those slides, while the raw HTML renders as ordinary page flow
+underneath reveal's fixed chrome. A headless screenshot of `#/40` then shows plausible-looking
+slide content with arrows and a slide number over it, and it is *not* a slide.
+
+This happened here: 105 of 129 sections sat after `</html>`, and reveal counted 24. What did **not**
+catch it:
+
+- `check-asset-links.py` — clean, every path resolved;
+- `<section>` vs `</section>` balance — equal;
+- listing headings in file order — all 129 present, in the right order;
+- screenshots — content appeared, because it renders as page flow.
+
+**The check that catches it** is to ask the DOM how many slides reveal actually owns:
+
+```bash
+chrome --headless=new --disable-gpu --virtual-time-budget=15000 \
+  --dump-dom "http://127.0.0.1:8000/<TalkDir>/" > /tmp/dom.html
+```
+
+then count `<section>` elements that are *direct children* of `div.slides` with an HTML parser (not
+a regex — indentation is not nesting), and compare against the file. They must agree, after
+subtracting `data-visibility="hidden"` sections, which reveal removes from the DOM at init.
+
+Run it after any scripted insertion, and always anchor insertions on a comment or element you have
+confirmed lies **inside** `div.slides` — `assert count == 1` proves the anchor is unique, not that
+it is in the right container.
+
+---
+
+## 8c. `margin: auto` will not centre a list — darkenergy makes every `ul` inline-block
+
+`darkenergy.css` sets `.reveal ul { display: inline-block; }`, and **auto side margins do
+nothing to an inline-block box**. It ignores them and sits wherever the parent's
+`text-align` puts it — which inside a `.block` is hard left, because the theme sets
+`.block { text-align: left }`.
+
+So this silently does nothing:
+
+```css
+ul.gloss { width: fit-content; margin: 0.6em auto 0; }   /* still hard left */
+```
+
+and this works:
+
+```css
+ul.gloss { display: block; width: fit-content; margin: 0.6em auto 0; }
+```
+
+The trap is that the rule *looks* correct and the CSS validates — there is no error, the
+list is simply not where you asked for it. It cost a round trip on `PhD_Defense_2026`
+slide 0.6b, where the identical intent on the neighbouring slide (0.6a) worked first time
+because that list lives in a **flex** column, and `align-self: center` centres a flex item
+whatever its `display` is.
+
+Two ways out, pick by context:
+
+- **flex parent** → `align-self: center` on the list (and `margin-top: auto` still pins it
+  to the foot of the card).
+- **block parent** → `display: block` on the list, then `width: fit-content` + auto margins.
+
+Same class of bug: `.reveal ol`, `.reveal .block`, and the theme's title lockups are also
+inline-block in places. If a centring rule has no effect, check `display` before adding
+`!important` to anything.
+
+---
+
 ## 9. Build-up frames are usually cumulative
 
 Before staging an `r-stack`, check whether frame *N* already contains frames 1…*N*−1. In this repo

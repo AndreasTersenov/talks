@@ -295,6 +295,26 @@ ceiling than the target, and that is the direction to move in.
   end on your **conclusions** and leave them up during Q&A, so the room stares at your claim for
   ten minutes instead of at the word "Questions".
 
+**Points, not paragraphs.** Andreas, 2026-09-01, on slide copy that had been written as connected
+prose: *"in slides, it's better to break down into specific points with as few words as needed to
+just make it clear."* The failure this names is subtle, because it is not about volume — the same
+facts in the same number of words can be right or wrong depending on the setting. A card reading
+
+> An isotropic change of size, set by the projected mass. **Not observable:** we never knew the
+> galaxy's true size.
+
+is a paragraph, and a paragraph on a slide competes with the speaker: the room reads it as prose,
+start to finish, instead of scanning it. The same content as three hanging lines —
+
+> – isotropic: a change of size
+> – set by the projected mass
+> – **not observable** — true size unknown
+
+is scannable at a glance and leaves the connective tissue where it belongs, in the speaker's mouth.
+**Prose is the speaker's job; the slide's job is the points.** Two exceptions, both already in
+§4.2: the assertion headline is a full sentence, and a slide whose whole payload IS a sentence (a
+hinge, a thesis statement) gets the frame to itself.
+
 ### 4.3b House typography rules
 
 Three standing rules, all learned the hard way. They apply to every slide in every deck.
@@ -302,10 +322,32 @@ Three standing rules, all learned the hard way. They apply to every slide in eve
 **No automatic uppercasing.** Never `text-transform: uppercase` in a stylesheet, and no
 SHOUTED words in markup. CSS-driven small caps read as machine-set and are one of the clearest
 tells that a slide was generated rather than written. Author label case in the markup, in
-lowercase, and let the mono font and the accent colour do the distinguishing. The shared theme
-(`assets/themes/talks.css`) was purged of all five of its uppercase rules on 2026-08-19; if a
-new component wants a label, give it lowercase mono and tight letter-spacing (~0.06em).
-Wide tracking is for caps; on lowercase it just looks loose.
+lowercase, and let the label voice and the accent colour do the distinguishing. The shared theme
+(`assets/themes/talks.css`) was purged of all five of its uppercase rules on 2026-08-19.
+
+**Labels are a voice, not a font, and it is not mono any more.** Until 2026-09-01 every label
+role — callout tabs, kickers, figcaptions, section markers, `stat` labels — was set in lowercase
+IBM Plex Mono at ~0.06em tracking. Andreas cut it: *"it feels a lot like AI."* He is right, and
+the reason is worth keeping. Tracked lowercase mono is a **UI** convention, not a **typographic**
+one; a printed page has never set a caption that way, so a slide that does reads as machine-set
+even when every word was written by hand. The replacement is the register a journal actually
+uses for the same jobs: **small italic serif** (Source Serif 4), essentially untracked.
+
+It lives in three tokens on `:root` — `--label`, `--label-style`, `--label-tracking` — plus one
+grouped rule at the end of each stylesheet carrying the style and tracking (it has to come last:
+each component declares its own `letter-spacing` after its `font-family`, so only a later rule of
+equal specificity can retrack it). **Never hard-code a label font in a new component**; point at
+`var(--label)` and the voice stays swappable.
+
+Two things stay on mono. **Code**, obviously. And **anything tabular** — ratio ladders, chart
+tick labels, the slide number — where monospaced figures line up and the mono is doing work
+rather than decoration. That is the test: if the mono is load-bearing, keep it; if it is there to
+look technical, it is the tell.
+
+A related failure worth naming, because it is the one that triggered the change: the label voice
+had been applied to a **whole clause** (*"not observable directly — we never knew the galaxy's
+true size"*), set on its own rule under a card. Label styling is for two- to four-word tags. A
+sentence in label styling is not a label, it is a sentence wearing a costume.
 
 **No middot separators.** `&middot;` strung between phrases (`Name · Place · Date`) is a
 layout tic. Use a comma, a line break, or actual whitespace. If two things need separating

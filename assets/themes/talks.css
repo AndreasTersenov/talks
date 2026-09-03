@@ -2,8 +2,8 @@
  * talks.css — shared "Preprint" theme for the talks decks.
  *
  * The look: a paper/arXiv-preprint aesthetic — Source Serif 4 headings, IBM Plex
- * Sans body, IBM Plex Mono labels, a single cobalt accent, ruled callout boxes
- * with small-caps mono tabs, hairlines, generous air. Restrained and serious.
+ * Sans body, small italic-serif labels, a single cobalt accent, ruled callout
+ * boxes, hairlines, generous air. Restrained and serious.
  *
  * It maps onto the deck's EXISTING classes (.slide-title, .block, .block-title,
  * .block-content, .alert, .container/.col) so real slides adopt it with no
@@ -25,10 +25,27 @@
  *       <script src="../assets/themes/theme-switch.js"></script>
  */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500;1,8..60,600&display=swap');
 
 :root {
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* THE LABEL VOICE — the deck's third register, beside the Source Serif
+   * headings and the IBM Plex Sans body.  Small italic serif, the way a journal
+   * sets a figure caption, a running head or a callout tab.
+   *
+   * It replaced IBM Plex Mono in this role on 2026-09-01: lowercase tracked mono
+   * had come to read as machine-set rather than typeset, and it is a recognisable
+   * generated-slide tell.  Mono stays the code face, and stays on anything
+   * TABULAR — ratio ladders, axis ticks, the slide number — where figures have to
+   * line up and mono is doing work rather than decoration.
+   *
+   * Change these three tokens and every label in every preprint deck re-voices.
+   * To hold one deck on the old look, set  --label: var(--mono);
+   * --label-style: normal;  --label-tracking: 0.06em;  in that deck's own CSS. */
+  --label: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --label-style: italic;
+  --label-tracking: 0.01em;
   --r-main-font: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --r-heading-font: "Source Serif 4", Georgia, "Times New Roman", serif;
   --r-heading-font-weight: 600;
@@ -106,12 +123,12 @@
   font-weight: 600;
 }
 .reveal .slides section .slide-title .sec {   /* optional <span class="sec">§2</span> */
-  font-family: var(--mono); font-weight: 500; font-size: 0.6em; color: var(--accent); margin-right: 0.4em;
+  font-family: var(--label); font-weight: 500; font-size: 0.6em; color: var(--accent); margin-right: 0.4em;
 }
 .reveal .slides section .alert { color: var(--accent-ink); font-weight: 600; }
 .reveal .slides section .inverted { filter: invert(100%); }
 
-/* .block → a ruled academic callout with a small-caps mono tab */
+/* .block → a ruled academic callout with an italic-serif tab */
 .reveal .slides section .block {
   background: var(--surface);
   margin: 0 20px;
@@ -126,7 +143,7 @@
   color: var(--accent);
   padding: 10px 16px 6px;
   border-bottom: 1px dashed var(--hair);
-  font-family: var(--mono);
+  font-family: var(--label);
   font-weight: 500;
   letter-spacing: 0.07em;
   font-size: 0.62em;
@@ -136,7 +153,7 @@
 /* optional journal running head: <div class="runhead"><span>title</span><span class="r">§2</span></div> */
 .reveal .slides section .runhead {
   display: flex; justify-content: space-between; align-items: baseline;
-  font-family: var(--mono); font-size: 0.42em; letter-spacing: 0.07em;
+  font-family: var(--label); font-size: 0.42em; letter-spacing: 0.07em;
   color: var(--fg-muted); border-bottom: 1px solid var(--hair); padding-bottom: 0.4em; margin-bottom: 0.7em;
 }
 .reveal .slides section .runhead .r { color: var(--accent); }
@@ -157,7 +174,7 @@
 .reveal .slides section blockquote .attrib,
 .reveal .slides section blockquote cite {
   display: block; margin-top: 0.4em; font-style: normal;
-  font-family: var(--mono); font-size: 0.62em; color: var(--fg-muted);
+  font-family: var(--label); font-size: 0.62em; color: var(--fg-muted);
 }
 
 .reveal .slides section pre { width: 90%; box-shadow: var(--shadow); border-radius: 8px; }
@@ -192,12 +209,12 @@
  * Labels, figures, callouts, result rule, title lockup
  * ============================================================ */
 .reveal .slides section .kicker {
-  display: block; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
+  display: block; font-family: var(--label); font-size: 0.5em; font-weight: 500;
   letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5em;
 }
 .reveal .slides section figure { margin: 16px 0; }
 .reveal .slides section figcaption {
-  margin-top: 0.4em; font-family: var(--mono); font-size: 0.56em; line-height: 1.4; color: var(--fg-muted);
+  margin-top: 0.4em; font-family: var(--label); font-size: 0.56em; line-height: 1.4; color: var(--fg-muted);
 }
 .reveal .slides section figcaption b { color: var(--accent); font-weight: 500; }
 
@@ -209,14 +226,14 @@
 .reveal .slides section .takeaway { border-left-width: 4px; }
 .reveal .slides section .callout .label,
 .reveal .slides section .takeaway .label {
-  display: block; margin-bottom: 0.3em; font-family: var(--mono); font-size: 0.5em; font-weight: 500;
+  display: block; margin-bottom: 0.3em; font-family: var(--label); font-size: 0.5em; font-weight: 500;
   letter-spacing: 0.07em; color: var(--accent);
 }
 
 /* .stat → a result rule (number in heading serif, accent left rule) */
 .reveal .slides section .stat { text-align: left; border-left: 2px solid var(--accent); padding-left: 0.7em; }
 .reveal .slides section .stat .num { display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 2.4em; line-height: 1; color: var(--fg); }
-.reveal .slides section .stat .label { display: block; margin-top: 0.3em; font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.06em; color: var(--fg-muted); }
+.reveal .slides section .stat .label { display: block; margin-top: 0.3em; font-family: var(--label); font-size: 0.5em; letter-spacing: 0.06em; color: var(--fg-muted); }
 
 .reveal .slides section .hl { background: linear-gradient(transparent 60%, color-mix(in srgb, var(--accent) 26%, transparent) 60%); padding: 0 0.06em; }
 
@@ -227,7 +244,7 @@
 }
 .reveal .slides section .title-card h2 { font-size: 1.7em; margin: 0 0 0.1em; }
 .reveal .slides section .title-card .subtitle { font-style: italic; font-weight: 400; color: var(--fg-muted); margin: 0.15em 0 0; }
-.reveal .slides section .affil { font-family: var(--mono); font-size: 0.5em; letter-spacing: 0.02em; color: var(--fg-muted); }
+.reveal .slides section .affil { font-family: var(--label); font-size: 0.5em; letter-spacing: 0.02em; color: var(--fg-muted); }
 
 /* ============================================================
  * Deck chrome (not per-slide) — cobalt
@@ -238,4 +255,26 @@
 
 @media print {
   .reveal .slides section .title-card { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   The label voice, applied — theme components.
+   Grouped so the label voice lives in three tokens rather than in fifty rules.
+   It has to come last: each rule above declares its own letter-spacing after
+   its font-family, so only a later rule of equal specificity can retrack it.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .slide-title .sec,
+.reveal .slides section .block-title,
+.reveal .slides section .runhead,
+.reveal .slides section blockquote .attrib,
+.reveal .slides section blockquote cite,
+.reveal .slides section .kicker,
+.reveal .slides section figcaption,
+.reveal .slides section .callout .label,
+.reveal .slides section .takeaway .label,
+.reveal .slides section .stat .label,
+.reveal .slides section .affil {
+	font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
 }

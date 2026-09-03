@@ -148,15 +148,18 @@ PDF export stays correct. `class="light-slide"` is a legacy alias.
 
 **Component classes** (token-driven, both modes): `slide-title` (serif title +
 cobalt rule; optional `<span class="sec">§2</span>`), `block` + `block-title` +
-`block-content` (ruled callout with a small-caps mono tab), `kicker` (mono
+`block-content` (ruled callout with an italic-serif tab), `kicker` (italic-serif
 eyebrow), `callout` / `takeaway` (left-rule box with a `label`), `stat` (`num` +
 `label` result rule), `runhead` (journal running head; `.r` = right side),
 `alert` (accent text), `title-card` (title lockup). `container`/`col` still work.
 
 **Typography house rules** (see `docs/TALK-GUIDELINES.md` §4.3b): **no `text-transform:
-uppercase`** anywhere — the theme was purged of it, and CSS-driven caps read as machine-set;
-author labels in lowercase mono with ~0.06em tracking. **No `&middot;` separators** — use a
-comma, a break, or whitespace. Peer items get bordered cards, not bullets.
+uppercase`** anywhere — the theme was purged of it, and CSS-driven caps read as machine-set.
+**Labels take the label voice**, which is small italic serif, driven by three tokens
+(`--label`, `--label-style`, `--label-tracking`) — never hard-code a label font. **Mono is
+for code and for anything tabular** (ratio ladders, axis ticks, the slide number), where
+figures have to line up. **No `&middot;` separators** — use a comma, a break, or whitespace.
+Peer items get bordered cards, not bullets.
 
 **Do not inline-style colours.** A stylesheet can't override `style="color:#…"`,
 so hardcoded hex in a `style=""` attribute is invisible to the theme. Use the
