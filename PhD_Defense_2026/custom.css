@@ -1483,7 +1483,7 @@
 	font-size: 0.5em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p {
-	margin: 0.5em 0 0; font-size: 0.52em; line-height: 1.5; color: var(--fg);
+	margin: 0.5em 0 0; font-size: 0.6em; line-height: 1.5; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p b { color: var(--fg); }
 .reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
@@ -1496,14 +1496,14 @@
 }
 .reveal .slides section.mca .mca-cyc { font-size: 1.5em; color: var(--accent); line-height: 1; }
 .reveal .slides section.mca .mca-sub {
-	margin: 0.5em 0 0; font-size: 0.5em; line-height: 1.5;
+	margin: 0.5em 0 0; font-size: 0.56em; line-height: 1.5;
 	color: var(--fg-muted); text-align: center;
 }
 .reveal .slides section.mca .mca-sub b { color: var(--fg); }
 
 .reveal .slides section.mca .callout {
 	margin: 0.9em auto 0; max-width: 90%; padding: 0.6em 1.1em;
-	font-size: 0.56em; line-height: 1.5;
+	font-size: 0.62em; line-height: 1.5;
 }
 .reveal .slides section.mca .mca-fwd {
 	display: block; margin-top: 0.4em; padding-top: 0.4em;
@@ -1525,14 +1525,14 @@
 	padding-left: 2.4em; border-left: 1px solid var(--edge); margin-left: -1.2em;
 }
 .reveal .slides section.stakes .stk-split p {
-	margin: 0.55em 0 0; font-size: 0.5em; line-height: 1.6; color: var(--fg-muted);
+	margin: 0.55em 0 0; font-size: 0.64em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.stakes .stk-split p b { color: var(--fg); }
 .reveal .slides section.stakes .stk-split .kicker { margin-bottom: 0.15em; }
 .reveal .slides section.stakes .stk-old .kicker { color: var(--fg-muted); }
 .reveal .slides section.stakes .stk-lead {
 	font-family: var(--label); font-style: normal;
-	font-size: 0.7em !important; line-height: 1.35 !important; color: var(--fg) !important;
+	font-size: 0.8em !important; line-height: 1.35 !important; color: var(--fg) !important;
 	margin-top: 0.25em !important;
 }
 .reveal .slides section.stakes .stk-split .stk-lead b { color: var(--accent); }
@@ -1694,7 +1694,7 @@
 	padding-left: 2.2em; border-left: 1px solid var(--edge); margin-left: -1.1em;
 }
 .reveal .slides section.uq .uqbody p {
-	margin: 0.55em 0 0; font-size: 0.58em; line-height: 1.6; color: var(--fg-muted);
+	margin: 0.55em 0 0; font-size: 0.64em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.uq .uqbody p b { color: var(--fg); }
 .reveal .slides section.uq .uqbody .kicker { margin-bottom: 0.15em; }
@@ -1744,7 +1744,7 @@
 .reveal .slides section.pnpres .pr-note b { color: var(--fg); }
 .reveal .slides section.pnpres .pr-points {
 	display: block; list-style: none; margin: 0.2em 0 0; padding: 0;
-	font-size: 0.6em; line-height: 1.5; color: var(--fg-muted);
+	font-size: 0.64em; line-height: 1.5; color: var(--fg-muted);
 }
 .reveal .slides section.pnpres .pr-points li {
 	position: relative; margin: 0.45em 0 0; padding-left: 1.1em;
@@ -1757,7 +1757,7 @@
 .reveal .slides section.pnpres .pr-points + .kicker { margin-top: 1em; }
 .reveal .slides section.uq .uqwhy {
 	max-width: 92%; margin: 1.6em auto 0; text-align: left;
-	font-size: 0.58em; line-height: 1.6; color: var(--fg-muted);
+	font-size: 0.64em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.uq .uqwhy b { color: var(--fg); }
 .reveal .slides section.uq .uqwhy .kicker { display: inline; margin-right: 0.55em; }
@@ -1777,7 +1777,7 @@
    --------------------------------------------------------------------------- */
 .reveal .slides section .points {
 	display: block; list-style: none; margin: 0.6em 0 0; padding: 0;
-	font-size: 0.5em; line-height: 1.55; color: var(--fg-muted); text-align: left;
+	font-size: 0.62em; line-height: 1.55; color: var(--fg-muted); text-align: left;
 }
 .reveal .slides section .points li { position: relative; margin: 0.5em 0 0; padding-left: 1.1em; }
 .reveal .slides section .points li::before {
@@ -1803,7 +1803,14 @@
 .reveal .slides section.twopt .tp-fig figure { margin: 0; }
 .reveal .slides section.twopt .tp-fig figcaption { font-size: 0.42em; text-align: center; }
 .reveal .slides section.twopt .tp-side p {
-	margin: 0.35em 0 0; font-size: 0.5em; line-height: 1.6; color: var(--fg-muted);
+	margin: 0.35em 0 0; font-size: 0.68em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.twopt .tp-side .kicker { margin-bottom: 0.1em; }
 .reveal .slides section.twopt .pull { margin-top: 1.1em; }
+
+
+/* ---------------------------------------------------------------------------
+   TYPE SCALE, set 2026-09-03 after these slides read as too small from the back
+   of the room.  Main content copy is 0.62-0.68em; anything at 0.42-0.48em must
+   be a caption, a source line or a footnote — never the argument itself.
+   --------------------------------------------------------------------------- */
