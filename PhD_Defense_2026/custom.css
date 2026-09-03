@@ -1447,6 +1447,7 @@
 	align-self: center; font-size: 0.95em; color: var(--fg-muted);
 }
 .reveal .slides section.mca .mca-term {
+	position: relative; overflow: hidden;
 	flex: 1 1 0; text-align: center;
 	border: 1px solid var(--edge); border-radius: 10px;
 	padding: 0.75em 1em 0.85em;
@@ -1456,16 +1457,33 @@
 	border-color: color-mix(in srgb, var(--accent) 50%, var(--edge));
 	background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
+/* Each card wears the field it describes: a smooth convergence patch behind the
+   Gaussian term, the same patch after sparse recovery behind the non-Gaussian one.
+   The texture sits in a ::before under a paper wash, so the card stays readable —
+   raise --mca-tex-ink to make the maps louder, lower it to make them quieter. */
+.reveal .slides section.mca .mca-term {
+	--mca-tex-ink: 0.34;
+}
+.reveal .slides section.mca .mca-term::before {
+	content: ""; position: absolute; inset: 0; z-index: 0;
+	background-image: var(--mca-tex);
+	background-size: cover; background-position: center;
+	opacity: var(--mca-tex-ink);
+	filter: saturate(0.85);
+}
+.reveal .slides section.mca .mca-term.g  { --mca-tex: url(../assets/figures/maps/kappa_texture_gaussian.png); }
+.reveal .slides section.mca .mca-term.ng { --mca-tex: url(../assets/figures/maps/kappa_texture_sparse.png); }
+.reveal .slides section.mca .mca-term > * { position: relative; z-index: 2; }
 .reveal .slides section.mca .mca-sym { display: block; font-size: 0.9em; }
 .reveal .slides section.mca .mca-term.ng .mca-sym { color: var(--accent); }
 .reveal .slides section.mca .mca-name {
 	display: block; margin-top: 0.15em;
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.5em; color: var(--fg-muted);
+	font-size: 0.5em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p {
-	margin: 0.5em 0 0; font-size: 0.52em; line-height: 1.5; color: var(--fg-muted);
+	margin: 0.5em 0 0; font-size: 0.52em; line-height: 1.5; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p b { color: var(--fg); }
 .reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
