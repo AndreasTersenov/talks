@@ -2665,6 +2665,41 @@
 				<img src="../assets/figures/statistics/summary_statistics.png" alt="Summary statistics" style="width:auto">
 			</section>
 
+			<!-- Wavelet statistics: three slides (peaks / wavelet peaks / l1-norm) compressed
+			     into one, on the shared principle. Figures: thesis intro F5b (starlet row) and
+			     N3 (peak map, left panel cropped). White background: both are black ink on white. -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§3</span> <b class="alert">Wavelet peak counts</b> and the <b class="alert">$\ell_1$-norm</b> are 1-pt statistics on the same starlet decomposition</h3>
+
+				<figure class="fig" style="margin:0.1em 0 0;">
+					<img class="plain" src="../assets/diagrams/starlet_row_decomposition.png" style="width:74%; max-width:100%;"
+					     alt="the starlet transform: a convergence map written as the sum of four wavelet-coefficient bands plus a coarse map, each band carrying structure of a characteristic angular size">
+					<figcaption>the <b>starlet transform</b>: one map as a sum of band-pass images, each carrying structure of a characteristic angular size</figcaption>
+				</figure>
+
+				<div class="statpair">
+					<div class="col fragment fade-in">
+						<div class="kicker">wavelet peak counts</div>
+						<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
+						     alt="a smoothed convergence map with its signal-to-noise peaks circled">
+						<p class="cap">local maxima of the SNR field, counted per SNR bin &rarr; focus only on a subset of the field
+					</div>
+					<div class="col fragment fade-in">
+						<div class="kicker">starlet &#8467;1-norm</div>
+						<div class="l1formula">
+							<div>
+								$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
+								<p class="defline">$\mathcal{S}_{j,i}$ &mdash; the coefficients of scale $j$ whose SNR falls in bin $i$</p>
+							</div>
+						</div>
+						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &rarr; encodes information from every pixel (peaks, voids, ...)</p>
+					</div>
+				</div>
+
+				<aside class="notes">SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of pixel values - and both are made multi-scale by the same starlet transform, which writes the map as a sum of band-pass images, each carrying structure of a characteristic angular size (adjacent bands overlap - they are band-passes, not a partition). That matters twice: each band covers a different frequency range so the covariance is nearly diagonal, and a systematic confined to small scales lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features. The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out loud.</aside>
+			</section>
+
+
 			<!-- ============ S2 — the practical question for Part 1 ============ -->
 			<section data-theme="light">
 				<h3 class="slide-title tight">The non-Gaussian information and the worst small-scale systematic <em class="alert">live on the same scales</em></h3>
@@ -2737,39 +2772,7 @@
 			</section>
 
 
-			<!-- Wavelet statistics: three slides (peaks / wavelet peaks / l1-norm) compressed
-			     into one, on the shared principle. Figures: thesis intro F5b (starlet row) and
-			     N3 (peak map, left panel cropped). White background: both are black ink on white. -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> <b class="alert">Wavelet peak counts</b> and the <b class="alert">$\ell_1$-norm</b> are 1-pt statistics on the same starlet decomposition</h3>
 
-				<figure class="fig" style="margin:0.1em 0 0;">
-					<img class="plain" src="../assets/diagrams/starlet_row_decomposition.png" style="width:74%; max-width:100%;"
-					     alt="the starlet transform: a convergence map written as the sum of four wavelet-coefficient bands plus a coarse map, each band carrying structure of a characteristic angular size">
-					<figcaption>the <b>starlet transform</b>: one map as a sum of band-pass images, each carrying structure of a characteristic angular size</figcaption>
-				</figure>
-
-				<div class="statpair">
-					<div class="col fragment fade-in">
-						<div class="kicker">wavelet peak counts</div>
-						<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
-						     alt="a smoothed convergence map with its signal-to-noise peaks circled">
-						<p class="cap">local maxima of the SNR field, counted per SNR bin &rarr; focus only on a subset of the field
-					</div>
-					<div class="col fragment fade-in">
-						<div class="kicker">starlet &#8467;1-norm</div>
-						<div class="l1formula">
-							<div>
-								$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big| \;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
-								<p class="defline">$\mathcal{S}_{j,i}$ &mdash; the coefficients of scale $j$ whose SNR falls in bin $i$</p>
-							</div>
-						</div>
-						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &rarr; encodes information from every pixel (peaks, voids, ...)</p>
-					</div>
-				</div>
-
-				<aside class="notes">SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of pixel values - and both are made multi-scale by the same starlet transform, which writes the map as a sum of band-pass images, each carrying structure of a characteristic angular size (adjacent bands overlap - they are band-passes, not a partition). That matters twice: each band covers a different frequency range so the covariance is nearly diagonal, and a systematic confined to small scales lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features. The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out loud.</aside>
-			</section>
 
 
 			<!-- ============ the chain a third time — the summary has to become a posterior,
