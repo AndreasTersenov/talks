@@ -5,8 +5,9 @@ Nothing in `assets/` explains what a wavelet *is* — the deck's starlet figures
 start from a decomposition already taken. This draws the two pictures a question
 about wavelets actually needs, in the deck's light palette:
 
-  left   one shape, dilated. The starlet (B3-spline) wavelet at three scales:
-         compact, oscillating, zero mean. That is the whole definition.
+  left   the comparison everyone can anchor on: Fourier's basis is a set of sines,
+         each perfectly sharp in frequency and spread over the whole domain; a
+         wavelet is one compact shape, dilated — sharp in scale AND in place.
   right  the transform. A 1-D signal carrying a narrow spike, a medium bump and a
          broad swell, and the starlet bands it decomposes into — each feature
          landing in the band whose width matches it, and the sum of the bands plus
@@ -17,7 +18,7 @@ Run with a python that has numpy and matplotlib:
     /usr/local/bin/python3 tools/make-wavelet-primer.py
 
 Writes two files, because the deck asks the two questions on separate slides:
-assets/diagrams/wavelet_shape.png (what a wavelet is) and
+assets/diagrams/wavelet_vs_fourier.png (what a wavelet is, against Fourier) and
 assets/diagrams/wavelet_bands.png (what the transform does).
 """
 import numpy as np
@@ -62,39 +63,53 @@ def starlet_wavelet(n=512, step=0):
     return x, bands[step]
 
 
-# ============================ figure 1 — what a wavelet is ==================
-figA, ax = plt.subplots(figsize=(7.4, 4.6))
+# ================= figure 1 — the Fourier basis against the wavelet =========
+figA, (axF, axW) = plt.subplots(1, 2, figsize=(12.4, 4.4))
 figA.patch.set_facecolor(PAPER)
-ax.set_facecolor(PAPER)
 shades = [ACCENT, "#6d80d8", "#a3aee8"]
+
+# --- Fourier: sines, each one frequency, all of them everywhere
+axF.set_facecolor(PAPER)
+xf = np.linspace(-46, 46, 4000)
+for k, lam in enumerate([46.0, 23.0, 11.5]):
+    axF.plot(xf, 0.34 * np.cos(2 * np.pi * xf / lam) + 0.62 - 0.62 * k,
+             color=shades[k], lw=2.0 - 0.3 * k)
+axF.set_xlim(-46, 46)
+axF.set_ylim(-1.12, 1.14)
+axF.set_yticks([])
+axF.set_xlabel("position", color=MUTED, fontsize=11)
+axF.set_title("Fourier: sines", color=INK, fontsize=13, pad=12)
+axF.text(0, -1.02, "each one frequency, all of them everywhere",
+         ha="center", fontsize=10.5, color=MUTED)
+
+# --- wavelets: one shape, dilated, and localised
+axW.set_facecolor(PAPER)
 for k, step in enumerate([1, 2, 3]):
     x, psi = starlet_wavelet(step=step)
     psi = psi / psi.max()
-    ax.plot(x, psi, color=shades[k], lw=2.2 - 0.35 * k,
-            label=rf"$\psi(x/2^{{{k+1}}})$", zorder=3 - k)
-ax.axhline(0, color=EDGE, lw=0.9, zorder=0)
-ax.set_xlim(-46, 46)
-ax.set_ylim(-0.52, 1.14)
-ax.set_yticks([])
-ax.set_xlabel("position", color=MUTED, fontsize=11)
-ax.set_title("one shape, dilated", color=INK, fontsize=13, pad=12)
-leg = ax.legend(frameon=False, fontsize=11, loc="upper right",
-                labelcolor=INK, handlelength=1.6)
-ax.annotate("compact — it dies away",
-            xy=(28, 0.005), xytext=(31, 0.46), fontsize=10, color=MUTED,
-            ha="center",
-            arrowprops=dict(arrowstyle="-", color=EDGE, lw=1))
-ax.annotate("negative lobes, zero mean:\nit measures change, not amount",
-            xy=(-12, -0.19), xytext=(-27, -0.42), fontsize=10, color=MUTED,
-            ha="center",
-            arrowprops=dict(arrowstyle="-", color=EDGE, lw=1))
+    axW.plot(x, psi, color=shades[k], lw=2.2 - 0.35 * k,
+             label=rf"$\psi(x/2^{{{k+1}}})$", zorder=3 - k)
+axW.axhline(0, color=EDGE, lw=0.9, zorder=0)
+axW.set_xlim(-46, 46)
+axW.set_ylim(-0.62, 1.14)
+axW.set_yticks([])
+axW.set_xlabel("position", color=MUTED, fontsize=11)
+axW.set_title("wavelets: one shape, dilated", color=INK, fontsize=13, pad=12)
+axW.legend(frameon=False, fontsize=10.5, loc="upper right",
+           labelcolor=INK, handlelength=1.6)
+axW.annotate("compact — it dies away",
+             xy=(28, 0.005), xytext=(31, 0.46), fontsize=10, color=MUTED,
+             ha="center", arrowprops=dict(arrowstyle="-", color=EDGE, lw=1))
+axW.text(0, -0.55, "each one scale, and one place",
+         ha="center", fontsize=10.5, color=MUTED)
 
-for sp in ax.spines.values():
-    sp.set_visible(False)
-ax.tick_params(colors=MUTED, labelsize=10, length=3)
-figA.tight_layout()
-figA.savefig("assets/diagrams/wavelet_shape.png", dpi=200, facecolor=PAPER)
-print("wrote assets/diagrams/wavelet_shape.png")
+for a in (axF, axW):
+    for sp in a.spines.values():
+        sp.set_visible(False)
+    a.tick_params(colors=MUTED, labelsize=10, length=3)
+figA.tight_layout(w_pad=3.0)
+figA.savefig("assets/diagrams/wavelet_vs_fourier.png", dpi=200, facecolor=PAPER)
+print("wrote assets/diagrams/wavelet_vs_fourier.png")
 
 # ======================= figure 2 — what the transform does =================
 figB, ax = plt.subplots(figsize=(9.8, 5.6))
