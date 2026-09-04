@@ -5497,14 +5497,15 @@
 					\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
 					\big(d - m(\theta)\big)\right]$$</p>
 
-				<p class="lede carry fragment fade-in" data-fragment-index="2">
-					Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
-				</p>
-
-				<p class="pull fragment fade-in" data-fragment-index="3">
-					Both ingredients had to be written down. For peak counts or the &#8467;<sub>1</sub>&#8209;norm
-					there is <b class="alert">no analytic $m(\theta)$, and the likelihood is not Gaussian</b>.
-				</p>
+				<div class="samplerow fragment fade-in" data-fragment-index="2">
+					<p class="lede carry">
+						Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
+					</p>
+					<figure class="samplegif">
+						<img class="plain" src="../assets/misc/mcmc_sampling.gif"
+							alt="a Metropolis-Hastings chain wandering across a correlated Gaussian target and filling in the contours">
+					</figure>
+				</div>
 
 				<aside class="notes">
 					BACKUP — the classical route, only if asked. Bayes itself is not the content; everyone here has
