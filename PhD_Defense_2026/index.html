@@ -2172,7 +2172,7 @@
 				     selector on this element's `.visible` class. -->
 				<span class="pipe-focus fragment" data-fragment-index="2"></span>
 
-				<div class="pipeline-slot" data-focus-on-fragment="summaries inference posterior"></div>
+				<div class="pipeline-slot" data-focus-on-fragment="maps summaries"></div>
 
 				<p class="note fragment fade-in" data-fragment-index="1">
 					A map is $10^5$ correlated pixels, so it has to be <b>compressed</b> before any likelihood can
@@ -2181,9 +2181,8 @@
 				</p>
 
 				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
-					Parts 3 and 4 live in <b class="alert">this end of the chain</b> &mdash; the summary, the inference,
-					and the posterior they produce. In Part 1 all three were nailed down on purpose. Now they are the
-					subject.
+					Parts 3 and 4 live in <b class="alert">this one step</b> &mdash; a map goes in, a summary comes out.
+					In Part 1 it was nailed down on purpose. Now it is the subject.
 				</p>
 
 				<aside class="notes">
@@ -2191,10 +2190,9 @@
 					is a hundred thousand correlated pixels. No likelihood can touch that directly, so it gets
 					compressed into a summary — and which statistic you compress with decides how much of the
 					information survives the compression. That was held fixed in Part 1 precisely so it could not
-					explain anything that moved. [CLICK] Now it is the subject — this whole end of the chain. The
-					summary, the inference, and the posterior, because from here on the thing we compare is the
-					posterior itself: how much area it encloses, and whether it is honest. Part 3 asks whether the
-					summary survives baryonic feedback. Part 4 builds the one that does.
+					explain anything that moved. [CLICK] Now it is the subject: this one step, the map in and a
+					summary out. Part 3 asks whether that summary survives baryonic feedback. Part 4 builds the one
+					that does. We come back to the rest of the chain when we reach the inference.
 				</aside>
 			</section>
 
@@ -2773,6 +2771,38 @@
 				<aside class="notes">SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of pixel values - and both are made multi-scale by the same starlet transform, which writes the map as a sum of band-pass images, each carrying structure of a characteristic angular size (adjacent bands overlap - they are band-passes, not a partition). That matters twice: each band covers a different frequency range so the covariance is nearly diagonal, and a systematic confined to small scales lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features. The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out loud.</aside>
 			</section>
 
+
+			<!-- ============ the chain a third time — the summary has to become a posterior,
+			     and that is where the model lane lights up: no analytic likelihood for these
+			     statistics, so the comparison runs against simulations. ============ -->
+			<section class="chainslide" data-theme="light">
+				<h3 class="slide-title tight">And then the summary has to become a <em class="alert">posterior</em></h3>
+
+				<span class="pipe-focus fragment" data-fragment-index="2"></span>
+
+				<div class="pipeline-slot" data-focus-on-fragment="summaries inference posterior prior simulations systematics"></div>
+
+				<p class="note fragment fade-in" data-fragment-index="1">
+					For the power spectrum there is a likelihood you can write down. For <b>peaks</b>, for the
+					<b>&#8467;<sub>1</sub>&#8209;norm</b>, for anything a network computes, there is not.
+				</p>
+
+				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
+					So the comparison runs against <b class="alert">simulations</b> &mdash; the whole bottom row of the
+					chain. That is what makes this <b>simulation&#8209;based inference</b>.
+				</p>
+
+				<aside class="notes">
+					Same picture, one more time, and now the right-hand end. We have a summary; we need a posterior on
+					the parameters. [CLICK] Here is the difficulty that shapes everything after it. For the power
+					spectrum you can write down a likelihood — Gaussian to good approximation, with a covariance you
+					can model. For peak counts, for the l1-norm, for anything a neural network computes, you cannot.
+					There is no analytic form. [CLICK] So the whole bottom row lights up. The likelihood is replaced by
+					simulations: draw cosmologies from a prior, run them, apply the systematics, compute the same
+					summary on each one, and learn the relationship. That is simulation-based inference, and it is what
+					the next slide is about.
+				</aside>
+			</section>
 
 			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
 			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
