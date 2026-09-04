@@ -292,6 +292,27 @@ Canvas components **do not paint under headless Chrome** (`REVEAL-GOTCHAS.md` §
 in a screenshot is a `requestAnimationFrame` artifact, not a bug, and a headless PDF has empty
 panels on those slides. Print from a real browser.
 
+## The typography pass — 2026-09-04
+
+Body copy across the rebuilt slides was set at 0.5-0.6em in `--fg-muted`. That is the theme's
+**caption voice** — small *and* grey — and it was carrying the argument on slides that were half
+empty. Two rules now hold, and are recorded in `custom.css`:
+
+- **Main content is `var(--fg)` at 0.66-0.95em.** `--fg-muted` at 0.42-0.48em is for captions,
+  source lines and footnotes only. The one deliberate exception is the left column of the stakes
+  slide, where the quieter grey *is* the contrast being drawn.
+- **Size to the space, not to a scale.** If a slide is half empty the type is too small by
+  definition; the scale exists to keep captions below the body, not to cap the body.
+
+The same pass rebuilt the four LAM-verbatim Act 3 teaching slides (HOS constraints, peak counts,
+wavelet peaks, the starlet l1-norm) out of bordered blocks and into figure-plus-three-lines, and
+converted their dark figures with `tools/darkfig-panel-light.py` — the panel-aware companion to
+`darkfig-to-light.py`, for figures whose imshow panels a blanket inversion would destroy.
+
+**Not covered by it:** Act 2's PnPMass slides (still dark, still carrying inline hex), and the
+already-restyled result slides of Acts 3-4, which were left alone because they are dense with
+figures and were not the offenders.
+
 ## Not yet done
 
 - Listed on the repo landing page (`../index.html`) as the top 2026 entry.

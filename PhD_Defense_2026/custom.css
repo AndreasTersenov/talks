@@ -1889,3 +1889,9 @@
 
 /* the l1-norm slide: a wide band strip, its definition, then the three points */
 .reveal .slides section.teach .l1eq { margin: 0.7em auto 0; }
+
+/* the baryon-safe slide: two claims and their floor, unboxed */
+.reveal .slides section .hos-side { text-align: left; }
+.reveal .slides section .hos-side .points { font-size: 0.78em; margin-top: 0.2em; }
+.reveal .slides section .hos-side .kicker { margin: 1.1em 0 0; }
+.reveal .slides section .hos-side .kicker:first-child { margin-top: 0; }

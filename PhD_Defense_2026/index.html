@@ -2864,25 +2864,22 @@
 							<img class="plain fragment" data-fragment-index="2" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png" style="max-height:480px;" alt="">
 						</div>
 					</div>
-					<div class="col" style="flex:0.8;">
-						<div class="block fragment fade-in" data-fragment-index="3">
-							<div class="block-title">On baryon-safe scales</div>
-							<div class="block-content"><ul style="font-size:0.78em;">
-								<li>Starlet $\ell_1$-norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at Stage IV, <b class="alert">&times;2.6</b> at full sky</li>
-								<li>Different degeneracy directions in the $w_0$ planes &rarr; HOS always <b class="alert">complementary</b> to $C_\ell$</li>
-							</ul></div>
-						</div>
-						<div class="block fragment fade-in" data-fragment-index="4" style="margin-top:0.5em;">
-							<div class="block-title">Takeaway</div>
-							<div class="block-content"><ul style="font-size:0.78em;">
-								<li>HOS are not merely deep-non-linear probes: the signal persists on <b class="alert">quasi-linear scales</b></li>
-								<li>A <b class="alert">floor</b>: 
-								<ul>	
-							<li>our whole-band cut is <b class="alert">not optimised</b>, </li>
-							<li>better baryon modelling will push the analysis <b class="alert">deeper into the non-linear regime</b>, where the HOS gain is larger</li>
-							</ul>
-							</ul></div>
-						</div>
+					<div class="col hos-side" style="flex:0.85;">
+						<p class="kicker fragment fade-in" data-fragment-index="3">on baryon&#8209;safe scales</p>
+						<ul class="points fragment fade-in" data-fragment-index="3">
+							<li>starlet $\ell_1$&#8209;norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at
+								Stage&nbsp;IV, <b class="alert">&times;2.6</b> at full sky</li>
+							<li>different degeneracy directions in the $w_0$ planes, so the HOS stay
+								<b>complementary</b> to $C_\ell$</li>
+						</ul>
+
+						<p class="kicker fragment fade-in" data-fragment-index="4">and this is a floor</p>
+						<ul class="points fragment fade-in" data-fragment-index="4">
+							<li>the signal survives on <b>quasi&#8209;linear</b> scales &mdash; these are not only
+								deep&#8209;non&#8209;linear probes</li>
+							<li>our whole&#8209;band cut is <b>not optimised</b>, and better baryon modelling pushes
+								the analysis deeper, where the gain is larger</li>
+						</ul>
 					</div>
 				</div>
 				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at Stage IV and x2.61 at full sky. Be precise about the peak counts: they reach approximate parity with the power spectrum at Stage IV-like areas (x1.07) and slightly exceed it at full sky (x1.17); at the smaller footprints they trail it. Do NOT say they "lose". The reason they trail is largely the cut, not the statistic: the quantised whole-band removal takes out a larger fraction of the peak-count information than the sliding lmax takes from the power spectrum, and that penalty is worst exactly where the power-spectrum cut is loosest. And even at comparable figure of merit they are not redundant - in the planes involving w0 their degeneracy directions differ from the power spectrum, so they add information a joint analysis would use. Takeaway: baryons are a dominant systematic; HOS are robust on quasi-linear scales, not just deep non-linear probes; and everything here is a floor that a finer filter bank or an SNR-space cut would raise.</aside>
