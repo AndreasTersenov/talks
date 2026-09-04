@@ -1832,3 +1832,60 @@
 .reveal .slides section .points.tp-points {
 	max-width: 86%; margin: 1.1em auto 0; font-size: 0.85em;
 }
+
+
+/* ---------------------------------------------------------------------------
+   ACT 3 TEACHING SLIDES — rebuilt 2026-09-04 out of the LAM originals, which
+   set their content in bullet lists at 0.9em inside bordered blocks and left
+   half the slide empty.  Figure and words share the width; the type is sized to
+   the room, not to the scale.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.teach .tc-grid {
+	display: grid; grid-template-columns: 1.35fr 1fr; gap: 0 2.4em;
+	margin: 1.3em auto 0; max-width: 94%; align-items: center; text-align: left;
+}
+.reveal .slides section.teach figure { margin: 0; }
+.reveal .slides section.teach figure img {
+	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
+	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.teach figcaption { font-size: 0.46em; line-height: 1.45; margin-top: 0.5em; }
+.reveal .slides section.teach .tc-side p {
+	margin: 0 0 0.5em; font-size: 0.82em; line-height: 1.4; color: var(--fg); text-align: left;
+}
+.reveal .slides section.teach .tc-side .points { font-size: 0.82em; }
+.reveal .slides section.teach .l1eq { text-align: center; }
+.reveal .slides section.teach .l1eq .katex { font-size: 0.8em; }
+
+.reveal .slides section.teach .tc-wide { margin: 1.2em auto 0; max-width: 92%; }
+.reveal .slides section.teach .tc-wide img { max-height: 34vh; width: 100%; object-fit: contain; }
+.reveal .slides section.teach .points.tc-points {
+	max-width: 92%; margin: 1em auto 0; font-size: 0.84em;
+}
+
+/* the HOS-gain slide is one big figure and one line under it */
+.reveal .slides section.hosgain .hg-fig { margin: 0.8em auto 0; max-width: 92%; }
+.reveal .slides section.hosgain .hg-fig img {
+	width: auto; height: auto; max-height: 62vh; max-width: 100%;
+	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.46em; text-align: center; margin-top: 0.5em; }
+.reveal .slides section.hosgain .pull { margin-top: 1em; }
+
+/* the scoreboard: four peer questions, so four cards is right — but not at
+   caption size, and not floating in the top half of the slide. */
+.reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.86em !important; line-height: 1.35; }
+.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.58em !important; }
+
+/* a figure that is the whole point of its slide gets the height to be one */
+.reveal .slides section img.figfill {
+	display: block; margin: 1.2em auto 0;
+	width: 92%; height: auto; max-height: 62vh; max-width: 92%;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section img.figfill.wide { max-height: 42vh; }
+/* the l1-norm slide's figure row and its definition both want more room */
+.reveal .slides section.teach .l1eq .katex { font-size: 1em; }
+
+/* the l1-norm slide: a wide band strip, its definition, then the three points */
+.reveal .slides section.teach .l1eq { margin: 0.7em auto 0; }

@@ -2331,8 +2331,8 @@
 
 				<section data-theme="light">
 					<h3 class="slide-title tight">The power spectrum <em class="alert">cannot tell these two apart</em></h3>
-					<img class="plain" src="../assets/diagrams/pk_lss_light.png"
-						style="width:85%; height:auto; max-height:38vh; display:block; margin:25px auto;">
+					<img class="plain figfill" src="../assets/diagrams/pk_lss_light.png"
+						alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
 					<br>
 					<br>
 				</section>
@@ -2341,8 +2341,8 @@
 
 				<section data-theme="light">
 					<h3 class="slide-title tight">The cosmic web is written in the <em class="alert">phases</em></h3>
-					<img class="plain" src="../assets/diagrams/2pt-phase-amp_light.png"
-						style="width:82%; height:auto; max-height:38vh; display:block; margin:25px auto;">
+					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light.png"
+						alt="the original density field, the same field keeping only the phases, and keeping only the amplitudes">
 					<ul class="points tp-points">
 						<li>a two&#8209;point measurement keeps the amplitudes and <b>throws the phases away</b></li>
 						<li>everything that makes the web a web &mdash; filaments, haloes, voids &mdash; lives there</li>
@@ -2354,7 +2354,23 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light">
+				<section class="hosgain" data-theme="light">
+					<h3 class="slide-title tight">On the same maps, peaks beat the power spectrum &mdash; and
+						<em class="alert">multi&#8209;scale peaks beat single&#8209;scale</em></h3>
+
+					<figure class="hg-fig">
+						<img class="plain" src="../assets/figures/posteriors/Virg1_light.png"
+							alt="forecast contours on the neutrino mass, matter density and amplitude, for the power spectrum, Gaussian-filtered peaks and starlet peaks">
+						<figcaption>Forecast contours from the <b>same</b> convergence maps: the power spectrum, peak
+							counts after a single Gaussian filter, and peak counts on a starlet decomposition.</figcaption>
+					</figure>
+
+					<p class="pull">Nothing about the data changed. The only thing that moves these contours is the
+						<b class="alert">choice of summary statistic</b>.</p>
+				</section>
+
+				<!-- PARKED — the LAM-verbatim original, superseded 2026-09-04. -->
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">Indeed, HOS can tighten constraints significantly</h3>
 
 					<div style="display:flex; justify-content:center; align-items:center; margin-top:30px;">
@@ -2379,7 +2395,30 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light">
+				<section class="teach" data-theme="light">
+					<h3 class="slide-title tight">Peak counts: the <em class="alert">maxima of the
+						signal&#8209;to&#8209;noise field</em></h3>
+
+					<div class="tc-grid">
+						<figure>
+							<img class="plain" src="../assets/diagrams/cosmology_with_maps_light.png"
+								alt="a convergence map read by the power spectrum and by peak counts">
+						</figure>
+						<div class="tc-side">
+							<p>A peak is a local maximum of
+								$\nu = \dfrac{\left(\mathcal{W} \ast \kappa\right)(\theta_{\rm ker})}{\sigma_n^{\rm filt}}$
+								&mdash; the map smoothed by a filter, in units of the noise.</p>
+							<ul class="points">
+								<li>peaks sit where $\kappa$ is high, so they trace <b>massive structures</b></li>
+								<li>counting them by height is a <b>one&#8209;point</b> statistic that sees what the
+									power spectrum cannot</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- PARKED — the LAM-verbatim original, superseded 2026-09-04. -->
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">Higher Order Statistics:<b class="alert">Peak Counts</b></h3>
 					<img src="../assets/diagrams/cosmology_with_maps_light.png" alt="Cosmology with maps" style="height:450px;">
 
@@ -2403,7 +2442,26 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light">
+				<section class="teach" data-theme="light">
+					<h3 class="slide-title tight">One starlet transform, <em class="alert">peaks at every scale</em></h3>
+
+					<figure class="tc-wide">
+						<img class="plain" src="../assets/diagrams/starlet_transform_light.png" alt="a map written as a sum of starlet band-pass images plus a coarse map">
+						<figcaption>The starlet transform writes a map as a sum of band&#8209;pass images, each carrying
+							structure of one characteristic angular size, plus a coarse map.</figcaption>
+					</figure>
+
+					<ul class="points tc-points">
+						<li>counting peaks <b>band by band</b> is a multi&#8209;scale analysis, where a single filter
+							size is not</li>
+						<li>all the scales are processed <b>at once</b>, from one transform</li>
+						<li>the bands cover different frequency ranges, so the peak&#8209;count covariance comes out
+							almost <b>diagonal</b></li>
+					</ul>
+				</section>
+
+				<!-- PARKED — the LAM-verbatim original, superseded 2026-09-04. -->
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">Wavelet peaks</h3>
 					<ul>
 						<!-- <li class="fragment fade-in">To access the signal in the $\kappa$-maps at <em class="alert">small
@@ -2453,7 +2511,28 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light">
+				<section class="teach" data-theme="light">
+					<h3 class="slide-title tight">The starlet $\ell_1$&#8209;norm reads <em class="alert">every pixel</em>,
+						not just the maxima</h3>
+
+					<figure class="tc-wide">
+						<img class="plain" src="../assets/figures/statistics/wavelet_l1_norm_light.png"
+							alt="the starlet decomposition of a weak lensing map, band by band">
+					</figure>
+
+					<p class="l1eq">$$\ell_1^{j,i} = \sum_{u=1}^{\textrm{\# coef}(\mathcal{S}_{i,j})}
+						\left| \mathcal{S}_{j,i}[u] \right| = \| \mathcal{S}_{j,i} \|_1$$</p>
+
+					<ul class="points tc-points">
+						<li>the sum of <b>absolute starlet coefficients</b>, per band and per SNR bin</li>
+						<li>peaks <b>and voids</b> are included automatically &mdash; no threshold to choose, no
+							definition of a peak to defend</li>
+						<li>information from <b>all</b> the pixels, at every scale</li>
+					</ul>
+				</section>
+
+				<!-- PARKED — the LAM-verbatim original, superseded 2026-09-04. -->
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">Starlet $\ell_1$-norm</h3>
 					<ul style="font-size:0.95em; line-height:1.2em; margin-bottom:0.3em;">
 						<li class="fragment fade-in">New higher order summary statistic for weak lensing observables
