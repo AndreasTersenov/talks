@@ -5458,53 +5458,69 @@
 			     slide is not Bayes' theorem, which the room has; it is the three things that
 			     have to be TRUE for the standard route to work, because the next two slides
 			     exist precisely because they stop being true. ============ -->
-			<section class="teach bayesclass" data-theme="light">
+			<section class="bayes2 bayesclass" data-theme="light">
 				<h3 class="slide-title tight">The classical route rests on a likelihood you can
 					<em class="alert">write down</em></h3>
 
-				<p class="bayeseq">$$\underbrace{p(\theta \mid d)}_{\text{posterior}} \;\propto\;
-					\underbrace{\mathcal{L}(d \mid \theta)}_{\text{likelihood}} \;\;
-					\underbrace{\pi(\theta)}_{\text{prior}}
-					\qquad
-					\mathcal{L}(d \mid \theta) \;\propto\; \exp\!\left[-\tfrac{1}{2}
-					\big(d - m(\theta)\big)^{\!\top} \mathbf{C}^{-1} \big(d - m(\theta)\big)\right]$$</p>
+				<p class="lede">
+					<b>Bayes&rsquo; rule is bookkeeping for belief.</b> What we should believe about the cosmology
+					<em>after</em> seeing the data is fixed by how well a set of parameters explains what we measured,
+					and by what we assumed <em>before</em> we looked.
+				</p>
 
-				<div class="rail">
-					<div class="rstop"><span class="n">prior $\pi(\theta)$</span><span class="d"></span><span class="s">ranges on $\Omega_m$, $\sigma_8$, &hellip;</span></div>
-					<div class="rstop on"><span class="n">model $m(\theta)$</span><span class="d"></span><span class="s">Boltzmann code + halofit</span><span class="tnote">must be analytic, and fast</span></div>
-					<div class="rstop on"><span class="n">covariance $\mathbf{C}$</span><span class="d"></span><span class="s">analytic, or from mocks</span><span class="tnote">and Gaussian is assumed</span></div>
-					<div class="rstop"><span class="n">MCMC</span><span class="d"></span><span class="s">Metropolis, HMC, nested</span></div>
-					<div class="rstop"><span class="n">posterior</span><span class="d"></span><span class="s">contours on $\theta$</span></div>
+				<div class="story">
+					<div class="beat">
+						<div class="blab"><span>what we believe, <em>after</em></span></div>
+						<div class="bsym">$p(\theta \mid d)$</div>
+						<div class="bname">the posterior &mdash; the contours we publish</div>
+					</div>
+					<div class="bop rel">&prop;</div>
+					<div class="beat choice">
+						<div class="blab"><span>how well those parameters explain the data we measured</span></div>
+						<div class="bsym">$p(d \mid \theta)$</div>
+						<div class="bname">the likelihood</div>
+					</div>
+					<div class="bop">&times;</div>
+					<div class="beat">
+						<div class="blab"><span>what we assume, <em>before</em> we look</span></div>
+						<div class="bsym">$p(\theta)$</div>
+						<div class="bname">the prior &mdash; ranges on the parameters</div>
+					</div>
 				</div>
 
-				<ul class="points tc-points">
-					<li>the Gaussian form is not a convenience, it is a <b>claim</b>: it holds when each data point
-						averages many independent modes, which is why it is defensible for $C_\ell$</li>
-					<li>$\mathbf{C}$ is usually held <b>fixed</b> with $\theta$, and if it came from $N_{\rm sim}$
-						mocks its inverse is biased &mdash; hence the <b>Hartlap</b> and Sellentin&ndash;Heavens
-						corrections</li>
-				</ul>
+				<p class="lede carry fragment fade-in" data-fragment-index="1">
+					All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
+				</p>
 
-				<p class="pull">Every ingredient is something we had to be able to <b>write down</b>. For peak counts
-					or the &#8467;<sub>1</sub>&#8209;norm there is <b class="alert">no analytic mean and no Gaussian
-					likelihood</b> &mdash; which is where the next two slides start.</p>
+				<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
+					\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
+					\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
+					\big(d - m(\theta)\big)\right]$$</p>
+
+				<p class="lede carry fragment fade-in" data-fragment-index="2">
+					Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
+				</p>
+
+				<p class="pull fragment fade-in" data-fragment-index="3">
+					Both ingredients had to be written down. For peak counts or the &#8467;<sub>1</sub>&#8209;norm
+					there is <b class="alert">no analytic $m(\theta)$, and the likelihood is not Gaussian</b>.
+				</p>
 
 				<aside class="notes">
-					BACKUP — the classical route, only if asked. Bayes itself is not the content here; everyone in the
-					room has it. The content is what the standard analysis needs in order to work. Read the chain: a
-					prior on the parameters; a theory model that predicts the data vector at any point in parameter
-					space, which in practice means a Boltzmann code plus a non-linear prescription, and it has to be
-					fast because the sampler will call it a million times; a covariance matrix; a sampler; and out
-					comes the posterior. Now the two honest caveats. First, the Gaussian likelihood is not chosen for
-					convenience, it is a claim about the data: it holds when each element of the data vector averages
-					many independent modes, which is exactly the situation for a band-power of the power spectrum, and
-					that is why the field can get away with it. Second, the covariance is normally held fixed with
-					respect to the parameters, and if you estimated it from a finite set of mocks its inverse is
-					biased — that is what the Hartlap factor corrects, and Sellentin and Heavens do it properly by
-					marginalising. [If asked why we do not just do this for peaks:] because neither ingredient exists.
-					There is no analytic prediction for the mean peak count, and the distribution of peak counts is
-					not Gaussian — it is a count statistic in the tail of a non-Gaussian field. That is the whole
-					motivation for the next two slides.
+					BACKUP — the classical route, only if asked. Bayes itself is not the content; everyone here has
+					it. Read it as a sentence: what we believe about the cosmology after seeing the data is
+					proportional to how well those parameters explain what we measured, times what we assumed before
+					we looked. [CLICK] All the work is in the middle term, and the classical analysis assumes it is
+					Gaussian in the data vector. That needs two things: a theory prediction m of theta, which in
+					practice is a Boltzmann code plus a non-linear prescription and has to be fast because the sampler
+					will call it a million times; and a covariance matrix. Worth saying out loud that the Gaussian
+					form is a claim about the data, not a convenience — it holds when each data point averages many
+					independent modes, which is exactly a band-power of the power spectrum, and that is why the field
+					can get away with it. [CLICK] Then you sample: MCMC walks parameter space and hands back the
+					posterior. [CLICK] And that is the hinge. Both ingredients had to be written down. For peak counts
+					or the l1-norm there is no analytic prediction for the mean, and the distribution is not Gaussian
+					— it is a count statistic in the tail of a non-Gaussian field. Which is what the next two slides
+					are for.
 				</aside>
 			</section>
 

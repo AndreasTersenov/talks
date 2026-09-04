@@ -1900,10 +1900,12 @@
 .reveal .slides section.teach .tc-wide.tall img { max-height: 40vh; }
 .reveal .slides section.teach .tc-wide.tall { margin-top: 0.7em; }
 
-/* the classical-inference backup slide: the two equations carry the argument, so
-   they get the room a formula normally is not given. */
-.reveal .slides section.bayesclass .bayeseq { margin: 1.1em auto 0; max-width: 96%; }
-.reveal .slides section.bayesclass .bayeseq .katex { font-size: 0.86em; }
-.reveal .slides section.bayesclass .rail { margin-top: 1.5em; }
-.reveal .slides section.bayesclass .points.tc-points { margin-top: 1.6em; font-size: 0.74em; }
-.reveal .slides section.bayesclass .pull { margin-top: 1em; }
+/* the classical-inference backup slide.  It borrows .bayes2's sentence layout —
+   label above, symbol, name below — because that is how this deck has already
+   taught the room to read a Bayes formula. */
+.reveal .slides section.bayesclass .lede.carry {
+	margin: 1.5em auto 0; font-size: 0.66em; color: var(--fg);
+}
+.reveal .slides section.bayesclass .bayeseq { margin: 0.5em auto 0; max-width: 96%; }
+.reveal .slides section.bayesclass .bayeseq .katex { font-size: 0.92em; }
+.reveal .slides section.bayesclass .pull { margin-top: 1.5em; }
