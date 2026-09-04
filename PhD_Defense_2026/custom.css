@@ -1926,3 +1926,11 @@
 	width: 330px; max-width: 330px; height: auto; margin: 0;
 	border: 0; box-shadow: none; background: transparent;
 }
+
+/* KaTeX centres display math; here it belongs on the same left edge as the
+   sentences above and below it. */
+.reveal .slides section.bayesclass .bayeseq,
+.reveal .slides section.bayesclass .bayeseq .katex-display { text-align: left; }
+/* KaTeX's own rule is `.katex-display > .katex { text-align: center }`, which the
+   parent alone cannot beat — target the child. */
+.reveal .slides section.bayesclass .bayeseq .katex-display > .katex { text-align: left; }
