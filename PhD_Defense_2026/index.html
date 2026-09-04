@@ -5488,20 +5488,23 @@
 					</div>
 				</div>
 
-				<p class="lede carry fragment fade-in" data-fragment-index="1">
-					All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
-				</p>
+				<div class="lowergrid">
+					<div class="lg-left">
+						<p class="lede carry fragment fade-in" data-fragment-index="1">
+							All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
+						</p>
 
-				<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
-					\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
-					\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
-					\big(d - m(\theta)\big)\right]$$</p>
+						<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
+							\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
+							\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
+							\big(d - m(\theta)\big)\right]$$</p>
 
-				<div class="samplerow fragment fade-in" data-fragment-index="2">
-					<p class="lede carry">
-						Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
-					</p>
-					<figure class="samplegif">
+						<p class="lede carry fragment fade-in" data-fragment-index="2">
+							Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
+						</p>
+					</div>
+
+					<figure class="samplegif fragment fade-in" data-fragment-index="2">
 						<img class="plain" src="../assets/misc/mcmc_sampling.gif"
 							alt="a Metropolis-Hastings chain wandering across a correlated Gaussian target and filling in the contours">
 					</figure>
