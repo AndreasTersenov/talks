@@ -1822,3 +1822,13 @@
 /* the 2-point slide's points sit just under the lead sentence, so they take a
    step down from it rather than matching it. */
 .reveal .slides section.twopt .points { font-size: 0.86em; }
+
+/* the phases slide: figure across the top, three points beneath it at reading size */
+.reveal .slides section .points.tp-points {
+	max-width: 86%; margin: 1.1em auto 0; font-size: 0.85em;
+}
+
+/* the phases slide: figure across the top, three points beneath it at reading size */
+.reveal .slides section .points.tp-points {
+	max-width: 86%; margin: 1.1em auto 0; font-size: 0.85em;
+}
