@@ -1895,3 +1895,7 @@
 .reveal .slides section .hos-side .points { font-size: 0.78em; margin-top: 0.2em; }
 .reveal .slides section .hos-side .kicker { margin: 1.1em 0 0; }
 .reveal .slides section .hos-side .kicker:first-child { margin-top: 0; }
+
+/* a wide figure that is itself the argument gets more of the slide */
+.reveal .slides section.teach .tc-wide.tall img { max-height: 40vh; }
+.reveal .slides section.teach .tc-wide.tall { margin-top: 0.7em; }
