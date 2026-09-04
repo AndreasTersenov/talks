@@ -1899,3 +1899,11 @@
 /* a wide figure that is itself the argument gets more of the slide */
 .reveal .slides section.teach .tc-wide.tall img { max-height: 40vh; }
 .reveal .slides section.teach .tc-wide.tall { margin-top: 0.7em; }
+
+/* the classical-inference backup slide: the two equations carry the argument, so
+   they get the room a formula normally is not given. */
+.reveal .slides section.bayesclass .bayeseq { margin: 1.1em auto 0; max-width: 96%; }
+.reveal .slides section.bayesclass .bayeseq .katex { font-size: 0.86em; }
+.reveal .slides section.bayesclass .rail { margin-top: 1.5em; }
+.reveal .slides section.bayesclass .points.tc-points { margin-top: 1.6em; font-size: 0.74em; }
+.reveal .slides section.bayesclass .pull { margin-top: 1em; }
