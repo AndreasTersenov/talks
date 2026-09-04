@@ -1934,3 +1934,7 @@
 /* KaTeX's own rule is `.katex-display > .katex { text-align: center }`, which the
    parent alone cannot beat — target the child. */
 .reveal .slides section.bayesclass .bayeseq .katex-display > .katex { text-align: left; }
+
+/* the operators between the three terms — bigger here than on slide 15, where the
+   beats are narrower and 1.35em is already the right weight. */
+.reveal .slides section.bayesclass .bop { font-size: 1.95em; }
