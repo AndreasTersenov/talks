@@ -1935,6 +1935,16 @@
    parent alone cannot beat — target the child. */
 .reveal .slides section.bayesclass .bayeseq .katex-display > .katex { text-align: left; }
 
-/* the operators between the three terms — bigger here than on slide 15, where the
-   beats are narrower and 1.35em is already the right weight. */
-.reveal .slides section.bayesclass .bop { font-size: 1.95em; }
+/* The operators between the three terms.  Two separate problems: the beats here
+   are wide, so 1.35em reads as punctuation rather than as the joins of a
+   sentence; and the proportional-to glyph is drawn far smaller than the times in
+   this serif, so matching font sizes does NOT match optical sizes.  They are
+   therefore sized independently, and both are bottom-aligned with a padding that
+   puts them on the symbols' optical centre rather than the row's. */
+.reveal .slides section.bayesclass .bop {
+	align-self: end; line-height: 1;
+	font-size: 2.1em; padding-bottom: 0.78em;
+}
+.reveal .slides section.bayesclass .bop.rel {
+	font-size: 3.4em; padding-bottom: 0.40em;
+}
