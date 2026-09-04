@@ -5528,6 +5528,64 @@
 				</aside>
 			</section>
 
+			<!-- ============ BACKUP — normalizing flows.  Second of the inference run; the
+			     SBI slide after it is just this object, conditioned on data.  Figure from
+			     tools/make-flow-figure.py. ============ -->
+			<section class="teach flowslide" data-theme="light">
+				<h3 class="slide-title tight">A normalizing flow: a simple distribution pushed through an
+					<em class="alert">invertible map</em></h3>
+
+				<figure class="tc-wide tall">
+					<img class="plain" src="../assets/diagrams/normalizing_flow.png"
+						alt="a standard Gaussian transformed in three invertible steps into a curved, crescent-shaped distribution">
+				</figure>
+
+				<div class="flowbody">
+					<div class="fl-left">
+						<p>Start from something you can both <b>sample</b> and <b>evaluate</b> &mdash; a unit Gaussian
+							&mdash; and learn a map $f$ that carries it onto the distribution you want. The density
+							comes along by <b>change of variables</b>:</p>
+						<p class="floweq fragment fade-in" data-fragment-index="1">$$\log q_\phi(x) \;=\;
+							\log p\big(f^{-1}(x)\big) \;+\;
+							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
+					</div>
+					<ul class="points fl-right">
+						<li class="fragment fade-in" data-fragment-index="1">the Jacobian term is the bookkeeping: it
+							charges the map for every bit of volume it <b>stretches or squeezes</b></li>
+						<li class="fragment fade-in" data-fragment-index="2">stack many simple layers, each with a
+							<b>triangular</b> Jacobian, and the determinant is just a product down the diagonal
+							&mdash; cheap enough to train on</li>
+						<li class="fragment fade-in" data-fragment-index="3">so you get a distribution that is
+							<b>flexible</b>, that you can <b>sample</b>, and whose <b>density you can evaluate</b>
+							&mdash; all three at once, which is rare</li>
+					</ul>
+				</div>
+
+				<p class="pull fragment fade-in" data-fragment-index="4">
+					Train it by <b>maximum likelihood</b> on samples. Condition every layer on some data $x$ and it
+					becomes $q_\phi(\theta \mid x)$ &mdash; <b class="alert">a posterior you can fit</b>.
+				</p>
+
+				<aside class="notes">
+					BACKUP — flows, only if asked, and the setup for the SBI answer. The problem: we need a way to
+					represent a probability distribution that is flexible enough to be an arbitrary posterior, that we
+					can draw samples from, and whose density we can actually evaluate. Those three rarely come
+					together — a histogram is not flexible, a GAN samples but gives you no density, an MCMC chain
+					gives you samples but no normalised density either. A flow gets all three. Start from a unit
+					Gaussian, which you can sample and evaluate trivially, and push it through an invertible map. The
+					picture is exactly that: a Gaussian, bent, stretched, bent again, into something that looks
+					nothing like where it started. [CLICK] Because the map is invertible you can carry the density
+					along with it — change of variables, and the Jacobian determinant is what charges the map for the
+					volume it stretches or squeezes. [CLICK] The engineering trick is to build each layer so its
+					Jacobian is triangular: each output coordinate depends only on itself and the ones before it. Then
+					the determinant is a product down the diagonal, and what would be an n-cubed operation becomes
+					linear. [CLICK] So: flexible, samplable, and evaluable. [CLICK] You fit it by maximum likelihood
+					on samples, which is just gradient descent. And the last step is the one that matters for us:
+					condition every layer on data, and instead of one distribution you have a family — a posterior
+					you can fit. That is the next slide.
+				</aside>
+			</section>
+
 
 			<section data-theme="light">
 				<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>

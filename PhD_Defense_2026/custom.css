@@ -1948,3 +1948,21 @@
 .reveal .slides section.bayesclass .bop.rel {
 	font-size: 3.4em; padding-bottom: 0.40em;
 }
+
+/* ---------------------------------------------------------------------------
+   NORMALIZING FLOWS — the figure carries the idea, the change of variables sits
+   under it on the left, and what it buys you on the right.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.flowslide .flowbody {
+	display: grid; grid-template-columns: 1.05fr 1fr; gap: 0 2.4em;
+	max-width: 94%; margin: 1.1em auto 0; align-items: start; text-align: left;
+}
+.reveal .slides section.flowslide .fl-left p {
+	margin: 0; font-size: 0.72em; line-height: 1.45; color: var(--fg);
+}
+.reveal .slides section.flowslide .floweq { margin-top: 0.5em !important; }
+.reveal .slides section.flowslide .floweq .katex { font-size: 0.9em; }
+.reveal .slides section.flowslide .floweq .katex-display > .katex { text-align: left; }
+.reveal .slides section.flowslide .points.fl-right { margin: 0; font-size: 0.72em; }
+.reveal .slides section.flowslide .tc-wide.tall img { max-height: 30vh; }
+.reveal .slides section.flowslide .pull { margin-top: 1.1em; }
