@@ -895,35 +895,42 @@
 						&mdash; they differ in <em class="alert">one term</em></h3>
 
 					<p class="lede">
-						A reconstruction is a <b>fit</b>, not an inversion: find the map that reproduces the measured
-						shear <em>and</em> is not absurd. Every method below writes that same problem.
+						Since the data alone do not pick a map, every method after Kaiser&ndash;Squires solves the same
+						problem: find the $\kappa$ that stays <b>consistent with the measured shear</b> while remaining
+						<b>physically plausible</b>.
 					</p>
 
 					<p class="mmeq">$$\hat{\kappa} \;\in\; \arg\min_{\kappa}\;
-						\underbrace{\mathcal{D}_\gamma\big(\mathbf{P}\kappa\big)}_{\text{does it reproduce the data?}}
-						\;+\;
-						\underbrace{\mathcal{R}(\kappa)}_{\text{is it a plausible map?}}$$</p>
+						\underbrace{\tfrac{1}{2}\big\lVert \mathbf{P}\kappa - \gamma \big\rVert^{2}_{\mathbf{N}^{-1}}}_{\text{data fidelity: does it match the shear?}}
+						\;+\; \lambda\,
+						\underbrace{\mathcal{R}(\kappa)}_{\text{regulariser: is it a plausible map?}}$$</p>
+
+					<p class="mmgloss">$\mathbf{N}$ is the per&#8209;pixel noise covariance, and $\lambda$ sets how far
+						you trust the data against the prior. The first term is the <b>same for everyone</b> &mdash;
+						it is just the forward model. All the difference is in $\mathcal{R}$.</p>
+
+					<p class="kicker mmkick">the regulariser $\mathcal{R}$ &mdash; what each method assumes a mass map looks like</p>
 
 					<div class="choices mmchoices">
 						<div class="ch">
 							<span class="n">1</span><span class="cn">Kaiser&ndash;Squires</span>
-							<span class="ca">no $\mathcal{R}$ at all &mdash; invert, then <b>smooth</b></span>
+							<span class="ca">no $\mathcal{R}$ at all &mdash; invert, then <b>smooth</b> the noise away</span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="1">
 							<span class="n">2</span><span class="cn">Wiener filtering</span>
-							<span class="ca">an $\ell_2$ penalty set by a <b>fixed power spectrum</b></span>
+							<span class="ca">the map is a <b>Gaussian field</b> with a known power spectrum</span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="2">
 							<span class="n">3</span><span class="cn">sparse recovery</span>
-							<span class="ca">an $\ell_1$ penalty on <b>wavelet</b> coefficients</span>
+							<span class="ca">the map is mostly <b>empty</b>: a few strong wavelet coefficients, the rest near zero</span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="3">
 							<span class="n">4</span><span class="cn">MCALens</span>
-							<span class="ca">two penalties, one per component: <b>Gaussian + sparse</b></span>
+							<span class="ca">it is <b>both</b> &mdash; a smooth background with sparse peaks on top</span>
 						</div>
 						<div class="ch learned fragment fade-in" data-fragment-index="4">
 							<span class="n">5</span><span class="cn">deep learning</span>
-							<span class="ca">stop handcrafting $\mathcal{R}$ &mdash; <b>learn</b> it from simulations</span>
+							<span class="ca">stop assuming &mdash; <b>learn</b> what a plausible map looks like, from simulations</span>
 						</div>
 					</div>
 
@@ -935,16 +942,19 @@
 						cosmological parameters. A reconstruction is a fit. You are looking for the map that does two
 						things at once: reproduces the shear you measured, which is the first term, and is not absurd,
 						which is the second. Every method on this slide writes exactly that problem. The first term is
-						the same for all of them — it is just the forward model we already have. So the entire history
-						of mass mapping is a history of the second term. [CLICK] Kaiser-Squires has no second term at
-						all: apply the exact inverse and smooth, and the smoothing is the only thing holding the noise
-						down. [CLICK] Wiener puts an l2 penalty on it, set by a power spectrum you fix in advance — in
-						effect, assume the field is Gaussian. [CLICK] Sparse recovery penalises the l1 norm of the
-						wavelet coefficients instead: most coefficients should be zero, a few should be large, which is
-						what a field of peaks actually looks like. [CLICK] MCALens says you do not have to choose —
-						split the map into a Gaussian part and a sparse part and penalise each one the way it deserves.
-						[CLICK] And then deep learning stops handcrafting the term altogether and learns it from
-						simulations. That is Part 2.
+						the same for all of them — a chi-squared against the measured shear, weighted by the noise. It
+						is just the forward model we already have. So the entire history of mass mapping is a history
+						of the second term: what you are willing to assume a mass map looks like. Lambda is the dial
+						between the two. [CLICK] Kaiser-Squires has no second term at all: apply the exact inverse and
+						smooth, and the smoothing is the only thing holding the noise down. [CLICK] Wiener assumes the
+						field is Gaussian with a power spectrum you fix in advance — technically an l2 penalty.
+						[CLICK] Sparse recovery assumes the opposite kind of map: mostly empty, with a few strong
+						features, which in the wavelet domain means most coefficients near zero and a handful large.
+						That is an l1 penalty, and it is much closer to what a field of peaks actually looks like.
+						[CLICK] MCALens says you do not have to choose — a real convergence field is a smooth Gaussian
+						background WITH sparse peaks on top, so split it and treat each part the way it deserves.
+						[CLICK] And then deep learning stops assuming altogether and learns the term from simulations.
+						That is Part 2.
 						FLAG, if pressed (Starck): yes, several of these have a Bayesian reading — the l2 penalty is a
 						Gaussian prior, the l1 is a Laplace prior, and the whole thing is a MAP estimate. I have the
 						slide underneath if it comes up. But Wiener filtering and sparse recovery were developed as

@@ -2118,3 +2118,10 @@
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking); font-size: 0.42em; color: var(--fg-muted);
 }
+.reveal .slides section.mmopt .mmgloss {
+	max-width: 84%; margin: 0.5em auto 0; text-align: center;
+	font-size: 0.56em; line-height: 1.5; color: var(--fg-muted);
+}
+.reveal .slides section.mmopt .mmgloss b { color: var(--fg); }
+.reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
+.reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
