@@ -931,7 +931,7 @@
 						</div>
 						<div class="ch learned fragment fade-in" data-fragment-index="4">
 							<span class="n">5</span><span class="cn">deep learning</span>
-							<span class="ca">stop assuming &mdash; <b>learn</b> it from simulations</span>
+							<span class="ca"><b>learn</b> $\mathcal{R}$ from simulations</span>
 						</div>
 					</div>
 
@@ -1109,18 +1109,19 @@
 								<span class="mca-cyc">&#8635;</span>
 								<span>solve $\kappa_{\rm NG}$, holding $\kappa_{\rm G}$ fixed</span>
 							</p>
-							<p class="mca-sub">Repeat until the map stops moving. Each half is a small optimisation, and
-								each
-								one ends the same way &mdash; with a <b>proximal step</b>.</p>
+							<p class="mca-sub">Repeat until the map stops moving. Each half ends the same way &mdash;
+								with a <b>proximal step</b>.</p>
 						</div>
 					</div>
 
-					<div class="callout fragment fade-in" data-fragment-index="2">
-						<span class="label">what a proximal operator is, in one line</span>
-						The step that pulls a candidate map back onto <b>what the prior allows</b>. For sparsity that is
-						<b>thresholding</b>: keep the strong wavelet coefficients, zero the rest.
-						<span class="mca-fwd">In Part 2 we replace this one step with a <b class="alert">learned
-								denoiser</b>. That is PnPMass.</span>
+					<div class="mca-prox fragment fade-in" data-fragment-index="2">
+						<p class="kicker">what a proximal step does</p>
+						<ul class="points dots">
+							<li>a step towards the data lands you at $v$ &mdash; better fit, <b>not</b> a plausible map</li>
+							<li><b>prox</b> returns the <b>nearest</b> map the prior will accept: move as little as
+								possible, become acceptable</li>
+							<li>for a sparsity prior it is just <b>thresholding</b></li>
+						</ul>
 					</div>
 
 					<aside class="notes">
@@ -1128,11 +1129,16 @@
 						Gaussian background, handled by a Wiener filter which needs nothing but the power spectrum, and
 						a sparse non-Gaussian part in the starlet basis — the peaks, which is where the higher-order
 						signal lives. [CLICK] It solves them alternately: fix one, solve the other, repeat until it
-						converges. [CLICK] And each of those solves ends with a proximal step. If you take one thing
-						from this slide take this: a proximal operator is the step that pulls your candidate back onto
-						what the prior allows — for sparsity, that is just thresholding wavelet coefficients. Remember
-						it, because in Part 2 we throw that operator away and put a neural denoiser in its place.
-						Down-arrow for the algebra.
+						converges. [CLICK] And each of those solves ends the same way, with a proximal step. Thirty
+						seconds on what that is, because we meet it again later and I would rather you had the picture
+						than the definition. You take a step towards fitting the data and you land somewhere — call it
+						v. It fits the shear better than where you were, and it may be nonsense as a map: noise
+						everywhere, structure the prior would never allow. The proximal operator is the correction.
+						It hands back the nearest map the prior will accept — nearest to v, so you keep the progress
+						you just made, but acceptable, so you do not run away into noise. Move as little as possible,
+						become admissible. That is the whole idea. And for a sparsity prior it turns out to be
+						something completely familiar: thresholding. So the algorithm really is just — step towards
+						the data, threshold, repeat. Down-arrow for the algebra.
 					</aside>
 				</section>
 

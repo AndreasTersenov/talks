@@ -1488,8 +1488,16 @@
 .reveal .slides section.mca .mca-term p b { color: var(--fg); }
 .reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
 
-.reveal .slides section.mca .block.lecture { margin: 1em auto 0; max-width: 90%; }
+.reveal .slides section.mca .block.lecture { margin: 1.2em auto 0; max-width: 90%; }
 .reveal .slides section.mca .block.lecture .block-title { font-size: 0.72em; }
+
+/* the proximal step sits UNDER the algorithm block, unboxed — a second box in a
+   row reads as a stack of boxes rather than as a consequence of the first. */
+.reveal .slides section.mca .mca-prox {
+	max-width: 90%; margin: 1.1em auto 0; text-align: left;
+}
+.reveal .slides section.mca .mca-prox .kicker { margin-bottom: 0.35em; }
+.reveal .slides section.mca .mca-prox .points { font-size: 0.62em; margin: 0; }
 .reveal .slides section.mca .mca-loop {
 	display: flex; align-items: center; justify-content: center; gap: 1.1em;
 	margin: 0.1em 0 0; font-size: 0.56em; color: var(--fg);
