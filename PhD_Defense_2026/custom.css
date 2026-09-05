@@ -2134,3 +2134,8 @@
 .reveal .slides section.mmopt .points.mmgloss li { margin: 0; }
 .reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
 .reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
+.reveal .slides section.mca .mca-proxrow {
+	display: grid; grid-template-columns: auto 1fr; gap: 0 2.2em; align-items: center;
+}
+.reveal .slides section.mca .mca-proxeq { margin: 0; }
+.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.62em; }

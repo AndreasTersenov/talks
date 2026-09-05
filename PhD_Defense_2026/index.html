@@ -1116,12 +1116,16 @@
 
 					<div class="mca-prox fragment fade-in" data-fragment-index="2">
 						<p class="kicker">what a proximal step does</p>
-						<ul class="points dots">
-							<li>a step towards the data lands you at $v$ &mdash; better fit, <b>not</b> a plausible map</li>
-							<li><b>prox</b> returns the <b>nearest</b> map the prior will accept: move as little as
-								possible, become acceptable</li>
-							<li>for a sparsity prior it is just <b>thresholding</b></li>
-						</ul>
+						<div class="mca-proxrow">
+							<p class="mca-proxeq">$$\mathrm{prox}_{\lambda\mathcal{R}}(v) \;=\;
+								\arg\min_{u}\; \tfrac{1}{2}\lVert u - v \rVert^{2} \;+\; \lambda\,\mathcal{R}(u)$$</p>
+							<ul class="points dots">
+								<li>a data step lands at $v$ &mdash; better fit, <b>not</b> a plausible map</li>
+								<li><b>prox</b> returns the <b>nearest</b> map the prior accepts</li>
+								<li>Gaussian prior &rarr; <b>Wiener shrinkage</b>, Fourier mode by mode</li>
+								<li>sparse prior &rarr; <b>thresholding</b>, wavelet coefficient by coefficient</li>
+							</ul>
+						</div>
 					</div>
 
 					<aside class="notes">
@@ -1136,9 +1140,14 @@
 						everywhere, structure the prior would never allow. The proximal operator is the correction.
 						It hands back the nearest map the prior will accept — nearest to v, so you keep the progress
 						you just made, but acceptable, so you do not run away into noise. Move as little as possible,
-						become admissible. That is the whole idea. And for a sparsity prior it turns out to be
-						something completely familiar: thresholding. So the algorithm really is just — step towards
-						the data, threshold, repeat. Down-arrow for the algebra.
+						become admissible. That is the whole idea, and the formula says exactly that: stay near v in the
+						first term, obey the prior in the second. What makes it practical is that for the priors we
+						actually use it has a closed form, and in both cases it is a shrinkage. For the Gaussian
+						component it is a Wiener filter: multiply each Fourier mode by its signal-to-noise ratio, so
+						modes you cannot measure get pulled towards zero. For the sparse component it is
+						thresholding: shrink every wavelet coefficient and zero the small ones. Same idea, one per
+						Fourier mode, one per wavelet coefficient — which is why this algorithm is cheap.
+						Down-arrow for the algebra.
 					</aside>
 				</section>
 
