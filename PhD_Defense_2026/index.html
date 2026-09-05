@@ -484,7 +484,7 @@
 						alt="a shear map and a mass map, each linked to the lensing potential in the middle by a pair of second-derivative relations">
 				</figure>
 
-				<ul class="points kgpoints">
+				<ul class="points dots kgpoints">
 					<li>$\gamma_i = \hat{P}_i\,\kappa$ &mdash; mass to shear</li>
 					<li>$\kappa = \hat{P}_1\gamma_1 + \hat{P}_2\gamma_2$ &mdash; shear back to mass</li>
 					<li><b>linear</b>, and <b>exact</b> on a complete noiseless field</li>
@@ -741,44 +741,42 @@
 			<section class="invprob" data-theme="light">
 				<h3 class="slide-title tight">The operator inverts. <em class="alert">The data do not.</em></h3>
 
-				<div class="ip-lane inv">
-					<span class="ip-tag">what we actually hand the inversion</span>
-					<div class="ip-row">
-						<figure class="ip-cell">
-							<img src="../assets/figures/maps/shear_field_thumb.png" alt="the measured shear field">
-							<figcaption>noisy, masked, sampled at galaxies</figcaption>
-						</figure>
-						<div class="ip-arrow">
-							<span class="ip-op">$\kappa = \;?$</span>
-							<span class="ip-shaft"></span>
-						</div>
-						<div class="ip-fan">
-							<!-- Three ACTUALLY different reconstructions of the same field. Front to back:
-							     the truth (sharpest, so it leads), a noise-dominated reconstruction, then a
-							     heavily smoothed one. Chosen for MAXIMUM visible spread — sharp / noisy /
-							     smooth is the argument, since the room has to see at a glance that these are
-							     very different maps. All at full brightness, no filters; they differ for real. -->
-							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_gauss.png"
-									alt="a smooth, heavily denoised convergence map"></div>
-							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_noisy.png"
-									alt="a noise-dominated convergence map"></div>
-							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png"
-									alt="one of many convergence maps consistent with the measurement"></div>
-							<span class="ip-fancap">all fit the measurement</span>
-						</div>
-						<ul class="points ip-points">
-							<li><b>shape noise</b> on every galaxy</li>
-							<li><b>masks</b> and irregular sampling</li>
-							<li>the <b>mass&#8209;sheet degeneracy</b></li>
-						</ul>
+				<p class="ip-eq">$$\gamma \;=\; \underbrace{\mathbf{M}}_{\text{the mask}}\;
+					\underbrace{\mathbf{P}}_{\text{shear operator}}\, \kappa \;+\;
+					\underbrace{\mathbf{n}}_{\text{shape noise}}$$</p>
+
+				<div class="ip-panel">
+					<figure class="ip-cell">
+						<img src="../assets/figures/maps/shear_field_thumb.png" alt="the measured shear field">
+						<figcaption>what we measure</figcaption>
+					</figure>
+					<div class="ip-arrow">
+						<span class="ip-op">$\kappa = \;?$</span>
+						<span class="ip-shaft"></span>
+					</div>
+					<div class="ip-fan">
+						<!-- Three ACTUALLY different reconstructions of the same field. Front to back: the
+						     truth (sharpest, so it leads), a noise-dominated reconstruction, then a heavily
+						     smoothed one. Chosen for MAXIMUM visible spread — the room has to see at a
+						     glance that these are very different maps. No filters; they differ for real. -->
+						<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_gauss.png"
+								alt="a smooth, heavily denoised convergence map"></div>
+						<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_noisy.png"
+								alt="a noise-dominated convergence map"></div>
+						<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png"
+								alt="one of many convergence maps consistent with the measurement"></div>
+						<span class="ip-fancap">all fit the measurement</span>
 					</div>
 				</div>
 
-				<div class="takeaway fragment fade-in">
-					<span class="label">so a reconstruction is never just a calculation</span>
-					Choosing one map means <b>adding an assumption</b> &mdash; and that assumption
-					<b class="alert">is</b> the method.
-				</div>
+				<ul class="points dots ip-points">
+					<li>$\mathbf{n}$ &mdash; every galaxy&rsquo;s own shape <b>swamps the signal</b></li>
+					<li>$\mathbf{M}$ &mdash; holes in the footprint, and $\mathbf{P}$ is <b>non&#8209;local</b></li>
+					<li>$\mathbf{P}$ &mdash; its kernel is the constants: the <b>mean level</b> is unmeasurable</li>
+				</ul>
+
+				<p class="pull fragment fade-in">Choosing one map means <b>adding an assumption</b> &mdash; and that
+					assumption <b class="alert">is</b> the method.</p>
 
 				<aside class="notes">
 					I want to be precise here, because the obvious framing is wrong. We just saw that the relation
