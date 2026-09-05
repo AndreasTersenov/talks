@@ -1996,9 +1996,13 @@
 	max-width: 94%; margin: 0.7em auto 0; text-align: left;
 	font-size: 0.78em; line-height: 1.45; color: var(--fg);
 }
-.reveal .slides section.sbigen .sbi-fig { margin: 0.8em auto 0; max-width: 96%; }
+/* the three builds are stacked and revealed in turn — same canvas, same crop, so
+   the figure grows rather than jumping. */
+/* the r-stack is a grid; without a definite width it shrink-wraps to the
+   intrinsic image size, so the width has to be set here, not on the img. */
+.reveal .slides section.sbigen .sbi-fig { margin: 0.8em auto 0; width: 97%; max-width: 97%; }
 .reveal .slides section.sbigen .sbi-fig img {
-	width: 100%; height: auto; max-height: 56vh; object-fit: contain;
+	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.sbigen .pull { max-width: 94%; margin-top: 1em; }

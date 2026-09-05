@@ -5650,30 +5650,35 @@
 				<p class="sbi-lede">We cannot write $p(x \mid \theta)$ down &mdash; but we can <b>draw from
 					it</b>. So stop evaluating a likelihood and <b>learn the posterior instead</b>.</p>
 
-				<figure class="sbi-fig">
-					<img class="plain" src="../assets/diagrams/sbi_pipeline_general.png"
-						alt="the full simulation-based-inference pipeline: parameters drawn from the prior and pushed through a simulator to make data, the pairs training a conditional flow, and the trained flow evaluated at the real observation to give a posterior">
-				</figure>
+				<div class="r-stack sbi-fig">
+					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
+						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
+					<img class="plain fragment" src="../assets/diagrams/sbi_build_2.png"
+						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
+					<img class="plain fragment" src="../assets/diagrams/sbi_build_3.png"
+						alt="stage three added: the trained flow evaluated at the real observation, giving a posterior">
+				</div>
 
-				<p class="pull fragment fade-in">The cost is all in stage&nbsp;1, and it is paid <b>once</b>: the
-					trained flow answers <b class="alert">any</b> new observation immediately. That is what
-					<b>amortised</b> means &mdash; and it is what makes coverage testing affordable.</p>
+				<p class="pull fragment">The cost is all in stage&nbsp;1, and it is paid <b>once</b>: the trained
+					flow answers <b class="alert">any</b> new observation immediately. That is what <b>amortised</b>
+					means &mdash; and it is what makes coverage testing affordable.</p>
 
 				<aside class="notes">
-					BACKUP — SBI in general; slide 41 is this paper's particular pipeline. The framing first: the
-					classical route needed a likelihood we could write down, and for peak counts or the l1-norm there
-					is not one. But there is something we do have — a simulator. We can draw from p of x given theta
-					even though we cannot evaluate it. [CLICK] Stage one, simulate: draw parameters from the prior,
-					run the forward model, keep the pair. Do that a few hundred thousand times. This is the expensive
-					part and it is the only expensive part. [CLICK] Stage two, learn: train a conditional normalizing
-					flow on those pairs — literally the object from the previous slide, with every layer conditioned
-					on the data vector. Maximum likelihood on the pairs; the optimum of that loss is the true
-					posterior. [CLICK] Stage three, infer: feed it the real observation and read off the posterior.
-					No MCMC, no likelihood evaluation, milliseconds. [CLICK] And the reason this matters beyond
-					convenience: because inference is now free, we can afford to run it on thousands of simulated
-					observations and check that the posteriors are actually calibrated. That is amortisation, and
-					coverage testing is what it buys — which is not a luxury when the likelihood was never written
-					down and nothing else would have caught a mis-specified one.
+					BACKUP — SBI in general; slide 41 is this paper's particular pipeline. Frame it from the
+					problem: in cosmology, for the statistics we actually care about, we do not have an accurate
+					analytical likelihood. There is no closed form for the distribution of peak counts or of the
+					l1-norm. What we do have is a simulator — we can draw from p of x given theta even though we
+					cannot evaluate it. So: stage one, and this is the physics half. Draw parameters from the prior,
+					run the forward model, keep the pair. A few hundred thousand times. This is the expensive part,
+					and it is the only expensive part. [CLICK] Stage two, the learning half. Those pairs are the
+					training set for a conditional normalizing flow — the object from the last slide, with every
+					layer conditioned on the data vector. Fit it by maximum likelihood on the pairs; the optimum of
+					that loss is the true posterior. [CLICK] Stage three. Hand the trained flow the real observation
+					and read the posterior straight off. No sampler, no likelihood evaluation, milliseconds.
+					[CLICK] And the reason this matters beyond convenience: because inference is now essentially
+					free, we can afford to run it on thousands of simulated observations and check that the
+					posteriors are actually calibrated. That is what amortisation buys — and coverage testing is not
+					a luxury when the likelihood was never written down and nothing else would catch a bad one.
 				</aside>
 			</section>
 
