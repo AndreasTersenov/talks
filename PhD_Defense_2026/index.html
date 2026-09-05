@@ -3008,6 +3008,235 @@
 				</aside>
 			</section>
 
+			<!-- ============ Classical Bayesian inference for cosmology.  First of a
+			     run of three: this one, normalizing flows, then neural SBI.  The point of the
+			     slide is not Bayes' theorem, which the room has; it is the three things that
+			     have to be TRUE for the standard route to work, because the next two slides
+			     exist precisely because they stop being true. ============ -->
+			<section class="bayes2 bayesclass" data-theme="light">
+				<h3 class="slide-title tight">The classical route rests on a likelihood you can
+					<em class="alert">write down</em></h3>
+
+				<p class="lede">
+					<b>Bayes&rsquo; rule is bookkeeping for belief.</b> What we should believe about the cosmology
+					<em>after</em> seeing the data is fixed by how well a set of parameters explains what we measured,
+					and by what we assumed <em>before</em> we looked.
+				</p>
+
+				<div class="story">
+					<div class="beat">
+						<div class="blab"><span>what we believe, <em>after</em></span></div>
+						<div class="bsym">$p(\theta \mid d)$</div>
+						<div class="bname">the posterior &mdash; the contours we publish</div>
+					</div>
+					<div class="bop rel">&prop;</div>
+					<div class="beat choice">
+						<div class="blab"><span>how well those parameters explain the data we measured</span></div>
+						<div class="bsym">$p(d \mid \theta)$</div>
+						<div class="bname">the likelihood</div>
+					</div>
+					<div class="bop">&times;</div>
+					<div class="beat">
+						<div class="blab"><span>what we assume, <em>before</em> we look</span></div>
+						<div class="bsym">$p(\theta)$</div>
+						<div class="bname">the prior &mdash; ranges on the parameters</div>
+					</div>
+				</div>
+
+				<div class="lowergrid">
+					<div class="lg-left">
+						<p class="lede carry fragment fade-in" data-fragment-index="1">
+							All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
+						</p>
+
+						<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
+							\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
+							\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
+							\big(d - m(\theta)\big)\right]$$</p>
+
+						<p class="lede carry fragment fade-in" data-fragment-index="2">
+							Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
+						</p>
+					</div>
+
+					<figure class="samplegif fragment fade-in" data-fragment-index="2">
+						<img class="plain" src="../assets/misc/mcmc_sampling.gif"
+							alt="a Metropolis-Hastings chain wandering across a correlated Gaussian target and filling in the contours">
+					</figure>
+				</div>
+
+				<aside class="notes">
+					The classical route. Bayes itself is not the content; everyone here has it. Read it as a sentence: what we believe about the cosmology after seeing the data is
+					proportional to how well those parameters explain what we measured, times what we assumed before
+					we looked. [CLICK] All the work is in the middle term, and the classical analysis assumes it is
+					Gaussian in the data vector. That needs two things: a theory prediction m of theta, which in
+					practice is a Boltzmann code plus a non-linear prescription and has to be fast because the sampler
+					will call it a million times; and a covariance matrix. Worth saying out loud that the Gaussian
+					form is a claim about the data, not a convenience — it holds when each data point averages many
+					independent modes, which is exactly a band-power of the power spectrum, and that is why the field
+					can get away with it. [CLICK] Then you sample: MCMC walks parameter space and hands back the
+					posterior. [CLICK] And that is the hinge. Both ingredients had to be written down. For peak counts
+					or the l1-norm there is no analytic prediction for the mean, and the distribution is not Gaussian
+					— it is a count statistic in the tail of a non-Gaussian field. Which is what the next two slides
+					are for.
+				</aside>
+			</section>
+
+			<!-- ============ Generative modelling.  The machine-learning framing the
+			     flow slide needs, and the one place in the talk where the room is invited to
+			     recognise something from outside cosmology.  Triptych from
+			     tools/make-genmodel-figure.py; the pop-over is a fragment laid over the whole
+			     slide rather than a panel inside it. ============ -->
+			<section class="genmodel" data-theme="light">
+				<h3 class="slide-title tight">Key concept: <em class="alert">generative modelling</em></h3>
+
+				<p class="gm-lede">Learn the distribution a training set was drawn from &mdash; when all you ever
+					see is the samples.</p>
+
+				<figure class="gm-fig">
+					<img class="plain" src="../assets/diagrams/generative_modelling.png"
+						alt="three panels: the true two-moons density, a finite set of samples drawn from it, and the density a model fits to those samples">
+				</figure>
+
+				<ul class="points gm-points">
+					<li>$\mathbb{P}$ is never handed to us. We get $X = \{x_0, x_1, \ldots, x_n\}$ and fit a
+						parametric $\mathbb{P}_\theta$ meant to sit close to it</li>
+					<li>once trained, you can <b class="alert">sample</b> from $\mathbb{P}_\theta$ &mdash; and, for
+						some models, <b class="alert">evaluate</b> the density $p_\theta(x)$</li>
+					<li class="fragment fade-in" data-fragment-index="1">it is <b>indifferent to what $x$ is</b>, which
+						is why the same machinery is behind the models everyone has been hearing about &mdash;
+						<b>faces, images, video, molecules</b></li>
+				</ul>
+
+				<div class="popover fragment fade-in" data-fragment-index="2">
+					<img src="../assets/misc/image_generation_history.jpg"
+						alt="four generated faces, from a blurred 2014 sample to a photorealistic 2017 one">
+					<p class="pop-cap">Generated faces, 2014 to 2017. The same idea &mdash; learn
+						$\mathbb{P}_\theta$, then sample it.</p>
+					<p class="pop-src">figure from Boesel &amp; Marks, <i>Image Generation Models: A Technical
+						History</i>, arXiv:2603.07455</p>
+				</div>
+
+				<aside class="notes">
+					The machine-learning framing, and the one moment in the talk that reaches outside cosmology. Generative modelling: you are handed a pile of examples and
+					you want the distribution they came from. The middle panel is all you ever actually have — a
+					finite sample. The left is the truth, which you never see, and the right is what a model believes
+					after looking at the middle one. Note it is close but not identical; that is what fitting looks
+					like. Second point, and the one that matters for us: once trained you can always draw samples from
+					it, but you cannot always evaluate its density. A GAN will happily generate a face and cannot tell
+					you how probable that face was. For inference we need the density, because the density IS the
+					posterior. [CLICK] And none of this cares what x is. [CLICK] This is the same machinery — those
+					are generated faces, four years apart, and nobody in 2014 would have believed the last one. The
+					honest reason this slide exists: the room has been hearing about these models for three years, and
+					it is worth thirty seconds to say that the thing we use for cosmological inference is the same
+					object. Then get off it.
+				</aside>
+			</section>
+
+			<!-- ============ Normalizing flows.  Second of the inference run; the
+			     SBI slide after it is just this object, conditioned on data.  Figure from
+			     tools/make-flow-figure.py. ============ -->
+			<section class="teach flowslide" data-theme="light">
+				<h3 class="slide-title tight">A normalizing flow: a simple distribution pushed through an
+					<em class="alert">invertible map</em></h3>
+
+				<figure class="ft-chain">
+					<img class="plain" src="../assets/diagrams/normflow_chain.png"
+						alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
+				</figure>
+
+				<div class="flowbody">
+					<div class="fl-left">
+						<p>Start from a unit Gaussian and learn an <b>invertible</b> map onto the distribution you
+							want. The density comes along by <b>change of variables</b>:</p>
+
+						<p class="floweq">$$\log q_\phi(x) \;=\; \log p\big(f^{-1}(x)\big) \;+\;
+							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
+
+						<ul class="points">
+							<li>each layer has a <b>triangular</b> Jacobian, so the determinant is a product down the
+								diagonal &mdash; cheap enough to train on</li>
+							<li>the result is <b>flexible</b>, you can <b>sample</b> it, and you can <b>evaluate</b>
+								its density &mdash; all three at once</li>
+						</ul>
+					</div>
+
+					<figure class="ft-gif">
+						<img class="plain" src="../assets/misc/NF_light.gif"
+							alt="samples being carried by the flow, rearranging from a Gaussian cloud into the target shape">
+						<figcaption>the samples, carried along</figcaption>
+					</figure>
+				</div>
+
+				<p class="pull fragment fade-in">
+					Condition every layer on some data $x$ and it becomes $q_\phi(\theta \mid x)$ &mdash;
+					<b class="alert">a posterior you can fit</b>, by maximum likelihood.
+				</p>
+
+				<aside class="notes">
+					Flows, and the setup for the SBI slide. The problem: we need a way to
+					represent a probability distribution that is flexible enough to be an arbitrary posterior, that we
+					can draw samples from, and whose density we can actually evaluate. Those three rarely come
+					together — a histogram is not flexible, a GAN samples but gives you no density, an MCMC chain
+					gives you samples but no normalised density either. A flow gets all three. Start from a unit
+					Gaussian, which you can sample and evaluate trivially, and push it through an invertible map. The
+					picture is exactly that: a Gaussian, bent, stretched, bent again, into something that looks
+					nothing like where it started. [CLICK] Because the map is invertible you can carry the density
+					along with it — change of variables, and the Jacobian determinant is what charges the map for the
+					volume it stretches or squeezes. [CLICK] The engineering trick is to build each layer so its
+					Jacobian is triangular: each output coordinate depends only on itself and the ones before it. Then
+					the determinant is a product down the diagonal, and what would be an n-cubed operation becomes
+					linear. [CLICK] So: flexible, samplable, and evaluable. [CLICK] You fit it by maximum likelihood
+					on samples, which is just gradient descent. And the last step is the one that matters for us:
+					condition every layer on data, and instead of one distribution you have a family — a posterior
+					you can fit. That is the next slide.
+				</aside>
+			</section>
+
+			<!-- ============ Simulation-based inference, in general.  The slide after it shows
+			     THIS paper's pipeline; this one is the method.  Three stages revealed one at a
+			     time, with the earlier ones staying lit — panels from
+			     tools/make-sbi-stages.py (a redraw of thesis F6b_stages). ============ -->
+			<section class="sbigen" data-theme="light">
+				<h3 class="slide-title tight">Simulation&#8209;based inference: <em class="alert">replace the
+					likelihood with the simulator</em></h3>
+
+				<p class="sbi-lede">We cannot write $p(x \mid \theta)$ down &mdash; but we can <b>draw from
+					it</b>. So stop evaluating a likelihood and <b>learn the posterior instead</b>.</p>
+
+				<div class="r-stack sbi-fig">
+					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
+						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
+					<img class="plain fragment" src="../assets/diagrams/sbi_build_2.png"
+						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
+					<img class="plain fragment" src="../assets/diagrams/sbi_build_3.png"
+						alt="stage three added: the trained flow evaluated at the real observation, giving a posterior">
+				</div>
+
+				<p class="pull fragment">The cost is all in stage&nbsp;1, and it is paid <b>once</b>: the trained
+					flow answers <b class="alert">any</b> new observation immediately. That is what <b>amortised</b>
+					means &mdash; and it is what makes coverage testing affordable.</p>
+
+				<aside class="notes">
+					SBI in general; the next slide is this paper's particular pipeline. Frame it from the
+					problem: in cosmology, for the statistics we actually care about, we do not have an accurate
+					analytical likelihood. There is no closed form for the distribution of peak counts or of the
+					l1-norm. What we do have is a simulator — we can draw from p of x given theta even though we
+					cannot evaluate it. So: stage one, and this is the physics half. Draw parameters from the prior,
+					run the forward model, keep the pair. A few hundred thousand times. This is the expensive part,
+					and it is the only expensive part. [CLICK] Stage two, the learning half. Those pairs are the
+					training set for a conditional normalizing flow — the object from the last slide, with every
+					layer conditioned on the data vector. Fit it by maximum likelihood on the pairs; the optimum of
+					that loss is the true posterior. [CLICK] Stage three. Hand the trained flow the real observation
+					and read the posterior straight off. No sampler, no likelihood evaluation, milliseconds.
+					[CLICK] And the reason this matters beyond convenience: because inference is now essentially
+					free, we can afford to run it on thousands of simulated observations and check that the
+					posteriors are actually calibrated. That is what amortisation buys — and coverage testing is not
+					a luxury when the likelihood was never written down and nothing else would catch a bad one.
+				</aside>
+			</section>
+
+
 			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
 			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
 				<h3 class="sbi-title">The inference pipeline: <span class="hl">neural posterior estimation</span></h3>
@@ -5453,234 +5682,7 @@
 			</section>
 
 
-			<!-- ============ BACKUP — classical Bayesian inference for cosmology.  First of a
-			     run of three: this one, normalizing flows, then neural SBI.  The point of the
-			     slide is not Bayes' theorem, which the room has; it is the three things that
-			     have to be TRUE for the standard route to work, because the next two slides
-			     exist precisely because they stop being true. ============ -->
-			<section class="bayes2 bayesclass" data-theme="light">
-				<h3 class="slide-title tight">The classical route rests on a likelihood you can
-					<em class="alert">write down</em></h3>
 
-				<p class="lede">
-					<b>Bayes&rsquo; rule is bookkeeping for belief.</b> What we should believe about the cosmology
-					<em>after</em> seeing the data is fixed by how well a set of parameters explains what we measured,
-					and by what we assumed <em>before</em> we looked.
-				</p>
-
-				<div class="story">
-					<div class="beat">
-						<div class="blab"><span>what we believe, <em>after</em></span></div>
-						<div class="bsym">$p(\theta \mid d)$</div>
-						<div class="bname">the posterior &mdash; the contours we publish</div>
-					</div>
-					<div class="bop rel">&prop;</div>
-					<div class="beat choice">
-						<div class="blab"><span>how well those parameters explain the data we measured</span></div>
-						<div class="bsym">$p(d \mid \theta)$</div>
-						<div class="bname">the likelihood</div>
-					</div>
-					<div class="bop">&times;</div>
-					<div class="beat">
-						<div class="blab"><span>what we assume, <em>before</em> we look</span></div>
-						<div class="bsym">$p(\theta)$</div>
-						<div class="bname">the prior &mdash; ranges on the parameters</div>
-					</div>
-				</div>
-
-				<div class="lowergrid">
-					<div class="lg-left">
-						<p class="lede carry fragment fade-in" data-fragment-index="1">
-							All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
-						</p>
-
-						<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
-							\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
-							\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
-							\big(d - m(\theta)\big)\right]$$</p>
-
-						<p class="lede carry fragment fade-in" data-fragment-index="2">
-							Then <b>sample it</b> &mdash; MCMC walks the parameter space and returns the posterior.
-						</p>
-					</div>
-
-					<figure class="samplegif fragment fade-in" data-fragment-index="2">
-						<img class="plain" src="../assets/misc/mcmc_sampling.gif"
-							alt="a Metropolis-Hastings chain wandering across a correlated Gaussian target and filling in the contours">
-					</figure>
-				</div>
-
-				<aside class="notes">
-					BACKUP — the classical route, only if asked. Bayes itself is not the content; everyone here has
-					it. Read it as a sentence: what we believe about the cosmology after seeing the data is
-					proportional to how well those parameters explain what we measured, times what we assumed before
-					we looked. [CLICK] All the work is in the middle term, and the classical analysis assumes it is
-					Gaussian in the data vector. That needs two things: a theory prediction m of theta, which in
-					practice is a Boltzmann code plus a non-linear prescription and has to be fast because the sampler
-					will call it a million times; and a covariance matrix. Worth saying out loud that the Gaussian
-					form is a claim about the data, not a convenience — it holds when each data point averages many
-					independent modes, which is exactly a band-power of the power spectrum, and that is why the field
-					can get away with it. [CLICK] Then you sample: MCMC walks parameter space and hands back the
-					posterior. [CLICK] And that is the hinge. Both ingredients had to be written down. For peak counts
-					or the l1-norm there is no analytic prediction for the mean, and the distribution is not Gaussian
-					— it is a count statistic in the tail of a non-Gaussian field. Which is what the next two slides
-					are for.
-				</aside>
-			</section>
-
-			<!-- ============ BACKUP — generative modelling.  The machine-learning framing the
-			     flow slide needs, and the one place in the talk where the room is invited to
-			     recognise something from outside cosmology.  Triptych from
-			     tools/make-genmodel-figure.py; the pop-over is a fragment laid over the whole
-			     slide rather than a panel inside it. ============ -->
-			<section class="genmodel" data-theme="light">
-				<h3 class="slide-title tight">Key concept: <em class="alert">generative modelling</em></h3>
-
-				<p class="gm-lede">Learn the distribution a training set was drawn from &mdash; when all you ever
-					see is the samples.</p>
-
-				<figure class="gm-fig">
-					<img class="plain" src="../assets/diagrams/generative_modelling.png"
-						alt="three panels: the true two-moons density, a finite set of samples drawn from it, and the density a model fits to those samples">
-				</figure>
-
-				<ul class="points gm-points">
-					<li>$\mathbb{P}$ is never handed to us. We get $X = \{x_0, x_1, \ldots, x_n\}$ and fit a
-						parametric $\mathbb{P}_\theta$ meant to sit close to it</li>
-					<li>once trained, you can <b class="alert">sample</b> from $\mathbb{P}_\theta$ &mdash; and, for
-						some models, <b class="alert">evaluate</b> the density $p_\theta(x)$</li>
-					<li class="fragment fade-in" data-fragment-index="1">it is <b>indifferent to what $x$ is</b>, which
-						is why the same machinery is behind the models everyone has been hearing about &mdash;
-						<b>faces, images, video, molecules</b></li>
-				</ul>
-
-				<div class="popover fragment fade-in" data-fragment-index="2">
-					<img src="../assets/misc/image_generation_history.jpg"
-						alt="four generated faces, from a blurred 2014 sample to a photorealistic 2017 one">
-					<p class="pop-cap">Generated faces, 2014 to 2017. The same idea &mdash; learn
-						$\mathbb{P}_\theta$, then sample it.</p>
-					<p class="pop-src">figure from Boesel &amp; Marks, <i>Image Generation Models: A Technical
-						History</i>, arXiv:2603.07455</p>
-				</div>
-
-				<aside class="notes">
-					BACKUP — the machine-learning framing. Generative modelling: you are handed a pile of examples and
-					you want the distribution they came from. The middle panel is all you ever actually have — a
-					finite sample. The left is the truth, which you never see, and the right is what a model believes
-					after looking at the middle one. Note it is close but not identical; that is what fitting looks
-					like. Second point, and the one that matters for us: once trained you can always draw samples from
-					it, but you cannot always evaluate its density. A GAN will happily generate a face and cannot tell
-					you how probable that face was. For inference we need the density, because the density IS the
-					posterior. [CLICK] And none of this cares what x is. [CLICK] This is the same machinery — those
-					are generated faces, four years apart, and nobody in 2014 would have believed the last one. The
-					honest reason this slide exists: the room has been hearing about these models for three years, and
-					it is worth thirty seconds to say that the thing we use for cosmological inference is the same
-					object. Then get off it.
-				</aside>
-			</section>
-
-			<!-- ============ BACKUP — normalizing flows.  Second of the inference run; the
-			     SBI slide after it is just this object, conditioned on data.  Figure from
-			     tools/make-flow-figure.py. ============ -->
-			<section class="teach flowslide" data-theme="light">
-				<h3 class="slide-title tight">A normalizing flow: a simple distribution pushed through an
-					<em class="alert">invertible map</em></h3>
-
-				<figure class="ft-chain">
-					<img class="plain" src="../assets/diagrams/normflow_chain.png"
-						alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
-				</figure>
-
-				<div class="flowbody">
-					<div class="fl-left">
-						<p>Start from a unit Gaussian and learn an <b>invertible</b> map onto the distribution you
-							want. The density comes along by <b>change of variables</b>:</p>
-
-						<p class="floweq">$$\log q_\phi(x) \;=\; \log p\big(f^{-1}(x)\big) \;+\;
-							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
-
-						<ul class="points">
-							<li>each layer has a <b>triangular</b> Jacobian, so the determinant is a product down the
-								diagonal &mdash; cheap enough to train on</li>
-							<li>the result is <b>flexible</b>, you can <b>sample</b> it, and you can <b>evaluate</b>
-								its density &mdash; all three at once</li>
-						</ul>
-					</div>
-
-					<figure class="ft-gif">
-						<img class="plain" src="../assets/misc/NF_light.gif"
-							alt="samples being carried by the flow, rearranging from a Gaussian cloud into the target shape">
-						<figcaption>the samples, carried along</figcaption>
-					</figure>
-				</div>
-
-				<p class="pull fragment fade-in">
-					Condition every layer on some data $x$ and it becomes $q_\phi(\theta \mid x)$ &mdash;
-					<b class="alert">a posterior you can fit</b>, by maximum likelihood.
-				</p>
-
-				<aside class="notes">
-					BACKUP — flows, only if asked, and the setup for the SBI answer. The problem: we need a way to
-					represent a probability distribution that is flexible enough to be an arbitrary posterior, that we
-					can draw samples from, and whose density we can actually evaluate. Those three rarely come
-					together — a histogram is not flexible, a GAN samples but gives you no density, an MCMC chain
-					gives you samples but no normalised density either. A flow gets all three. Start from a unit
-					Gaussian, which you can sample and evaluate trivially, and push it through an invertible map. The
-					picture is exactly that: a Gaussian, bent, stretched, bent again, into something that looks
-					nothing like where it started. [CLICK] Because the map is invertible you can carry the density
-					along with it — change of variables, and the Jacobian determinant is what charges the map for the
-					volume it stretches or squeezes. [CLICK] The engineering trick is to build each layer so its
-					Jacobian is triangular: each output coordinate depends only on itself and the ones before it. Then
-					the determinant is a product down the diagonal, and what would be an n-cubed operation becomes
-					linear. [CLICK] So: flexible, samplable, and evaluable. [CLICK] You fit it by maximum likelihood
-					on samples, which is just gradient descent. And the last step is the one that matters for us:
-					condition every layer on data, and instead of one distribution you have a family — a posterior
-					you can fit. That is the next slide.
-				</aside>
-			</section>
-
-			<!-- ============ BACKUP — simulation-based inference, in general.  Slide 41 shows
-			     THIS paper's pipeline; this one is the method.  Three stages revealed one at a
-			     time, with the earlier ones staying lit — panels from
-			     tools/make-sbi-stages.py (a redraw of thesis F6b_stages). ============ -->
-			<section class="sbigen" data-theme="light">
-				<h3 class="slide-title tight">Simulation&#8209;based inference: <em class="alert">replace the
-					likelihood with the simulator</em></h3>
-
-				<p class="sbi-lede">We cannot write $p(x \mid \theta)$ down &mdash; but we can <b>draw from
-					it</b>. So stop evaluating a likelihood and <b>learn the posterior instead</b>.</p>
-
-				<div class="r-stack sbi-fig">
-					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
-						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
-					<img class="plain fragment" src="../assets/diagrams/sbi_build_2.png"
-						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
-					<img class="plain fragment" src="../assets/diagrams/sbi_build_3.png"
-						alt="stage three added: the trained flow evaluated at the real observation, giving a posterior">
-				</div>
-
-				<p class="pull fragment">The cost is all in stage&nbsp;1, and it is paid <b>once</b>: the trained
-					flow answers <b class="alert">any</b> new observation immediately. That is what <b>amortised</b>
-					means &mdash; and it is what makes coverage testing affordable.</p>
-
-				<aside class="notes">
-					BACKUP — SBI in general; slide 41 is this paper's particular pipeline. Frame it from the
-					problem: in cosmology, for the statistics we actually care about, we do not have an accurate
-					analytical likelihood. There is no closed form for the distribution of peak counts or of the
-					l1-norm. What we do have is a simulator — we can draw from p of x given theta even though we
-					cannot evaluate it. So: stage one, and this is the physics half. Draw parameters from the prior,
-					run the forward model, keep the pair. A few hundred thousand times. This is the expensive part,
-					and it is the only expensive part. [CLICK] Stage two, the learning half. Those pairs are the
-					training set for a conditional normalizing flow — the object from the last slide, with every
-					layer conditioned on the data vector. Fit it by maximum likelihood on the pairs; the optimum of
-					that loss is the true posterior. [CLICK] Stage three. Hand the trained flow the real observation
-					and read the posterior straight off. No sampler, no likelihood evaluation, milliseconds.
-					[CLICK] And the reason this matters beyond convenience: because inference is now essentially
-					free, we can afford to run it on thousands of simulated observations and check that the
-					posteriors are actually calibrated. That is what amortisation buys — and coverage testing is not
-					a luxury when the likelihood was never written down and nothing else would catch a bad one.
-				</aside>
-			</section>
 
 
 			<section data-theme="light">
