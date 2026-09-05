@@ -5586,11 +5586,27 @@
 				<h3 class="slide-title tight">A normalizing flow: a simple distribution pushed through an
 					<em class="alert">invertible map</em></h3>
 
-				<div class="flowtop">
-					<figure class="ft-chain">
-						<img class="plain" src="../assets/diagrams/normflow_chain.png"
-							alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
-					</figure>
+				<figure class="ft-chain">
+					<img class="plain" src="../assets/diagrams/normflow_chain.png"
+						alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
+				</figure>
+
+				<div class="flowbody">
+					<div class="fl-left">
+						<p>Start from a unit Gaussian and learn an <b>invertible</b> map onto the distribution you
+							want. The density comes along by <b>change of variables</b>:</p>
+
+						<p class="floweq">$$\log q_\phi(x) \;=\; \log p\big(f^{-1}(x)\big) \;+\;
+							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
+
+						<ul class="points">
+							<li>each layer has a <b>triangular</b> Jacobian, so the determinant is a product down the
+								diagonal &mdash; cheap enough to train on</li>
+							<li>the result is <b>flexible</b>, you can <b>sample</b> it, and you can <b>evaluate</b>
+								its density &mdash; all three at once</li>
+						</ul>
+					</div>
+
 					<figure class="ft-gif">
 						<img class="plain" src="../assets/misc/NF_light.gif"
 							alt="samples being carried by the flow, rearranging from a Gaussian cloud into the target shape">
@@ -5598,30 +5614,9 @@
 					</figure>
 				</div>
 
-				<div class="flowbody">
-					<div class="fl-left">
-						<p>Start from something you can both <b>sample</b> and <b>evaluate</b> &mdash; a unit Gaussian
-							&mdash; and learn a map $f$ that carries it onto the distribution you want. The density
-							comes along by <b>change of variables</b>:</p>
-						<p class="floweq fragment fade-in" data-fragment-index="1">$$\log q_\phi(x) \;=\;
-							\log p\big(f^{-1}(x)\big) \;+\;
-							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
-					</div>
-					<ul class="points fl-right">
-						<li class="fragment fade-in" data-fragment-index="1">the Jacobian term is the bookkeeping: it
-							charges the map for every bit of volume it <b>stretches or squeezes</b></li>
-						<li class="fragment fade-in" data-fragment-index="2">stack many simple layers, each with a
-							<b>triangular</b> Jacobian, and the determinant is just a product down the diagonal
-							&mdash; cheap enough to train on</li>
-						<li class="fragment fade-in" data-fragment-index="3">so you get a distribution that is
-							<b>flexible</b>, that you can <b>sample</b>, and whose <b>density you can evaluate</b>
-							&mdash; all three at once, which is rare</li>
-					</ul>
-				</div>
-
-				<p class="pull fragment fade-in" data-fragment-index="4">
-					Train it by <b>maximum likelihood</b> on samples. Condition every layer on some data $x$ and it
-					becomes $q_\phi(\theta \mid x)$ &mdash; <b class="alert">a posterior you can fit</b>.
+				<p class="pull fragment fade-in">
+					Condition every layer on some data $x$ and it becomes $q_\phi(\theta \mid x)$ &mdash;
+					<b class="alert">a posterior you can fit</b>, by maximum likelihood.
 				</p>
 
 				<aside class="notes">
