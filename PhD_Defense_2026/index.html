@@ -5586,10 +5586,17 @@
 				<h3 class="slide-title tight">A normalizing flow: a simple distribution pushed through an
 					<em class="alert">invertible map</em></h3>
 
-				<figure class="tc-wide tall">
-					<img class="plain" src="../assets/diagrams/normalizing_flow.png"
-						alt="a standard Gaussian transformed in three invertible steps into a curved, crescent-shaped distribution">
-				</figure>
+				<div class="flowtop">
+					<figure class="ft-chain">
+						<img class="plain" src="../assets/diagrams/normflow_chain.png"
+							alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
+					</figure>
+					<figure class="ft-gif">
+						<img class="plain" src="../assets/misc/NF_light.gif"
+							alt="samples being carried by the flow, rearranging from a Gaussian cloud into the target shape">
+						<figcaption>the samples, carried along</figcaption>
+					</figure>
+				</div>
 
 				<div class="flowbody">
 					<div class="fl-left">

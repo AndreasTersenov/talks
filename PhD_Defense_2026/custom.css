@@ -2036,3 +2036,22 @@
 	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
 	text-align: left;
 }
+
+/* the flow slide's top band: the chain of maps at width, with the samples being
+   carried along beside it. */
+.reveal .slides section.flowslide .flowtop {
+	display: grid; grid-template-columns: 1fr 200px; gap: 0 1.6em;
+	align-items: center; max-width: 96%; margin: 1.1em auto 0;
+}
+.reveal .slides section.flowslide .flowtop figure { margin: 0; }
+.reveal .slides section.flowslide .ft-chain img {
+	width: 100%; height: auto; max-height: 26vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.flowslide .ft-gif img {
+	width: 100%; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.flowslide .ft-gif figcaption {
+	font-size: 0.42em; text-align: center; margin-top: 0.35em;
+}
