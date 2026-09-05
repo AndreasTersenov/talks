@@ -5528,11 +5528,12 @@
 				</aside>
 			</section>
 
-			<!-- ============ BACKUP — generative modelling.  Deliberately DARK: this is the
-			     machine-learning break in a talk that is otherwise on paper, and the change of
-			     ground does the framing before a word is read.  Figure from
-			     tools/make-genmodel-figure.py. ============ -->
-			<section class="genmodel">
+			<!-- ============ BACKUP — generative modelling.  The machine-learning framing the
+			     flow slide needs, and the one place in the talk where the room is invited to
+			     recognise something from outside cosmology.  Triptych from
+			     tools/make-genmodel-figure.py; the pop-over is a fragment laid over the whole
+			     slide rather than a panel inside it. ============ -->
+			<section class="genmodel" data-theme="light">
 				<h3 class="slide-title tight">Key concept: <em class="alert">generative modelling</em></h3>
 
 				<p class="gm-lede">Learn the distribution a training set was drawn from &mdash; when all you ever
@@ -5540,33 +5541,41 @@
 
 				<figure class="gm-fig">
 					<img class="plain" src="../assets/diagrams/generative_modelling.png"
-						alt="three panels: the true density, a finite set of samples drawn from it, and the density a model fits to those samples">
+						alt="three panels: the true two-moons density, a finite set of samples drawn from it, and the density a model fits to those samples">
 				</figure>
 
 				<ul class="points gm-points">
 					<li>$\mathbb{P}$ is never handed to us. We get $X = \{x_0, x_1, \ldots, x_n\}$ and fit a
 						parametric $\mathbb{P}_\theta$ meant to sit close to it</li>
-					<li>this is the machinery behind the models everyone has seen &mdash; <b>faces, images, audio,
-						molecules</b> &mdash; and it is indifferent to what $x$ actually is</li>
-					<li class="fragment fade-in">once trained, you can <b class="alert">sample</b> from
-						$\mathbb{P}_\theta$ &mdash; and, for some models, <b class="alert">evaluate</b> the density
-						$p_\theta(x)$</li>
+					<li>once trained, you can <b class="alert">sample</b> from $\mathbb{P}_\theta$ &mdash; and, for
+						some models, <b class="alert">evaluate</b> the density $p_\theta(x)$</li>
+					<li class="fragment fade-in" data-fragment-index="1">it is <b>indifferent to what $x$ is</b>, which
+						is why the same machinery is behind the models everyone has been hearing about &mdash;
+						<b>faces, images, video, molecules</b></li>
 				</ul>
 
-				<p class="pull fragment fade-in">That last distinction is the whole reason we care which generative
-					model we pick. <b>A normalizing flow gives you both.</b></p>
+				<div class="popover fragment fade-in" data-fragment-index="2">
+					<img src="../assets/misc/image_generation_history.jpg"
+						alt="four generated faces, from a blurred 2014 sample to a photorealistic 2017 one">
+					<p class="pop-cap">Generated faces, 2014 to 2017. The same idea &mdash; learn
+						$\mathbb{P}_\theta$, then sample it.</p>
+					<p class="pop-src">figure from Boesel &amp; Marks, <i>Image Generation Models: A Technical
+						History</i>, arXiv:2603.07455</p>
+				</div>
 
 				<aside class="notes">
-					BACKUP — the machine-learning framing, and a deliberate change of register: dark slide, different
-					vocabulary, a break. Generative modelling: you are handed a pile of examples and you want the
-					distribution they came from. The middle panel is all you ever actually have — a finite sample. The
-					left is the truth, which you never see, and the right is what your model believes after looking at
-					the middle one. This is the same machinery behind every generative model the room has heard of,
-					and it does not care whether x is a face, a sentence, a molecule or a convergence map. [CLICK] Now
-					the distinction that matters for us. Once you have trained one, you can always draw samples from
-					it. You cannot always evaluate its density — a GAN will happily generate a face and cannot tell
-					you how probable that face was. [CLICK] And for inference we need the density, because the density
-					IS the posterior. That is why the next slide is about flows specifically.
+					BACKUP — the machine-learning framing. Generative modelling: you are handed a pile of examples and
+					you want the distribution they came from. The middle panel is all you ever actually have — a
+					finite sample. The left is the truth, which you never see, and the right is what a model believes
+					after looking at the middle one. Note it is close but not identical; that is what fitting looks
+					like. Second point, and the one that matters for us: once trained you can always draw samples from
+					it, but you cannot always evaluate its density. A GAN will happily generate a face and cannot tell
+					you how probable that face was. For inference we need the density, because the density IS the
+					posterior. [CLICK] And none of this cares what x is. [CLICK] This is the same machinery — those
+					are generated faces, four years apart, and nobody in 2014 would have believed the last one. The
+					honest reason this slide exists: the room has been hearing about these models for three years, and
+					it is worth thirty seconds to say that the thing we use for cosmological inference is the same
+					object. Then get off it.
 				</aside>
 			</section>
 

@@ -2011,3 +2011,24 @@
 	margin: 0.5em 0 0; font-size: 0.62em; line-height: 1.5; color: var(--fg);
 }
 .reveal .slides section.sbigen .pull { max-width: 94%; margin-top: 1.2em; }
+
+/* the pop-over: a fragment laid over the whole slide, not a panel inside it —
+   it is a thirty-second aside, and it should feel like one. */
+.reveal .slides section.genmodel { position: relative; }
+.reveal .slides section.genmodel .popover {
+	position: absolute; inset: -2% -1%; z-index: 30;
+	display: flex; flex-direction: column; align-items: center; justify-content: center;
+	background: var(--bg);
+}
+.reveal .slides section.genmodel .popover img {
+	width: 82%; max-width: 82%; height: auto; margin: 0;
+	border: 1px solid var(--edge); border-radius: 6px; box-shadow: var(--shadow);
+	background: transparent;
+}
+.reveal .slides section.genmodel .pop-cap {
+	margin: 1.1em 0 0; font-size: 0.72em; line-height: 1.4; color: var(--fg);
+}
+.reveal .slides section.genmodel .pop-src {
+	margin: 0.5em 0 0; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.44em; color: var(--fg-muted);
+}
