@@ -5528,6 +5528,48 @@
 				</aside>
 			</section>
 
+			<!-- ============ BACKUP — generative modelling.  Deliberately DARK: this is the
+			     machine-learning break in a talk that is otherwise on paper, and the change of
+			     ground does the framing before a word is read.  Figure from
+			     tools/make-genmodel-figure.py. ============ -->
+			<section class="genmodel">
+				<h3 class="slide-title tight">Key concept: <em class="alert">generative modelling</em></h3>
+
+				<p class="gm-lede">Learn the distribution a training set was drawn from &mdash; when all you ever
+					see is the samples.</p>
+
+				<figure class="gm-fig">
+					<img class="plain" src="../assets/diagrams/generative_modelling.png"
+						alt="three panels: the true density, a finite set of samples drawn from it, and the density a model fits to those samples">
+				</figure>
+
+				<ul class="points gm-points">
+					<li>$\mathbb{P}$ is never handed to us. We get $X = \{x_0, x_1, \ldots, x_n\}$ and fit a
+						parametric $\mathbb{P}_\theta$ meant to sit close to it</li>
+					<li>this is the machinery behind the models everyone has seen &mdash; <b>faces, images, audio,
+						molecules</b> &mdash; and it is indifferent to what $x$ actually is</li>
+					<li class="fragment fade-in">once trained, you can <b class="alert">sample</b> from
+						$\mathbb{P}_\theta$ &mdash; and, for some models, <b class="alert">evaluate</b> the density
+						$p_\theta(x)$</li>
+				</ul>
+
+				<p class="pull fragment fade-in">That last distinction is the whole reason we care which generative
+					model we pick. <b>A normalizing flow gives you both.</b></p>
+
+				<aside class="notes">
+					BACKUP — the machine-learning framing, and a deliberate change of register: dark slide, different
+					vocabulary, a break. Generative modelling: you are handed a pile of examples and you want the
+					distribution they came from. The middle panel is all you ever actually have — a finite sample. The
+					left is the truth, which you never see, and the right is what your model believes after looking at
+					the middle one. This is the same machinery behind every generative model the room has heard of,
+					and it does not care whether x is a face, a sentence, a molecule or a convergence map. [CLICK] Now
+					the distinction that matters for us. Once you have trained one, you can always draw samples from
+					it. You cannot always evaluate its density — a GAN will happily generate a face and cannot tell
+					you how probable that face was. [CLICK] And for inference we need the density, because the density
+					IS the posterior. That is why the next slide is about flows specifically.
+				</aside>
+			</section>
+
 			<!-- ============ BACKUP — normalizing flows.  Second of the inference run; the
 			     SBI slide after it is just this object, conditioned on data.  Figure from
 			     tools/make-flow-figure.py. ============ -->

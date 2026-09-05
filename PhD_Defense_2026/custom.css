@@ -1966,3 +1966,21 @@
 .reveal .slides section.flowslide .points.fl-right { margin: 0; font-size: 0.72em; }
 .reveal .slides section.flowslide .tc-wide.tall img { max-height: 30vh; }
 .reveal .slides section.flowslide .pull { margin-top: 1.1em; }
+
+/* ---------------------------------------------------------------------------
+   GENERATIVE MODELLING — the dark slide in a light deck.  It carries the ML
+   framing before the flow slide, and the change of ground is the point.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.genmodel .gm-lede {
+	max-width: 92%; margin: 0.7em auto 0; text-align: left;
+	font-size: 0.8em; line-height: 1.45; color: var(--fg);
+}
+.reveal .slides section.genmodel .gm-fig { margin: 1.1em auto 0; max-width: 88%; }
+.reveal .slides section.genmodel .gm-fig img {
+	width: 100%; height: auto; max-height: 34vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.genmodel .points.gm-points {
+	max-width: 92%; margin: 1.2em auto 0; font-size: 0.74em;
+}
+.reveal .slides section.genmodel .pull { max-width: 92%; margin-top: 1.1em; }
