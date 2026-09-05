@@ -60,12 +60,33 @@ def draw(upto):
                                      linestyle=ls, shrinkA=0, shrinkB=0,
                                      joinstyle="miter"))
 
-    def blob(cx, cy, sx, sy, seed):
-        t = np.linspace(0, 2 * np.pi, 400)
-        r = 1 + 0.28 * np.sin(3 * t + seed) + 0.15 * np.cos(2 * t - seed)
-        for sc, a in zip((1.6, 1.1, 0.6), (0.18, 0.34, 0.85)):
-            ax.fill(cx + sc * sx * r * np.cos(t), cy + sc * sy * r * np.sin(t),
-                    color=ACCENT, alpha=a, lw=0)
+    def blob(cx, cy):
+        """A posterior drawn as contours of an actual mixture, not as one outline
+        scaled three times — nested copies of a single shape are the tell that a
+        blob was drawn rather than computed, and real credible regions change
+        shape as they tighten."""
+        gx, gy = np.meshgrid(np.linspace(cx - 13, cx + 13, 420),
+                             np.linspace(cy - 11, cy + 11, 420))
+        K = 1.4                                   # overall size of the credible region
+        comps = [((-1.9,  0.9), (3.4, 1.5), -0.62, 1.00),
+                 (( 1.2, -0.3), (2.1, 2.2),  0.35, 0.86),
+                 (( 2.8,  1.6), (1.6, 1.0),  1.15, 0.42),
+                 ((-0.6, -1.6), (1.4, 0.9), -0.20, 0.34)]
+        comps = [((mx * K, my * K), (sa * K, sb * K), ang, w)
+                 for (mx, my), (sa, sb), ang, w in comps]
+        d = np.zeros_like(gx)
+        for (mx, my), (sa, sb), ang, w in comps:
+            ca, sa_ = np.cos(ang), np.sin(ang)
+            dx, dy = gx - (cx + mx), gy - (cy + my)
+            u = ca * dx + sa_ * dy
+            v = -sa_ * dx + ca * dy
+            d += w * np.exp(-0.5 * ((u / sa) ** 2 + (v / sb) ** 2))
+        d /= d.max()
+        # contourf cannot take per-level alpha, so each band is filled separately,
+        # outermost first — a single call with alpha would paint one flat shape.
+        for lo, a in ((0.10, 0.18), (0.30, 0.34), (0.60, 0.85)):
+            ax.contourf(gx, gy, d, levels=[lo, 1.001], colors=[ACCENT],
+                        alpha=a, zorder=2)
 
     # the tinted regions, one per stage revealed so far
     for k, (x0, x1, col, alpha) in enumerate(PANELS[:upto], start=1):
@@ -139,7 +160,7 @@ def draw(upto):
         arrow(84, 41.6, 84, 36.5)
         arrow(68.5, 30, 74.0, 30, color=WARM)
         ax.text(71.3, 32.2, "trained", ha="center", fontsize=10.5, color=WARM)
-        blob(84, 27, 6.2, 4.6, seed=0.6)
+        blob(84.5, 29.0)
         ax.text(84, 14.5, "posterior estimate", ha="center", fontsize=12, color=INK)
         ax.text(84, 10.3, r"$q_\phi(\theta \mid x_{\rm obs})$", ha="center",
                 fontsize=13, color=ACCENT)
