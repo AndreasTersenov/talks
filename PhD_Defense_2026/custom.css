@@ -2049,3 +2049,25 @@
 .reveal .slides section.flowslide .ft-gif figcaption {
 	font-size: 0.44em; text-align: center; margin-top: 0.3em;
 }
+
+/* the three causes, beside the fan rather than under it as prose */
+.reveal .slides section.invprob .points.ip-points {
+	margin: 0; padding-left: 1.6em; font-size: 0.68em; align-self: center;
+	border-left: 1px solid var(--edge);
+}
+.reveal .slides section.invprob .points.ip-points li { margin-top: 0.55em; }
+.reveal .slides section.invprob .points.ip-points li:first-child { margin-top: 0; }
+
+/* slide 9 keeps only the relation, so it is three lines under the figure — not a
+   lone card stranded in half a two-column grid. */
+.reveal .slides section.kgrel .points.kgpoints {
+	max-width: 62%; margin: 1.2em auto 0; font-size: 0.8em;
+}
+
+/* with the top lane gone, the surviving row can take the space it left */
+.reveal .slides section.invprob .ip-cell img { width: 152px; height: 152px; }
+.reveal .slides section.invprob .ip-fan { width: 262px; height: 196px; }
+.reveal .slides section.invprob .ip-card { width: 152px; height: 152px; }
+.reveal .slides section.invprob .ip-card.c1 { left: 0;   top: 20px; }
+.reveal .slides section.invprob .ip-card.c2 { left: 58px; top: 10px; }
+.reveal .slides section.invprob .ip-card.c3 { left: 116px; top: 0; }

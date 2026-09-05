@@ -476,43 +476,26 @@
 			     Figure is the `_light` sibling — black labels instead of white.
 			============================================================================== -->
 			<section class="kgrel" data-theme="light">
-				<h3 class="slide-title tight">In theory the inversion is <em class="alert">exact</em>. In practice it is
-					<em class="alert">ill-posed</em>.</h3>
+				<h3 class="slide-title tight">One potential, two observables &mdash; and the relation between them is
+					<em class="alert">exact</em></h3>
 
 				<figure class="kgfig">
 					<img src="../assets/diagrams/Relation_btw_kappa_and_gamma_light.png"
 						alt="a shear map and a mass map, each linked to the lensing potential in the middle by a pair of second-derivative relations">
 				</figure>
 
-				<div class="kgcols">
-					<div class="block lecture">
-						<div class="block-title">The relation</div>
-						<div class="block-content">
-							<ul>
-								<li>$\gamma_i = \hat{P}_i\,\kappa$ &mdash; mass to shapes</li>
-								<li>$\kappa = \hat{P}_1\gamma_1 + \hat{P}_2\gamma_2$ &mdash; shapes to mass</li>
-								<li>linear, and exact on a complete noiseless field</li>
-							</ul>
-						</div>
-					</div>
-					<div class="block lecture fragment fade-in" data-fragment-index="1">
-						<div class="block-title">What breaks it</div>
-						<div class="block-content">
-							<ul>
-								<li>shape noise</li>
-								<li>masks, irregular sampling</li>
-								<li>the mass-sheet degeneracy</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				<ul class="points kgpoints">
+					<li>$\gamma_i = \hat{P}_i\,\kappa$ &mdash; mass to shear</li>
+					<li>$\kappa = \hat{P}_1\gamma_1 + \hat{P}_2\gamma_2$ &mdash; shear back to mass</li>
+					<li><b>linear</b>, and <b>exact</b> on a complete noiseless field</li>
+				</ul>
 
 				<aside class="notes">
-					One potential, two observables. Both shear and convergence are second derivatives of it, so
-					in Fourier space the relation inverts in a single line — that is Kaiser-Squires, and on a
-					complete noiseless field it is exact. [CLICK] Then the real data: shape noise on every
-					galaxy, holes where there are no galaxies to measure, and the k=0 mode nobody can constrain.
-					The inversion stops being a calculation and becomes a choice.
+					One potential, two observables. Both the shear and the convergence are second derivatives of the
+					same lensing potential, which is why they are not independent — and why, in Fourier space, the
+					relation inverts in a single line. That inverse is Kaiser-Squires, and on a complete noiseless
+					field it is exact. So there is a way across, and it is not an approximation. Leave it there:
+					what the real data do to that inversion is the next chapter, not this slide.
 				</aside>
 			</section>
 
@@ -756,34 +739,10 @@
 			     reconstructions of the same shear, which is exactly the claim being made.
 			============================================================================== -->
 			<section class="invprob" data-theme="light">
-				<h3 class="slide-title tight">On paper the inversion is <em class="alert">exact</em>. What breaks it
-					is the <em class="alert">data</em>.</h3>
+				<h3 class="slide-title tight">The operator inverts. <em class="alert">The data do not.</em></h3>
 
-				<div class="ip-lane">
-					<span class="ip-tag">on paper &mdash; a known linear operator</span>
-					<div class="ip-row">
-						<figure class="ip-cell">
-							<img src="../assets/figures/maps/kappa_denoised_thumb.png"
-								alt="a patch of a convergence map">
-							<figcaption>the matter, $\kappa$</figcaption>
-						</figure>
-						<div class="ip-arrow">
-							<span class="ip-op">$\gamma = \mathbf{P}\,\kappa$</span>
-							<span class="ip-shaft"></span>
-						</div>
-						<figure class="ip-cell">
-							<img src="../assets/figures/maps/shear_field_thumb.png"
-								alt="the shear field that matter produces">
-							<figcaption>the shear, $\gamma$</figcaption>
-						</figure>
-						<p class="ip-verdict">$\mathbf{P}$ is known exactly, and on a complete, noiseless field it
-							<b>inverts exactly</b> &mdash; that inverse is Kaiser&ndash;Squires. The direction is not
-							the difficulty.</p>
-					</div>
-				</div>
-
-				<div class="ip-lane inv fragment fade-in" data-fragment-index="1">
-					<span class="ip-tag">in practice &mdash; we never observe $\gamma$</span>
+				<div class="ip-lane inv">
+					<span class="ip-tag">what we actually hand the inversion</span>
 					<div class="ip-row">
 						<figure class="ip-cell">
 							<img src="../assets/figures/maps/shear_field_thumb.png" alt="the measured shear field">
@@ -794,47 +753,47 @@
 							<span class="ip-shaft"></span>
 						</div>
 						<div class="ip-fan">
-							<!-- Three ACTUALLY different reconstructions of the same field, cropped from
-							     Front to back: the truth (sharpest, so it leads), a noise-dominated
-							     reconstruction, then a heavily smoothed one. Chosen for MAXIMUM visible
-							     spread — sharp / noisy / smooth is the argument, since the room has to see
-							     at a glance that these are very different maps. All at full brightness, no
-							     filters; they differ for real. -->
+							<!-- Three ACTUALLY different reconstructions of the same field. Front to back:
+							     the truth (sharpest, so it leads), a noise-dominated reconstruction, then a
+							     heavily smoothed one. Chosen for MAXIMUM visible spread — sharp / noisy /
+							     smooth is the argument, since the room has to see at a glance that these are
+							     very different maps. All at full brightness, no filters; they differ for real. -->
 							<div class="ip-card c3"><img src="../assets/figures/maps/kappa_cand_gauss.png"
 									alt="a smooth, heavily denoised convergence map"></div>
 							<div class="ip-card c2"><img src="../assets/figures/maps/kappa_cand_noisy.png"
 									alt="a noise-dominated convergence map"></div>
 							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png"
-									alt="one of many convergence maps consistent with the measured shear"></div>
+									alt="one of many convergence maps consistent with the measurement"></div>
 							<span class="ip-fancap">all fit the measurement</span>
 						</div>
-						<p class="ip-verdict">Every galaxy&rsquo;s own shape swamps the signal, the footprint has
-							holes, and the mean level is unconstrained. Many $\kappa$ fit <b class="alert">this</b>
-							data equally well.</p>
+						<ul class="points ip-points">
+							<li><b>shape noise</b> on every galaxy</li>
+							<li><b>masks</b> and irregular sampling</li>
+							<li>the <b>mass&#8209;sheet degeneracy</b></li>
+						</ul>
 					</div>
 				</div>
 
-				<div class="takeaway fragment fade-in" data-fragment-index="2">
+				<div class="takeaway fragment fade-in">
 					<span class="label">so a reconstruction is never just a calculation</span>
-					To choose among them you have to <b>add</b> something &mdash; a statement about what a plausible
-					mass
-					map looks like. That assumption <b class="alert">is</b> the method, and it is the one thing Part 1
-					varies.
+					Choosing one map means <b>adding an assumption</b> &mdash; and that assumption
+					<b class="alert">is</b> the method.
 				</div>
 
 				<aside class="notes">
-					Before the methods, the shape of the problem — and I want to be precise about it, because the
-					obvious framing is wrong. Convergence to shear is a known linear operator. And it is invertible:
-					on a complete, noiseless field you can go back exactly, and that exact inverse is Kaiser-Squires.
-					So the difficulty is NOT that we are going the awkward way round. [CLICK] The difficulty is that we
-					never get to invert gamma. We never observe gamma. What we observe is an estimate of it, from a
-					finite number of galaxies whose own intrinsic shapes are far larger than the signal, on a footprint
-					full of holes, and with an overall additive level that no shear measurement can constrain. Invert
-					THAT and the noise blows up at small scales, the masked regions are unconstrained, and a whole
-					family of maps reproduce the data equally well. [CLICK] So you cannot simply invert. To choose
-					among those maps you have to add an assumption — and that assumption is not a technicality, it IS
-					the method. Everything in this chapter is a different answer to one question: what do you assume
-					about kappa?
+					I want to be precise here, because the obvious framing is wrong. We just saw that the relation
+					between shear and convergence is exact and inverts in one line — so the difficulty is NOT that we
+					are going the awkward way round. The difficulty is that we never get to invert gamma, because we
+					never observe gamma. Three things stand between us and it. Shape noise: every galaxy has its own
+					intrinsic ellipticity, far larger than the shear we are after, so the shear estimate at any one
+					place is mostly noise, and the inversion amplifies it at small scales. Masks: the operator is
+					non-local — it mixes Fourier modes — so a hole in the footprint leaves whole modes that the data
+					say nothing about. And the mass-sheet degeneracy: shear is blind to a constant added to kappa, so
+					the overall level is simply not measurable. Put those together and you get this: a family of maps,
+					visibly different — one sharp, one noise-dominated, one heavily smoothed — every one of which fits
+					the measurement. [CLICK] So you cannot simply invert. Choosing one means adding an assumption, and
+					that assumption is not a technicality, it IS the method. Everything in this chapter is a different
+					answer to one question: what do you assume about kappa?
 				</aside>
 			</section>
 
