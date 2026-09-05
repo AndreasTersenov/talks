@@ -756,11 +756,11 @@
 			     reconstructions of the same shear, which is exactly the claim being made.
 			============================================================================== -->
 			<section class="invprob" data-theme="light">
-				<h3 class="slide-title tight">The forward direction has <em class="alert">one answer</em>. The inverse
-					direction has <em class="alert">many</em>.</h3>
+				<h3 class="slide-title tight">On paper the inversion is <em class="alert">exact</em>. What breaks it
+					is the <em class="alert">data</em>.</h3>
 
 				<div class="ip-lane">
-					<span class="ip-tag">forward &mdash; the physics</span>
+					<span class="ip-tag">on paper &mdash; a known linear operator</span>
 					<div class="ip-row">
 						<figure class="ip-cell">
 							<img src="../assets/figures/maps/kappa_denoised_thumb.png"
@@ -774,19 +774,20 @@
 						<figure class="ip-cell">
 							<img src="../assets/figures/maps/shear_field_thumb.png"
 								alt="the shear field that matter produces">
-							<figcaption>the shapes, $\gamma$</figcaption>
+							<figcaption>the shear, $\gamma$</figcaption>
 						</figure>
-						<p class="ip-verdict">Give me the matter and I can compute the shapes <b>exactly</b>.
-							One calculation, one answer.</p>
+						<p class="ip-verdict">$\mathbf{P}$ is known exactly, and on a complete, noiseless field it
+							<b>inverts exactly</b> &mdash; that inverse is Kaiser&ndash;Squires. The direction is not
+							the difficulty.</p>
 					</div>
 				</div>
 
 				<div class="ip-lane inv fragment fade-in" data-fragment-index="1">
-					<span class="ip-tag">inverse &mdash; what we actually face</span>
+					<span class="ip-tag">in practice &mdash; we never observe $\gamma$</span>
 					<div class="ip-row">
 						<figure class="ip-cell">
 							<img src="../assets/figures/maps/shear_field_thumb.png" alt="the measured shear field">
-							<figcaption>what we measure</figcaption>
+							<figcaption>noisy, masked, sampled at galaxies</figcaption>
 						</figure>
 						<div class="ip-arrow">
 							<span class="ip-op">$\kappa = \;?$</span>
@@ -805,10 +806,11 @@
 									alt="a noise-dominated convergence map"></div>
 							<div class="ip-card c1"><img src="../assets/figures/maps/kappa_cand_truth.png"
 									alt="one of many convergence maps consistent with the measured shear"></div>
-							<span class="ip-fancap">all reproduce the same shear</span>
+							<span class="ip-fancap">all fit the measurement</span>
 						</div>
-						<p class="ip-verdict">Shape noise on every galaxy, holes where the survey has none, and an
-							overall level nobody constrains. The data <b class="alert">do not pick one</b>.</p>
+						<p class="ip-verdict">Every galaxy&rsquo;s own shape swamps the signal, the footprint has
+							holes, and the mean level is unconstrained. Many $\kappa$ fit <b class="alert">this</b>
+							data equally well.</p>
 					</div>
 				</div>
 
@@ -821,13 +823,18 @@
 				</div>
 
 				<aside class="notes">
-					Before the methods, the shape of the problem. One direction is easy: give me the matter distribution
-					and I can compute exactly what shapes you would observe. Deterministic, one answer. [CLICK] We need
-					the other direction — we observe the shapes and we want the matter. That is an inverse problem, and
-					this one is ill-posed: the data do not determine the answer. Many different mass maps are consistent
-					with the same observed shear. [CLICK] So you cannot simply invert. To choose among those maps you
-					have to add an assumption — and that assumption is not a technicality, it IS the method. Everything
-					in this chapter is a different answer to one question: what do you assume about kappa?
+					Before the methods, the shape of the problem — and I want to be precise about it, because the
+					obvious framing is wrong. Convergence to shear is a known linear operator. And it is invertible:
+					on a complete, noiseless field you can go back exactly, and that exact inverse is Kaiser-Squires.
+					So the difficulty is NOT that we are going the awkward way round. [CLICK] The difficulty is that we
+					never get to invert gamma. We never observe gamma. What we observe is an estimate of it, from a
+					finite number of galaxies whose own intrinsic shapes are far larger than the signal, on a footprint
+					full of holes, and with an overall additive level that no shear measurement can constrain. Invert
+					THAT and the noise blows up at small scales, the masked regions are unconstrained, and a whole
+					family of maps reproduce the data equally well. [CLICK] So you cannot simply invert. To choose
+					among those maps you have to add an assumption — and that assumption is not a technicality, it IS
+					the method. Everything in this chapter is a different answer to one question: what do you assume
+					about kappa?
 				</aside>
 			</section>
 
