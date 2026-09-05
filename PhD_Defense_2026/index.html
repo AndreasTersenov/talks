@@ -881,6 +881,78 @@
 			<section>
 
 				<!-- =============================================================================
+				     A1.5 — the methods, WITHOUT Bayes.  2026-09-05 (Andreas): Bayes is held back
+				     for the cosmological-inference run later, and — more to the point — reading
+				     mass mapping as Bayesian inference is a retrospective interpretation.  Wiener
+				     filtering and sparse recovery were built as OPTIMISATION problems, not as
+				     posteriors, so the variational form is the honest frame.  Terminology and the
+				     method list follow the PnPMass paper, §2.2 (data fidelity + handcrafted
+				     regularisation; Bobin+2012, Lanusse+2016, Starck+2021).
+				     The Bayesian version is the vertical directly below, kept.
+				============================================================================== -->
+				<section class="bayes2 mmopt" data-theme="light">
+					<h3 class="slide-title tight">Every method solves the <em class="alert">same optimisation</em>
+						&mdash; they differ in <em class="alert">one term</em></h3>
+
+					<p class="lede">
+						A reconstruction is a <b>fit</b>, not an inversion: find the map that reproduces the measured
+						shear <em>and</em> is not absurd. Every method below writes that same problem.
+					</p>
+
+					<p class="mmeq">$$\hat{\kappa} \;\in\; \arg\min_{\kappa}\;
+						\underbrace{\mathcal{D}_\gamma\big(\mathbf{P}\kappa\big)}_{\text{does it reproduce the data?}}
+						\;+\;
+						\underbrace{\mathcal{R}(\kappa)}_{\text{is it a plausible map?}}$$</p>
+
+					<div class="choices mmchoices">
+						<div class="ch">
+							<span class="n">1</span><span class="cn">Kaiser&ndash;Squires</span>
+							<span class="ca">no $\mathcal{R}$ at all &mdash; invert, then <b>smooth</b></span>
+						</div>
+						<div class="ch fragment fade-in" data-fragment-index="1">
+							<span class="n">2</span><span class="cn">Wiener filtering</span>
+							<span class="ca">an $\ell_2$ penalty set by a <b>fixed power spectrum</b></span>
+						</div>
+						<div class="ch fragment fade-in" data-fragment-index="2">
+							<span class="n">3</span><span class="cn">sparse recovery</span>
+							<span class="ca">an $\ell_1$ penalty on <b>wavelet</b> coefficients</span>
+						</div>
+						<div class="ch fragment fade-in" data-fragment-index="3">
+							<span class="n">4</span><span class="cn">MCALens</span>
+							<span class="ca">two penalties, one per component: <b>Gaussian + sparse</b></span>
+						</div>
+						<div class="ch learned fragment fade-in" data-fragment-index="4">
+							<span class="n">5</span><span class="cn">deep learning</span>
+							<span class="ca">stop handcrafting $\mathcal{R}$ &mdash; <b>learn</b> it from simulations</span>
+						</div>
+					</div>
+
+					<p class="mmsrc">Kaiser &amp; Squires 1993, Bobin et al. 2012, Lanusse et al. 2016,
+						Starck et al. 2021, Jeffrey et al. 2020, Remy et al. 2023</p>
+
+					<aside class="notes">
+						The frame first, and it is deliberately NOT Bayesian — that comes later, when we infer
+						cosmological parameters. A reconstruction is a fit. You are looking for the map that does two
+						things at once: reproduces the shear you measured, which is the first term, and is not absurd,
+						which is the second. Every method on this slide writes exactly that problem. The first term is
+						the same for all of them — it is just the forward model we already have. So the entire history
+						of mass mapping is a history of the second term. [CLICK] Kaiser-Squires has no second term at
+						all: apply the exact inverse and smooth, and the smoothing is the only thing holding the noise
+						down. [CLICK] Wiener puts an l2 penalty on it, set by a power spectrum you fix in advance — in
+						effect, assume the field is Gaussian. [CLICK] Sparse recovery penalises the l1 norm of the
+						wavelet coefficients instead: most coefficients should be zero, a few should be large, which is
+						what a field of peaks actually looks like. [CLICK] MCALens says you do not have to choose —
+						split the map into a Gaussian part and a sparse part and penalise each one the way it deserves.
+						[CLICK] And then deep learning stops handcrafting the term altogether and learns it from
+						simulations. That is Part 2.
+						FLAG, if pressed (Starck): yes, several of these have a Bayesian reading — the l2 penalty is a
+						Gaussian prior, the l1 is a Laplace prior, and the whole thing is a MAP estimate. I have the
+						slide underneath if it comes up. But Wiener filtering and sparse recovery were developed as
+						optimisation problems, and I would rather present them as their authors did.
+					</aside>
+				</section>
+
+				<!-- =============================================================================
 				     A1.4 — VARIANT B, 2026-09-02.  Same content as the slide below it, laid
 				     out as a sentence rather than a table.
 				       · the terms run in STORY order — assume, weigh, believe — which is how

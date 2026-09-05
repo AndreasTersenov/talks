@@ -2100,3 +2100,21 @@
 }
 .reveal .slides section.invprob .points.ip-points li { margin: 0; }
 .reveal .slides section.invprob .pull { max-width: 94%; margin-top: 1.1em; }
+
+/* ---------------------------------------------------------------------------
+   THE METHODS, AS OPTIMISATION — 2026-09-05.  Borrows .bayes2's .choices ladder
+   but the ladder now runs over the regulariser, not over the prior.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.mmopt .mmeq { margin: 1.2em auto 0.2em; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 0.98em; }
+.reveal .slides section.mmopt .choices.mmchoices {
+	grid-template-columns: repeat(5, 1fr); margin-top: 1.4em;
+}
+.reveal .slides section.mmopt .choices.mmchoices .ch { padding: 0 0.85em; }
+.reveal .slides section.mmopt .choices.mmchoices .cn { font-size: 0.62em; }
+.reveal .slides section.mmopt .choices.mmchoices .ca { font-size: 0.55em; line-height: 1.4; }
+.reveal .slides section.mmopt .mmsrc {
+	margin: 1.5em auto 0; max-width: 92%;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.42em; color: var(--fg-muted);
+}
