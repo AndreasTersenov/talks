@@ -895,8 +895,7 @@
 						&mdash; they differ in <em class="alert">one term</em></h3>
 
 					<p class="lede">
-						Since the data alone do not pick a map, every method after Kaiser&ndash;Squires solves the same
-						problem: find the $\kappa$ that stays <b>consistent with the measured shear</b> while remaining
+						Find the $\kappa$ that stays <b>consistent with the measured shear</b> while remaining
 						<b>physically plausible</b>.
 					</p>
 
@@ -905,32 +904,34 @@
 						\;+\; \lambda\,
 						\underbrace{\mathcal{R}(\kappa)}_{\text{regulariser: is it a plausible map?}}$$</p>
 
-					<p class="mmgloss">$\mathbf{N}$ is the per&#8209;pixel noise covariance, and $\lambda$ sets how far
-						you trust the data against the prior. The first term is the <b>same for everyone</b> &mdash;
-						it is just the forward model. All the difference is in $\mathcal{R}$.</p>
+					<ul class="points dots mmgloss">
+						<li>$\mathbf{N}$ &mdash; per&#8209;pixel noise covariance</li>
+						<li>$\lambda$ &mdash; data against prior</li>
+						<li>first term <b>identical</b> for all &mdash; the difference is $\mathcal{R}$</li>
+					</ul>
 
-					<p class="kicker mmkick">the regulariser $\mathcal{R}$ &mdash; what each method assumes a mass map looks like</p>
+					<p class="kicker mmkick">$\mathcal{R}$ &mdash; what each method assumes a mass map looks like</p>
 
 					<div class="choices mmchoices">
 						<div class="ch">
 							<span class="n">1</span><span class="cn">Kaiser&ndash;Squires</span>
-							<span class="ca">no $\mathcal{R}$ at all &mdash; invert, then <b>smooth</b> the noise away</span>
+							<span class="ca">no $\mathcal{R}$ &mdash; invert, then <b>smooth</b></span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="1">
 							<span class="n">2</span><span class="cn">Wiener filtering</span>
-							<span class="ca">the map is a <b>Gaussian field</b> with a known power spectrum</span>
+							<span class="ca">a <b>Gaussian field</b>, known power spectrum</span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="2">
 							<span class="n">3</span><span class="cn">sparse recovery</span>
-							<span class="ca">the map is mostly <b>empty</b>: a few strong wavelet coefficients, the rest near zero</span>
+							<span class="ca">mostly <b>empty</b> &mdash; a few strong wavelet coefficients</span>
 						</div>
 						<div class="ch fragment fade-in" data-fragment-index="3">
 							<span class="n">4</span><span class="cn">MCALens</span>
-							<span class="ca">it is <b>both</b> &mdash; a smooth background with sparse peaks on top</span>
+							<span class="ca"><b>both</b> &mdash; smooth background, sparse peaks on top</span>
 						</div>
 						<div class="ch learned fragment fade-in" data-fragment-index="4">
 							<span class="n">5</span><span class="cn">deep learning</span>
-							<span class="ca">stop assuming &mdash; <b>learn</b> what a plausible map looks like, from simulations</span>
+							<span class="ca">stop assuming &mdash; <b>learn</b> it from simulations</span>
 						</div>
 					</div>
 
