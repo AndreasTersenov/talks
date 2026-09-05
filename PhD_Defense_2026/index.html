@@ -5650,32 +5650,13 @@
 				<p class="sbi-lede">We cannot write $p(x \mid \theta)$ down &mdash; but we can <b>draw from
 					it</b>. So stop evaluating a likelihood and <b>learn the posterior instead</b>.</p>
 
-				<div class="sbistages">
-					<div class="sbi-col fragment fade-in">
-						<p class="kicker">1 &mdash; simulate</p>
-						<figure><img class="plain" src="../assets/diagrams/sbi_1_simulate.png"
-							alt="a parameter drawn from the prior, pushed through a simulator, producing simulated data"></figure>
-						<p>Draw $\theta$ from the prior, run the forward model, keep the pair. Repeat until you have
-							enough of them.</p>
-					</div>
-					<div class="sbi-col fragment fade-in">
-						<p class="kicker">2 &mdash; learn</p>
-						<figure><img class="plain" src="../assets/diagrams/sbi_2_learn.png"
-							alt="a conditional normalizing flow trained on the parameter-data pairs"></figure>
-						<p>Train a <b>conditional flow</b> on those pairs &mdash; the object from the last slide, now
-							conditioned on the data.</p>
-					</div>
-					<div class="sbi-col fragment fade-in">
-						<p class="kicker">3 &mdash; infer</p>
-						<figure><img class="plain" src="../assets/diagrams/sbi_3_infer.png"
-							alt="the trained flow evaluated at the observed data, giving a posterior"></figure>
-						<p>Evaluate at the <b>real</b> observation. No sampler, no likelihood call &mdash; the
-							posterior comes straight out.</p>
-					</div>
-				</div>
+				<figure class="sbi-fig">
+					<img class="plain" src="../assets/diagrams/sbi_pipeline_general.png"
+						alt="the full simulation-based-inference pipeline: parameters drawn from the prior and pushed through a simulator to make data, the pairs training a conditional flow, and the trained flow evaluated at the real observation to give a posterior">
+				</figure>
 
-				<p class="pull fragment fade-in">The cost is all in stage&nbsp;1, and it is paid <b>once</b>:
-					the trained flow answers <b class="alert">any</b> new observation immediately. That is what
+				<p class="pull fragment fade-in">The cost is all in stage&nbsp;1, and it is paid <b>once</b>: the
+					trained flow answers <b class="alert">any</b> new observation immediately. That is what
 					<b>amortised</b> means &mdash; and it is what makes coverage testing affordable.</p>
 
 				<aside class="notes">
