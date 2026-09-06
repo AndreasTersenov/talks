@@ -80,47 +80,32 @@ def style(ax, xlabel, ylabel):
 
 
 # ------------------------------- peak counts --------------------------------
-# A gamma, not a Gaussian. On a log axis the measured curves are not arches:
-# they rise almost vertically out of the floor, turn over just above S/N = 1,
-# and then fall along a nearly straight line - an exponential tail. That is
-# what ((nu-nu0)^k) exp(-(nu-nu0)/theta) gives, with the tail slope set by
-# theta and the sharpness of the rise by k. Reference: starlet_peaks_thumb.png.
-NU0 = -1.05
-PEAK_NU = [1.15, 1.27, 1.39, 1.51, 1.63]      # where each scale turns over
-AMP     = [2800.0, 800.0, 190.0, 50.0, 14.0]  # counts at the turnover
-END_NU  = [5.90, 4.80, 3.90, 3.40, 2.75]      # where it falls back to one count
+# Modelled in LOG space, which is where the measured curves are read. Three
+# things the three reference figures agree on and an arch does not give you:
+#   - every scale turns over in the same place, S/N of about 1.4, and the
+#     curves are nested by amplitude rather than fanned out in S/N;
+#   - each drops by roughly a factor of four to five from one scale to the
+#     next, because a coarser band holds that many fewer maxima;
+#   - the finest scale has a much steeper left edge than the coarse ones, and
+#     every scale ends where it runs out of peaks, near S/N 4 to 5 - except
+#     the coarsest, which hits a single count long before that.
+# A two-sided Gaussian in log10 N gives exactly that: sigma_L short and
+# growing with scale, sigma_R nearly constant.
+AMP   = [1500.0, 350.0, 85.0, 20.0, 5.0]     # counts at the turnover
+MU    = [1.40, 1.45, 1.40, 1.55, 1.50]       # where it turns over
+SIG_L = [0.62, 0.95, 1.15, 1.25, 1.30]       # the rise, in decades
+SIG_R = [1.27, 1.22, 1.30, 1.32, 1.35]       # the fall
 
-
-def gamma_shape(nu, amp, mode, theta):
-    k = mode / theta
-    x = np.clip(nu - NU0, 1e-9, None)
-    return amp * (x / mode) ** k * np.exp(-(x - mode) / theta)
-
-
-def theta_for(amp, mode, end):
-    """The tail is set by where the curve comes back to a single count, which
-    is what the measured figure shows and what the eye reads off a log axis."""
-    lo, hi = 0.02, 2.0
-    for _ in range(80):
-        mid = 0.5 * (lo + hi)
-        if gamma_shape(np.array([end + NU0 + mode]), amp, mode, mid)[0] > 1.0:
-            hi = mid
-        else:
-            lo = mid
-    return 0.5 * (lo + hi)
-
-
-nu = np.linspace(-2.0, 6.6, 1600)
+nu = np.linspace(-2.0, 6.2, 1600)
 figA, axA = plt.subplots(figsize=(5.6, 3.8))
 for j in range(NS):
-    mode = PEAK_NU[j] - NU0
-    th = theta_for(AMP[j], mode, END_NU[j] - PEAK_NU[j])
-    y = gamma_shape(nu, AMP[j], mode, th)
-    y[nu <= NU0] = np.nan
+    d = nu - MU[j]
+    sig = np.where(d < 0, SIG_L[j], SIG_R[j])
+    y = AMP[j] * 10.0 ** (-0.5 * (d / sig) ** 2)
     axA.plot(nu, y, color=SCALE_COLS[j], lw=2.1, label="scale %d" % (j + 1))
 axA.set_yscale("log")
-axA.set_xlim(-2.0, 6.4)
-axA.set_ylim(0.7, 6e3)
+axA.set_xlim(-2.0, 6.0)
+axA.set_ylim(0.7, 3e3)
 style(axA, "S/N", "peak counts")
 figA.subplots_adjust(left=0.135, right=0.985, top=0.92, bottom=0.145)
 figA.savefig("assets/diagrams/hos_peaks_shape.png", dpi=200, transparent=True)
