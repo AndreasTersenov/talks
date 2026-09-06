@@ -813,6 +813,23 @@ it to work, each beat heading has to name its frame:
 Beats with no `frame` reference are skipped, so ladders, Q&A tiers and ledgers can live in the same
 file. Run it after every edit; a heading you typed by hand is a heading that is wrong.
 
+### Audit the builds, not just the words
+
+A deck accretes fragments. Each one looked reasonable when it was added, and the sum is a talk you
+deliver with your thumb. Before rehearsing, count them: `tools/measure-script.py` prints the
+fragment steps per frame beside the `[CLICK]` cues, and a main line averaging two clicks a slide has
+overdone it.
+
+**A build survives only if it (a) withholds an answer the room should not read early, (b) swaps one
+thing for another in place, (c) moves focus around a diagram that stays on screen, or (d) *is* the
+animation** — a flipbook, or a canvas explainer stepped by markers. Everything else — a list
+appearing line by line, a table filling in row by row, a paragraph arriving under a figure — goes.
+The eye reads in order without help, and each click is a moment spent on the clicker instead of on
+the room.
+
+The exception worth protecting is the **result** slide, where the answer arriving one arm at a time
+is the whole drama. Keep those, and pay for them by stripping the teaching slides.
+
 ### Cut lines, in tiers
 
 A talk that is over will be cut, and the only question is whether you chose the cuts in advance or

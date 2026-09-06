@@ -150,16 +150,16 @@
 									alt="history of the Universe, annotated with the three things ΛCDM does not explain">
 								<svg class="coneov" viewBox="0 0 1980 1111" preserveAspectRatio="none"
 									aria-hidden="true">
-									<g class="fragment fade-in" data-fragment-index="2">
+									<g>
 										<ellipse class="ring" cx="820" cy="700" rx="215" ry="185" />
 										<text class="an" x="820" y="718" text-anchor="middle">Dark matter?</text>
 									</g>
-									<g class="fragment fade-in" data-fragment-index="3">
+									<g>
 										<ellipse class="ring" cx="1195" cy="600" rx="140" ry="330" />
 										<path class="lead" d="M1332 440 L1378 440" />
 										<text class="an" x="1568" y="440" text-anchor="middle">Dark energy?</text>
 									</g>
-									<g class="fragment fade-in" data-fragment-index="4">
+									<g>
 										<path class="lead" d="M470 452 L1160 452" />
 										<path class="lead"
 											d="M470 452 l40 -27 M470 452 l40 27 M1160 452 l-40 -27 M1160 452 l-40 27" />
@@ -732,7 +732,7 @@
 					</figure>
 				</div>
 
-				<div class="callout fragment fade-in" data-fragment-index="1">
+				<div class="callout">
 					<span class="label">and it is the easier object to work with</span>
 					$\kappa$ is a <b>scalar</b> &mdash; one number per pixel. The shear is <b>spin&#8209;2</b>: two
 					components that turn with the coordinate frame. Theory predicts $\kappa$, and every statistic
@@ -1029,19 +1029,19 @@
 							<span class="n">1</span><span class="cn">Kaiser&ndash;Squires</span>
 							<span class="ca">no $\mathcal{R}$ &mdash; invert, then <b>smooth</b></span>
 						</div>
-						<div class="ch fragment fade-in" data-fragment-index="1">
+						<div class="ch">
 							<span class="n">2</span><span class="cn">Wiener filtering</span>
 							<span class="ca">a <b>Gaussian field</b>, known power spectrum</span>
 						</div>
-						<div class="ch fragment fade-in" data-fragment-index="2">
+						<div class="ch">
 							<span class="n">3</span><span class="cn">sparse recovery</span>
 							<span class="ca">mostly <b>empty</b> &mdash; a few strong wavelet coefficients</span>
 						</div>
-						<div class="ch fragment fade-in" data-fragment-index="3">
+						<div class="ch">
 							<span class="n">4</span><span class="cn">MCALens</span>
 							<span class="ca"><b>both</b> &mdash; smooth background, sparse peaks on top</span>
 						</div>
-						<div class="ch learned fragment fade-in" data-fragment-index="4">
+						<div class="ch learned">
 							<span class="n">5</span><span class="cn">deep learning</span>
 							<span class="ca"><b>learn</b> $\mathcal{R}$ from simulations</span>
 						</div>
@@ -1129,7 +1129,7 @@
 						</div>
 					</div>
 
-					<div class="block lecture fragment fade-in" data-fragment-index="1">
+					<div class="block lecture">
 						<div class="block-title">How it solves: alternate</div>
 						<div class="block-content">
 							<p class="mca-loop">
@@ -1266,7 +1266,7 @@
 					&mdash; not the simulations, not the statistic, not the sampler.
 				</p>
 
-				<p class="lead-line fragment fade-in" data-fragment-index="1">
+				<p class="lead-line">
 					A map is $10^5$ correlated pixels, so it has to be <b>compressed</b> before any likelihood can touch
 					it &mdash; and that compression is a choice of its own. <b class="alert">Part 3</b> is about which
 					statistic to compress with. Here it is deliberately <b>held fixed</b>, so it cannot be the
@@ -1449,9 +1449,9 @@
 			<section data-background-color="#ffffff" class="light-slide">
 				<h3 class="slide-title">Wait... what about Deep Learning for Mass Mapping?</h3>
 				<br>
-				<p class="fragment fade-in">Yep, people have tried it (with various approaches)! ...And it works!</p>
-				<p class="fragment fade-in">However...</p>
-				<table border="1" style="border-collapse: collapse; text-align: center;" class="fragment">
+				<p >Yep, people have tried it (with various approaches)! ...And it works!</p>
+				<p >However...</p>
+				<table border="1" style="border-collapse: collapse; text-align: center;" >
 					<thead>
 						<tr style="background-color: #f2f2f2;">
 							<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Mass mapping
@@ -1504,7 +1504,7 @@
 							<td style="padding: 10px; border-right: 1px solid #000;">≈</td>
 							<td style="padding: 10px;">≈</td>
 						</tr>
-						<tr style="background-color: #e6f3ff; font-weight: bold;" class="fragment">
+						<tr style="background-color: #e6f3ff; font-weight: bold;" >
 							<td style="padding: 10px; border-right: 1px solid #000;">What we'd like</td>
 							<td style="padding: 10px; border-right: 1px solid #000;">Data-driven</td>
 							<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
@@ -1597,7 +1597,7 @@
 					<h3 class="slide-title">Plug-and-Play Mass Mapping</h3>
 
 
-					<span class="fragment fade-in">
+					<span >
 						<div class="container">
 							<div class="col">
 								<div class="block">
@@ -2975,11 +2975,11 @@
 
 				<div class="lowergrid">
 					<div class="lg-left">
-						<p class="lede carry fragment fade-in" data-fragment-index="1">
+						<p class="lede carry">
 							All the work is in the middle term, and classically we <b>assume it is Gaussian</b>:
 						</p>
 
-						<p class="bayeseq fragment fade-in" data-fragment-index="1">$$p(d \mid \theta) \;\propto\;
+						<p class="bayeseq">$$p(d \mid \theta) \;\propto\;
 							\exp\!\left[-\tfrac{1}{2}\big(d - \underbrace{m(\theta)}_{\text{theory}}\big)^{\!\top}
 							\underbrace{\mathbf{C}^{-1}}_{\text{covariance}}
 							\big(d - m(\theta)\big)\right]$$</p>
@@ -3033,7 +3033,7 @@
 						parametric $\mathbb{P}_\theta$ meant to sit close to it</li>
 					<li>once trained, you can <b class="alert">sample</b> from $\mathbb{P}_\theta$ &mdash; and, for
 						some models, <b class="alert">evaluate</b> the density $p_\theta(x)$</li>
-					<li class="fragment fade-in" data-fragment-index="1">it is <b>indifferent to what $x$ is</b>, which
+					<li>it is <b>indifferent to what $x$ is</b>, which
 						is why the same machinery is behind the models everyone has been hearing about &mdash;
 						<b>faces, images, video, molecules</b></li>
 				</ul>
@@ -3137,9 +3137,9 @@
 				<div class="r-stack sbi-fig">
 					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
 						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
-					<img class="plain fragment" src="../assets/diagrams/sbi_build_2.png"
+					<img class="plain" src="../assets/diagrams/sbi_build_2.png"
 						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
-					<img class="plain fragment" src="../assets/diagrams/sbi_build_3.png"
+					<img class="plain" src="../assets/diagrams/sbi_build_3.png"
 						alt="stage three added: the trained flow evaluated at the real observation, giving a posterior">
 				</div>
 
@@ -3334,14 +3334,14 @@
 					tomography</h3>
 				<div class="tomo-flip">
 					<img src="../assets/diagrams/tomography/tomo_1.png" alt="observer and the matter distribution">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_2.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_3.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_4.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_5.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_6.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_7.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_8.png" alt="">
-					<img class="fragment" src="../assets/diagrams/tomography/tomo_9.png"
+					<img  src="../assets/diagrams/tomography/tomo_2.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_3.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_4.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_5.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_6.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_7.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_8.png" alt="">
+					<img  src="../assets/diagrams/tomography/tomo_9.png"
 						alt="the source galaxies as tomographic convergence maps, one per redshift bin">
 				</div>
 				<div class="tomo-credit">Credit: Justine Zeghal</div>
@@ -3383,7 +3383,7 @@
 							structure. Six such channels, one per bin pair, each read by the same &#8467;1-norm.</p>
 					</div>
 
-					<div class="route fragment fade-in" data-fragment-index="1">
+					<div class="route">
 						<span class="kicker">route 2 &mdash; change the statistic</span>
 						<div class="body">
 							<div class="plane">
@@ -3614,7 +3614,7 @@
 			<section data-theme="light" data-background-color="#ffffff">
 				<h3 class="slide-title tight"><span class="sec">§4</span> Baryonic Bias Scales with Survey Area</h3>
 				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.35;">
+					<div class="col" style="flex:1.35;">
 						<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png"
 							style="max-height:270px;"
 							alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
@@ -3629,29 +3629,29 @@
 						</ul>
 					</div>
 					<div class="col" style="flex:1.2;">
-						<div class="r-stack fragment fade-in" data-fragment-index="1">
+						<div class="r-stack">
 							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png"
 								style="max-height:370px;"
 								alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
-							<img class="plain fragment" data-fragment-index="2"
+							<img class="plain"
 								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png"
 								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="3"
+							<img class="plain"
 								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png"
 								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="4"
+							<img class="plain"
 								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png"
 								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="5"
+							<img class="plain"
 								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png"
 								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="6"
+							<img class="plain"
 								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png"
 								style="max-height:370px;" alt="">
 						</div>
 					</div>
 				</div>
-				<p class="footnote fragment fade-in" data-fragment-index="0">measured at full map resolution: $\ell_{\rm
+				<p class="footnote">measured at full map resolution: $\ell_{\rm
 					max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
 				<span class="srcref">Tersenov+ 2026, A&amp;A</span>
 				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At
@@ -3670,17 +3670,17 @@
 						class="alert">finest band</em></h3>
 				<ul style="font-size:0.82em; margin-bottom:0.5em;">
 					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-					<li class="fragment fade-in" data-fragment-index="0">$C_\ell$ takes a <b class="alert">sliding</b>
+					<li>$C_\ell$ takes a <b class="alert">sliding</b>
 						cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b
 							class="alert">340</b> at full sky</li>
-					<li class="fragment fade-in" data-fragment-index="0">The starlet concentrates the contamination in
+					<li>The starlet concentrates the contamination in
 						its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
 				</ul>
-				<img class="plain fragment fade-in" data-fragment-index="0"
+				<img class="plain"
 					src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
 					style="max-height:270px; display:block; margin:0 auto;"
 					alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
-				<div class="cutpair fragment fade-in" data-fragment-index="0">
+				<div class="cutpair">
 					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut
 							tuned to each area</span></div>
 					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole
@@ -3818,7 +3818,7 @@
 								scale and the &#8467;1-norm is still &#215;1.8 tighter at Stage IV, &#215;2.6 at full
 								sky.</span></span>
 					</li>
-					<li class="done fragment fade-in" data-fragment-index="0">
+					<li class="done">
 						<span class="qn">Q3</span>
 						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary
@@ -3829,7 +3829,7 @@
 							</span></span>
 					</li>
 				</ul>
-				<p class="refs fragment fade-in" data-fragment-index="0"><b>The joint wavelet &#8467;1-norm matches neural compression for tomographic weak-lensing
+				<p class="refs"><b>The joint wavelet &#8467;1-norm matches neural compression for tomographic weak-lensing
 						inference</b><br>
 					Tersenov, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; in preparation<br>
 					<b>Mitigating baryonic effects in weak lensing with higher-order statistics</b><br>

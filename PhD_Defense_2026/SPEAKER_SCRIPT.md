@@ -29,14 +29,14 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 |---|---|---|---|
 | Act 0 — the setup | 1–9 | 10:40 | ends on the four questions |
 | Act 1 — Part 1, does the map matter? | 10–22 | 12:41 | opens with the formalism, moved here 2026-09-06 |
-| Act 2 — Part 2, PnPMass | 23–27 | 5:09 | frame 26 is the first cut |
+| Act 2 — Part 2, PnPMass | 23–27 | 5:03 | frame 26 is the first cut |
 | Act 3 — Part 3, the summaries | 28–47 | 18:41 | the longest act; 10:32 of it is teaching |
 | Act 4 — Part 4, baryons | 48–52 | 5:36 | |
 | Close | 53–54 | 1:44 | |
-| | **54 frames** | **54:30** | **against a 40:00 target in a 45:00 slot** |
+| | **54 frames** | **54:25** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ 54:30 spoken, against a 40:00 target — over by 14:30.** *The arithmetic, and how to close
-> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:15**.
+> **⚠ 54:25 spoken, against a 40:00 target — over by 14:25.** *The arithmetic, and how to close
+> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:10**.
 > No tier is a whole-act decision. Read it before rehearsing, not after.
 
 ### Seven slides moved to backup, 2026-09-06
@@ -70,6 +70,55 @@ below, the tool has not been run since the last edit.〕
 **The slack in a 45-minute slot is deliberate and must stay slack** — pauses, the beat after a
 headline, and the seconds a room needs to look at a figure before you talk over it. It is not room
 for more material.
+
+## The animation policy — 2026-09-07
+
+Andreas, after walking the deck: *"we clearly have overdone this."* The main line carried **97
+clicks over 39 frames**, most of them revealing text in the order the eye reads it anyway. Every
+build was audited against one rule:
+
+> **A build survives only if it (a) withholds an answer the room should not read early, (b) swaps
+> one thing for another in place, (c) moves focus around a diagram that stays on screen, or (d)
+> *is* the animation** — a flipbook, or a canvas explainer stepped by markers.
+>
+> Anything that merely reveals text in reading order goes. The eye already does that, and every
+> click is a moment you spend on the clicker instead of on the room.
+
+**97 clicks → 60, across 30 frames.** Fifteen slides lost their builds:
+
+| frame | was | now | why |
+|---|---|---|---|
+| 3 | 4 | 1 | the pie→cone swap survives; the three annotations ride in with it and you point |
+| 12 | 1 | 0 | a callout of extra detail |
+| 16 | 4 | 0 | five methods read as a list **(Andreas)** |
+| 17 | 2 | 1 | the proximal box survives; *how it solves* does not |
+| 19 | 1 | 0 | a lead line under a diagram |
+| 24 | 4 | 0 | a comparison table **(Andreas)** |
+| 25 | 1 | 0 | one click for the whole body |
+| 37 | 2 | 1 | the MCMC animation survives; the equation reveal does not |
+| 38 | 2 | 1 | the faces survive; the bullet does not |
+| 40 | 3 | 1 | the three-stage diagram goes up whole; *the cost is paid once* is still withheld |
+| 45 | 8 | 0 | an eight-image flipbook of a static illustration |
+| 46 | 3 | 2 | both routes at once; the swap and the punchline survive |
+| 50 | 7 | 0 | seven clicks of one plot **(Andreas)** |
+| 51 | 1 | 0 | one click for the whole body |
+| 54 | 1 | 0 | the conclusions go up whole |
+
+**What survives, and why it earns the click.** Frame 9's four questions and frames 29/36's pipeline
+focus move the light around a diagram that stays put. Frames 26 and 42/49 *are* animations — the
+PnPMass iteration, and the two canvas explainers whose markers step them through their acts. Frame
+30 swaps a video for a figure, frame 35 swaps each definition for its shape, frame 46 swaps the
+mask for the joint definition. And frames 47 and 52 hold back an answer: the ladder to the tie, and
+the contours on baryon-safe scales — **frame 52 Andreas named explicitly**, because that is where
+Part 4's question gets its answer and the tension is worth keeping.
+
+Single-click frames that survive are all the same shape: a claim withheld until the room has looked
+at the figure (7, 8, 11, 14, 15, 18, 34, 39, 41, 44). Those are not builds, they are punchlines.
+
+**If you add a fragment, put it through the rule first**, and re-run `measure-script.py` — it will
+tell you if a cue has gone stale.
+
+---
 
 ## What the script pass exposed
 
@@ -178,15 +227,13 @@ clustering of galaxies simultaneously.
 cent of the budget is two components whose nature we do not know — and there are three things in
 this picture the model does not account for.
 
-〔The pie is replaced by the cone here. Then one click per question; let each land before the next.〕
+〔The pie is replaced by the cone, annotated with all three at once. Point at each in turn as you
+name it — the click is spent, so the pacing is yours.〕
 
-[CLICK] We do not know what **dark matter** is. It has never been detected in a laboratory.
-
-[CLICK] We do not know what **dark energy** is either. The value of Λ is put in by hand — the
-simplest choice available, not one that anything requires.
-
-[CLICK] **▲** And the measurements we make at the two ends of this picture do not quite agree with
-each other.
+We do not know what **dark matter** is; it has never been detected in a laboratory. We do not know
+what **dark energy** is either — the value of Λ is put in by hand, the simplest choice available,
+not one that anything requires. **▲** And the measurements we make at the two ends of this picture
+do not quite agree with each other.
 
 〔One clause only. A0.4 makes that quantitative; if you explain S₈ here you will say it twice.〕
 
@@ -435,7 +482,7 @@ And this is what the convergence is. Add up all the matter along the line of sig
 efficiently each piece of it lenses — a weight that peaks about halfway to the galaxy whose light
 we are looking at.
 
-[CLICK] Two things ride in that integral. The kernel carries the geometry: distances, and the
+Two things ride in that integral. The kernel carries the geometry: distances, and the
 expansion history. The overdensity carries the growth of structure. **▲** A convergence map
 responds to both at once, which is why lensing tests the model rather than measuring a single
 number.
@@ -530,17 +577,18 @@ that problem, and the first term is identical for all of them.
 to assume a mass map looks like. Which is a **prior**, in everything but name: what we believe
 about the map before we look at the data.
 
-[CLICK] Wiener filtering assumes a Gaussian field with a fixed power spectrum. Optimal, if that is
-true. But the late-time field is not Gaussian, and the peaks are the whole point.
+〔The list is up whole. Walk it with your hand, one line at a time — no clicks.〕
 
-[CLICK] Sparse recovery assumes the opposite kind of map: mostly empty, a few strong features —
-which is much closer to what a field of haloes looks like.
+Wiener filtering assumes a Gaussian field with a fixed power spectrum. Optimal, if that is true.
+But the late-time field is not Gaussian, and the peaks are the whole point.
 
-[CLICK] MCALens says you do not have to choose: a smooth Gaussian background *with* sparse peaks on
-top.
+Sparse recovery assumes the opposite kind of map: mostly empty, a few strong features — which is
+much closer to what a field of haloes looks like.
 
-[CLICK] And deep learning stops assuming and learns the term from simulations. Hold that thought —
-it is Part 2.
+MCALens says you do not have to choose: a smooth Gaussian background *with* sparse peaks on top.
+
+And deep learning stops assuming and learns the term from simulations. Hold that thought — it is
+Part 2.
 
 **▲** And hold this one too: exactly the same three pieces come back in Part 3, with the
 cosmological parameters as the unknown instead of a map — except that there, it is the *likelihood*
@@ -597,8 +645,8 @@ It models the convergence as a sum. A **Gaussian** component, handled by a Wiene
 nothing but the power spectrum. Plus a **sparse non-Gaussian** component in the starlet basis — the
 peaks and haloes, which is exactly where the higher-order signal lives.
 
-[CLICK] It solves them by alternating. Fix one component, solve for the other, then swap, and
-repeat until the map stops moving.
+It solves them by alternating. Fix one component, solve for the other, then swap, and repeat until
+the map stops moving.
 
 [CLICK] And each of those solves ends the same way, with a **proximal step**. Thirty seconds on
 what that is, because we meet it again and I would rather you had the picture than the definition.
@@ -651,7 +699,7 @@ sampler. Only the reconstruction changes.
 
 **▲** So whatever moves in the posterior is the reconstruction. It cannot be anything else.
 
-[CLICK] One word about the last two boxes, because they go past quickly. A map is a hundred
+One word about the last two boxes, because they go past quickly. A map is a hundred
 thousand correlated pixels, so it has to be compressed before any likelihood can touch it — and
 which statistic you compress with is a scientific choice of its own. That is Part 3. Here it is
 nailed down on purpose, so it cannot explain anything that moves.
@@ -756,26 +804,23 @@ quantification is mine.
 
 ---
 
-## A2.2 — what we actually want · frame 24 · 1:10
+## A2.2 — what we actually want · frame 24 · 1:05
 
-〔The table is a scoreboard, not a reading exercise. Point at columns, not rows.〕
+〔The table goes up whole — it is a scoreboard, not a reading exercise. Point at **columns**, not
+rows, and go straight to the bottom line.〕
 
-If the reconstruction matters this much, what do we actually want from one?
+If the reconstruction matters this much, what do we actually want from one? Four things, and they
+are the four columns. **Accurate.** **Flexible** — one model that still works when the noise level
+or the footprint changes. **Fast** enough to run on a survey. And it should tell you **how wrong it
+is**, in a way you can check.
 
-[CLICK] Four things. It should be **accurate**. **Flexible** — one model that still works when the
-noise level or the footprint changes. **Fast** enough to run on a survey. And it should tell you
-**how wrong it is**, in a way you can check.
+Now read down. The model-driven methods give you two of the four: explicit assumptions and
+flexibility, but Wiener assumes the field is Gaussian — the assumption this whole thesis exists to
+avoid — and MCALens is slow. Deep learning has been tried, with several approaches, and it works;
+the accuracy is there. But each of those networks is trained for one noise level and one mask, so a
+change of footprint means retraining, and most hand you a point estimate with no error bar at all.
 
-[CLICK] The model-driven methods give you two of the four. Wiener and MCALens are flexible, and
-their assumptions are explicit — but Wiener assumes the field is Gaussian, which is the assumption
-this whole thesis exists to avoid, and MCALens is slow.
-
-[CLICK] And deep learning has been tried, with several approaches, and it works — the accuracy is
-there. But look at the columns that empty out. Each of those networks is trained for one noise
-level and one mask, so a change of footprint means retraining; and most of them hand you a point
-estimate with no error bar at all.
-
-[CLICK] **▲** Nothing had all four. That empty row is the paper.
+**▲** Nothing had all four. That last row is the paper.
 
 ---
 
@@ -790,7 +835,7 @@ Remember the proximal step from Part 1 — the one that pulls a candidate map ba
 prior allows. The reconstruction is a fixed-point iteration: a gradient step towards consistency
 with the measured shear, then that proximal step. Standard forward–backward splitting.
 
-[CLICK] **▲** Plug-and-play replaces the proximal step with a learned denoiser. Instead of writing
+**▲** Plug-and-play replaces the proximal step with a learned denoiser. Instead of writing
 a prior down and deriving its operator, we train a network to denoise convergence maps, and let
 denoising *be* the prior.
 
@@ -1146,7 +1191,7 @@ is new is the middle term and what it costs.〕
 The classical route, in one line, and it is the same rule as in Part 1 with the parameters as the
 unknown instead of a map.
 
-[CLICK] All the work is in the middle term, and the classical analysis assumes it is Gaussian in
+All the work is in the middle term, and the classical analysis assumes it is Gaussian in
 the data vector. That needs a theory prediction, fast enough for a million sampler calls, and a
 covariance. **▲** And the Gaussian form is a claim about the data, not a convenience: it holds when
 each data point averages many independent modes — which is exactly a band-power of the power
@@ -1172,7 +1217,7 @@ Generative modelling: you are handed examples and you want the distribution they
 middle panel is all you ever have — a finite sample. The left is the truth, which you never see;
 the right is what a model believes after seeing the middle one.
 
-[CLICK] **▲** And here is the point that matters for us. Once trained you can always *sample* such
+**▲** And here is the point that matters for us. Once trained you can always *sample* such
 a model — but you cannot always *evaluate* its density. A GAN will generate a face and cannot tell
 you how probable it was. For inference we need the density, because the density **is** the
 posterior.
@@ -1214,16 +1259,18 @@ The problem, stated plainly: for the statistics we care about we have no accurat
 likelihood — but we do have a simulator. We can *draw* from p of x given theta even though we
 cannot evaluate it. So stop trying to evaluate a likelihood, and learn the posterior instead.
 
-[CLICK] Stage one, the physics half. Draw parameters from the prior, run the forward model, keep
+Stage one, the physics half. Draw parameters from the prior, run the forward model, keep
 the pair. A few hundred thousand times. **▲** This is the expensive part, and it is the only
 expensive part.
 
-[CLICK] Stage two, the learning half. Those pairs are the training set for a conditional flow — the
+Stage two, the learning half. Those pairs are the training set for a conditional flow — the
 object from the last slide, with every layer conditioned on the data vector. The optimum of that
 loss is the true posterior.
 
-[CLICK] Stage three: hand the trained flow the real observation and read the posterior straight
-off. No sampler, milliseconds. **▲** And the reason that matters is not convenience. Because
+Stage three: hand the trained flow the real observation and read the posterior straight
+off. No sampler, milliseconds.
+
+[CLICK] **▲** And the reason that matters is not convenience. Because
 inference is now essentially free, we can afford to run it on thousands of simulated observations
 and check that the posteriors are actually calibrated — which is not a luxury when the likelihood
 was never written down and nothing else would catch a bad one.
@@ -1304,15 +1351,14 @@ account for all of the gap, some of it, or none. So close the asymmetry and meas
 
 ## A3.21 — tomography · frame 45 · 0:22
 
-〔Eight clicks of one picture assembling. Start it, say the two sentences, and let the rest run in
-silence.〕
+〔The picture goes up whole — it used to assemble over eight clicks, which bought nothing. Two
+sentences over it, then move.〕
 
-[CLICK] [CLICK] The sources are sliced in redshift, [CLICK] [CLICK] and each slice gives its own
-convergence map.
+The sources are sliced in redshift, and each slice gives its own convergence map.
 
-[CLICK] [CLICK] **▲** But the lensing kernels are broad and they overlap — a structure at low
-redshift lenses every bin behind it. [CLICK] [CLICK] So the bins are not independent measurements;
-they share information, and something has to read that shared part.
+**▲** But the lensing kernels are broad and they overlap — a structure at low redshift lenses every
+bin behind it. So the bins are not independent measurements; they share information, and something
+has to read that shared part.
 
 ---
 
@@ -1323,7 +1369,7 @@ sentence — it is the reason the joint ℓ1-norm exists.〕
 
 The gap is structural, so there are exactly two places to intervene: the input, or the statistic.
 
-[CLICK] **Route one**, the obvious one: manufacture the missing channel. For each pair of bins,
+**Route one**, the obvious one: manufacture the missing channel. For each pair of bins,
 multiply the two maps pixel by pixel. The product is near zero almost everywhere and lights up only
 where both bins have structure in the same place, so its one-point statistics carry the joint
 structure of the pair. Six pairs, six new channels, and the *same* ℓ1-norm runs on each. Built from
@@ -1427,18 +1473,19 @@ cut possible at all — a contaminated band can be dropped without touching the 
 
 ## A4.3 — how big is the bias · frame 50 · 0:58
 
-〔Seven clicks building the two panels. The number to protect is the *ordering*, not the decimals.〕
+〔Both panels go up whole — this used to take seven clicks and the room read ahead anyway. The
+number to protect is the *ordering*, not the decimals.〕
 
 So: how badly are we biased if we do nothing?
 
-[CLICK] [CLICK] At a Stage IV area — fourteen thousand square degrees — the power spectrum shows a
-two point two sigma shift. [CLICK] [CLICK] Peak counts and the ℓ1-norm show three point six.
+At a Stage IV area — fourteen thousand square degrees — the power spectrum shows a two point two
+sigma shift. Peak counts and the ℓ1-norm show three point six.
 
-[CLICK] [CLICK] And it gets worse with area, because more area means smaller error bars and
-therefore more sensitivity to a fixed systematic. At full sky the power spectrum reaches about
-three and a half sigma and both higher-order statistics exceed six.
+And it gets worse with area, because more area means smaller error bars and therefore more
+sensitivity to a fixed systematic. At full sky the power spectrum reaches about three and a half
+sigma and both higher-order statistics exceed six.
 
-[CLICK] **▲** Two things to be clear about. This is at full map resolution — no scale cuts yet, so
+**▲** Two things to be clear about. This is at full map resolution — no scale cuts yet, so
 it is what you get if you use everything the maps offer. And the higher-order statistics are *more*
 biased than the power spectrum, not less, precisely because they live on the contaminated small
 scales. That is the honest starting point.
@@ -1453,7 +1500,7 @@ what makes the next slide credible.〕
 So we cut. The criterion is to bring the baryonic bias below three tenths of a sigma, and the two
 statistics pay for it in different currencies.
 
-[CLICK] The power spectrum takes a **sliding** cut, tuned to what is safe at each area: an
+The power spectrum takes a **sliding** cut, tuned to what is safe at each area: an
 ell-max of eight hundred and sixty at two thousand square degrees, falling to three hundred and
 forty at full sky. A large fraction of its range — but removed *precisely*.
 
@@ -1639,7 +1686,7 @@ six at full sky. **▲** And that is a floor, because our scale cut is the crude
 member has asked about it during the talk, add one sentence: *and the same joint reading is what
 makes redshift nulling survivable for a higher-order analysis, which is in the thesis.*〕
 
-[CLICK] 〔The references come up. One sentence, then stop and turn to the chair.〕
+〔The references are already on the slide. One sentence, then stop and turn to the chair.〕
 
 Those last two are the papers in preparation and in press — both on arXiv this month.
 
@@ -1650,14 +1697,14 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 54:30 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
-beats that are not spoken. Over by **14:30**.
+**Measured: 54:25 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
+beats that are not spoken. Over by **14:25**.
 
 | act | frames | measured | share |
 |---|---|---|---|
 | Act 0 — the setup | 1–9 | 10:40 | 20 % |
 | Act 1 — Part 1 | 10–22 | 12:41 | 23 % |
-| Act 2 — Part 2 | 23–27 | 5:09 | 9 % |
+| Act 2 — Part 2 | 23–27 | 5:03 | 9 % |
 | Act 3 — Part 3 | 28–47 | 18:41 | 34 % |
 | Act 4 — Part 4 | 48–52 | 5:36 | 10 % |
 | Close | 53–54 | 1:44 | 3 % |
@@ -1670,14 +1717,14 @@ results. That is where most of what follows comes from.
 The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
 whole-act decision any more** — that changed when the nine frames came out.
 
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:27
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:22
 
 | frame | what | saves |
 |---|---|---|
 | 26 | the remaining PnPMass flipbook. Its partner is already in backup at 112; this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
 | 49 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:48
+## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:43
 
 | frame | what | saves |
 |---|---|---|
@@ -1690,7 +1737,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 > that Bayes is taught in Act 1. It no longer is, so frame 37 — the classical route — is the *only*
 > place Bayes appears in the talk, and it stays.
 
-## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:53
+## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:48
 
 | beat | cut | saves |
 |---|---|---|
@@ -1705,7 +1752,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
 
-## Tier 4 — three more frames parked · −2:47 · lands at 43:06
+## Tier 4 — three more frames parked · −2:47 · lands at 43:01
 
 | frame | what | saves |
 |---|---|---|
@@ -1713,7 +1760,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | 36, 41 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 42** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
 | 20 | the three maps. Frame 19's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
 
-## Tier 5 — the last stretch · −2:51 · lands at 40:15
+## Tier 5 — the last stretch · −2:51 · lands at 40:10
 
 Only if the rehearsal clock says so. Each of these costs something real.
 

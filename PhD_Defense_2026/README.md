@@ -357,6 +357,6 @@ slides carry those old tags too.
 - ~~`SPEAKER_SCRIPT.md` is written through Act 2 only~~ — **rewritten end to end 2026-09-06.**
   All 62 main-line frames have a beat, both Q&A tiers are written, every timing is measured by
   `../tools/measure-script.py` and every `[CLICK]` is audited against the deck. Seven slides moved
-  to backup on 2026-09-06, so the main line is **54 frames** and the script **measures 54:30 spoken
+  to backup on 2026-09-06, so the main line is **54 frames** and the script **measures 54:25 spoken
   against a 40:00 target**; the five-tier ladder in it lands at 40:15 and is the live plan. The
   script's *Seven slides moved to backup* table is the before/after numbering.
