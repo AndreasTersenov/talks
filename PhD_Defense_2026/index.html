@@ -2892,15 +2892,14 @@
 			<section class="wvx" data-theme="light">
 				<h3 class="slide-title tight">Key concept: <em class="alert">wavelets</em></h3>
 
-				<p class="wv-lede">A wavelet is a <b class="alert">compact, oscillating</b> function of
-					<b class="alert">zero mean</b>, $\int \psi\,\mathrm{d}x = 0$ &mdash; those two properties are
-					the whole definition. Dilating and translating one shape gives a family, and a coefficient is the
-					overlap of the data with one member of it: <b>how much structure of size $a$ sits at place
-						$b$</b>.</p>
-
-				<p class="wv-eq">$$\psi_{a,b}(x) \;=\; \frac{1}{\sqrt{a}}\,
-					\psi\!\left(\frac{x-b}{a}\right) \qquad\qquad
-					W(a,b) \;=\; \int f(x)\,\psi_{a,b}(x)\,\mathrm{d}x$$</p>
+				<ul class="points dots wv-points">
+					<li>a wavelet $\psi$ is <b class="alert">compact</b>, <b class="alert">oscillating</b>,
+						<b class="alert">zero mean</b> &mdash; $\int \psi\,\mathrm{d}x = 0$</li>
+					<li>one shape, a whole family &mdash; stretch by $a$, shift to $b$:
+						$\psi_{a,b}(x) = \tfrac{1}{\sqrt{a}}\,\psi\!\big(\tfrac{x-b}{a}\big)$</li>
+					<li>$W(a,b) = \int f\,\psi_{a,b}\,\mathrm{d}x$ &mdash; <b>structure of size $a$, at place
+							$b$</b></li>
+				</ul>
 
 				<div class="wv-row">
 					<figure class="wv-card">

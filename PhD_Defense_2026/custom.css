@@ -2147,30 +2147,29 @@
    angle the wavelet statistics need.
    --------------------------------------------------------------------------- */
 .reveal .slides section.wvx { position: relative; }
-.reveal .slides section.wvx .wv-lede {
-	max-width: 92%; margin: 0.7em auto 0; text-align: left;
-	font-size: 0.8em; line-height: 1.45; color: var(--fg);
+.reveal .slides section.wvx .points.wv-points {
+	max-width: 90%; margin: 0.8em auto 0; font-size: 0.76em;
 }
-/* the shape sits in its own card: on a single canvas the two halves read as one
-   figure, and the room spent the first beat trying to relate them. */
-.reveal .slides section.wvx .wv-eq { margin: 0.25em auto 0; }
-.reveal .slides section.wvx .wv-eq .katex { font-size: 0.72em; }
+/* the two figures are one group, centred: the card already separates them, so
+   they sit close, and the wide one takes as much height as the slide allows. */
 .reveal .slides section.wvx .wv-row {
 	display: flex; align-items: center; justify-content: center;
-	gap: 1.6em; margin: 0.7em auto 0; max-width: 98%;
+	gap: 0.5em; margin: 0.8em auto 0; max-width: 100%;
 }
 .reveal .slides section.wvx .wv-card {
-	flex: 0 0 21%; margin: 0; padding: 0.45em 0.35em 0.2em;
+	flex: 0 0 20%; margin: 0; padding: 0.4em 0.3em 0.15em;
 	/* no fill: the figure ships the same paper colour, so a filled card shows a
 	   visible inner rectangle. The border alone does the separating. */
 	background: transparent; border: 1px solid var(--edge); border-radius: 8px;
 }
-.reveal .slides section.wvx .wv-wide { flex: 1 1 auto; margin: 0; }
+.reveal .slides section.wvx .wv-wide { flex: 0 1 78%; margin: 0; }
 .reveal .slides section.wvx .wv-card img,
 .reveal .slides section.wvx .wv-wide img {
-	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
+	width: 100%; height: auto; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
+.reveal .slides section.wvx .wv-card img { max-height: 42vh; }
+.reveal .slides section.wvx .wv-wide img { max-height: 60vh; }
 .reveal .slides section.wvx .popover {
 	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);
 	z-index: 30; width: 72%; padding: 1.0em 1.2em 0.95em;
