@@ -2219,16 +2219,20 @@
 	width: 100%; height: 100%;
 }
 
-/* the lensing panel gets a ring on the first click: four probes go up, one of
+/* the lensing panel gets a box on the first click: four probes go up, one of
    them is what the talk is about, and the composite has no way of saying so.
-   Fractions measured off probes.png, not eyeballed - the bottom-right ellipse
-   spans x 0.560-0.940 and y 0.550-0.853 of the image. */
+   Measured off probes.png rather than eyeballed, and measured properly: the
+   widest ROW of the bottom-right ellipse and the tallest COLUMN through its
+   centre, which is the ellipse's real extent - a plain bounding box over the
+   quadrant caught the neighbours' glow and sat visibly off the object. The
+   panel is left 0.5176, top 0.5496, width 0.4485, height 0.3135 of the image;
+   the values below add roughly ten pixels of air on each side. */
 .reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 62%; }
 .reveal .slides section.probes .figswap > figure .probeshot img {
 	width: 100%; max-width: 100%; display: block;
 }
 .reveal .slides section.probes .probe-ring {
-	position: absolute; left: 54.2%; top: 53.0%; width: 41.6%; height: 34.5%;
-	border: 2px solid var(--accent); border-radius: 50%;
-	box-shadow: 0 0 22px rgba(125, 146, 255, 0.35); pointer-events: none;
+	position: absolute; left: 50.6%; top: 52.9%; width: 47.2%; height: 35.5%;
+	border: 2px solid var(--accent); border-radius: 6px;
+	box-shadow: 0 0 22px rgba(125, 146, 255, 0.30); pointer-events: none;
 }
