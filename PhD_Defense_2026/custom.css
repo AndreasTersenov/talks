@@ -2225,14 +2225,19 @@
    widest ROW of the bottom-right ellipse and the tallest COLUMN through its
    centre, which is the ellipse's real extent - a plain bounding box over the
    quadrant caught the neighbours' glow and sat visibly off the object. The
-   panel is left 0.5176, top 0.5496, width 0.4485, height 0.3135 of the image;
-   the values below add roughly ten pixels of air on each side. */
+   panel is left 0.5176, top 0.4841, width 0.4485, height 0.3571 of the image
+   (rows 244-423, columns 442-824 of 854x504); the values below add roughly ten
+   pixels of air on each side. */
 .reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 62%; }
+/* margin: 0 is load-bearing. The theme gives images a vertical margin, which
+   made the inline-block taller than the picture, so the box's percentage top
+   and height resolved against a box ~10% taller than the image and it sat low
+   by roughly a fifth of its own height. */
 .reveal .slides section.probes .figswap > figure .probeshot img {
-	width: 100%; max-width: 100%; display: block;
+	width: 100%; max-width: 100%; display: block; margin: 0;
 }
 .reveal .slides section.probes .probe-ring {
-	position: absolute; left: 50.6%; top: 52.9%; width: 47.2%; height: 35.5%;
+	position: absolute; left: 50.6%; top: 46.4%; width: 47.2%; height: 39.7%;
 	border: 2px solid var(--accent); border-radius: 6px;
 	box-shadow: 0 0 22px rgba(125, 146, 255, 0.30); pointer-events: none;
 }
