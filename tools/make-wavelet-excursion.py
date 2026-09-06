@@ -26,7 +26,10 @@ Run with a python that has numpy and matplotlib:
 
     /usr/local/bin/python3 tools/make-wavelet-excursion.py
 
-Writes assets/diagrams/wavelet_excursion.png.
+Writes TWO files, because the slide sets the shape apart in its own card and a
+single canvas made the two halves read as one figure:
+assets/diagrams/wavelet_shape.png (the shape at three dilations) and
+assets/diagrams/wavelet_transform.png (the complete decomposition).
 """
 import numpy as np
 import matplotlib
@@ -78,13 +81,10 @@ NS = 4                                # the whole transform fits on the slide
 bands, coarse = atrous(sig, NS)
 band_scale = max(np.abs(b).max() for b in bands)
 
-fig = plt.figure(figsize=(12.4, 5.0))
-fig.patch.set_facecolor(PAPER)
-gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 3.15], wspace=0.10,
-                      left=0.02, right=0.985, top=0.86, bottom=0.13)
-
-# ---- left: one shape, three sizes -------------------------------------------
-axw = fig.add_subplot(gs[0, 0])
+# ============================ figure 1 — the shape ==========================
+figA = plt.figure(figsize=(3.9, 4.5))
+figA.patch.set_facecolor(PAPER)
+axw = figA.add_subplot(111)
 axw.set_facecolor(PAPER)
 WIN = 210
 for step, off in [(4, 2.30), (5, 1.15), (6, 0.0)]:
@@ -93,18 +93,23 @@ for step, off in [(4, 2.30), (5, 1.15), (6, 0.0)]:
     xx = np.arange(len(p)) - len(p) // 2
     m = np.abs(xx) <= WIN
     axw.axhline(off, color=EDGE, lw=0.8, zorder=0)
-    axw.plot(xx[m], p[m] + off, color=ACCENT, lw=2.2, solid_capstyle="round")
+    axw.plot(xx[m], p[m] + off, color=ACCENT, lw=2.4, solid_capstyle="round")
 axw.set_xlim(-WIN, WIN)
 axw.set_ylim(-0.95, 3.30)
-axw.set_title("one shape, stretched", color=INK, fontsize=13.5, pad=10)
+axw.set_title("one shape, stretched", color=INK, fontsize=15, pad=10)
 axw.text(0, -0.78, "compact, oscillating, zero mean",
-         ha="center", va="center", color=MUTED, fontsize=11)
-for s in axw.spines.values():
-    s.set_visible(False)
+         ha="center", va="center", color=MUTED, fontsize=12)
+for sp in axw.spines.values():
+    sp.set_visible(False)
 axw.set_xticks([]); axw.set_yticks([])
+figA.subplots_adjust(left=0.02, right=0.98, top=0.90, bottom=0.04)
+figA.savefig("assets/diagrams/wavelet_shape.png", dpi=200, facecolor=PAPER)
+print("wrote assets/diagrams/wavelet_shape.png")
 
-# ---- right: slide it across the data ----------------------------------------
-axb = fig.add_subplot(gs[0, 1])
+# ======================== figure 2 — the decomposition ======================
+figB = plt.figure(figsize=(9.6, 4.8))
+figB.patch.set_facecolor(PAPER)
+axb = figB.add_subplot(111)
 axb.set_facecolor(PAPER)
 rows = [("signal", sig, INK, np.abs(sig).max(), 1.8)] + \
        [(rf"$w_{j+1}$", bands[j], ACCENT, band_scale, 1.5) for j in range(NS)] + \
@@ -114,26 +119,26 @@ for i, (lab, y, col, sc, lw) in enumerate(rows):
     off = -i * gap
     axb.axhline(off, color=EDGE, lw=0.7, zorder=0)
     axb.plot(t, y / sc * 0.45 + off, color=col, lw=lw, zorder=3)
-    axb.text(-30, off, lab, ha="right", va="center", fontsize=11.5,
+    axb.text(-30, off, lab, ha="right", va="center", fontsize=12,
              color=INK if i == 0 else MUTED)
 
 for x0, txt in [(150, "small"), (390, "medium"), (630, "large")]:
     axb.annotate(txt, xy=(x0, -len(rows) * gap + 0.55), xytext=(x0, 0.80),
-                 fontsize=10.5, color=MUTED, ha="center",
+                 fontsize=11.5, color=MUTED, ha="center",
                  arrowprops=dict(arrowstyle="-", color=EDGE, lw=1, ls=(0, (3, 3))))
 
 axb.set_xlim(-110, n + 8)
-axb.set_ylim(-len(rows) * gap - 1.18, 1.15)
+axb.set_ylim(-len(rows) * gap - 1.18, 1.20)
 axb.set_title("slide it across the data, at every size", color=INK,
-              fontsize=13.5, pad=9)
+              fontsize=15, pad=10)
 axb.text(n / 2, -len(rows) * gap - 0.34,
          r"each feature answers in the band that matches its size"
          "\n"
          r"signal $=\ w_1 + w_2 + w_3 + w_4 + c_4$   — nothing is lost",
-         ha="center", fontsize=10.5, color=MUTED)
-for s in axb.spines.values():
-    s.set_visible(False)
+         ha="center", fontsize=11.5, color=MUTED)
+for sp in axb.spines.values():
+    sp.set_visible(False)
 axb.set_xticks([]); axb.set_yticks([])
-
-fig.savefig("assets/diagrams/wavelet_excursion.png", dpi=200, facecolor=PAPER)
-print("wrote assets/diagrams/wavelet_excursion.png")
+figB.subplots_adjust(left=0.055, right=0.99, top=0.89, bottom=0.03)
+figB.savefig("assets/diagrams/wavelet_transform.png", dpi=200, facecolor=PAPER)
+print("wrote assets/diagrams/wavelet_transform.png")

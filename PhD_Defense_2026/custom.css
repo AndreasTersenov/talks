@@ -1985,7 +1985,7 @@
 }
 .reveal .slides section.genmodel .gm-fig { margin: 1.1em auto 0; max-width: 88%; }
 .reveal .slides section.genmodel .gm-fig img {
-	width: 100%; height: auto; max-height: 34vh; object-fit: contain;
+	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.genmodel .points.gm-points {
@@ -2151,13 +2151,25 @@
 	max-width: 92%; margin: 0.7em auto 0; text-align: left;
 	font-size: 0.8em; line-height: 1.45; color: var(--fg);
 }
-.reveal .slides section.wvx .wv-fig { margin: 2.4em auto 0; max-width: 97%; }
-.reveal .slides section.wvx .wv-fig img {
-	width: 100%; height: auto; max-height: 52vh; object-fit: contain;
-	margin: 0; border: 0; box-shadow: none; background: transparent;
+/* the shape sits in its own card: on a single canvas the two halves read as one
+   figure, and the room spent the first beat trying to relate them. */
+.reveal .slides section.wvx .wv-eq { margin: 0.25em auto 0; }
+.reveal .slides section.wvx .wv-eq .katex { font-size: 0.72em; }
+.reveal .slides section.wvx .wv-row {
+	display: flex; align-items: center; justify-content: center;
+	gap: 1.6em; margin: 0.7em auto 0; max-width: 98%;
 }
-.reveal .slides section.wvx .points.wv-points {
-	max-width: 92%; margin: 0.9em auto 0; font-size: 0.74em;
+.reveal .slides section.wvx .wv-card {
+	flex: 0 0 21%; margin: 0; padding: 0.45em 0.35em 0.2em;
+	/* no fill: the figure ships the same paper colour, so a filled card shows a
+	   visible inner rectangle. The border alone does the separating. */
+	background: transparent; border: 1px solid var(--edge); border-radius: 8px;
+}
+.reveal .slides section.wvx .wv-wide { flex: 1 1 auto; margin: 0; }
+.reveal .slides section.wvx .wv-card img,
+.reveal .slides section.wvx .wv-wide img {
+	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.wvx .popover {
 	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);

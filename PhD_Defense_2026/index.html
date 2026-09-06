@@ -2881,52 +2881,67 @@
 			</section>
 
 			<!-- ============ Key concept: wavelets.  The second excursion outside cosmology,
-			     rhyming with the generative-modelling slide.  Two frames and under a minute:
-			     the definition and the transform in the abstract, then one click to the same
-			     operation on a convergence map, where the payoff line lives.  No JPEG: at this
-			     point in the talk the room needs to know what the tool gives US, not where
-			     else it is used.  Figures from tools/make-wavelet-excursion.py and
+			     rhyming with the generative-modelling slide.  Two frames, under a minute: the
+			     definition and the transform in the abstract, then one click to the same
+			     operation on a convergence map.  The slide says what a wavelet IS and what it
+			     probes - scale and place at once - and stops there; the statistics are the
+			     next slide's business, so nothing here mentions them or the power spectrum.
+			     The shape sits in its own card because on one canvas the two halves read as a
+			     single figure.  Figures from tools/make-wavelet-excursion.py and
 			     tools/make-wavelet-what.py. ============ -->
 			<section class="wvx" data-theme="light">
 				<h3 class="slide-title tight">Key concept: <em class="alert">wavelets</em></h3>
 
-				<p class="wv-lede">A wavelet is a <b class="alert">little wave</b> &mdash; a bump that wiggles once
-					or twice and dies away. Stretch it to a size, slide it across the data, and it reports
-					<b>how much structure of that size sits at each place</b>.</p>
+				<p class="wv-lede">A wavelet is a <b class="alert">compact, oscillating</b> function of
+					<b class="alert">zero mean</b>, $\int \psi\,\mathrm{d}x = 0$ &mdash; those two properties are
+					the whole definition. Dilating and translating one shape gives a family, and a coefficient is the
+					overlap of the data with one member of it: <b>how much structure of size $a$ sits at place
+						$b$</b>.</p>
 
-				<figure class="wv-fig">
-					<img class="plain" src="../assets/diagrams/wavelet_excursion.png"
-						alt="left: the starlet wavelet at three dilations, visibly the same shape at three widths; right: a signal carrying three wave packets of different wavelength at different places, decomposed into four wavelet bands plus a coarse residual, each packet answering in the band that matches its size">
-				</figure>
+				<p class="wv-eq">$$\psi_{a,b}(x) \;=\; \frac{1}{\sqrt{a}}\,
+					\psi\!\left(\frac{x-b}{a}\right) \qquad\qquad
+					W(a,b) \;=\; \int f(x)\,\psi_{a,b}(x)\,\mathrm{d}x$$</p>
+
+				<div class="wv-row">
+					<figure class="wv-card">
+						<img class="plain" src="../assets/diagrams/wavelet_shape.png"
+							alt="the starlet wavelet at three dilations, visibly the same shape at three widths">
+					</figure>
+					<figure class="wv-wide">
+						<img class="plain" src="../assets/diagrams/wavelet_transform.png"
+							alt="a signal carrying three wave packets of different wavelength at different places, decomposed into four wavelet bands plus a coarse residual, each packet answering in the band that matches its size">
+					</figure>
+				</div>
 
 				<div class="popover fragment fade-in" data-fragment-index="1">
 					<img src="../assets/diagrams/wavelet_what.png"
 						alt="a convergence map convolved with a small wavelet gives a map of the small-scale structure; the same map convolved with a large wavelet gives a map of the large-scale structure">
-					<p class="pop-cap">On a convergence map: one map in, <b class="alert">one map per scale</b> out.
-						A power spectrum hands back a <b>curve</b>; this hands back an <b class="alert">image at
-							every scale</b> &mdash; with pixels we can do statistics on.</p>
+					<p class="pop-cap">The same operation on a convergence map. Each size of shape hands back
+						<b class="alert">its own map</b> &mdash; the structure of that size, and <b>where it sits</b>.
+						That is what a wavelet transform probes: <b class="alert">scale and position at once</b>.</p>
 				</div>
 
 				<aside class="notes">
-					The second excursion outside cosmology, doing the same job as the generative-modelling slide:
-					a break for the room, and the one tool the next slide depends on. TWO frames, under a minute,
-					and the figures teach - do not read the lede out, say it.
-					SAY: everything we have done so far with two-point statistics has been Fourier, and the Fourier
-					basis is sines: each one a single perfectly defined frequency, each one running across the whole
-					map. So a Fourier coefficient tells you which scales are present and nothing at all about where.
-					A wavelet is the other trade, and the name is the definition - a little wave. A bump that
-					wiggles and dies away. On the left it is at three sizes, and it is visibly the same shape
-					stretched; that is the entire construction. Now stretch it to a size, slide it along the data,
-					and record the overlap everywhere. [right] Three features here - small, medium, large - and each
-					one answers in the band that matches its size, at its own place. Do that at every size and you
-					have the transform, and it is exact: the bands plus the coarse map add back up to what you
-					started with. [CLICK] Same thing on a convergence map. Convolve with the small shape and you get
-					a map of the small structure - those dots are the haloes, and you can see where each one is.
-					Convolve with the large one and the same map hands back its large-scale structure instead. And
-					THIS is the sentence to land, because the next slide depends on it: a power spectrum hands you
-					back a curve, one number per scale for the whole map. This hands you back an image at every
-					scale. An image has pixels, pixels have a distribution - and that is why a one-point statistic
-					per scale exists at all. Which is exactly what peaks and the l1-norm are. Then move on.
+					EXCURSION - two frames, 50 seconds, then move on. The figures teach; these are the words.
+					SAY: two of our three statistics are built on a wavelet transform, so thirty seconds on what
+					that is. Everything so far has been Fourier, whose basis is sines - each one a single, perfectly
+					defined frequency running across the entire map. So a Fourier coefficient tells you which scales
+					are present and nothing at all about where.
+					A wavelet is the other trade. It is a function that is compact and oscillates with zero mean -
+					and that really is the whole definition, those two properties. [LEFT CARD] From one such shape
+					you build a family by stretching it and shifting it, and the coefficient is just the overlap
+					between the data and one stretched, shifted copy: how much structure of size a sits at place b.
+					Zero mean is what makes it a detector of change rather than of level - over a flat region every
+					coefficient is zero.
+					[RIGHT FIGURE] Do that at every size and you have the transform. Three features here, small,
+					medium and large, and each one answers in the band whose width matches it, at its own position.
+					And it is exact: the bands plus the coarse map add back up to the signal, so nothing has been
+					thrown away.
+					[CLICK] Same operation on a convergence map. Convolve with the small shape and you get a map of
+					the small structure - those dots are the haloes, and you can see where each one is. Convolve
+					with the large shape and the same map hands back its large-scale structure instead. That is what
+					a wavelet transform gives you that a Fourier one does not: scale and position at the same time.
+					Which is what the next slide is built on. STOP HERE - do not mention statistics yet.
 				</aside>
 			</section>
 
