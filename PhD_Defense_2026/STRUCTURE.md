@@ -712,8 +712,20 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
   **done 2026-09-06**: the script was rewritten end to end against the 114-frame deck, every beat
   anchored to its frame, every timing measured by `../tools/measure-script.py`, and every `[CLICK]`
   audited against the deck's real fragment count.
-- **Nine frames are skipped** (Andreas, 2026-09-06): **5, 17, 28, 29, 37, 38, 39, 59, 60**. Two of
-  them took material with them. Frame 59–60 is the whole nulling / BNT thread, dropped as too
+- **Seven slides moved to backup, 2026-09-06** (Andreas), each placed beside its relatives rather
+  than dumped at the end. The main line is **54 frames**, down from 62; the deck is still 114.
+
+  | was | is now | slide | sits beside |
+  |---|---|---|---|
+  | 17 | **106** | the Bayes slide | the LAM original of the same idea, 107 |
+  | 28 | **112** | PnPMass on residuals | the training slide, 114 |
+  | 29 | **113** | the UQ chain | a **vertical under 112** |
+  | 37–39 | **100–102** | peaks, the starlet transform, the ℓ1-norm | the wavelet primer, 97–99 |
+  | 59–60 | **66–67** | the nulling result and its payoff | the three BNT explainers, 68–70 |
+
+  **Frame 5, the two tensions, stays** as a vertical under frame 4 — skipped by not pressing DOWN.
+  **Every frame number in `SPEAKER_SCRIPT.md` and below is post-move.** Two of the seven took
+  material with them. Frame 59–60 is the whole nulling / BNT thread, dropped as too
   technical for the time — which also spends the joint ℓ1-norm's second, independent payoff, leaving
   that argument resting on the tie alone. Frame 17 was **the one place Bayes was taught**, and the
   §5 decision *Bayes gets taught once, at A1.4, for the whole talk* no longer holds: the word
