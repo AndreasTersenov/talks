@@ -272,7 +272,7 @@ slides into one · **new** = does not exist. **TEACH** marks a §3b mini-introdu
 
 ---
 
-#### Act 0 — the setup · 12 slides · 11:53 *(11:23 measured + 0:30 scoreboard)*
+#### Act 0 — the setup · 9 frames *(the timings below are pre-2026-09-06 and have not been re-measured; the three formalism slides they include have left the act)*
 
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
@@ -282,17 +282,26 @@ slides into one · **new** = does not exist. **TEACH** marks a §3b mini-introdu
 | 0.4 | Independent probes are a test — and they do not quite agree | probes + the S8 tension | **frozen** | 1:42 |
 | 0.5 | A 1 % distortion, invisible alone, **coherent** across neighbours | the cone again + light rays | rebuild | 1:03 |
 | 0.6 | Euclid: an order of magnitude more statistical power | mission clip + four figures | rebuild | 0:38 |
-| 0.6a | We measure the **shear**. What we want is the **convergence**. | the three distortion panels over the κ and γ definitions | **built** · TEACH · **theme flips to light here** | 1:09 |
-| 0.6b | A convergence map carries both **geometry** and **growth** | the LOS integral beside **the real UNIONS map, Andreas's own MCALens reconstruction** (two columns since 2026-09-03; the figure's 1.25 aspect would not stack) | **built** · TEACH | 0:45 |
-| 0.8 | Between the shapes and the parameters there is a **chain** &mdash; and Part 1 lives in **one step** of it | **the master chain graphic** (a data lane of six stages over a model lane of prior, simulations, systematics), which on a **second click dims and lights shear&rarr;mass maps** | **built** &middot; merged 2026-09-03 | 1:20 |
-| 0.9 | ~~Four questions about that chain~~ | **moved to the conclusions, 2026-09-03** &mdash; upfront it leaned on machinery the room had not met | moved | &mdash; |
+| 0.6 | *(closing beat, added 2026-09-06)* the lensing signal is the **statistical memory** of the whole history of the Universe, and getting it out is an **algorithms** problem | one line under the Euclid block | **built** | +0:20 |
+| 0.6a | ~~We measure the **shear**. What we want is the **convergence**.~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
+| 0.6b | ~~A convergence map carries both **geometry** and **growth**~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
+| 0.6c | ~~One potential, two observables — the relation is **exact**~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
+| 0.7 | A real weak-lensing analysis is **dozens of steps**, and most of them are not the physics | the DES Y3 flowchart (Amon), credited | **built** · **theme flips to light here** since 0.6a left | 0:50 |
+| 0.8 | Between the shapes and the parameters there is a **chain** — and **the four questions of the thesis on it** | **the master chain graphic**, then **four clicks, one question each, lighting the step it is about**: shear→maps · maps · maps→…→posterior · summaries + systematics | **rebuilt 2026-09-06** | ~2:10 |
+| 0.9 | ~~Four questions about that chain~~ | folded into 0.8, 2026-09-06. The board still exists, immediately before the conclusions, as a **return** | moved | &mdash; |
 
-*The beat.* A picture of the Universe → the model that fits it, and **how you test a model like
-that** → the probes that do the testing, one of which disagrees → what lensing measures → the survey
-about to make it precise → **the two quantities lensing actually deals in, and the fact that we
-measure one and want the other** → so here is the analysis chain → four questions about it →
-and the next two parts live in one step of it. *How* you get from the one to the other is no
-longer answered here: it is the first thing Part 1 says, immediately behind its divider.
+*The beat, as of 2026-09-06.* A picture of the Universe → the model that fits it, and where it
+stops being satisfying → **how you test a model like that**: independent probes, and lensing is the
+one we follow → what lensing is, strong and then weak → the survey about to make it precise, and the
+fact that the signal is the statistical memory of the whole history of the Universe → **so here is
+what it actually takes to read it**: the real DES analysis, dozens of steps → stripped to the
+scientific spine, that is the chain → **and here are the four questions of this thesis, one per
+click, each on the step of the chain it is asked about.**
+
+The formalism — shear against convergence, the projection integral, the exact κ–γ relation — is
+**no longer in the introduction**. It is Part 1's own machinery, and it now opens Part 1, running
+straight into *the relation is exact, the measurement is not*. The introduction is shorter for it
+and ends on the whole thesis rather than on Parts 1 and 2.
 
 ### Where Bayes gets taught — decided 2026-09-02
 
@@ -636,6 +645,71 @@ back on 09-03) and now closes the formalism block, so the run reads: *we can onl
 *but convergence is what we want, and it is a scalar* → *luckily the two are not independent*. The
 scalar-vs-spin-2 argument was missing from 0.6b entirely and was added; 0.6a's closing line was
 trimmed because it pre-empted both of the slides after it.
+
+---
+
+## 5c. The introduction rebuild — 2026-09-06
+
+Andreas walked the introduction out loud and found it did two things in the wrong order: it taught
+the lensing formalism to a room that had no use for it yet, and it declared only half the thesis
+before diving into Part 1. Three changes.
+
+**1. The formalism block moves into Part 1.** *We measure the shear, we want the convergence* ·
+*a convergence map carries geometry and growth* · *one potential, two observables, and the relation
+is exact* — three slides that used to sit between Euclid and the pipeline. They are Part 1's own
+machinery: the paper is about inverting γ into κ, and Part 1's second slide is *the relation is
+exact, the measurement is not*. So they now open Part 1 and run straight into it. Their parked LAM
+originals travelled with them.
+
+The introduction loses nothing. Euclid hands directly to the real DES pipeline, which is the honest
+answer to *what does it take to read this signal* — and **the theme flip (dark → paper) moves to
+that slide**, where it still marks the same boundary: we have stopped drawing the Universe and
+started on the analysis of it.
+
+**2. Euclid gets its closing beat.** A survey this size does not just give more of the same
+measurement; it moves the limit off the statistics and onto what we are able to do with them. One
+line on the slide — the signal is the **statistical memory** of everything the Universe has done
+since the Big Bang, and getting it out is an **algorithms** problem — and that is the sentence the
+rest of the talk answers.
+
+**3. A0.8 becomes the map of the thesis.** It used to end on a hand-off line about Parts 1 and 2 and
+leave the other two parts unannounced until the middle of the talk. Now all four questions are asked
+here, one per click, **each lighting the step of the chain it is about**:
+
+| click | question | lit |
+|---|---|---|
+| 1 | *(the claim: every stage is a learned component, and each can bias the answer or throw information away with no internal check noticing)* | nothing dimmed |
+| 2 | **Q1 · the maps · Part 1** — is mass mapping preprocessing, or does the choice of reconstruction change the cosmology we infer? | shear → mass maps |
+| 3 | **Q2 · the maps · Part 2** — can one reconstruction be flexible, fast, accurate and honest about its own uncertainty, on a survey the size of Euclid? | mass maps |
+| 4 | **Q3 · the summaries · Part 3** — what is the most we can read out of a map, and what does it take to turn that reading into a posterior? | maps → summaries → inference → posterior |
+| 5 | **Q4 · the summaries · Part 4** — does any of that survive the real Universe, the astrophysics we cannot model? | summaries + systematics |
+
+This is what gives the room the shape of the whole work before any of it starts, which is the one
+thing §0 says the defense is *for* and the manuscript is worst at. Every part opener afterwards is
+then a return to a picture they have already seen with a box lit.
+
+**The four questions are canonical.** The board before the conclusions asks exactly these four, in
+this order, in the same words — it is now a *return*, not an opener, and its notes say so. Change
+one, change both.
+
+*Deliberately avoided in the wording:* "higher-order statistics". Q3 and Q4 are asked in plain terms
+(*the most we can read out of a map*, *the real Universe*) because at frame 9 the room has not met
+the vocabulary and does not need it.
+
+**Mechanism, for whoever edits this next.** `data-steps` on a `.pipeline-slot` (see `pipeline.js`)
+marks each step's stages `on-k`; which step is showing is decided in CSS off reveal's own
+**`.current-fragment`** on zero-size `.qstep` markers, and the cards live stacked in one grid cell
+so the diagram above never walks up and down the screen. `.current-fragment`, not `.visible`:
+fragments stay visible once shown, so `.visible` would leave every earlier question lit as well.
+No `fragmentshown` listener, because `?print-pdf` sets the classes directly and fires no events.
+
+### Left open by this pass
+
+- **The conclusions slide still numbers its three answers Q1–Q3 against an older question set**
+  (deep learning / baryons / nulling), which now collides with the canonical four. Three backup
+  slides carry those old tags too. Renumbering is a single consistent pass; it has not been made.
+- `SPEAKER_SCRIPT.md` has no beats for A0.8's four questions or for Euclid's closing line, and its
+  act timings predate this pass and the wavelet excursion. The whole-talk figure in §5 is stale.
 
 ---
 

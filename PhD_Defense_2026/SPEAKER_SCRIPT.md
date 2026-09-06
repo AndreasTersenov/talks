@@ -246,9 +246,19 @@ Rubin will follow from the ground, and Roman deeper over a smaller area.
 **▲** That is roughly an order of magnitude more statistical power than the surveys we have
 today.
 
+〔New closing beat, 2026-09-06. This is the hand-off into the whole rest of the talk, so do not
+rush it — slow down, stand still, and let the last sentence land before you click on.〕
+
+[CLICK] **▲** And that signal is worth the trouble, because it is the statistical memory of
+everything the Universe has done since the Big Bang. The initial conditions, the growth of
+structure, the geometry — all of it is written into how the light was bent on the way here.
+But none of it comes out on its own. Getting it out is an algorithms problem.
+
+And that is what this thesis is about.
+
 ---
 
-## A0.6a — shear and convergence · 1:09
+## A0.6a — shear and convergence · MOVED INTO ACT 1, 2026-09-06 · 1:09
 
 〔The deck turns from black to paper here. Do not remark on it — let the room notice.
 This is the first slide that names quantities rather than telling a story, so drop the
@@ -273,7 +283,7 @@ other is a reconstruction, and that is where this thesis starts.
 
 ---
 
-## A0.6b — what the convergence is · 0:45
+## A0.6b — what the convergence is · MOVED INTO ACT 1, 2026-09-06 · 0:45
 
 〔Do not read the equation. Point at the two pieces and say what each one carries. The map
 at the bottom is the object every result in this talk is computed on, so let it sit for a
@@ -293,7 +303,7 @@ maps like this.
 
 ---
 
-## A0.6c — how you get from one to the other · 0:53
+## A0.6c — how you get from one to the other · MOVED INTO ACT 1, 2026-09-06 · 0:53
 
 〔Closes the Act 0 formalism block. First half over the clean diagram; take the click before the
 second half, and slow down on the last line — it is the sentence Part 1's question grows out of.〕
@@ -350,13 +360,14 @@ statistical errors shrink by an order of magnitude, they stop being what limits 
 
 ---
 
-## A0.8 — what this thesis is about, and the step Part 1 lives in · 1:20
+## A0.8 — the chain, and the four questions of the thesis on it · 3:01
 
-> **Merged 2026-09-03.** This was two slides and two beats — the chain, then the hand-off with
-> the same chain redrawn and one step lit. Andreas: *"slide eleven should be just an animation
-> of slide ten."* It is now one slide with a second click that dims the diagram and lights the
-> shear→mass-maps step, so the room watches one picture change instead of comparing two.
-> The old hand-off slide is parked, hidden, directly below it in `index.html`.
+> **Rebuilt 2026-09-06.** It used to end on a hand-off line about Parts 1 and 2 and leave the
+> other two parts unannounced until the middle of the talk. Now all four questions are asked
+> here, one per click, each lighting the step of the chain it is about. The four are
+> **canonical** — the board before the conclusions asks exactly these, in these words.
+> Timing is **measured**: 423 words at 140 wpm, stage directions excluded.
+> Deliberately no "higher-order statistics" in the wording; the room has not met it yet.
 
 〔The thesis statement, and the map for everything after it. Walk the diagram left to right
 once, unhurried, touching each box — this is the picture the room sees again at the head of
@@ -377,25 +388,68 @@ redshift calibration — before any of it is compared with the data.
 of them can bias the answer, or quietly throw information away, with no internal check
 noticing.
 
+〔Beat. Then the four questions — one click each. Point at the box that lights up, ask the
+question, and let it sit before you move on. Do not race these: this is the map of the whole
+talk, and it is the last thing the room gets before the material starts.〕
+
+[CLICK] The first question is about this step here. Shear goes in, a mass map comes out. That
+inversion is not a measurement — it is a choice of algorithm, and there are many of them. The
+field has always judged those algorithms on how closely the map matches the truth. But the map
+is not what we publish; the posterior is. **▲** So: is mass mapping preprocessing, or does the
+choice of reconstruction change the cosmology we infer?
+
+[CLICK] Second question, same box. Suppose it does matter. Then we want a reconstruction that is
+flexible, fast, accurate, **and** honest about how wrong it is — all four at once, on a survey
+the size of Euclid.
+
+[CLICK] The third question moves one step to the right, and then all the way to the end. A mass
+map is a hundred thousand correlated pixels. It has to be compressed before anything can be
+inferred from it, and then that compressed reading has to become a posterior. **▲** So: what is
+the most we can read out of a map, and what does it take to turn that reading into a posterior?
+
+[CLICK] And the fourth question is the one that decides whether any of the rest is usable.
+Everything so far assumes the simulations tell the truth. They do not, quite — there is
+astrophysics in the real Universe that we cannot model, and it sits on the same scales as the
+signal. **▲** Does any of it survive that?
+
 〔Beat.〕
 
-I am going to ask four questions about that chain. You will see this picture again at the head
-of every part, with one box lit.
+Four questions. Two about the maps, two about the summaries. Each pair asks whether there is
+something to gain, and then whether we can actually have it. You will see this picture again at
+the head of every part, with one box lit — and we come back to these four at the end, with the
+answers.
 
-
-[CLICK] 〔The diagram dims and two boxes light. Point at them; do not redraw the picture in
-words — the room can see it.〕
-
-Now the same picture, with one step lit.
-
-The first two parts both live there. Shear goes in; a mass map comes out. **▲** Everything for
-the next twenty minutes is about what happens **between those two boxes**.
 ---
 
+## Act 0 after 2026-09-06 — what the reorder did to the clock
+
+| change | Act 0 | Act 1 |
+|---|---|---|
+| A0.6a, A0.6b, A0.6c move behind the Part 1 divider | −2:47 | +2:47 |
+| A0.6 gains its closing beat (72 words, measured) | +0:31 | — |
+| A0.8 grows from the hand-off line to all four questions (423 words, measured) | +1:41 | — |
+| **net** | **−0:35** | **+2:47** |
+
+So the talk is **about two and a quarter minutes longer** than before the pass, and the cost is
+almost entirely on A0.8. That is the trade Andreas asked for — the room gets the whole thesis
+before any of it starts — but it is the first place to look if the whole-talk figure needs to come
+down. The cheapest ways to buy it back, in order: take **one** sentence off each of Q1 and Q3 (they
+are the two long ones, ≈ −0:25); drop A0.6's new closing beat and say it over A0.7 instead
+(−0:31); and, if it comes to it, ask Q2 and Q4 on the same click as their neighbours, since each
+pair shares a lit box (≈ −0:40, and it costs the pairing that makes the four legible).
+
+**Do not cut the four questions themselves.** The board before the conclusions returns to them
+verbatim, and the parts each open on one of them.
+
+---
 
 ## Cut ladder for Act 0
 
 Measured savings, in the order I would take them.
+
+> **2026-09-06:** tiers 4 and 5 below refer to A0.6a/b/c, which are now Act 1 slides. The savings
+> are still real; they just come out of Act 1's budget now.
+
 
 | tier | cut | saves |
 |---|---|---|

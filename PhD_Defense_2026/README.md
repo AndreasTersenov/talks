@@ -313,9 +313,48 @@ converted their dark figures with `tools/darkfig-panel-light.py` — the panel-a
 already-restyled result slides of Acts 3-4, which were left alone because they are dense with
 figures and were not the offenders.
 
+## The introduction rebuild — 2026-09-06
+
+Andreas walked the opening out loud and found two faults in its order. It taught the lensing
+formalism — shear against convergence, the projection integral, the exact κ–γ relation — to a room
+that had no use for it yet; and it declared only half the thesis before diving into Part 1, leaving
+Parts 3 and 4 unannounced until the middle of the talk.
+
+**The formalism block moved into Part 1.** Those three slides are Part 1's own machinery: the paper
+is about inverting γ into κ, and Part 1's second slide is *the relation is exact, the measurement is
+not*. They now sit immediately behind the Part 1 divider and run straight into it. Their parked LAM
+originals travelled with them. Euclid hands directly to the real DES pipeline instead — and **the
+theme flip from black to paper moved onto that slide**, where it marks the same boundary it always
+did.
+
+**Euclid gained a closing beat**: the lensing signal is the statistical memory of everything the
+Universe has done since the Big Bang, and getting it out is an algorithms problem. That is the
+sentence the rest of the talk answers.
+
+**The chain slide became the map of the thesis.** All four questions are now asked on it, one per
+click, each lighting the step of the chain it is about — the maps twice, then the summaries twice.
+The four are **canonical**: the board before the conclusions asks exactly these, in the same words,
+and is now a *return* rather than an opener. The wording deliberately avoids "higher-order
+statistics", which the room has not met at that point.
+
+New mechanism for it, in `pipeline.js`: `data-steps` on a `.pipeline-slot` marks each step's stages
+`on-k`, and which step is showing is decided in CSS off reveal's own **`.current-fragment`** on
+zero-size `.qstep` markers. Not `.visible` — fragments stay visible once shown, so `.visible` would
+leave every earlier question lit as well. Not a `fragmentshown` listener either, because
+`?print-pdf` sets the classes directly and fires no events. The cards live stacked in one grid cell
+(`.qbay`) so the diagram above never walks up and down the screen as the questions turn over.
+
+Cost on the clock, measured at 140 wpm: **+2:06 to the talk**, almost all of it on the chain slide.
+`SPEAKER_SCRIPT.md` carries the arithmetic and the three cheapest ways to buy it back.
+
+**Left open:** the conclusions slide still numbers its three answers Q1–Q3 against an older question
+set (deep learning / baryons / nulling), which now collides with the canonical four; three backup
+slides carry those old tags too.
+
 ## Not yet done
 
 - Listed on the repo landing page (`../index.html`) as the top 2026 entry.
-- `SPEAKER_SCRIPT.md` does not exist. Spec in TALK-GUIDELINES §11b; `../cosmo26/SPEAKER_SCRIPT.md`
-  is the worked example. It needs **two** Q&A tiers — the general-audience questions and the
-  closed examination are different rooms.
+- `SPEAKER_SCRIPT.md` exists and is written through Act 2, but its act timings predate the
+  September restructures and it has no beats for the wavelet excursion or the statistics plots. It
+  still needs **two** Q&A tiers — the general-audience questions and the closed examination are
+  different rooms.
