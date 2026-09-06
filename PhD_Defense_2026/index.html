@@ -2974,20 +2974,20 @@
 					<div class="col fragment fade-in" data-fragment-index="0">
 						<div class="kicker">wavelet peak counts</div>
 						<div class="r-stack statswap">
-							<img class="plain fragment fade-out" data-fragment-index="2"
+							<img class="plain fragment fade-out" data-fragment-index="1"
 								src="../assets/figures/maps/kappa_peaks_circled.png"
 								alt="a smoothed convergence map with its signal-to-noise peaks circled">
-							<img class="plain fragment fade-in" data-fragment-index="2"
+							<img class="plain fragment fade-in" data-fragment-index="1"
 								src="../assets/diagrams/hos_peaks_shape.png"
 								alt="schematic peak counts against signal-to-noise, one curve per starlet scale: the counts fall by about a factor of four from each scale to the next, and every curve peaks a little above a signal-to-noise of one">
 						</div>
 						<p class="cap">local maxima of the SNR field, counted per SNR bin &rarr; focus only on a subset
 							of the field
 					</div>
-					<div class="col fragment fade-in" data-fragment-index="1">
+					<div class="col fragment fade-in" data-fragment-index="2">
 						<div class="kicker">starlet &#8467;1-norm</div>
 						<div class="r-stack statswap">
-							<div class="l1formula fragment fade-out" data-fragment-index="2">
+							<div class="l1formula fragment fade-out" data-fragment-index="3">
 								<div>
 									$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big|
 									\;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
@@ -2995,7 +2995,7 @@
 										falls in bin $i$</p>
 								</div>
 							</div>
-							<img class="plain fragment fade-in" data-fragment-index="2"
+							<img class="plain fragment fade-in" data-fragment-index="3"
 								src="../assets/diagrams/hos_l1_shape.png"
 								alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale: each curve is bimodal about zero, with a hump on the void side and a slightly higher one on the peak side, and the coarser scales are broader and flatter">
 						</div>
@@ -3009,18 +3009,22 @@
 					a sum of band-pass images, each carrying structure of a characteristic angular size (adjacent bands
 					overlap - they are band-passes, not a partition). That matters twice: each band covers a different
 					frequency range so the covariance is nearly diagonal, and a systematic confined to small scales
-					lands in ONE band, which is what makes the cheap scale cut possible later. Peaks: count local maxima
-					of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features.
-					The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting
-					maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step
-					to define or tune. That is our analytical hero for the rest of the talk.
-					[CLICK] And this is what the two of them actually look like, scale by scale - schematic curves, the
-					shapes not the numbers. Two things to point at. The peak counts fall by roughly a factor of four
-					from one scale to the next, because a coarser band has that many fewer independent resolution
-					elements to hold a maximum, and they live almost entirely on the positive side. The l1-norm is
-					bimodal instead: a hump either side of zero and a dip at zero, because a coefficient near zero
-					contributes nothing to a sum of absolute values. The left hump is the voids. That is the picture
-					of what "every pixel contributes" means, and it is why the l1-norm carries more than the peaks do. CAREFUL: the figure labels
+					lands in ONE band, which is what makes the cheap scale cut possible later. Four clicks, one statistic at a
+					time - define it, then show its shape.
+					[CLICK 1 - PEAKS] Peak counts: find the local maxima of the signal-to-noise field, and histogram
+					them per SNR bin. Simple, well established, and it keeps only the discrete features.
+					[CLICK 2 - THE PEAK HISTOGRAMS] And this is what that looks like, scale by scale. Schematic - the
+					shapes, not the numbers. Note what separates the scales: they all turn over in the same place,
+					just above a signal-to-noise of one, and they are stacked in amplitude, roughly a factor of four
+					apart, because a coarser band has that many fewer resolution elements to hold a maximum. And they
+					live almost entirely on the positive side - that is what "only the discrete features" means.
+					[CLICK 3 - L1] The l1-norm generalises it: instead of counting maxima, sum the absolute
+					coefficients in each SNR bin. Every pixel contributes, voids as well as peaks, and there is no
+					feature-detection step to define or tune. That is our analytical hero for the rest of the talk.
+					[CLICK 4 - THE L1 CURVES] And its shape is quite different: bimodal, with a hump either side of
+					zero and a dip AT zero, because a coefficient near zero adds nothing to a sum of absolute values.
+					The left hump is the voids. That picture is what "every pixel contributes" means, and it is the
+					reason the l1-norm carries more than the peaks do. CAREFUL: the figure labels
 					its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four
 					finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out
 					loud.</aside>
