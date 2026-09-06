@@ -1122,7 +1122,7 @@
 							<ul class="points dots">
 								<li>a data step lands at $v$ &mdash; better fit, <b>not</b> a plausible map</li>
 								<li><b>prox</b> returns the <b>nearest</b> map the prior accepts</li>
-								<li>Gaussian prior &rarr; <b>Wiener shrinkage</b>, Fourier mode by mode ; sparse prior &rarr; <b>thresholding</b>, wavelet coefficient by coefficient</li>
+								<!-- <li>Gaussian prior &rarr; <b>Wiener shrinkage</b>, Fourier mode by mode ; sparse prior &rarr; <b>thresholding</b>, wavelet coefficient by coefficient</li> -->
 							</ul>
 						</div>
 					</div>
@@ -2934,106 +2934,6 @@
 			</section>
 
 
-			<!-- ============ S2 — the practical question for Part 1 ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight">The non-Gaussian information and the worst small-scale systematic <em
-						class="alert">live on the same scales</em></h3>
-				<p class="lead-line">To be able to <b class="alert">trust</b> our HOS results we must investigate how
-					they are affected by each systematic <b>at the contour level</b>.</p>
-				<svg class="scales" viewBox="0 0 760 286" width="1000" height="376" role="img"
-					aria-label="schematic: the non-Gaussian information peaks at intermediate scales while baryonic feedback rises at the smallest; how much must be removed decides whether anything is left">
-					<defs>
-						<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"
-							patternTransform="rotate(45)">
-							<line x1="0" y1="0" x2="0" y2="9" stroke="var(--fg-muted)" stroke-width="2.4"
-								opacity="0.55" />
-						</pattern>
-						<filter id="roughen" x="-8%" y="-20%" width="116%" height="140%">
-							<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4" seed="11"
-								result="n" />
-							<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-						<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="760" height="290">
-							<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="3"
-								result="ln" />
-							<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-						<filter id="roughen-text" x="-14%" y="-40%" width="128%" height="180%">
-							<feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="3" seed="5"
-								result="tn" />
-							<feDisplacementMap in="SourceGraphic" in2="tn" scale="2.4" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-					</defs>
-
-					<!-- How far the contamination reaches, in two steps. The slide opens on the
-					     curves alone so the room reads the figure before it is asked a question
-					     about it; fade-in-then-out shows the optimistic band only while it is the
-					     current fragment, so the pessimistic one replaces it rather than stacking. -->
-					<g class="fragment fade-in-then-out" data-fragment-index="1">
-						<rect class="cut sketch" x="520" y="30" width="215" height="156" />
-						<text class="bandlab" x="627" y="22" text-anchor="middle">optimistic</text>
-					</g>
-					<g class="fragment fade-in" data-fragment-index="2">
-						<rect class="cut sketch" x="290" y="30" width="445" height="156" />
-						<text class="bandlab" x="512" y="22" text-anchor="middle">pessimistic</text>
-					</g>
-
-					<!-- information beyond two-point: rises, peaks at intermediate scales -->
-					<path class="infofill sketch"
-						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68 L735,186 L95,186 Z" />
-					<path class="info sketch"
-						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68" />
-					<!-- baryonic feedback: negligible until the smallest scales, then steep -->
-					<path class="feedfill sketch"
-						d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44 L735,186 L95,186 Z" />
-					<path class="feed sketch" d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44" />
-
-					<!-- axis -->
-					<line class="frameline sketchline" x1="95" y1="186" x2="735" y2="186" />
-					<line class="frameline sketchline" x1="95" y1="186" x2="95" y2="28" />
-					<text class="axlab" x="95" y="210" text-anchor="start">large, linear scales</text>
-					<text class="axlab" x="735" y="210" text-anchor="end">small, non-linear scales</text>
-					<text class="axlab" x="78" y="34" text-anchor="end" transform="rotate(-90 78 34)">more &rarr;</text>
-					<text class="schematic-note" x="735" y="277" text-anchor="end">(schematic &mdash; not to
-						scale)</text>
-
-					<!-- legend, below the axis so it never collides with the shaded range -->
-					<line class="info sketchline" x1="98" y1="238" x2="142" y2="238" />
-					<text class="lab acc" x="152" y="245">information beyond two-point</text>
-					<line class="feed sketchline" x1="98" y1="270" x2="142" y2="270" />
-					<text class="lab mut" x="152" y="277">baryonic feedback</text>
-				</svg>
-				<div class="coreq">
-					<div class="qcard">
-						<span class="qtab">question 1</span>
-						<p>How much does <b class="alert">unmodelled</b> feedback bias our <b class="alert">higher-order
-								statistics</b>, and how does that grow with survey area?</p>
-					</div>
-					<div class="qcard">
-						<span class="qtab">question 2</span>
-						<p>Once those scales are cut, is there <b class="alert">any constraining power left to gain</b>
-							over the power spectrum?</p>
-					</div>
-				</div>
-				<aside class="notes">SAY: higher-order statistics are usually demonstrated on clean simulations; Stage
-					IV is systematics-limited, so what decides whether we can use them is how they behave under
-					contamination. Baryonic feedback - AGN and supernovae - pushes gas out of haloes and suppresses
-					matter on small scales, mimicking a cosmological signal, exactly where the constraining power lives
-					and where the feedback models disagree most with each other. Point at the figure and let the room
-					read it before any band appears: both the extra information and the contamination live at small
-					scales. Now, the conservative response is to throw the affected scales away. The question is how
-					much that costs. CLICK - OPTIMISTIC: only the smallest scales are affected, we cut them, and most of
-					the non-Gaussian information is still there. CLICK - PESSIMISTIC: the contamination reaches much
-					further, and once you cut it there is nothing beyond-Gaussian left worth having - the power spectrum
-					would do just as well. Which of these is true is an empirical question, and it is the first thing we
-					measured.</aside>
-			</section>
-
-
-
 
 
 			<!-- ============ the chain a third time — the summary has to become a posterior,
@@ -3296,186 +3196,6 @@
 					a luxury when the likelihood was never written down and nothing else would catch a bad one.
 				</aside>
 			</section>
-
-
-			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
-			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
-				<h3 class="sbi-title">The inference pipeline: <span class="hl">neural posterior estimation</span></h3>
-				<div class="sbi-stage">
-					<canvas class="sbi-canvas" width="2360" height="1104"
-						aria-label="The SBI pipeline assembling: cosmoGRID kappa-maps, plus noise and a wavelet transform into wavelet-scale maps and summary statistics, conditioning a conditional MAF that maps a Gaussian into the posterior"></canvas>
-					<img class="sbi-img" data-appear="1" src="../assets/diagrams/cosmogrid_box.png"
-						alt="cosmoGRID kappa-maps" style="left:10.5%; top:65%; width:15%;">
-					<img class="sbi-img" data-appear="2" src="../assets/diagrams/wavelet_scales_stats.png"
-						alt="wavelet-scale maps and summary statistics" style="left:46%; top:66%; width:46%;">
-					<div class="sbi-lbl sbi-lbl--mut" data-appear="2" style="left:20.5%; top:55%;">+ noise<br>wavelet
-						transform</div>
-					<div class="sbi-lbl sbi-lbl--cond" data-appear="3" style="left:70%; top:56%;">condition</div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:15%; top:5%;">Gaussian<span
-							class="sub">\(\mathcal{N}(0,\mathbf{1})\)</span></div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:40%; top:5%;">Density estimator<span
-							class="sub">conditional MAF</span></div>
-					<div class="sbi-lbl sbi-lbl--head" data-appear="4" style="left:62%; top:5%;">Posterior<span
-							class="sub">\(p(\theta\mid x)\)</span></div>
-					<div class="sbi-lbl sbi-lbl--obj" data-appear="5" style="left:91.5%; top:40%;">
-						<div class="ot">training objective</div>\(\mathcal{L}=-\log p_\phi(\theta\mid x)\)
-					</div>
-					<img class="sbi-img" data-appear="5" src="../assets/logos/jax_logo.png" alt="JAX"
-						style="left:91.5%; top:52%; width:7.5%;">
-				</div>
-				<div class="sbi-caption" aria-live="polite"></div>
-				<button class="sbi-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<span class="fragment sbi-frag" aria-hidden="true"></span>
-				<aside class="notes">The SBI pipeline for Part 1: CosmoGridV1 kappa-maps, add Euclid-like noise and
-					apply the wavelet transform to get wavelet-scale maps and the summary statistics (the l1-norm), then
-					condition a conditional MAF (NPE) that maps a Gaussian to the posterior p(theta|x); trained by
-					minimizing -log p_phi(theta|x). JAX stack.</aside>
-			</section>
-
-
-			<!-- Baryonic Bias Scales with Survey Area (LAM version, light) -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> Baryonic Bias Scales with Survey Area</h3>
-				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.35;">
-						<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png"
-							style="max-height:270px;"
-							alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
-						<ul style="font-size:0.78em;">
-							<li>At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b
-									class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b
-									class="alert">3.6&sigma;</b></li>
-							<li>At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b
-									class="alert">6&sigma;</b></li>
-							<li>HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the
-								baryonically-contaminated small scales</li>
-						</ul>
-					</div>
-					<div class="col" style="flex:1.2;">
-						<div class="r-stack fragment fade-in" data-fragment-index="1">
-							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png"
-								style="max-height:370px;"
-								alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
-							<img class="plain fragment" data-fragment-index="2"
-								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png"
-								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="3"
-								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png"
-								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="4"
-								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png"
-								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="5"
-								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png"
-								style="max-height:370px;" alt="">
-							<img class="plain fragment" data-fragment-index="6"
-								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png"
-								style="max-height:370px;" alt="">
-						</div>
-					</div>
-				</div>
-				<p class="footnote fragment fade-in" data-fragment-index="0">measured at full map resolution: $\ell_{\rm
-					max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
-				<span class="srcref">Tersenov+ 2026, A&amp;A</span>
-				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At
-					Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above
-					6. IMPORTANT: all of this is at FULL MAP RESOLUTION - lmax 1024 for the power spectrum, every
-					wavelet band for the HOS - i.e. no scale cuts yet. That is the point: this is what you get if you
-					use everything the maps offer. HOS are more sensitive than C_l because they live on the contaminated
-					small scales.</aside>
-			</section>
-
-
-			<!-- Mitigation: Scale Cuts (LAM version, light) -->
-			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§3</span> Buying back an unbiased inference costs
-					$C_\ell$ <em class="alert">most of its multipole range</em>, and the starlet its <em
-						class="alert">finest band</em></h3>
-				<ul style="font-size:0.82em; margin-bottom:0.5em;">
-					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-					<li class="fragment fade-in" data-fragment-index="0">$C_\ell$ takes a <b class="alert">sliding</b>
-						cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b
-							class="alert">340</b> at full sky</li>
-					<li class="fragment fade-in" data-fragment-index="0">The starlet concentrates the contamination in
-						its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
-				</ul>
-				<img class="plain fragment fade-in" data-fragment-index="0"
-					src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
-					style="max-height:270px; display:block; margin:0 auto;"
-					alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
-				<div class="cutpair fragment fade-in" data-fragment-index="0">
-					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut
-							tuned to each area</span></div>
-					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole
-							bands only, so we cut more than we need</span></div>
-				</div>
-				<aside class="notes">Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power
-					spectrum gets a SLIDING lmax - it can be tuned to keep exactly the multipoles that are safe at each
-					area, from 860 at 2,000 down to 340 at full sky, which is a large fraction of the range removed but
-					it is removed precisely. The starlet gets a different kind of cut: the contamination concentrates in
-					the finest band, so dropping j=1 is enough at every area - but because the bands are dyadic,
-					whole-band removal is the ONLY cut available. That is a blunt instrument: at the smaller footprints
-					it certainly throws away uncontaminated quasi-linear information that a finer filter bank would have
-					kept. So the wavelet cut is not "better", it is coarser and therefore conservative. A sqrt-2 or
-					non-dyadic filter bank would allow an area-tuned cut and recover more. One genuine advantage the HOS
-					do have: they are binned in signal-to-noise as well as scale, and the baryonic response sits in the
-					positive tail, so in principle the contamination can be removed where it sits rather than by
-					removing a whole band. We leave that to future work.</aside>
-			</section>
-
-
-			<!-- Are HOS still useful? (LAM version of the safe-scales slide, light) -->
-			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> Are HOS still useful?</h3>
-				<div class="container" style="align-items:center; margin-top:0.2em;">
-					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.45;">
-						<div class="r-stack">
-							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png"
-								style="max-height:480px;"
-								alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
-							<img class="plain fragment" data-fragment-index="1"
-								src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png"
-								style="max-height:480px;" alt="">
-							<img class="plain fragment" data-fragment-index="2"
-								src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png"
-								style="max-height:480px;" alt="">
-						</div>
-					</div>
-					<div class="col hos-side" style="flex:0.85;">
-						<p class="kicker fragment fade-in" data-fragment-index="3">on baryon&#8209;safe scales</p>
-						<ul class="points fragment fade-in" data-fragment-index="3">
-							<li>starlet $\ell_1$&#8209;norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at
-								Stage&nbsp;IV, <b class="alert">&times;2.6</b> at full sky</li>
-							<li>different degeneracy directions in the $w_0$ planes, so the HOS stay
-								<b>complementary</b> to $C_\ell$
-							</li>
-						</ul>
-
-						<p class="kicker fragment fade-in" data-fragment-index="4">and this is a floor</p>
-						<ul class="points fragment fade-in" data-fragment-index="4">
-							<li>the signal survives on <b>quasi&#8209;linear</b> scales &mdash; these are not only
-								deep&#8209;non&#8209;linear probes</li>
-							<li>our whole&#8209;band cut is <b>not optimised</b>, and better baryon modelling pushes
-								the analysis deeper, where the gain is larger</li>
-						</ul>
-					</div>
-				</div>
-				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at
-					Stage IV and x2.61 at full sky. Be precise about the peak counts: they reach approximate parity with
-					the power spectrum at Stage IV-like areas (x1.07) and slightly exceed it at full sky (x1.17); at the
-					smaller footprints they trail it. Do NOT say they "lose". The reason they trail is largely the cut,
-					not the statistic: the quantised whole-band removal takes out a larger fraction of the peak-count
-					information than the sliding lmax takes from the power spectrum, and that penalty is worst exactly
-					where the power-spectrum cut is loosest. And even at comparable figure of merit they are not
-					redundant - in the planes involving w0 their degeneracy directions differ from the power spectrum,
-					so they add information a joint analysis would use. Takeaway: baryons are a dominant systematic; HOS
-					are robust on quasi-linear scales, not just deep non-linear probes; and everything here is a floor
-					that a finer filter bank or an SNR-space cut would raise.</aside>
-			</section>
-
 
 			<!-- ============ ACT 2 OPENER — which summary should we compute? ============ -->
 			<section data-theme="light">
@@ -3778,6 +3498,290 @@
 					anyone wants the population rather than the medians.</aside>
 			</section>
 
+
+
+			<!-- ============ S2 — the practical question for Part 1 ============ -->
+			<section data-theme="light">
+				<h3 class="slide-title tight">The non-Gaussian information and the worst small-scale systematic <em
+						class="alert">live on the same scales</em></h3>
+				<p class="lead-line">To be able to <b class="alert">trust</b> our HOS results we must investigate how
+					they are affected by each systematic <b>at the contour level</b>.</p>
+				<svg class="scales" viewBox="0 0 760 286" width="1000" height="376" role="img"
+					aria-label="schematic: the non-Gaussian information peaks at intermediate scales while baryonic feedback rises at the smallest; how much must be removed decides whether anything is left">
+					<defs>
+						<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"
+							patternTransform="rotate(45)">
+							<line x1="0" y1="0" x2="0" y2="9" stroke="var(--fg-muted)" stroke-width="2.4"
+								opacity="0.55" />
+						</pattern>
+						<filter id="roughen" x="-8%" y="-20%" width="116%" height="140%">
+							<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4" seed="11"
+								result="n" />
+							<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
+								yChannelSelector="G" />
+						</filter>
+						<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="760" height="290">
+							<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="3"
+								result="ln" />
+							<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
+								yChannelSelector="G" />
+						</filter>
+						<filter id="roughen-text" x="-14%" y="-40%" width="128%" height="180%">
+							<feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="3" seed="5"
+								result="tn" />
+							<feDisplacementMap in="SourceGraphic" in2="tn" scale="2.4" xChannelSelector="R"
+								yChannelSelector="G" />
+						</filter>
+					</defs>
+
+					<!-- How far the contamination reaches, in two steps. The slide opens on the
+					     curves alone so the room reads the figure before it is asked a question
+					     about it; fade-in-then-out shows the optimistic band only while it is the
+					     current fragment, so the pessimistic one replaces it rather than stacking. -->
+					<g class="fragment fade-in-then-out" data-fragment-index="1">
+						<rect class="cut sketch" x="520" y="30" width="215" height="156" />
+						<text class="bandlab" x="627" y="22" text-anchor="middle">optimistic</text>
+					</g>
+					<g class="fragment fade-in" data-fragment-index="2">
+						<rect class="cut sketch" x="290" y="30" width="445" height="156" />
+						<text class="bandlab" x="512" y="22" text-anchor="middle">pessimistic</text>
+					</g>
+
+					<!-- information beyond two-point: rises, peaks at intermediate scales -->
+					<path class="infofill sketch"
+						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68 L735,186 L95,186 Z" />
+					<path class="info sketch"
+						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68" />
+					<!-- baryonic feedback: negligible until the smallest scales, then steep -->
+					<path class="feedfill sketch"
+						d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44 L735,186 L95,186 Z" />
+					<path class="feed sketch" d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44" />
+
+					<!-- axis -->
+					<line class="frameline sketchline" x1="95" y1="186" x2="735" y2="186" />
+					<line class="frameline sketchline" x1="95" y1="186" x2="95" y2="28" />
+					<text class="axlab" x="95" y="210" text-anchor="start">large, linear scales</text>
+					<text class="axlab" x="735" y="210" text-anchor="end">small, non-linear scales</text>
+					<text class="axlab" x="78" y="34" text-anchor="end" transform="rotate(-90 78 34)">more &rarr;</text>
+					<text class="schematic-note" x="735" y="277" text-anchor="end">(schematic &mdash; not to
+						scale)</text>
+
+					<!-- legend, below the axis so it never collides with the shaded range -->
+					<line class="info sketchline" x1="98" y1="238" x2="142" y2="238" />
+					<text class="lab acc" x="152" y="245">information beyond two-point</text>
+					<line class="feed sketchline" x1="98" y1="270" x2="142" y2="270" />
+					<text class="lab mut" x="152" y="277">baryonic feedback</text>
+				</svg>
+				<div class="coreq">
+					<div class="qcard">
+						<span class="qtab">question 1</span>
+						<p>How much does <b class="alert">unmodelled</b> feedback bias our <b class="alert">higher-order
+								statistics</b>, and how does that grow with survey area?</p>
+					</div>
+					<div class="qcard">
+						<span class="qtab">question 2</span>
+						<p>Once those scales are cut, is there <b class="alert">any constraining power left to gain</b>
+							over the power spectrum?</p>
+					</div>
+				</div>
+				<aside class="notes">SAY: higher-order statistics are usually demonstrated on clean simulations; Stage
+					IV is systematics-limited, so what decides whether we can use them is how they behave under
+					contamination. Baryonic feedback - AGN and supernovae - pushes gas out of haloes and suppresses
+					matter on small scales, mimicking a cosmological signal, exactly where the constraining power lives
+					and where the feedback models disagree most with each other. Point at the figure and let the room
+					read it before any band appears: both the extra information and the contamination live at small
+					scales. Now, the conservative response is to throw the affected scales away. The question is how
+					much that costs. CLICK - OPTIMISTIC: only the smallest scales are affected, we cut them, and most of
+					the non-Gaussian information is still there. CLICK - PESSIMISTIC: the contamination reaches much
+					further, and once you cut it there is nothing beyond-Gaussian left worth having - the power spectrum
+					would do just as well. Which of these is true is an empirical question, and it is the first thing we
+					measured.</aside>
+			</section>
+
+
+
+
+
+			<!-- SBI pipeline animation (Part 1): integrated component, after the l1-norm slide -->
+			<section class="sbi-slide" data-theme="light" data-background-color="#ffffff" data-sbi-explainer>
+				<h3 class="sbi-title">The inference pipeline: <span class="hl">neural posterior estimation</span></h3>
+				<div class="sbi-stage">
+					<canvas class="sbi-canvas" width="2360" height="1104"
+						aria-label="The SBI pipeline assembling: cosmoGRID kappa-maps, plus noise and a wavelet transform into wavelet-scale maps and summary statistics, conditioning a conditional MAF that maps a Gaussian into the posterior"></canvas>
+					<img class="sbi-img" data-appear="1" src="../assets/diagrams/cosmogrid_box.png"
+						alt="cosmoGRID kappa-maps" style="left:10.5%; top:65%; width:15%;">
+					<img class="sbi-img" data-appear="2" src="../assets/diagrams/wavelet_scales_stats.png"
+						alt="wavelet-scale maps and summary statistics" style="left:46%; top:66%; width:46%;">
+					<div class="sbi-lbl sbi-lbl--mut" data-appear="2" style="left:20.5%; top:55%;">+ noise<br>wavelet
+						transform</div>
+					<div class="sbi-lbl sbi-lbl--cond" data-appear="3" style="left:70%; top:56%;">condition</div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:15%; top:5%;">Gaussian<span
+							class="sub">\(\mathcal{N}(0,\mathbf{1})\)</span></div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="3" style="left:40%; top:5%;">Density estimator<span
+							class="sub">conditional MAF</span></div>
+					<div class="sbi-lbl sbi-lbl--head" data-appear="4" style="left:62%; top:5%;">Posterior<span
+							class="sub">\(p(\theta\mid x)\)</span></div>
+					<div class="sbi-lbl sbi-lbl--obj" data-appear="5" style="left:91.5%; top:40%;">
+						<div class="ot">training objective</div>\(\mathcal{L}=-\log p_\phi(\theta\mid x)\)
+					</div>
+					<img class="sbi-img" data-appear="5" src="../assets/logos/jax_logo.png" alt="JAX"
+						style="left:91.5%; top:52%; width:7.5%;">
+				</div>
+				<div class="sbi-caption" aria-live="polite"></div>
+				<button class="sbi-replay" type="button" title="Replay (R)">&#8635;&nbsp;replay</button>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<span class="fragment sbi-frag" aria-hidden="true"></span>
+				<aside class="notes">The SBI pipeline for Part 1: CosmoGridV1 kappa-maps, add Euclid-like noise and
+					apply the wavelet transform to get wavelet-scale maps and the summary statistics (the l1-norm), then
+					condition a conditional MAF (NPE) that maps a Gaussian to the posterior p(theta|x); trained by
+					minimizing -log p_phi(theta|x). JAX stack.</aside>
+			</section>
+
+
+			<!-- Baryonic Bias Scales with Survey Area (LAM version, light) -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§3</span> Baryonic Bias Scales with Survey Area</h3>
+				<div class="container" style="align-items:center; margin-top:0.2em;">
+					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.35;">
+						<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png"
+							style="max-height:270px;"
+							alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
+						<ul style="font-size:0.78em;">
+							<li>At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b
+									class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b
+									class="alert">3.6&sigma;</b></li>
+							<li>At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed <b
+									class="alert">6&sigma;</b></li>
+							<li>HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the
+								baryonically-contaminated small scales</li>
+						</ul>
+					</div>
+					<div class="col" style="flex:1.2;">
+						<div class="r-stack fragment fade-in" data-fragment-index="1">
+							<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png"
+								style="max-height:370px;"
+								alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
+							<img class="plain fragment" data-fragment-index="2"
+								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png"
+								style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="3"
+								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png"
+								style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="4"
+								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png"
+								style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="5"
+								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png"
+								style="max-height:370px;" alt="">
+							<img class="plain fragment" data-fragment-index="6"
+								src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png"
+								style="max-height:370px;" alt="">
+						</div>
+					</div>
+				</div>
+				<p class="footnote fragment fade-in" data-fragment-index="0">measured at full map resolution: $\ell_{\rm
+					max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
+				<span class="srcref">Tersenov+ 2026, A&amp;A</span>
+				<aside class="notes">Bias grows with survey area (more area, smaller errors, higher sensitivity). At
+					Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS above
+					6. IMPORTANT: all of this is at FULL MAP RESOLUTION - lmax 1024 for the power spectrum, every
+					wavelet band for the HOS - i.e. no scale cuts yet. That is the point: this is what you get if you
+					use everything the maps offer. HOS are more sensitive than C_l because they live on the contaminated
+					small scales.</aside>
+			</section>
+
+
+			<!-- Mitigation: Scale Cuts (LAM version, light) -->
+			<section data-theme="light">
+				<h3 class="slide-title tight"><span class="sec">§3</span> Buying back an unbiased inference costs
+					$C_\ell$ <em class="alert">most of its multipole range</em>, and the starlet its <em
+						class="alert">finest band</em></h3>
+				<ul style="font-size:0.82em; margin-bottom:0.5em;">
+					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
+					<li class="fragment fade-in" data-fragment-index="0">$C_\ell$ takes a <b class="alert">sliding</b>
+						cut, tuned to what is safe at each area: $\ell_{\rm max} = 860$ at 2,000 deg&sup2; falling to <b
+							class="alert">340</b> at full sky</li>
+					<li class="fragment fade-in" data-fragment-index="0">The starlet concentrates the contamination in
+						its <b class="alert">finest band</b>, so dropping $j=1$ suffices at every area</li>
+				</ul>
+				<img class="plain fragment fade-in" data-fragment-index="0"
+					src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
+					style="max-height:270px; display:block; margin:0 auto;"
+					alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
+				<div class="cutpair fragment fade-in" data-fragment-index="0">
+					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut
+							tuned to each area</span></div>
+					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole
+							bands only, so we cut more than we need</span></div>
+				</div>
+				<aside class="notes">Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power
+					spectrum gets a SLIDING lmax - it can be tuned to keep exactly the multipoles that are safe at each
+					area, from 860 at 2,000 down to 340 at full sky, which is a large fraction of the range removed but
+					it is removed precisely. The starlet gets a different kind of cut: the contamination concentrates in
+					the finest band, so dropping j=1 is enough at every area - but because the bands are dyadic,
+					whole-band removal is the ONLY cut available. That is a blunt instrument: at the smaller footprints
+					it certainly throws away uncontaminated quasi-linear information that a finer filter bank would have
+					kept. So the wavelet cut is not "better", it is coarser and therefore conservative. A sqrt-2 or
+					non-dyadic filter bank would allow an area-tuned cut and recover more. One genuine advantage the HOS
+					do have: they are binned in signal-to-noise as well as scale, and the baryonic response sits in the
+					positive tail, so in principle the contamination can be removed where it sits rather than by
+					removing a whole band. We leave that to future work.</aside>
+			</section>
+
+
+			<!-- Are HOS still useful? (LAM version of the safe-scales slide, light) -->
+			<section data-theme="light" data-background-color="#ffffff">
+				<h3 class="slide-title tight"><span class="sec">§3</span> Are HOS still useful?</h3>
+				<div class="container" style="align-items:center; margin-top:0.2em;">
+					<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.45;">
+						<div class="r-stack">
+							<img class="plain" src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png"
+								style="max-height:480px;"
+								alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
+							<img class="plain fragment" data-fragment-index="1"
+								src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png"
+								style="max-height:480px;" alt="">
+							<img class="plain fragment" data-fragment-index="2"
+								src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png"
+								style="max-height:480px;" alt="">
+						</div>
+					</div>
+					<div class="col hos-side" style="flex:0.85;">
+						<p class="kicker fragment fade-in" data-fragment-index="3">on baryon&#8209;safe scales</p>
+						<ul class="points fragment fade-in" data-fragment-index="3">
+							<li>starlet $\ell_1$&#8209;norm: <b class="alert">&times;1.8 tighter</b> than $C_\ell$ at
+								Stage&nbsp;IV, <b class="alert">&times;2.6</b> at full sky</li>
+							<li>different degeneracy directions in the $w_0$ planes, so the HOS stay
+								<b>complementary</b> to $C_\ell$
+							</li>
+						</ul>
+
+						<p class="kicker fragment fade-in" data-fragment-index="4">and this is a floor</p>
+						<ul class="points fragment fade-in" data-fragment-index="4">
+							<li>the signal survives on <b>quasi&#8209;linear</b> scales &mdash; these are not only
+								deep&#8209;non&#8209;linear probes</li>
+							<li>our whole&#8209;band cut is <b>not optimised</b>, and better baryon modelling pushes
+								the analysis deeper, where the gain is larger</li>
+						</ul>
+					</div>
+				</div>
+				<aside class="notes">On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at
+					Stage IV and x2.61 at full sky. Be precise about the peak counts: they reach approximate parity with
+					the power spectrum at Stage IV-like areas (x1.07) and slightly exceed it at full sky (x1.17); at the
+					smaller footprints they trail it. Do NOT say they "lose". The reason they trail is largely the cut,
+					not the statistic: the quantised whole-band removal takes out a larger fraction of the peak-count
+					information than the sliding lmax takes from the power spectrum, and that penalty is worst exactly
+					where the power-spectrum cut is loosest. And even at comparable figure of merit they are not
+					redundant - in the planes involving w0 their degeneracy directions differ from the power spectrum,
+					so they add information a joint analysis would use. Takeaway: baryons are a dominant systematic; HOS
+					are robust on quasi-linear scales, not just deep non-linear probes; and everything here is a floor
+					that a finer filter bank or an SNR-space cut would raise.</aside>
+			</section>
+
+
+			
 			<!-- ============ ACT 3, beat 1 — nulling: the promise and the problem ============
 			     Condensed from the June slides 22 (tomography), 23 (what BNT does) and
 			     24 (it inflates the per-bin contours). Its own investigation, not a corollary. -->
