@@ -27,23 +27,23 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 11:27 | ends on the four questions |
-| Act 1 — Part 1, does the map matter? | 10–23 | 13:11 | opens with the formalism, moved here 2026-09-06 |
-| Act 2 — Part 2, PnPMass | 24–30 | 6:31 | frames 27–28 are the first cut |
-| Act 3 — Part 3, the summaries | 31–53 | 19:24 | the longest act; 13:08 of it is teaching |
-| Act 4 — Part 4, baryons | 54–58 | 5:18 | 59–60, nulling, skipped |
-| Close | 61–62 | 1:42 | |
-| | **62** | **60:46** | **against a 40:00 target in a 45:00 slot** |
+| Act 0 — the setup | 1–9 | 10:40 | ends on the four questions |
+| Act 1 — Part 1, does the map matter? | 10–23 | 12:41 | opens with the formalism, moved here 2026-09-06 |
+| Act 2 — Part 2, PnPMass | 24–30 | 5:09 | frames 27–28 are the first cut |
+| Act 3 — Part 3, the summaries | 31–53 | 18:26 | the longest act; 13:08 of it is teaching |
+| Act 4 — Part 4, baryons | 54–58 | 5:36 | 59–60, nulling, skipped |
+| Close | 61–62 | 1:44 | |
+| | **53 spoken** | **54:16** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ 54:45 spoken, against a 40:00 target — over by 14:45.** *The arithmetic, and how to close
-> it*, after the close below, is a tiered ladder with measured savings that reaches **44:48**
-> without losing an argument, and three small packages that land the rest at **40:35**. Read it
-> before rehearsing, not after.
+> **⚠ 54:16 spoken, against a 40:00 target — over by 14:16.** *The arithmetic, and how to close
+> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:19**.
+> No tier is a whole-act decision. Read it before rehearsing, not after.
 >
-> **Eight frames are skipped** — 5, 28, 29, 37, 38, 39, 59 and 60 (Andreas, 2026-09-06) — which is
-> where 6:59 of the original 60:46 went. Their beats are kept, marked SKIP, and are still audited
-> against the deck in case any of them comes back. The nulling / BNT thread is the significant one:
-> see the banner on A4.6 for what goes with it and where it now lives.
+> **Nine frames are skipped** — 5, 17, 28, 29, 37, 38, 39, 59 and 60 (Andreas, 2026-09-06) — which
+> is where 7:53 of the original 60:46 went. Their beats are kept, marked SKIP, and are still
+> audited against the deck in case any comes back. Two of the nine took material with them and it
+> had to be rehomed: see the banners on **A1.8** (the word *prior*, the Part 3 pointer, the
+> point-estimate flag) and **A4.6** (the whole nulling thread).
 
 〔The table above is what the measuring tool prints. If it disagrees with the headings below, the
 tool has not been run since the last edit.〕
@@ -494,10 +494,10 @@ applied bluntly and after the fact, and it removes exactly the small-scale struc
 
 ---
 
-## A1.7 — every method is one term · frame 16 · 1:13
+## A1.7 — every method is one term · frame 16 · 1:38
 
-〔The organising slide of the act, and the one that makes the next four make sense. Deliberately
-*not* Bayesian yet — that is the next slide. Take the methods one at a time; each is a physical
+〔The organising slide of the act, and with frame 17 skipped it is now the only place the word
+*prior* is defined before Part 2 leans on it. Take the methods one at a time; each is a physical
 statement about the convergence field, not a piece of machinery.〕
 
 So state the assumption up front instead.
@@ -507,7 +507,8 @@ and is not absurd as a map, which is the second. **▲** Every method on this sl
 that problem, and the first term is identical for all of them.
 
 **▲** So the whole history of mass mapping is a history of the second term — what you are willing
-to assume a mass map looks like.
+to assume a mass map looks like. Which is a **prior**, in everything but name: what we believe
+about the map before we look at the data.
 
 [CLICK] Wiener filtering assumes a Gaussian field with a fixed power spectrum. Optimal, if that is
 true. But the late-time field is not Gaussian, and the peaks are the whole point.
@@ -521,13 +522,29 @@ top.
 [CLICK] And deep learning stops assuming and learns the term from simulations. Hold that thought —
 it is Part 2.
 
+**▲** And hold this one too: exactly the same three pieces come back in Part 3, with the
+cosmological parameters as the unknown instead of a map — except that there, it is the *likelihood*
+we cannot write down.
+
 ---
 
-## A1.8 — so write the assumption down · frame 17 · 0:54
+## A1.8 — so write the assumption down · frame 17 · SKIP · 0:54
 
-〔The **one** place Bayes is taught in the whole talk, so pitch the first paragraph at the widest
-person in the room and read the opening sentence almost verbatim. For some of them this is the
-first time.〕
+> **SKIPPED (Andreas, 2026-09-06), and three things had to move out of it first.**
+>
+> - **The word *prior*.** This was the only place in Act 1 that named it, and A2.3 then says
+>   *let denoising be the prior*. A1.7 now names it, in one clause.
+> - **The forward pointer to Part 3** — *the same three terms come back with the parameters as the
+>   unknown, and there the likelihood is the one we cannot write down*. It sets up A3.12 and A3.13
+>   and it now closes A1.7.
+> - **The point-estimate flag** (Starck), which now sits on A1.9.
+>
+> **Consequence for the cut ladder:** frame 43 was on the tier-2 park list on the grounds that
+> Bayes is taught here. It no longer is, so **frame 43 is the only place Bayes appears in the talk**
+> and has come off that list.
+
+〔If it comes back: the **one** place Bayes is taught in the whole talk, so pitch the first
+paragraph at the widest person in the room and read the opening sentence almost verbatim.〕
 
 And there is a name for what we just did.
 
@@ -574,6 +591,11 @@ acceptable, so you do not run away into noise. For sparsity it is simply thresho
 〔Deliberate pause. This sentence is the setup for the whole of Part 2.〕
 
 Remember that step, because in Part 2 we throw it away and put a neural network in its place.
+
+> **FLAG — inherited from the skipped frame 17. Say it only if pressed, and say it in Part 2
+> regardless.** Everything in Part 1 takes the *most probable* map: a point estimate. Part 2 is
+> where the uncertainty arrives, and Part 3 wants the whole distribution. Starck is the likeliest
+> person to ask.
 
 ---
 
@@ -1598,48 +1620,53 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 54:45 spoken against a 40:00 target**, with a further **6:59 parked** in the eight
-skipped beats. Over by **14:45**.
+**Measured: 54:16 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
+skipped beats. Over by **14:16**.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 10:40 | 19 % |
-| Act 1 — Part 1 | 10–23 | 13:11 | 24 % |
+| Act 0 — the setup | 1–9 | 10:40 | 20 % |
+| Act 1 — Part 1 | 10–23 | 12:41 | 23 % |
 | Act 2 — Part 2 | 24–30 | 5:09 | 9 % |
 | Act 3 — Part 3 | 31–53 | 18:26 | 34 % |
 | Act 4 — Part 4 | 54–58 | 5:36 | 10 % |
 | Close | 61–62 | 1:44 | 3 % |
-| *(skipped)* | 5, 28, 29, 37–39, 59, 60 | *6:59* | — |
+| *(skipped)* | 5, 17, 28, 29, 37–39, 59, 60 | *7:53* | — |
 
-**Act 3 is now a third of the talk**, and 10:32 of its 18:26 is still teaching — two-point
-statistics, the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the
-paper's own results. That is where the remaining cuts belong, and every tier below reflects it.
+**Act 3 is a third of the talk**, and 10:32 of its 18:26 is still teaching — two-point statistics,
+the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the paper's own
+results. That is where most of what follows comes from.
 
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:42
+The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
+whole-act decision any more** — that changed when the nine frames came out.
+
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:13
 
 | frame | what | saves |
 |---|---|---|
-| 27 | the remaining PnPMass flipbook. With frame 28 already out, this one is carrying seven clicks to make a point A2.3 has already made in words | **−0:32** |
+| 27 | the remaining PnPMass flipbook. With frame 28 already out, this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
 | 55 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −3:24 · lands at 50:18
+## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:34
 
 | frame | what | saves |
 |---|---|---|
 | 44 | generative modelling and the faces. The only load-bearing part is *samples are not densities*, which fits in one sentence of A3.15 | **−1:02** |
 | 45 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 and show the flow only as part of the SBI diagram | **−0:50** net |
-| 43 | the classical Bayes route. Bayes is taught properly at frame 17; keep only *for these statistics there is no likelihood*, which A3.12 already says | **−0:45** net |
 | 36 | the forecast contours. Frame 41's statistic shapes make the same point with the actual statistics | **−0:25** |
 | 51 | the tomography build. Eight clicks for a fact A3.20 states in a sentence | **−0:22** |
 
-## Tier 3 — prose, inside beats that stay · −5:30 · lands at 44:48
+> **Frame 43 came off this list when frame 17 was skipped.** It was here on the grounds that Bayes
+> is taught in Act 1. It no longer is, so frame 43 is now the *only* place Bayes appears in the
+> talk, and it stays.
+
+## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:39
 
 | beat | cut | saves |
 |---|---|---|
 | A0.3 | the three annotated questions on the cone. Keep *phenomenological*, drop the sequence | −0:35 |
 | A0.8 | ask questions two and four in one sentence each; one and three carry the argument | −0:35 |
 | A1.5 | name the three obstacles, do not explain each. The slide explains them | −0:25 |
-| A1.7–A1.8 | merge the narration: *the regulariser was the prior all along* covers both slides | −0:35 |
 | A1.9 | the proximal-operator paragraph down to the ▲ sentence and the thresholding clause | −0:30 |
 | A2.2 | skip the four-requirement enumeration; go straight to *nothing had all four* | −0:40 |
 | A2.7 | drop the deployability paragraph — it is on the slide, and A2.3 already said *trained once*. **Do not** cut the two uncertainty sentences at the top; they are all that is left of frame 29 | −0:30 |
@@ -1648,36 +1675,35 @@ paper's own results. That is where the remaining cuts belong, and every tier bel
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
 
-## The last 4:48 — three packages, and they now fit
+## Tier 4 — three more frames parked · −2:47 · lands at 42:52
 
-Tiers 1–3 leave **44:48**. Unlike before the skips, this last stretch no longer requires giving up
-an act: the three packages together are enough, and each is small.
+| frame | what | saves |
+|---|---|---|
+| 25 | Part 2 down to three frames: the divider, the construction, the result. The four-requirements table becomes a Q&A prop. Supersedes tier 3's A2.2 trim | **−0:30** net |
+| 42, 47 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 48** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
+| 21 | the three maps. Frame 20's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
 
-**Package A — Part 2 down to three frames** (24, 26, 30). Parks frame 25 as well as 27, so the act
-is the divider, the construction and the result. **−1:02**, leaving Part 2 at about 2:25. Question
-two still gets a real answer; the four-requirements table becomes a Q&A prop.
+## Tier 5 — the last stretch · −2:33 · lands at 40:19
 
-**Package B — one inference slide instead of four** (keep 46; park 42 and 47 on top of 43/44/45
-from tier 2). **−1:38.** The room is told there is no likelihood, that we replace it with the
-simulator and a flow, and that is that. **Keep frame 48** — the definition of *optimal* is what
-makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the
-committee will press on.
+Only if the rehearsal clock says so. Each of these costs something real.
 
-**Package C — Act 1's method survey** (park 17 and 21). **−1:33.** Costs the explicit Bayes framing
-of reconstruction, which A1.7 already carries implicitly, and the three-map figure, which frame 20's
-chain shows in miniature.
-
-**A + B + C lands at 40:35.** That is the target, with the 45-minute slot's buffer intact.
-
-If only two can be taken, take **A** and **B**: Package C is the only one that cuts your own
-first-author chapter.
+| beat | cut | saves |
+|---|---|---|
+| A0.8 | a second pass: state the four questions and stop, no *two about the maps, two about the summaries* coda | −0:35 |
+| A3.1 + A3.2 | one hand-off instead of two. Say *both projects so far lived in one box; the rest of the talk moves one to the right* over the divider, and let the chain recall be silent | −0:20 |
+| A3.11 | the peak-count shape paragraph down to *stacked in amplitude, and almost entirely positive* | −0:25 |
+| 49 | fold the controls into A3.20's opening: *same maps, same flow, both calibrated, only the summary changes* | −0:23 |
+| A1.13 + A1.14 | merge: run the ladder straight into the scale argument. **Keep both ▲ sentences** — the four-per-cent contrast and *the gain is small-scale reconstruction fidelity* | −0:30 |
+| A4.3 | drop the full-sky numbers, keep Stage IV and *it gets worse with area* | −0:20 |
 
 ## Never cut, at any tier
 
-- A0.8's four questions. The whole talk hangs on them and the close returns to them.
+- A0.8's four questions themselves. The whole talk hangs on them and the close returns to them.
+- **A1.7's *which is a prior, in everything but name* clause and its Part 3 forward pointer.** With
+  frame 17 skipped these are the only survivors of it, and A2.3 and A3.13 both depend on them.
 - A1.13's *four per cent against a hundred and fifty-seven* contrast, and the iKS null result.
 - A1.5's *the added assumption **is** the method* ▲.
-- A2.7's two uncertainty sentences (all that survives of frame 29) and its two limitations.
+- A2.7's two uncertainty sentences — all that survives of frame 29 — and its two limitations.
 - A2.3's *never sees the mask* ▲.
 - A3.3's *the question is whether the field is Gaussian* ▲, and the phases pair, frames 34–35.
 - A3.18's definition of optimal.

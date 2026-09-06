@@ -712,14 +712,18 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
   **done 2026-09-06**: the script was rewritten end to end against the 114-frame deck, every beat
   anchored to its frame, every timing measured by `../tools/measure-script.py`, and every `[CLICK]`
   audited against the deck's real fragment count.
-- **Eight frames are skipped** (Andreas, 2026-09-06): **5, 28, 29, 37, 38, 39, 59, 60**. The last
-  two are the whole nulling / BNT thread, dropped as too technical for the time — which also spends
-  the joint ℓ1-norm's second, independent payoff, leaving that argument resting on the tie alone.
-  The beats are kept in the script, marked SKIP, and still audited against the deck.
-- **The talk measures 54:45 spoken against a 40:00 target**, with 6:59 parked in the skipped beats.
+- **Nine frames are skipped** (Andreas, 2026-09-06): **5, 17, 28, 29, 37, 38, 39, 59, 60**. Two of
+  them took material with them. Frame 59–60 is the whole nulling / BNT thread, dropped as too
+  technical for the time — which also spends the joint ℓ1-norm's second, independent payoff, leaving
+  that argument resting on the tie alone. Frame 17 was **the one place Bayes was taught**, and the
+  §5 decision *Bayes gets taught once, at A1.4, for the whole talk* no longer holds: the word
+  *prior* and the Part 3 forward pointer moved onto frame 16's beat, the point-estimate flag onto
+  frame 18's, and frame 43 is now the only Bayes slide in the talk. The beats are kept in the
+  script, marked SKIP, and still audited against the deck.
+- **The talk measures 54:16 spoken against a 40:00 target**, with 7:53 parked in the skipped beats.
   §5's budget tables below all predate the measurement and should be read as historical. The
-  script's own *The arithmetic, and how to close it* is the live version: a tiered ladder to 44:48
-  without losing an argument, then three small packages that land at 40:35.
+  script's own *The arithmetic, and how to close it* is the live version: a five-tier ladder that
+  lands at 40:19, no tier of which is a whole-act decision.
 - Two structural gaps the script pass exposed: **there are no Part 3 and Part 4 dividers** (frame 9
   promises four parts, the deck labels two), and **frames 37–39 repeat frames 40–41** — peaks, the
   starlet transform and the ℓ1-norm are each defined twice within ninety seconds.
