@@ -354,7 +354,7 @@ slides carry those old tags too.
 ## Not yet done
 
 - Listed on the repo landing page (`../index.html`) as the top 2026 entry.
-- `SPEAKER_SCRIPT.md` exists and is written through Act 2, but its act timings predate the
-  September restructures and it has no beats for the wavelet excursion or the statistics plots. It
-  still needs **two** Q&A tiers — the general-audience questions and the closed examination are
-  different rooms.
+- ~~`SPEAKER_SCRIPT.md` is written through Act 2 only~~ — **rewritten end to end 2026-09-06.**
+  All 62 main-line frames have a beat, both Q&A tiers are written, every timing is measured by
+  `../tools/measure-script.py` and every `[CLICK]` is audited against the deck. **It measures 60:46
+  against a 40:00 target**; the cut ladder in the script is the live plan for closing that.

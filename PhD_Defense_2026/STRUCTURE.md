@@ -708,8 +708,17 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
 - **The conclusions slide still numbers its three answers Q1–Q3 against an older question set**
   (deep learning / baryons / nulling), which now collides with the canonical four. Three backup
   slides carry those old tags too. Renumbering is a single consistent pass; it has not been made.
-- `SPEAKER_SCRIPT.md` has no beats for A0.8's four questions or for Euclid's closing line, and its
-  act timings predate this pass and the wavelet excursion. The whole-talk figure in §5 is stale.
+- ~~`SPEAKER_SCRIPT.md` has no beats for A0.8's four questions or for Euclid's closing line~~ —
+  **done 2026-09-06**: the script was rewritten end to end against the 114-frame deck, every beat
+  anchored to its frame, every timing measured by `../tools/measure-script.py`, and every `[CLICK]`
+  audited against the deck's real fragment count.
+- **The talk measures 60:46 against a 40:00 target.** §5's budget tables below all predate that
+  measurement and should be read as historical. The script's own *The arithmetic, and how to close
+  it* is the live version: a tiered ladder to 48:05 without losing an argument, then three named
+  packages for the last 8:05. **This is the outstanding decision, and it is a whole-act one.**
+- Two structural gaps the script pass exposed: **there are no Part 3 and Part 4 dividers** (frame 9
+  promises four parts, the deck labels two), and **frames 37–39 repeat frames 40–41** — peaks, the
+  starlet transform and the ℓ1-norm are each defined twice within ninety seconds.
 
 ---
 

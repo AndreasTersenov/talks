@@ -799,6 +799,20 @@ estimated timing is worse than none, because it is believed.
 
 The number the script must hit is the **planned** length, not the slot: at 15+3, aim for 14:00.
 
+**`tools/measure-script.py <TalkDir>` does both jobs.** It counts the spoken words per beat —
+excluding stage directions, cues and blockquotes — divides by 140, prints per-act subtotals against
+the target, and **audits every `[CLICK]` against the deck's real fragment count**, which is the
+check no human keeps true by hand. `--write` stamps the measured time back into each heading. For
+it to work, each beat heading has to name its frame:
+
+```
+## A3.11 — the two statistics · frame 41 · 1:39
+## A1.5  — the relation is exact … · frames 14-15 · 1:18
+```
+
+Beats with no `frame` reference are skipped, so ladders, Q&A tiers and ledgers can live in the same
+file. Run it after every edit; a heading you typed by hand is a heading that is wrong.
+
 ### Cut lines, in tiers
 
 A talk that is over will be cut, and the only question is whether you chose the cuts in advance or
