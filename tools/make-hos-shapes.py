@@ -80,18 +80,47 @@ def style(ax, xlabel, ylabel):
 
 
 # ------------------------------- peak counts --------------------------------
-nu = np.linspace(-1.6, 6.4, 800)
+# A gamma, not a Gaussian. On a log axis the measured curves are not arches:
+# they rise almost vertically out of the floor, turn over just above S/N = 1,
+# and then fall along a nearly straight line - an exponential tail. That is
+# what ((nu-nu0)^k) exp(-(nu-nu0)/theta) gives, with the tail slope set by
+# theta and the sharpness of the rise by k. Reference: starlet_peaks_thumb.png.
+NU0 = -1.05
+PEAK_NU = [1.15, 1.27, 1.39, 1.51, 1.63]      # where each scale turns over
+AMP     = [2800.0, 800.0, 190.0, 50.0, 14.0]  # counts at the turnover
+END_NU  = [5.90, 4.80, 3.90, 3.40, 2.75]      # where it falls back to one count
+
+
+def gamma_shape(nu, amp, mode, theta):
+    k = mode / theta
+    x = np.clip(nu - NU0, 1e-9, None)
+    return amp * (x / mode) ** k * np.exp(-(x - mode) / theta)
+
+
+def theta_for(amp, mode, end):
+    """The tail is set by where the curve comes back to a single count, which
+    is what the measured figure shows and what the eye reads off a log axis."""
+    lo, hi = 0.02, 2.0
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        if gamma_shape(np.array([end + NU0 + mode]), amp, mode, mid)[0] > 1.0:
+            hi = mid
+        else:
+            lo = mid
+    return 0.5 * (lo + hi)
+
+
+nu = np.linspace(-2.0, 6.6, 1600)
 figA, axA = plt.subplots(figsize=(5.6, 3.8))
 for j in range(NS):
-    amp = 3000.0 / (4.0 ** j)
-    mu = 0.62 + 0.10 * j
-    sig = 1.35 - 0.11 * j
-    y = amp * skewnorm(nu, mu, sig, 2.2) / skewnorm(np.array([mu + 0.5 * sig]),
-                                                    mu, sig, 2.2)[0]
+    mode = PEAK_NU[j] - NU0
+    th = theta_for(AMP[j], mode, END_NU[j] - PEAK_NU[j])
+    y = gamma_shape(nu, AMP[j], mode, th)
+    y[nu <= NU0] = np.nan
     axA.plot(nu, y, color=SCALE_COLS[j], lw=2.1, label="scale %d" % (j + 1))
 axA.set_yscale("log")
-axA.set_xlim(-1.6, 6.4)
-axA.set_ylim(0.7, 8e3)
+axA.set_xlim(-2.0, 6.4)
+axA.set_ylim(0.7, 6e3)
 style(axA, "S/N", "peak counts")
 figA.subplots_adjust(left=0.135, right=0.985, top=0.92, bottom=0.145)
 figA.savefig("assets/diagrams/hos_peaks_shape.png", dpi=200, transparent=True)
