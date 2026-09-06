@@ -2880,6 +2880,67 @@
 					style="width:auto">
 			</section>
 
+			<!-- ============ Key concept: wavelets.  The second excursion outside cosmology,
+			     rhyming with the generative-modelling slide: the room gets a break, and the
+			     tool the next slide is built on gets explained in the only angle this talk
+			     needs - scale AND place.  The long form stays in backup (what a wavelet is
+			     against Fourier; the full decomposition; the image transform).  Figure from
+			     tools/make-wavelet-excursion.py. ============ -->
+			<section class="wvx" data-theme="light">
+				<h3 class="slide-title tight">Key concept: <em class="alert">wavelets</em></h3>
+
+				<p class="wv-lede">Fourier tells you <b>which scales</b> are there. A wavelet tells you which
+					&mdash; and <b class="alert">where</b>.</p>
+
+				<figure class="wv-fig">
+					<img class="plain" src="../assets/diagrams/wavelet_excursion.png"
+						alt="left: the starlet wavelet at three dilations, visibly the same shape at three widths; right: a signal carrying three wave packets of different wavelength at different places, with three wavelet bands underneath it, each packet answering in the band that matches its size">
+				</figure>
+
+				<ul class="points dots wv-points">
+					<li>stretch it, slide it &mdash; the coefficient asks <b>how much structure of this size sits
+							here</b></li>
+					<li>the map becomes <b class="alert">one band-pass image per scale</b>, and nothing is lost:
+						$\kappa = \sum_j w_j + c_J$</li>
+					<li class="fragment fade-in" data-fragment-index="1">the cosmic web is made of <b>localised</b>
+						objects &mdash; so the statistic that can see them is one that reads <b class="alert">scale
+							and place</b></li>
+				</ul>
+
+				<div class="popover fragment fade-in" data-fragment-index="2">
+					<img src="../assets/diagrams/wavelet_image_demo.png"
+						alt="three levels of a two-dimensional wavelet transform of a photograph of the University of Crete campus, in the classical quadrant mosaic">
+					<p class="pop-cap">The same transform, on a photograph. Almost all of an image sits in a few large
+						coefficients &mdash; keep those, discard the rest. That is <b>JPEG&nbsp;2000</b>.</p>
+					<p class="pop-src">University of Crete campus</p>
+				</div>
+
+				<aside class="notes">
+					The second excursion outside cosmology, and it does the same job as the generative-modelling
+					slide: a break for the room, and the one tool the next slide depends on. A minute, no more.
+					SAY: everything we have done with two-point statistics has been Fourier. The Fourier basis is
+					sines - each one a single, perfectly defined frequency, each one running across the whole map -
+					so a Fourier coefficient tells you which scales are present and nothing whatever about where.
+					A wavelet is the other trade. It is a small wave: it oscillates, it dies away, and it has zero
+					mean. That is the entire definition. On the left is the one we use, at three sizes - and it is
+					visibly the same shape stretched, which is the whole construction. Now stretch it, slide it
+					across the data, and record the answer at every position. These three packets - small, medium,
+					large - each answer in the band that matches their size, and at their own place. So the map
+					becomes one image per scale, and nothing is thrown away: the bands plus the coarse map add back
+					up to the original exactly. [CLICK] And here is why it is the right instrument for us. The
+					cosmic web is made of localised objects - clusters, filaments, voids. That IS what
+					non-Gaussianity looks like in a map. A statistic that reads scale and place can see them; the
+					power spectrum, which reads scale alone, cannot. [CLICK - POPOVER] And you have all used this
+					already. Same transform, on a photograph - the campus, as it happens. Nearly all of an image
+					lives in a handful of large coefficients, so keep those and throw the rest away: that is
+					JPEG 2000. Threshold the small ones instead and you have denoising - which is the proximal step
+					from Part 1, not a coincidence. Wavelets reached astronomy from seismic prospecting and applied
+					mathematics, and the starlet - the isotropic one on the left - is the version that came out of
+					this lab. Then get off it.
+				</aside>
+			</section>
+
+
 			<!-- Wavelet statistics: three slides (peaks / wavelet peaks / l1-norm) compressed
 			     into one, on the shared principle. Figures: thesis intro F5b (starlet row) and
 			     N3 (peak map, left panel cropped). White background: both are black ink on white. -->

@@ -2139,3 +2139,47 @@
 }
 .reveal .slides section.mca .mca-proxeq { margin: 0; }
 .reveal .slides section.mca .mca-proxeq .katex { font-size: 0.62em; }
+
+/* ---------------------------------------------------------------------------
+   KEY CONCEPT: WAVELETS — the second excursion, built to rhyme with the
+   generative-modelling slide: same lede/figure/points rhythm, same pop-over
+   device.  The long-form primers stay in backup; this one carries only the
+   angle the wavelet statistics need.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.wvx { position: relative; }
+.reveal .slides section.wvx .wv-lede {
+	max-width: 92%; margin: 0.7em auto 0; text-align: left;
+	font-size: 0.8em; line-height: 1.45; color: var(--fg);
+}
+.reveal .slides section.wvx .wv-fig { margin: 0.9em auto 0; max-width: 96%; }
+.reveal .slides section.wvx .wv-fig img {
+	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.wvx .points.wv-points {
+	max-width: 92%; margin: 1.0em auto 0; font-size: 0.74em;
+}
+.reveal .slides section.wvx .popover {
+	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);
+	z-index: 30; width: 46%; padding: 1.0em 1.1em 0.95em;
+	background: var(--surface);
+	border: 1px solid var(--edge); border-radius: 10px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+}
+/* the mosaic is nearly square, so it has to be capped by HEIGHT or the card
+   grows past the slide. */
+.reveal .slides section.wvx .popover img {
+	width: 100%; max-width: 100%; height: auto; max-height: 52vh;
+	object-fit: contain; margin: 0;
+	border: 0; border-radius: 4px; box-shadow: none; background: transparent;
+	display: block;
+}
+.reveal .slides section.wvx .pop-cap {
+	margin: 0.85em 0 0; font-size: 0.68em; line-height: 1.4; color: var(--fg);
+	text-align: left;
+}
+.reveal .slides section.wvx .pop-src {
+	margin: 0.35em 0 0; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
+	text-align: left;
+}
