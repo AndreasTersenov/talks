@@ -11,8 +11,10 @@ compressed version of both, in one wide, short frame:
   left   the shape at three dilations - compact, oscillating, zero mean, and
          visibly the SAME shape each time. That is the whole definition.
   right  a signal carrying three wave packets of different wavelength at
-         different places, and three bands underneath it. Each packet answers
-         in the band matching its size, at its own position.
+         different places, and the COMPLETE transform underneath it: every
+         band plus the coarse residual, so the reconstruction identity printed
+         at the bottom is a claim the figure actually shows rather than one the
+         reader has to take on trust.
 
 Wave packets, not Gaussian bumps: a bump is localised in place but not in scale,
 so its response smears across several bands, which is the opposite of the point.
@@ -62,7 +64,7 @@ def starlet_profile(n, step):
     return bands[step]
 
 
-n = 1024
+n = 768
 t = np.arange(n)
 
 
@@ -71,12 +73,12 @@ def packet(centre, lam, amp=1.0):
     return amp * env * np.cos(2 * np.pi * (t - centre) / lam)
 
 
-sig = packet(180, 9.0) + packet(500, 34.0, 0.95) + packet(830, 120.0, 0.9)
-SHOW = [1, 3, 5]                      # the three bands the packets land in
-bands, _coarse = atrous(sig, max(SHOW) + 1)
-band_scale = max(np.abs(bands[j]).max() for j in SHOW)
+sig = packet(150, 5.0) + packet(390, 13.0, 0.95) + packet(630, 34.0, 0.9)
+NS = 4                                # the whole transform fits on the slide
+bands, coarse = atrous(sig, NS)
+band_scale = max(np.abs(b).max() for b in bands)
 
-fig = plt.figure(figsize=(12.6, 4.0))
+fig = plt.figure(figsize=(12.4, 5.0))
 fig.patch.set_facecolor(PAPER)
 gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 3.15], wspace=0.10,
                       left=0.02, right=0.985, top=0.86, bottom=0.13)
@@ -105,8 +107,9 @@ axw.set_xticks([]); axw.set_yticks([])
 axb = fig.add_subplot(gs[0, 1])
 axb.set_facecolor(PAPER)
 rows = [("signal", sig, INK, np.abs(sig).max(), 1.8)] + \
-       [(rf"$w_{j+1}$", bands[j], ACCENT, band_scale, 1.5) for j in SHOW]
-gap = 1.02
+       [(rf"$w_{j+1}$", bands[j], ACCENT, band_scale, 1.5) for j in range(NS)] + \
+       [(rf"$c_{NS}$", coarse, MUTED, np.abs(coarse).max(), 1.5)]
+gap = 0.86
 for i, (lab, y, col, sc, lw) in enumerate(rows):
     off = -i * gap
     axb.axhline(off, color=EDGE, lw=0.7, zorder=0)
@@ -114,18 +117,20 @@ for i, (lab, y, col, sc, lw) in enumerate(rows):
     axb.text(-30, off, lab, ha="right", va="center", fontsize=11.5,
              color=INK if i == 0 else MUTED)
 
-for x0, txt in [(180, "small"), (500, "medium"), (830, "large")]:
+for x0, txt in [(150, "small"), (390, "medium"), (630, "large")]:
     axb.annotate(txt, xy=(x0, -len(rows) * gap + 0.55), xytext=(x0, 0.80),
                  fontsize=10.5, color=MUTED, ha="center",
                  arrowprops=dict(arrowstyle="-", color=EDGE, lw=1, ls=(0, (3, 3))))
 
-axb.set_xlim(-150, n + 10)
-axb.set_ylim(-len(rows) * gap - 0.30, 1.20)
+axb.set_xlim(-110, n + 8)
+axb.set_ylim(-len(rows) * gap - 1.18, 1.15)
 axb.set_title("slide it across the data, at every size", color=INK,
-              fontsize=13.5, pad=10)
-axb.text(n / 2, -len(rows) * gap - 0.06,
-         "each feature answers in the band that matches its size, at its own place",
-         ha="center", fontsize=11, color=MUTED)
+              fontsize=13.5, pad=9)
+axb.text(n / 2, -len(rows) * gap - 0.34,
+         r"each feature answers in the band that matches its size"
+         "\n"
+         r"signal $=\ w_1 + w_2 + w_3 + w_4 + c_4$   — nothing is lost",
+         ha="center", fontsize=10.5, color=MUTED)
 for s in axb.spines.values():
     s.set_visible(False)
 axb.set_xticks([]); axb.set_yticks([])
