@@ -2151,17 +2151,17 @@
 	max-width: 92%; margin: 0.7em auto 0; text-align: left;
 	font-size: 0.8em; line-height: 1.45; color: var(--fg);
 }
-.reveal .slides section.wvx .wv-fig { margin: 0.9em auto 0; max-width: 96%; }
+.reveal .slides section.wvx .wv-fig { margin: 0.6em auto 0; max-width: 82%; }
 .reveal .slides section.wvx .wv-fig img {
-	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
+	width: 100%; height: auto; max-height: 44vh; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.wvx .points.wv-points {
-	max-width: 92%; margin: 1.0em auto 0; font-size: 0.74em;
+	max-width: 92%; margin: 0.9em auto 0; font-size: 0.74em;
 }
 .reveal .slides section.wvx .popover {
 	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);
-	z-index: 30; width: 46%; padding: 1.0em 1.1em 0.95em;
+	z-index: 30; width: 60%; padding: 1.0em 1.1em 0.95em;
 	background: var(--surface);
 	border: 1px solid var(--edge); border-radius: 10px;
 	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
@@ -2169,7 +2169,7 @@
 /* the mosaic is nearly square, so it has to be capped by HEIGHT or the card
    grows past the slide. */
 .reveal .slides section.wvx .popover img {
-	width: 100%; max-width: 100%; height: auto; max-height: 52vh;
+	width: 100%; max-width: 100%; height: auto; max-height: 46vh;
 	object-fit: contain; margin: 0;
 	border: 0; border-radius: 4px; box-shadow: none; background: transparent;
 	display: block;

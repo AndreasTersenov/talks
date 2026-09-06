@@ -2881,11 +2881,13 @@
 			</section>
 
 			<!-- ============ Key concept: wavelets.  The second excursion outside cosmology,
-			     rhyming with the generative-modelling slide: the room gets a break, and the
-			     tool the next slide is built on gets explained in the only angle this talk
-			     needs - scale AND place.  The long form stays in backup (what a wavelet is
-			     against Fourier; the full decomposition; the image transform).  Figure from
-			     tools/make-wavelet-excursion.py. ============ -->
+			     rhyming with the generative-modelling slide.  Rebuilt: the first version showed
+			     a shape and some 1-D bands and never showed the OPERATION, so the room could
+			     see the pieces without understanding what a transform is or why it helps here.
+			     Now it is the operation itself, on a field that looks like our data, and the
+			     pop-over demonstrates the property the talk actually leans on - sparsity -
+			     rather than a file format's layout.  Figures from tools/make-wavelet-what.py
+			     and tools/make-wavelet-sparsity.py. ============ -->
 			<section class="wvx" data-theme="light">
 				<h3 class="slide-title tight">Key concept: <em class="alert">wavelets</em></h3>
 
@@ -2893,50 +2895,55 @@
 					&mdash; and <b class="alert">where</b>.</p>
 
 				<figure class="wv-fig">
-					<img class="plain" src="../assets/diagrams/wavelet_excursion.png"
-						alt="left: the starlet wavelet at three dilations, visibly the same shape at three widths; right: a signal carrying three wave packets of different wavelength at different places, with three wavelet bands underneath it, each packet answering in the band that matches its size">
+					<img class="plain" src="../assets/diagrams/wavelet_what.png"
+						alt="a convergence map convolved with a small wavelet gives a map of the small-scale structure; the same map convolved with a large wavelet gives a map of the large-scale structure">
 				</figure>
 
 				<ul class="points dots wv-points">
-					<li>stretch it, slide it &mdash; the coefficient asks <b>how much structure of this size sits
-							here</b></li>
-					<li>the map becomes <b class="alert">one band-pass image per scale</b>, and nothing is lost:
-						$\kappa = \sum_j w_j + c_J$</li>
-					<li class="fragment fade-in" data-fragment-index="1">the cosmic web is made of <b>localised</b>
-						objects &mdash; so the statistic that can see them is one that reads <b class="alert">scale
-							and place</b></li>
+					<li>one shape, stretched and slid &mdash; the value at each point asks <b>how much structure of
+							this size is here</b></li>
+					<li>do it at every size: one map in, <b class="alert">a stack of maps out</b>, and nothing is
+						lost &mdash; $\kappa = \sum_j w_j + c_J$</li>
+					<li class="fragment fade-in" data-fragment-index="1">the power spectrum hands back a
+						<b>curve</b>. This hands back <b class="alert">an image per scale</b> &mdash; so we can do
+						statistics on its pixels</li>
 				</ul>
 
 				<div class="popover fragment fade-in" data-fragment-index="2">
-					<img src="../assets/diagrams/wavelet_image_demo.png"
-						alt="three levels of a two-dimensional wavelet transform of a photograph of the University of Crete campus, in the classical quadrant mosaic">
-					<p class="pop-cap">The same transform, on a photograph. Almost all of an image sits in a few large
-						coefficients &mdash; keep those, discard the rest. That is <b>JPEG&nbsp;2000</b>.</p>
-					<p class="pop-src">University of Crete campus</p>
+					<img src="../assets/diagrams/wavelet_sparsity.png"
+						alt="a photograph beside its reconstruction from only the largest five per cent of its wavelet coefficients: the two are hard to tell apart">
+					<p class="pop-cap">Throw away <b>95%</b> of the coefficients and the picture survives.
+						Localised structure is <b class="alert">sparse</b> in this basis &mdash; that is JPEG&nbsp;2000,
+						and it is why <b>thresholding</b> the small coefficients denoises.</p>
+					<p class="pop-src">University of Crete campus, CDF 5/3 &mdash; the wavelet of JPEG 2000</p>
 				</div>
 
 				<aside class="notes">
-					The second excursion outside cosmology, and it does the same job as the generative-modelling
-					slide: a break for the room, and the one tool the next slide depends on. A minute, no more.
-					SAY: everything we have done with two-point statistics has been Fourier. The Fourier basis is
-					sines - each one a single, perfectly defined frequency, each one running across the whole map -
-					so a Fourier coefficient tells you which scales are present and nothing whatever about where.
-					A wavelet is the other trade. It is a small wave: it oscillates, it dies away, and it has zero
-					mean. That is the entire definition. On the left is the one we use, at three sizes - and it is
-					visibly the same shape stretched, which is the whole construction. Now stretch it, slide it
-					across the data, and record the answer at every position. These three packets - small, medium,
-					large - each answer in the band that matches their size, and at their own place. So the map
-					becomes one image per scale, and nothing is thrown away: the bands plus the coarse map add back
-					up to the original exactly. [CLICK] And here is why it is the right instrument for us. The
-					cosmic web is made of localised objects - clusters, filaments, voids. That IS what
-					non-Gaussianity looks like in a map. A statistic that reads scale and place can see them; the
-					power spectrum, which reads scale alone, cannot. [CLICK - POPOVER] And you have all used this
-					already. Same transform, on a photograph - the campus, as it happens. Nearly all of an image
-					lives in a handful of large coefficients, so keep those and throw the rest away: that is
-					JPEG 2000. Threshold the small ones instead and you have denoising - which is the proximal step
-					from Part 1, not a coincidence. Wavelets reached astronomy from seismic prospecting and applied
-					mathematics, and the starlet - the isotropic one on the left - is the version that came out of
-					this lab. Then get off it.
+					The second excursion outside cosmology, doing the same job as the generative-modelling slide:
+					a break for the room, and the one tool the next slide depends on. A minute, no more, and it is
+					the FIGURE that teaches - do not read the bullets out.
+					SAY: everything we have done with two-point statistics has been Fourier, whose basis is sines -
+					each a single perfectly defined frequency, each running across the whole map - so a Fourier
+					coefficient tells you which scales are present and nothing at all about where. A wavelet is the
+					other trade: a small wave, compact, oscillating, with zero mean. Point at the middle column.
+					Here it is at two sizes. And the operation is the one everyone in this room already knows -
+					convolution. Slide the shape over the map, record the overlap everywhere. [point along the top
+					row] Convolve with the small one and you get a map of the small structure - those compact dots
+					are the haloes, and you can see WHERE each of them is. [bottom row] Convolve with the large one
+					and the same map hands back its large-scale structure instead. Do that at every size and you
+					have the transform: one map in, a stack of maps out, and it is exact - the bands plus the coarse
+					map add back up to what you started with. [CLICK] And this is the sentence that matters for the
+					next slide. A power spectrum hands you back a curve: one number per scale for the entire map.
+					This hands you back an IMAGE at each scale. An image has pixels, and pixels have a
+					distribution - which is why a one-point statistic per scale exists at all, and that is exactly
+					what peaks and the l1-norm are. [CLICK - POPOVER] One last thing, and you have all used it.
+					Same transform on a photograph, and this is not a mosaic of bands, it is the picture rebuilt
+					from the largest five per cent of its coefficients. Ninety-five per cent thrown away, and it is
+					still the campus. That is what sparsity means: localised structure concentrates into a few large
+					coefficients and everything else is near zero. It is why JPEG 2000 works, it is why thresholding
+					the small ones is a denoiser - which is the proximal step from Part 1, not a coincidence - and
+					it is why a handful of wavelet coefficients per scale carries the non-Gaussian information we
+					are about to go looking for. Then get off it.
 				</aside>
 			</section>
 
