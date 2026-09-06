@@ -356,5 +356,6 @@ slides carry those old tags too.
 - Listed on the repo landing page (`../index.html`) as the top 2026 entry.
 - ~~`SPEAKER_SCRIPT.md` is written through Act 2 only~~ — **rewritten end to end 2026-09-06.**
   All 62 main-line frames have a beat, both Q&A tiers are written, every timing is measured by
-  `../tools/measure-script.py` and every `[CLICK]` is audited against the deck. **It measures 60:46
-  against a 40:00 target**; the cut ladder in the script is the live plan for closing that.
+  `../tools/measure-script.py` and every `[CLICK]` is audited against the deck. Eight frames are
+  skipped (5, 28, 29, 37–39, 59–60 — the last two are the nulling thread), so it **measures 54:45
+  spoken against a 40:00 target**; the cut ladder in the script is the live plan for closing that.

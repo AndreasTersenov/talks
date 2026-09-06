@@ -31,15 +31,19 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 | Act 1 — Part 1, does the map matter? | 10–23 | 13:11 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 24–30 | 6:31 | frames 27–28 are the first cut |
 | Act 3 — Part 3, the summaries | 31–53 | 19:24 | the longest act; 13:08 of it is teaching |
-| Act 4 — Part 4, baryons and nulling | 54–60 | 8:30 | |
+| Act 4 — Part 4, baryons | 54–58 | 5:18 | 59–60, nulling, skipped |
 | Close | 61–62 | 1:42 | |
 | | **62** | **60:46** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ The talk is 20:46 over, and that is the number to act on.** It is not a rounding problem: the
-> main line has grown to 62 frames, and 62 frames is an hour-long talk at any honest rate. *The
-> arithmetic, and how to close it* — after the close, below — is a tiered ladder with measured
-> savings that gets to **48:05** without losing an argument, and three named packages for the last
-> seven minutes. Read it before rehearsing, not after.
+> **⚠ 54:45 spoken, against a 40:00 target — over by 14:45.** *The arithmetic, and how to close
+> it*, after the close below, is a tiered ladder with measured savings that reaches **44:48**
+> without losing an argument, and three small packages that land the rest at **40:35**. Read it
+> before rehearsing, not after.
+>
+> **Eight frames are skipped** — 5, 28, 29, 37, 38, 39, 59 and 60 (Andreas, 2026-09-06) — which is
+> where 6:59 of the original 60:46 went. Their beats are kept, marked SKIP, and are still audited
+> against the deck in case any of them comes back. The nulling / BNT thread is the significant one:
+> see the banner on A4.6 for what goes with it and where it now lives.
 
 〔The table above is what the measuring tool prints. If it disagrees with the headings below, the
 tool has not been run since the last edit.〕
@@ -58,14 +62,13 @@ is where they became impossible to ignore, and each one is cheap to fix.
    frame 31. The room is told there are four questions and then shown two labelled parts. Two
    divider slides would close it, and they are also the natural place to put the paper references
    for Papers 3 and 4, which currently appear only on the conclusions.
-2. **Frames 37, 38 and 39 are redundant with frames 40 and 41.** They teach peak counts, the
-   starlet transform and the ℓ1-norm; frame 41 then teaches all three again, better, with the
-   shapes of the statistics drawn. Frame 40 explains what a wavelet *is* — and it sits *after* two
-   slides that have already used starlets. **Parking 37–39 saves 1:47 and removes a repetition
-   the committee will notice.** The beats are written below anyway, marked, in case they stay.
-3. **Frames 27 and 28 are twelve clicks of PnPMass flipbook** with no notes, and `STRUCTURE.md` §5
-   has said since the Part 1 rebuild that they belong in backup. They are the single largest
-   discretionary block in the talk: **1:24**.
+2. ~~Frames 37, 38 and 39 are redundant with frames 40 and 41~~ — **skipped, 2026-09-06.** They
+   defined peak counts, the starlet transform and the ℓ1-norm that frame 41 then defines again,
+   better, ninety seconds later. A3.10 now opens with a bridge, since the wavelet excursion has
+   become the room's first encounter with either statistic.
+3. **Frame 27 is still seven clicks of PnPMass flipbook** with no notes, and `STRUCTURE.md` §5 has
+   said since the Part 1 rebuild that it belongs in backup. Frame 28 has gone; this is the other
+   half of the same block, and it is tier 1.
 4. **Twelve slides' `aside class="notes"` carry `[CLICK]` counts that do not match their own
    fragments** — frame 45 says four clicks and has one, frame 43 says three and has two. The notes
    were written before the builds settled. This script is now the authority; the notes should be
@@ -198,11 +201,12 @@ of these four I will talk about again.
 
 ---
 
-## A0.4v — the two tensions · frame 5 · OPTIONAL VERTICAL · 0:47
+## A0.4v — the two tensions · frame 5 · SKIP · 0:47
 
-> **Take this only if the clock is good.** It is a vertical under A0.4, one press of DOWN, and
-> nothing later in the talk depends on it. Skipping it costs nothing; taking it costs 0:47. The
-> decision is made *on* frame 4, not in advance.
+> **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
+> not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
+> beat that can come back for free if the clock turns out generous — the decision is made *on*
+> frame 4, not in advance.
 
 〔If you take it: press DOWN, deliver, press UP, and carry straight on. Do not apologise for the
 detour.〕
@@ -783,7 +787,10 @@ network's guess at the answer in one pass — a fixed point of an operator that 
 
 ---
 
-## A2.5 — the residual variant · frame 28 · 0:29
+## A2.5 — the residual variant · frame 28 · SKIP · 0:29
+
+> **SKIPPED (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in one
+> clause if anyone needs it; the iteration histories are on the slide if it comes back.
 
 〔Five more clicks of the same kind. Same rule: start it, then let it run.〕
 
@@ -797,10 +804,12 @@ that is changing, which is closer to the white-noise problem it was actually tra
 
 ---
 
-## A2.6 — error bars from one forward pass · frame 29 · 1:22
+## A2.6 — error bars from one forward pass · frame 29 · SKIP · 1:22
 
-〔The real result of the act begins here. Read the chain left to right before you say anything
-about calibration.〕
+> **SKIPPED (Andreas, 2026-09-06), and this one costs something.** It is the mechanism behind the
+> calibrated error bars A2.7 then reports, and conformal prediction is Tsakalides's own vocabulary —
+> so expect it in questions rather than in the talk. **A2.7 now carries two sentences of it**; do
+> not skip those as well. Q&A tier 2, question 8 is the follow-up to be ready for.
 
 The map is only half a result.
 
@@ -824,14 +833,23 @@ level that holds whether or not the model is well specified.
 
 ---
 
-## A2.7 — accurate, and honest about it · frame 30 · 1:35
+## A2.7 — accurate, and honest about it · frame 30 · 2:03
 
 〔Three panels; the claim is the error bars. Do not let the accuracy comparison become the subject —
 it is the setup for the real result. Then slow down for the limitations: volunteering them here
 buys you credibility for Acts 3 and 4.〕
 
-This is the whole result in one plot. Reconstruction error across, the size of the calibrated
-interval up — down and to the left is better.
+The map is only half a result, so before the plot: a second network, trained the same way on the
+same simulated pairs, predicts the error of the reconstruction — one forward pass, no sampling.
+**▲** And because a network's own variance is not a guarantee, we calibrate it: conformalised
+quantile regression against a held-out set, which is distribution-free and does not require the
+network to be right.
+
+〔That is the whole of the skipped frame 29, compressed. Do not cut it further — the result below
+is meaningless without it.〕
+
+Which gives this, the whole result in one plot. Reconstruction error across, the size of the
+calibrated interval up — down and to the left is better.
 
 **▲** First thing to notice: after calibration, everybody is on the target coverage. That is not a
 result, that is the conformal guarantee doing its job. So the comparison is not who covers —
@@ -960,10 +978,10 @@ summary statistic. That is what makes the choice a scientific one.
 
 ---
 
-## A3.7 — peak counts · frame 37 · PARK · 0:21
+## A3.7 — peak counts · frame 37 · SKIP · 0:21
 
-> **PARK THIS FRAME.** Frame 41 defines peak counts again, thirty seconds later, and draws their
-> shape as well. If it stays, this is the beat.
+> **SKIPPED (Andreas, 2026-09-06).** Frame 41 defines peak counts again, thirty seconds later, and
+> draws their shape as well. The beat is kept in case the frame comes back.
 
 A peak is a local maximum of the signal-to-noise field — the map smoothed by a filter, in units of
 the noise. Peaks sit where kappa is high, so they trace the massive structures, and counting them
@@ -971,10 +989,10 @@ by height is a one-point statistic that sees exactly what the power spectrum can
 
 ---
 
-## A3.8 — one starlet transform · frame 38 · PARK · 0:28
+## A3.8 — one starlet transform · frame 38 · SKIP · 0:28
 
-> **PARK THIS FRAME.** Frame 40 explains what a wavelet is, and it comes *after* this slide has
-> already used one. Frame 41 then defines the starlet decomposition properly.
+> **SKIPPED (Andreas, 2026-09-06).** Frame 40 explains what a wavelet is, and it came *after* this
+> slide had already used one. Frame 41 defines the starlet decomposition properly.
 
 A single filter size is a choice, and the wrong one throws information away. The starlet transform
 writes the map as a sum of band-pass images, each carrying structure of one characteristic angular
@@ -984,9 +1002,10 @@ diagonal.
 
 ---
 
-## A3.9 — the starlet ℓ1-norm · frame 39 · PARK · 0:19
+## A3.9 — the starlet ℓ1-norm · frame 39 · SKIP · 0:19
 
-> **PARK THIS FRAME.** Frame 41 defines the ℓ1-norm with the same formula and shows its shape.
+> **SKIPPED (Andreas, 2026-09-06).** Frame 41 defines the ℓ1-norm with the same formula and shows
+> its shape.
 
 The ℓ1-norm generalises the peak count. Instead of counting maxima, sum the absolute starlet
 coefficients in each signal-to-noise bin, band by band. Every pixel contributes — voids as well as
@@ -994,13 +1013,15 @@ peaks — and there is no threshold to choose and no definition of a peak to def
 
 ---
 
-## A3.10 — what a wavelet is · frame 40 · 1:38
+## A3.10 — what a wavelet is · frame 40 · 1:48
 
 〔An excursion, and the one place in the talk where the thesis reaches outside cosmology. Two
 frames, then move on. The figures teach — these are the words that go with them, not a second
 explanation.〕
 
-Two of our three statistics are built on a wavelet transform, so: thirty seconds on what that is.
+I have just put the words *peak counts* and *starlet* on the screen without defining either, and
+both of our higher-order statistics are built on a wavelet transform. So: thirty seconds on what
+that is, and then I will define them properly.
 
 Everything so far has been Fourier, whose basis is sines — each one a single frequency running
 across the whole map. A Fourier coefficient tells you which scales are present and nothing about
@@ -1300,7 +1321,9 @@ And the tie holds on every parameter, over nine thousand mock observations.
 ---
 ---
 
-# Act 4 — Part 4, baryons and nulling · frames 54–60
+# Act 4 — Part 4, baryons · frames 54–58
+
+> Frames 59 and 60 — the whole nulling / BNT thread — are **skipped**. See the banner on A4.6.
 
 > There is no *Part 4* divider either. A3.23 ends on a result and A4.1 opens a new paper; the turn
 > has to be made with your voice.
@@ -1395,7 +1418,7 @@ the next slide is a floor.
 
 ---
 
-## A4.5 — is there anything left · frame 58 · 1:23
+## A4.5 — is there anything left · frame 58 · 1:40
 
 〔The answer to question four, and the numbers matter. Be precise about the peak counts — the
 temptation is to let them disappear into "the higher-order statistics", and that would be
@@ -1421,9 +1444,32 @@ scales — these are not only deep-non-linear probes, which is what people assum
 floor: our cut is not optimised, and a finer filter bank or a cut in signal-to-noise rather than in
 scale would recover more.
 
+〔This is now the last result in the talk — frames 59 and 60 are skipped — so close the act rather
+than trailing off. Turn back to the room.〕
+
+**▲** So: baryonic feedback is a dominant systematic, it biases the higher-order statistics more
+than it biases the power spectrum, and even after cutting every scale it measurably touches, the
+ℓ1-norm is still the better instrument. That is question four answered.
+
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 59 · 1:37
+## A4.6 — nulling, and what goes wrong · frame 59 · SKIP · 1:37
+
+> **SKIPPED — the whole nulling / BNT thread is out (Andreas, 2026-09-06).** Too technical for the
+> time available: it needs the transform, the noise-correlation mechanism and the invertibility
+> paradox before the payoff means anything, and that is three minutes the talk does not have.
+>
+> **What goes with it.** A4.7's ladder — the joint ℓ1-norm keeping 0.72 where the per-bin ℓ1 keeps
+> 0.16 — was the second, independent payoff for the statistic built at A3.22, and the talk now
+> rests that argument on the tie at A3.23 alone. That is enough, but be aware you are spending the
+> statistic's strongest supporting result to buy the time.
+>
+> **Where it lives instead.** Q&A tier 2, questions 3 and 9, and backup frames 74–77, 79–82 and 94,
+> which are the figures to go to. **If it comes up, do not improvise it** — it is the one part of
+> the thesis that is genuinely counter-intuitive, and it is written out below.
+>
+> The beat is kept verbatim in case the clock turns out kind, or in case a committee member asks
+> for it in full.
 
 〔The third result, and it stands on its own. Plant the parenthesis about the cross-spectra and do
 *not* explain it — it pays off on the next slide. Then pause on the paradox.〕
@@ -1454,7 +1500,9 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — and the answer was already in the room · frame 60 · 1:35
+## A4.7 — and the answer was already in the room · frame 60 · SKIP · 1:35
+
+> **SKIPPED with A4.6** — the two are one argument and neither works alone.
 
 〔The best moment in the talk, because the answer is the statistic built two slides earlier for an
 unrelated reason. Build the ladder, then cash the parenthesis from A4.6.〕
@@ -1507,7 +1555,7 @@ Here are the answers.
 
 ---
 
-## C.2 — conclusions · frame 62 · 1:34
+## C.2 — conclusions · frame 62 · 1:36
 
 > **⚠ THE SLIDE DOES NOT MATCH THIS BEAT YET.** Frame 62 still answers an older set of three
 > questions — deep learning, baryons, nulling — numbered Q1–Q3, which collides with the canonical
@@ -1530,10 +1578,14 @@ rather than per footprint. **▲** Which is what makes it a method a survey coul
 the statistic, and a fixed wavelet ℓ1-norm matches an information-optimal learned compressor — with
 no training at all.
 
-**Question four.** Baryonic feedback does not put it out of reach. Cut every contaminated scale and
-the ℓ1-norm is still one point eight times tighter than the power spectrum at Stage IV, two point
-six at full sky. **▲** And redshift nulling stays usable as a mitigation, at no cost in
-constraining power, provided some stage of the pipeline reads the bins jointly.
+**Question four.** Baryonic feedback does not put it out of reach. It biases the higher-order
+statistics more than it biases the power spectrum — and still, once every contaminated scale is
+cut, the ℓ1-norm is one point eight times tighter than the power spectrum at Stage IV and two point
+six at full sky. **▲** And that is a floor, because our scale cut is the crudest one available.
+
+〔The nulling result belongs here too and is deliberately not said — see A4.6. If a committee
+member has asked about it during the talk, add one sentence: *and the same joint reading is what
+makes redshift nulling survivable for a higher-order analysis, which is in the thesis.*〕
 
 [CLICK] 〔The references come up. One sentence, then stop and turn to the chair.〕
 
@@ -1546,98 +1598,92 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 60:46 against a 40:00 target.** Over by **20:46**. That is not a rounding problem and
-it will not come out of shaving sentences — the main line has grown to **62 frames**, and 62 frames
-is an hour-long talk at any honest speaking rate.
+**Measured: 54:45 spoken against a 40:00 target**, with a further **6:59 parked** in the eight
+skipped beats. Over by **14:45**.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 11:27 | 19 % |
-| Act 1 — Part 1 | 10–23 | 13:11 | 22 % |
-| Act 2 — Part 2 | 24–30 | 6:31 | 11 % |
-| Act 3 — Part 3 | 31–53 | 19:24 | 32 % |
-| Act 4 — Part 4 | 54–60 | 8:30 | 14 % |
-| Close | 61–62 | 1:42 | 3 % |
+| Act 0 — the setup | 1–9 | 10:40 | 19 % |
+| Act 1 — Part 1 | 10–23 | 13:11 | 24 % |
+| Act 2 — Part 2 | 24–30 | 5:09 | 9 % |
+| Act 3 — Part 3 | 31–53 | 18:26 | 34 % |
+| Act 4 — Part 4 | 54–58 | 5:36 | 10 % |
+| Close | 61–62 | 1:44 | 3 % |
+| *(skipped)* | 5, 28, 29, 37–39, 59, 60 | *6:59* | — |
 
-**The imbalance to look at is inside Act 3.** Frames 33–48 are **13:08 of teaching** — two-point
-statistics, the phases, peaks, wavelets, Bayes, generative models, flows, SBI — in front of
-**4:20** of the paper's own results. A defense can carry some pedagogy. A third of the talk is too
-much, and it is where the cuts should come from first.
+**Act 3 is now a third of the talk**, and 10:32 of its 18:26 is still teaching — two-point
+statistics, the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the
+paper's own results. That is where the remaining cuts belong, and every tier below reflects it.
 
-## Tier 1 — park what is redundant or superseded · −3:27 · lands at 57:19
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:42
 
-Nothing is lost. Each of these is either said again elsewhere or already marked for backup.
-
-| frames | what | saves |
+| frame | what | saves |
 |---|---|---|
-| 37, 38, 39 | peaks, starlets, ℓ1-norm — all three defined again on frame 41, with the shapes drawn | **−1:08** |
-| 27, 28 | the PnPMass flipbooks; `STRUCTURE.md` has wanted them in backup since the Part 1 rebuild. Use A2.3's tier-0 short path | **−1:01** |
+| 27 | the remaining PnPMass flipbook. With frame 28 already out, this one is carrying seven clicks to make a point A2.3 has already made in words | **−0:32** |
 | 55 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
-| 5 | the two tensions — already an optional vertical, so this costs a keystroke, not a slide | **−0:47** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −3:24 · lands at 53:55
+## Tier 2 — park teaching whose content survives elsewhere · −3:24 · lands at 50:18
 
-| frames | what | saves |
+| frame | what | saves |
 |---|---|---|
-| 44 | generative modelling and the faces. Charming, and the only thing it is load-bearing for is the density-versus-samples point, which fits in one sentence of A3.15 | **−1:02** |
-| 45 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16's first paragraph and show the flow only as part of the SBI diagram | **−0:50** net |
+| 44 | generative modelling and the faces. The only load-bearing part is *samples are not densities*, which fits in one sentence of A3.15 | **−1:02** |
+| 45 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 and show the flow only as part of the SBI diagram | **−0:50** net |
 | 43 | the classical Bayes route. Bayes is taught properly at frame 17; keep only *for these statistics there is no likelihood*, which A3.12 already says | **−0:45** net |
 | 36 | the forecast contours. Frame 41's statistic shapes make the same point with the actual statistics | **−0:25** |
 | 51 | the tomography build. Eight clicks for a fact A3.20 states in a sentence | **−0:22** |
 
-## Tier 3 — prose, inside beats that stay · −5:50 · lands at 48:05
+## Tier 3 — prose, inside beats that stay · −5:30 · lands at 44:48
 
 | beat | cut | saves |
 |---|---|---|
-| A0.3 | the three annotated questions on the cone. Keep *phenomenological*, drop the one-line-each sequence | −0:35 |
+| A0.3 | the three annotated questions on the cone. Keep *phenomenological*, drop the sequence | −0:35 |
 | A0.8 | ask questions two and four in one sentence each; one and three carry the argument | −0:35 |
 | A1.5 | name the three obstacles, do not explain each. The slide explains them | −0:25 |
 | A1.7–A1.8 | merge the narration: *the regulariser was the prior all along* covers both slides | −0:35 |
 | A1.9 | the proximal-operator paragraph down to the ▲ sentence and the thresholding clause | −0:30 |
 | A2.2 | skip the four-requirement enumeration; go straight to *nothing had all four* | −0:40 |
-| A2.6 | the two-sources-of-spread paragraph to one line | −0:25 |
-| A2.7 | drop the deployability paragraph — it is on the slide, and A2.3 already said *trained once* | −0:30 |
+| A2.7 | drop the deployability paragraph — it is on the slide, and A2.3 already said *trained once*. **Do not** cut the two uncertainty sentences at the top; they are all that is left of frame 29 | −0:30 |
 | A3.3 | drop the list of reasons the field uses two-point; *it works, and here is why that is not the issue* | −0:25 |
 | A3.10 | the wavelet definition down to the ▲ sentence and the figure walk | −0:35 |
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
-| A4.6 | drop the Vinciguerra citation from the spoken text; keep it for questions | −0:20 |
 
-## The last 8:05 — a whole-act decision, and it is yours
+## The last 4:48 — three packages, and they now fit
 
-Tiers 1–3 leave **48:05**. The guidelines are right that the honest way to close a gap this size is
-to cut a whole act rather than shave further, and there are three ways to do it. Each is coherent;
-none is free.
+Tiers 1–3 leave **44:48**. Unlike before the skips, this last stretch no longer requires giving up
+an act: the three packages together are enough, and each is small.
 
-**Package A — reduce Part 2 to three frames** (24, 26, 30). Drops A2.2 and A2.6, **−2:30**, leaving
-Part 2 at 2:58: the divider, the construction, the result. Question two still gets a real answer,
-and the conformal-prediction machinery moves to Q&A.
+**Package A — Part 2 down to three frames** (24, 26, 30). Parks frame 25 as well as 27, so the act
+is the divider, the construction and the result. **−1:02**, leaving Part 2 at about 2:25. Question
+two still gets a real answer; the four-requirements table becomes a Q&A prop.
 
-**Package B — collapse Act 3's inference machinery** (keep 46 only; park 42, 47, 48 as well as
-42/43/44/45 from tier 2). **−2:26.** The room is told there is no likelihood, that we replace it
-with the simulator and a flow, and that the network is trained to be information-optimal — in one
-slide instead of six. Costs the *why is this the ceiling* argument, which is what makes A3.23 a
-sufficiency result rather than a benchmark win. **This is the one I would fight to keep.**
+**Package B — one inference slide instead of four** (keep 46; park 42 and 47 on top of 43/44/45
+from tier 2). **−1:38.** The room is told there is no likelihood, that we replace it with the
+simulator and a flow, and that is that. **Keep frame 48** — the definition of *optimal* is what
+makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the
+committee will press on.
 
-**Package C — reduce Act 1's method survey** (park 16 or 17, and 21). **−1:33.**
+**Package C — Act 1's method survey** (park 17 and 21). **−1:33.** Costs the explicit Bayes framing
+of reconstruction, which A1.7 already carries implicitly, and the three-map figure, which frame 20's
+chain shows in miniature.
 
-**Recommendation: A + B + C together lands at 41:36** — a 45-minute slot with real slack, and
-1:36 above the target rather than 20:46 above it.
-If only one can be taken, take **A** — it is joint work, Hubert is the first author, and it is the
-only act where a compression does not cost an argument you make yourself.
+**A + B + C lands at 40:35.** That is the target, with the 45-minute slot's buffer intact.
 
-**Never cut, at any tier:**
+If only two can be taken, take **A** and **B**: Package C is the only one that cuts your own
+first-author chapter.
 
-- A0.8's four questions. The whole talk is hung on them and the close returns to them.
+## Never cut, at any tier
+
+- A0.8's four questions. The whole talk hangs on them and the close returns to them.
 - A1.13's *four per cent against a hundred and fifty-seven* contrast, and the iKS null result.
 - A1.5's *the added assumption **is** the method* ▲.
-- A2.7's two limitations, and A2.3's *never sees the mask* ▲.
-- A3.3's *the question is whether the field is Gaussian* ▲, and the phases pair (34–35).
-- A3.18's definition of optimal — without it A3.23 is a benchmark win rather than a sufficiency
-  result.
+- A2.7's two uncertainty sentences (all that survives of frame 29) and its two limitations.
+- A2.3's *never sees the mask* ▲.
+- A3.3's *the question is whether the field is Gaussian* ▲, and the phases pair, frames 34–35.
+- A3.18's definition of optimal.
 - A3.23's *that is a tie, and I want to call it a tie*.
-- A4.4's *the wavelet cut is coarser, and therefore conservative*.
-- A4.7's honest residual, and the *provided some stage reads the bins jointly* clause.
+- A4.4's *the wavelet cut is coarser, and therefore conservative*, and A4.5's closing summary — it
+  is now the last result in the talk.
 
 ---
 ---
@@ -1689,6 +1735,25 @@ change the answer, and the fix is available if you look for it.
 One to three hours, seven people who have read the manuscript. These are ordered by how likely I
 think the question is, and the first is the one I would ask myself.
 
+> **The nulling / BNT thread is not in the talk, and it is in the manuscript.** So it will come up,
+> and it will come up cold — the room will not have seen the transform, the noise-correlation
+> mechanism or the ladder. Questions 3 and 9 below are the answers, and backup frames 74–77, 79–82
+> and 94 are the figures. **Lead with the thirty-second setup before the answer**, in these words:
+>
+> > Nulling — the BNT transform — re-mixes the tomographic bins so that each transformed field is
+> > localised in redshift, which lets you cut scales only where the systematic actually is. It is a
+> > fixed, invertible matrix, so it cannot destroy information. Applied to a map-based higher-order
+> > statistic it nevertheless inflates the contours, and the resolution is that it moves the
+> > information into correlations between bins that a per-bin statistic cannot see.
+>
+> Then take question 3 or 9 as asked. **Do not improvise this one** — it is the genuinely
+> counter-intuitive result in the thesis, and the version that lands is the one written out here.
+
+**0. "Why did you not present the nulling result?"**
+Time, and it is the honest answer. It is the one result in the thesis that needs three pieces of
+machinery before the payoff means anything, and I would rather answer it properly here than rush it
+on a slide. 〔Then the setup above, then question 9.〕
+
 **1. "You compare against a CNN. Did you try hard enough to make the CNN win?"**
 The honest form of the objection, and it deserves the working. Getting the network to 3326 took an
 expressive flow — RealNVP, worth +36 % — and a better architecture, resnet18, worth a further 6 %.
@@ -1704,7 +1769,7 @@ by band — which is exactly what Part 4 needs — and a covariance that is near
 construction. And the nulling result: the analytical statistic degrades gracefully in a transformed
 frame and you can see *why*, where the network is a black box that happens to survive.
 
-**3. "The joint ℓ1-norm keeps 0.72 under nulling, not 1. What is the missing 0.28?"**
+**3. "The joint ℓ1-norm keeps 0.72 under nulling, not 1. What is the missing 0.28?" (not in the talk)**
 Genuine three- and four-bin structure. The joint statistic is pairwise by construction, and
 pairwise is the ceiling a patch can actually populate — a four-dimensional histogram over K⁴ cells
 against 80 × 80 pixels is almost everywhere empty. So the residual is real, it is where the network
@@ -1742,7 +1807,7 @@ concentrates at the peaks, which is where Chapter 2 just argued the information 
 coverage — per-pixel, or conditional on local signal-to-noise — is the obvious next step, and
 conformal methods for it exist.
 
-**9. "Why should nulling inflate anything if the transform is invertible?"**
+**9. "Why should nulling inflate anything if the transform is invertible?" (not in the talk)**
 It should not, and that is the point of the result. The Jacobian cancels in Bayes' rule, the Fisher
 information is unchanged, and the posterior from the *full field* is identical in both frames. What
 changes is what a *given summary* can see: the transform correlates the originally-independent

@@ -134,16 +134,22 @@ def main():
         elif cur is not None:
             cur["body"].append(line)
 
-    problems, total = [], 0.0
+    problems, total, parked = [], 0.0, 0.0
     for b in beats:
         b["words"] = spoken(b["body"])
         b["mins"] = b["words"] / WPM
         fm = FRAMEREF.search(b["title"])
         b["frames"] = None
+        # A beat marked SKIP is still audited against the deck — the cues have to stay
+        # true in case it comes back — but it is not part of the talk being timed.
+        b["skip"] = " SKIP" in b["title"].upper()
         if fm:
             lo = int(fm.group(1)); hi = int(fm.group(2) or fm.group(1))
             b["frames"] = (lo, hi)
-            total += b["mins"]
+            if b["skip"]:
+                parked += b["mins"]
+            else:
+                total += b["mins"]
             if hi > len(frames):
                 problems.append("%s: names frame %d, deck has %d" % (b["id"], hi, len(frames)))
             else:
@@ -162,11 +168,15 @@ def main():
             continue
         clicks = "%d/%d%s" % (b["got"], b["want"], "" if b["got"] == b["want"] else "  <-- MISMATCH") \
             if "want" in b else "-"
-        print("%-10s %-52s %6d %6s  %s" % (b["id"], b["title"][:52], b["words"], mmss(b["mins"]), clicks))
+        print("%-10s %-52s %6d %6s  %s%s" % (b["id"], b["title"][:52], b["words"],
+                                             mmss(b["mins"]), clicks,
+                                             "   [skipped]" if b["skip"] else ""))
     print("-" * 92)
     acts = {}
     for b in beats:
         if b["frames"] is None:
+            continue
+        if b["skip"]:
             continue
         act = re.match(r"([A-Z]\d*|C)", b["id"]).group(1)
         a = acts.setdefault(act, {"m": 0.0, "lo": 10 ** 9, "hi": 0})
@@ -176,7 +186,9 @@ def main():
         a = acts[act]
         print("%-10s %-52s %6s %6s" % (act, "frames %d-%d" % (a["lo"], a["hi"]), "", mmss(a["m"])))
     print("-" * 92)
-    print("%-10s %-52s %6s %6s   (target 40:00)" % ("TOTAL", "", "", mmss(total)))
+    if parked:
+        print("%-10s %-52s %6s %6s" % ("(skipped)", "not spoken, kept in the file", "", mmss(parked)))
+    print("%-10s %-52s %6s %6s   (target 40:00)" % ("SPOKEN", "", "", mmss(total)))
 
     if problems:
         print("\n%d CLICK/frame problem(s):" % len(problems))

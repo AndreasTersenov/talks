@@ -712,10 +712,14 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
   **done 2026-09-06**: the script was rewritten end to end against the 114-frame deck, every beat
   anchored to its frame, every timing measured by `../tools/measure-script.py`, and every `[CLICK]`
   audited against the deck's real fragment count.
-- **The talk measures 60:46 against a 40:00 target.** §5's budget tables below all predate that
-  measurement and should be read as historical. The script's own *The arithmetic, and how to close
-  it* is the live version: a tiered ladder to 48:05 without losing an argument, then three named
-  packages for the last 8:05. **This is the outstanding decision, and it is a whole-act one.**
+- **Eight frames are skipped** (Andreas, 2026-09-06): **5, 28, 29, 37, 38, 39, 59, 60**. The last
+  two are the whole nulling / BNT thread, dropped as too technical for the time — which also spends
+  the joint ℓ1-norm's second, independent payoff, leaving that argument resting on the tie alone.
+  The beats are kept in the script, marked SKIP, and still audited against the deck.
+- **The talk measures 54:45 spoken against a 40:00 target**, with 6:59 parked in the skipped beats.
+  §5's budget tables below all predate the measurement and should be read as historical. The
+  script's own *The arithmetic, and how to close it* is the live version: a tiered ladder to 44:48
+  without losing an argument, then three small packages that land at 40:35.
 - Two structural gaps the script pass exposed: **there are no Part 3 and Part 4 dividers** (frame 9
   promises four parts, the deck labels two), and **frames 37–39 repeat frames 40–41** — peaks, the
   starlet transform and the ℓ1-norm are each defined twice within ninety seconds.
