@@ -2218,3 +2218,17 @@
 	display: flex; align-items: center; justify-content: center;
 	width: 100%; height: 100%;
 }
+
+/* the lensing panel gets a ring on the first click: four probes go up, one of
+   them is what the talk is about, and the composite has no way of saying so.
+   Fractions measured off probes.png, not eyeballed - the bottom-right ellipse
+   spans x 0.560-0.940 and y 0.550-0.853 of the image. */
+.reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 62%; }
+.reveal .slides section.probes .figswap > figure .probeshot img {
+	width: 100%; max-width: 100%; display: block;
+}
+.reveal .slides section.probes .probe-ring {
+	position: absolute; left: 54.2%; top: 53.0%; width: 41.6%; height: 34.5%;
+	border: 2px solid var(--accent); border-radius: 50%;
+	box-shadow: 0 0 22px rgba(125, 146, 255, 0.35); pointer-events: none;
+}
