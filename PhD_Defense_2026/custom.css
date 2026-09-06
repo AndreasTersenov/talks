@@ -2147,8 +2147,14 @@
    angle the wavelet statistics need.
    --------------------------------------------------------------------------- */
 .reveal .slides section.wvx { position: relative; }
+/* shrink-wrap the list so `margin: auto` actually centres it — darkenergy makes
+   every ul inline-block, and auto margins do nothing there. */
 .reveal .slides section.wvx .points.wv-points {
-	max-width: 90%; margin: 0.8em auto 0; font-size: 0.76em;
+	display: table; max-width: none; margin: 0.8em auto 0; font-size: 0.76em;
+}
+.reveal .slides section.wvx .pop-kicker { margin: 0.9em 0 0.35em; }
+.reveal .slides section.wvx .points.pop-points {
+	margin: 0; font-size: 0.62em; text-align: left;
 }
 /* the two figures are one group, centred: the card already separates them, so
    they sit close, and the wide one takes as much height as the slide allows. */

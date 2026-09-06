@@ -2915,9 +2915,14 @@
 				<div class="popover fragment fade-in" data-fragment-index="1">
 					<img src="../assets/diagrams/wavelet_what.png"
 						alt="a convergence map convolved with a small wavelet gives a map of the small-scale structure; the same map convolved with a large wavelet gives a map of the large-scale structure">
-					<p class="pop-cap">The same operation on a convergence map. Each size of shape hands back
-						<b class="alert">its own map</b> &mdash; the structure of that size, and <b>where it sits</b>.
-						That is what a wavelet transform probes: <b class="alert">scale and position at once</b>.</p>
+					<p class="kicker pop-kicker">why this suits a convergence map</p>
+					<ul class="points dots pop-points">
+						<li>the cosmic web is made of <b class="alert">localised objects</b> &mdash; clusters,
+							filaments, voids &mdash; each with a <b>size</b> and a <b>place</b></li>
+						<li>each one lands in <b class="alert">one band, at its own position</b>, so a few large
+							coefficients carry the field</li>
+						<li>and the scales can then be read &mdash; or set aside &mdash; <b>one at a time</b></li>
+					</ul>
 				</div>
 
 				<aside class="notes">
@@ -2938,9 +2943,14 @@
 					thrown away.
 					[CLICK] Same operation on a convergence map. Convolve with the small shape and you get a map of
 					the small structure - those dots are the haloes, and you can see where each one is. Convolve
-					with the large shape and the same map hands back its large-scale structure instead. That is what
-					a wavelet transform gives you that a Fourier one does not: scale and position at the same time.
-					Which is what the next slide is built on. STOP HERE - do not mention statistics yet.
+					with the large shape and the same map hands back its large-scale structure instead.
+					Now say WHY that is the right tool for this field, because it is not obvious. A convergence map
+					is not a smooth wash: it is made of objects that have a size and a place - clusters, filaments,
+					the voids between them. A basis of stretched, shifted little waves is matched to exactly that,
+					so a structure of a given size shows up in one band at its own position, and the field is
+					described by a handful of large coefficients instead of a spread of small ones. That is the same
+					sparsity the reconstruction prior in Part 1 was exploiting, and it is why the scales can be
+					handled one at a time - which will matter later. STOP HERE - do not mention statistics yet.
 				</aside>
 			</section>
 
