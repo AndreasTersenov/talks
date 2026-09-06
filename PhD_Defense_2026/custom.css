@@ -2241,3 +2241,79 @@
 	border: 2px solid var(--accent); border-radius: 6px;
 	box-shadow: 0 0 22px rgba(125, 146, 255, 0.30); pointer-events: none;
 }
+
+/* ---------------------------------------------------------------------------
+   A0.8 — THE THESIS MAP.  The chain, then the four questions of the thesis
+   asked one at a time, each lighting the step of the chain it is about.
+   (Rebuilt 2026-09-06; see the comment on the section.)
+
+   Two mechanisms, both keyed on reveal's own `.current-fragment` rather than on
+   a `fragmentshown` listener, because ?print-pdf sets the classes directly and
+   fires no events:
+
+     .qstep.sK  zero-size marker fragments, BEFORE the slot and the bay, so a
+                general-sibling selector reaches both.
+     .qslot.kK  the cards, stacked in one grid cell so the slide never changes
+                height and the diagram above it never walks up the screen.
+
+   `.current-fragment`, not `.visible`: fragments stay `.visible` once shown, so
+   `.visible` would leave every earlier question lit as well.  Only one step is
+   ever current, which is exactly the semantics wanted here.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.thesismap .qstep {
+	display: inline; padding: 0; margin: 0; line-height: 0;
+}
+.reveal .slides section.thesismap .pipeline-slot { display: block; margin: 0.9em auto 0; }
+
+/* --- the bay: five cards, one cell -------------------------------------- */
+.reveal .slides section.thesismap .qbay {
+	display: grid; grid-template-columns: 1fr;
+	max-width: 94%; margin: 1.15em auto 0;
+	/* room for the tallest card, so the pipeline stays put across all five steps */
+	min-height: 4.6em;
+}
+.reveal .slides section.thesismap .qbay > .qslot {
+	grid-area: 1 / 1;
+	opacity: 0; visibility: hidden;
+	transition: opacity 0.35s ease;
+	margin: 0; max-width: 100%;
+	align-self: start;
+}
+.reveal .slides section.thesismap .qstep.s0.current-fragment ~ .qbay > .qslot.k0,
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .qbay > .qslot.k1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .qbay > .qslot.k2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .qbay > .qslot.k3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .qbay > .qslot.k4 {
+	opacity: 1; visibility: visible;
+}
+.reveal .slides section.thesismap .qbay > .qslot.note { font-size: 0.72em; line-height: 1.4; }
+.reveal .slides section.thesismap .qbay > .qslot.coreq { display: block; }
+.reveal .slides section.thesismap .qbay .qcard p { font-size: 0.74em; line-height: 1.35; }
+.reveal .slides section.thesismap .qbay .qtab { font-size: 0.5em; }
+
+/* --- the diagram, one step lit per question ------------------------------ */
+/* the claim (s0) is about the whole chain, so nothing is dimmed on it */
+.reveal .slides section.thesismap .qstep:not(.s0).current-fragment ~ .pipeline-slot .pipeline.steps-armed .stage,
+.reveal .slides section.thesismap .qstep:not(.s0).current-fragment ~ .pipeline-slot .pipeline.steps-armed .arw {
+	opacity: 0.3;
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .stage.on-1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .stage.on-2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .stage.on-3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .stage.on-4 {
+	opacity: 1;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .stage.on-1 .sname,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .stage.on-2 .sname,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .stage.on-3 .sname,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .stage.on-4 .sname {
+	color: var(--accent);
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .arw.on-1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .arw.on-2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .arw.on-3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .arw.on-4 {
+	opacity: 1; color: var(--accent);
+}

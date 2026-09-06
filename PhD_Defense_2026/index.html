@@ -359,19 +359,290 @@
 						</figure>
 					</div>
 				</div>
+
+				<p class="note handoff-line fragment fade-in">
+					That signal is the <b class="alert">statistical memory</b> of everything the Universe has done since
+					the Big Bang. Getting it out of the data is an <b>algorithms</b> problem &mdash; and that is the thesis.
+				</p>
+
 				<aside class="notes">
 					Rubin follows from the ground with about 18,000 square degrees, and Roman deeper over a smaller
 					footprint. Not on the slide.
+					[CLICK] And this is the hand-off into the rest of the talk, so do not rush it. A survey this size
+					does not just give us more of the same measurement — it gives us so much data that the limit stops
+					being the statistics and starts being what we are able to do with them. The large-scale structure,
+					and the lensing signal we read it through, carry the statistical memory of the whole history of the
+					Universe: the initial conditions, the growth of structure, the geometry. All of it is in there. But
+					none of it comes out on its own. It takes reconstruction algorithms, it takes statistics that can
+					read a non-Gaussian field, and it takes inference machinery that works without a likelihood. That is
+					what I spent the PhD on, and that is what the rest of this talk is about.
 				</aside>
 			</section>
 
 
 
 			<!-- =============================================================================
-			     A0.6a — shear and convergence.  THE THEME FLIPS HERE.  Everything from the
-			     title to Euclid is dark; from this slide on the deck is on paper, and the
-			     change of ground is the signal that we have stopped drawing the universe
-			     and started defining the quantities the thesis actually operates on.
+			     THE REAL PIPELINE — new 2026-09-03. Andreas: show what a real survey
+			     analysis actually looks like BEFORE showing our own chain, so the chain
+			     reads as a deliberate simplification rather than a claim that this is all
+			     there is. Borrowed slide: DES Y3, Alexandra Amon's overview — credited in
+			     the caption. White page stripped so it sits on the paper like everything
+			     else, no crop.
+			     THE THEME FLIPS HERE (since 2026-09-06, when the formalism block moved into
+			     Part 1): everything from the title to Euclid is dark, and from this slide on
+			     the deck is on paper.  The change of ground is the signal that we have
+			     stopped drawing the universe and started on the analysis of it.
+			============================================================================== -->
+			<section class="despipe" data-theme="light">
+				<h3 class="slide-title tight">A real weak-lensing analysis is <em class="alert">dozens of steps</em>,
+					and most of them are not the physics</h3>
+
+				<figure class="dpfig">
+					<img src="../assets/diagrams/des_y3_pipeline.png"
+						alt="the DES Year 3 three-by-two-point analysis flowchart: wide-field images and deep-field photometry feeding PSF modelling, shape catalogues, image simulations, blending and redshift calibration, then two-point measurements, analysis choices and modelling, and finally the cosmology contours">
+					<figcaption>DES Y3 3&times;2pt &mdash; figure: Alexandra Amon, DES collaboration</figcaption>
+				</figure>
+
+				<p class="note fragment fade-in" data-fragment-index="1">
+					Nearly every box is its own paper, and most of them are <b>measurement</b> &mdash; PSF modelling,
+					shape calibration, blending, redshift distributions, covariances. The cosmology is the
+					<b class="alert">last two boxes on the right</b>.
+				</p>
+
+				<aside class="notes">
+					Before I show you my own picture, here is an honest one. This is the DES Year 3 analysis, from
+					pixels to cosmology, and it is Alexandra Amon's slide, not mine. Do not read it — that is the
+					point. [CLICK] Nearly every box is a paper in its own right, and the great majority of them are
+					measurement and calibration: modelling the point spread function, calibrating shapes, dealing with
+					blended galaxies, getting redshift distributions, building covariances. Then analysis choices, and
+					only at the very end, cosmology. A real survey analysis is mostly not the physics. I am not going
+					to talk about most of this.
+				</aside>
+			</section>
+
+
+
+
+
+			<!-- =============================================================================
+			     A0.8 — the analysis chain, and the four questions of the thesis ON it.
+			     REBUILT 2026-09-06 (Andreas).  It used to end on a hand-off line about
+			     Parts 1 and 2 and leave the other two parts unannounced until the middle
+			     of the talk.  Now the whole thesis is declared here, one question per
+			     click, each one lighting the step of the chain it is asked about — so the
+			     room gets the full shape of the work before any of it starts, and every
+			     part opener afterwards is a return to a picture they have already seen.
+			     These four questions are CANONICAL: the scoreboard before the conclusions
+			     answers exactly these, in this order, in the same words.  Change one, change
+			     both.
+			     Mechanism: `data-steps` on the slot (see pipeline.js) marks each step's
+			     stages `on-k`; which step is showing is decided in CSS off reveal's own
+			     `.current-fragment` on the zero-size `.qstep` markers, which is why the
+			     markers sit BEFORE the slot and the cards after it — both are reached by a
+			     general-sibling selector.  No JS listener, so ?print-pdf stays correct.
+			============================================================================== -->
+			<section class="chainslide thesismap" data-theme="light">
+				<h3 class="slide-title tight">Between the galaxy shapes and the parameters there is a <em
+						class="alert">chain</em></h3>
+
+				<!-- zero-size step markers. Index 1 is the claim about the chain; 2-5 are the
+				     four questions. They change no layout. -->
+				<span class="qstep s0 fragment" data-fragment-index="1"></span>
+				<span class="qstep s1 fragment" data-fragment-index="2"></span>
+				<span class="qstep s2 fragment" data-fragment-index="3"></span>
+				<span class="qstep s3 fragment" data-fragment-index="4"></span>
+				<span class="qstep s4 fragment" data-fragment-index="5"></span>
+
+				<div class="pipeline-slot"
+					data-steps="shear maps | maps | maps summaries inference posterior | summaries systematics"></div>
+
+				<!-- one bay, five cards stacked in it: the slide never changes height, so the
+				     diagram above does not walk up and down the screen as the questions turn over -->
+				<div class="qbay">
+					<p class="qslot k0 note">
+						Every one of those stages is now built out of <b>learned components</b>, and every one of them
+						can bias the answer, or quietly throw information away, <b>with no internal check noticing</b>.
+					</p>
+
+					<div class="qslot k1 coreq">
+						<div class="qcard">
+							<span class="qtab">question 1 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 1</span>
+							<p>Is mass mapping <b class="alert">preprocessing</b>, or does the choice of reconstruction
+								change the cosmology we infer?</p>
+						</div>
+					</div>
+
+					<div class="qslot k2 coreq">
+						<div class="qcard">
+							<span class="qtab">question 2 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 2</span>
+							<p>Can one reconstruction be flexible, fast, accurate and <b class="alert">honest about its own
+									uncertainty</b> &mdash; on a survey the size of Euclid?</p>
+						</div>
+					</div>
+
+					<div class="qslot k3 coreq">
+						<div class="qcard">
+							<span class="qtab">question 3 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 3</span>
+							<p>What is the <b class="alert">most</b> we can read out of a map, and what does it take to turn
+								that reading into a posterior?</p>
+						</div>
+					</div>
+
+					<div class="qslot k4 coreq">
+						<div class="qcard">
+							<span class="qtab">question 4 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 4</span>
+							<p>Does any of that survive the <b class="alert">real Universe</b> &mdash; the astrophysics we
+								cannot model?</p>
+						</div>
+					</div>
+				</div>
+
+				<aside class="notes">
+					Straight off the DES diagram: that is what a real analysis looks like, and almost none of it is
+					what this thesis is about. So strip it down to the scientific spine — no instrument, no
+					calibration, no survey systematics on the data side — and you get this. Walk it left to right
+					once, slowly: a catalogue of shapes and redshifts; binned into shear maps; inverted into mass maps;
+					compressed into a summary; compared against simulations to infer parameters; and out comes a
+					posterior. Underneath runs the model lane, in the order it actually happens: cosmologies drawn from
+					a prior, run through the simulations, and only then given the systematics.
+
+					[CLICK] Then the claim, and do not hedge it: every one of those stages is now built out of learned
+					components, and every one of them can bias the answer or quietly throw information away with nothing
+					inside the pipeline noticing.
+
+					〔the four questions — this is the map of the whole talk, so give each one its own beat and point
+					at the box that lights up〕
+
+					[CLICK] Question one, and it is about this step here — shear in, a mass map out. That inversion is
+					not a measurement, it is a choice of algorithm, and the field has always judged it on how good the
+					map looks. But the map is not what we publish. So: does the choice reach the cosmology?
+
+					[CLICK] Question two, same box. Suppose it does matter. Then we want a reconstruction that is
+					flexible, fast, accurate, and honest about how wrong it is — all four at once, on a survey the size
+					of Euclid.
+
+					[CLICK] Question three moves one step to the right, and then all the way to the end. A map is a
+					hundred thousand correlated pixels; it has to be compressed before anything can be inferred from it.
+					How much of the information can we keep — and what machinery does it take to get from a compressed
+					reading to a posterior?
+
+					[CLICK] And question four is the one that decides whether any of it is usable. Everything so far
+					assumes the simulations tell the truth. They do not, quite — there is astrophysics in the real
+					Universe we cannot model. Does the signal survive it?
+
+					SAY LAST: four questions, two about the maps and two about the summaries. Each pair asks whether
+					there is something to gain, and then whether we can actually have it. We come back to this board at
+					the end with the answers.
+				</aside>
+			</section>
+
+
+			<!-- PARKED — the first version of the chain slide, four image steps and no
+			     side inputs. Superseded 2026-09-01 by the `.pipeline` component, which
+			     is the same idea drawn once and recalled on every act opener. -->
+			<section data-visibility="hidden" data-background-color="#000">
+				<h3 class="slide-title tight">Between the galaxy shapes and the parameters there is a <em
+						class="alert">chain</em></h3>
+
+				<div class="chainfig">
+					<div class="step">
+						<img src="../assets/figures/maps/shear_cat1.png" alt="a measured shear catalogue">
+						<span class="cap">measured galaxy shapes</span>
+						<span class="n">the data</span>
+					</div>
+					<div class="arw">&rarr;</div>
+					<div class="step">
+						<img src="../assets/figures/maps/kappa.png" alt="a reconstructed convergence map">
+						<span class="cap">reconstruct the matter map</span>
+						<span class="n">step 1</span>
+					</div>
+					<div class="arw">&rarr;</div>
+					<div class="step">
+						<img src="../assets/figures/statistics/MSPC_hist_ks_iks_mca_4_scales_dark.png"
+							alt="a summary statistic measured on the map">
+						<span class="cap">summarise it with a statistic</span>
+						<span class="n">step 2</span>
+					</div>
+					<div class="arw">&rarr;</div>
+					<div class="step">
+						<img src="../assets/figures/posteriors/countours_all_methods_MSPC_6scales_dark.png"
+							alt="posterior contours on the cosmological parameters">
+						<span class="cap">infer the parameters</span>
+						<span class="n">step 3</span>
+					</div>
+				</div>
+
+				<p class="note fragment fade-in" data-fragment-index="1">
+					Every one of those steps is now built out of <b>learned components</b>, and every one of them can
+					bias the answer, or quietly throw information away, <b>with no internal check noticing</b>.
+				</p>
+
+				<aside class="notes">
+					The thesis statement. Slowly, do not hedge. [CLICK] then beat. Then: I am going to ask four
+					questions about that chain.
+				</aside>
+			</section>
+
+			<!-- =============================================================================
+			     PARKED 2026-09-03 — merged INTO the chain slide above. Andreas: "slide 11
+			     should be just an animation of slide 10". The same picture now dims on a
+			     click rather than being redrawn on a second slide, so the room sees one
+			     diagram change rather than two diagrams. Kept here in case the two-slide
+			     form is ever wanted back.
+			============================================================================== -->
+			<section class="handoff" data-theme="light" data-visibility="hidden">
+				<h3 class="slide-title tight">The next two parts live in <em class="alert">one step</em> of that chain
+				</h3>
+
+				<div class="pipeline-slot" data-active="shear maps"></div>
+
+				<p class="note">
+					Shear in, a mass map out. Everything in Parts 1 and 2 is about what happens
+					<b>between those two boxes</b>.
+				</p>
+
+				<aside class="notes">
+					Same picture as three slides ago — say so, and point. The first two questions both live in
+					this one step: shear goes in, a mass map comes out. Question one asks whether the choice of
+					method changes the cosmology. Question two builds a reconstruction that is honest about its
+					own uncertainty. Everything for the next twenty minutes is between those two boxes.
+				</aside>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+
+			<!-- ################################################################################################### -->
+
+
+
+
+			<!-- ##########################################################################
+			     ACTS 1-2 — Ch2 mass mapping, Ch3 PnPMass.
+			     Lifted VERBATIM from ../LAM_2026/ (its sections 24-57), on purpose: the
+			     restyle is a later, joint pass. The only change made to the markup is that
+			     every `<img src=... .pdf>` was repointed at a .png rasterisation of the SAME
+			     figure -- Chrome renders nothing from a PDF in an <img>, so those slides
+			     arrived with holes. Appearance is otherwise unchanged.
+			     ########################################################################## -->
+
+			<section class="inverted actopen" data-background="#000">
+				<h2> Part 1: Does the choice of mass-mapping method matter for cosmology? </h2>
+
+				<!-- <img src="../assets/misc/QR_mass_mapping_impact.png" alt="QR mass mapping impact" style="width: 200px;"> -->
+				<br>
+				A. Tersenov, L. Baumont, J.L. Starck, M. Kilbinger, <a
+					href="https://arxiv.org/abs/2501.06961">arXiv:2501.06961</a>
+
+				<div class="pipeline-slot" data-variant="compact" data-active="maps"></div>
+			</section>
+			<!-- =============================================================================
+			     A0.6a — shear and convergence.  MOVED INTO PART 1, 2026-09-06 (Andreas):
+			     the formalism was sitting in the introduction, where the room has no use
+			     for it yet.  It is Part 1's own machinery — the paper is about inverting
+			     gamma into kappa — so it now opens Part 1 and runs straight into "the
+			     relation is exact, the measurement is not".  The introduction lost nothing:
+			     Euclid now hands straight to the real DES pipeline.
 			     Rebuilt from ../LAM_2026 §5 (its "Shear & Convergence" slide).
 			============================================================================== -->
 			<section class="wlq" data-theme="light">
@@ -567,187 +838,6 @@
 						</div>
 					</div>
 				</span>
-			</section>
-			<!-- =============================================================================
-			     THE REAL PIPELINE — new 2026-09-03. Andreas: show what a real survey
-			     analysis actually looks like BEFORE showing our own chain, so the chain
-			     reads as a deliberate simplification rather than a claim that this is all
-			     there is. Borrowed slide: DES Y3, Alexandra Amon's overview — credited in
-			     the caption. White page stripped so it sits on the paper like everything
-			     else, no crop.
-			============================================================================== -->
-			<section class="despipe" data-theme="light">
-				<h3 class="slide-title tight">A real weak-lensing analysis is <em class="alert">dozens of steps</em>,
-					and most of them are not the physics</h3>
-
-				<figure class="dpfig">
-					<img src="../assets/diagrams/des_y3_pipeline.png"
-						alt="the DES Year 3 three-by-two-point analysis flowchart: wide-field images and deep-field photometry feeding PSF modelling, shape catalogues, image simulations, blending and redshift calibration, then two-point measurements, analysis choices and modelling, and finally the cosmology contours">
-					<figcaption>DES Y3 3&times;2pt &mdash; figure: Alexandra Amon, DES collaboration</figcaption>
-				</figure>
-
-				<p class="note fragment fade-in" data-fragment-index="1">
-					Nearly every box is its own paper, and most of them are <b>measurement</b> &mdash; PSF modelling,
-					shape calibration, blending, redshift distributions, covariances. The cosmology is the
-					<b class="alert">last two boxes on the right</b>.
-				</p>
-
-				<aside class="notes">
-					Before I show you my own picture, here is an honest one. This is the DES Year 3 analysis, from
-					pixels to cosmology, and it is Alexandra Amon's slide, not mine. Do not read it — that is the
-					point. [CLICK] Nearly every box is a paper in its own right, and the great majority of them are
-					measurement and calibration: modelling the point spread function, calibrating shapes, dealing with
-					blended galaxies, getting redshift distributions, building covariances. Then analysis choices, and
-					only at the very end, cosmology. A real survey analysis is mostly not the physics. I am not going
-					to talk about most of this.
-				</aside>
-			</section>
-
-
-
-
-
-			<!-- =============================================================================
-			     A0.8 — the analysis chain, and the four questions that follow from it.
-			============================================================================== -->
-			<section class="chainslide" data-theme="light">
-				<h3 class="slide-title tight">Between the galaxy shapes and the parameters there is a <em
-						class="alert">chain</em></h3>
-
-				<!-- The focus trigger must come BEFORE the slot: the CSS that dims the
-				     pipeline is a general-sibling selector on this element's `.visible`
-				     class. Zero-size, so it changes no layout. -->
-				<span class="pipe-focus fragment" data-fragment-index="2"></span>
-
-				<div class="pipeline-slot" data-focus-on-fragment="shear maps"></div>
-
-				<p class="note fragment fade-in" data-fragment-index="1">
-					Every one of those stages is now built out of <b>learned components</b>, and every one of them
-					can bias the answer, or quietly throw information away, <b>with no internal check noticing</b>.
-				</p>
-
-				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
-					The next two parts live in <b class="alert">one step</b> of it &mdash; shear in, a mass map out.
-					Everything in Parts 1 and 2 is about what happens <b>between those two boxes</b>.
-				</p>
-
-				<aside class="notes">
-					Straight off the DES diagram: that is what a real analysis looks like, and almost none of it is
-					what this thesis is about. So strip it down to the scientific spine — no instrument, no
-					calibration, no survey systematics on the data side — and you get this.
-					The thesis statement, and the map for the rest of the talk — we come back to this picture at
-					the head of every part, with one box lit. Walk it left to right once, slowly: a catalogue of
-					shapes and redshifts; binned into shear maps; inverted into mass maps; compressed into a
-					summary; compared against simulations to infer parameters; and out comes a posterior.
-					Underneath runs the model lane, in the order it actually happens: cosmologies drawn from a
-					prior, run through the simulations, and only then given the systematics. [CLICK] Then the
-					claim, and do not hedge it. [CLICK] Now the hand-off, on the same picture: two boxes light up
-					and the rest stands down. The first two questions both live in this one step — shear goes in, a
-					mass map comes out. Question one asks whether the choice of method changes the cosmology;
-					question two builds a reconstruction that is honest about its own uncertainty. Everything for
-					the next twenty minutes is between those two boxes.
-				</aside>
-			</section>
-
-
-			<!-- PARKED — the first version of the chain slide, four image steps and no
-			     side inputs. Superseded 2026-09-01 by the `.pipeline` component, which
-			     is the same idea drawn once and recalled on every act opener. -->
-			<section data-visibility="hidden" data-background-color="#000">
-				<h3 class="slide-title tight">Between the galaxy shapes and the parameters there is a <em
-						class="alert">chain</em></h3>
-
-				<div class="chainfig">
-					<div class="step">
-						<img src="../assets/figures/maps/shear_cat1.png" alt="a measured shear catalogue">
-						<span class="cap">measured galaxy shapes</span>
-						<span class="n">the data</span>
-					</div>
-					<div class="arw">&rarr;</div>
-					<div class="step">
-						<img src="../assets/figures/maps/kappa.png" alt="a reconstructed convergence map">
-						<span class="cap">reconstruct the matter map</span>
-						<span class="n">step 1</span>
-					</div>
-					<div class="arw">&rarr;</div>
-					<div class="step">
-						<img src="../assets/figures/statistics/MSPC_hist_ks_iks_mca_4_scales_dark.png"
-							alt="a summary statistic measured on the map">
-						<span class="cap">summarise it with a statistic</span>
-						<span class="n">step 2</span>
-					</div>
-					<div class="arw">&rarr;</div>
-					<div class="step">
-						<img src="../assets/figures/posteriors/countours_all_methods_MSPC_6scales_dark.png"
-							alt="posterior contours on the cosmological parameters">
-						<span class="cap">infer the parameters</span>
-						<span class="n">step 3</span>
-					</div>
-				</div>
-
-				<p class="note fragment fade-in" data-fragment-index="1">
-					Every one of those steps is now built out of <b>learned components</b>, and every one of them can
-					bias the answer, or quietly throw information away, <b>with no internal check noticing</b>.
-				</p>
-
-				<aside class="notes">
-					The thesis statement. Slowly, do not hedge. [CLICK] then beat. Then: I am going to ask four
-					questions about that chain.
-				</aside>
-			</section>
-
-			<!-- =============================================================================
-			     PARKED 2026-09-03 — merged INTO the chain slide above. Andreas: "slide 11
-			     should be just an animation of slide 10". The same picture now dims on a
-			     click rather than being redrawn on a second slide, so the room sees one
-			     diagram change rather than two diagrams. Kept here in case the two-slide
-			     form is ever wanted back.
-			============================================================================== -->
-			<section class="handoff" data-theme="light" data-visibility="hidden">
-				<h3 class="slide-title tight">The next two parts live in <em class="alert">one step</em> of that chain
-				</h3>
-
-				<div class="pipeline-slot" data-active="shear maps"></div>
-
-				<p class="note">
-					Shear in, a mass map out. Everything in Parts 1 and 2 is about what happens
-					<b>between those two boxes</b>.
-				</p>
-
-				<aside class="notes">
-					Same picture as three slides ago — say so, and point. The first two questions both live in
-					this one step: shear goes in, a mass map comes out. Question one asks whether the choice of
-					method changes the cosmology. Question two builds a reconstruction that is honest about its
-					own uncertainty. Everything for the next twenty minutes is between those two boxes.
-				</aside>
-			</section>
-
-			<!-- ################################################################################################### -->
-
-
-			<!-- ################################################################################################### -->
-
-
-
-
-			<!-- ##########################################################################
-			     ACTS 1-2 — Ch2 mass mapping, Ch3 PnPMass.
-			     Lifted VERBATIM from ../LAM_2026/ (its sections 24-57), on purpose: the
-			     restyle is a later, joint pass. The only change made to the markup is that
-			     every `<img src=... .pdf>` was repointed at a .png rasterisation of the SAME
-			     figure -- Chrome renders nothing from a PDF in an <img>, so those slides
-			     arrived with holes. Appearance is otherwise unchanged.
-			     ########################################################################## -->
-
-			<section class="inverted actopen" data-background="#000">
-				<h2> Part 1: Does the choice of mass-mapping method matter for cosmology? </h2>
-
-				<!-- <img src="../assets/misc/QR_mass_mapping_impact.png" alt="QR mass mapping impact" style="width: 200px;"> -->
-				<br>
-				A. Tersenov, L. Baumont, J.L. Starck, M. Kilbinger, <a
-					href="https://arxiv.org/abs/2501.06961">arXiv:2501.06961</a>
-
-				<div class="pipeline-slot" data-variant="compact" data-active="maps"></div>
 			</section>
 			<!-- =============================================================================
 			     A1.2 — WHY MASS MAPPING IS HARD.  Built 2026-09-03.

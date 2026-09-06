@@ -27,17 +27,48 @@
 	 * rather than by authoring arrow ids, so `data-active="shear maps"` just
 	 * works and there is nothing extra to keep in sync in the template.
 	 */
-	function lightTransitions(pipe) {
+	function lightTransitions(pipe, cls) {
+		cls = cls || 'is-active';
 		var kids = Array.prototype.slice.call(pipe.children);
 		kids.forEach(function (node, i) {
 			if (!node.classList.contains('arw')) { return; }
 			var prev = kids[i - 1], next = kids[i + 1];
 			if (prev && next &&
-			    prev.classList.contains('is-active') &&
-			    next.classList.contains('is-active')) {
-				node.classList.add('is-active');
+			    prev.classList.contains(cls) &&
+			    next.classList.contains(cls)) {
+				node.classList.add(cls);
 			}
 		});
+	}
+
+	/**
+	 * `data-steps` — several focus sets on ONE diagram, walked by clicks.
+	 *
+	 *   <span class="qstep s1 fragment" data-fragment-index="2"></span>
+	 *   ...
+	 *   <div class="pipeline-slot"
+	 *        data-steps="shear maps | maps | summaries inference | summaries systematics">
+	 *
+	 * Step k marks its stages (and the arrows between adjacent ones) with `on-k`;
+	 * which step is showing is decided in CSS off reveal's own `.current-fragment`
+	 * on the matching `.qstep` marker.  Doing it in CSS rather than on a
+	 * `fragmentshown` listener is what keeps ?print-pdf correct — the PDF export
+	 * sets `visible`/`current-fragment` directly and fires no fragment events.
+	 */
+	function markSteps(pipe, spec) {
+		var sets = spec.split('|');
+		sets.forEach(function (set, i) {
+			var cls = 'on-' + (i + 1);
+			set.split(/\s+/).filter(Boolean).forEach(function (id) {
+				var el = pipe.querySelector('[data-stage="' + id + '"]');
+				if (el) { el.classList.add(cls); }
+				else if (window.console) {
+					console.warn('[pipeline] step ' + (i + 1) + ': no stage "' + id + '"');
+				}
+			});
+			lightTransitions(pipe, cls);
+		});
+		pipe.classList.add('steps-armed');
 	}
 
 	function build() {
@@ -63,6 +94,8 @@
 			//                                  `.visible` class, so it survives ?print-pdf —
 			//                                  a JS listener on `fragmentshown` would not,
 			//                                  because print-pdf never fires it.
+			if (slot.dataset.steps) { markSteps(pipe, slot.dataset.steps); }
+
 			var active = (slot.dataset.active || '').split(/\s+/).filter(Boolean);
 			var deferred = false;
 			if (!active.length && slot.dataset.focusOnFragment) {
