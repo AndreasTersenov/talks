@@ -732,10 +732,11 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
   *prior* and the Part 3 forward pointer moved onto frame 16's beat, the point-estimate flag onto
   frame 18's, and frame 43 is now the only Bayes slide in the talk. The beats are kept in the
   script, marked SKIP, and still audited against the deck.
-- **The talk measures 54:16 spoken against a 40:00 target**, with 7:53 parked in the skipped beats.
+- **The talk measures 54:30 spoken against a 40:00 target**, with 7:53 parked in the beats that are
+  not spoken.
   §5's budget tables below all predate the measurement and should be read as historical. The
   script's own *The arithmetic, and how to close it* is the live version: a five-tier ladder that
-  lands at 40:19, no tier of which is a whole-act decision.
+  lands at 40:15, no tier of which is a whole-act decision.
 - Two structural gaps the script pass exposed: **there are no Part 3 and Part 4 dividers** (frame 9
   promises four parts, the deck labels two), and **frames 37–39 repeat frames 40–41** — peaks, the
   starlet transform and the ℓ1-norm are each defined twice within ninety seconds.

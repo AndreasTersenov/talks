@@ -30,13 +30,13 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 | Act 0 — the setup | 1–9 | 10:40 | ends on the four questions |
 | Act 1 — Part 1, does the map matter? | 10–22 | 12:41 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 23–27 | 5:09 | frame 26 is the first cut |
-| Act 3 — Part 3, the summaries | 28–47 | 18:26 | the longest act; 10:32 of it is teaching |
+| Act 3 — Part 3, the summaries | 28–47 | 18:41 | the longest act; 10:32 of it is teaching |
 | Act 4 — Part 4, baryons | 48–52 | 5:36 | |
 | Close | 53–54 | 1:44 | |
-| | **54 frames** | **54:16** | **against a 40:00 target in a 45:00 slot** |
+| | **54 frames** | **54:30** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ 54:16 spoken, against a 40:00 target — over by 14:16.** *The arithmetic, and how to close
-> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:19**.
+> **⚠ 54:30 spoken, against a 40:00 target — over by 14:30.** *The arithmetic, and how to close
+> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:15**.
 > No tier is a whole-act decision. Read it before rehearsing, not after.
 
 ### Seven slides moved to backup, 2026-09-06
@@ -1008,16 +1008,20 @@ at it you need statistics beyond two-point: peaks, wavelets, the ℓ1-norm, Mink
 
 ---
 
-## A3.6 — and it is worth having · frame 33 · 0:25
+## A3.6 — and it is worth having · frame 33 · 0:40
 
-〔A forecast, not a measurement — say so.〕
+〔A forecast, not a measurement, and **not our parameters** — say both, briefly, before anyone
+squints at the axes. Figure swapped 2026-09-06 for the four-curve version from the same paper.〕
 
-And it is worth having. These contours are forecasts on the same convergence maps: the power
-spectrum, then peak counts after a single Gaussian filter, then peak counts on a multi-scale
-decomposition.
+And it is worth having. Forecasts on the same convergence maps — Virginia Ajani's figure, on the
+neutrino mass rather than my parameters, which does not matter here.
+
+The power spectrum, in blue, is much the widest. Peaks after a **single** filter are already
+tighter. And peaks read at **every scale**, in red and black, are tighter again.
 
 **▲** Nothing about the data changed. The only thing that moves those contours is the choice of
-summary statistic. That is what makes the choice a scientific one.
+summary statistic — which is what makes it a scientific choice, and why the rest of this part is
+about wavelets.
 
 ---
 
@@ -1646,34 +1650,34 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 54:16 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
-skipped beats. Over by **14:16**.
+**Measured: 54:30 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
+beats that are not spoken. Over by **14:30**.
 
 | act | frames | measured | share |
 |---|---|---|---|
 | Act 0 — the setup | 1–9 | 10:40 | 20 % |
-| Act 1 — Part 1 | 10–23 | 12:41 | 23 % |
-| Act 2 — Part 2 | 24–30 | 5:09 | 9 % |
-| Act 3 — Part 3 | 31–53 | 18:26 | 34 % |
-| Act 4 — Part 4 | 54–58 | 5:36 | 10 % |
-| Close | 61–62 | 1:44 | 3 % |
-| *(skipped)* | 5, 17, 28, 29, 37–39, 59, 60 | *7:53* | — |
+| Act 1 — Part 1 | 10–22 | 12:41 | 23 % |
+| Act 2 — Part 2 | 23–27 | 5:09 | 9 % |
+| Act 3 — Part 3 | 28–47 | 18:41 | 34 % |
+| Act 4 — Part 4 | 48–52 | 5:36 | 10 % |
+| Close | 53–54 | 1:44 | 3 % |
+| *(not spoken)* | 5, and backup 66–67, 100–102, 106, 112–113 | *7:53* | — |
 
-**Act 3 is a third of the talk**, and 10:32 of its 18:26 is still teaching — two-point statistics,
+**Act 3 is a third of the talk**, and 10:32 of its 18:41 is still teaching — two-point statistics,
 the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the paper's own
 results. That is where most of what follows comes from.
 
 The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
 whole-act decision any more** — that changed when the nine frames came out.
 
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:13
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:27
 
 | frame | what | saves |
 |---|---|---|
 | 26 | the remaining PnPMass flipbook. Its partner is already in backup at 112; this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
 | 49 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:34
+## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:48
 
 | frame | what | saves |
 |---|---|---|
@@ -1686,7 +1690,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 > that Bayes is taught in Act 1. It no longer is, so frame 37 — the classical route — is the *only*
 > place Bayes appears in the talk, and it stays.
 
-## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:39
+## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:53
 
 | beat | cut | saves |
 |---|---|---|
@@ -1701,7 +1705,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
 
-## Tier 4 — three more frames parked · −2:47 · lands at 42:52
+## Tier 4 — three more frames parked · −2:47 · lands at 43:06
 
 | frame | what | saves |
 |---|---|---|
@@ -1709,7 +1713,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | 36, 41 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 42** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
 | 20 | the three maps. Frame 19's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
 
-## Tier 5 — the last stretch · −2:33 · lands at 40:19
+## Tier 5 — the last stretch · −2:51 · lands at 40:15
 
 Only if the rehearsal clock says so. Each of these costs something real.
 
@@ -1721,6 +1725,7 @@ Only if the rehearsal clock says so. Each of these costs something real.
 | 43 | fold the controls into A3.20's opening: *same maps, same flow, both calibrated, only the summary changes* | −0:23 |
 | A1.13 + A1.14 | merge: run the ladder straight into the scale argument. **Keep both ▲ sentences** — the four-per-cent contrast and *the gain is small-scale reconstruction fidelity* | −0:30 |
 | A4.3 | drop the full-sky numbers, keep Stage IV and *it gets worse with area* | −0:20 |
+| A3.6 | drop the borrowed-figure aside; point at the legend and name the four curves | −0:18 |
 
 ## Never cut, at any tier
 

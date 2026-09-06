@@ -1873,8 +1873,12 @@
 
 /* the HOS-gain slide is one big figure and one line under it */
 .reveal .slides section.hosgain .hg-fig { margin: 0.8em auto 0; max-width: 92%; }
+/* 62vh let the corner plot push the caption and the closing line off the bottom
+   once the four-curve figure went in on 2026-09-06.  The binding constraint has to
+   be the height, not the width: this figure is nearly square, so at any sensible
+   width it is taller than the space between the title and the pull line. */
 .reveal .slides section.hosgain .hg-fig img {
-	width: auto; height: auto; max-height: 62vh; max-width: 100%;
+	width: auto; height: auto; max-height: 44vh; max-width: 100%;
 	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.46em; text-align: center; margin-top: 0.5em; }
