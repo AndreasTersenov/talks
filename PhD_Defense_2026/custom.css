@@ -2200,3 +2200,21 @@
 	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
 	text-align: left;
 }
+
+/* ---------------------------------------------------------------------------
+   SLIDE 40 — the definition swaps for the shape.  An r-stack is a CSS grid, so
+   it shrink-wraps to the intrinsic image size unless the CONTAINER is given a
+   size; fixing the height as well stops the row jumping when the contents swap.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .statpair .r-stack.statswap {
+	width: 100%; height: 24vh; align-items: center; justify-items: center;
+}
+.reveal .slides section .statpair .r-stack.statswap > img {
+	max-width: 100%; max-height: 24vh; width: auto; height: auto;
+	object-fit: contain; margin: 0; border: 0; box-shadow: none;
+	background: transparent;
+}
+.reveal .slides section .statpair .r-stack.statswap > .l1formula {
+	display: flex; align-items: center; justify-content: center;
+	width: 100%; height: 100%;
+}

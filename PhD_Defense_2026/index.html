@@ -2971,22 +2971,33 @@
 				</figure>
 
 				<div class="statpair">
-					<div class="col fragment fade-in">
+					<div class="col fragment fade-in" data-fragment-index="0">
 						<div class="kicker">wavelet peak counts</div>
-						<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
-							alt="a smoothed convergence map with its signal-to-noise peaks circled">
+						<div class="r-stack statswap">
+							<img class="plain fragment fade-out" data-fragment-index="2"
+								src="../assets/figures/maps/kappa_peaks_circled.png"
+								alt="a smoothed convergence map with its signal-to-noise peaks circled">
+							<img class="plain fragment fade-in" data-fragment-index="2"
+								src="../assets/diagrams/hos_peaks_shape.png"
+								alt="schematic peak counts against signal-to-noise, one curve per starlet scale: the counts fall by about a factor of four from each scale to the next, and every curve peaks a little above a signal-to-noise of one">
+						</div>
 						<p class="cap">local maxima of the SNR field, counted per SNR bin &rarr; focus only on a subset
 							of the field
 					</div>
-					<div class="col fragment fade-in">
+					<div class="col fragment fade-in" data-fragment-index="1">
 						<div class="kicker">starlet &#8467;1-norm</div>
-						<div class="l1formula">
-							<div>
-								$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big|
-								\;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
-								<p class="defline">$\mathcal{S}_{j,i}$ &mdash; the coefficients of scale $j$ whose SNR
-									falls in bin $i$</p>
+						<div class="r-stack statswap">
+							<div class="l1formula fragment fade-out" data-fragment-index="2">
+								<div>
+									$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u] \big|
+									\;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
+									<p class="defline">$\mathcal{S}_{j,i}$ &mdash; the coefficients of scale $j$ whose SNR
+										falls in bin $i$</p>
+								</div>
 							</div>
+							<img class="plain fragment fade-in" data-fragment-index="2"
+								src="../assets/diagrams/hos_l1_shape.png"
+								alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale: each curve is bimodal about zero, with a hump on the void side and a slightly higher one on the peak side, and the coarser scales are broader and flatter">
 						</div>
 						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &rarr; encodes
 							information from every pixel (peaks, voids, ...)</p>
@@ -3002,7 +3013,14 @@
 					of the SNR field per SNR bin - simple and well established, but it keeps only the discrete features.
 					The l1-norm generalises it: sum the absolute coefficients in each SNR bin instead of counting
 					maxima, so every pixel contributes, voids as well as peaks, and there is no feature-detection step
-					to define or tune. That is our analytical hero for the rest of the talk. CAREFUL: the figure labels
+					to define or tune. That is our analytical hero for the rest of the talk.
+					[CLICK] And this is what the two of them actually look like, scale by scale - schematic curves, the
+					shapes not the numbers. Two things to point at. The peak counts fall by roughly a factor of four
+					from one scale to the next, because a coarser band has that many fewer independent resolution
+					elements to hold a maximum, and they live almost entirely on the positive side. The l1-norm is
+					bimodal instead: a hump either side of zero and a dip at zero, because a coefficient near zero
+					contributes nothing to a sum of absolute values. The left hump is the voids. That is the picture
+					of what "every pixel contributes" means, and it is why the l1-norm carries more than the peaks do. CAREFUL: the figure labels
 					its bands 1.2-9.4 arcmin (thesis illustration at a finer pixel scale); OUR analysis uses the four
 					finest dyadic bands, roughly 10 to 80 arcmin, and drops j=1. Do not quote the figure's numbers out
 					loud.</aside>
