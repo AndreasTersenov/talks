@@ -33,15 +33,15 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:11 | ends on the four questions |
-| Act 1 — Part 1, does the map matter? | 10–22 | 10:07 | opens with the formalism, moved here 2026-09-06 |
+| Act 0 — the setup | 1–9 | 7:14 | ends on the four questions |
+| Act 1 — Part 1, does the map matter? | 10–22 | 10:34 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 23–27 | 4:13 | frame 26 is the first cut |
 | Act 3 — Part 3, the summaries | 28–47 | 15:21 | still the longest act by far |
 | Act 4 — Part 4, baryons | 48–52 | 4:47 | |
 | Close | 53 | 1:43 | |
-| | **53 frames** | **43:22** | **at 120 wpm, against a 40:00 target** |
+| | **53 frames** | **43:52** | **at 120 wpm, against a 40:00 target** |
 
-> **⚠ 43:22 spoken against a 40:00 target, at 120 wpm — over by 3:22.** Every beat was rewritten
+> **⚠ 43:52 spoken against a 40:00 target, at 120 wpm — over by 3:52.** Every beat was rewritten
 > for brevity on 2026-09-07 (61:37 → 43:22), so **the prose is spent**; what is left is structural,
 > and *The arithmetic, and how to close it* — after the close, below — names it. **Set the wpm from
 > a real timing before trusting any of these numbers.**
@@ -238,16 +238,20 @@ analysis itself.
 
 ---
 
-## A0.5 — what weak lensing measures · frame 6 · 0:38
+## A0.5 — strong and weak lensing · frame 6 · 0:41
 
-Light from a distant galaxy passes every structure on the way to us, and each one bends it a
-little. So the image arrives distorted — stretched one way, squashed the other.
+Light from a distant galaxy passes every mass on the way to us, and each one bends its path, so the
+image arrives distorted.
 
-For one galaxy that is about a per cent, and we never knew its original shape. **▲** But it is
-coherent: neighbours behind the same structure are distorted the same way. So we measure very many
-and look for the shared pattern.
+Occasionally that is dramatic — arcs, multiple images, Einstein rings, visible by eye. That is the
+**strong** regime, and it needs a very massive object almost on the line of sight, so it is rare.
 
-That is cosmic shear.
+**▲** What happens *everywhere* is the **weak** regime: every galaxy behind any structure has its
+shape slightly changed. That is what this thesis is about.
+
+> **Stop there** (Andreas, 2026-09-07). How the signal is actually extracted — that the distortion
+> is coherent while intrinsic shapes are random, so it comes out of averaging — belongs on frame 11,
+> where the shear is defined. Saying it twice is what made this slide long.
 
 ---
 
@@ -340,14 +344,19 @@ First, what is being reconstructed.
 
 ---
 
-## A1.2 — shear and convergence · frame 11 · 0:51
+## A1.2 — shear and convergence · frame 11 · 1:18
 
 Lensing does two things to a patch of sky. It changes its size — the convergence, kappa. And it
 stretches it one way while squashing the other — the shear, gamma. Both are second derivatives of
 the same potential: two readings of one field.
 
 **▲** But the convergence, the one that *is* the mass, is the one we cannot measure — we never knew
-how big the galaxy was to start with. The shear we can, because it is coherent.
+how big the galaxy was to start with.
+
+The shear we can, and this is how. For one galaxy the stretch is about a per cent, far smaller than
+the shape it already had — so one galaxy tells you nothing. **▲** But the lensing is **coherent**
+and the intrinsic shapes are **random**. Average the ellipticities over many galaxies in a patch,
+the random part cancels, and what survives is the shear.
 
 **▲** So we measure the shear and we want the convergence. Getting from one to the other is a
 reconstruction, and that is where this thesis starts.
@@ -1260,7 +1269,7 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**43:22 spoken against a 40:00 target**, at **120 wpm**. Over by **3:22**.
+**43:52 spoken against a 40:00 target**, at **120 wpm**. Over by **3:52**.
 
 > **The rate matters more than any single cut.** 140 wpm is a *reading* rate; delivery has pauses
 > in it. Andreas, timing himself: it takes "significantly more time than what you are estimating".
@@ -1271,12 +1280,12 @@ Thank you.
 > tools/measure-script.py PhD_Defense_2026 --wpm 112 --write
 > ```
 >
-> Every number below moves with it. At 110 wpm the talk is 47:19; at 130 it is 40:02.
+> Every number below moves with it. At 110 wpm the talk is 47:51; at 130 it is 40:29.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:11 | 17 % |
-| Act 1 — Part 1 | 10–22 | 10:07 | 23 % |
+| Act 0 — the setup | 1–9 | 7:14 | 17 % |
+| Act 1 — Part 1 | 10–22 | 10:34 | 24 % |
 | Act 2 — Part 2 | 23–27 | 4:13 | 10 % |
 | Act 3 — Part 3 | 28–47 | 15:21 | 35 % |
 | Act 4 — Part 4 | 48–52 | 4:47 | 11 % |
@@ -1287,14 +1296,14 @@ Thank you.
 43:22, a thirty per cent cut with no slide touched. There is not another ten per cent in the
 sentences without losing claims. What is left is structural.
 
-## Tier 1 — two frames whose beat says nothing new · −0:51 · lands at 42:31
+## Tier 1 — two frames whose beat says nothing new · −0:51 · lands at 43:01
 
 | frame | what | saves |
 |---|---|---|
 | 26 | the PnPMass flipbook. Seven clicks to show an iteration converging, which A2.3 has already described | **−0:25** |
 | 49 | the SBI refresher. A3.16 taught the same pipeline twelve minutes earlier | **−0:26** |
 
-## Tier 2 — the inference runway · −2:34 · lands at 39:57
+## Tier 2 — the inference runway · −2:34 · lands at 40:27
 
 **This is the recommendation.** Frames 37, 38 and 39 teach the classical Bayes route, generative
 modelling and normalizing flows, to a room where Tsakalides has that vocabulary professionally,
