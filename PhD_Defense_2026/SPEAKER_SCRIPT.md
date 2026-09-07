@@ -9,8 +9,9 @@ survive verbatim as the wording drifts in rehearsal. Everything else on the page
 > are `>` notes now. **Do not put them back**: if a new note is not sayable and not a fact about the
 > deck, it does not belong in the file.
 
-**Every timing in this file is measured, not estimated** — spoken words divided by 140 wpm, with
-stage directions, cues and blockquotes excluded. The measurement is done by
+**Every timing in this file is measured, not estimated** — spoken words divided by the rate, with
+cues and blockquotes excluded. The rate is **120 wpm**, and it is provisional: 140 is a *reading*
+rate and delivery is slower than that. Time yourself on one beat and set it with `--wpm`. The measurement is done by
 `../tools/measure-script.py`, which also checks every `[CLICK]` cue against the deck's real
 fragment count:
 
@@ -32,18 +33,18 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:57 | ends on the four questions |
-| Act 1 — Part 1, does the map matter? | 10–22 | 12:41 | opens with the formalism, moved here 2026-09-06 |
-| Act 2 — Part 2, PnPMass | 23–27 | 5:03 | frame 26 is the first cut |
-| Act 3 — Part 3, the summaries | 28–47 | 19:29 | the longest act; 10:32 of it is teaching |
-| Act 4 — Part 4, baryons | 48–52 | 5:47 | |
-| Close | 53 | 1:36 | |
-| | **54 frames** | **52:49** | **against a 40:00 target in a 45:00 slot** |
+| Act 0 — the setup | 1–9 | 7:11 | ends on the four questions |
+| Act 1 — Part 1, does the map matter? | 10–22 | 10:07 | opens with the formalism, moved here 2026-09-06 |
+| Act 2 — Part 2, PnPMass | 23–27 | 4:13 | frame 26 is the first cut |
+| Act 3 — Part 3, the summaries | 28–47 | 15:21 | still the longest act by far |
+| Act 4 — Part 4, baryons | 48–52 | 4:47 | |
+| Close | 53 | 1:43 | |
+| | **53 frames** | **43:22** | **at 120 wpm, against a 40:00 target** |
 
-> **⚠ 52:49 spoken, against a 40:00 target — over by 12:49.** *The arithmetic, and how to close
-> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:00**. Act 0 was rewritten to the bone on 2026-09-07 and is now 7:57; the
-> overrun that is left is almost entirely Act 3.
-> No tier is a whole-act decision. Read it before rehearsing, not after.
+> **⚠ 43:22 spoken against a 40:00 target, at 120 wpm — over by 3:22.** Every beat was rewritten
+> for brevity on 2026-09-07 (61:37 → 43:22), so **the prose is spent**; what is left is structural,
+> and *The arithmetic, and how to close it* — after the close, below — names it. **Set the wpm from
+> a real timing before trusting any of these numbers.**
 
 ### Seven slides moved to backup, 2026-09-06
 
@@ -164,7 +165,7 @@ Fixed points (Andreas, 2026-08-26): **ΛCDM**, **cosmological probes**, **Euclid
 
 ---
 
-## A0.1 — title · frame 1 · 0:27
+## A0.1 — title · frame 1 · 0:32
 
 Thank you, and good morning. Thank you all for coming, and thank you to the committee for reading
 this.
@@ -176,7 +177,7 @@ I would like to start with the picture we are trying to fill in.
 
 ---
 
-## A0.2 — the picture · frame 2 · 0:19
+## A0.2 — the picture · frame 2 · 0:22
 
 This is the history of the Universe as we currently model it.
 
@@ -189,7 +190,7 @@ cosmic web.
 
 ---
 
-## A0.3 — what ΛCDM is, and where it stops · frame 3 · 0:45
+## A0.3 — what ΛCDM is, and where it stops · frame 3 · 0:53
 
 Our prevailing model for all of that is ΛCDM — Lambda, cold dark matter.
 
@@ -206,7 +207,7 @@ have appeared between independent probes.
 
 ---
 
-## A0.4 — the probes, and the one we follow · frame 4 · 0:28
+## A0.4 — the probes, and the one we follow · frame 4 · 0:32
 
 So how do you test a model like that? Not by arguing about what Λ is — you measure the same numbers
 several independent ways and check that they agree. And there are several probes that do it.
@@ -216,7 +217,7 @@ matter directly, and it is sensitive to the geometry and the growth at once.
 
 ---
 
-## A0.4v — the two tensions · frame 5 · SKIP · 0:47
+## A0.4v — the two tensions · frame 5 · SKIP · 0:55
 
 > **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
 > not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
@@ -237,63 +238,46 @@ analysis itself.
 
 ---
 
-## A0.5 — what weak lensing measures · frame 6 · 1:03
+## A0.5 — what weak lensing measures · frame 6 · 0:38
 
-Here is the same idea, drawn properly. Follow the light from those distant galaxies on its way to
-us.
+Light from a distant galaxy passes every structure on the way to us, and each one bends it a
+little. So the image arrives distorted — stretched one way, squashed the other.
 
-It does not travel through empty space. It passes every structure that happens to lie along the
-way, and every mass it passes bends its path slightly. By the time that light reaches us, the image
-of the galaxy is slightly distorted — stretched one way and squashed the other.
+For one galaxy that is about a per cent, and we never knew its original shape. **▲** But it is
+coherent: neighbours behind the same structure are distorted the same way. So we measure very many
+and look for the shared pattern.
 
-For any single galaxy the effect is about a per cent. Far too small to see, and we do not know what
-shape the galaxy had to begin with.
-
-**▲** But the distortion is coherent. Neighbouring galaxies behind the same piece of structure are
-distorted the same way. So we measure the shapes of very many galaxies and look for that shared
-pattern.
-
-That is cosmic shear, and it lets us map the matter back to redshift about three.
+That is cosmic shear.
 
 ---
 
-## A0.6 — Euclid, and what the signal is · frame 7 · 1:08
+## A0.6 — Euclid, and what the signal is · frame 7 · 0:44
 
-And we are about to be able to do this properly.
+And we are about to be able to do this properly. Euclid launched in 2023, it is taking data now,
+and it will measure the shapes of billions of galaxies over a third of the sky. **▲** Roughly an
+order of magnitude more statistical power than anything we have.
 
-Euclid is a European Space Agency mission. It launched in 2023, it is taking data now, and it will
-survey fourteen thousand square degrees — about a third of the sky. It will measure the shapes of
-billions of galaxies. The first cosmological data release is in June 2027. Rubin will follow from
-the ground, and Roman deeper over a smaller area.
+[CLICK] **▲** And that signal is the statistical memory of everything the Universe has done since
+the Big Bang. But none of it comes out on its own — getting it out is an algorithms problem.
 
-**▲** That is roughly an order of magnitude more statistical power than the surveys we have today.
-
-[CLICK] **▲** And that signal is worth the trouble, because it is the statistical memory of
-everything the Universe has done since the Big Bang. The initial conditions, the growth of
-structure, the geometry — all of it is written into how the light was bent on the way here. But
-none of it comes out on its own. Getting it out is an algorithms problem.
-
-And that is what this thesis is about.
+That is what this thesis is about.
 
 ---
 
-## A0.7 — what it actually takes · frame 8 · 0:47
+## A0.7 — what it actually takes · frame 8 · 0:38
 
-Before I show you my own picture of that, here is an honest one.
+Before my own picture of that, an honest one: the DES Year 3 analysis, from pixels to cosmology.
+Alexandra Amon's diagram, not mine. Do not try to read it — that is the point.
 
-This is the DES Year 3 analysis, from pixels to cosmology, and it is Alexandra Amon's diagram, not
-mine. Do not try to read it — that is the point.
+[CLICK] Nearly every box is its own paper, and most of them are measurement and calibration.
+Cosmology is the last two on the right.
 
-[CLICK] Nearly every box on it is a paper in its own right, and the great majority of them are
-measurement and calibration: modelling the point spread function, calibrating shapes, dealing with
-blended galaxies, getting redshift distributions, building covariances. Then analysis choices, and
-only at the very end, cosmology.
-
-**▲** A real survey analysis is mostly not the physics. I am not going to talk about most of this.
+**▲** A real survey analysis is mostly not the physics, and I am not going to talk about most of
+it.
 
 ---
 
-## A0.8 — the chain, and the four questions · frame 9 · 2:59
+## A0.8 — the chain, and the four questions · frame 9 · 2:51
 
 > The most important slide in the deck and the longest beat in Act 0. The four questions are
 > **canonical** — the board at frame 53 asks exactly these, in these words. If you change one here,
@@ -301,32 +285,25 @@ only at the very end, cosmology.
 
 So this thesis is about the analysis.
 
-Between the galaxy shapes we measure and the cosmological parameters we report there is a chain. A
-catalogue of shapes and redshifts. Binned into shear maps. Inverted into mass maps. Compressed into
-a summary statistic. Compared against simulations to infer the parameters. And out comes a
-posterior.
+Between the shapes we measure and the parameters we report there is a chain: a catalogue, binned
+into shear maps, inverted into mass maps, compressed into a summary, compared against simulations.
+And out comes a posterior. Underneath runs the model side — cosmologies from a prior, through
+simulations, then the systematics.
 
-Underneath runs the other half of it. Cosmologies drawn from a prior, run through N-body
-simulations, and then given the systematics — baryons, intrinsic alignments, shape and redshift
-calibration — before any of it is compared with the data.
+[CLICK] **▲** Every one of those stages is now built out of learned components, and every one can
+bias the answer or quietly throw information away, with no internal check noticing.
 
-[CLICK] **▲** Every one of those stages is now built out of learned components, and every one of
-them can bias the answer, or quietly throw information away, with no internal check noticing.
+[CLICK] The first question is this step. Shear in, a mass map out — and that inversion is not a
+measurement, it is a choice of algorithm. The field judges those algorithms on how closely the map
+matches the truth, but the map is not what we publish. **▲** So: is mass mapping preprocessing, or
+does the choice of reconstruction change the cosmology?
 
-[CLICK] The first question is about this step here. Shear goes in, a mass map comes out. That
-inversion is not a measurement — it is a choice of algorithm, and there are many of them. The field
-has always judged those algorithms on how closely the map matches the truth. But the map is not
-what we publish; the posterior is. **▲** So: is mass mapping preprocessing, or does the choice of
-reconstruction change the cosmology we infer?
+[CLICK] Second question, same box. If it does matter, we want a reconstruction that is flexible,
+fast, accurate **and** honest about how wrong it is — all four, on a survey the size of Euclid.
 
-[CLICK] Second question, same box. Suppose it does matter. Then we want a reconstruction that is
-flexible, fast, accurate, **and** honest about how wrong it is — all four at once, on a survey the
-size of Euclid.
-
-[CLICK] The third question moves one step to the right, and then all the way to the end. A mass map
-is a hundred thousand correlated pixels. It has to be compressed before anything can be inferred
-from it, and then that compressed reading has to become a posterior. **▲** So: what is the most we
-can read out of a map, and what does it take to turn that reading into a posterior?
+[CLICK] Third question, one step right and then all the way to the end. A map is a hundred thousand
+correlated pixels; it has to be compressed, and the compression has to become a posterior. **▲**
+So: what is the most we can read out of a map, and what does it take?
 
 [CLICK] And the fourth question is the one that decides whether any of the rest is usable.
 Everything so far assumes the simulations tell the truth. They do not, quite — there is
@@ -354,85 +331,63 @@ head of every part, with one box lit — and we come back to these four at the e
 
 ---
 
-## A1.1 — the question · frame 10 · 0:23
+## A1.1 — the question · frame 10 · 0:18
 
-Question one, and here is the same picture with the same step lit.
+Question one, on the same picture with the same step lit. Every map-based statistic in this talk
+starts from a reconstruction — so does that choice change the cosmology, or is it preprocessing?
 
-Every map-based statistic in this talk starts from a reconstruction. So before anything else: does
-the choice of reconstruction change the cosmology we infer, or is it preprocessing?
-
- To answer that I have to tell you what is being reconstructed.
+First, what is being reconstructed.
 
 ---
 
-## A1.2 — shear and convergence · frame 11 · 1:09
+## A1.2 — shear and convergence · frame 11 · 0:51
 
-So what is it we actually measure?
+Lensing does two things to a patch of sky. It changes its size — the convergence, kappa. And it
+stretches it one way while squashing the other — the shear, gamma. Both are second derivatives of
+the same potential: two readings of one field.
 
-Take a round patch of sky behind some structure. Lensing does two things to it. It changes the size
-of the patch — that is the convergence, kappa. And it stretches the patch one way while squashing
-it the other: that is the shear, gamma, two numbers rather than one because a stretch has an
-orientation.
-
-Both are second derivatives of the same lensing potential. Two readings of one field.
-
-**▲** But the convergence, the one that *is* the mass, is the one we cannot measure: we never knew
-how big the galaxy was to begin with. The shear we can, because it is coherent — every galaxy
-behind the same structure is stretched the same way, so with enough of them the shared alignment
-lifts out of the noise.
+**▲** But the convergence, the one that *is* the mass, is the one we cannot measure — we never knew
+how big the galaxy was to start with. The shear we can, because it is coherent.
 
 **▲** So we measure the shear and we want the convergence. Getting from one to the other is a
 reconstruction, and that is where this thesis starts.
 
 ---
 
-## A1.3 — what the convergence is · frame 12 · 0:44
+## A1.3 — what the convergence is · frame 12 · 0:34
 
-And this is what the convergence is. Add up all the matter along the line of sight, weighted by how
-efficiently each piece of it lenses — a weight that peaks about halfway to the galaxy whose light
-we are looking at.
+And the convergence is just the matter along the line of sight, weighted by how efficiently each
+piece of it lenses.
 
-Two things ride in that integral. The kernel carries the geometry: distances, and the
-expansion history. The overdensity carries the growth of structure. **▲** A convergence map
-responds to both at once, which is why lensing tests the model rather than measuring a single
-number.
+Two things ride in that integral: the kernel carries the geometry, the overdensity carries the
+growth. **▲** A convergence map responds to both at once, which is why lensing tests the model
+rather than measuring one number.
 
-And this is what one looks like. Every result I show you is computed on maps like this.
+Every result in this talk is computed on maps like that one.
 
 ---
 
-## A1.4 — one potential, two observables · frame 13 · 0:30
+## A1.4 — one potential, two observables · frame 13 · 0:27
 
-So how do we get from the one to the other?
+So how do we get from one to the other? They are derivatives of the same potential, so in Fourier
+space the relation inverts in a single line. That is Kaiser–Squires.
 
-Both are second derivatives of the same potential, so in Fourier space the relation inverts in a
-single line: the mass map is a linear combination of the two shear components. That is
-Kaiser–Squires.
-
-**▲** Linear, fast, no free parameters — and on a complete, noiseless field, exact. So there is a
-way across, and it is not an approximation.
+**▲** Linear, fast, no free parameters — and on a complete, noiseless field, exact. There is a way
+across, and it is not an approximation.
 
 ---
 
-## A1.5 — the relation is exact, the measurement is not · frame 14 · 1:18
+## A1.5 — the relation is exact, the measurement is not · frame 14 · 1:06
 
-The relation is exact. The measurement is not.
+The relation is exact. The measurement is not — because we never observe gamma. Three things stand
+in the way, and they are all on this line.
 
-We never get to invert gamma, because we never observe gamma. Three things stand between us and it,
-and they are all on this line.
+**Shape noise**, far larger than the shear itself, and the inversion amplifies it at small scales.
+**The mask**: the operator is non-local, so a hole leaves whole modes unconstrained. And **a blind
+spot** — shear cannot see a constant added to kappa, so the overall level is not measurable.
 
-**Shape noise.** Every galaxy has its own intrinsic ellipticity, far larger than the shear we are
-after — so the shear estimate at any one place is mostly noise, and the inversion amplifies it at
-small scales.
-
-**The mask.** The operator is non-local, it mixes Fourier modes, so a hole in the footprint leaves
-whole modes the data say nothing about.
-
-**And a blind spot.** Shear cannot see a constant added to kappa. The overall level of the map is
-simply not measurable.
-
-Put those together and you get this: a family of maps, visibly different — one sharp, one
-noise-dominated, one heavily smoothed — and every one of them fits the measurement.
+Put those together and you get a family of maps, visibly different, every one of which fits the
+measurement.
 
 [CLICK] **▲** So you cannot simply invert. Choosing one means adding an assumption — and that
 assumption is not a technicality, it **is** the method.
@@ -442,45 +397,34 @@ kappa?
 
 ---
 
-## A1.6 — the standard answer · frame 15 · 0:58
+## A1.6 — the standard answer · frame 15 · 0:50
 
-The standard answer is the one we just wrote down: apply the exact inverse anyway.
+The standard answer is to apply the exact inverse anyway, which is what almost every survey has
+done for thirty years — and for good reasons.
 
-That is what almost every survey has done for thirty years, and for good reasons — linear, no
-tuning, one Fourier transform, and exact if the field were complete and noiseless.
+[CLICK] But look at the pair. Same field, same mask. The structure on the left is not on the right,
+and the colour bar spans twice the range — **▲** that extra range is noise. And the mask bleeds
+across the whole map, because the Fourier transform does not know there is a hole.
 
-[CLICK] But look at the pair. Same field, same mask. The structure on the left is not there on the
-right, and the colour bar on the right spans twice the range of the truth — **▲** that extra range
-is noise, not signal. And the mask contour bleeds right across the map, because the Fourier
-transform does not know there is a hole.
-
-In practice we control that by smoothing. Which works — but **▲** smoothing *is* an assumption,
-applied bluntly and after the fact, and it removes exactly the small-scale structure we came for.
+We control that by smoothing. **▲** But smoothing *is* an assumption, applied bluntly and after the
+fact, and it removes the small scales we came for.
 
 ---
 
-## A1.7 — every method is one term · frame 16 · 1:38
+## A1.7 — every method is one term · frame 16 · 1:29
 
 So state the assumption up front instead.
 
-A reconstruction is a fit: the map that reproduces the shear you measured, which is the first term,
-and is not absurd as a map, which is the second. **▲** Every method on this slide writes exactly
-that problem, and the first term is identical for all of them.
+A reconstruction is a fit: the map that reproduces the shear, and is not absurd as a map. **▲**
+Every method here writes that same problem, with an identical first term — so the whole history of
+mass mapping is a history of the second one, what you are willing to assume a mass map looks like.
+Which is a **prior**, in everything but name.
 
-**▲** So the whole history of mass mapping is a history of the second term — what you are willing
-to assume a mass map looks like. Which is a **prior**, in everything but name: what we believe
-about the map before we look at the data.
-
-Wiener filtering assumes a Gaussian field with a fixed power spectrum. Optimal, if that is true.
-But the late-time field is not Gaussian, and the peaks are the whole point.
-
-Sparse recovery assumes the opposite kind of map: mostly empty, a few strong features — which is
-much closer to what a field of haloes looks like.
-
-MCALens says you do not have to choose: a smooth Gaussian background *with* sparse peaks on top.
-
-And deep learning stops assuming and learns the term from simulations. Hold that thought — it is
-Part 2.
+Wiener assumes a Gaussian field — optimal if that were true, but the late-time field is not
+Gaussian and the peaks are the whole point. Sparse recovery assumes the opposite: mostly empty, a
+few strong features, which is much closer to a field of haloes. MCALens says you do not have to
+choose — a smooth background *with* sparse peaks on top. And deep learning stops assuming and
+learns the term from simulations.
 
 **▲** And hold this one too: exactly the same three pieces come back in Part 3, with the
 cosmological parameters as the unknown instead of a map — except that there, it is the *likelihood*
@@ -488,7 +432,7 @@ we cannot write down.
 
 ---
 
-## A1.8 — so write the assumption down · frame 105 · SKIP · 0:54
+## A1.8 — so write the assumption down · frame 105 · SKIP · 1:03
 
 > **SKIPPED (Andreas, 2026-09-06), and three things had to move out of it first.**
 >
@@ -523,26 +467,20 @@ unknown instead of a map — except that there, the likelihood is the one we *ca
 
 ---
 
-## A1.9 — MCALens, and the step Part 2 replaces · frame 17 · 1:27
+## A1.9 — MCALens, and the step Part 2 replaces · frame 17 · 1:12
 
-MCALens is the only method here that does not treat the field as one thing.
-
-It models the convergence as a sum. A **Gaussian** component, handled by a Wiener filter that needs
-nothing but the power spectrum. Plus a **sparse non-Gaussian** component in the starlet basis — the
-peaks and haloes, which is exactly where the higher-order signal lives.
-
-It solves them by alternating. Fix one component, solve for the other, then swap, and repeat until
+MCALens is the only one here that does not treat the field as one thing. It models the convergence
+as a **Gaussian** component, handled by a Wiener filter, plus a **sparse non-Gaussian** one in the
+starlet basis — the peaks, where the higher-order signal lives. It solves them by alternating until
 the map stops moving.
 
-[CLICK] And each of those solves ends the same way, with a **proximal step**. Thirty seconds on
-what that is, because we meet it again and I would rather you had the picture than the definition.
+[CLICK] And each solve ends with a **proximal step**, which is worth twenty seconds because we meet
+it again. You take a step towards fitting the data and land somewhere that fits the shear better
+and may be nonsense as a map. **▲** The proximal operator hands back the nearest map the prior will
+accept — near, so you keep the progress; acceptable, so you do not run away into noise. For
+sparsity it is thresholding.
 
-You take a step towards fitting the data and you land somewhere. It fits the shear better than
-where you were, and it may be nonsense as a map. **▲** The proximal operator is the correction: it
-hands back the nearest map the prior will accept. Near, so you keep the progress you just made;
-acceptable, so you do not run away into noise. For sparsity it is simply thresholding.
-
-Remember that step, because in Part 2 we throw it away and put a neural network in its place.
+Remember it, because in Part 2 we throw it away and put a neural network in its place.
 
 > **FLAG — inherited from the Bayes slide, now backup 106. Say it only if pressed, and say it in Part 2
 > regardless.** Everything in Part 1 takes the *most probable* map: a point estimate. Part 2 is
@@ -551,95 +489,72 @@ Remember that step, because in Part 2 we throw it away and put a neural network 
 
 ---
 
-## A1.10 — the stakes · frame 18 · 0:54
+## A1.10 — the stakes · frame 18 · 0:39
 
-So: three methods, three different maps — and every one of them reproduces the shear it was given.
+Three methods, three different maps — and every one reproduces the shear it was given. Up to this
+paper, the field compared them by how close the map came to the truth, in simulations.
 
-Up to this paper, the way the field compared reconstructions was to measure how close the map came
-to the truth, in simulations, against a truth that no real survey will ever have.
+[CLICK] **▲** But the map is not what we publish. The posterior is, and nothing in a reconstruction
+error tells you what happens to Omega-m, sigma-eight or w-nought.
 
-[CLICK] **▲** But the map is not what we publish. The posterior is. And nothing in a reconstruction
-error tells you what happens to Omega-m, sigma-eight, or w-nought.
-
-So it was genuinely open, and it was argued about — with something concrete riding on it. Euclid
-has to pick a reconstruction. If mass mapping is preprocessing, take the cheap one and move on. If
-it is not, that choice is a scientific decision, and it should be made deliberately.
+So it was open, and argued about, with something concrete riding on it: Euclid has to pick a
+reconstruction.
 
 ---
 
-## A1.11 — the experiment · frame 19 · 0:52
+## A1.11 — the experiment · frame 19 · 0:34
 
-So we built the pipeline and changed exactly one thing in it.
-
-Twenty-five cosmologies from cosmo-SLICS — everything here is on simulations, because we need a
-truth to compare against. Same statistic on every map, same emulator, same likelihood, same
-sampler. Only the reconstruction changes.
+So we built the pipeline and changed exactly one thing in it. Twenty-five cosmologies from
+cosmo-SLICS, same statistic, same emulator, same likelihood, same sampler. Only the reconstruction
+changes.
 
 **▲** So whatever moves in the posterior is the reconstruction. It cannot be anything else.
 
-One word about the last two boxes, because they go past quickly. A map is a hundred
-thousand correlated pixels, so it has to be compressed before any likelihood can touch it — and
-which statistic you compress with is a scientific choice of its own. That is Part 3. Here it is
-nailed down on purpose, so it cannot explain anything that moves.
+The last two boxes — compression, and inference — are a scientific choice of their own. That is
+Part 3. Here they are nailed down on purpose.
 
 ---
 
-## A1.12 — the three maps · frame 20 · 0:39
+## A1.12 — the three maps · frame 20 · 0:30
 
-Here are the three reconstructions of the same simulated field.
+Three reconstructions of the same simulated field. Kaiser–Squires has to be smoothed, so the small
+scales are gone. Inpainting fills the mask first and is otherwise the same. MCALens is different in
+kind, and you can see it — the structure survives.
 
-Kaiser–Squires inverts directly, and because the noise diverges at small scales it has to be
-smoothed — so the small scales are simply gone. Inpainting KS fills the mask in first and is
-otherwise the same. MCALens is different in kind, and you can see it: the structure survives.
-
-**▲** And read the labels on the right. The two that assume nothing about kappa are what Euclid
-plans to run. MCALens is the state-of-the-art alternative. That is the comparison this paper makes.
+**▲** And the two that assume nothing about kappa are what Euclid plans to run. That is the
+comparison.
 
 ---
 
-## A1.13 — the answer · frame 21 · 1:13
+## A1.13 — the answer · frame 21 · 0:50
 
-Same twenty-five simulations, the same peak counts, the same emulator, the same likelihood, the
-same sampler. The only thing that changed is the reconstruction.
+Only the reconstruction changed. **▲** And it changes the answer.
 
-**▲** And it changes the answer.
+Kaiser–Squires is the baseline. Inpainting buys nothing — zero point nine nine six. **▲** That is a
+null result and I report it as one: inpainting acts on the masked regions, which the peak counts
+exclude anyway. And MCALens is a factor of two point six — a hundred and fifty-seven per cent.
 
-Kaiser–Squires sets the baseline at one. Inpainting buys nothing — zero point nine nine six.
-**▲** That is a null result and I report it as one: the inpainting acts on the masked regions, and
-the peak counts exclude those regions anyway. It would not carry over to a Fourier-space statistic
-like the bispectrum, which uses the whole area, and the paper says so.
+**▲** Here is the sentence I would most like you to keep. On reconstruction error, MCALens beats
+Kaiser–Squires by four per cent. On the figure of merit, by a hundred and fifty-seven.
 
-And MCALens is a factor of two point six. In the paper's convention, a hundred and fifty-seven per
-cent.
-
-**▲** Here is the sentence I would most like you to keep. Measured on reconstruction error, MCALens
-beats Kaiser–Squires by four per cent. Measured on the figure of merit, by a hundred and
-fifty-seven.
-
-Map quality and constraining power are not the same objective. The method that makes the best map
-is not the method that gives you the best posterior.
+Map quality and constraining power are not the same objective.
 
 > **If pressed on precision:** Chapter 2 reports no error bars — one chain per method.
 
 ---
 
-## A1.14 — where the gain comes from · frame 22 · 0:58
+## A1.14 — where the gain comes from · frame 22 · 0:46
 
-So where does it come from?
+And we can localise it, because the statistic is multi-scale. Add finer bands one at a time:
+Kaiser–Squires improves down to eight arcminutes and then stops. MCALens keeps improving all the
+way to two.
 
-We can localise it, because the statistic is multi-scale. Start with the coarsest bands only —
-sixteen and thirty-two arcminutes, plus the coarse map — and add finer scales one at a time.
+**▲** So the gain is not a global normalisation — it is small-scale reconstruction fidelity.
+MCALens recovers structure where the linear inversion has already smoothed itself into noise, and
+the statistic can read it.
 
-Kaiser–Squires improves when you add eight arcminutes. And then it stops: four arcminutes adds
-nothing significant, and two adds nothing. MCALens improves at every scale you add, all the way
-down to two.
-
-**▲** So the gain is not a global normalisation. It is small-scale reconstruction fidelity —
-MCALens recovers structure at scales where the linear inversion has already smoothed itself into
-noise, and the higher-order statistic can read it.
-
-Which tells you where the effort belongs. The reconstruction is not preprocessing. It is a
-scientific choice, and it should be made with the statistic that comes after it in view.
+Which tells you where the effort belongs: the reconstruction is a scientific choice, and it should
+be made with the statistic that follows it in view.
 
 ---
 ---
@@ -653,7 +568,7 @@ scientific choice, and it should be made with the statistic that comes after it 
 
 ---
 
-## A2.1 — the divider · frame 23 · 0:11
+## A2.1 — the divider · frame 23 · 0:13
 
 Question two, and the same box lit again.
 
@@ -662,42 +577,33 @@ quantification is mine.
 
 ---
 
-## A2.2 — what we actually want · frame 24 · 1:05
+## A2.2 — what we actually want · frame 24 · 0:49
 
-If the reconstruction matters this much, what do we actually want from one? Four things, and they
-are the four columns. **Accurate.** **Flexible** — one model that still works when the noise level
-or the footprint changes. **Fast** enough to run on a survey. And it should tell you **how wrong it
-is**, in a way you can check.
+So what do we want from a reconstruction? Four things — the four columns. Accurate. Flexible, so
+one model survives a change of noise or footprint. Fast enough for a survey. And honest about how
+wrong it is.
 
-Now read down. The model-driven methods give you two of the four: explicit assumptions and
-flexibility, but Wiener assumes the field is Gaussian — the assumption this whole thesis exists to
-avoid — and MCALens is slow. Deep learning has been tried, with several approaches, and it works;
-the accuracy is there. But each of those networks is trained for one noise level and one mask, so a
-change of footprint means retraining, and most hand you a point estimate with no error bar at all.
+The model-driven methods give you two: Wiener assumes Gaussianity, the assumption this thesis
+exists to avoid, and MCALens is slow. Deep learning has been tried and it works — but each network
+is trained for one noise level and one mask, and most hand you a point estimate with no error bar.
 
 **▲** Nothing had all four. That last row is the paper.
 
 ---
 
-## A2.3 — the construction · frame 25 · 1:12
+## A2.3 — the construction · frame 25 · 0:58
 
-PnPMass.
+PnPMass. Remember the proximal step from Part 1. The reconstruction is a fixed-point iteration: a
+gradient step towards the measured shear, then that proximal step.
 
-Remember the proximal step from Part 1 — the one that pulls a candidate map back onto what the
-prior allows. The reconstruction is a fixed-point iteration: a gradient step towards consistency
-with the measured shear, then that proximal step. Standard forward–backward splitting.
+**▲** Plug-and-play replaces the proximal step with a learned denoiser. Instead of writing a prior
+down and deriving its operator, we let denoising *be* the prior. Ours is a Swin-Transformer, seven
+million parameters, trained once on white Gaussian noise across a range of levels.
 
-**▲** Plug-and-play replaces the proximal step with a learned denoiser. Instead of writing
-a prior down and deriving its operator, we train a network to denoise convergence maps, and let
-denoising *be* the prior.
-
-Ours is a Swin-Transformer, seven million parameters, trained once on white Gaussian noise across a
-range of noise levels, with the noise level handed to it as an extra input channel.
-
-**▲** And that is the whole point. The denoiser never sees the mask, never sees the survey, never
-sees one particular noise level baked into a map. It learns one thing — what a plausible
-convergence field looks like. The physics of the observation stays in the gradient step, where it
-belongs. Change the noise, change the footprint: the same trained network runs.
+**▲** And that is the whole point: the denoiser never sees the mask, never sees the survey. It
+learns one thing — what a plausible convergence field looks like — and the physics of the
+observation stays in the gradient step. Change the noise, change the footprint, the same network
+runs.
 
 > **Tier-0 short path replacing A2.4 and A2.5 entirely** (−1:06). Say this instead of walking the
 > flipbooks, and skip both frames:
@@ -708,21 +614,17 @@ belongs. Change the noise, change the footprint: the same trained network runs.
 
 ---
 
-## A2.4 — the iteration, step by step · frame 26 · 0:32
+## A2.4 — the iteration, step by step · frame 26 · 0:26
 
-Here is what that looks like running.
+[CLICK] We start from the raw Kaiser–Squires inversion. [CLICK] A gradient step, [CLICK] then the
+denoiser, and it already looks like a map. [CLICK] After that it is correcting, not constructing.
 
-[CLICK] We start from the raw Kaiser–Squires inversion — noise everywhere.
-
-[CLICK] One gradient step towards the measured shear, [CLICK] then the denoiser, and the map
-already looks like a map. [CLICK] The next iterations are correcting rather than constructing.
-
-[CLICK] [CLICK] [CLICK] **▲** Eight iterations and it has converged to a fixed point. Not a
-network's guess at the answer in one pass — a fixed point of an operator that has the data in it.
+[CLICK] [CLICK] [CLICK] **▲** Eight iterations to a fixed point — not a network's guess in one
+pass, but a fixed point of an operator that has the data in it.
 
 ---
 
-## A2.5 — the residual variant · frame 111 · SKIP · 0:29
+## A2.5 — the residual variant · frame 111 · SKIP · 0:34
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
 > one clause if anyone needs it. It now carries the UQ slide as its vertical: press DOWN from 112.
@@ -737,7 +639,7 @@ that is changing, which is closer to the white-noise problem it was actually tra
 
 ---
 
-## A2.6 — error bars from one forward pass · frame 112 · SKIP · 1:22
+## A2.6 — error bars from one forward pass · frame 112 · SKIP · 1:36
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06), and this one costs something.** It is the mechanism
 > behind the calibrated error bars A2.7 then reports, and conformal prediction is Tsakalides's own
@@ -767,38 +669,34 @@ level that holds whether or not the model is well specified.
 
 ---
 
-## A2.7 — accurate, and honest about it · frame 27 · 2:03
+## A2.7 — accurate, and honest about it · frame 27 · 1:46
 
-The map is only half a result, so before the plot: a second network, trained the same way on the
-same simulated pairs, predicts the error of the reconstruction — one forward pass, no sampling.
-**▲** And because a network's own variance is not a guarantee, we calibrate it: conformalised
-quantile regression against a held-out set, which is distribution-free and does not require the
+The map is only half a result. A second network, trained the same way, predicts the error of the
+reconstruction in one forward pass. **▲** And because a network's own variance is not a guarantee,
+we calibrate it — conformalised quantile regression, distribution-free, and it does not require the
 network to be right.
 
 > Those two sentences are the whole of backup frame 112, compressed. Cutting them makes the result
 > below meaningless.
 
-Which gives this, the whole result in one plot. Reconstruction error across, the size of the
-calibrated interval up — down and to the left is better.
+Which gives this. Reconstruction error across, calibrated interval up: down and left is better.
 
-**▲** First thing to notice: after calibration, everybody is on the target coverage. That is not a
-result, that is the conformal guarantee doing its job. So the comparison is not who covers —
-everyone covers. It is who covers with the tightest bars.
+**▲** After calibration everybody is on target coverage — that is the guarantee doing its job. So
+the comparison is not who covers. It is who covers with the tightest bars.
 
-**▲** On accuracy: within one per cent of a DeepMass fine-tuned to this exact mask and this exact
-noise — from a denoiser that was never shown either. On uncertainty: the smallest calibrated
-interval of anything we tested, on all five hundred and twelve test maps.
+**▲** On accuracy: within one per cent of a DeepMass fine-tuned to this exact mask and noise, from
+a denoiser that was never shown either. On uncertainty: the smallest calibrated interval of
+anything we tested, on all five hundred and twelve maps.
 
-[CLICK] And it is not a constant interval — here is the map beside its own error bars. It rises
-where the structure is, which is what lets the bars stay small everywhere else.
+[CLICK] And it is not constant — the bars rise where the structure is, which is what lets them stay
+small everywhere else.
 
-[CLICK] Then deployability, which is the point I care about. DeepMass and MMGAN are retrained
-whenever the footprint or the noise changes. We train once. **▲** That is the difference between a
-method that wins a benchmark and one Euclid could actually run.
+[CLICK] Then deployability. DeepMass and MMGAN are retrained whenever the footprint changes; we
+train once. **▲** That is the difference between a method that wins a benchmark and one Euclid
+could run.
 
-Two limits. The coverage is marginal, not conditional — it holds on average over pixels, and what
-escapes concentrates at the peaks, which is exactly where Part 1 said the information lives. And
-this is a single cosmology.
+Two limits. Coverage is marginal, not conditional — what escapes concentrates at the peaks, exactly
+where Part 1 said the information lives. And this is a single cosmology.
 
 ---
 ---
@@ -811,92 +709,69 @@ this is a single cosmology.
 
 ---
 
-## A3.1 — where we are · frame 28 · 0:44
+## A3.1 — where we are · frame 28 · 0:26
 
-Stop and look at where we are.
+Both projects so far live inside one box of that chain — the map. **▲** Everything else was held
+fixed on purpose.
 
-Both projects so far — does the reconstruction matter, and can we build a better one with honest
-error bars — live inside a single box of that chain. The map. **▲** Everything else was held fixed
-on purpose, so that nothing else could explain what moved.
-
-The rest of the talk moves one box to the right. Those are questions three and four from the board
-at the start, in that order: Part 3 builds the statistic that reads the most out of a map, and Part
-4 asks whether it survives the astrophysics we cannot model.
+The rest of the talk moves one box right: Part 3 builds the statistic that reads the most out of a
+map, Part 4 asks whether it survives the astrophysics we cannot model.
 
 ---
 
-## A3.2 — same chain, one step to the right · frame 29 · 0:35
+## A3.2 — same chain, one step to the right · frame 29 · 0:20
 
-Same picture, and watch which boxes light.
+[CLICK] A map is a hundred thousand correlated pixels, so it has to be compressed — **▲** and which
+statistic you compress with decides how much of the information survives.
 
-[CLICK] A map is a hundred thousand correlated pixels. No likelihood can touch that directly, so it
-has to be compressed into a summary — **▲** and which statistic you compress with decides how much
-of the information survives the compression.
-
-[CLICK] In Part 1 that box was nailed down on purpose. Now it is the subject: a map goes in, a
-summary comes out. We come back to the rest of the chain when we reach the inference.
+[CLICK] In Part 1 that box was nailed down. Now it is the subject.
 
 ---
 
-## A3.3 — the baseline everybody uses · frame 30 · 1:06
+## A3.3 — the baseline everybody uses · frame 30 · 0:48
 
-Start from the thing everybody uses.
+Start from the thing everybody uses: take two galaxies separated by some angle, how correlated are
+their shapes.
 
-The two-point function asks a simple question — take two galaxies separated by some angle, how
-correlated are their shapes. You can measure it in real space as xi-plus-minus, or in harmonic
-space as C-ell.
+[CLICK] And it works — every flagship cosmic-shear result of the last decade is a two-point
+analysis, with twenty years of systematics work built around it. **▲** I am not here to tell you it
+is a bad statistic.
 
-[CLICK] And it works. Every flagship cosmic-shear result of the last decade is a two-point
-analysis: KiDS, DES, HSC. There are good reasons for that. Theory predicts it analytically, we
-understand its covariance, and twenty years of systematics work — intrinsic alignments,
-photometric redshifts, baryons — has been built around it. **▲** I am not here to tell you it is a
-bad statistic.
-
-[CLICK] Here is the actual issue. For a Gaussian random field the power spectrum is not just a good
-summary, it is a *complete* one — the field **is** its power spectrum, and there is nothing else to
-know.
-
-**▲** So the question is never whether the two-point function is good. It is whether the field is
-Gaussian.
+[CLICK] The issue is this. For a Gaussian random field the power spectrum is not just a good
+summary, it is a *complete* one. **▲** So the question is never whether the two-point function is
+good. It is whether the field is Gaussian.
 
 ---
 
-## A3.4 — and it is not · frame 31 · 0:21
+## A3.4 — and it is not · frame 31 · 0:20
 
-And gravity has had thirteen billion years to make sure it is not.
-
-These two fields have **the same power spectrum**. One of them is a simulated convergence map; the
-other is a Gaussian random field drawn to match it exactly. A two-point measurement cannot tell
-them apart.
+And gravity has had thirteen billion years to make sure it is not. These two fields have **the same
+power spectrum** — one a simulated convergence map, one a Gaussian field drawn to match it. A
+two-point measurement cannot tell them apart.
 
 ---
 
-## A3.5 — the cosmic web is in the phases · frame 32 · 0:30
+## A3.5 — the cosmic web is in the phases · frame 32 · 0:23
 
-Look at what actually differs. The filaments, the haloes, the voids between them — none of that is
-in the amplitudes of the Fourier modes. It is in the **phases**, and a two-point measurement keeps
-the amplitudes and throws the phases away.
+What differs — filaments, haloes, voids — is not in the amplitudes of the Fourier modes. It is in
+the **phases**, and a two-point measurement keeps the amplitudes and throws the phases away.
 
-**▲** Everything that makes the cosmic web a web lives in what the power spectrum discards. To get
-at it you need statistics beyond two-point: peaks, wavelets, the ℓ1-norm, Minkowski functionals.
+**▲** Everything that makes the cosmic web a web lives in what the power spectrum discards.
 
 ---
 
-## A3.6 — and it is worth having · frame 33 · 0:40
+## A3.6 — and it is worth having · frame 33 · 0:32
 
-And it is worth having. Forecasts on the same convergence maps — Virginia Ajani's figure, on the
-neutrino mass rather than my parameters, which does not matter here.
-
-The power spectrum, in blue, is much the widest. Peaks after a **single** filter are already
-tighter. And peaks read at **every scale**, in red and black, are tighter again.
+And it is worth having. Forecasts on the same maps — Virginia Ajani's figure, on the neutrino mass
+rather than my parameters. The power spectrum in blue is much the widest; peaks after a **single**
+filter are tighter; peaks at **every scale**, red and black, tighter again.
 
 **▲** Nothing about the data changed. The only thing that moves those contours is the choice of
-summary statistic — which is what makes it a scientific choice, and why the rest of this part is
-about wavelets.
+summary statistic.
 
 ---
 
-## A3.7 — peak counts · frame 99 · SKIP · 0:21
+## A3.7 — peak counts · frame 99 · SKIP · 0:25
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 35 defines peak counts again, thirty seconds
 > later, and draws their shape as well. The beat is kept for questions.
@@ -907,7 +782,7 @@ by height is a one-point statistic that sees exactly what the power spectrum can
 
 ---
 
-## A3.8 — one starlet transform · frame 100 · SKIP · 0:28
+## A3.8 — one starlet transform · frame 100 · SKIP · 0:32
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 34 explains what a wavelet is, and this slide
 > used to come *before* it. Frame 35 defines the starlet decomposition properly. In backup the
@@ -921,7 +796,7 @@ diagonal.
 
 ---
 
-## A3.9 — the starlet ℓ1-norm · frame 101 · SKIP · 0:19
+## A3.9 — the starlet ℓ1-norm · frame 101 · SKIP · 0:22
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 35 defines the ℓ1-norm with the same formula and
 > shows its shape.
@@ -932,268 +807,211 @@ peaks — and there is no threshold to choose and no definition of a peak to def
 
 ---
 
-## A3.10 — what a wavelet is · frame 34 · 1:48
+## A3.10 — what a wavelet is · frame 34 · 1:32
 
-I have just put the words *peak counts* and *starlet* on the screen without defining either, and
-both of our higher-order statistics are built on a wavelet transform. So: thirty seconds on what
-that is, and then I will define them properly.
+I have put the words *peak counts* and *starlet* on the screen without defining either, and both
+our statistics are built on a wavelet transform. So, thirty seconds.
 
-Everything so far has been Fourier, whose basis is sines — each one a single frequency running
-across the whole map. A Fourier coefficient tells you which scales are present and nothing about
-where.
-
-**▲** A wavelet is the other trade: a function that is compact and oscillates with zero mean, and
-that really is the whole definition. Stretch it and shift it, and the coefficient is the overlap
-between the data and one stretched, shifted copy — how much structure of size *a* sits at place
-*b*. Do that at every size and you have the transform: each feature answers in the band whose width
-matches it, at its own position, and the bands plus the coarse map add back up to the signal
-exactly.
+Fourier's basis is sines — each a single frequency across the whole map, telling you which scales
+are present and nothing about where. **▲** A wavelet is the other trade: compact, oscillating, zero
+mean, and that is the whole definition. Stretch it, shift it, and the coefficient is how much
+structure of size *a* sits at place *b*. Do that at every size and each feature answers in the band
+that matches it — and the bands add back up to the signal exactly.
 
 [CLICK] Same operation on a convergence map. **▲** And here is why it suits this field: a
-convergence map is not a smooth wash, it is made of objects that have a size and a place — clusters,
-filaments, voids. So each structure lands in one band at its own position, and a handful of large
-coefficients carry the field.
+convergence map is made of objects that have a size and a place, so each one lands in a single band
+at its own position, and a handful of large coefficients carry the field.
 
-That is the same sparsity the reconstruction prior in Part 1 exploited — and it is why the scales
-can be handled one at a time, which will matter in Part 4.
+Same sparsity the Part 1 prior exploited — and it is why the scales can be handled one at a time,
+which matters in Part 4.
 
 ---
 
-## A3.11 — the two statistics · frame 35 · 1:39
+## A3.11 — the two statistics · frame 35 · 1:17
 
 > **The band labels printed on the figure are not ours** — it is a thesis illustration at a finer
 > pixel scale. The analysis uses the four finest dyadic bands, roughly 10 to 80 arcminutes.
 
-So here are our two higher-order statistics, and they are both one-point statistics — histograms of
-pixel values — made multi-scale by that same starlet transform.
+Both our statistics are one-point statistics — histograms of pixel values — made multi-scale by
+that starlet transform.
 
-[CLICK] Peak counts first: find the local maxima of the signal-to-noise field, and histogram them
-per bin. Simple, well established, and it keeps only the discrete features.
+[CLICK] Peak counts: the local maxima of the signal-to-noise field, histogrammed per bin. Well
+established, and it keeps only the discrete features.
 
-[CLICK] And this is what that looks like, scale by scale — the shapes, not the numbers. Note what
-separates the scales. They all turn over in the same place, just above a signal-to-noise of one,
-and they are stacked in amplitude, roughly a factor of four apart, because a coarser band has that
-many fewer resolution elements to hold a maximum. And they live almost entirely on the positive
-side. That is what "only the discrete features" means.
+[CLICK] This is what that looks like, scale by scale — shapes, not numbers. They turn over in the
+same place and stack in amplitude, and they live almost entirely on the positive side.
 
 [CLICK] The ℓ1-norm generalises it: instead of counting maxima, sum the absolute coefficients in
-each signal-to-noise bin. **▲** Every pixel contributes, voids as well as peaks, and there is no
-feature-detection step to define or tune. That is our analytical hero for the rest of the talk.
+each bin. **▲** Every pixel contributes, voids as well as peaks, with nothing to threshold or tune.
+That is our analytical hero for the rest of the talk.
 
-[CLICK] And its shape is quite different — bimodal, a hump either side of zero and a dip *at* zero,
-because a coefficient near zero adds nothing to a sum of absolute values. The left hump is the
-voids. **▲** That picture is what "every pixel contributes" means, and it is the reason the
-ℓ1-norm carries more than the peaks do.
-
----
-
-## A3.12 — and then it has to become a posterior · frame 36 · 0:45
-
-Same picture one more time, and now the other end of it. We have a summary; we need a posterior.
-
-[CLICK] **▲** Here is the difficulty that shapes everything after it. For the power spectrum you
-can write down a likelihood — Gaussian to good approximation, with a covariance you can model. For
-peak counts, for the ℓ1-norm, for anything a neural network computes, you cannot. There is no
-analytic form.
-
-[CLICK] So the whole bottom row lights up. The likelihood is replaced by simulations: draw
-cosmologies from a prior, run them, apply the systematics, compute the same summary on each one,
-and learn the relationship. That is simulation-based inference.
+[CLICK] And its shape is different — bimodal, a dip *at* zero, because a coefficient near zero adds
+nothing to a sum of absolute values. The left hump is the voids. **▲** That is what "every pixel
+contributes" means, and why the ℓ1-norm carries more than the peaks.
 
 ---
 
-## A3.13 — the classical route · frame 37 · 1:08
+## A3.12 — and then it has to become a posterior · frame 36 · 0:28
 
-The classical route, in one line, and it is the same rule as in Part 1 with the parameters as the
-unknown instead of a map.
+We have a summary; we need a posterior.
 
-All the work is in the middle term, and the classical analysis assumes it is Gaussian in
-the data vector. That needs a theory prediction, fast enough for a million sampler calls, and a
-covariance. **▲** And the Gaussian form is a claim about the data, not a convenience: it holds when
-each data point averages many independent modes — which is exactly a band-power of the power
-spectrum, and why the field gets away with it.
+[CLICK] **▲** And here is the difficulty that shapes everything after. For the power spectrum you
+can write down a likelihood. For peak counts, for the ℓ1-norm, for anything a network computes, you
+cannot.
 
-[CLICK] Then you sample: MCMC walks parameter space and hands back the posterior.
-
-**▲** And that is the hinge. Both ingredients had to be written down, and for peak counts or the
-ℓ1-norm there is no analytic prediction for the mean, and the distribution is not Gaussian — it is
-a count statistic in the tail of a non-Gaussian field.
+[CLICK] So the whole bottom row lights up: the likelihood is replaced by simulations. That is
+simulation-based inference.
 
 ---
 
-## A3.14 — generative modelling · frame 38 · 1:02
+## A3.13 — the classical route · frame 37 · 0:50
 
-So we need different machinery, and it comes from a part of machine learning most of you have been
-reading about.
+The classical route is the same rule as in Part 1, with the parameters as the unknown instead of a
+map.
 
-Generative modelling: you are handed examples and you want the distribution they came from. The
-middle panel is all you ever have — a finite sample. The left is the truth, which you never see;
-the right is what a model believes after seeing the middle one.
+All the work is in the middle term, which classically is assumed Gaussian in the data vector — and
+**▲** that is a claim about the data, not a convenience: it holds when each data point averages many
+independent modes, which is exactly a band-power.
 
-**▲** And here is the point that matters for us. Once trained you can always *sample* such
-a model — but you cannot always *evaluate* its density. A GAN will generate a face and cannot tell
-you how probable it was. For inference we need the density, because the density **is** the
-posterior.
+[CLICK] Then MCMC walks parameter space and hands back the posterior.
 
-[CLICK] And none of it cares what x is. Those are generated faces four years apart; the thing we
-use for cosmological inference is the same object.
+**▲** And that is the hinge. Both ingredients had to be written down, and for the ℓ1-norm there is
+no analytic prediction and the distribution is not Gaussian.
 
 ---
 
-## A3.15 — normalizing flows · frame 39 · 1:08
+## A3.14 — generative modelling · frame 38 · 0:48
 
-So we need a way to represent a distribution that is three things at once: flexible enough to be an
-arbitrary posterior, samplable, and with a density we can evaluate. **▲** Those three rarely come
-together — a histogram is not flexible, a GAN gives no density, an MCMC chain gives samples but no
-normalised density either.
+So we need different machinery, and it comes from generative modelling: you are handed examples and
+you want the distribution they came from.
 
-A normalizing flow gets all three. Start from a unit Gaussian, which you can sample and evaluate
-trivially, and push it through a learned invertible map. Because the map is invertible the density
-comes along with it, by change of variables — and the engineering trick is to build each layer so
-its Jacobian is triangular, so the determinant is a product down the diagonal. You fit it by
-maximum likelihood, which is gradient descent.
+**▲** The point that matters for us: once trained you can always *sample* such a model, but you
+cannot always *evaluate* its density. A GAN will generate a face and cannot tell you how probable
+it was — and for inference we need the density, because the density **is** the posterior.
 
-[CLICK] **▲** And the last step is the one that matters here: condition every layer on some data,
-and instead of one distribution you have a family — a posterior you can fit.
+[CLICK] And none of it cares what x is. Those are generated faces four years apart; what we use for
+cosmological inference is the same object.
 
 ---
 
-## A3.16 — simulation-based inference · frame 40 · 1:24
+## A3.15 — normalizing flows · frame 39 · 0:50
 
-Which gives us this.
+We need a distribution that is three things at once: flexible enough to be an arbitrary posterior,
+samplable, and with a density we can evaluate. **▲** Those three rarely come together.
 
-The problem, stated plainly: for the statistics we care about we have no accurate analytical
-likelihood — but we do have a simulator. We can *draw* from p of x given theta even though we
-cannot evaluate it. So stop trying to evaluate a likelihood, and learn the posterior instead.
+A normalizing flow gets all three. Start from a unit Gaussian and push it through a learned
+invertible map; because it is invertible the density comes along by change of variables, and each
+layer is built so its Jacobian is triangular, which makes the determinant cheap.
 
-Stage one, the physics half. Draw parameters from the prior, run the forward model, keep
-the pair. A few hundred thousand times. **▲** This is the expensive part, and it is the only
-expensive part.
-
-Stage two, the learning half. Those pairs are the training set for a conditional flow — the
-object from the last slide, with every layer conditioned on the data vector. The optimum of that
-loss is the true posterior.
-
-Stage three: hand the trained flow the real observation and read the posterior straight
-off. No sampler, milliseconds.
-
-[CLICK] **▲** And the reason that matters is not convenience. Because
-inference is now essentially free, we can afford to run it on thousands of simulated observations
-and check that the posteriors are actually calibrated — which is not a luxury when the likelihood
-was never written down and nothing else would catch a bad one.
+[CLICK] **▲** And the step that matters here: condition every layer on data, and instead of one
+distribution you have a family — a posterior you can fit.
 
 ---
 
-## A3.17 — the objection I would raise myself · frame 41 · 0:53
+## A3.16 — simulation-based inference · frame 40 · 1:06
 
-So we have a statistic that reads more than the power spectrum. But look at the middle box again:
-the summary is the one part of this chain we still choose *by hand*.
+Which gives us this. We have no analytical likelihood, but we do have a simulator — we can *draw*
+from it even though we cannot evaluate it. So stop evaluating a likelihood and learn the posterior
+instead.
 
-And the field increasingly fills that box with a neural network trained to compress the maps —
-which is routinely described as optimal. **▲** If that is true, why hand-build a statistic at all?
+Stage one: draw parameters from the prior, run the forward model, keep the pair, a few hundred
+thousand times. **▲** That is the expensive part, and the only expensive part. Stage two: those
+pairs train a conditional flow, whose optimum is the true posterior. Stage three: hand it the real
+observation and read the posterior off in milliseconds.
 
-[CLICK] Take the objection seriously, because it is the one I would raise. The honest answer is
-that the optimality claim is nearly always demonstrated against the power spectrum — which any
-non-Gaussian summary already beats — and rarely against a strong hand-crafted higher-order
-statistic under matched conditions.
+[CLICK] **▲** And what that buys is not convenience. Inference is now free, so we can run it on
+thousands of simulated observations and check the posteriors are actually calibrated — which is not
+a luxury when the likelihood was never written down.
+
+---
+
+## A3.17 — the objection I would raise myself · frame 41 · 0:52
+
+So we have a statistic that reads more than the power spectrum. But the summary is the one part of
+this chain we still choose *by hand*, and the field increasingly fills that box with a neural
+network described as optimal. **▲** If that is true, why hand-build a statistic at all?
+
+[CLICK] It is the objection I would raise myself. The honest answer is that the optimality claim is
+nearly always demonstrated against the power spectrum — which any non-Gaussian summary beats — and
+rarely against a strong hand-crafted statistic under matched conditions.
 
 **▲** So the question is open. That is what we set out to close.
 
 ---
 
-## A3.18 — what "optimal" means here · frame 42 · 0:48
+## A3.18 — what "optimal" means here · frame 42 · 0:38
 
-And you have to be careful what optimal means, so here is the one we use.
+And you have to be careful what optimal means. Ours: train the compressor and the flow together,
+maximising the **mutual information** between the summary and the parameters.
 
-Train the compressor and the flow together, and maximise the **mutual information** between the
-summary and the parameters. That is variational mutual information maximisation, and in practice it
-is the same objective as before — maximise the log-posterior of the parameters given the compressed
-map.
+[CLICK] **▲** Which makes it not just another statistic to compare against — a network trained this
+way is an estimate of the **ceiling**, the most any summary of these maps could carry.
 
-[CLICK] **▲** The point is that this is not just another statistic to compare against. A network
-trained this way is an estimate of the **ceiling** — the most any summary of these maps could
-carry.
-
-[CLICK] So if a hand-built statistic reaches it, that is not a win over a baseline. It is a
-sufficiency result.
+[CLICK] So a hand-built statistic reaching it is not a win over a baseline. It is a sufficiency
+result.
 
 ---
 
-## A3.19 — a fair comparison · frame 43 · 0:23
+## A3.19 — a fair comparison · frame 43 · 0:20
 
-Same maps, two summaries, the same flow, the same calibration.
-
-Flat-sky ten-degree patches, so that any cross-maps we build later are physically constructible
-from a single patch. Both arms calibrated. Three hundred and twenty-four thousand patches over
-eight hundred and ninety-nine cosmologies — **▲** enough that whatever gap we see is the
-compressor, not data scarcity.
+Same maps, two summaries, the same flow, both calibrated. Flat-sky patches, so the cross-maps we
+build later are physically constructible. **▲** And three hundred thousand of them, over nine
+hundred cosmologies — enough that any gap is the compressor, not data scarcity.
 
 ---
 
-## A3.20 — read bin by bin, the ℓ1-norm trails · frame 44 · 0:54
+## A3.20 — read bin by bin, the ℓ1-norm trails · frame 44 · 0:44
 
-And read bin by bin, the network wins.
+And read bin by bin, the network wins — a figure of merit of three thousand three hundred against
+two thousand four hundred. About thirty-six per cent.
 
-The CNN posterior is tighter: a three-parameter figure of merit of three thousand three hundred and
-twenty-six against two thousand four hundred and forty-eight. About thirty-six per cent.
+[CLICK] But the two arms are not reading the same thing. All four maps enter the network's first
+convolutional layer together; the ℓ1-norm is computed one channel at a time, and only ever sees the
+one-dimensional marginals.
 
-[CLICK] Now — the two arms are not reading the same thing. The lensing kernels overlap while the
-shape noise is independent, so the redshift bins carry genuinely correlated information. All four
-maps enter the network's first convolutional layer together. The ℓ1-norm is computed one channel at
-a time, and only ever sees the one-dimensional marginals.
-
-**▲** That is an observation about how the comparison is set up, not yet a diagnosis. It might
-account for all of the gap, some of it, or none. So close the asymmetry and measure what happens.
+**▲** That is an observation about the setup, not a diagnosis. It might account for all of the gap,
+or none. So close the asymmetry and measure.
 
 ---
 
-## A3.21 — tomography · frame 45 · 1:06
+## A3.21 — tomography · frame 45 · 0:48
 
-The geometry first, because everything after it depends on this.
+The geometry, because everything after depends on it. We are on the left; the sources are sliced
+into redshift bins.
 
-We are on the left. The matter between us and the sources is the box, and the source galaxies are
-sliced into redshift bins.
+[CLICK] Take the furthest slice. [CLICK] Its light came through **everything** in front of it.
+[CLICK] That is its convergence map.
 
-[CLICK] Take the furthest slice. [CLICK] Its light has come through **everything** in front of it,
-so all of that matter is doing the lensing. [CLICK] And that is the convergence map we measure for
-that bin.
+[CLICK] Now a nearer one. [CLICK] Shorter column. [CLICK] Fainter map.
 
-[CLICK] Now a nearer slice. [CLICK] Its light has come through **less** — the column is shorter.
-[CLICK] So its map is fainter: less structure, lower amplitude.
+[CLICK] Five slices, five maps — **▲** and every bin's column is contained inside the next one out.
+The kernels are broad and they overlap.
 
-[CLICK] Five slices, five maps. **▲** And look at what those columns did. Every bin's column of
-matter is contained inside the next one out. The lensing kernels are broad, and they overlap.
-
-[CLICK] **▲** So these are not five independent measurements. They share most of their matter,
-while the shape noise in each one is independent — and something in the pipeline has to read that
-shared part.
+[CLICK] **▲** So these are not five independent measurements. They share most of their matter while
+the noise in each is independent, and something has to read that shared part.
 
 ---
 
-## A3.22 — two places to intervene · frame 46 · 1:35
+## A3.22 — two places to intervene · frame 46 · 1:16
 
-The gap is structural, so there are exactly two places to intervene: the input, or the statistic.
+The gap is structural, so there are two places to intervene: the input, or the statistic.
 
-**Route one**, the obvious one, and the only thing on the screen for now: manufacture the
-missing channel. For each pair of bins,
-multiply the two maps pixel by pixel. The product is near zero almost everywhere and lights up only
-where both bins have structure in the same place, so its one-point statistics carry the joint
-structure of the pair. Six pairs, six new channels, and the *same* ℓ1-norm runs on each. Built from
-the patch's own two maps, so a survey observing only that patch could actually form them.
+**Route one**, the obvious one: manufacture the missing channel. Multiply each pair of bins pixel
+by pixel — the product lights up only where both have structure in the same place. Six pairs, six
+new channels, and the *same* ℓ1-norm runs on each.
 
-[CLICK] **Route two**: leave the four maps alone and change what the statistic reads. At a given
-scale, every pixel hands you all four bins' coefficients at once. The per-bin ℓ1-norm is the
-absolute-value-weighted one-dimensional histogram of each — literally the two curves on the edges
-of this figure. [CLICK] Lay a fixed ten-by-ten grid on the pair plane instead, and sum the ℓ1 weight of
-the pixels landing in each cell. That is the joint ℓ1-norm.
+[CLICK] **Route two**: leave the maps alone and change what the statistic reads. At a given scale
+every pixel hands you all four bins' coefficients at once, and the per-bin ℓ1-norm only ever sees
+the two axis histograms. [CLICK] Lay a grid on the pair plane instead and sum the ℓ1 weight in each
+cell. That is the joint ℓ1-norm.
 
-[CLICK] **▲** And here is the difference that matters. The product map reduces a pair of bins to a
-single derived field *before* the statistic is taken. The joint ℓ1-norm never reduces it — and it
-needs no new map at all.
+[CLICK] **▲** And here is the difference that matters. The product map reduces a pair to a single
+field *before* the statistic is taken. The joint ℓ1-norm never reduces it, and it needs no new map
+at all.
 
 ---
 
-## A3.23 — the answer · frame 47 · 1:00
+## A3.23 — the answer · frame 47 · 1:01
 
 So: same maps, same flow, four summaries.
 
@@ -1207,12 +1025,11 @@ thousand three hundred and seventy-one.
 [CLICK] And the CNN lands at three thousand three hundred and twenty-six. **▲** On top of it. Not
 above it.
 
-**▲** That is a tie, and I want to call it a tie rather than a win. The network's coverage is
-mildly conservative, which plausibly accounts for the analytical statistic sitting a hair above.
-The claim is that both summaries appear to saturate the information these maps make accessible —
-sufficiency as far as we can measure it.
+**▲** That is a tie, and I want to call it a tie rather than a win — the network's coverage is
+mildly conservative, which plausibly accounts for the hair between them. Both summaries appear to
+saturate the information these maps make accessible.
 
-And the tie holds on every parameter, over nine thousand mock observations.
+And it holds on every parameter, over nine thousand mock observations.
 
 ---
 ---
@@ -1227,82 +1044,66 @@ And the tie holds on every parameter, over nine thousand mock observations.
 
 ---
 
-## A4.1 — the collision of scales · frame 48 · 1:25
+## A4.1 — the collision of scales · frame 48 · 1:12
 
-Everything so far has been on clean simulations. **▲** Stage IV is not statistics-limited any more,
-it is systematics-limited — so what decides whether higher-order statistics can be used is not how
-much they gain, it is how they behave under contamination.
+Everything so far has been on clean simulations. **▲** But Stage IV is systematics-limited, so what
+decides whether these statistics can be used is not how much they gain — it is how they behave
+under contamination.
 
-And the worst offender is baryonic feedback: AGN and supernovae push gas out of haloes and suppress
-the matter distribution on small scales, in a way that mimics a cosmological signal.
+The worst offender is baryonic feedback: AGN and supernovae push gas out of haloes and suppress
+small scales in a way that mimics a cosmological signal.
 
-**▲** Here is the problem in one picture. The information beyond two-point lives at small scales.
-The contamination lives at small scales. They are the same scales, and it is where the feedback
-models disagree with each other most.
+**▲** And here is the problem in one picture. The information beyond two-point and the
+contamination live on the *same* scales.
 
-The conservative response is to throw the affected scales away. The question is what that costs,
-and there are two ways it could go.
+The conservative response is to cut those scales. Two ways it could go. [CLICK] **Optimistic**:
+only the smallest are touched, and most of the non-Gaussian information survives the cut. [CLICK]
+**Pessimistic**: the contamination reaches much further, and once it is cut the power spectrum
+would have done just as well.
 
-[CLICK] **Optimistic**: only the very smallest scales are touched, we cut them, and most of the
-non-Gaussian information is still there.
-
-[CLICK] **Pessimistic**: the contamination reaches much further, and once you have cut it there is
-nothing beyond-Gaussian left worth having — the power spectrum would have done just as well.
-
-**▲** Which of those is true is an empirical question, and it is the first thing we measured.
+**▲** Which is true is an empirical question, and it is the first thing we measured.
 
 ---
 
-## A4.2 — the pipeline, again · frame 49 · 0:31
+## A4.2 — the pipeline, again · frame 49 · 0:24
 
-Same machinery as before, quickly. [CLICK] Convergence maps from CosmoGrid, [CLICK] Euclid-like
-noise added, [CLICK] wavelet transform, summary statistics, [CLICK] conditioning a normalizing
-flow, and the posterior comes off it.
+Same machinery, quickly. [CLICK] Maps from CosmoGrid, [CLICK] Euclid-like noise, [CLICK] wavelet
+transform and statistics, [CLICK] a flow, and the posterior.
 
-**▲** The one detail that matters for everything after this: the statistics are measured on each
-wavelet band **separately**, so the data vector is organised by scale. That is what makes a scale
-cut possible at all — a contaminated band can be dropped without touching the rest.
+**▲** The one detail that matters: the statistics are measured on each wavelet band **separately**,
+so the data vector is organised by scale. That is what makes a scale cut possible at all.
 
 ---
 
-## A4.3 — how big is the bias · frame 50 · 0:58
+## A4.3 — how big is the bias · frame 50 · 0:44
 
-So: how badly are we biased if we do nothing?
+How badly are we biased if we do nothing? At Stage IV area the power spectrum shifts by two point
+two sigma; peaks and the ℓ1-norm by three point six. And it gets worse with area — smaller error
+bars mean more sensitivity to a fixed systematic — so at full sky both higher-order statistics
+exceed six.
 
-At a Stage IV area — fourteen thousand square degrees — the power spectrum shows a two point two
-sigma shift. Peak counts and the ℓ1-norm show three point six.
-
-And it gets worse with area, because more area means smaller error bars and therefore more
-sensitivity to a fixed systematic. At full sky the power spectrum reaches about three and a half
-sigma and both higher-order statistics exceed six.
-
-**▲** Two things to be clear about. This is at full map resolution — no scale cuts yet, so
-it is what you get if you use everything the maps offer. And the higher-order statistics are *more*
-biased than the power spectrum, not less, precisely because they live on the contaminated small
-scales. That is the honest starting point.
+**▲** Two things to be clear about. This is at full resolution, no cuts yet. And the higher-order
+statistics are *more* biased than the power spectrum, not less, because they live on the
+contaminated scales.
 
 ---
 
-## A4.4 — what it costs to buy back · frame 51 · 1:02
+## A4.4 — what it costs to buy back · frame 51 · 0:53
 
-So we cut. The criterion is to bring the baryonic bias below three tenths of a sigma, and the two
-statistics pay for it in different currencies.
+So we cut, to bring the bias below three tenths of a sigma — and the two statistics pay in
+different currencies.
 
-The power spectrum takes a **sliding** cut, tuned to what is safe at each area: an
-ell-max of eight hundred and sixty at two thousand square degrees, falling to three hundred and
-forty at full sky. A large fraction of its range — but removed *precisely*.
-
-The starlet concentrates the contamination in its finest band, so dropping that one band is enough
-at every area. **▲** But the bands are dyadic, so whole-band removal is the only cut available, and
-at the smaller footprints that certainly throws away uncontaminated quasi-linear information a
-finer filter bank would have kept.
+The power spectrum takes a **sliding** cut, tuned to what is safe at each area. A large fraction of
+its range, but removed *precisely*. The starlet concentrates the contamination in its finest band,
+so dropping that one band is enough. **▲** But the bands are dyadic, so whole-band removal is the
+only cut available, and at smaller footprints that throws away clean quasi-linear information too.
 
 **▲** So the wavelet cut is not better. It is coarser, and therefore conservative. Everything on
 the next slide is a floor.
 
 ---
 
-## A4.5 — is there anything left · frame 52 · 1:51
+## A4.5 — is there anything left · frame 52 · 1:33
 
 And the answer is yes. Same maps, same cut, three summaries, laid on top of each other.
 
@@ -1313,28 +1114,22 @@ And the answer is yes. Same maps, same cut, three summaries, laid on top of each
 [CLICK] And the ℓ1-norm — with the numbers beside it: **one point eight times** tighter than the
 power spectrum at Stage IV, and **two point six times** tighter at full sky.
 
-Be precise about the peak counts, because they are the weaker of the two. They reach
-approximate parity with the power spectrum at Stage-IV areas and slightly exceed it at full sky; at
-the smaller footprints they trail it. **▲** And the reason they trail is largely the cut, not the
-statistic — the whole-band removal takes a larger fraction of the peak-count information than the
-sliding ell-max takes from the power spectrum, and that penalty is worst exactly where the
-power-spectrum cut is loosest.
+Be precise about the peak counts, because they are the weaker of the two: parity with the power
+spectrum at Stage IV, slightly ahead at full sky, trailing at smaller areas. **▲** And they trail
+because of the cut, not the statistic — whole-band removal takes a larger fraction of the
+peak-count information than a sliding ell-max takes from the power spectrum.
 
-Even at comparable figure of merit they are not redundant: in the planes involving w-nought the
-degeneracy directions differ, so a joint analysis would still gain.
+**▲** Two things to leave you with. The signal survives on *quasi-linear* scales — these are not
+only deep-non-linear probes. And it is a floor: our cut is not optimised, and a finer filter bank
+would recover more.
 
-**▲** Two things I want to leave you with. The signal survives on *quasi-linear*
-scales — these are not only deep-non-linear probes, which is what people assume. And this is a
-floor: our cut is not optimised, and a finer filter bank or a cut in signal-to-noise rather than in
-scale would recover more.
-
-**▲** So: baryonic feedback is a dominant systematic, it biases the higher-order statistics more
-than it biases the power spectrum, and even after cutting every scale it measurably touches, the
-ℓ1-norm is still the better instrument. That is question four answered.
+**▲** So baryonic feedback is a dominant systematic, it biases these statistics more than the power
+spectrum, and even after cutting every scale it touches, the ℓ1-norm is still the better
+instrument.
 
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:37
+## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:53
 
 > **MOVED TO BACKUP — the whole nulling / BNT thread is out of the talk (Andreas, 2026-09-06).**
 > Too technical for the
@@ -1381,7 +1176,7 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — and the answer was already in the room · frame 66 · SKIP · 1:35
+## A4.7 — and the answer was already in the room · frame 66 · SKIP · 1:51
 
 > **MOVED TO BACKUP with A4.6** — the two are one argument and neither works alone. They are now
 > frames 65 and 66, immediately in front of the three explainers that account for them.
@@ -1424,7 +1219,7 @@ keeps an advantage.
 > front of it was the same words twice. Its beat is gone with it; C.2 absorbed the *these were the
 > four questions* framing.
 
-## C.2 — conclusions · frame 53 · 1:51
+## C.2 — conclusions · frame 53 · 1:43
 
 > **Rebuilt 2026-09-07 to match this beat.** The slide now carries the canonical four with their
 > answers, and the separate question board that used to precede it is hidden — this one slide does
@@ -1436,23 +1231,19 @@ keeps an advantage.
 
 These were the four questions I put up at the start. Here are the answers.
 
-**Question one.** Mass mapping is not preprocessing. Swap the reconstruction and nothing else, and
-the figure of merit moves by a hundred and fifty-seven per cent — while the reconstruction error
-moves by four. **▲** Map quality and constraining power are different objectives, and the
-reconstruction should be chosen with the statistic that follows it in view.
+**One.** Mass mapping is not preprocessing. Swap the reconstruction and nothing else, and the
+figure of merit moves by a hundred and fifty-seven per cent while the reconstruction error moves by
+four. **▲** Map quality and constraining power are different objectives.
 
-**Question two.** Yes — PnPMass is accurate to within a per cent of a network fine-tuned to the
-observation, has the smallest calibrated error bars of any method we tested, and is trained once
-rather than per footprint. **▲** Which is what makes it a method a survey could actually run.
+**Two.** Yes — PnPMass is within a per cent of a network fine-tuned to the observation, has the
+smallest calibrated error bars of anything we tested, and is trained once rather than per
+footprint. **▲** Which is what makes it a method a survey could run.
 
-**Question three.** No, we do not need a neural network to read the maps. Build joint reading into
-the statistic, and a fixed wavelet ℓ1-norm matches an information-optimal learned compressor — with
-no training at all.
+**Three.** No, we do not need a network to read the maps. Build joint reading into the statistic
+and a fixed wavelet ℓ1-norm matches an information-optimal learned compressor, with no training.
 
-**Question four.** Baryonic feedback does not put it out of reach. It biases the higher-order
-statistics more than it biases the power spectrum — and still, once every contaminated scale is
-cut, the ℓ1-norm is one point eight times tighter than the power spectrum at Stage IV and two point
-six at full sky. **▲** And that is a floor, because our scale cut is the crudest one available.
+**Four.** Baryons do not put it out of reach. Cut every contaminated scale and the ℓ1-norm is still
+one point eight times tighter at Stage IV, two point six at full sky. **▲** And that is a floor.
 
 > The nulling result belongs here too and is deliberately not said — see A4.6. If it has come up
 > during the talk, add one sentence: *and the same joint reading is what makes redshift nulling
@@ -1469,95 +1260,79 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 52:49 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
-beats that are not spoken. Over by **12:49**.
+**43:22 spoken against a 40:00 target**, at **120 wpm**. Over by **3:22**.
+
+> **The rate matters more than any single cut.** 140 wpm is a *reading* rate; delivery has pauses
+> in it. Andreas, timing himself: it takes "significantly more time than what you are estimating".
+> 120 is the interim figure and it is a guess. **Read A0.8 aloud at delivery pace, time it, and set
+> the real number** — the beat is 342 words, so the rate is 342 divided by the minutes it takes:
+>
+> ```
+> tools/measure-script.py PhD_Defense_2026 --wpm 112 --write
+> ```
+>
+> Every number below moves with it. At 110 wpm the talk is 47:19; at 130 it is 40:02.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:57 | 15 % |
-| Act 1 — Part 1 | 10–22 | 12:41 | 23 % |
-| Act 2 — Part 2 | 23–27 | 5:03 | 9 % |
-| Act 3 — Part 3 | 28–47 | 19:29 | **37 %** |
-| Act 4 — Part 4 | 48–52 | 5:47 | 10 % |
-| Close | 53 | 1:36 | 3 % |
-| *(not spoken)* | 5, and backup 65–66, 99–101, 105, 111–112 | *7:53* | — |
+| Act 0 — the setup | 1–9 | 7:11 | 17 % |
+| Act 1 — Part 1 | 10–22 | 10:07 | 23 % |
+| Act 2 — Part 2 | 23–27 | 4:13 | 10 % |
+| Act 3 — Part 3 | 28–47 | 15:21 | 35 % |
+| Act 4 — Part 4 | 48–52 | 4:47 | 11 % |
+| Close | 53 | 1:43 | 4 % |
+| *(not spoken)* | 5, and backup 65–66, 99–101, 105, 111–112 | *9:12* | — |
 
-**Act 3 is a third of the talk**, and 11:20 of its 19:29 is still teaching — two-point statistics,
-the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the paper's own
-results. That is where most of what follows comes from.
+**The prose is spent.** On 2026-09-07 every beat in the file was rewritten for brevity — 61:37 to
+43:22, a thirty per cent cut with no slide touched. There is not another ten per cent in the
+sentences without losing claims. What is left is structural.
 
-The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
-whole-act decision any more** — that changed when the nine frames came out.
-
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 51:46
+## Tier 1 — two frames whose beat says nothing new · −0:51 · lands at 42:31
 
 | frame | what | saves |
 |---|---|---|
-| 26 | the remaining PnPMass flipbook. Its partner is already in backup at 112; this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
-| 49 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
+| 26 | the PnPMass flipbook. Seven clicks to show an iteration converging, which A2.3 has already described | **−0:25** |
+| 49 | the SBI refresher. A3.16 taught the same pipeline twelve minutes earlier | **−0:26** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −2:17 · lands at 49:29
+## Tier 2 — the inference runway · −2:34 · lands at 39:57
 
-| frame | what | saves |
-|---|---|---|
-| 38 | generative modelling and the faces. The only load-bearing part is *samples are not densities*, which fits in one sentence of A3.15 | **−1:02** |
-| 39 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 and show the flow only as part of the SBI diagram | **−0:50** net |
-| 33 | the forecast contours. Frame 35's statistic shapes make the same point with the actual statistics | **−0:25** |
-
-> **Frame 37 came off this list when the Bayes slide went to backup.** It was here on the grounds
-> that Bayes is taught in Act 1. It no longer is, so frame 37 — the classical route — is the *only*
-> place Bayes appears in the talk, and it stays.
-
-## Tier 3 — prose, inside beats that stay · −4:20 · lands at 45:09
-
-| beat | cut | saves |
-|---|---|---|
-| A0.8 | ask questions two and four in one sentence each; one and three carry the argument | −0:35 |
-| A1.5 | name the three obstacles, do not explain each. The slide explains them | −0:25 |
-| A1.9 | the proximal-operator paragraph down to the ▲ sentence and the thresholding clause | −0:30 |
-| A2.2 | skip the four-requirement enumeration; go straight to *nothing had all four* | −0:40 |
-| A2.7 | drop the deployability paragraph — it is on the slide, and A2.3 already said *trained once*. **Do not** cut the two uncertainty sentences at the top; they are all that is left of backup 113 | −0:30 |
-| A3.3 | drop the list of reasons the field uses two-point; *it works, and here is why that is not the issue* | −0:25 |
-| A3.10 | the wavelet definition down to the ▲ sentence and the figure walk | −0:35 |
-| A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
-| A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
-
-## Tier 4 — three more frames parked · −2:47 · lands at 42:22
+**This is the recommendation.** Frames 37, 38 and 39 teach the classical Bayes route, generative
+modelling and normalizing flows, to a room where Tsakalides has that vocabulary professionally,
+three of the committee know it at the level of the code, and the two astrophysicists need exactly
+one sentence: *for these statistics there is no likelihood, so we use the simulator instead* —
+which is A3.16's opening line.
 
 | frame | what | saves |
 |---|---|---|
-| 24 | Part 2 down to three frames: the divider, the construction, the result. The four-requirements table becomes a Q&A prop. Supersedes tier 3's A2.2 trim | **−0:30** net |
-| 36, 41 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 42** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
-| 20 | the three maps. Frame 19's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
+| 37 | the classical route | **−0:52** |
+| 38 | generative modelling and the faces | **−0:52** |
+| 39 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 | **−0:50** |
 
-## Tier 5 — the last stretch · −2:22 · lands at 40:00
+**Keep frame 42.** The definition of *optimal* is 0:44 and it is what makes A3.23 a sufficiency
+result rather than a benchmark win — the first thing the committee will press on.
 
-Only if the rehearsal clock says so. Each of these costs something real.
+## If it is still long on the day
 
-| beat | cut | saves |
+In this order, and each is a real loss:
+
+| | cut | saves |
 |---|---|---|
-| A0.8 | a second pass: state the four questions and stop, no *two about the maps, two about the summaries* coda | −0:35 |
-| A3.1 + A3.2 | one hand-off instead of two. Say *both projects so far lived in one box; the rest of the talk moves one to the right* over the divider, and let the chain recall be silent | −0:20 |
-| A3.11 | the peak-count shape paragraph down to *stacked in amplitude, and almost entirely positive* | −0:25 |
-| 43 | fold the controls into A3.20's opening: *same maps, same flow, both calibrated, only the summary changes* | −0:23 |
-| A1.13 + A1.14 | merge: run the ladder straight into the scale argument. **Keep both ▲ sentences** — the four-per-cent contrast and *the gain is small-scale reconstruction fidelity* | −0:30 |
-| A4.3 | drop the full-sky numbers, keep Stage IV and *it gets worse with area* | −0:20 |
-| A3.6 | drop the borrowed-figure aside; point at the legend and name the four curves | −0:18 |
+| 1 | A0.8's questions two and four, to one sentence each | −0:30 |
+| 2 | frame 33, the Ajani forecast — A3.11's shapes make the point with the actual statistics | −0:33 |
+| 3 | A2.2's read-down-the-table paragraph; go straight to *nothing had all four* | −0:25 |
+| 4 | frame 45's narration to the first slice and the closing claim, keeping all eight clicks | −0:30 |
+| 5 | frame 20, the three maps — frame 19's chain shows them in miniature | −0:30 |
 
-## Never cut, at any tier
+## Never cut
 
-- A0.8's four questions themselves. The whole talk hangs on them and the close returns to them.
-- **A1.7's *which is a prior, in everything but name* clause and its Part 3 forward pointer.** With
-  the Bayes slide in backup these are the only survivors of it, and A2.3 and A3.13 both depend on them.
-- A1.13's *four per cent against a hundred and fifty-seven* contrast, and the iKS null result.
-- A1.5's *the added assumption **is** the method* ▲.
-- A2.7's two uncertainty sentences — all that survives of backup 113 — and its two limitations.
-- A2.3's *never sees the mask* ▲.
-- A3.3's *the question is whether the field is Gaussian* ▲, and the phases pair, frames 31–32.
+- A0.8's four questions. The talk hangs on them and the close returns to them.
+- A1.13's *four per cent against a hundred and fifty-seven*, and the iKS null result.
+- A1.5's *the added assumption **is** the method*.
+- A2.7's two uncertainty sentences — all that survives of backup 112 — and its two limits.
+- A3.3's *the question is whether the field is Gaussian*, and the phases pair, frames 31–32.
 - A3.18's definition of optimal.
 - A3.23's *that is a tie, and I want to call it a tie*.
-- A4.4's *the wavelet cut is coarser, and therefore conservative*, and A4.5's closing summary — it
-  is now the last result in the talk.
+- A4.4's *the wavelet cut is coarser, and therefore conservative*, and A4.5's closing summary.
 
 ---
 ---

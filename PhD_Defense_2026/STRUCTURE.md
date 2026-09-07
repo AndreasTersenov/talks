@@ -743,7 +743,12 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
   it was the same words twice. The nulling answer is gone with the nulling thread, and the paper
   references came off: they are on the part dividers, and the talk should end on the science. The
   old three-answer version is parked directly beneath it. **Main line: 53 frames.**
-- **The talk measures 52:49 spoken against a 40:00 target**, with 7:53 parked in the beats that are
+- **Every beat was rewritten for brevity on 2026-09-07** (Andreas: *"aim for brevity and
+  conciseness and remove needless blabbering"*), and the speaking rate was recalibrated from 140 to
+  **120 wpm**, because 140 is a reading rate and delivery is slower. The talk measures **43:22**
+  against a 40:00 target, down from 61:37 at the same rate. The prose is spent; what is left is
+  structural, and the script names it.
+- ~~**The talk measures 52:49 spoken against a 40:00 target**~~, with 7:53 parked in the beats that are
   not spoken.
   §5's budget tables below all predate the measurement and should be read as historical. The
   script's own *The arithmetic, and how to close it* is the live version: a five-tier ladder that

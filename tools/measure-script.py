@@ -25,7 +25,16 @@ checks, which is what makes it safe to keep them in the same file.
 import io, os, re, sys
 from html.parser import HTMLParser
 
-WPM = 140.0
+# Words per minute. 140 is the guidelines' figure for an audience working in a second or
+# third language — but that is a READING rate, and it assumes continuous speech. Real
+# delivery has pauses in it: the beat after a headline, the two seconds a room needs to
+# look at a figure, turning to the screen and back. Andreas, timing himself against this
+# script on 2026-09-07: it "actually takes significantly more time than what you are
+# estimating". 120 is the interim number; override it once there is a measurement:
+#
+#     tools/measure-script.py PhD_Defense_2026 --wpm 112
+#
+WPM = 120.0
 
 
 # ----------------------------------------------------------------- the deck
@@ -115,6 +124,9 @@ def main():
         sys.exit(__doc__)
     d = sys.argv[1].rstrip("/")
     write = "--write" in sys.argv
+    global WPM
+    if "--wpm" in sys.argv:
+        WPM = float(sys.argv[sys.argv.index("--wpm") + 1])
     root = os.path.dirname(os.path.abspath(__file__)) + "/.."
     spath = os.path.join(root, d, "SPEAKER_SCRIPT.md")
     dpath = os.path.join(root, d, "index.html")
@@ -188,7 +200,7 @@ def main():
     print("-" * 92)
     if parked:
         print("%-10s %-52s %6s %6s" % ("(skipped)", "not spoken, kept in the file", "", mmss(parked)))
-    print("%-10s %-52s %6s %6s   (target 40:00)" % ("SPOKEN", "", "", mmss(total)))
+    print("%-10s %-52s %6s %6s   (target 40:00, at %g wpm)" % ("SPOKEN", "", "", mmss(total), WPM))
 
     if problems:
         print("\n%d CLICK/frame problem(s):" % len(problems))
