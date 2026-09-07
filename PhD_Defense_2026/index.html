@@ -3765,7 +3765,7 @@
 			     against an older question set (deep learning / baryons / nulling), which now
 			     collides with these four.  Three backup slides carry those old tags too.
 			============================================================================== -->
-			<section data-theme="light">
+			<section data-theme="light" data-visibility="hidden">
 				<h3 class="slide-title tight">Back to the four questions</h3>
 				<div class="coreq scoreboard">
 					<div class="qcard">
@@ -3802,14 +3802,70 @@
 
 			<!-- ============ close ============ -->
 			<section data-theme="light">
+				<h3 class="slide-title tight">The four questions, <em class="alert">answered</em></h3>
+				<ul class="qlist qlist-close">
+					<li class="done">
+						<span class="qn">Q1</span>
+						<span class="qtext">Is mass mapping <b>preprocessing</b>, or does the choice of reconstruction
+							change the cosmology we infer?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Not preprocessing.</b> Swap the
+								reconstruction and nothing else, and the figure of merit moves by <b>157&nbsp;%</b>
+								&mdash; while the reconstruction error moves by <b>four</b>. Map quality and constraining power
+								are not the same objective.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q2</span>
+						<span class="qtext">Can one reconstruction be flexible, fast, accurate <b>and honest about its
+								own uncertainty</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes &mdash; PnPMass.</b> Within
+								<b>1&nbsp;%</b> of a network fine&#8209;tuned to the observation, the <b>smallest
+									calibrated error bars</b> of any method tested, and trained <b>once</b> rather than
+								per footprint.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q3</span>
+						<span class="qtext">What is the <b>most</b> we can read out of a map &mdash; and does it take a
+							neural network?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>No network needed.</b> Build joint
+								reading into the statistic and a fixed wavelet &#8467;1&#8209;norm <b>matches an
+									information&#8209;optimal learned compressor</b>, with no training at
+								all.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q4</span>
+						<span class="qtext">Does any of that survive the <b>real Universe</b> &mdash; the astrophysics we
+							cannot model?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>It survives.</b> Cut every scale
+								unmodelled baryons measurably touch and the &#8467;1&#8209;norm is still <b>&#215;1.8</b>
+								tighter than $C_\ell$ at Stage&nbsp;IV, <b>&#215;2.6</b> at full sky &mdash; and our cut
+								is the crudest one available, so that is a <b>floor</b>.</span></span>
+					</li>
+				</ul>
+				<p class="lead-line">Two about the <b>maps</b>, two about the <b>summaries</b> &mdash; and both pairs
+					answer the same way: a step the field treats as neutral turns out to move the result.</p>
+				<aside class="notes">
+					THE closing slide, and it stays up through questions. It is a RETURN: these are the four questions
+					from the chain at the start, in the same words. Do not read the questions out again — the room has
+					seen them — read the ANSWERS, one beat each, and stop.
+					The old three-answer version (deep learning / baryons / nulling) is parked below: it numbered its
+					answers against a question set the talk no longer asks, and the nulling one is not presented at all.
+					The paper references left with it — they are on the part dividers, and this slide should end on the
+					science, not on a bibliography.
+				</aside>
+			</section>
+
+			<!-- PARKED 2026-09-07 — the three-answer conclusions.  Superseded by the four-question
+			     version above (Andreas): it numbered Q1-Q3 against an older question set, and its
+			     third answer is the nulling result, which is not in the talk at all.  Kept because
+			     the wording of the nulling answer is the one to use if it comes up in questions. -->
+			<section data-theme="light" data-visibility="hidden">
 				<h3 class="slide-title tight">Conclusions</h3>
 				<ul class="qlist">
 					<li class="done">
 						<span class="qn">Q1</span>
 						<span class="qtext">Do we need deep learning to extract the non-Gaussian information?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> Read the bins jointly and
-								a fixed wavelet statistic matches the optimal compressor, with no
-								training.</span></span>
+								a fixed wavelet statistic matches the optimal compressor, with no training.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
@@ -3823,23 +3879,12 @@
 						<span class="qtext">Can redshift nulling then be used with higher-order statistics?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes</b>, provided the summary
 								reads the bins jointly. There is no loss of information, and the inflation is a frame
-								artifact.
-								What is left: the genuinely <b>three- and four-bin</b> structure a pairwise statistic
-								cannot reach.
-							</span></span>
+								artifact. What is left: the genuinely <b>three- and four-bin</b> structure a pairwise
+								statistic cannot reach.</span></span>
 					</li>
 				</ul>
-				<p class="refs"><b>The joint wavelet &#8467;1-norm matches neural compression for tomographic weak-lensing
-						inference</b><br>
-					Tersenov, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; in preparation<br>
-					<b>Mitigating baryonic effects in weak lensing with higher-order statistics</b><br>
-					Tersenov, Guerrini, Starck &amp; Kilbinger &nbsp;&mdash;&nbsp; <em>A&amp;A</em>, in press
-					&nbsp;&nbsp; both on arXiv in September
-				</p>
-				<aside class="notes">Land all three, then the honest residual, then the practical message: nulling stays
-					usable as a mitigation for redshift-localised systematics provided some stage of the pipeline reads
-					the bins jointly. Leave this slide up during questions.</aside>
 			</section>
+
 
 
 			<!-- ============ everything below this point is BACKUP ============
