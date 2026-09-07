@@ -27,16 +27,17 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 10:40 | ends on the four questions |
+| Act 0 — the setup | 1–9 | 7:57 | ends on the four questions |
 | Act 1 — Part 1, does the map matter? | 10–22 | 12:41 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 23–27 | 5:03 | frame 26 is the first cut |
 | Act 3 — Part 3, the summaries | 28–47 | 19:29 | the longest act; 10:32 of it is teaching |
 | Act 4 — Part 4, baryons | 48–52 | 5:47 | |
 | Close | 53 | 1:36 | |
-| | **54 frames** | **55:32** | **against a 40:00 target in a 45:00 slot** |
+| | **54 frames** | **52:49** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ 55:32 spoken, against a 40:00 target — over by 15:32.** *The arithmetic, and how to close
-> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:00**.
+> **⚠ 52:49 spoken, against a 40:00 target — over by 12:49.** *The arithmetic, and how to close
+> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:00**. Act 0 was rewritten to the bone on 2026-09-07 and is now 7:57; the
+> overrun that is left is almost entirely Act 3.
 > No tier is a whole-act decision. Read it before rehearsing, not after.
 
 ### Seven slides moved to backup, 2026-09-06
@@ -176,97 +177,57 @@ I would like to start with the picture we are trying to fill in.
 
 ---
 
-## A0.2 — the picture · frame 2 · 1:06
+## A0.2 — the picture · frame 2 · 0:19
 
-〔Turn to the screen, orient the room once, then turn back. Give them a couple of seconds to look
-before you narrate.〕
+〔The one slide in the deck that every person in the room already understands. **Do not teach it.**
+Orient them and move — no axes, no recombination, no redshifts, no numbers. Twenty-five seconds.〕
 
-This is the history of the Universe as we currently model it. Time runs from left to right, and the
-width of the cone is the scale factor — how much the Universe has expanded.
+This is the history of the Universe as we currently model it.
 
-The initial conditions are set very early: a nearly scale-invariant spectrum of small,
-close-to-Gaussian density perturbations. Three hundred and seventy-five thousand years in, the
-plasma recombines and the Universe becomes transparent. That released light is the microwave
-background, and it is a snapshot of those perturbations at redshift about eleven hundred, when they
-were still about one part in ten to the fifth.
+It starts in a hot, almost uniform state, with very small fluctuations in density. It expands. And
+those fluctuations grow under gravity into the structure we observe today — galaxies, clusters, the
+cosmic web.
 
-**▲** After that they grow by gravitational instability. How fast they grow depends on how much
-matter there is and on how the Universe is expanding, and that is what turns a nearly smooth field
-into the galaxies and clusters we observe.
-
-And in the last few billion years the expansion began to accelerate, which suppresses that growth.
+〔**Optional, four seconds**, and the only reason to take it is that it earns Λ on the next slide:
+*and in the last few billion years, that expansion started speeding up again.* Drop it if you are
+behind; the next slide introduces Λ perfectly well cold.〕
 
 ---
 
-## A0.3 — what ΛCDM is, and how you test it · frame 3 · 2:18
+## A0.3 — what ΛCDM is, and where it stops · frame 3 · 0:45
 
-〔The slide the physicists are waiting for. Be precise, do not gesture. The parameter columns are
-there to be pointed at, not read out.〕
+〔**Do not read the parameter columns and do not read the assumption list.** They are on the slide
+so that you do not have to say them — point at each group as you name it. The three reasons at the
+end are each a whole research field: you are naming them, not opening them.〕
 
-So what is the model?
+Our prevailing model for all of that is ΛCDM — Lambda, cold dark matter.
 
-ΛCDM is a short list of assumptions. **Gravity** is general relativity, unmodified. The
-**geometry** is spatially flat, homogeneous and isotropic on large scales. The **contents** are
-cold dark matter — collisionless and non-relativistic — plus baryons, radiation, and a constant Λ.
-And the **initial conditions** come from inflation: adiabatic, near-Gaussian, near-scale-invariant
-perturbations.
+It rests on a short list of assumptions, which are here, and once you accept them the whole thing is
+parameterised by **six** free numbers. 〔Point at the three columns. Do not define them — Ωm, σ8 and
+w₀ arrive at the first contour plot, where the room can see what they do.〕
 
-**▲** On those assumptions, six free parameters. Two fix the initial conditions — the amplitude and
-the tilt of the primordial fluctuation spectrum. Two fix the composition — how much ordinary
-matter, how much cold dark matter. And two more: the angular scale of the sound horizon, which sets
-the expansion rate, and the optical depth to reionisation.
+**▲** And it has been extremely successful. Those six numbers fit the microwave background, the
+expansion history and the clustering of galaxies simultaneously.
 
-〔Point at the three groups. **Do not** define Ωm, σ8 or w₀ — they arrive at the first contour plot
-in Act 1, where the room can see what they do.〕
+[CLICK] **▲** But it is not a fully satisfactory answer, for three reasons. It is a
+**phenomenological** description rather than a first-principles explanation. About ninety-five per
+cent of what it describes is two **dark components** whose nature we do not know. And **tensions**
+have appeared between independent probes.
 
-**▲** And notice what is *not* in that list: the density of Λ. In a flat universe it is not a free
-parameter at all — it is whatever is left once you have counted everything else.
-
-That is the entire model, and it fits the microwave background, the expansion history and the
-clustering of galaxies simultaneously.
-
-[CLICK] **▲** But it is a *phenomenological* description, not an explanation. About ninety-five per
-cent of the budget is two components whose nature we do not know — and there are three things in
-this picture the model does not account for.
-
-〔The pie is replaced by the cone, annotated with all three at once. Point at each in turn as you
-name it — the click is spent, so the pacing is yours.〕
-
-We do not know what **dark matter** is; it has never been detected in a laboratory. We do not know
-what **dark energy** is either — the value of Λ is put in by hand, the simplest choice available,
-not one that anything requires. **▲** And the measurements we make at the two ends of this picture
-do not quite agree with each other.
-
-〔One clause only. A0.4 makes that quantitative; if you explain S₈ here you will say it twice.〕
-
-**▲** So how do you test a model like that? Not by arguing about what Λ *is*. You can put the
-acceleration into the geometry, or into the contents, or leave it as a constant of nature, and the
-expansion history barely changes.
-
-**▲** You test it by measuring the same few numbers **several independent ways**, and checking that
-they agree.
-
-〔That sentence is the hinge into the next slide. Land it and stop.〕
+〔Land the three and stop. The third is the thread the rest of the introduction pulls.〕
 
 ---
 
-## A0.4 — the probes, and the one we follow · frame 4 · 0:52
+## A0.4 — the probes, and the one we follow · frame 4 · 0:28
 
-〔The densest beat in Act 0, and the most important. Do not speed up. The box that lights on the
-click is the lensing panel — point at it rather than saying "the bottom right".〕
+〔One sentence, one click, and on. The box that lights is the lensing panel — point at it rather
+than saying "the bottom right one".〕
 
-Different probes measure different combinations of those numbers, which is the reason we use
-several.
+So how do you test a model like that? Not by arguing about what Λ is — you measure the same numbers
+several independent ways and check that they agree. And there are several probes that do it.
 
-The microwave background gives the initial conditions and the geometry out to redshift eleven
-hundred. Baryon acoustic oscillations use the sound horizon frozen in at recombination as a
-standard ruler, which maps the expansion history. Supernovae give luminosity distances. Galaxy
-clustering traces the matter, but through galaxies, which are biased tracers, so a bias model sits
-between what we count and what we want.
-
-[CLICK] **▲** Weak lensing responds to the total matter directly, and it is sensitive to both the
-geometry and the growth at once. That is why this thesis is about lensing, and it is the only one
-of these four I will talk about again.
+[CLICK] **▲** The one this talk is about is **weak lensing**, because it responds to the total
+matter directly, and it is sensitive to the geometry and the growth at once.
 
 ---
 
@@ -470,8 +431,11 @@ how big the galaxy was to begin with. The shear we can, because it is coherent �
 behind the same structure is stretched the same way, so with enough of them the shared alignment
 lifts out of the noise.
 
-[CLICK] **▲** So we measure the shear and we want the convergence. Getting from one to the other is
-a reconstruction, and that is where this thesis starts.
+**▲** So we measure the shear and we want the convergence. Getting from one to the other is a
+reconstruction, and that is where this thesis starts.
+
+〔The slide no longer carries that sentence — it was taken out of the deck on 2026-09-07 — so it is
+yours to land with nothing on screen backing you up. Slow down for it.〕
 
 ---
 
@@ -1717,8 +1681,8 @@ six at full sky. **▲** And that is a floor, because our scale cut is the crude
 member has asked about it during the talk, add one sentence: *and the same joint reading is what
 makes redshift nulling survivable for a higher-order analysis, which is in the thesis.*〕
 
-〔Beat. Then the one line that ties them together, off the bottom of the slide — and stop. Turn to
-the chair.〕
+〔Beat. Then the one line that ties them together — it is **not** on the slide any more, so it is
+spoken over the four answers. Then stop, and turn to the chair.〕
 
 **▲** Two of those questions were about the maps and two about the summaries, and both pairs
 answered the same way: a step the field treats as neutral — which reconstruction, which statistic —
@@ -1731,15 +1695,15 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 55:32 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
-beats that are not spoken. Over by **15:32**.
+**Measured: 52:49 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
+beats that are not spoken. Over by **12:49**.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 10:40 | 20 % |
+| Act 0 — the setup | 1–9 | 7:57 | 15 % |
 | Act 1 — Part 1 | 10–22 | 12:41 | 23 % |
 | Act 2 — Part 2 | 23–27 | 5:03 | 9 % |
-| Act 3 — Part 3 | 28–47 | 19:29 | 35 % |
+| Act 3 — Part 3 | 28–47 | 19:29 | **37 %** |
 | Act 4 — Part 4 | 48–52 | 5:47 | 10 % |
 | Close | 53 | 1:36 | 3 % |
 | *(not spoken)* | 5, and backup 65–66, 99–101, 105, 111–112 | *7:53* | — |
@@ -1751,14 +1715,14 @@ results. That is where most of what follows comes from.
 The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
 whole-act decision any more** — that changed when the nine frames came out.
 
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 54:29
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 51:46
 
 | frame | what | saves |
 |---|---|---|
 | 26 | the remaining PnPMass flipbook. Its partner is already in backup at 112; this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
 | 49 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −2:17 · lands at 52:12
+## Tier 2 — park teaching whose content survives elsewhere · −2:17 · lands at 49:29
 
 | frame | what | saves |
 |---|---|---|
@@ -1770,11 +1734,10 @@ whole-act decision any more** — that changed when the nine frames came out.
 > that Bayes is taught in Act 1. It no longer is, so frame 37 — the classical route — is the *only*
 > place Bayes appears in the talk, and it stays.
 
-## Tier 3 — prose, inside beats that stay · −4:55 · lands at 47:17
+## Tier 3 — prose, inside beats that stay · −4:20 · lands at 45:09
 
 | beat | cut | saves |
 |---|---|---|
-| A0.3 | the three annotated questions on the cone. Keep *phenomenological*, drop the sequence | −0:35 |
 | A0.8 | ask questions two and four in one sentence each; one and three carry the argument | −0:35 |
 | A1.5 | name the three obstacles, do not explain each. The slide explains them | −0:25 |
 | A1.9 | the proximal-operator paragraph down to the ▲ sentence and the thresholding clause | −0:30 |
@@ -1785,7 +1748,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
 
-## Tier 4 — three more frames parked · −2:47 · lands at 44:30
+## Tier 4 — three more frames parked · −2:47 · lands at 42:22
 
 | frame | what | saves |
 |---|---|---|
@@ -1793,7 +1756,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | 36, 41 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 42** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
 | 20 | the three maps. Frame 19's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
 
-## Tier 5 — the last stretch · −4:30 · lands at 40:00
+## Tier 5 — the last stretch · −2:22 · lands at 40:00
 
 Only if the rehearsal clock says so. Each of these costs something real.
 
@@ -1806,9 +1769,6 @@ Only if the rehearsal clock says so. Each of these costs something real.
 | A1.13 + A1.14 | merge: run the ladder straight into the scale argument. **Keep both ▲ sentences** — the four-per-cent contrast and *the gain is small-scale reconstruction fidelity* | −0:30 |
 | A4.3 | drop the full-sky numbers, keep Stage IV and *it gets worse with area* | −0:20 |
 | A3.6 | drop the borrowed-figure aside; point at the legend and name the four curves | −0:18 |
-| A3.21 | keep all eight clicks, narrate only the first slice and the closing claim — the middle three are self-evident on the screen | −0:35 |
-| A3.16 | drop the stage-one and stage-two narration; the diagram is labelled | −0:30 |
-| A1.2 | the round-patch description down to one sentence; the figure shows it | −0:34 |
 
 ## Never cut, at any tier
 
