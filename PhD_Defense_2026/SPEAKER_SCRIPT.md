@@ -30,13 +30,13 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 | Act 0 — the setup | 1–9 | 10:40 | ends on the four questions |
 | Act 1 — Part 1, does the map matter? | 10–22 | 12:41 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 23–27 | 5:03 | frame 26 is the first cut |
-| Act 3 — Part 3, the summaries | 28–47 | 18:41 | the longest act; 10:32 of it is teaching |
-| Act 4 — Part 4, baryons | 48–52 | 5:36 | |
+| Act 3 — Part 3, the summaries | 28–47 | 19:29 | the longest act; 10:32 of it is teaching |
+| Act 4 — Part 4, baryons | 48–52 | 5:47 | |
 | Close | 53–54 | 1:44 | |
-| | **54 frames** | **54:25** | **against a 40:00 target in a 45:00 slot** |
+| | **54 frames** | **55:25** | **against a 40:00 target in a 45:00 slot** |
 
-> **⚠ 54:25 spoken, against a 40:00 target — over by 14:25.** *The arithmetic, and how to close
-> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:10**.
+> **⚠ 55:25 spoken, against a 40:00 target — over by 15:25.** *The arithmetic, and how to close
+> it*, after the close below, is a five-tier ladder with measured savings that lands at **40:00**.
 > No tier is a whole-act decision. Read it before rehearsing, not after.
 
 ### Seven slides moved to backup, 2026-09-06
@@ -84,7 +84,8 @@ build was audited against one rule:
 > Anything that merely reveals text in reading order goes. The eye already does that, and every
 > click is a moment you spend on the clicker instead of on the room.
 
-**97 clicks → 60, across 30 frames.** Fifteen slides lost their builds:
+**97 clicks → 67, across 31 frames.** Sixteen slides lost some or all of their build; two of them
+were then put back, and both are marked below:
 
 | frame | was | now | why |
 |---|---|---|---|
@@ -98,8 +99,9 @@ build was audited against one rule:
 | 37 | 2 | 1 | the MCMC animation survives; the equation reveal does not |
 | 38 | 2 | 1 | the faces survive; the bullet does not |
 | 40 | 3 | 1 | the three-stage diagram goes up whole; *the cost is paid once* is still withheld |
-| 45 | 8 | 0 | an eight-image flipbook of a static illustration |
-| 46 | 3 | 2 | both routes at once; the swap and the punchline survive |
+| ~~45~~ | 8 | **8** | *stripped, then restored 2026-09-07.* Not a flipbook: the picture stays and the **highlight moves**, and what it moves through is the reason the bins are not independent. It was the one call in this audit I got wrong |
+| 52 | 5 | 3 | **(Andreas)** the contour and its numbers are one beat: the bullets now land with the ℓ1-norm |
+| ~~46~~ | 3 | **3** | *restored 2026-09-07* — route one wants the screen to itself before route two lands beside it |
 | 50 | 7 | 0 | seven clicks of one plot **(Andreas)** |
 | 51 | 1 | 0 | one click for the whole body |
 | 54 | 1 | 0 | the conclusions go up whole |
@@ -1349,27 +1351,47 @@ account for all of the gap, some of it, or none. So close the asymmetry and meas
 
 ---
 
-## A3.21 — tomography · frame 45 · 0:22
+## A3.21 — tomography · frame 45 · 1:06
 
-〔The picture goes up whole — it used to assemble over eight clicks, which bought nothing. Two
-sentences over it, then move.〕
+〔**The one build in Act 3 that teaches rather than decorates** — restored 2026-09-07 after it was
+stripped in the animation audit, which was a mistake. It is not a picture appearing, it is the same
+picture with the highlight moving, and what it shows is *why* the bins are not independent — the
+premise the next two slides are built on. Eight clicks: say the line, then click.〕
 
-The sources are sliced in redshift, and each slice gives its own convergence map.
+The geometry first, because everything after it depends on this.
 
-**▲** But the lensing kernels are broad and they overlap — a structure at low redshift lenses every
-bin behind it. So the bins are not independent measurements; they share information, and something
-has to read that shared part.
+We are on the left. The matter between us and the sources is the box, and the source galaxies are
+sliced into redshift bins.
+
+[CLICK] Take the furthest slice. [CLICK] Its light has come through **everything** in front of it,
+so all of that matter is doing the lensing. [CLICK] And that is the convergence map we measure for
+that bin.
+
+[CLICK] Now a nearer slice. [CLICK] Its light has come through **less** — the column is shorter.
+[CLICK] So its map is fainter: less structure, lower amplitude.
+
+[CLICK] Five slices, five maps. **▲** And look at what those columns did. Every bin's column of
+matter is contained inside the next one out. The lensing kernels are broad, and they overlap.
+
+[CLICK] **▲** So these are not five independent measurements. They share most of their matter,
+while the shape noise in each one is independent — and something in the pipeline has to read that
+shared part.
 
 ---
 
-## A3.22 — two places to intervene · frame 46 · 1:31
+## A3.22 — two places to intervene · frame 46 · 1:35
 
 〔The methods slide of the paper, and the densest thing in Act 3. Take it slowly, and land the last
-sentence — it is the reason the joint ℓ1-norm exists.〕
+sentence — it is the reason the joint ℓ1-norm exists.
+
+Three clicks since 2026-09-07: route one is alone on the slide first, so the room finishes the
+obvious idea before the alternative is on screen to distract from it. Then route two arrives, then
+the plane swaps for the definition, then the punchline.〕
 
 The gap is structural, so there are exactly two places to intervene: the input, or the statistic.
 
-**Route one**, the obvious one: manufacture the missing channel. For each pair of bins,
+**Route one**, the obvious one, and the only thing on the screen for now: manufacture the
+missing channel. For each pair of bins,
 multiply the two maps pixel by pixel. The product is near zero almost everywhere and lights up only
 where both bins have structure in the same place, so its one-point statistics carry the joint
 structure of the pair. Six pairs, six new channels, and the *same* ℓ1-norm runs on each. Built from
@@ -1378,8 +1400,8 @@ the patch's own two maps, so a survey observing only that patch could actually f
 [CLICK] **Route two**: leave the four maps alone and change what the statistic reads. At a given
 scale, every pixel hands you all four bins' coefficients at once. The per-bin ℓ1-norm is the
 absolute-value-weighted one-dimensional histogram of each — literally the two curves on the edges
-of this figure. Lay a fixed ten-by-ten grid on the pair plane instead, and sum the ℓ1 weight of the
-pixels landing in each cell. That is the joint ℓ1-norm.
+of this figure. [CLICK] Lay a fixed ten-by-ten grid on the pair plane instead, and sum the ℓ1 weight of
+the pixels landing in each cell. That is the joint ℓ1-norm.
 
 [CLICK] **▲** And here is the difference that matters. The product map reduces a pair of bins to a
 single derived field *before* the statistic is taken. The joint ℓ1-norm never reduces it — and it
@@ -1514,28 +1536,35 @@ the next slide is a floor.
 
 ---
 
-## A4.5 — is there anything left · frame 52 · 1:40
+## A4.5 — is there anything left · frame 52 · 1:51
 
 〔The answer to question four, and the numbers matter. Be precise about the peak counts — the
 temptation is to let them disappear into "the higher-order statistics", and that would be
 overclaiming.〕
 
-And the answer is yes.
+And the answer is yes. Same maps, same cut, three summaries, laid on top of each other.
 
-[CLICK] On baryon-safe scales the starlet ℓ1-norm constrains **one point eight times** tighter than
-the power spectrum at Stage IV, and **two point six times** tighter at full sky.
+[CLICK] The power spectrum, on the scales it is allowed to keep.
 
-[CLICK] Be precise about the peak counts, because they are the weaker of the two. They reach
+[CLICK] Peak counts.
+
+[CLICK] And the ℓ1-norm — with the numbers beside it: **one point eight times** tighter than the
+power spectrum at Stage IV, and **two point six times** tighter at full sky.
+
+〔The whole right-hand column lands on that third click, since 2026-09-07 — the contour and its
+numbers are one beat, not three. Read down it; do not click again.〕
+
+Be precise about the peak counts, because they are the weaker of the two. They reach
 approximate parity with the power spectrum at Stage-IV areas and slightly exceed it at full sky; at
 the smaller footprints they trail it. **▲** And the reason they trail is largely the cut, not the
 statistic — the whole-band removal takes a larger fraction of the peak-count information than the
 sliding ell-max takes from the power spectrum, and that penalty is worst exactly where the
 power-spectrum cut is loosest.
 
-[CLICK] Even at comparable figure of merit they are not redundant: in the planes involving w-nought
-the degeneracy directions differ, so a joint analysis would still gain.
+Even at comparable figure of merit they are not redundant: in the planes involving w-nought the
+degeneracy directions differ, so a joint analysis would still gain.
 
-[CLICK] [CLICK] **▲** Two things I want to leave you with. The signal survives on *quasi-linear*
+**▲** Two things I want to leave you with. The signal survives on *quasi-linear*
 scales — these are not only deep-non-linear probes, which is what people assume. And this is a
 floor: our cut is not optimised, and a finer filter bank or a cut in signal-to-noise rather than in
 scale would recover more.
@@ -1697,47 +1726,46 @@ Thank you.
 
 # The arithmetic, and how to close it
 
-**Measured: 54:25 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
-beats that are not spoken. Over by **14:25**.
+**Measured: 55:25 spoken against a 40:00 target**, with a further **7:53 parked** in the nine
+beats that are not spoken. Over by **15:25**.
 
 | act | frames | measured | share |
 |---|---|---|---|
 | Act 0 — the setup | 1–9 | 10:40 | 20 % |
 | Act 1 — Part 1 | 10–22 | 12:41 | 23 % |
 | Act 2 — Part 2 | 23–27 | 5:03 | 9 % |
-| Act 3 — Part 3 | 28–47 | 18:41 | 34 % |
-| Act 4 — Part 4 | 48–52 | 5:36 | 10 % |
+| Act 3 — Part 3 | 28–47 | 19:29 | 35 % |
+| Act 4 — Part 4 | 48–52 | 5:47 | 10 % |
 | Close | 53–54 | 1:44 | 3 % |
 | *(not spoken)* | 5, and backup 66–67, 100–102, 106, 112–113 | *7:53* | — |
 
-**Act 3 is a third of the talk**, and 10:32 of its 18:41 is still teaching — two-point statistics,
+**Act 3 is a third of the talk**, and 11:20 of its 19:29 is still teaching — two-point statistics,
 the phases, wavelets, Bayes, generative models, flows, SBI — in front of 4:20 of the paper's own
 results. That is where most of what follows comes from.
 
 The five tiers below are ordered by what they cost, and they close the gap. **Nothing here is a
 whole-act decision any more** — that changed when the nine frames came out.
 
-## Tier 1 — park what is redundant or superseded · −1:03 · lands at 53:22
+## Tier 1 — park what is redundant or superseded · −1:03 · lands at 54:22
 
 | frame | what | saves |
 |---|---|---|
 | 26 | the remaining PnPMass flipbook. Its partner is already in backup at 112; this one carries seven clicks to make a point A2.3 has made in words | **−0:32** |
 | 49 | the SBI pipeline refresher; A3.16 taught the same pipeline twelve minutes earlier | **−0:31** |
 
-## Tier 2 — park teaching whose content survives elsewhere · −2:39 · lands at 50:43
+## Tier 2 — park teaching whose content survives elsewhere · −2:17 · lands at 52:05
 
 | frame | what | saves |
 |---|---|---|
 | 38 | generative modelling and the faces. The only load-bearing part is *samples are not densities*, which fits in one sentence of A3.15 | **−1:02** |
 | 39 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 and show the flow only as part of the SBI diagram | **−0:50** net |
 | 33 | the forecast contours. Frame 35's statistic shapes make the same point with the actual statistics | **−0:25** |
-| 45 | the tomography build. Eight clicks for a fact A3.20 states in a sentence | **−0:22** |
 
 > **Frame 37 came off this list when the Bayes slide went to backup.** It was here on the grounds
 > that Bayes is taught in Act 1. It no longer is, so frame 37 — the classical route — is the *only*
 > place Bayes appears in the talk, and it stays.
 
-## Tier 3 — prose, inside beats that stay · −4:55 · lands at 45:48
+## Tier 3 — prose, inside beats that stay · −4:55 · lands at 47:10
 
 | beat | cut | saves |
 |---|---|---|
@@ -1752,7 +1780,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | A3.22 | narrate route two only; point at route one and say *the obvious thing first, and it is not enough* | −0:35 |
 | A4.4 | drop the sliding-cut multipole numbers; *a large fraction of its range, removed precisely* | −0:20 |
 
-## Tier 4 — three more frames parked · −2:47 · lands at 43:01
+## Tier 4 — three more frames parked · −2:47 · lands at 44:23
 
 | frame | what | saves |
 |---|---|---|
@@ -1760,7 +1788,7 @@ whole-act decision any more** — that changed when the nine frames came out.
 | 36, 41 | one inference slide instead of three. The room is told there is no likelihood, that the simulator replaces it, and that is that. **Keep frame 42** — the definition of *optimal* is what makes A3.23 a sufficiency result rather than a benchmark win, and it is the first thing the committee will press on | **−1:38** |
 | 20 | the three maps. Frame 19's chain shows them in miniature, and A1.12's *what Euclid plans to run* line moves into A1.13's opening | **−0:39** |
 
-## Tier 5 — the last stretch · −2:51 · lands at 40:10
+## Tier 5 — the last stretch · −4:23 · lands at 40:00
 
 Only if the rehearsal clock says so. Each of these costs something real.
 
@@ -1773,6 +1801,9 @@ Only if the rehearsal clock says so. Each of these costs something real.
 | A1.13 + A1.14 | merge: run the ladder straight into the scale argument. **Keep both ▲ sentences** — the four-per-cent contrast and *the gain is small-scale reconstruction fidelity* | −0:30 |
 | A4.3 | drop the full-sky numbers, keep Stage IV and *it gets worse with area* | −0:20 |
 | A3.6 | drop the borrowed-figure aside; point at the legend and name the four curves | −0:18 |
+| A3.21 | keep all eight clicks, narrate only the first slice and the closing claim — the middle three are self-evident on the screen | −0:35 |
+| A3.16 | drop the stage-one and stage-two narration; the diagram is labelled | −0:30 |
+| A1.2 | the round-patch description down to one sentence; the figure shows it | −0:27 |
 
 ## Never cut, at any tier
 
