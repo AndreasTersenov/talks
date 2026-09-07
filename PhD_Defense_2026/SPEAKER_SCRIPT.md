@@ -187,7 +187,7 @@ cosmic web.
 
 ---
 
-## A0.3 — what ΛCDM is, and where it stops · frame 3 · 0:53
+## A0.3 — what ΛCDM is, and where it stops · frame 3 · 1:20
 
 Our prevailing model describing all of that is ΛCDM — Lambda, cold dark matter. It is a very simple model, with just six free parameters.
 
@@ -203,7 +203,7 @@ And independent probes of the same parameters have started to show **tensions** 
 
 ---
 
-## A0.4 — the probes, and the one we follow · frame 4 · 0:32
+## A0.4 — the probes, and the one we follow · frame 4 · 0:16
 
 So how do you study the Universe, and test a model like that? Well, there are several probes that do that...
 
@@ -262,7 +262,7 @@ That is what this thesis is about.
 
 ---
 
-## A0.7 — what it actually takes · frame 8 · 0:38
+## A0.7 — what it actually takes · frame 8 · 0:40
 
 Before my own picture of that, a real one: the DES Year 3 analysis, from pixels to cosmology.
 Alexandra Amon's diagram, not mine. Do not try to read it — that is the point.
@@ -275,7 +275,7 @@ most of it.
 
 ---
 
-## A0.8 — the chain, and the four questions · frame 9 · 2:51
+## A0.8 — the chain, and the four questions · frame 9 · 2:56
 
 > The most important slide in the deck and the longest beat in Act 0. The four questions are
 > **canonical** — the board at frame 53 asks exactly these, in these words. If you change one here,
@@ -296,7 +296,7 @@ measurement, it is a choice of algorithm. The field judges those algorithms on h
 matches the truth, but the map is not what we publish. **▲** So: does the choice of mass-mapping
 method matter for the final constraints?
 
-[CLICK] Second question, same box. If it does matter, we want a method that is accurate, flexible
+[CLICK] Second question, the **same step** — mass mapping is that arrow, so both papers live on it. If it does matter, we want a method that is accurate, flexible
 and fast, **and** gives reliable uncertainties — all four, at the scale of Euclid.
 
 [CLICK] Third question, one step right and then all the way to the end. A map is a hundred thousand
@@ -435,7 +435,7 @@ we cannot write down.
 
 ---
 
-## A1.8 — mass mapping as Bayesian inference · frame 105 · SKIP · 1:03
+## A1.8 — mass mapping as Bayesian inference · frame 105 · SKIP · 0:56
 
 > **SKIPPED (Andreas, 2026-09-06), and three things had to move out of it first.**
 >
@@ -580,7 +580,7 @@ quantification is mine.
 
 ---
 
-## A2.2 — what we actually want · frame 24 · 0:49
+## A2.2 — what we actually want · frame 24 · 0:47
 
 So what do we want from a reconstruction? Four things — the four columns. Accurate. Flexible, so
 one model survives a change of noise or footprint. Fast enough for a survey. And reliable
@@ -928,7 +928,7 @@ when the likelihood was never written down.
 
 ---
 
-## A3.17 — the objection I would raise myself · frame 41 · 0:52
+## A3.17 — the objection I would raise myself · frame 41 · 0:51
 
 So we have a statistic that reads more than the power spectrum. But the summary is the one part of
 this chain we still choose *by hand*, and the field increasingly fills that box with a neural
@@ -1014,7 +1014,7 @@ at all.
 
 ---
 
-## A3.23 — the answer · frame 47 · 1:01
+## A3.23 — the answer · frame 47 · 1:03
 
 So: same maps, same flow, four summaries. The ℓ1-norm read one bin at a time is already up — two
 thousand four hundred and forty-eight.
@@ -1093,7 +1093,7 @@ contaminated scales.
 
 ---
 
-## A4.4 — what it costs to buy back · frame 51 · 0:53
+## A4.4 — what it costs to buy back · frame 51 · 0:54
 
 So we cut, to bring the bias below three tenths of a sigma — and the two statistics pay in
 different currencies.
@@ -1108,7 +1108,7 @@ the next slide is a conservative estimate.
 
 ---
 
-## A4.5 — is there anything left · frame 52 · 1:33
+## A4.5 — is there anything left · frame 52 · 1:30
 
 And the answer is yes. Same maps, same cut, three summaries, laid on top of each other.
 
@@ -1133,7 +1133,7 @@ instrument.
 
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:53
+## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:52
 
 > **MOVED TO BACKUP — the whole nulling / BNT thread is out of the talk (Andreas, 2026-09-06).**
 > Too technical for the
@@ -1180,7 +1180,7 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — and the answer was already in the room · frame 66 · SKIP · 1:51
+## A4.7 — and the answer was already in the room · frame 66 · SKIP · 1:52
 
 > **MOVED TO BACKUP with A4.6** — the two are one argument and neither works alone. They are now
 > frames 65 and 66, immediately in front of the three explainers that account for them.
@@ -1223,7 +1223,7 @@ keeps an advantage.
 > front of it was the same words twice. Its beat is gone with it; C.2 absorbed the *these were the
 > four questions* framing.
 
-## C.2 — conclusions · frame 53 · 1:43
+## C.2 — conclusions · frame 53 · 1:50
 
 > **Rebuilt 2026-09-07 to match this beat.** The slide now carries the canonical four with their
 > answers, and the separate question board that used to precede it is hidden — this one slide does
