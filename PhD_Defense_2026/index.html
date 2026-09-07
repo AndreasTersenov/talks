@@ -83,8 +83,15 @@
 			<section data-background-color="#000">
 				<h3 class="slide-title tight">The Universe evolved from quantum fluctuations to galaxies over 13.8 billion years
 				</h3>
-				<div class="cone">
-					<img src="../assets/diagrams/WMAP_timeline_large.jpg"
+				<!-- The cropped file, not WMAP_timeline_large.jpg: the original bakes in a lopsided
+				     black margin (content at x 64-1447 of 1980, so 234 px left of its own centre),
+				     and against a black slide that reads as a picture pushed to the left even though
+				     the box around it is centred.  Cropped to its content by
+				     tools/crop-to-content.py; the original is untouched, AstroML_JC_Mar24 uses it.
+				     .cone-plain, not .cone: .cone's fixed 1980x1111 box exists to register the
+				     .coneov annotation overlay, and this slide has no overlay. -->
+				<div class="cone-plain">
+					<img src="../assets/diagrams/WMAP_timeline_centred.jpg"
 						alt="history of the Universe: inflation, the cosmic microwave background, the dark ages, the growth of structure, and accelerated expansion">
 				</div>
 				<aside class="notes">
