@@ -351,6 +351,29 @@ Cost on the clock, measured at 140 wpm: **+2:06 to the talk**, almost all of it 
 set (deep learning / baryons / nulling), which now collides with the canonical four; three backup
 slides carry those old tags too.
 
+## The bar ladders became stem plots — 2026-09-07
+
+Frames 21 and 56 each ranked a handful of methods with a `.ladder` of CSS bars, and each of them
+sat directly beside a real matplotlib panel: the getdist corner plot on 21, the per-mock violin
+panel on 56. The bars were the problem — rounded `<div>`s in the web typeface next to a
+publication figure, and the contrast is the first thing the eye finds.
+
+Both are now matplotlib too, drawn by `../tools/make-fom-stems.py`: a stem with a diamond head per
+method, a full box frame, serif type with STIX math, on the deck's paper `#f7f5f0`. Each figure
+**borrows the colours of the panel it shares the slide with**, so a colour names the same method
+on both halves — frame 21 takes getdist's grey / red / blue for KS, iKS and MCALens; frame 56
+takes the Wong triple already in the violin panel, with a warm grey for the auto-only baseline it
+has no counterpart for. This is now written into `../docs/TALK-GUIDELINES.md` §4.5.
+
+Frame 56 gains something the CSS ladder could not draw: **error bars**. The tie claim rests on
+3371 ± 96 against 3326 ± 30, and the bars are the evidence for it. Its four-rung build went with
+the ladder — it is a backup slide, and the animation policy says whole. Frame 21 had no fragments
+and still has none. Numbers are unchanged and still the `PAPER_FACTS.md` ledger's.
+
+The old ladders are **parked in place**, commented out directly above each figure, not deleted.
+`.ladder` itself stays live: frame 66 still uses it.
+
+
 ## Not yet done
 
 - Listed on the repo landing page (`../index.html`) as the top 2026 entry.

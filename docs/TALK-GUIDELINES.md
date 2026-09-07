@@ -469,6 +469,19 @@ even if the early step looks slightly empty. In this repo that usually means fix
   one; if two series matter, separate them by line style or marker as well as hue.
 - Match diagram backgrounds to the slide background exactly. A white PNG on a dark slide reads as
   a bug.
+- **When you draw a chart to sit beside a published figure, take that figure's colours.** The
+  published one cannot be recoloured, so the drawn one has to move. Sample its legend swatches
+  and reuse them, and a colour then names the same method on both halves of the slide instead of
+  two palettes competing. `PhD_Defense_2026` frames 21 and 56 are the worked examples
+  (`../tools/make-fom-stems.py`): frame 21 borrows the getdist grey/red/blue, frame 56 the Wong
+  triple already in the violin panel under it. This *overrides* the deck-wide method encoding
+  above where the two conflict — within one slide, agreeing with the figure the room is looking at
+  wins.
+- **A chart built from CSS divs beside a real plot reads as a bug too.** Bars made of `<div>`s
+  carry web furniture — rounded corners, gradient fills, a different typeface — and next to a
+  matplotlib panel the mismatch is what the audience sees. If a slide already carries a real
+  figure, draw the second one with the same tool. A drawn chart also gets things HTML cannot:
+  error bars, a log axis, a reference line.
 
 **Light or dark backgrounds?** Fleming is unambiguous — *use white, do not use black* — because
 white projects better in most rooms. Our default theme is dark, which is a real tension. The

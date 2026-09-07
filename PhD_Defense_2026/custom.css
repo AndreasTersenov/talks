@@ -533,10 +533,20 @@
 .reveal .slides section .resultcol { text-align: left; }
 .reveal .slides section .resultcol .takeaway { margin: 1.1em 0 0; max-width: 100%; }
 
-/* The ladder's default bar colours are the Wong l1/CNN pair, which encode the
-   summary statistic in Act 4. Act 1 compares reconstructions, so its bars must
-   not borrow those hues (TALK-GUIDELINES 4.5) -- magnitude only, method named
-   in words, method colour left to the figure's own legend. */
+/* A stem plot standing where a .ladder used to (frames 21 and 56).  The bars
+   were CSS divs sitting next to real matplotlib panels on the same slide, and
+   the mismatch was the problem; these are matplotlib too, from
+   tools/make-fom-stems.py, and each one borrows the colours of the published
+   figure it shares the slide with, so a colour names the same method twice.
+   Nothing to style but the margin - the figure carries its own type.
+   (`width: 100%` would fight frame 56's max-height and squash the picture; the
+   .resultpair rule below already stretches frame 21's.) */
+.reveal .slides section .stemfig { margin: 0; }
+.reveal .slides section .stemfig img { max-width: 100%; height: auto; }
+
+/* Kept for the one surviving .ladder (frame 66, backup) and for the two parked
+   in index.html.  The rungs must not borrow the Wong l1/CNN pair, which encodes
+   the summary statistic in Act 4 (TALK-GUIDELINES 4.5). */
 .reveal .slides section .ladder.mm .bar { background: var(--fg-muted); }
 .reveal .slides section .ladder.mm .rung.learned .bar { background: var(--accent); border: 0; }
 .reveal .slides section .ladder.mm .ceilnote { color: var(--fg-muted); padding-right: 0; }
