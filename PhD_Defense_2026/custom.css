@@ -529,7 +529,13 @@
 	align-items: center; margin-top: 0.3em;
 }
 .reveal .slides section .resultpair .fig { margin: 0; }
-.reveal .slides section .resultpair .fig img { width: 100%; max-width: 100%; }
+/* NOT `width: 100%`: .fig img above caps the height at 500px, and an explicit
+   width against that cap breaks the aspect ratio - it stretched the 2000x2000
+   corner plot to 587x500.  Let the cap size it and centre what is left. */
+.reveal .slides section .resultpair .fig img { max-width: 100%; width: auto; }
+/* the stem plot carries three categories and needs far less room than the
+   corner plot it sits beside */
+.reveal .slides section .resultcol .stemfig img { max-height: 300px; }
 .reveal .slides section .resultcol { text-align: left; }
 .reveal .slides section .resultcol .takeaway { margin: 1.1em 0 0; max-width: 100%; }
 
