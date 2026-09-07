@@ -33,15 +33,15 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:14 | ends on the four questions |
+| Act 0 — the setup | 1–9 | 7:30 | ends on the four questions |
 | Act 1 — Part 1, does the map matter? | 10–22 | 10:34 | opens with the formalism, moved here 2026-09-06 |
-| Act 2 — Part 2, PnPMass | 23–27 | 4:13 | frame 26 is the first cut |
-| Act 3 — Part 3, the summaries | 28–47 | 15:21 | still the longest act by far |
-| Act 4 — Part 4, baryons | 48–52 | 4:47 | |
-| Close | 53 | 1:43 | |
-| | **53 frames** | **43:52** | **at 120 wpm, against a 40:00 target** |
+| Act 2 — Part 2, PnPMass | 23–27 | 4:11 | frame 26 is the first cut |
+| Act 3 — Part 3, the summaries | 28–47 | 15:22 | still the longest act by far |
+| Act 4 — Part 4, baryons | 48–53 | 5:12 | opens on its own divider, added 2026-09-07 |
+| Close | 54 | 1:50 | |
+| | **54 frames** | **44:40** | **at 120 wpm, against a 40:00 target** |
 
-> **⚠ 43:52 spoken against a 40:00 target, at 120 wpm — over by 3:52.** Every beat was rewritten
+> **⚠ 44:40 spoken against a 40:00 target, at 120 wpm — over by 4:40.** Every beat was rewritten
 > for brevity on 2026-09-07 (61:37 → 43:22), so **the prose is spent**; what is left is structural,
 > and *The arithmetic, and how to close it* — after the close, below — names it. **Set the wpm from
 > a real timing before trusting any of these numbers.**
@@ -104,18 +104,18 @@ were then put back, and both are marked below:
 | 38 | 2 | 1 | the faces survive; the bullet does not |
 | 40 | 3 | 1 | the three-stage diagram goes up whole; *the cost is paid once* is still withheld |
 | ~~45~~ | 8 | **8** | *stripped, then restored 2026-09-07.* Not a flipbook: the picture stays and the **highlight moves**, and what it moves through is the reason the bins are not independent. It was the one call in this audit I got wrong |
-| 52 | 5 | 3 | **(Andreas)** the contour and its numbers are one beat: the bullets now land with the ℓ1-norm |
+| 53 | 5 | 3 | **(Andreas)** the contour and its numbers are one beat: the bullets now land with the ℓ1-norm |
 | ~~46~~ | 3 | **3** | *restored 2026-09-07* — route one wants the screen to itself before route two lands beside it |
-| 50 | 7 | 0 | seven clicks of one plot **(Andreas)** |
-| 51 | 1 | 0 | one click for the whole body |
-| 54 | 1 | 0 | the conclusions go up whole |
+| 51 | 7 | 0 | seven clicks of one plot **(Andreas)** |
+| 52 | 1 | 0 | one click for the whole body |
+| 55 | 1 | 0 | the conclusions go up whole |
 
 **What survives, and why it earns the click.** Frame 9's four questions and frames 29/36's pipeline
-focus move the light around a diagram that stays put. Frames 26 and 42/49 *are* animations — the
+focus move the light around a diagram that stays put. Frames 26 and 42/50 *are* animations — the
 PnPMass iteration, and the two canvas explainers whose markers step them through their acts. Frame
 30 swaps a video for a figure, frame 35 swaps each definition for its shape, frame 46 swaps the
-mask for the joint definition. And frames 47 and 52 hold back an answer: the ladder to the tie, and
-the contours on baryon-safe scales — **frame 52 Andreas named explicitly**, because that is where
+mask for the joint definition. And frames 47 and 53 hold back an answer: the ladder to the tie, and
+the contours on baryon-safe scales — **frame 53 Andreas named explicitly**, because that is where
 Part 4's question gets its answer and the tension is worth keeping.
 
 Single-click frames that survive are all the same shape: a claim withheld until the room has looked
@@ -278,7 +278,7 @@ most of it.
 ## A0.8 — the chain, and the four questions · frame 9 · 2:56
 
 > The most important slide in the deck and the longest beat in Act 0. The four questions are
-> **canonical** — the board at frame 53 asks exactly these, in these words. If you change one here,
+> **canonical** — the board at frame 54 asks exactly these, in these words. If you change one here,
 > change it there.
 
 So this thesis is about the analysis.
@@ -435,7 +435,7 @@ we cannot write down.
 
 ---
 
-## A1.8 — mass mapping as Bayesian inference · frame 105 · SKIP · 0:56
+## A1.8 — mass mapping as Bayesian inference · frame 106 · SKIP · 0:56
 
 > **SKIPPED (Andreas, 2026-09-06), and three things had to move out of it first.**
 >
@@ -485,7 +485,7 @@ sparsity it is thresholding.
 
 Remember it, because in Part 2 we throw it away and put a neural network in its place.
 
-> **FLAG — inherited from the Bayes slide, now backup 106. Say it only if pressed, and say it in Part 2
+> **FLAG — inherited from the Bayes slide, now backup 107. Say it only if pressed, and say it in Part 2
 > regardless.** Everything in Part 1 takes the *most probable* map: a point estimate. Part 2 is
 > where the uncertainty arrives, and Part 3 wants the whole distribution. Starck is the likeliest
 > person to ask.
@@ -627,7 +627,7 @@ pass, but a fixed point of an operator that has the data in it.
 
 ---
 
-## A2.5 — the residual variant · frame 111 · SKIP · 0:34
+## A2.5 — the residual variant · frame 112 · SKIP · 0:34
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
 > one clause if anyone needs it. It now carries the UQ slide as its vertical: press DOWN from 112.
@@ -642,7 +642,7 @@ that is changing, which is closer to the white-noise problem it was actually tra
 
 ---
 
-## A2.6 — error bars from one forward pass · frame 112 · SKIP · 1:36
+## A2.6 — error bars from one forward pass · frame 113 · SKIP · 1:36
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06), and this one costs something.** It is the mechanism
 > behind the calibrated error bars A2.7 then reports, and conformal prediction is Tsakalides's own
@@ -679,7 +679,7 @@ reconstruction in one forward pass. **▲** And because a network's own variance
 we calibrate it — conformalised quantile regression, distribution-free, and it does not require the
 network to be right.
 
-> Those two sentences are the whole of backup frame 112, compressed. Cutting them makes the result
+> Those two sentences are the whole of backup frame 113, compressed. Cutting them makes the result
 > below meaningless.
 
 Which gives this. Reconstruction error across, calibrated interval up: down and left is better.
@@ -774,7 +774,7 @@ summary statistic.
 
 ---
 
-## A3.7 — peak counts · frame 99 · SKIP · 0:25
+## A3.7 — peak counts · frame 100 · SKIP · 0:25
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 35 defines peak counts again, thirty seconds
 > later, and draws their shape as well. The beat is kept for questions.
@@ -785,7 +785,7 @@ by height is a one-point statistic that sees exactly what the power spectrum can
 
 ---
 
-## A3.8 — one starlet transform · frame 100 · SKIP · 0:32
+## A3.8 — one starlet transform · frame 101 · SKIP · 0:32
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 34 explains what a wavelet is, and this slide
 > used to come *before* it. Frame 35 defines the starlet decomposition properly. In backup the
@@ -799,7 +799,7 @@ diagonal.
 
 ---
 
-## A3.9 — the starlet ℓ1-norm · frame 101 · SKIP · 0:22
+## A3.9 — the starlet ℓ1-norm · frame 102 · SKIP · 0:22
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 35 defines the ℓ1-norm with the same formula and
 > shows its shape.
@@ -1034,22 +1034,34 @@ saturate the information these maps make accessible.
 And it holds on every parameter, over nine thousand mock observations.
 
 > That last sentence is **not on the slide** — Andreas commented the `oneline` out. Say it over the
-> final arm; the violins that show it are backup 56.
+> final arm; the violins that show it are backup 57.
 
 ---
 ---
 
-# Act 4 — Part 4, baryons · frames 48–52
+# Act 4 — Part 4, baryons · frames 48–53
 
 > The whole nulling / BNT thread is **out of the main line** — it is now backup 66 and 67. See
 > the banner on A4.6.
 
-> There is no *Part 4* divider either. A3.23 ends on a result and A4.1 opens a new paper; the turn
-> has to be made with your voice.
+> ~~There is no *Part 4* divider. A3.23 ends on a result and A4.1 opens a new paper; the turn has
+> to be made with your voice.~~ — **frame 48 is now that divider** (Andreas, 2026-09-07). Parts 1
+> and 2 each had a card and Part 4 did not, so the change of paper was carried entirely by the
+> voice. Part 3 still has no card of its own; the *Parts 3 and 4* opener at frame 28 covers it.
 
 ---
 
-## A4.1 — the collision of scales · frame 48 · 1:12
+## A4.0 — the turn into Part 4 · frame 48 · 0:28
+
+That is the summary statistic, and it is as good as a network. Which leaves the question that
+decides whether any of it is usable.
+
+Everything so far has assumed the simulations tell the truth. **▲** They do not, quite — and where
+they are worst is exactly the small scales the ℓ1-norm has just made its case on.
+
+---
+
+## A4.1 — the collision of scales · frame 49 · 1:12
 
 Everything so far has been on clean simulations. **▲** But Stage IV is systematics-limited, so what
 decides whether these statistics can be used is not how much they gain — it is how they behave
@@ -1070,7 +1082,7 @@ would have done just as well.
 
 ---
 
-## A4.2 — the pipeline, again · frame 49 · 0:24
+## A4.2 — the pipeline, again · frame 50 · 0:24
 
 Same machinery, quickly. [CLICK] Maps from CosmoGrid, [CLICK] Euclid-like noise, [CLICK] wavelet
 transform and statistics, [CLICK] a flow, and the posterior.
@@ -1080,7 +1092,7 @@ so the data vector is organised by scale. Without that, a scale cut would not be
 
 ---
 
-## A4.3 — how big is the bias · frame 50 · 0:44
+## A4.3 — how big is the bias · frame 51 · 0:44
 
 How badly are we biased if we do nothing? At Stage IV area the power spectrum shifts by two point
 two sigma; peaks and the ℓ1-norm by three point six. And it gets worse with area — smaller error
@@ -1093,7 +1105,7 @@ contaminated scales.
 
 ---
 
-## A4.4 — what it costs to buy back · frame 51 · 0:54
+## A4.4 — what it costs to buy back · frame 52 · 0:54
 
 So we cut, to bring the bias below three tenths of a sigma — and the two statistics pay in
 different currencies.
@@ -1108,7 +1120,7 @@ the next slide is a conservative estimate.
 
 ---
 
-## A4.5 — is there anything left · frame 52 · 1:30
+## A4.5 — is there anything left · frame 53 · 1:30
 
 And the answer is yes. Same maps, same cut, three summaries, laid on top of each other.
 
@@ -1133,7 +1145,7 @@ instrument.
 
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:52
+## A4.6 — nulling, and what goes wrong · frame 66 · SKIP · 1:52
 
 > **MOVED TO BACKUP — the whole nulling / BNT thread is out of the talk (Andreas, 2026-09-06).**
 > Too technical for the
@@ -1180,10 +1192,10 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — and the answer was already in the room · frame 66 · SKIP · 1:52
+## A4.7 — and the answer was already in the room · frame 67 · SKIP · 1:52
 
 > **MOVED TO BACKUP with A4.6** — the two are one argument and neither works alone. They are now
-> frames 65 and 66, immediately in front of the three explainers that account for them.
+> frames 66 and 67, immediately in front of the three explainers that account for them.
 
 So we asked what it takes to get the information back, and ran the same four summaries through the
 nulled frame.
@@ -1214,7 +1226,7 @@ keeps an advantage.
 ---
 ---
 
-# Close · frames 53–53
+# Close · frames 54–54
 
 ## C.1 — the question board — REMOVED 2026-09-07
 
@@ -1223,7 +1235,7 @@ keeps an advantage.
 > front of it was the same words twice. Its beat is gone with it; C.2 absorbed the *these were the
 > four questions* framing.
 
-## C.2 — conclusions · frame 53 · 1:50
+## C.2 — conclusions · frame 54 · 1:50
 
 > **Rebuilt 2026-09-07 to match this beat.** The slide now carries the canonical four with their
 > answers, and the separate question board that used to precede it is hidden — this one slide does
@@ -1286,8 +1298,8 @@ Thank you.
 | Act 2 — Part 2 | 23–27 | 4:13 | 10 % |
 | Act 3 — Part 3 | 28–47 | 15:21 | 35 % |
 | Act 4 — Part 4 | 48–52 | 4:47 | 11 % |
-| Close | 53 | 1:43 | 4 % |
-| *(not spoken)* | 5, and backup 65–66, 99–101, 105, 111–112 | *9:12* | — |
+| Close | 54 | 1:43 | 4 % |
+| *(not spoken)* | 5, and backup 66–66, 99–101, 105, 111–112 | *9:12* | — |
 
 **The prose is spent.** On 2026-09-07 every beat in the file was rewritten for brevity — 61:37 to
 43:22, a thirty per cent cut with no slide touched. There is not another ten per cent in the
@@ -1334,7 +1346,7 @@ In this order, and each is a real loss:
 - A0.8's four questions. The talk hangs on them and the close returns to them.
 - A1.13's *four per cent against a hundred and fifty-seven*, and the iKS null result.
 - A1.5's *the added assumption **is** the method*.
-- A2.7's two uncertainty sentences — all that survives of backup 112 — and its two limits.
+- A2.7's two uncertainty sentences — all that survives of backup 113 — and its two limits.
 - A3.3's *the question is whether the field is Gaussian*, and the phases pair, frames 31–32.
 - A3.18's definition of optimal.
 - A3.23's *that is a tie, and I want to call it a tie*.
@@ -1359,7 +1371,7 @@ Two answers. The reconstruction never leaves the data behind — the network is 
 iteration whose other step is a gradient towards the measured shear, and it converges to a fixed
 point of that pair. And for the inference we test it: because the trained flow answers any new
 observation in milliseconds, we can run it on thousands of simulated observations where we know the
-truth and check the posteriors actually cover. That is frame 64 in the backup.
+truth and check the posteriors actually cover. That is frame 65 in the backup.
 
 **"Isn't 157 per cent suspiciously large?"**
 It is a figure of merit, which is an inverse area in parameter space, so it moves faster than an
@@ -1392,8 +1404,8 @@ think the question is, and the first is the one I would ask myself.
 
 > **The nulling / BNT thread is not in the talk, and it is in the manuscript.** So it will come up,
 > and it will come up cold — the room will not have seen the transform, the noise-correlation
-> mechanism or the ladder. Questions 3 and 9 below are the answers, and backup frames 67–70, 72–75
-> and 94 are the figures. **Lead with the thirty-second setup before the answer**, in these words:
+> mechanism or the ladder. Questions 3 and 9 below are the answers, and backup frames 68–70 and 73–76
+> are the figures. **Lead with the thirty-second setup before the answer**, in these words:
 >
 > > Nulling — the BNT transform — re-mixes the tomographic bins so that each transformed field is
 > > localised in redshift, which lets you cut scales only where the systematic actually is. It is a

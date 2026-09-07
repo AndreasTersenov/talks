@@ -361,7 +361,7 @@ publication figure, and the contrast is the first thing the eye finds.
 Both are now matplotlib too, drawn by `../tools/make-fom-stems.py`: a stem with a diamond head per
 method, a full box frame, serif type with STIX math, on the deck's paper `#f7f5f0`. Each figure
 **borrows the colours of the panel it shares the slide with**, so a colour names the same method
-on both halves — frame 21 takes getdist's grey / red / blue for KS, iKS and MCALens; frame 56
+on both halves — frame 21 takes getdist's grey / red / blue for KS, iKS and MCALens; frame 57
 takes the Wong triple already in the violin panel, with a warm grey for the auto-only baseline it
 has no counterpart for. This is now written into `../docs/TALK-GUIDELINES.md` §4.5.
 
@@ -371,7 +371,39 @@ the ladder — it is a backup slide, and the animation policy says whole. Frame 
 and still has none. Numbers are unchanged and still the `PAPER_FACTS.md` ledger's.
 
 The old ladders are **parked in place**, commented out directly above each figure, not deleted.
-`.ladder` itself stays live: frame 66 still uses it.
+`.ladder` itself stays live: frame 67 still uses it.
+
+
+## Part 4 gets a divider — 2026-09-07
+
+Parts 1 and 2 each opened on a title card; Parts 3 and 4 shared one *Movement II* opener, so Act 3
+ended on a result and Act 4 opened straight into a different paper with the change of subject
+carried entirely by the voice. **Frame 48 is now Part 4's card** (Andreas), built on the Part 1/2
+pattern: `Part 4`, the title, the authors, the status line, and the pipeline lit at **summaries +
+systematics** — the same pair the four-questions board lights for Q4.
+
+Part 3 still has no card of its own. The *Parts 3 and 4* opener at frame 28 covers it, and adding
+one would go before frame 29.
+
+**Title and author order are from `PAPER_FACTS.md`'s Ch4 row and want confirming** against the
+submitted version: `ENS_seminar_2026` titles the same paper *Mitigating Baryonic Effects in Weak
+Lensing: An SBI Analysis* and orders the middle authors Guerrini, Kilbinger, Starck. No arXiv id is
+on record, so the status line stands in for one.
+
+**The insert renumbered everything from 48 up**, so the whole of Act 4, the close and the entire
+backup section moved by one. `SPEAKER_SCRIPT.md` was remapped and re-audited; every `[CLICK]` still
+matches. Two classes of reference the remap could not see on its own, both now fixed:
+
+- **multi-number references** — `frames 65 and 66` and `frames 67–70, 72–75 and 94` only have the
+  word *frames* in front of the first number, so a context regex bumps one and leaves the rest.
+- **a pre-existing off-by-one** in the *Seven slides moved to backup* table. Its `is now` column
+  was one too high throughout, and the bump preserved the error rather than creating it. Every
+  entry has now been checked against the deck's own frame map, not derived from the old number.
+  One reference pointed at *Probes of the Universe* as a BNT figure and has been dropped.
+
+The beat headings were right all along — they are the ones `measure-script.py` audits. Prose and
+table references are not audited, which is why they drifted; teaching the tool to check them is the
+obvious next hardening.
 
 
 ## Not yet done
