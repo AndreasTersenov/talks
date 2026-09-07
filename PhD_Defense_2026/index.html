@@ -393,7 +393,7 @@
 				</figure>
 
 				<p class="note fragment fade-in" data-fragment-index="1">
-					Almost every box is a paper on its own, and most of the work is <b>measurement and calibration</b> (PSF modelling, shape calibration, blending, redshift distributions, covariances). The cosmological inference is the <b class="alert">last two boxes</b>.
+					Almost every box is a paper on its own, and most of the work is <b>measurement and calibration</b> (PSF modelling, shape calibration, blending, redshift distributions, covariances). .
 				</p>
 
 				<aside class="notes">
@@ -2433,8 +2433,7 @@
 						</figcaption>
 					</figure>
 
-					<p class="pull">Same data; only the <b class="alert">summary statistic</b> changes.
-					</p>
+			
 				</section>
 
 				<!-- PARKED — the LAM-verbatim original, superseded 2026-09-04. -->
@@ -3032,13 +3031,18 @@
 				<div class="r-stack sbi-fig">
 					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
 						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
+					<!-- PARKED 2026-09-07 - the middle plate.  The build is now two steps, not three
+					     (Andreas): simulation alone, then Learning and Inference together, so plate 2
+					     is never on screen by itself.  Restore this and split the indices to go back.
 					<img class="plain" src="../assets/diagrams/sbi_build_2.png"
 						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
-					<img class="plain" src="../assets/diagrams/sbi_build_3.png"
-						alt="stage three added: the trained flow evaluated at the real observation, giving a posterior">
+					-->
+					<img class="plain fragment" data-fragment-index="1"
+						src="../assets/diagrams/sbi_build_3.png"
+						alt="stages two and three added: the parameter-data pairs training a conditional normalizing flow, and the trained flow evaluated at the real observation to give a posterior">
 				</div>
 
-				<p class="pull fragment">The simulations are the only expensive step, and they are run <b>once</b>. The trained flow evaluates the posterior for <b class="alert">any</b> observation immediately (<b>amortised</b> inference), which makes coverage tests cheap.</p>
+				<p class="pull fragment" data-fragment-index="1">The simulations are the only expensive step, and they are run <b>once</b>. The trained flow evaluates the posterior for <b class="alert">any</b> observation immediately (<b>amortised</b> inference), which makes coverage tests cheap.</p>
 
 				<aside class="notes">
 					SBI in general; the next slide is this paper's particular pipeline. Frame it from the
@@ -3047,12 +3051,12 @@
 					l1-norm. What we do have is a simulator — we can draw from p of x given theta even though we
 					cannot evaluate it. So: stage one, and this is the physics half. Draw parameters from the prior,
 					run the forward model, keep the pair. A few hundred thousand times. This is the expensive part,
-					and it is the only expensive part. [CLICK] Stage two, the learning half. Those pairs are the
-					training set for a conditional normalizing flow — the object from the last slide, with every
-					layer conditioned on the data vector. Fit it by maximum likelihood on the pairs; the optimum of
-					that loss is the true posterior. [CLICK] Stage three. Hand the trained flow the real observation
-					and read the posterior straight off. No sampler, no likelihood evaluation, milliseconds.
-					[CLICK] And the reason this matters beyond convenience: because inference is now essentially
+					and it is the only expensive part. [CLICK] Stages two and three together, and the sentence
+					under them. Those pairs are the training set for a conditional normalizing flow — the object
+					from the last slide, with every layer conditioned on the data vector. Fit it by maximum
+					likelihood on the pairs; the optimum of that loss is the true posterior. Then hand the trained
+					flow the real observation and read the posterior straight off. No sampler, no likelihood
+					evaluation, milliseconds. And the reason this matters beyond convenience: because inference is now essentially
 					free, we can afford to run it on thousands of simulated observations and check that the
 					posteriors are actually calibrated. That is what amortisation buys — and coverage testing is not
 					a luxury when the likelihood was never written down and nothing else would catch a bad one.
@@ -3321,8 +3325,8 @@
 							style="max-height:470px;" alt="">
 					</div>
 				</div>
-				<p class="oneline fragment fade-in">The <b>tie</b> holds on every parameter, over 9,000 mock
-					observations.</p>
+				<!-- <p class="oneline fragment fade-in">The <b>tie</b> holds on every parameter, over 9,000 mock
+					observations.</p> -->
 				<!-- referee aside (verbal): RealNVP +36%, resnet18 +6%, deeper net overfits at 899 cosmologies -->
 				<aside class="notes">THE headline. Build it arm by arm: auto-only 2448, plus the product cross-maps
 					3045, the joint l1 3371, and then the CNN lands at 3326 - on top of the joint l1, not above it. Say
@@ -3658,7 +3662,7 @@
 
 			<!-- ============ close ============ -->
 			<section data-theme="light">
-				<h3 class="slide-title tight">Answers to the <em class="alert">four questions</em></h3>
+				<h3 class="slide-title tight">Conclusions</h3>
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
@@ -3673,7 +3677,7 @@
 					<li class="done">
 						<span class="qn">Q3</span>
 						<span class="qtext">How much <b>information</b> can a summary statistic extract, and does it take a network?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>As much as an optimal CNN, and without one.</b> The joint &#8467;1&#8209;norm <b>ties the VMIM&#8209;trained compressor</b>.</span></span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>As much as an "optimal" CNN, and without training.</b> The joint &#8467;1&#8209;norm <b>matches the VMIM&#8209;trained compressor</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q4</span>
