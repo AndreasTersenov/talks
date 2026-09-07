@@ -1521,18 +1521,24 @@
 
 /* the proximal step sits UNDER the algorithm block, unboxed — a second box in a
    row reads as a stack of boxes rather than as a consequence of the first. */
+/* Centred, not left-aligned: the row is a formula and its gloss, and with the
+   grid shrink-wrapped (see .mca-proxrow) the pair sits under the middle of the
+   block above instead of hanging off its left edge.  The bullets keep their own
+   left alignment - centred list items read as a poster. */
 .reveal .slides section.mca .mca-prox {
-	max-width: 90%; margin: 1.1em auto 0; text-align: left;
+	max-width: 90%; margin: 1.1em auto 0; text-align: center;
 }
 .reveal .slides section.mca .mca-prox .kicker { margin-bottom: 0.35em; }
-.reveal .slides section.mca .mca-prox .points { font-size: 0.62em; margin: 0; }
+.reveal .slides section.mca .mca-prox .points {
+	font-size: 0.72em; margin: 0; text-align: left;
+}
 .reveal .slides section.mca .mca-loop {
 	display: flex; align-items: center; justify-content: center; gap: 1.1em;
-	margin: 0.1em 0 0; font-size: 0.56em; color: var(--fg);
+	margin: 0.1em 0 0; font-size: 0.70em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-cyc { font-size: 1.5em; color: var(--accent); line-height: 1; }
 .reveal .slides section.mca .mca-sub {
-	margin: 0.5em 0 0; font-size: 0.56em; line-height: 1.5;
+	margin: 0.5em 0 0; font-size: 0.64em; line-height: 1.5;
 	color: var(--fg-muted); text-align: center;
 }
 .reveal .slides section.mca .mca-sub b { color: var(--fg); }
@@ -2166,11 +2172,15 @@
 .reveal .slides section.mmopt .points.mmgloss li { margin: 0; }
 .reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
 .reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
+/* `auto auto` + justify-content, NOT `auto 1fr`: 1fr made the gloss column
+   swallow every spare pixel, so the pair was pinned to the left edge with the
+   slack piled up on the right.  Shrink both columns and centre the pair. */
 .reveal .slides section.mca .mca-proxrow {
-	display: grid; grid-template-columns: auto 1fr; gap: 0 2.2em; align-items: center;
+	display: grid; grid-template-columns: auto auto; gap: 0 2.2em;
+	align-items: center; justify-content: center;
 }
 .reveal .slides section.mca .mca-proxeq { margin: 0; }
-.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.62em; }
+.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.78em; }
 
 /* ---------------------------------------------------------------------------
    KEY CONCEPT: WAVELETS — the second excursion, built to rhyme with the
