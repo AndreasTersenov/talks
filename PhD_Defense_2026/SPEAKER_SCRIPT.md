@@ -1,8 +1,13 @@
 # SPEAKER_SCRIPT — PhD defense, University of Crete, 14 September 2026
 
-Format per `../docs/TALK-GUIDELINES.md` §11b. **`[CLICK]`** = fragment advance.
-**〔stage directions〕** = done, not said. **▲** = must survive verbatim as the wording drifts in
-rehearsal.
+Format per `../docs/TALK-GUIDELINES.md` §11b. **`[CLICK]`** = fragment advance. **▲** = must
+survive verbatim as the wording drifts in rehearsal. Everything else on the page is spoken.
+
+> Stage directions were stripped on 2026-09-07 (Andreas): *"I know what to do. You don't have to
+> tell me that, and this just makes the script harder to read."* The handful that carried something
+> other than delivery advice — words you might say, a hazard on a figure, an answer to a question —
+> are `>` notes now. **Do not put them back**: if a new note is not sayable and not a fact about the
+> deck, it does not belong in the file.
 
 **Every timing in this file is measured, not estimated** — spoken words divided by 140 wpm, with
 stage directions, cues and blockquotes excluded. The measurement is done by
@@ -64,9 +69,6 @@ Their beats are kept below, marked SKIP, and are still audited against the deck 
 numbers. **Two of them took material with them and it had to be rehomed** — see the banners on
 **A1.8** (the word *prior*, the Part 3 pointer, the point-estimate flag) and **A4.6** (the whole
 nulling thread).
-
-〔The budget table above is what the measuring tool prints. If it disagrees with the headings
-below, the tool has not been run since the last edit.〕
 
 **The slack in a 45-minute slot is deliberate and must stay slack** — pauses, the beat after a
 headline, and the seconds a room needs to look at a figure before you talk over it. It is not room
@@ -164,9 +166,6 @@ Fixed points (Andreas, 2026-08-26): **ΛCDM**, **cosmological probes**, **Euclid
 
 ## A0.1 — title · frame 1 · 0:27
 
-〔Stand still. Let the chair finish. Look at the room, not the screen. Do not rush this; the
-opening thirty seconds are the ones you can least afford to improvise.〕
-
 Thank you, and good morning. Thank you all for coming, and thank you to the committee for reading
 this.
 
@@ -179,32 +178,23 @@ I would like to start with the picture we are trying to fill in.
 
 ## A0.2 — the picture · frame 2 · 0:19
 
-〔The one slide in the deck that every person in the room already understands. **Do not teach it.**
-Orient them and move — no axes, no recombination, no redshifts, no numbers. Twenty-five seconds.〕
-
 This is the history of the Universe as we currently model it.
 
 It starts in a hot, almost uniform state, with very small fluctuations in density. It expands. And
 those fluctuations grow under gravity into the structure we observe today — galaxies, clusters, the
 cosmic web.
 
-〔**Optional, four seconds**, and the only reason to take it is that it earns Λ on the next slide:
-*and in the last few billion years, that expansion started speeding up again.* Drop it if you are
-behind; the next slide introduces Λ perfectly well cold.〕
+> **Optional, four seconds**, and the only reason to take it is that it earns Λ on the next slide:
+> *and in the last few billion years, that expansion started speeding up again.*
 
 ---
 
 ## A0.3 — what ΛCDM is, and where it stops · frame 3 · 0:45
 
-〔**Do not read the parameter columns and do not read the assumption list.** They are on the slide
-so that you do not have to say them — point at each group as you name it. The three reasons at the
-end are each a whole research field: you are naming them, not opening them.〕
-
 Our prevailing model for all of that is ΛCDM — Lambda, cold dark matter.
 
 It rests on a short list of assumptions, which are here, and once you accept them the whole thing is
-parameterised by **six** free numbers. 〔Point at the three columns. Do not define them — Ωm, σ8 and
-w₀ arrive at the first contour plot, where the room can see what they do.〕
+parameterised by **six** free numbers.
 
 **▲** And it has been extremely successful. Those six numbers fit the microwave background, the
 expansion history and the clustering of galaxies simultaneously.
@@ -214,14 +204,9 @@ expansion history and the clustering of galaxies simultaneously.
 cent of what it describes is two **dark components** whose nature we do not know. And **tensions**
 have appeared between independent probes.
 
-〔Land the three and stop. The third is the thread the rest of the introduction pulls.〕
-
 ---
 
 ## A0.4 — the probes, and the one we follow · frame 4 · 0:28
-
-〔One sentence, one click, and on. The box that lights is the lensing panel — point at it rather
-than saying "the bottom right one".〕
 
 So how do you test a model like that? Not by arguing about what Λ is — you measure the same numbers
 several independent ways and check that they agree. And there are several probes that do it.
@@ -238,9 +223,6 @@ matter directly, and it is sensitive to the geometry and the growth at once.
 > beat that can come back for free if the clock turns out generous — the decision is made *on*
 > frame 4, not in advance.
 
-〔If you take it: press DOWN, deliver, press UP, and carry straight on. Do not apologise for the
-detour.〕
-
 The consistency between independent probes is itself the test of the model. Measure the initial
 conditions with the microwave background, evolve them forward assuming ΛCDM, predict what we should
 see today — and then measure it. If ΛCDM is right, those agree.
@@ -253,16 +235,9 @@ best — came out about one point seven sigma below the Planck extrapolation in 
 [CLICK] Three ways to read that. New physics. A statistical fluctuation. **▲** Or something in the
 analysis itself.
 
-〔Do not resolve it. That third reading is the one this thesis is about, and it is enough to have
-said it once.〕
-
 ---
 
 ## A0.5 — what weak lensing measures · frame 6 · 1:03
-
-〔A new picture, and the last drawing in the introduction — everything after this is data. The
-slide has no fragments: it goes up whole. Give the room two seconds to read it before you start
-talking over it.〕
 
 Here is the same idea, drawn properly. Follow the light from those distant galaxies on its way to
 us.
@@ -284,8 +259,6 @@ That is cosmic shear, and it lets us map the matter back to redshift about three
 
 ## A0.6 — Euclid, and what the signal is · frame 7 · 1:08
 
-〔The "and now" beat. Let the clip run behind you; do not narrate the clip.〕
-
 And we are about to be able to do this properly.
 
 Euclid is a European Space Agency mission. It launched in 2023, it is taking data now, and it will
@@ -294,9 +267,6 @@ billions of galaxies. The first cosmological data release is in June 2027. Rubin
 the ground, and Roman deeper over a smaller area.
 
 **▲** That is roughly an order of magnitude more statistical power than the surveys we have today.
-
-〔The hand-off into the whole rest of the talk. Slow down, stand still, and let the last sentence
-land before you click on.〕
 
 [CLICK] **▲** And that signal is worth the trouble, because it is the statistical memory of
 everything the Universe has done since the Big Bang. The initial conditions, the growth of
@@ -308,9 +278,6 @@ And that is what this thesis is about.
 ---
 
 ## A0.7 — what it actually takes · frame 8 · 0:47
-
-〔The deck turns from black to paper here. Do not remark on it — let the room notice. This is a
-borrowed slide and you must say so.〕
 
 Before I show you my own picture of that, here is an honest one.
 
@@ -332,10 +299,6 @@ only at the very end, cosmology.
 > **canonical** — the board at frame 53 asks exactly these, in these words. If you change one here,
 > change it there.
 
-〔The thesis statement, and the map for everything after it. Walk the diagram left to right once,
-unhurried, touching each box — this is the picture the room sees again at the head of every part.
-Then slow right down for the ▲ and let it sit.〕
-
 So this thesis is about the analysis.
 
 Between the galaxy shapes we measure and the cosmological parameters we report there is a chain. A
@@ -349,10 +312,6 @@ calibration — before any of it is compared with the data.
 
 [CLICK] **▲** Every one of those stages is now built out of learned components, and every one of
 them can bias the answer, or quietly throw information away, with no internal check noticing.
-
-〔Beat. Then the four questions — one click each. Point at the box that lights up, ask the question,
-and let it sit before you move on. Do not race these: this is the map of the whole talk, and it is
-the last thing the room gets before the material starts.〕
 
 [CLICK] The first question is about this step here. Shear goes in, a mass map comes out. That
 inversion is not a measurement — it is a choice of algorithm, and there are many of them. The field
@@ -373,8 +332,6 @@ can read out of a map, and what does it take to turn that reading into a posteri
 Everything so far assumes the simulations tell the truth. They do not, quite — there is
 astrophysics in the real Universe that we cannot model, and it sits on the same scales as the
 signal. **▲** Does any of it survive that?
-
-〔Beat.〕
 
 Four questions. Two about the maps, two about the summaries. Each pair asks whether there is
 something to gain, and then whether we can actually have it. You will see this picture again at the
@@ -399,23 +356,16 @@ head of every part, with one box lit — and we come back to these four at the e
 
 ## A1.1 — the question · frame 10 · 0:23
 
-〔Act divider. Say the question, then stop. They saw it on the chain ninety seconds ago, so do not
-re-argue it — point at the lit box and let the callback do the work. Turn back to the room for the
-last line.〕
-
 Question one, and here is the same picture with the same step lit.
 
 Every map-based statistic in this talk starts from a reconstruction. So before anything else: does
 the choice of reconstruction change the cosmology we infer, or is it preprocessing?
 
-〔Beat, then turn to the screen.〕 To answer that I have to tell you what is being reconstructed.
+ To answer that I have to tell you what is being reconstructed.
 
 ---
 
 ## A1.2 — shear and convergence · frame 11 · 1:09
-
-〔The first slide that names quantities rather than telling a story, so drop the pace a little and
-stand still.〕
 
 So what is it we actually measure?
 
@@ -434,15 +384,9 @@ lifts out of the noise.
 **▲** So we measure the shear and we want the convergence. Getting from one to the other is a
 reconstruction, and that is where this thesis starts.
 
-〔The slide no longer carries that sentence — it was taken out of the deck on 2026-09-07 — so it is
-yours to land with nothing on screen backing you up. Slow down for it.〕
-
 ---
 
 ## A1.3 — what the convergence is · frame 12 · 0:44
-
-〔Do not read the equation. Point at the two pieces and say what each one carries. The map on the
-right is the object every result in this talk is computed on, so let it sit for a beat at the end.〕
 
 And this is what the convergence is. Add up all the matter along the line of sight, weighted by how
 efficiently each piece of it lenses — a weight that peaks about halfway to the galaxy whose light
@@ -459,10 +403,6 @@ And this is what one looks like. Every result I show you is computed on maps lik
 
 ## A1.4 — one potential, two observables · frame 13 · 0:30
 
-〔Short, and it must stay short. The whole job of this slide is to establish that a way across
-*exists* and is exact. The reason it does not work is the next slide, and if you start listing
-noise and masks here you will say them twice.〕
-
 So how do we get from the one to the other?
 
 Both are second derivatives of the same potential, so in Fourier space the relation inverts in a
@@ -472,14 +412,9 @@ Kaiser–Squires.
 **▲** Linear, fast, no free parameters — and on a complete, noiseless field, exact. So there is a
 way across, and it is not an approximation.
 
-〔Beat, and change tone for the next slide.〕
-
 ---
 
 ## A1.5 — the relation is exact, the measurement is not · frame 14 · 1:18
-
-〔The pivot of the act, and the slide the whole of Part 1 rests on. Be precise here, because the
-obvious framing is wrong: the problem is not that we are going the awkward way round.〕
 
 The relation is exact. The measurement is not.
 
@@ -509,9 +444,6 @@ kappa?
 
 ## A1.6 — the standard answer · frame 15 · 0:58
 
-〔Be fair to Kaiser–Squires. It is what the field has used for thirty years and it has good
-reasons. The point is not that it is bad, it is that its assumption is invisible.〕
-
 The standard answer is the one we just wrote down: apply the exact inverse anyway.
 
 That is what almost every survey has done for thirty years, and for good reasons — linear, no
@@ -529,10 +461,6 @@ applied bluntly and after the fact, and it removes exactly the small-scale struc
 
 ## A1.7 — every method is one term · frame 16 · 1:38
 
-〔The organising slide of the act, and with the Bayes slide gone to backup it is now the only place the word
-*prior* is defined before Part 2 leans on it. Take the methods one at a time; each is a physical
-statement about the convergence field, not a piece of machinery.〕
-
 So state the assumption up front instead.
 
 A reconstruction is a fit: the map that reproduces the shear you measured, which is the first term,
@@ -542,8 +470,6 @@ that problem, and the first term is identical for all of them.
 **▲** So the whole history of mass mapping is a history of the second term — what you are willing
 to assume a mass map looks like. Which is a **prior**, in everything but name: what we believe
 about the map before we look at the data.
-
-〔The list is up whole. Walk it with your hand, one line at a time — no clicks.〕
 
 Wiener filtering assumes a Gaussian field with a fixed power spectrum. Optimal, if that is true.
 But the late-time field is not Gaussian, and the peaks are the whole point.
@@ -577,9 +503,6 @@ we cannot write down.
 > Bayes is taught here. It no longer is, so **frame 37 is the only place Bayes appears in the talk**
 > and has come off that list.
 
-〔If it comes back: the **one** place Bayes is taught in the whole talk, so pitch the first
-paragraph at the widest person in the room and read the opening sentence almost verbatim.〕
-
 And there is a name for what we just did.
 
 **▲** Bayes' rule is bookkeeping for belief. What we should believe about the map after seeing the
@@ -602,9 +525,6 @@ unknown instead of a map — except that there, the likelihood is the one we *ca
 
 ## A1.9 — MCALens, and the step Part 2 replaces · frame 17 · 1:27
 
-〔The slide in Act 1 that Part 2 depends on. Land the proximal-operator sentence slowly — PnPMass
-is unintelligible without it, and this is the only place it gets said.〕
-
 MCALens is the only method here that does not treat the field as one thing.
 
 It models the convergence as a sum. A **Gaussian** component, handled by a Wiener filter that needs
@@ -622,8 +542,6 @@ where you were, and it may be nonsense as a map. **▲** The proximal operator i
 hands back the nearest map the prior will accept. Near, so you keep the progress you just made;
 acceptable, so you do not run away into noise. For sparsity it is simply thresholding.
 
-〔Deliberate pause. This sentence is the setup for the whole of Part 2.〕
-
 Remember that step, because in Part 2 we throw it away and put a neural network in its place.
 
 > **FLAG — inherited from the Bayes slide, now backup 106. Say it only if pressed, and say it in Part 2
@@ -634,9 +552,6 @@ Remember that step, because in Part 2 we throw it away and put a neural network 
 ---
 
 ## A1.10 — the stakes · frame 18 · 0:54
-
-〔The divider asked the question; this is where the room learns it was a real question and not a
-rhetorical one. Do not rush the last line — it is why the paper exists.〕
 
 So: three methods, three different maps — and every one of them reproduces the shear it was given.
 
@@ -654,9 +569,6 @@ it is not, that choice is a scientific decision, and it should be made deliberat
 
 ## A1.11 — the experiment · frame 19 · 0:52
 
-〔Fast and flat. This slide's only job is to make the result unimpeachable, so say the controls
-plainly and do not linger.〕
-
 So we built the pipeline and changed exactly one thing in it.
 
 Twenty-five cosmologies from cosmo-SLICS — everything here is on simulations, because we need a
@@ -670,14 +582,9 @@ thousand correlated pixels, so it has to be compressed before any likelihood can
 which statistic you compress with is a scientific choice of its own. That is Part 3. Here it is
 nailed down on purpose, so it cannot explain anything that moves.
 
-〔**Do not** explain peak counts here. That is Act 3's material and it is the biggest delivery risk
-in this act.〕
-
 ---
 
 ## A1.12 — the three maps · frame 20 · 0:39
-
-〔Point at the small scales, and give the room longer than feels natural to actually look.〕
 
 Here are the three reconstructions of the same simulated field.
 
@@ -692,10 +599,6 @@ plans to run. MCALens is the state-of-the-art alternative. That is the compariso
 
 ## A1.13 — the answer · frame 21 · 1:13
 
-〔The headline of the act. The whole ladder is on screen at once — there are no fragments here, so
-walk it with your hand, not with clicks. Slow down on the two numbers, and do not skip iKS:
-reporting the null result is what makes the positive one credible.〕
-
 Same twenty-five simulations, the same peak counts, the same emulator, the same likelihood, the
 same sampler. The only thing that changed is the reconstruction.
 
@@ -709,8 +612,6 @@ like the bispectrum, which uses the whole area, and the paper says so.
 And MCALens is a factor of two point six. In the paper's convention, a hundred and fifty-seven per
 cent.
 
-〔Beat.〕
-
 **▲** Here is the sentence I would most like you to keep. Measured on reconstruction error, MCALens
 beats Kaiser–Squires by four per cent. Measured on the figure of merit, by a hundred and
 fifty-seven.
@@ -718,15 +619,11 @@ fifty-seven.
 Map quality and constraining power are not the same objective. The method that makes the best map
 is not the method that gives you the best posterior.
 
-〔If pressed on precision: Chapter 2 reports no error bars — one chain per method. Say it before
-someone finds it.〕
+> **If pressed on precision:** Chapter 2 reports no error bars — one chain per method.
 
 ---
 
 ## A1.14 — where the gain comes from · frame 22 · 0:58
-
-〔The mechanism slide, and the one that survives the closed examination. No fragments: the whole
-ladder is up, so point along it. Take the time.〕
 
 So where does it come from?
 
@@ -740,8 +637,6 @@ down to two.
 **▲** So the gain is not a global normalisation. It is small-scale reconstruction fidelity —
 MCALens recovers structure at scales where the linear inversion has already smoothed itself into
 noise, and the higher-order statistic can read it.
-
-〔Beat, and turn back to the room.〕
 
 Which tells you where the effort belongs. The reconstruction is not preprocessing. It is a
 scientific choice, and it should be made with the statistic that comes after it in view.
@@ -760,9 +655,6 @@ scientific choice, and it should be made with the statistic that comes after it 
 
 ## A2.1 — the divider · frame 23 · 0:11
 
-〔The attribution goes here, said once, plainly, and at normal pace. Do not over-explain it and do
-not undersell it either.〕
-
 Question two, and the same box lit again.
 
 This chapter is joint work with Hubert Leterme. I co-developed the method, and the uncertainty
@@ -771,9 +663,6 @@ quantification is mine.
 ---
 
 ## A2.2 — what we actually want · frame 24 · 1:05
-
-〔The table goes up whole — it is a scoreboard, not a reading exercise. Point at **columns**, not
-rows, and go straight to the bottom line.〕
 
 If the reconstruction matters this much, what do we actually want from one? Four things, and they
 are the four columns. **Accurate.** **Flexible** — one model that still works when the noise level
@@ -791,9 +680,6 @@ change of footprint means retraining, and most hand you a point estimate with no
 ---
 
 ## A2.3 — the construction · frame 25 · 1:12
-
-〔The one idea in this act. Walk the three lines of algebra once, left to right, and land the last
-paragraph slowly.〕
 
 PnPMass.
 
@@ -824,10 +710,6 @@ belongs. Change the noise, change the footprint: the same trained network runs.
 
 ## A2.4 — the iteration, step by step · frame 26 · 0:32
 
-〔Seven clicks of the same figure filling in. Do **not** narrate every click — start it, say what
-changes, then click through the rest in silence while the room watches. Talking over all seven is
-the fastest way to lose ninety seconds you needed elsewhere.〕
-
 Here is what that looks like running.
 
 [CLICK] We start from the raw Kaiser–Squires inversion — noise everywhere.
@@ -844,8 +726,6 @@ network's guess at the answer in one pass — a fixed point of an operator that 
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
 > one clause if anyone needs it. It now carries the UQ slide as its vertical: press DOWN from 112.
-
-〔Five more clicks of the same kind. Same rule: start it, then let it run.〕
 
 [CLICK] And there is a variant worth thirty seconds, because it is the one that performs best.
 
@@ -889,18 +769,14 @@ level that holds whether or not the model is well specified.
 
 ## A2.7 — accurate, and honest about it · frame 27 · 2:03
 
-〔Three panels; the claim is the error bars. Do not let the accuracy comparison become the subject —
-it is the setup for the real result. Then slow down for the limitations: volunteering them here
-buys you credibility for Acts 3 and 4.〕
-
 The map is only half a result, so before the plot: a second network, trained the same way on the
 same simulated pairs, predicts the error of the reconstruction — one forward pass, no sampling.
 **▲** And because a network's own variance is not a guarantee, we calibrate it: conformalised
 quantile regression against a held-out set, which is distribution-free and does not require the
 network to be right.
 
-〔That is the whole of backup frame 112, compressed. Do not cut it further — the result below
-is meaningless without it.〕
+> Those two sentences are the whole of backup frame 112, compressed. Cutting them makes the result
+> below meaningless.
 
 Which gives this, the whole result in one plot. Reconstruction error across, the size of the
 calibrated interval up — down and to the left is better.
@@ -920,8 +796,6 @@ where the structure is, which is what lets the bars stay small everywhere else.
 whenever the footprint or the noise changes. We train once. **▲** That is the difference between a
 method that wins a benchmark and one Euclid could actually run.
 
-〔Beat. Then the limits, plainly.〕
-
 Two limits. The coverage is marginal, not conditional — it holds on average over pixels, and what
 escapes concentrates at the peaks, which is exactly where Part 1 said the information lives. And
 this is a single cosmology.
@@ -939,9 +813,6 @@ this is a single cosmology.
 
 ## A3.1 — where we are · frame 28 · 0:44
 
-〔Stop and turn back to the room. This is the only structural pause in the second half of the talk,
-and it is worth the ten seconds it costs.〕
-
 Stop and look at where we are.
 
 Both projects so far — does the reconstruction matter, and can we build a better one with honest
@@ -956,8 +827,6 @@ at the start, in that order: Part 3 builds the statistic that reads the most out
 
 ## A3.2 — same chain, one step to the right · frame 29 · 0:35
 
-〔The same diagram, and you want the room to watch the light move. Point, do not re-describe.〕
-
 Same picture, and watch which boxes light.
 
 [CLICK] A map is a hundred thousand correlated pixels. No likelihood can touch that directly, so it
@@ -970,9 +839,6 @@ summary comes out. We come back to the rest of the chain when we reach the infer
 ---
 
 ## A3.3 — the baseline everybody uses · frame 30 · 1:06
-
-〔Be genuinely fair here. Half the room has spent a career on two-point statistics and the
-committee contains people who will notice if you are not.〕
 
 Start from the thing everybody uses.
 
@@ -997,9 +863,6 @@ Gaussian.
 
 ## A3.4 — and it is not · frame 31 · 0:21
 
-〔Two frames, one argument. Put the pair up and say almost nothing — the figure is the whole point,
-and the room needs a moment to see that the two panels look nothing alike.〕
-
 And gravity has had thirteen billion years to make sure it is not.
 
 These two fields have **the same power spectrum**. One of them is a simulated convergence map; the
@@ -1020,9 +883,6 @@ at it you need statistics beyond two-point: peaks, wavelets, the ℓ1-norm, Mink
 ---
 
 ## A3.6 — and it is worth having · frame 33 · 0:40
-
-〔A forecast, not a measurement, and **not our parameters** — say both, briefly, before anyone
-squints at the axes. Figure swapped 2026-09-06 for the four-curve version from the same paper.〕
 
 And it is worth having. Forecasts on the same convergence maps — Virginia Ajani's figure, on the
 neutrino mass rather than my parameters, which does not matter here.
@@ -1074,10 +934,6 @@ peaks — and there is no threshold to choose and no definition of a peak to def
 
 ## A3.10 — what a wavelet is · frame 34 · 1:48
 
-〔An excursion, and the one place in the talk where the thesis reaches outside cosmology. Two
-frames, then move on. The figures teach — these are the words that go with them, not a second
-explanation.〕
-
 I have just put the words *peak counts* and *starlet* on the screen without defining either, and
 both of our higher-order statistics are built on a wavelet transform. So: thirty seconds on what
 that is, and then I will define them properly.
@@ -1105,8 +961,8 @@ can be handled one at a time, which will matter in Part 4.
 
 ## A3.11 — the two statistics · frame 35 · 1:39
 
-〔Four clicks: define a statistic, then show its shape. Do not read the formula. **Do not quote the
-band labels on the figure** — it is a thesis illustration at a finer pixel scale than our analysis.〕
+> **The band labels printed on the figure are not ours** — it is a thesis illustration at a finer
+> pixel scale. The analysis uses the four finest dyadic bands, roughly 10 to 80 arcminutes.
 
 So here are our two higher-order statistics, and they are both one-point statistics — histograms of
 pixel values — made multi-scale by that same starlet transform.
@@ -1133,9 +989,6 @@ voids. **▲** That picture is what "every pixel contributes" means, and it is t
 
 ## A3.12 — and then it has to become a posterior · frame 36 · 0:45
 
-〔Same diagram, third time, and now the right-hand end. This is the hinge into the inference
-machinery, so make the difficulty explicit rather than sliding past it.〕
-
 Same picture one more time, and now the other end of it. We have a summary; we need a posterior.
 
 [CLICK] **▲** Here is the difficulty that shapes everything after it. For the power spectrum you
@@ -1150,9 +1003,6 @@ and learn the relationship. That is simulation-based inference.
 ---
 
 ## A3.13 — the classical route · frame 37 · 1:08
-
-〔Bayes itself is not the content — everyone here has it, and Part 1 already taught it once. What
-is new is the middle term and what it costs.〕
 
 The classical route, in one line, and it is the same rule as in Part 1 with the parameters as the
 unknown instead of a map.
@@ -1173,9 +1023,6 @@ a count statistic in the tail of a non-Gaussian field.
 
 ## A3.14 — generative modelling · frame 38 · 1:02
 
-〔The one moment in the talk that reaches outside cosmology, and worth the thirty seconds precisely
-because the room has been hearing about these models for three years. Then get off it.〕
-
 So we need different machinery, and it comes from a part of machine learning most of you have been
 reading about.
 
@@ -1195,9 +1042,6 @@ use for cosmological inference is the same object.
 
 ## A3.15 — normalizing flows · frame 39 · 1:08
 
-〔One click only on this slide, whatever the notes on it say. Walk the picture: a Gaussian, bent,
-stretched, bent again.〕
-
 So we need a way to represent a distribution that is three things at once: flexible enough to be an
 arbitrary posterior, samplable, and with a density we can evaluate. **▲** Those three rarely come
 together — a histogram is not flexible, a GAN gives no density, an MCMC chain gives samples but no
@@ -1215,9 +1059,6 @@ and instead of one distribution you have a family — a posterior you can fit.
 ---
 
 ## A3.16 — simulation-based inference · frame 40 · 1:24
-
-〔Three stages, one click each. The last click is the one that matters and it is not the obvious
-one, so do not let it become a footnote.〕
 
 Which gives us this.
 
@@ -1245,8 +1086,6 @@ was never written down and nothing else would catch a bad one.
 
 ## A3.17 — the objection I would raise myself · frame 41 · 0:53
 
-〔A hinge, not a result. Keep it short, and do not front-load the answer.〕
-
 So we have a statistic that reads more than the power spectrum. But look at the middle box again:
 the summary is the one part of this chain we still choose *by hand*.
 
@@ -1263,8 +1102,6 @@ statistic under matched conditions.
 ---
 
 ## A3.18 — what "optimal" means here · frame 42 · 0:48
-
-〔The definition the whole result rests on. Say it once, precisely.〕
 
 And you have to be careful what optimal means, so here is the one we use.
 
@@ -1284,8 +1121,6 @@ sufficiency result.
 
 ## A3.19 — a fair comparison · frame 43 · 0:23
 
-〔Fast and flat, like A1.11. Its only job is to make the result unimpeachable.〕
-
 Same maps, two summaries, the same flow, the same calibration.
 
 Flat-sky ten-degree patches, so that any cross-maps we build later are physically constructible
@@ -1296,9 +1131,6 @@ compressor, not data scarcity.
 ---
 
 ## A3.20 — read bin by bin, the ℓ1-norm trails · frame 44 · 0:54
-
-〔Report the observation. Note the asymmetry. **Do not** diagnose it — the next two slides are the
-experiment that finds out, and asserting the cause here costs you the payoff.〕
 
 And read bin by bin, the network wins.
 
@@ -1316,11 +1148,6 @@ account for all of the gap, some of it, or none. So close the asymmetry and meas
 ---
 
 ## A3.21 — tomography · frame 45 · 1:06
-
-〔**The one build in Act 3 that teaches rather than decorates** — restored 2026-09-07 after it was
-stripped in the animation audit, which was a mistake. It is not a picture appearing, it is the same
-picture with the highlight moving, and what it shows is *why* the bins are not independent — the
-premise the next two slides are built on. Eight clicks: say the line, then click.〕
 
 The geometry first, because everything after it depends on this.
 
@@ -1345,13 +1172,6 @@ shared part.
 
 ## A3.22 — two places to intervene · frame 46 · 1:35
 
-〔The methods slide of the paper, and the densest thing in Act 3. Take it slowly, and land the last
-sentence — it is the reason the joint ℓ1-norm exists.
-
-Three clicks since 2026-09-07: route one is alone on the slide first, so the room finishes the
-obvious idea before the alternative is on screen to distract from it. Then route two arrives, then
-the plane swaps for the definition, then the punchline.〕
-
 The gap is structural, so there are exactly two places to intervene: the input, or the statistic.
 
 **Route one**, the obvious one, and the only thing on the screen for now: manufacture the
@@ -1375,8 +1195,6 @@ needs no new map at all.
 
 ## A3.23 — the answer · frame 47 · 1:00
 
-〔THE headline of the act. Build it arm by arm, and be exact about what it is and what it is not.〕
-
 So: same maps, same flow, four summaries.
 
 [CLICK] The ℓ1-norm read one bin at a time: two thousand four hundred and forty-eight.
@@ -1388,8 +1206,6 @@ thousand three hundred and seventy-one.
 
 [CLICK] And the CNN lands at three thousand three hundred and twenty-six. **▲** On top of it. Not
 above it.
-
-〔Beat. Then be precise, because this is the sentence the committee will test.〕
 
 **▲** That is a tie, and I want to call it a tie rather than a win. The network's coverage is
 mildly conservative, which plausibly accounts for the analytical statistic sitting a hair above.
@@ -1413,17 +1229,12 @@ And the tie holds on every parameter, over nine thousand mock observations.
 
 ## A4.1 — the collision of scales · frame 48 · 1:25
 
-〔Turn back to the room for the first sentence — it is a change of subject, and the deck does not
-mark it. Then let them read the figure before either band appears.〕
-
 Everything so far has been on clean simulations. **▲** Stage IV is not statistics-limited any more,
 it is systematics-limited — so what decides whether higher-order statistics can be used is not how
 much they gain, it is how they behave under contamination.
 
 And the worst offender is baryonic feedback: AGN and supernovae push gas out of haloes and suppress
 the matter distribution on small scales, in a way that mimics a cosmological signal.
-
-〔Point at the figure. Let it sit.〕
 
 **▲** Here is the problem in one picture. The information beyond two-point lives at small scales.
 The contamination lives at small scales. They are the same scales, and it is where the feedback
@@ -1444,9 +1255,6 @@ nothing beyond-Gaussian left worth having — the power spectrum would have done
 
 ## A4.2 — the pipeline, again · frame 49 · 0:31
 
-〔A deliberate refresher — it has been a while since the general SBI slide. Walk it quickly and do
-not linger on the machinery. One detail is load-bearing; everything else is scenery.〕
-
 Same machinery as before, quickly. [CLICK] Convergence maps from CosmoGrid, [CLICK] Euclid-like
 noise added, [CLICK] wavelet transform, summary statistics, [CLICK] conditioning a normalizing
 flow, and the posterior comes off it.
@@ -1458,9 +1266,6 @@ cut possible at all — a contaminated band can be dropped without touching the 
 ---
 
 ## A4.3 — how big is the bias · frame 50 · 0:58
-
-〔Both panels go up whole — this used to take seven clicks and the room read ahead anyway. The
-number to protect is the *ordering*, not the decimals.〕
 
 So: how badly are we biased if we do nothing?
 
@@ -1479,9 +1284,6 @@ scales. That is the honest starting point.
 ---
 
 ## A4.4 — what it costs to buy back · frame 51 · 1:02
-
-〔Be scrupulously fair to the power spectrum here. The wavelet cut is *coarser*, and saying so is
-what makes the next slide credible.〕
 
 So we cut. The criterion is to bring the baryonic bias below three tenths of a sigma, and the two
 statistics pay for it in different currencies.
@@ -1502,10 +1304,6 @@ the next slide is a floor.
 
 ## A4.5 — is there anything left · frame 52 · 1:51
 
-〔The answer to question four, and the numbers matter. Be precise about the peak counts — the
-temptation is to let them disappear into "the higher-order statistics", and that would be
-overclaiming.〕
-
 And the answer is yes. Same maps, same cut, three summaries, laid on top of each other.
 
 [CLICK] The power spectrum, on the scales it is allowed to keep.
@@ -1514,9 +1312,6 @@ And the answer is yes. Same maps, same cut, three summaries, laid on top of each
 
 [CLICK] And the ℓ1-norm — with the numbers beside it: **one point eight times** tighter than the
 power spectrum at Stage IV, and **two point six times** tighter at full sky.
-
-〔The whole right-hand column lands on that third click, since 2026-09-07 — the contour and its
-numbers are one beat, not three. Read down it; do not click again.〕
 
 Be precise about the peak counts, because they are the weaker of the two. They reach
 approximate parity with the power spectrum at Stage-IV areas and slightly exceed it at full sky; at
@@ -1532,9 +1327,6 @@ degeneracy directions differ, so a joint analysis would still gain.
 scales — these are not only deep-non-linear probes, which is what people assume. And this is a
 floor: our cut is not optimised, and a finer filter bank or a cut in signal-to-noise rather than in
 scale would recover more.
-
-〔This is now the last result in the talk — frames 65 and 66 are skipped — so close the act rather
-than trailing off. Turn back to the room.〕
 
 **▲** So: baryonic feedback is a dominant systematic, it biases the higher-order statistics more
 than it biases the power spectrum, and even after cutting every scale it measurably touches, the
@@ -1562,9 +1354,6 @@ than it biases the power spectrum, and even after cutting every scale it measura
 > The beat is kept verbatim in case the clock turns out kind, or in case a committee member asks
 > for it in full.
 
-〔The third result, and it stands on its own. Plant the parenthesis about the cross-spectra and do
-*not* explain it — it pays off on the next slide. Then pause on the paradox.〕
-
 The third thing we looked at is a way of making those cuts less blunt.
 
 Nulling — the BNT transform — is a linear re-mixing of the tomographic bins that cancels the
@@ -1579,7 +1368,8 @@ works, provided you keep the cross-spectra between transformed bins.
 originally-independent shape noise across bins, the noise floor rises, and the contours **inflate**
 — worse than standard tomography even with conservative cuts.
 
-[CLICK] [CLICK] 〔Pause here.〕 And that should be impossible.
+[CLICK] [CLICK]
+ And that should be impossible.
 
 **▲** BNT is a fixed, invertible matrix. The Jacobian cancels in Bayes' rule, the Fisher
 information is unchanged, and the posterior from the full field is identical in both frames. And
@@ -1596,9 +1386,6 @@ the signal-to-noise was, in their words, highly non-trivial.
 > **MOVED TO BACKUP with A4.6** — the two are one argument and neither works alone. They are now
 > frames 65 and 66, immediately in front of the three explainers that account for them.
 
-〔The best moment in the talk, because the answer is the statistic built two slides earlier for an
-unrelated reason. Build the ladder, then cash the parenthesis from A4.6.〕
-
 So we asked what it takes to get the information back, and ran the same four summaries through the
 nulled frame.
 
@@ -1614,16 +1401,12 @@ keeps **seventy-two** per cent.
 span a factor of six. The transform did not destroy information — it moved it somewhere only a
 summary that reads the bins jointly can see.
 
-〔Now cash the parenthesis.〕
-
 **▲** And the power spectrum was the first rung of this same ladder all along. Auto plus cross
 spectra are closed under the transform, and so exactly invariant; the auto-spectra alone keep only
 the diagonal, and are not. That is the same statement.
 
 **▲** So the practical message, for anyone planning a nulled analysis: nulling need not cost a
 higher-order analysis anything, provided some stage of the pipeline reads the bins jointly.
-
-〔The honest residual — say it, do not wait to be asked.〕
 
 The joint ℓ1-norm keeps seventy-two per cent, not all of it. The remainder is genuine three- and
 four-bin structure that a pairwise statistic cannot reach, and that is the one place the network
@@ -1651,12 +1434,6 @@ keeps an advantage.
 > The paper references came off. They are on the part dividers where they belong, and the talk
 > should end on the science rather than on a bibliography.
 
-〔The last slide, and it stays up through questions. It is a **return** — the same four questions
-from the chain at the start, in the same words — so do **not** read the questions out again. The
-room has seen them. Read the four answers, one beat each, and stop.
-
-No fragments: the whole board is up. Point down it with your hand.〕
-
 These were the four questions I put up at the start. Here are the answers.
 
 **Question one.** Mass mapping is not preprocessing. Swap the reconstruction and nothing else, and
@@ -1677,12 +1454,9 @@ statistics more than it biases the power spectrum — and still, once every cont
 cut, the ℓ1-norm is one point eight times tighter than the power spectrum at Stage IV and two point
 six at full sky. **▲** And that is a floor, because our scale cut is the crudest one available.
 
-〔The nulling result belongs here too and is deliberately not said — see A4.6. If a committee
-member has asked about it during the talk, add one sentence: *and the same joint reading is what
-makes redshift nulling survivable for a higher-order analysis, which is in the thesis.*〕
-
-〔Beat. Then the one line that ties them together — it is **not** on the slide any more, so it is
-spoken over the four answers. Then stop, and turn to the chair.〕
+> The nulling result belongs here too and is deliberately not said — see A4.6. If it has come up
+> during the talk, add one sentence: *and the same joint reading is what makes redshift nulling
+> survivable for a higher-order analysis, which is in the thesis.*
 
 **▲** Two of those questions were about the maps and two about the summaries, and both pairs
 answered the same way: a step the field treats as neutral — which reconstruction, which statistic —
@@ -1852,7 +1626,7 @@ think the question is, and the first is the one I would ask myself.
 **0. "Why did you not present the nulling result?"**
 Time, and it is the honest answer. It is the one result in the thesis that needs three pieces of
 machinery before the payoff means anything, and I would rather answer it properly here than rush it
-on a slide. 〔Then the setup above, then question 9.〕
+on a slide. Then the setup above, then question 9.
 
 **1. "You compare against a CNN. Did you try hard enough to make the CNN win?"**
 The honest form of the objection, and it deserves the working. Getting the network to 3326 took an

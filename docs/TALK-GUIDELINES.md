@@ -783,8 +783,12 @@ also makes the timing measurable, which bullets never are.
 - `[CLICK]` marks a fragment advance, placed in the sentence where it belongs. **These are load-bearing
   and they go stale.** Every time a build changes, the cues must be resynced — a `[CLICK]` pointing at
   a fragment that no longer exists is discovered mid-rehearsal, at the worst possible moment.
-- `〔stage directions〕` for anything you do rather than say: where to turn, where to pause, where to
-  point. Never spoken, visually distinct so the eye skips them when reading ahead.
+- `〔stage directions〕` for anything you do rather than say. **Use them sparingly, and only for what
+  you would not already know.** A script full of *stand still*, *do not rush*, *point at the figure*
+  is a script that is harder to read under pressure than one without them, and the speaker wrote it —
+  they know. What earns a note is a **fact**: words you might optionally say, a number on a borrowed
+  figure that is not yours to quote, an answer to hold for questions. Those read better as a `>`
+  note than as a bracket.
 - `**▲**` on sentences that must survive verbatim as the wording drifts in rehearsal. These are the
   ones carrying a claim you do not want to soften under pressure — the concession you make before
   anyone can raise it, the precise statement of a result, the honest caveat.
