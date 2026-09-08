@@ -1266,20 +1266,25 @@
 					</div>
 				</div>
 
-				<p class="lead-line">MCALens is the only <b>non-linear</b> method of the three, and the only one that models the non-Gaussian structures separately from the Gaussian background.</p>
+				<p class="lead-line">Mass mapping has been treated as a <b>preprocessing step</b> with little effect on
+					the cosmology, which is why the Euclid baseline is the simplest method, Kaiser&ndash;Squires.</p>
 				<aside class="notes">
 					SAY: three methods on the same simulated field. KS is the direct linear inversion — the noise
 					diverges at small scales so it has to be smoothed. iKS fills the mask with a DCT inpainting first.
 					MCALens is different in kind: a two-component model, Gaussian plus sparse, separated inside the
 					reconstruction. Point at the small scales: KS has smoothed them away. And say the stake out loud:
-					the two on the left are what Euclid plans to run. MCALens is the state-of-the-art alternative.
-					That is the comparison — the baseline a real survey will use, against the best we can currently do.
+					the two on the left are what Euclid plans to run, because mass mapping has been treated as a
+					preprocessing step that does not affect the cosmology, so the simplest method became the default.
+					MCALens is the state-of-the-art alternative. That is the comparison — the baseline a real survey
+					will use, against the best we can currently do.
 				</aside>
 			</section>
 
 			<!-- ============ A1.4 — the answer ============ -->
 			<section data-theme="light">
-				<h3 class="slide-title tight"><span class="sec">§1</span> MCALens improves the figure of merit by <b class="alert">157 %</b> over Kaiser&ndash;Squires, by making more information in the data available.</h3>
+				<h3 class="slide-title tight"><span class="sec">§1</span> MCALens improves the figure of merit by <b
+						class="alert">157 %</b> over Kaiser&ndash;Squires, by making more information in the data
+					available.</h3>
 
 				<div class="resultpair">
 					<figure class="fig">
@@ -1326,8 +1331,12 @@
 						-->
 
 						<div class="takeaway">
-							<span class="label">reconstruction error vs constraining power</span>
-							MCALens improves the RMSE by only <b>4 %</b>, but the figure of merit by <b class="alert">157 %</b>.
+							<span class="label"></span>
+							<ul class="points dots">
+								<li>MCALens improves the RMSE by only <b>4 %</b>, but the figure of merit by <b
+										class="alert">157 %</b></li>
+								<li>&rArr; WL surveys should use <b class="alert">advanced reconstruction</b>
+									methods.</li>
 						</div>
 					</div>
 				</div>
@@ -1337,7 +1346,9 @@
 					SAY: it changes it. KS is the baseline at one. Inpainting buys nothing — 0.996, a null result, and
 					I report it as one. MCALens is a factor 2.6, the paper's 157 per cent. Then the sentence to keep:
 					four per cent better on reconstruction error, a hundred and fifty-seven per cent better on the
-					figure of merit.
+					figure of merit. [CLICK] Then the implication for a survey: mass mapping was treated as a step
+					that did not matter, which is why everyone went for the simplest method. It matters, so for real
+					cosmological results we need to push for advanced algorithms.
 				</aside>
 			</section>
 

@@ -515,18 +515,19 @@ Part 3. Here they are nailed down on purpose.
 
 ---
 
-## A1.12 — the three maps · frame 20 · 0:30
+## A1.12 — the three maps · frame 20 · 0:42
 
 Three reconstructions of the same simulated field. Kaiser–Squires has to be smoothed, so the small
 scales are gone. Inpainting fills the mask first and is otherwise the same. MCALens is different in
 kind, and you can see it — the structure survives.
 
-**▲** And the two that assume nothing about kappa are what Euclid plans to run. That is the
-comparison.
+**▲** And the two that assume nothing about kappa are what Euclid plans to run, because mass mapping
+has been treated as a preprocessing step that does not affect the cosmology, so the simplest method
+became the default. That is the comparison.
 
 ---
 
-## A1.13 — the answer · frame 21 · 0:50
+## A1.13 — the answer · frame 21 · 1:18
 
 Only the reconstruction changed. **▲** And it changes the answer.
 
@@ -538,6 +539,11 @@ exclude anyway. And MCALens is a factor of two point six — a hundred and fifty
 Kaiser–Squires by four per cent. On the figure of merit, by a hundred and fifty-seven.
 
 Map quality and constraining power are not the same objective.
+
+[CLICK] **▲** And this is what it means for a survey. Mass mapping was treated as a small step that
+did not matter, which is why everyone went for the simplest method, Kaiser–Squires. It matters: the
+choice of reconstruction changes the cosmological constraints substantially, so for real cosmological
+results we need to push for advanced algorithms.
 
 > **If pressed on precision:** Chapter 2 reports no error bars — one chain per method.
 
@@ -568,24 +574,27 @@ be made with the statistic that follows it in view.
 
 ---
 
-## A2.1 — the divider · frame 23 · 0:13
+## A2.1 — the divider · frame 23 · 0:31
 
-Question two, and the same box lit again.
+Question two, and the same box lit again. Since the reconstruction matters, we need the best possible
+algorithm for a survey like Euclid. MCALens is the best of the unsupervised methods. But what about
+supervised ones: has deep learning been applied to mass mapping?
 
 This chapter is joint work with Hubert Leterme. I co-developed the method, and the uncertainty
 quantification is mine.
 
 ---
 
-## A2.2 — what we actually want · frame 24 · 0:47
+## A2.2 — what we actually want · frame 24 · 0:52
 
-So what do we want from a reconstruction? Four things — the four columns. Accurate. Flexible, so
-one model survives a change of noise or footprint. Fast enough for a survey. And reliable
-uncertainties.
+The answer is yes, several times over, and it works. So what do we want from a reconstruction? Four
+things — the four columns. Accurate. Flexible, so one model survives a change of noise or footprint.
+Fast enough for a survey. And reliable uncertainties.
 
 The model-driven methods give you two: Wiener assumes Gaussianity, the assumption this thesis
-exists to avoid, and MCALens is slow. Deep learning has been tried and it works — but each network
-is trained for one noise level and one mask, and most hand you a point estimate with no error bar.
+exists to avoid, and MCALens is slow. The deep-learning ones are accurate and fast — but each
+network is trained for one noise level and one mask, and most hand you a point estimate with no
+error bar.
 
 **▲** Nothing had all four. That last row is the paper.
 

@@ -491,7 +491,7 @@ raises the obvious question about the same box: what if you do not write the pri
 
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
-| 2.1 | *Flexible, fast, accurate and honest about its uncertainty — at once?* | chain, box 2 still lit, + **attribution** | new | 0:35 |
+| 2.1 | *Accurate, flexible and fast, with reliable uncertainties, at the scale of Euclid?* (spoken transition: the reconstruction matters, so what about supervised methods?) | chain, box 2 still lit, + **attribution** | new | 0:35 |
 | 2.2 | Every existing reconstruction gives up at least one of the four | two method-family cards + "what we want" | built | 1:00 |
 | 2.3 | **TEACH** One denoiser, trained once, inside a fixed-point iteration | PnP forward–backward diagram | lift | 1:30 |
 | 2.4 | **TEACH** Distribution-free per-pixel intervals, calibrated on held-out data | conformal / CQR schematic | lift | 0:55 |
