@@ -119,9 +119,70 @@
 		});
 	}
 
+	/**
+	 * The flowchart (<template id="wl-chart">), same idea as the chain: cloned into
+	 * every `.chart-slot`.  Elements carry data-key, wires carry data-key="a-b".
+	 *   data-steps="a b | c d e"  -> on-1, on-2 … (one set per .qstep click)
+	 *   data-focus="a b c"        -> is-lit (shown when a .pipe-focus fragment is visible)
+	 * A wire lights when both of its ends are in the set.
+	 */
+	function buildCharts() {
+		var tpl = document.getElementById('wl-chart');
+		if (!tpl || !tpl.content) { return; }
+		var slots = document.querySelectorAll('.chart-slot');
+		Array.prototype.forEach.call(slots, function (slot) {
+			if (slot.dataset.chartDone) { return; }
+			var frag = tpl.content.cloneNode(true);
+			var chart = frag.querySelector('.chart');
+			if (!chart) { return; }
+			// Arrowheads as plain triangles at the end of each wire, added here rather
+			// than as SVG markers: markers are referenced by id, the chart is cloned
+			// several times, and a marker on a hidden slide does not render.  Paths use
+			// M / H / V only, so the end direction is read off the last two points.
+			Array.prototype.forEach.call(chart.querySelectorAll('.wires path.w'), function (w) {
+				var d = w.getAttribute('d') || '', x = 0, y = 0, px = 0, py = 0;
+				var re = /([MHV])\s*(-?[\d.]+)(?:[\s,]+(-?[\d.]+))?/g, t;
+				while ((t = re.exec(d))) {
+					px = x; py = y;
+					if (t[1] === 'M') { x = +t[2]; y = +t[3]; }
+					else if (t[1] === 'H') { x = +t[2]; }
+					else { y = +t[2]; }
+				}
+				var L = 13, W = 6, pts;
+				if (y === py) { var sx = x > px ? 1 : -1; pts = [[x, y], [x - sx * L, y - W], [x - sx * L, y + W]]; }
+				else { var sy = y > py ? 1 : -1; pts = [[x, y], [x - W, y - sy * L], [x + W, y - sy * L]]; }
+				var head = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				head.setAttribute('class', w.getAttribute('class') + ' hd');
+				head.setAttribute('d', 'M' + pts.map(function (p) { return p[0] + ' ' + p[1]; }).join(' L') + ' Z');
+				head.dataset.key = w.dataset.key;
+				w.parentNode.insertBefore(head, w.nextSibling);
+			});
+			function mark(set, cls) {
+				var keys = set.split(/\s+/).filter(Boolean);
+				keys.forEach(function (k) {
+					var el = chart.querySelector('.el[data-key="' + k + '"]');
+					if (el) { el.classList.add(cls); }
+					else if (window.console) { console.warn('[chart] no element "' + k + '"'); }
+				});
+				Array.prototype.forEach.call(chart.querySelectorAll('.wires .w'), function (w) {
+					var ends = (w.dataset.key || '').split('-');
+					if (keys.indexOf(ends[0]) >= 0 && keys.indexOf(ends[1]) >= 0) { w.classList.add(cls); }
+				});
+			}
+			if (slot.dataset.steps) {
+				slot.dataset.steps.split('|').forEach(function (set, i) { mark(set, 'on-' + (i + 1)); });
+			}
+			if (slot.dataset.focus) { mark(slot.dataset.focus, 'is-lit'); }
+			slot.appendChild(frag);
+			slot.dataset.chartDone = '1';
+		});
+	}
+
+	function buildAll() { build(); buildCharts(); }
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', build);
+		document.addEventListener('DOMContentLoaded', buildAll);
 	} else {
-		build();
+		buildAll();
 	}
 })();

@@ -241,3 +241,21 @@ Before staging an `r-stack`, check whether frame *N* already contains frames 1�
 they generally do. If so, showing the final state is one `<img>` rather than a stack, and dropping
 the build costs nothing. Check by counting colour populations per frame with PIL rather than
 assuming.
+
+---
+
+## 10. SVG markers break when a template is cloned onto several slides
+
+An arrowhead drawn as `<marker id="hd">` and referenced with `marker-end: url(#hd)` works on one
+slide and silently disappears on the others as soon as the same SVG is cloned into several
+`<section>`s. Every clone carries an element with the same id; the browser resolves `url(#hd)` to
+the **first** one in the document, and a marker inside a slide reveal has hidden does not render.
+So the heads show on whichever slide happens to come first and vanish everywhere else — no error,
+the lines are simply bare. Cost a round trip on `PhD_Defense_2026` when the chain flowchart went
+from slide 8 to the two chain returns.
+
+Fix used: no markers. `pipeline.js` reads the last two points of each wire's `d` (the paths are
+`M`/`H`/`V` only) and appends a small filled triangle `<path class="… hd">` with the same classes
+as the wire, so the dim and lit rules colour the head with its line. Anything that must survive
+cloning (markers, gradients, clip paths, filters) has the same problem: either give each clone its
+own ids at build time or draw the thing as geometry.

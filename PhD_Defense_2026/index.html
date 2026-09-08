@@ -414,8 +414,13 @@
 				<span class="qstep s1 fragment" data-fragment-index="1"></span>
 				<span class="qstep s2 fragment" data-fragment-index="2"></span>
 
-				<div class="pipeline-slot" data-steps="shear maps | maps summaries inference posterior">
-				</div>
+				<!-- The chain laid out as a flowchart (2026-09-08), in the spirit of the DES
+				     Y3 figure on the slide before.  The drawing lives ONCE in <template
+				     id="wl-chart"> at the end of the file and pipeline.js clones it into every
+				     .chart-slot; `data-steps` lists the elements each click lights (wires
+				     between two lit elements light with them).  The chain returns in Parts 3
+				     and 4 use the same template with `data-focus`. -->
+				<div class="chart-slot" data-steps="shear mm kmap | kmap comp summ inf post"></div>
 
 				<!-- one bay, two cards stacked in it: the slide never changes height, so the
 				     diagram above does not walk up and down the screen as the cards turn over -->
@@ -2247,7 +2252,7 @@
 				     selector on this element's `.visible` class. -->
 				<span class="pipe-focus fragment" data-fragment-index="2"></span>
 
-				<div class="pipeline-slot" data-focus-on-fragment="maps summaries"></div>
+				<div class="chart-slot" data-focus="kmap comp summ"></div>
 
 				<p class="note fragment fade-in" data-fragment-index="1">
 					The map has to be <b>compressed</b> into a summary statistic before inference, and the choice of
@@ -2850,8 +2855,7 @@
 
 				<span class="pipe-focus fragment" data-fragment-index="2"></span>
 
-				<div class="pipeline-slot"
-					data-focus-on-fragment="summaries inference posterior prior simulations systematics"></div>
+				<div class="chart-slot" data-focus="summ inf post prior sims syst"></div>
 
 				<p class="note fragment fade-in" data-fragment-index="1">
 					The power spectrum has a a theoretical prediction, and an analytic likelihood. <b>Peak counts</b>, the
@@ -6441,7 +6445,9 @@
 			<div class="arw" aria-hidden="true">&rarr;</div>
 
 			<div class="stage" data-stage="inference">
-				<div class="thumb proc"><span>p(&theta;&thinsp;|&thinsp;x)</span></div>
+				<!-- the operation, not its output: the measured summary (accent) against the
+				     simulated ones at different cosmologies (muted). The posterior is the next box. -->
+				<div class="thumb proc compare"><svg viewBox="0 0 100 60" aria-hidden="true"><path class="base" d="M6 50 H94"/><path class="sim" d="M6.0 49.6 L8.9 49.2 L11.9 48.5 L14.8 47.2 L17.7 45.2 L20.7 42.5 L23.6 39.0 L26.5 34.9 L29.5 30.8 L32.4 27.2 L35.3 24.8 L38.3 24.0 L41.2 25.1 L44.1 27.7 L47.1 31.5 L50.0 35.7 L52.9 39.7 L55.9 43.0 L58.8 45.6 L61.7 47.5 L64.7 48.6 L67.6 49.3 L70.5 49.7 L73.5 49.9 L76.4 49.9 L79.3 50.0 L82.3 50.0 L85.2 50.0 L88.1 50.0 L91.1 50.0 L94.0 50.0"/><path class="sim" d="M6.0 50.0 L8.9 50.0 L11.9 49.9 L14.8 49.8 L17.7 49.5 L20.7 48.9 L23.6 47.8 L26.5 45.8 L29.5 42.7 L32.4 38.3 L35.3 32.8 L38.3 26.8 L41.2 21.3 L44.1 17.4 L47.1 16.0 L50.0 17.5 L52.9 21.5 L55.9 27.1 L58.8 33.1 L61.7 38.5 L64.7 42.9 L67.6 45.9 L70.5 47.9 L73.5 49.0 L76.4 49.5 L79.3 49.8 L82.3 49.9 L85.2 50.0 L88.1 50.0 L91.1 50.0 L94.0 50.0"/><path class="sim" d="M6.0 50.0 L8.9 50.0 L11.9 50.0 L14.8 50.0 L17.7 50.0 L20.7 49.9 L23.6 49.8 L26.5 49.5 L29.5 49.1 L32.4 48.4 L35.3 47.3 L38.3 45.7 L41.2 43.6 L44.1 40.8 L47.1 37.7 L50.0 34.5 L52.9 31.5 L55.9 29.3 L58.8 28.1 L61.7 28.2 L64.7 29.6 L67.6 32.0 L70.5 35.0 L73.5 38.3 L76.4 41.4 L79.3 44.0 L82.3 46.1 L85.2 47.6 L88.1 48.6 L91.1 49.2 L94.0 49.6"/><path class="data" d="M6.0 50.0 L8.9 50.0 L11.9 50.0 L14.8 49.9 L17.7 49.9 L20.7 49.6 L23.6 49.2 L26.5 48.2 L29.5 46.5 L32.4 43.6 L35.3 39.4 L38.3 34.0 L41.2 27.7 L44.1 21.6 L47.1 16.7 L50.0 14.2 L52.9 14.7 L55.9 18.0 L58.8 23.4 L61.7 29.8 L64.7 35.9 L67.6 40.9 L70.5 44.7 L73.5 47.1 L76.4 48.6 L79.3 49.3 L82.3 49.7 L85.2 49.9 L88.1 50.0 L91.1 50.0 L94.0 50.0"/></svg></div>
 				<div class="sname">inference</div>
 				<div class="ssub">NPE, MCMC</div>
 			</div>
@@ -6483,6 +6489,60 @@
 			</div>
 			<div class="arw model join" aria-hidden="true"></div>
 		</div>
+	</template>
+
+	<!-- =============================================================================
+	     THE CHAIN AS A FLOWCHART — the thesis-map drawing (0.8) and the two chain
+	     returns in Parts 3 and 4.  Cloned by pipeline.js into every `.chart-slot`:
+	       data-steps="a b c | d e f"   one set per .qstep click, marked on-1, on-2 …
+	       data-focus="a b c"           one set, marked is-lit, shown on a .pipe-focus click
+	     Wires light when both their ends are lit.  Edit this markup, not the copies;
+	     placement is in custom.css under "THE CHAIN AS A FLOWCHART".
+	============================================================================== -->
+	<template id="wl-chart">
+	<div class="chart">
+		<svg class="wires" viewBox="0 0 1180 490" aria-hidden="true">
+			<path class="w cat-shear" data-key="cat-shear" d="M170 100 H190 V135 H211"/>
+			<path class="w shear-mm" data-key="shear-mm" d="M345 135 H371"/>
+			<path class="w mm-kmap" data-key="mm-kmap" d="M515 135 H571"/>
+			<path class="w kmap-comp" data-key="kmap-comp" d="M775 110 H811"/>
+			<path class="w comp-summ" data-key="comp-summ" d="M955 110 H1006"/>
+			<path class="w summ-inf" data-key="summ-inf" d="M1085 194 V226"/>
+			<path class="w inf-post" data-key="inf-post" d="M1085 282 V316"/>
+			<path class="w prior-sims" data-key="prior-sims" d="M130 326 H196"/>
+			<path class="w sims-syst" data-key="sims-syst" d="M410 326 H461"/>
+			<path class="w syst-inf join" data-key="syst-inf" d="M615 326 H800 V256 H1011"/>
+		</svg>
+		<figure class="el prod cat inimg" data-key="cat">
+			<img src="../assets/photos/perseus_field_thumb.jpg" alt="a field of galaxies on the sky">
+			<figcaption><b>galaxy catalogue</b></figcaption>
+		</figure>
+		<figure class="el prod shear inimg" data-key="shear">
+			<img src="../assets/figures/maps/shear_field_thumb.png" alt="a shear field drawn as short sticks">
+			<figcaption><b>shear maps</b></figcaption>
+		</figure>
+		<div class="el proc mm" data-key="mm"><b>mass mapping</b></div>
+		<figure class="el prod kmap inimg" data-key="kmap">
+			<img src="../assets/figures/maps/kappa_denoised_thumb.png" alt="a reconstructed convergence map">
+			<figcaption><b>mass maps</b></figcaption>
+		</figure>
+		<div class="el proc comp" data-key="comp"><b>compression</b></div>
+		<figure class="el prod summ" data-key="summ">
+			<img src="../assets/figures/statistics/starlet_peaks_thumb.png" alt="multi-scale peak counts">
+			<figcaption><b>summaries</b></figcaption>
+		</figure>
+		<div class="el proc inf" data-key="inf"><b>inference</b><span>NPE, MCMC</span></div>
+		<figure class="el prod post" data-key="post">
+			<img src="../assets/figures/posteriors/banana_clean.png" alt="a two-parameter posterior with the usual curved degeneracy">
+			<figcaption><b>posterior</b><span>&Omega;<sub>m</sub>, S<sub>8</sub>, w<sub>0</sub></span></figcaption>
+		</figure>
+		<div class="el proc prior dashed" data-key="prior"><b>prior &pi;(&theta;)</b></div>
+		<figure class="el prod sims inimg" data-key="sims">
+			<img src="../assets/diagrams/nbody_web_thumb.png" alt="a cosmic web from an N-body simulation">
+			<figcaption><b>N&#8209;body<br>simulations</b></figcaption>
+		</figure>
+		<div class="el proc syst dashed" data-key="syst"><b>systematics</b></div>
+	</div>
 	</template>
 
 	<script src="pipeline.js"></script>

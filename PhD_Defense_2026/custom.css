@@ -997,6 +997,12 @@
 	background: transparent; border: 1px dashed var(--hair);
 	font-family: var(--r-heading-font); font-size: 0.6em; color: var(--fg-muted);
 }
+/* the inference node: a comparison, drawn. Several simulated summaries at
+   different cosmologies in the muted ink, the measured one in the accent. */
+.reveal .slides section .pipeline .thumb.proc.compare svg { width: 86%; height: 86%; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.reveal .slides section .pipeline .thumb.proc.compare .base { stroke: currentColor; stroke-width: 1.2; opacity: 0.5; }
+.reveal .slides section .pipeline .thumb.proc.compare .sim  { stroke: currentColor; stroke-width: 1.6; opacity: 0.45; }
+.reveal .slides section .pipeline .thumb.proc.compare .data { stroke: var(--accent); stroke-width: 2.6; }
 
 .reveal .slides section .pipeline .sname {
 	font-family: var(--r-heading-font); font-weight: 600;
@@ -2419,3 +2425,135 @@
 .reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .arw.on-4 {
 	opacity: 1; color: var(--accent);
 }
+
+/* ---------------------------------------------------------------------------
+   THE CHAIN AS A FLOWCHART (2026-09-08) — 0.8 and the two chain returns.  After three rounds of rows
+   (cards, then bare tiles, then tiles on a wire) the slide still read as a
+   table.  This is a hand-placed diagram in the spirit of the DES Y3 figure on
+   the slide before it: data products are pictures of different sizes, the
+   processes on the arrows are small tinted boxes, the model side is its own
+   lower branch feeding inference, and the connectors are drawn lines with
+   elbows.  Fixed 1180 x 450 px canvas (the slide is a fixed 1280 x 800
+   coordinate system).  Two halves light the elements tagged on-1 / on-2 off
+   the .qstep markers, exactly as the template version did.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .chart {
+	position: relative; width: 1180px; height: 490px; margin: 0.5em auto 0; text-align: center;
+}
+.reveal .slides section .chart .wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+.reveal .slides section .chart .wires .w {
+	fill: none; stroke: var(--fg-muted); stroke-width: 1.8; opacity: 0.75;
+	transition: opacity 0.4s ease, stroke 0.4s ease, fill 0.4s ease;
+}
+/* the heads: triangles added by pipeline.js, filled in the wire's colour */
+.reveal .slides section .chart .wires .w.hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section .chart .wires .w.join { stroke: var(--accent); opacity: 0.9; }
+.reveal .slides section .chart .wires .w.join.hd { fill: var(--accent); }
+
+.reveal .slides section .chart .el { position: absolute; margin: 0; box-sizing: border-box; transition: opacity 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+/* data products: a picture with its name under it */
+.reveal .slides section .chart .prod img {
+	display: block; margin: 0; border: 0; box-shadow: none; max-width: none; max-height: none;
+	width: 100%; object-fit: cover; border-radius: 4px; box-sizing: border-box;
+	transition: box-shadow 0.4s ease;
+}
+.reveal .slides section .chart .prod figcaption { margin-top: 0.3em; line-height: 1.2; }
+.reveal .slides section .chart .prod figcaption b {
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 16px; color: var(--fg);
+	transition: color 0.4s ease;
+}
+.reveal .slides section .chart .prod figcaption span,
+.reveal .slides section .chart .proc span {
+	display: block; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 12.5px; line-height: 1.3; color: var(--fg-muted);
+}
+/* processes: small tinted boxes sitting on the arrows, like the coloured boxes in the DES figure */
+.reveal .slides section .chart .proc {
+	display: flex; flex-direction: column; justify-content: center; align-items: center;
+	padding: 0.25em 0.5em; border-radius: 10px;
+	background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--edge));
+}
+.reveal .slides section .chart .proc b {
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 16px; line-height: 1.15; color: var(--fg);
+	transition: color 0.4s ease;
+}
+.reveal .slides section .chart .proc.dashed {
+	border-style: dashed; background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+}
+
+/* the photographic products carry their name inside the picture, on a small
+   translucent paper-coloured tag, so the picture is the whole element */
+.reveal .slides section .chart .prod.inimg figcaption {
+	position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+	margin: 0; text-align: center; white-space: nowrap;
+	padding: 4px 11px 5px; border-radius: 5px;
+	background: color-mix(in srgb, var(--bg) 40%, transparent);
+	backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+}
+.reveal .slides section .chart .prod.inimg figcaption b { font-size: 14.5px; }
+.reveal .slides section .chart .prod.inimg figcaption span { font-size: 11px; }
+
+/* --- placement ---------------------------------------------------------
+   The data row runs left to right across the top with a slight stagger
+   (catalogue high, shear map low, summaries high) and two small elbows, then
+   drops at the right into inference and the posterior.  The model branch sits
+   lower and larger, bottom-left, and rises into inference with one elbow. */
+.reveal .slides section .chart .cat   { left: 10px;   top: 20px;  width: 160px; }
+.reveal .slides section .chart .cat img   { height: 160px; }
+.reveal .slides section .chart .shear { left: 215px;  top: 70px;  width: 130px; }
+.reveal .slides section .chart .shear img { height: 130px; }
+.reveal .slides section .chart .mm    { left: 375px;  top: 109px; width: 140px; height: 52px; }
+.reveal .slides section .chart .kmap  { left: 575px;  top: 10px;  width: 200px; }
+.reveal .slides section .chart .kmap img  { height: 200px; }
+.reveal .slides section .chart .comp  { left: 815px;  top: 84px;  width: 140px; height: 52px; }
+.reveal .slides section .chart .summ  { left: 1010px; top: 54px;  width: 150px; }
+.reveal .slides section .chart .summ img  { height: 112px; object-fit: contain; background: var(--surface); border: 1px solid var(--edge); }
+.reveal .slides section .chart .inf   { left: 1015px; top: 230px; width: 140px; height: 52px; }
+.reveal .slides section .chart .post  { left: 1015px; top: 320px; width: 140px; }
+.reveal .slides section .chart .post img  { height: 140px; object-fit: contain; }
+.reveal .slides section .chart .prior { left: 0;      top: 300px; width: 130px; height: 52px; }
+.reveal .slides section .chart .sims  { left: 200px;  top: 262px; width: 210px; }
+.reveal .slides section .chart .sims img  { height: 130px; }
+.reveal .slides section .chart .syst  { left: 465px;  top: 300px; width: 150px; height: 52px; }
+
+/* --- the two halves ------------------------------------------------------ */
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .el:not(.on-1),
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .el:not(.on-2),
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w:not(.on-1),
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w:not(.on-2) { opacity: 0.28; }
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w.on-2 {
+	stroke: var(--accent); opacity: 1;
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w.hd.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w.hd.on-2 { fill: var(--accent); stroke: none; }
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .prod.on-1 img,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .prod.on-2 img {
+	box-shadow: 0 0 0 3px var(--accent), 0 0 0 8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .proc.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .proc.on-2 {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .on-1 b,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .on-2 b { color: var(--accent); }
+
+/* --- the chain returns (Parts 3 and 4): one set lit on a .pipe-focus click ---- */
+.reveal .slides section .chart-slot { display: block; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .el:not(.is-lit),
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w:not(.is-lit) { opacity: 0.28; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w.is-lit {
+	stroke: var(--accent); opacity: 1;
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w.hd.is-lit { fill: var(--accent); stroke: none; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .prod.is-lit img {
+	box-shadow: 0 0 0 3px var(--accent), 0 0 0 8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .proc.is-lit {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .is-lit b { color: var(--accent); }
+

@@ -401,6 +401,15 @@ it contaminates, which read as if the contamination were part of the measurement
 **systematics come after the simulations, not before**: you cannot contaminate a simulation
 you have not run. **Edit the template, never the copies.**
 
+**Since 2026-09-08 the chain has two drawings.** The row above (`#wl-pipeline`, compact) stays on
+the act openers. 0.8 and the two chain returns in Part 3 (the map-to-summary step, and the
+simulation side feeding inference) use the **flowchart** instead: `#wl-chart`, cloned by the same
+`pipeline.js` into every `<div class="chart-slot">`; `data-steps="a b | c d"` lights one set per
+`.qstep` click (0.8), `data-focus="a b c"` lights one set on a `.pipe-focus` click (the returns).
+Element keys: cat, shear, mm, kmap, comp, summ, inf, post, prior, sims, syst; a wire lights when both
+its ends do. Arrowheads are triangles added at build time, not SVG markers (see
+`docs/REVEAL-GOTCHAS.md` §10). Placement lives in `custom.css` under "THE CHAIN AS A FLOWCHART".
+
 It is live on 0.8 (full, neutral) and on the Act 1 and Act 2 openers (compact, `maps` lit).
 **Acts 3 and 4 have no opener slides at all** — they begin on content slides inherited from
 cosmo26 — so the device stops halfway through the talk. Giving them dividers in the style of
