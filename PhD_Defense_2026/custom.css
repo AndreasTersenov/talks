@@ -1554,37 +1554,14 @@
 
 
 /* ---------------------------------------------------------------------------
-   THE STAKES — rebuilt 2026-09-03.  Was two symmetric cards, which is the most
-   machine-set pattern there is: equal weight says the two things are peers, and
-   they are not.  Now a weighted contrast — the old comparison narrow and quiet
-   on the left, the open question wider and in full ink behind one hairline.
+   THE STAKES — cut to two lines 2026-09-08.  Was a weighted two-column contrast
+   (reconstruction error on the left, the open question on the right) with a QR
+   reference under it; the contrast is now spoken and the QR sits on the divider.
+   What is left is the question in the title and one pull line, so the pull is
+   set larger than the theme default, which was sized as a footnote.
    --------------------------------------------------------------------------- */
-.reveal .slides section.stakes .stk-split {
-	display: grid; grid-template-columns: 1fr 1.35fr; gap: 0 2.4em;
-	margin: 1.7em auto 0; max-width: 92%; text-align: left;
-}
-.reveal .slides section.stakes .stk-new {
-	padding-left: 2.4em; border-left: 1px solid var(--edge); margin-left: -1.2em;
-}
-.reveal .slides section.stakes .stk-split p {
-	margin: 0.7em 0 0; font-size: 0.86em; line-height: 1.4; color: var(--fg);
-}
-.reveal .slides section.stakes .stk-split p b { color: var(--fg); }
-.reveal .slides section.stakes .stk-split .kicker { margin-bottom: 0.15em; }
-.reveal .slides section.stakes .stk-old .kicker { color: var(--fg-muted); }
-.reveal .slides section.stakes .stk-lead {
-	font-family: var(--label); font-style: normal;
-	font-size: 1.0em !important; line-height: 1.3 !important; color: var(--fg) !important;
-	margin-top: 0.25em !important;
-}
-.reveal .slides section.stakes .stk-split .stk-lead b { color: var(--accent); }
-.reveal .slides section.stakes .stk-ref {
-	display: flex; align-items: center; justify-content: flex-start; gap: 0.7em;
-	max-width: 92%; margin: 1.1em auto 0; font-size: 0.44em; color: var(--fg-muted);
-}
-.reveal .slides section.stakes .stk-qr {
-	width: 46px; height: 46px; margin: 0;
-	max-width: none; max-height: none; box-shadow: none; border: 0; background: transparent;
+.reveal .slides section.stakes .pull {
+	font-size: 0.78em; line-height: 1.4; margin-top: 2.2em; max-width: 94%;
 }
 
 
@@ -1857,9 +1834,6 @@
    be a caption, a source line or a footnote — never the argument itself.
    --------------------------------------------------------------------------- */
 
-/* the left half of the stakes contrast is meant to read as the quieter, older
-   view — it is the one place on these slides where muted body copy is the point. */
-.reveal .slides section.stakes .stk-old p { color: var(--fg-muted); }
 
 /* the 2-point slide's points sit just under the lead sentence, so they take a
    step down from it rather than matching it. */

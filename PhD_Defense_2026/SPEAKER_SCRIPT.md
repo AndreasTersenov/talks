@@ -494,11 +494,11 @@ Remember it, because in Part 2 we throw it away and put a neural network in its 
 Three methods, three different maps — and every one reproduces the shear it was given. Up to this
 paper, the field compared them by how close the map came to the truth, in simulations.
 
-[CLICK] **▲** But the map is not what we publish. The posterior is, and nothing in a reconstruction
-error tells you what happens to Omega-m, sigma-eight or w-nought.
+But the map is not what we publish. The posterior is, and nothing in a reconstruction error tells
+you what happens to Omega-m, sigma-eight or w-nought.
 
-So it was open, and argued about, with something concrete riding on it: Euclid has to pick a
-reconstruction.
+[CLICK] **▲** So it was open, and argued about, with something concrete riding on it: Euclid has to
+pick a reconstruction.
 
 ---
 

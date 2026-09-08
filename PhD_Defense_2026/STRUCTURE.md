@@ -635,7 +635,8 @@ answers. C.1 — the same board with all four ticked — is still to be written.
   "ill-posed" and moved on, and the room never learned what an inverse problem *is*. Everything
   downstream rests on it.
 - **1.5, the stakes.** The divider asks the question; this slide is what makes it a real one rather
-  than rhetorical.
+  than rhetorical. Cut to the title and the Euclid line on 2026-09-08: the reconstruction-error-versus-posterior
+  contrast is spoken, not shown, and the QR went with it.
 
 **Also corrected in passing:** MCALens's `\underbrace` labels had been swapped since the LAM lift —
 κ_NG was labelled *Standard Wiener filter approach*. Fixed on the algebra vertical.
