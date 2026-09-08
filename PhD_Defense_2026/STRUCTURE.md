@@ -277,17 +277,17 @@ slides into one · **new** = does not exist. **TEACH** marks a §3b mini-introdu
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
 | 0.1 | *Trustworthy non-Gaussian inference for weak-lensing cosmology* | title card, particles bg | built | 0:27 |
-| 0.2 | 13.8 billion years, from quantum fluctuations to galaxies | the cone | **frozen** | 1:08 |
-| 0.3 | ΛCDM: six numbers, and the assumptions that let you get away with six | 3 parameter columns over the assumptions block; on click the budget pie **swaps for the annotated cone**, then dark matter / dark energy / tensions one at a time | **rebuilt** | 2:20 |
-| 0.4 | Independent probes are a test — and they do not quite agree | probes + the S8 tension | **frozen** | 1:42 |
-| 0.5 | A 1 % distortion, invisible alone, **coherent** across neighbours | the cone again + light rays | rebuild | 1:03 |
+| 0.2 | The Universe evolved from quantum fluctuations to galaxies over 13.8 billion years | the cone | **frozen** | 1:08 |
+| 0.3 | ΛCDM describes the Universe with six free parameters, plus a set of assumptions | 3 parameter columns over the assumptions block; on click the budget pie **swaps for the annotated cone**, then dark matter / dark energy / tensions one at a time | **rebuilt** | 2:20 |
+| 0.4 | Independent probes test the model through both geometry and growth; the late-time S8 and the local H0 disagree with the CMB predictions | probes + the S8 tension | **frozen** | 1:42 |
+| 0.5 | Foreground mass deflects the light of background galaxies and distorts their images | the cone again + light rays | rebuild | 1:03 |
 | 0.6 | Euclid: an order of magnitude more statistical power | mission clip + four figures | rebuild | 0:38 |
-| 0.6 | *(closing beat, added 2026-09-06)* the lensing signal is the **statistical memory** of the whole history of the Universe, and getting it out is an **algorithms** problem | one line under the Euclid block | **built** | +0:20 |
+| 0.6 | *(closing beat, added 2026-09-06)* the lensing signal encodes the growth of structure and the geometry of the Universe, and extracting it is an **algorithms** problem | one line under the Euclid block | **built** | +0:20 |
 | 0.6a | ~~We measure the **shear**. What we want is the **convergence**.~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
 | 0.6b | ~~A convergence map carries both **geometry** and **growth**~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
 | 0.6c | ~~One potential, two observables — the relation is **exact**~~ | **moved into Part 1, 2026-09-06** | moved | &mdash; |
-| 0.7 | A real weak-lensing analysis is **dozens of steps**, and most of them are not the physics | the DES Y3 flowchart (Amon), credited | **built** · **theme flips to light here** since 0.6a left | 0:50 |
-| 0.8 | Between the shapes and the parameters there is a **chain** — and **the four questions of the thesis on it** | **the master chain graphic**, then **four clicks, one question each, lighting the step it is about**: shear→maps · maps · maps→…→posterior · summaries + systematics | **rebuilt 2026-09-06** | ~2:10 |
+| 0.7 | Most of a real weak-lensing analysis is **measurement and calibration** | the DES Y3 flowchart (Amon), credited | **built** · **theme flips to light here** since 0.6a left | 0:50 |
+| 0.8 | The analysis chain from galaxy shapes to parameters, and **the two steps this thesis is about** | **the master chain graphic**, then **two clicks**: shear→maps lit for papers 1 and 2 (*making the mass map*), maps→…→posterior lit for papers 3 and 4 (*reading the map*). The four questions are spoken in passing and asked on the dividers; *trustworthy* is spoken as the close | **rebuilt 2026-09-06, cut to two halves 2026-09-08** | 2:17 |
 | 0.9 | ~~Four questions about that chain~~ | folded into 0.8, 2026-09-06. The board still exists, immediately before the conclusions, as a **return** | moved | &mdash; |
 
 *The beat, as of 2026-09-06.* A picture of the Universe → the model that fits it, and where it
@@ -437,7 +437,7 @@ explicitly.
 | 1.1 | *Part 1: does the choice of mass-mapping method matter for cosmology?* | act divider, compact chain with the **map** box lit, + arXiv:2501.06961 | built | 0:43 |
 | 1.2 | **TEACH** The forward direction has **one answer**. The inverse direction has **many** | two lanes; the inverse one ends in a **fan** of candidate maps, all consistent with the shear | **built 2026-09-03** | 0:57 |
 | 1.3 | Kaiser–Squires assumes **almost nothing** about κ — which is the problem | the truth/KS pair; derivation + operator algebra on 3 verticals | built | 1:23 |
-| 1.4 | **TEACH** So write the assumption **down** — posterior, likelihood, prior | the Bayes decomposition, then the three priors; 3 verticals | built | 1:44 |
+| 1.4 | **TEACH** Every mass-mapping method is a Bayesian inference with a different **prior** on κ | the Bayes decomposition, then the three priors; 3 verticals | built | 1:44 |
 | 1.4a | What *sparse* actually claims | the starlet atoms; a physical claim, not a numerical trick | lift (LAM) | 0:57 |
 | 1.4b | MCALens: **two components**, and a different rule for each | the κ_G + κ_NG split, the alternation, and **what a proximal operator is** — the step Part 2 replaces | **rebuilt 2026-09-03** | 1:06 |
 | 1.5 | Different assumptions, different maps — and **nobody had checked** whether it mattered | two cards: what the field measured against what it had not; the Euclid stake | **built 2026-09-03** | 0:54 |
@@ -510,11 +510,11 @@ must not let the accuracy comparison become the subject.
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
 | 3.1 | *Is there non-Gaussian information left once baryons are cut out?* | chain, **box 3 lit** | new | 0:30 |
-| 3.2 | The information and the worst systematic live on the same scales | the two-curve schematic | built | 1:00 |
+| 3.2 | Non-Gaussian information and baryonic feedback both live at small scales | the two-curve schematic | built | 1:00 |
 | 3.3 | **TEACH** Peaks count maxima, the ℓ1-norm weighs everything — one starlet decomposition | starlet row + peaks + ℓ1 | built | 1:30 |
 | 3.4 | **TEACH** Simulation-based inference, every posterior coverage-tested | NPE pipeline + TARP/SBC gate | built | 1:00 |
-| 3.5 | Unmodelled feedback biases every statistic, and worse the bigger the survey | bias vs survey area | built | 1:00 |
-| 3.6 | Buying back an unbiased answer costs the power spectrum most of its range | the scale cuts | built | 1:00 |
+| 3.5 | Baryonic bias grows with survey area | bias vs survey area | built | 1:00 |
+| 3.6 | Removing the bias costs the power spectrum most of its multipole range, and the starlet only its finest band | the scale cuts | built | 1:00 |
 | 3.7 | **On baryon-safe scales the ℓ1-norm still gains ×1.8 at Stage IV** | ratio-vs-area curve, PS at 1.0 | re-plot | 1:30 |
 | 3.8 | **TEACH** Nulling should have been the fix — it inflates the contours instead | BNT kernels + inflated contours | built | 0:30 |
 
@@ -532,11 +532,11 @@ result** — do not soften it, it is what makes Act 4 land.
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
 | 4.1 | *Do we need a network to read the maps?* | chain, box 3 still lit | new | 0:30 |
-| 4.2 | Beating the power spectrum is a low bar — what is the ceiling? | κ patch + the VMIM compressor | built | 1:15 |
+| 4.2 | Beating the power spectrum is easy; how much information is there to extract? | κ patch + the VMIM compressor | built | 1:15 |
 | 4.3 | Same maps, same flow, both calibrated | the comparison diagram | built | 1:00 |
-| 4.4 | Read bin by bin, the ℓ1-norm reaches three quarters of the ceiling | corner plot, ×0.74 | built | 1:00 |
-| 4.5 | Two routes to the inter-bin information — or read each pair jointly | cross-maps vs the joint cell map | built | 1:15 |
-| 4.6 | **A fixed wavelet statistic reaches the learned ceiling, with no training** | completeness ladder, ceiling at 1.0 | re-plot | 1:15 |
+| 4.4 | The CNN beats the per-bin ℓ1-norm by 36 % in FoM | corner plot, ×0.74 | built | 1:00 |
+| 4.5 | The cross-bin information can be reached through cross maps or through a joint statistic | cross-maps vs the joint cell map | built | 1:15 |
+| 4.6 | **With joint reading of the bins, the ℓ1-norm matches the optimal CNN** | completeness ladder, ceiling at 1.0 | re-plot | 1:15 |
 | 4.7 | Under nulling, what a summary keeps tracks how jointly it reads the bins | BNT retention ladder | built | 0:45 |
 
 *The beat.* No new teaching — callbacks only (§3b). Set the ceiling → make the comparison fair →
@@ -551,7 +551,7 @@ which is what closes the whole programme rather than just this act.
 
 | # | on screen | visual | src | min |
 |---|---|---|---|---|
-| C.1 | **The four questions, answered** | the scoreboard, all four ticked | rewrite | 1:30 |
+| C.1 | **Answers to the four questions** (one line per question, one per answer) | the scoreboard, all four ticked | rewrite | 1:30 |
 | C.2 | What this changes in practice, and where it goes next | — | new | 1:45 |
 | C.3 | What it does not yet cover | limitations, plainly | new | 1:00 |
 | C.4 | What this thesis produced, and thanks | papers + code + acknowledgements | new | 0:45 |
@@ -620,8 +620,8 @@ out loud every time.
 **3. The seven statistics frames moved to the head of Act 3.** They taught the two-point route,
 peak counts, wavelet peaks and the starlet ℓ1-norm in the middle of Part 1 — an act that varies
 the *map* and holds the statistic fixed. **Known collision, deliberately left:** the slide directly
-after them (*Wavelet peak counts and the ℓ1-norm are 1-pt statistics on the same starlet
-transform*) re-teaches the last two frames of the moved block. Merging is an Acts 3–4 job; doing it
+after them (*Wavelet peak counts and the ℓ1-norm are one-point statistics of the starlet
+coefficients*) re-teaches the last two frames of the moved block. Merging is an Acts 3–4 job; doing it
 blind would cut material Andreas has not reviewed.
 
 **4. The four-question scoreboard moved to just before the conclusions.** Stated upfront it leaned
@@ -654,9 +654,9 @@ Andreas walked the introduction out loud and found it did two things in the wron
 the lensing formalism to a room that had no use for it yet, and it declared only half the thesis
 before diving into Part 1. Three changes.
 
-**1. The formalism block moves into Part 1.** *We measure the shear, we want the convergence* ·
-*a convergence map carries geometry and growth* · *one potential, two observables, and the relation
-is exact* — three slides that used to sit between Euclid and the pipeline. They are Part 1's own
+**1. The formalism block moves into Part 1.** *We measure the shear, but theory predicts the convergence* ·
+*the convergence is a projection of the matter density, sensitive to geometry and growth* · *shear and
+convergence are both second derivatives of the lensing potential* — three slides that used to sit between Euclid and the pipeline. They are Part 1's own
 machinery: the paper is about inverting γ into κ, and Part 1's second slide is *the relation is
 exact, the measurement is not*. So they now open Part 1 and run straight into it. Their parked LAM
 originals travelled with them.
@@ -668,8 +668,8 @@ started on the analysis of it.
 
 **2. Euclid gets its closing beat.** A survey this size does not just give more of the same
 measurement; it moves the limit off the statistics and onto what we are able to do with them. One
-line on the slide — the signal is the **statistical memory** of everything the Universe has done
-since the Big Bang, and getting it out is an **algorithms** problem — and that is the sentence the
+line on the slide — the signal encodes the growth of structure and the geometry of the Universe,
+and extracting it is an **algorithms** problem — and that is the sentence the
 rest of the talk answers.
 
 **3. A0.8 becomes the map of the thesis.** It used to end on a hand-off line about Parts 1 and 2 and
@@ -761,11 +761,11 @@ No `fragmentshown` listener, because `?print-pdf` sets the classes directly and 
 
 ## 6. The three takeaways
 
-1. **The reconstruction is not preprocessing.** It is a scientific choice that propagates to the
+1. **The choice of reconstruction matters.** It is a scientific choice that propagates to the
    precision of the constraints, and it should be made with the downstream inference in mind.
 2. **Non-Gaussian information survives the most conservative possible treatment of baryons** — no
    feedback model at all, every measurably contaminated scale discarded — and still beats the
-   power spectrum. That number is a floor, not a forecast.
+   power spectrum. That number is a conservative estimate, not a forecast.
 3. **A hand-built wavelet statistic can be near-sufficient**, provided it reads the tomographic
    bins jointly — which means "we used a learned compressor" is a claim that now has a benchmark
    to beat, and interpretable summaries should not be abandoned without that test.
@@ -864,7 +864,7 @@ is that none of them arrives as a concession extracted under questioning.
 |---|---|---|
 | Everything is on simulations | A3.3, once, plainly | "Every result here is on simulations; that was deliberate, because isolating one analysis step needs ground truth — and it means the application to data is still ahead." |
 | One feedback prescription, fixed parameters | A3.4 | "One baryon-correction realisation. A stronger prescription moves the cut to larger scales." |
-| The cut is a floor, not a forecast | A3.5 | "No feedback model at all, every contaminated scale gone. Anything that models the feedback improves on this." |
+| The cut is a conservative estimate, not a forecast | A3.5 | "No feedback model at all, every contaminated scale gone. Anything that models the feedback improves on this." |
 | Ch3 is second-author | A2.1 | "This chapter is led by Hubert Leterme; I co-developed the method and the uncertainty quantification." |
 | Coverage tests cannot see a wrong simulator | A4.2 or C.3 | "A coverage test certifies the estimator against the simulator that trained it. It cannot, by construction, tell you the simulator is wrong — which is why Chapter 4 exists." |
 | The chain was never run end-to-end | C.3 | "The two halves developed in parallel. PnPMass maps have not been pushed through a higher-order inference; that is the most direct continuation of this work." |

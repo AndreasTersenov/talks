@@ -193,13 +193,15 @@ Our prevailing model describing all of that is ΛCDM — Lambda, cold dark matte
 
 It rests on this short list of assumptions, basically that gravity is given by general relativity, that the Universe is homogeneous and isotropic on large scales, that the initial conditions come from inflation, and are near-Gaussian and adiabatic, and that the matter is a mixture of baryons, cold dark matter and a cosmological constant.
 
-**▲** And it has been extremely successful. Those six numbers fit the microwave background, the
-expansion history and the clustering of galaxies simultaneously, to a remarkable precision.
+**▲** And it has been extremely successful. Those six numbers fit 
+<!-- the microwave background, the expansion history and the clustering of galaxies simultaneously,  -->
+our different observations 
+to a remarkable precision.
 
-[CLICK] **▲** But it is not a fully satisfactory answer, for three reasons. It is a
+[CLICK] **▲** But it is still not a fully satisfactory answer, for three reasons. First of all, it is a
 **phenomenological** description rather than a first-principles explanation. About ninety-five per
 cent of what it describes is two **dark components** whose nature we do not know. 
-And independent probes of the same parameters have started to show **tensions** — they do not agree perfectly.
+And independent probes of the same parameters have started to show **tensions** — statistically significant disagreements in the cosmological parameters they report. 
 
 ---
 
@@ -207,9 +209,9 @@ And independent probes of the same parameters have started to show **tensions** 
 
 So how do you study the Universe, and test a model like that? Well, there are several probes that do that...
 
-[CLICK] **▲** But the one this talk is about is **gravitational lensing**.
+[CLICK] **▲** But the one we follow in this talk is **gravitational lensing**.
 
----
+<!-- ---
 
 ## A0.4v — the two tensions · frame 5 · SKIP · 0:55
 
@@ -228,30 +230,29 @@ direct measurement. And the amplitude of clustering — S-eight, the combination
 best — came out about one point seven sigma below the Planck extrapolation in DES and KiDS.
 
 [CLICK] Three ways to read that. New physics. A statistical fluctuation. **▲** Or something in the
-analysis itself.
+analysis itself. -->
 
 ---
 
 ## A0.5 — strong and weak lensing · frame 6 · 0:41
+Here is the basic idea of gravitational lensing. 
 
-Light from a distant galaxy passes every mass on the way to us, and each one bends its path, so the
+Light from a distant source passes every mass on the way to us, and each one bends its path, so the
 image arrives distorted.
 
 Occasionally that is dramatic — arcs, multiple images, Einstein rings, visible by eye. That is the
 **strong** regime, and it needs a very massive object almost on the line of sight, so it is rare.
 
 **▲** What happens *everywhere* is the **weak** regime: every galaxy behind any structure has its
-shape slightly changed. That is what this thesis is about.
-
-> **Stop there** (Andreas, 2026-09-07). How the signal is actually extracted — that the distortion
-> is coherent while intrinsic shapes are random, so it comes out of averaging — belongs on frame 11,
-> where the shear is defined. Saying it twice is what made this slide long.
+shape slightly changed. This gives us a hint of the matter (including the dark matter) distributed along the line of sight, and that hint is what we want to read.
 
 ---
 
 ## A0.6 — Euclid, and what the signal is · frame 7 · 0:44
 
-And we are about to be able to do this properly. Euclid launched in 2023, it is taking data now,
+And we are about to be able to do this to a new level of precision. 
+The next generation of cosmological surveys is here, and the one I work on is **Euclid**.
+Euclid launched in 2023, it is taking data now,
 and it will measure the shapes of billions of galaxies over a third of the sky. **▲** Roughly an
 order of magnitude more statistical power than anything we have.
 
@@ -264,14 +265,17 @@ That is what this thesis is about.
 
 ## A0.7 — what it actually takes · frame 8 · 0:40
 
-Before my own picture of that, a real one: the DES Year 3 analysis, from pixels to cosmology.
-Alexandra Amon's diagram, not mine. Do not try to read it — that is the point.
+Modern cosmological survey analyses are incredibly complex. 
 
-[CLICK] Almost every box is a paper on its own, and most of them are measurement and calibration.
+To demonstrate how intricate the chain is, here is a diagram of the DES Year 3 (a previous generation survey) analysis, 
+from pixels to cosmology.
+
+[CLICK] Almost every box here is a paper on its own.
 Cosmology is the last two on the right.
 
 **▲** Most of a real survey analysis is measurement and calibration, and I am not going to talk about
-most of it.
+most of it. I will focus on the later parts of the chain, which are the more scientific ones: 
+the inference of cosmology from the measured shapes.
 
 ---
 
@@ -317,16 +321,6 @@ head of every part, with one box lit — and we come back to these four at the e
 
 # Act 1 — Part 1, does the map matter? · frames 10–22
 
-> **Act 1 opens with the formalism block**, moved out of the introduction on 2026-09-06. Shear
-> against convergence, the projection integral, and the exact κ–γ relation are Part 1's own
-> machinery — the paper is about inverting γ into κ — so they now run straight into *the relation
-> is exact, the measurement is not*.
->
-> **The consequence for this script is a trim that was owed for a week.** The old A0.6c ended by
-> listing noise, masks and the mass-sheet degeneracy; frame 14 is a whole slide about exactly
-> those three. A1.4 below now stops at *it is exact* and hands over. The deck forces it: frame 13
-> has no fragments at all.
-
 ---
 
 ## A1.1 — the question · frame 10 · 0:18
@@ -340,40 +334,41 @@ First, what is being reconstructed.
 
 ## A1.2 — shear and convergence · frame 11 · 1:18
 
-Lensing does two things to a patch of sky. It changes its size — the convergence, kappa. And it
-stretches it one way while squashing the other — the shear, gamma. Both are second derivatives of
-the same potential: two readings of one field.
+The effect of weak lensing can be summarised in two effects: the convergence, which is the 
+an isotropic magnification of the image, and the shear, which is the anisotropic stretching of the image.
 
-**▲** But the convergence, the one that *is* the mass, is the one we cannot measure — we never knew
-how big the galaxy was to start with.
+Convergence is not directly observable, because we do not know the intrinsic size of a galaxy. 
 
-The shear we can, and this is how. For one galaxy the stretch is about a per cent, far smaller than
-the shape it already had — so one galaxy tells you nothing. **▲** But the lensing is **coherent**
-and the intrinsic shapes are **random**. Average the ellipticities over many galaxies in a patch,
+The shear however is measurable through statistical analysis of the shapes of many galaxies. 
+The idea is that for one galaxy the stretch is about a per cent, far smaller than
+the shape it already had. **▲** But the lensing is **coherent**
+and to a good approximation, the intrinsic shapes are **random**. Therefore, if we average the ellipticities over many galaxies in a patch,
 the random part cancels, and what survives is the shear.
-
-**▲** So we measure the shear and we want the convergence. Getting from one to the other is a
-reconstruction, and that is where this thesis starts.
 
 ---
 
 ## A1.3 — what the convergence is · frame 12 · 0:34
 
-And the convergence is just the matter along the line of sight, weighted by how efficiently each
-piece of it lenses.
+However, we would really like to know the convergence, for a few reasons.
 
-Two things ride in that integral: the kernel carries the geometry, the overdensity carries the
+First of all, it is a scalar field, so it is easier to work with and extract infromation from than the shear, which is a spin-2 field. 
+
+Second, it has a direct physical interpretation: the convergence is just the projected matter along the line of sight, weighted by how efficiently each piece of it lenses. So it essentially tells us the distribution of matter in the Universe, which is what we want to know.
+That's why convergence maps are also called mass maps.
+
+<!-- Two things ride in that integral: the kernel carries the geometry, the overdensity carries the
 growth. **▲** A convergence map responds to both at once, which is why lensing tests the model
-rather than measuring one number.
+rather than measuring one number. -->
 
-Every result in this talk is computed on maps like that one.
+Here you can see an example of a real mass map I created for the UNIONS galaxy survey.
 
 ---
 
 ## A1.4 — shear and convergence from the same potential · frame 13 · 0:27
+Lucky for us, the shear and convergence are not independent. They are both second order derivatives of 
+this quantity called the lensing potential, which is itself a projection of the gravitational potential along the line of sight.
 
-So how do we get from one to the other? They are derivatives of the same potential, so in Fourier
-space the relation inverts in a single line. That is Kaiser–Squires.
+In Fourier space we can go from one to the other with a simple linear relation.
 
 **▲** Linear, fast, no free parameters — and on a complete, noiseless field, exact. There is a way
 across, and it is not an approximation.
@@ -382,7 +377,9 @@ across, and it is not an approximation.
 
 ## A1.5 — the relation is exact, the measurement is not · frame 14 · 1:06
 
-The relation is exact. The measurement is not — because we never observe gamma. Three things stand
+While the relation is exact, the data is imperfect. The shear is measured from galaxy shapes, which are noisy and incomplete. 
+
+The measurement is not — because we never observe gamma. Three things stand
 in the way, and they are all on this line.
 
 **Shape noise**, far larger than the shear itself, and the inversion amplifies it at small scales.
