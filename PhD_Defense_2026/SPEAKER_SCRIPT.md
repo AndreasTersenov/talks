@@ -33,7 +33,7 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 
 | act | frames | measured | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–9 | 7:30 | ends on the four questions |
+| Act 0 — the setup | 1–9 | 7:30 | ends on the chain, in two halves |
 | Act 1 — Part 1, does the map matter? | 10–22 | 10:34 | opens with the formalism, moved here 2026-09-06 |
 | Act 2 — Part 2, PnPMass | 23–27 | 4:11 | frame 26 is the first cut |
 | Act 3 — Part 3, the summaries | 28–47 | 15:22 | still the longest act by far |
@@ -279,42 +279,39 @@ the inference of cosmology from the measured shapes.
 
 ---
 
-## A0.8 — the chain, and the four questions · frame 9 · 2:56
+## A0.8 — the chain, and the two halves · frame 9 · 2:17
+Here is the same thing, reduced to the last steps that are the scientific part of the analysis.
 
-> The most important slide in the deck and the longest beat in Act 0. The four questions are
-> **canonical** — the board at frame 54 asks exactly these, in these words. If you change one here,
-> change it there.
+Galaxy shapes go in. From the shapes we make a map of the mass distribution. From the map we extract a few numbers, the summary statistics.
+We compare those with theoretical predictions, or with simulations, in a bayesian framework, and out come the probability distributions of the parameters.
 
-So this thesis is about the analysis.
+[CLICK] **▲** The first half of the talk, the first two papers, is about this step: making the map.
+Several algorithms do it. Does the choice matter for the cosmological results, and can we build 
+a really advanced one whose error bars we can trust, and which can be implemented in a 
+survey like Euclid?
 
-From the shapes we measure to the parameters we report, the analysis is a chain: a catalogue, binned
-into shear maps, inverted into mass maps, compressed into a summary, compared against simulations.
-And out comes a posterior. Underneath runs the model side — cosmologies from a prior, through
-simulations, then the systematics.
+[CLICK] **▲** The second half, the last two papers, is about everything after it: 
+extracting information from the the map, and using it to infer cosmology.
+How much of the cosmological information do the summary statistics keep, and does that survive 
+the realistic case, where physics the simulations get wrong?
 
-[CLICK] **▲** Each of those steps now involves learned components, and each one can bias the
-result or discard information, with no internal check that would catch it.
+Every one of these steps can bias the result or distort the
+error bars, if it fails to capture the relevant physical or observational effects.
+That's why for the results to be trustworthy, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwirse, we risk producing highly unreliable posterior estimates, distorted uncertainty quantification, and incorrect scientific conclusions.
 
-[CLICK] The first question is this step. Shear in, a mass map out — and that inversion is not a
-measurement, it is a choice of algorithm. The field judges those algorithms on how closely the map
-matches the truth, but the map is not what we publish. **▲** So: does the choice of mass-mapping
-method matter for the final constraints?
+<!-- , and the whole chain rests on the simulations being right. If they miss a physical or
+observational effect, the posterior at the end looks perfectly normal, and it is wrong. The more of
+the pipeline is learned from those simulations, the easier that is to miss: a network asked about
+data it was not trained on answers confidently and incorrectly. Trustworthy means we checked, at
+every step, that this is not happening to us.
 
-[CLICK] Second question, the **same step** — mass mapping is that arrow, so both papers live on it. If it does matter, we want a method that is accurate, flexible
-and fast, **and** gives reliable uncertainties — all four, at the scale of Euclid.
+*Every step of this analysis can potentially bias the result, affect the uncertainties,*
 
-[CLICK] Third question, one step right and then all the way to the end. A map is a hundred thousand
-correlated pixels; it has to be compressed, and the compression has to become a posterior. **▲**
-So: how much information can a summary statistic extract from the maps, and how do we turn it into a posterior?
+*it remains critically dependent on the fidelity of the simulations. If forward models fail to capture all relevant physical or observational effects, and the training data is not representative of the true underlying processes, we risk producing highly unreliable posterior estimates, distorted uncertainty quantification, and incorrect scientific conclusions.*
 
-[CLICK] And the fourth question is the one that decides whether any of the rest is usable.
-Everything so far assumes the simulations tell the truth. They do not, quite — there is
-astrophysics in the real Universe that we cannot model, and it sits on the same scales as the
-signal. **▲** Do the results hold up against that?
+*This model misspecification problem is arguably more severe in SBI than in traditional
+Bayesian inference, where the likelihood is explicit, as neural networks are known to produce arbitrarily incorrect predictions when probed with out-of-distribution (OOD) data. In my postdoctoral research, I aim to develop a new generation of robust and interpretable SBI frameworks that explicitly address these limitations through three complementary avenues.* -->
 
-Four questions. Two about the maps, two about the summaries. Each pair asks whether there is
-something to gain, and then whether we can actually have it. You will see this picture again at the
-head of every part, with one box lit — and we come back to these four at the end, with the answers.
 
 ---
 ---
@@ -1251,7 +1248,7 @@ keeps an advantage.
 > The paper references came off. They are on the part dividers where they belong, and the talk
 > should end on the science rather than on a bibliography.
 
-These were the four questions I put up at the start. Here are the answers.
+These are the four questions, one per part. Here are the answers.
 
 **One.** Yes, the choice of mass-mapping method matters. Change the reconstruction and nothing else,
 and the figure of merit moves by a hundred and fifty-seven per cent while the reconstruction error
@@ -1349,7 +1346,7 @@ In this order, and each is a real loss:
 
 ## Never cut
 
-- A0.8's four questions. The talk hangs on them and the close returns to them.
+- A0.8's two halves on the chain, and the four questions on the part dividers. The close returns to the four.
 - A1.13's *four per cent against a hundred and fifty-seven*, and the iKS null result.
 - A1.5's *the added assumption **is** the method*.
 - A2.7's two uncertainty sentences — all that survives of backup 113 — and its two limits.

@@ -211,19 +211,25 @@ Act 2, and Act 3's pays off again in Act 4. Nothing is taught twice.
 ## 4. The four questions — stated upfront, ticked off
 
 Unlike the COSMO-26 deck, which withheld its questions and generated each from the previous
-answer, **the defense states all four at minute seven and returns to them**. This is Fleming's
-device (§2.3) used as intended, and a defense is the format it fits best: the committee has read
-the thesis, so nothing is spoiled, and the room gets a map it can re-enter at any point.
+answer, **the defense asks each question on its part divider and returns to all four at the close**.
+The chain at minute seven (0.8) shows only the two halves, the map and the reading of it: four
+question cards there read as an outline slide and used vocabulary the room had not met (cut
+2026-09-08). Fleming's device (§2.3) still holds at the close: the committee has read the thesis, so
+nothing is spoiled, and the conclusions board is a return to four questions the room has met one at
+a time.
 
 | | question | answered at | answer |
 |---|---|---|---|
-| **Q1** | Is mass mapping preprocessing, or does the choice of reconstruction change the cosmology we infer? | A1.4–A1.5 | **It changes it.** Same simulations, same peak counts, same likelihood — swapping KS for MCALens moves the four-parameter figure of merit by **157 %**, and the gain comes from the small scales KS never recovers. |
-| **Q2** | Can a reconstruction be flexible, fast, accurate and honest about its own uncertainty at the same time? | A2.2–A2.3 | **Yes.** PnPMass: one denoiser trained once, inside a fixed-point iteration; no retraining across noise or footprint; per-pixel error bars with a distribution-free finite-sample coverage guarantee. |
-| **Q3** | If we discard every scale unmodelled baryons measurably touch, is there any non-Gaussian information left worth having? | A3.4–A3.5 | **Yes.** The contamination localises into the finest wavelet band. Drop it — at every survey area, with no feedback model at all — and the starlet ℓ1-norm still constrains **×1.8** tighter than the power spectrum at Stage IV, **×2.6** at full sky. |
-| **Q4** | Do we need a neural network to read the maps, or can a hand-built statistic reach the same ceiling? | A4.4–A4.6 | **A fixed wavelet statistic reaches it.** The joint ℓ1-norm, built from the auto-maps alone with no training, matches a compressor trained to maximise the information it retains — 3371 against 3326. |
+| **Q1** | Several algorithms turn the shapes into a map of the mass distribution in the Universe. Does the choice matter for the cosmological results? | A1.4–A1.5 | **Yes.** Same simulations, same peak counts, same likelihood; swapping KS for MCALens moves the four-parameter figure of merit by **157 %**, and the gain comes from the small scales KS never recovers. |
+| **Q2** | Can one algorithm be accurate and fast, with error bars we can trust, for a survey the size of Euclid? | A2.2–A2.3 | **Yes.** PnPMass: one denoiser trained once, inside a fixed-point iteration; no retraining across noise or footprint; per-pixel error bars with a distribution-free finite-sample coverage guarantee. |
+| **Q3** | A map is too big to compare with theory, so we reduce it to a few numbers, the summary statistics. How much cosmological information do they keep, and does it take a neural network? | A4.4–A4.6 | **As much as an optimal neural compressor, and without a network.** The joint ℓ1-norm, built from the auto-maps alone with no training, matches a compressor trained to maximise the information it retains, 3371 against 3326. |
+| **Q4** | The simulations leave out astrophysics we cannot model, on the small scales. Once those scales are removed, do these statistics still constrain the parameters better than the standard analysis? | A3.4–A3.5 | **Yes.** The contamination localises into the finest wavelet band. Drop it, at every survey area, with no feedback model at all, and the starlet ℓ1-norm still constrains **×1.8** tighter than the power spectrum at Stage IV, **×2.6** at full sky. |
 
-**The fifth question, never stated but always the subject: what makes any of it trustworthy?**
-It is answered on the conclusions slide, and it is what the four answers have in common — each
+*Long form of each question, as on the hidden return board (2026-09-08). On screen, each is asked on its part divider and answered in short form on the conclusions board; 0.8 shows only the two halves. Q3 and Q4 are in the deck's order, summaries then baryons; the "answered at" column keeps this document's act numbering.*
+
+**The fifth question, spoken as the close of 0.8: what makes any of it trustworthy?**
+The answer is the definition the talk works to: unbiased parameters, error bars that are right,
+and no dependence on physics we could not model. It is answered on the conclusions slide, and it is what the four answers have in common — each
 one is a *contrast inside a matched pipeline*, with the estimator held fixed and the calibration
 verified before any figure of merit was compared.
 
@@ -673,29 +679,29 @@ line on the slide — the signal encodes the growth of structure and the geometr
 and extracting it is an **algorithms** problem — and that is the sentence the
 rest of the talk answers.
 
-**3. A0.8 becomes the map of the thesis.** It used to end on a hand-off line about Parts 1 and 2 and
-leave the other two parts unannounced until the middle of the talk. Now all four questions are asked
-here, one per click, **each lighting the step of the chain it is about**:
+**3. A0.8 is the map of the thesis, in two halves (cut to this 2026-09-08).** From 09-06 to
+09-08 it asked all four questions here, one per click. That read as an outline slide with question
+marks, took 2:22, and asked the questions before the room had the words for them. Now:
 
-| click | question | lit |
+| click | on screen | lit |
 |---|---|---|
-| 1 | *(the claim: every stage is a learned component, and each can bias the answer or throw information away with no internal check noticing)* | nothing dimmed |
-| 2 | **Q1 · the maps · Part 1** — is mass mapping preprocessing, or does the choice of reconstruction change the cosmology we infer? | shear → mass maps |
-| 3 | **Q2 · the maps · Part 2** — can one reconstruction be flexible, fast, accurate and honest about its own uncertainty, on a survey the size of Euclid? | mass maps |
-| 4 | **Q3 · the summaries · Part 3** — what is the most we can read out of a map, and what does it take to turn that reading into a posterior? | maps → summaries → inference → posterior |
-| 5 | **Q4 · the summaries · Part 4** — does any of that survive the real Universe, the astrophysics we cannot model? | summaries + systematics |
+| 0 | the chain, walked left to right in four sentences | nothing dimmed |
+| 1 | *the first half, papers 1 and 2: making the mass map from the measured shear* | shear → mass maps |
+| 2 | *the second half, papers 3 and 4: reading the map, from a summary statistic to the posterior* | maps → summaries → inference → posterior |
 
-This is what gives the room the shape of the whole work before any of it starts, which is the one
-thing §0 says the defense is *for* and the manuscript is worst at. Every part opener afterwards is
-then a return to a picture they have already seen with a box lit.
+The four questions are spoken in passing here, one sentence per half, and **asked properly on the
+part dividers**, each at the moment it is motivated. The word *trustworthy* closes the beat, spoken:
+unbiased parameters, error bars that are right, no dependence on physics we could not model.
 
-**The four questions are canonical.** The board before the conclusions asks exactly these four, in
-this order, in the same words — it is now a *return*, not an opener, and its notes say so. Change
-one, change both.
+**The four questions are canonical on the dividers and the conclusions board.** The board answers
+the four in short form; the hidden return board keeps the long form. Change one, change all.
 
-*Deliberately avoided in the wording:* "higher-order statistics". Q3 and Q4 are asked in plain terms
-(*the most we can read out of a map*, *the real Universe*) because at frame 9 the room has not met
-the vocabulary and does not need it.
+**Drawn as a flowchart since 2026-09-08.** After three rows (cards, bare tiles, tiles on a wire) 0.8 still
+read as a table, so it is now a hand-placed diagram in the spirit of the DES Y3 figure on 0.7: pictures
+of different sizes for the data products, small tinted boxes on the arrows for the processes (mass
+mapping, compression, inference), the model side as its own lower branch feeding inference, connectors
+drawn with elbows. It lives in a `.chart` block on the slide with `on-1` / `on-2` tags; the shared chain
+template below is no longer used on 0.8, only on the act openers.
 
 **Mechanism, for whoever edits this next.** `data-steps` on a `.pipeline-slot` (see `pipeline.js`)
 marks each step's stages `on-k`; which step is showing is decided in CSS off reveal's own

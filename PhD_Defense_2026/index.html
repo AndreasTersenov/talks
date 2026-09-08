@@ -393,16 +393,14 @@
 
 
 			<!-- =============================================================================
-			     A0.8 — the analysis chain, and the four questions of the thesis ON it.
-			     REBUILT 2026-09-06 (Andreas).  It used to end on a hand-off line about
-			     Parts 1 and 2 and leave the other two parts unannounced until the middle
-			     of the talk.  Now the whole thesis is declared here, one question per
-			     click, each one lighting the step of the chain it is asked about — so the
-			     room gets the full shape of the work before any of it starts, and every
-			     part opener afterwards is a return to a picture they have already seen.
-			     These four questions are CANONICAL: the scoreboard before the conclusions
-			     answers exactly these, in this order, in the same words.  Change one, change
-			     both.
+			     A0.8 — the analysis chain, and the two halves of the thesis ON it.
+				     REBUILT 2026-09-06 with all four questions asked here, one per click; CUT
+				     to two halves 2026-09-08 (Andreas): four question cards at minute seven
+				     read as an outline slide, took 2:22, and used words the room had not met.
+				     Now two clicks: shear -> mass maps lit for papers 1 and 2 (making the
+				     map), maps -> posterior lit for papers 3 and 4 (reading it).  The four
+				     questions are spoken in passing and ASKED on the part dividers; the
+				     conclusions board answers them in short form.
 			     Mechanism: `data-steps` on the slot (see pipeline.js) marks each step's
 			     stages `on-k`; which step is showing is decided in CSS off reveal's own
 			     `.current-fragment` on the zero-size `.qstep` markers, which is why the
@@ -410,91 +408,54 @@
 			     general-sibling selector.  No JS listener, so ?print-pdf stays correct.
 			============================================================================== -->
 			<section class="chainslide thesismap" data-theme="light">
-				<h3 class="slide-title tight">The analysis chain from galaxy shapes to parameters, and the <em class="alert">four questions</em> of this thesis</h3>
+				<h3 class="slide-title tight">The analysis chain from galaxy shapes to parameters</h3>
 
-				<!-- zero-size step markers. Index 1 is the claim about the chain; 2-5 are the
-				     four questions. They change no layout. -->
-				<span class="qstep s0 fragment" data-fragment-index="1"></span>
-				<span class="qstep s1 fragment" data-fragment-index="2"></span>
-				<span class="qstep s2 fragment" data-fragment-index="3"></span>
-				<span class="qstep s3 fragment" data-fragment-index="4"></span>
-				<span class="qstep s4 fragment" data-fragment-index="5"></span>
+				<!-- zero-size step markers, one per half of the talk. They change no layout. -->
+				<span class="qstep s1 fragment" data-fragment-index="1"></span>
+				<span class="qstep s2 fragment" data-fragment-index="2"></span>
 
-				<div class="pipeline-slot"
-					data-steps="shear maps | shear maps | maps summaries inference posterior | summaries systematics"></div>
+				<div class="pipeline-slot" data-steps="shear maps | maps summaries inference posterior">
+				</div>
 
-				<!-- one bay, five cards stacked in it: the slide never changes height, so the
-				     diagram above does not walk up and down the screen as the questions turn over -->
+				<!-- one bay, two cards stacked in it: the slide never changes height, so the
+				     diagram above does not walk up and down the screen as the cards turn over -->
 				<div class="qbay">
-					<p class="qslot k0 note">
-						Each of these steps now involves <b>learned components</b>. Each of them
-						can bias the result or discard information, and <b>there is no internal check that would detect it</b>.
-					</p>
-
 					<div class="qslot k1 coreq">
 						<div class="qcard">
-							<span class="qtab">question 1 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 1</span>
-							<p>Does the choice of <b class="alert">mass-mapping method</b> matter for the final constraints?</p>
+							<span class="qtab">the first half &nbsp;&mdash;&nbsp; papers 1 and 2</span>
+							<p><b class="alert">Making the mass map</b> from the measured shear.</p>
 						</div>
 					</div>
 
 					<div class="qslot k2 coreq">
 						<div class="qcard">
-							<span class="qtab">question 2 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 2</span>
-							<p>Can one method be accurate, flexible and fast, with <b class="alert">reliable uncertainties</b>, at the scale of Euclid?</p>
-						</div>
-					</div>
-
-					<div class="qslot k3 coreq">
-						<div class="qcard">
-							<span class="qtab">question 3 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 3</span>
-							<p>How much <b class="alert">cosmological information</b> can a summary statistic extract from the maps, and how do we turn it into a posterior?</p>
-						</div>
-					</div>
-
-					<div class="qslot k4 coreq">
-						<div class="qcard">
-							<span class="qtab">question 4 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 4</span>
-							<p>Do these results hold up against <b class="alert">astrophysical systematics</b> we cannot model, such as baryonic feedback?</p>
+							<span class="qtab">the second half &nbsp;&mdash;&nbsp; papers 3 and 4</span>
+							<p><b class="alert">Reading the map</b>, from a summary statistic to the posterior.</p>
 						</div>
 					</div>
 				</div>
 
 				<aside class="notes">
-					Straight off the DES diagram: that is what a real analysis looks like, and almost none of it is
-					what this thesis is about. So strip it down to the scientific spine — no instrument, no
-					calibration, no survey systematics on the data side — and you get this. Walk it left to right
-					once, slowly: a catalogue of shapes and redshifts; binned into shear maps; inverted into mass maps;
-					compressed into a summary; compared against simulations to infer parameters; and out comes a
-					posterior. Underneath runs the model lane, in the order it actually happens: cosmologies drawn from
-					a prior, run through the simulations, and only then given the systematics.
+					Here is the same thing, reduced to the steps I will talk about. Walk it once, left to right:
+					galaxy shapes go in; from the shapes we make a map of the mass distribution; from the map we take
+					a few numbers, the summary statistics; we compare those with simulations, and out come the
+					parameters.
 
-					[CLICK] Then the claim, and do not hedge it: every one of those stages is now built out of learned
-					components, and every one of them can bias the result or discard information, with no internal check that would catch it.
+					[CLICK] The first half of the talk, the first two papers, is about this step: making the map.
+					Several algorithms do it. Does the choice matter for the cosmological results, and can we build
+					one whose error bars we can trust?
 
-					〔the four questions — this is the map of the whole talk, so give each one its own beat and point
-					at the step that lights up.  Q1 and Q2 light the SAME step, shear -> mass maps: mass
-					mapping IS that arrow, and both papers live on it.  Only the card below changes〕
+					[CLICK] The second half, the last two papers, is about everything after it: reading the map. How
+					much of the cosmological information do the summary statistics keep, and does that survive the
+					physics the simulations get wrong?
 
-					[CLICK] Question one, and it is about this step here — shear in, a mass map out. That inversion is
-					not a measurement, it is a choice of algorithm, and the field has always judged it on how good the
-					map looks. But the map is not what we publish. So: does the choice reach the cosmology?
-
-					[CLICK] Question two, same step. Suppose it does matter. Then we want a reconstruction that is
-					accurate, flexible, fast, and with reliable uncertainties — all four at once, at the scale of Euclid.
-
-					[CLICK] Question three moves one step to the right, and then all the way to the end. A map is a
-					hundred thousand correlated pixels; it has to be compressed before anything can be inferred from it.
-					How much of the information can we keep — and what machinery does it take to get from a compressed
-					reading to a posterior?
-
-					[CLICK] And question four is the one that decides whether any of it is usable. Everything so far
-					assumes the simulations tell the truth. They do not, quite — there is astrophysics in the real
-					Universe we cannot model. Does the signal survive it?
-
-					SAY LAST: four questions, two about the maps and two about the summaries. Each pair asks whether
-					there is something to gain, and then whether we can actually have it. We come back to this board at
-					the end with the answers.
+					SAY LAST: now, the word trustworthy in the title. Every one of these steps can bias the result or
+					distort the error bars, and the whole chain rests on the simulations being right. If they miss a
+					physical or observational effect, the posterior at the end looks perfectly normal, and it is
+					wrong. The more of the pipeline is learned from those simulations, the easier that is to miss: a
+					network asked about data it was not trained on answers confidently and incorrectly. Trustworthy
+					means we checked, at every step, that this is not happening to us. You will see this picture
+					again at the head of every part, with one box lit.
 				</aside>
 			</section>
 
@@ -3763,27 +3724,27 @@
 				<h3 class="slide-title tight">Back to the four questions</h3>
 				<div class="coreq scoreboard">
 					<div class="qcard">
-						<span class="qtab">question 1 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 1</span>
-						<p>Does the choice of <b class="alert">mass-mapping method</b> matter for the final constraints?</p>
+						<span class="qtab">question 1 &nbsp;&mdash;&nbsp; making the mass map &nbsp;&nbsp; Part 1</span>
+						<p>Several algorithms turn the shapes into a map of the <b class="alert">mass distribution</b> in the Universe. Does the choice matter for the <b>cosmological results</b>?</p>
 					</div>
 					<div class="qcard">
-						<span class="qtab">question 2 &nbsp;&mdash;&nbsp; the maps &nbsp;&nbsp; Part 2</span>
-						<p>Can one method be accurate, flexible and fast, with <b class="alert">reliable uncertainties</b>, at the scale of Euclid?</p>
+						<span class="qtab">question 2 &nbsp;&mdash;&nbsp; making the mass map &nbsp;&nbsp; Part 2</span>
+						<p>Can one algorithm be accurate and fast, with <b class="alert">error bars we can trust</b>, for a survey the size of Euclid?</p>
 					</div>
 					<div class="qcard">
-						<span class="qtab">question 3 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 3</span>
-						<p>How much <b class="alert">cosmological information</b> can a summary statistic extract from the maps, and how do we turn it into a posterior?</p>
+						<span class="qtab">question 3 &nbsp;&mdash;&nbsp; the summary statistics &nbsp;&nbsp; Part 3</span>
+						<p>A map is too big to compare with theory, so we reduce it to a few numbers, the <b class="alert">summary statistics</b>. How much cosmological information do they keep, and does it take a neural network?</p>
 					</div>
 					<div class="qcard">
-						<span class="qtab">question 4 &nbsp;&mdash;&nbsp; the summaries &nbsp;&nbsp; Part 4</span>
-						<p>Do these results hold up against <b class="alert">astrophysical systematics</b> we cannot model, such as baryonic feedback?</p>
+						<span class="qtab">question 4 &nbsp;&mdash;&nbsp; the simulations &nbsp;&nbsp; Part 4</span>
+						<p>The simulations leave out <b class="alert">astrophysics we cannot model</b>, on the small scales. Once those scales are removed, do these statistics still constrain the parameters better than the standard analysis?</p>
 					</div>
 				</div>
-				<p class="lead-line">Two about the <b>maps</b>, two about the <b>summaries</b>. Each pair asks whether
-					there is something to gain, then whether we can actually have it.</p>
+				<p class="lead-line">Two about the <b>map</b>, two about the <b>summary statistics</b>.</p>
 				<aside class="notes">
-					This is a RETURN, not an opener — the same four cards, in the same words, that went up on the chain
-					at the start. Say so: these were the four questions; here they are again, and now the answers. Do not
+					This is a RETURN, not an opener — the four questions, each asked on its part divider (the chain at
+					the start shows only the two halves). Say so: these were the four questions; here they are together, and now the answers. Do
+					not
 					read them out a second time in full — point along them and let the room re-read. Then straight into
 					the conclusions.
 				</aside>
@@ -3796,27 +3757,36 @@
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
-						<span class="qtext">Does the choice of <b>mass-mapping method</b> matter?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
+						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological results?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
+								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
-						<span class="qtext">Can one method be accurate, flexible and fast, <b>with reliable uncertainties</b>?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within <b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error bars</b>, trained <b>once</b>.</span></span>
+						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can trust</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
+								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
+									bars</b>, trained <b>once</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q3</span>
-						<span class="qtext">How much <b>information</b> can a summary statistic extract, and does it take a network?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>As much as an "optimal" CNN, and without training.</b> The joint &#8467;1&#8209;norm <b>matches the VMIM&#8209;trained compressor</b>.</span></span>
+						<span class="qtext">How much <b>information</b> do the summary statistics keep, and does it take a neural network?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>As much as an "optimal" CNN, and
+									without training.</b> The joint &#8467;1&#8209;norm <b>matches the
+									VMIM&#8209;trained compressor</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q4</span>
-						<span class="qtext">Do the results hold up against <b>unmodelled baryonic feedback</b>?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
+						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics still <b>beat the standard analysis</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
+								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
+								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
 					</li>
 				</ul>
 				<aside class="notes">
-					THE closing slide, and it stays up through questions. It is a RETURN: these are the four questions from the chain at the start, in short form. Do not read the questions out again — the room has seen them — read the ANSWERS, one beat each, and stop.
+					THE closing slide, and it stays up through questions. It is a RETURN: these are the four questions, one
+					per part, each asked on its divider, in short form. Do not read the questions out again — the room
+					has met each one — read the ANSWERS, one beat each, and stop.
 					The old three-answer version (deep learning / baryons / nulling) is parked below: it numbered its
 					answers against a question set the talk no longer asks, and the nulling one is not presented at all.
 					The paper references left with it — they are on the part dividers, and this slide should end on the
