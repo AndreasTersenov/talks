@@ -3755,10 +3755,106 @@
 			</section>
 
 
-			<!-- ============ close ============ -->
-			<section data-theme="light">
-				<h3 class="slide-title tight">Conclusions</h3>
-				<ul class="qlist qlist-close">
+			<!-- ============ close ============
+				     Three backgrounds were tried on 2026-09-08 (the convergence map, this night-sky
+				     photograph, the Euclid deep field, the UNIONS visual); Andreas chose the Euclid
+				     field, which is the live slide below. This one and the UNIONS one are kept
+				     hidden as the runners-up. The four answers sit in translucent dark cards so
+				     they read over it; styling in custom.css under "THE CLOSING SLIDE". ============ -->
+				<section class="closing" data-visibility="hidden" data-background-image="../assets/backgrounds/background_sky.jpg"
+					data-background-size="cover" data-background-position="center">
+					<h3 class="slide-title tight">Conclusions</h3>
+					<ul class="qlist qlist-close">
+					<li class="done">
+						<span class="qn">Q1</span>
+						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological results?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
+								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q2</span>
+						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can trust</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
+								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
+									bars</b>, trained <b>once</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q3</span>
+						<span class="qtext">How much <b>information</b> do the summary statistics keep, and does it take a neural network?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>As much as an "optimal" CNN, and
+									without training.</b> The joint &#8467;1&#8209;norm <b>matches the
+									VMIM&#8209;trained compressor</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q4</span>
+						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics still <b>beat the standard analysis</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
+								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
+								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
+					</li>
+				</ul>
+				<aside class="notes">
+					THE closing slide, and it stays up through questions. It is a RETURN: these are the four questions, one
+					per part, each asked on its divider, in short form. Do not read the questions out again — the room
+					has met each one — read the ANSWERS, one beat each, and stop.
+					The old three-answer version (deep learning / baryons / nulling) is parked below: it numbered its
+					answers against a question set the talk no longer asks, and the nulling one is not presented at all.
+					The paper references left with it — they are on the part dividers, and this slide should end on the
+					science, not on a bibliography.
+				</aside>
+			</section>
+
+				<!-- THE closing slide (chosen 2026-09-08): over the Euclid deep-field image, dimmed
+				     to 60 % with reveal's data-background-opacity so the galaxies do not fight the
+				     text. Styling in custom.css under "THE CLOSING SLIDE". -->
+				<section class="closing" data-background-image="../assets/backgrounds/Background-Euclid.jpeg" data-background-opacity="0.4"
+					data-background-size="cover" data-background-position="center">
+					<h1>Conclusions</h1>
+					<ul class="qlist qlist-close">
+					<li class="done">
+						<span class="qn">Q1</span>
+						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological results?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
+								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q2</span>
+						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can trust</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
+								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
+									bars</b>, trained <b>once</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q3</span>
+						<span class="qtext">How much <b>information</b> do the summary statistics keep, and do we need a neural network to extract all of it?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> The joint &#8467;1&#8209;norm <b>matches the
+									VMIM&#8209;trained compressor</b>.</span></span>
+					</li>
+					<li class="done">
+						<span class="qn">Q4</span>
+						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics still <b>beat the standard analysis</b>?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
+								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
+								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
+					</li>
+				</ul>
+				<aside class="notes">
+					THE closing slide, and it stays up through questions. It is a RETURN: these are the four questions, one
+					per part, each asked on its divider, in short form. Do not read the questions out again — the room
+					has met each one — read the ANSWERS, one beat each, and stop.
+					The old three-answer version (deep learning / baryons / nulling) is parked below: it numbered its
+					answers against a question set the talk no longer asks, and the nulling one is not presented at all.
+					The paper references left with it — they are on the part dividers, and this slide should end on the
+					science, not on a bibliography.
+				</aside>
+			</section>
+
+				<!-- HIDDEN runner-up (2026-09-08): the closing slide over the UNIONS visual, cropped
+				     beside its wordmark (assets/backgrounds/UNIONS-MainVisual-notext.jpg). -->
+				<section class="closing" data-visibility="hidden" data-background-image="../assets/backgrounds/UNIONS-MainVisual-notext.jpg"
+					data-background-size="cover" data-background-position="center">
+					<h3 class="slide-title tight">Conclusions</h3>
+					<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
 						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological results?</span>

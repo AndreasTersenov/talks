@@ -2557,3 +2557,29 @@
 }
 .reveal .slides section .pipe-focus.visible ~ .chart-slot .is-lit b { color: var(--accent); }
 
+/* ---------------------------------------------------------------------------
+   THE CLOSING SLIDE (2026-09-08).  The conclusions over the Euclid deep field,
+   full bleed and dimmed to 60 % (data-background-opacity on the section).  It is a dark slide, so the tokens already give light text; the
+   four answers sit in translucent dark cards (the theme's background at two
+   thirds, blurred) with a faint edge, and the title gets the same glass behind
+   it so it reads over the bright peaks.  No hex here: everything is mixed from
+   the tokens, so a theme change follows through.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.closing .slide-title {
+	display: block; width: fit-content; margin-right: auto;
+	padding: 0.18em 0.7em 0.22em 0.55em; border-radius: 8px;
+	background: color-mix(in srgb, var(--bg) 62%, transparent);
+	backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.reveal .slides section.closing .qlist { margin-top: 0.55em; display: grid; row-gap: 0.4em; }
+.reveal .slides section.closing .qlist > li,
+.reveal .slides section.closing .qlist > li:last-child {
+	border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); border-radius: 10px;
+	padding: 0.55em 0.9em 0.6em 0.7em;
+	background: color-mix(in srgb, var(--bg) 66%, transparent);
+	backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.reveal .slides section.closing .qlist > li.done .qtext { color: color-mix(in srgb, var(--fg) 86%, transparent); }
+.reveal .slides section.closing .qlist .qans { color: var(--fg); }
+.reveal .slides section.closing .qlist .qtext { font-size: 0.93em; }
+
