@@ -504,9 +504,9 @@ pick a reconstruction.
 
 ## A1.11 — the experiment · frame 19 · 0:34
 
-So we built the pipeline and changed exactly one thing in it. Twenty-five cosmologies from
-cosmo-SLICS, same statistic, same emulator, same likelihood, same sampler. Only the reconstruction
-changes.
+So we built the pipeline. Twenty-five cosmologies from cosmo-SLICS, same statistic, same emulator,
+same likelihood, same sampler. [CLICK] And we changed exactly one thing in it: the reconstruction,
+which changes the map a lot.
 
 **▲** So whatever moves in the posterior is the reconstruction. It cannot be anything else.
 

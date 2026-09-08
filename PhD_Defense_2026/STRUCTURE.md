@@ -439,12 +439,12 @@ explicitly.
 | 1.3 | Kaiser–Squires assumes **almost nothing** about κ — which is the problem | the truth/KS pair; derivation + operator algebra on 3 verticals | built | 1:23 |
 | 1.4 | **TEACH** Every mass-mapping method is a Bayesian inference with a different **prior** on κ | the Bayes decomposition, then the three priors; 3 verticals | built | 1:44 |
 | 1.4a | What *sparse* actually claims | the starlet atoms; a physical claim, not a numerical trick | lift (LAM) | 0:57 |
-| 1.4b | MCALens: **two components**, and a different rule for each | the κ_G + κ_NG split, the alternation, and **what a proximal operator is** — the step Part 2 replaces | **rebuilt 2026-09-03** | 1:06 |
-| 1.5 | Different assumptions, different maps — and **nobody had checked** whether it mattered | two cards: what the field measured against what it had not; the Euclid stake | **built 2026-09-03** | 0:54 |
-| 1.5a | Same simulations, same statistic, same likelihood — **only the map changes** | the fixed chain, with compression and inference marked as Part 3's business | **unparked 2026-09-03** | 0:52 |
-| 1.5b | Kaiser–Squires **smooths the small scales away**. MCALens does not. | the four panels beside a key of **what each assumes**, badged Euclid-baseline / state-of-the-art | **unparked + adapted** | 0:39 |
-| 1.6 | **Swapping the reconstruction alone moves the FoM by 157 %** | contours + ratio ladder to KS = 1.00× | **unparked 2026-09-03** | 1:15 |
-| 1.7 | MCALens keeps gaining to 2′; KS saturated at 8′ | the two scale ladders | **unparked 2026-09-03** | 0:59 |
+| 1.4b | MCALens models κ as a **Gaussian plus a sparse** component | the κ_G + κ_NG split, the alternation, and **what a proximal operator is** — the step Part 2 replaces | **rebuilt 2026-09-03** | 1:06 |
+| 1.5 | Different priors give different maps. Does the difference affect the **cosmological results**? | the question alone; on click the Euclid stake, *is an advanced reconstruction method worth the effort, or is any reasonable method good enough?* No columns, no QR (the divider carries it) | **built 2026-09-03, cut to two lines 2026-09-08** | 0:39 |
+| 1.5a | The simulations, statistic and likelihood are fixed, and only the **mass-mapping method** varies | a schematic of the paper's own pipeline, unlike the recurring photo chain: simulations, shear maps, mass maps, summary statistic, inference (GP emulator, Gaussian likelihood, MCMC), posterior, as stroke glyphs on a flow line; on click the rest stands down, marked *held fixed*, and the mass-map node fans into the three maps from 1.2; plain names with the paper's method as a subscript | **rebuilt 2026-09-08** from the text-only rail | 0:36 |
+| 1.5b | MCALens recovers **small-scale structure** that Kaiser–Squires smooths out | the four panels beside a key of **what each assumes**, badged Euclid-baseline / state-of-the-art | **unparked + adapted** | 0:39 |
+| 1.6 | **MCALens improves the FoM by 157 % over Kaiser–Squires**; on click, what this means for a survey like Euclid | contours + ratio ladder to KS = 1.00× | **unparked 2026-09-03** | 1:15 |
+| 1.7 | The gain comes from scales below 8′, which only MCALens recovers | the two scale ladders | **unparked 2026-09-03** | 0:59 |
 
 *The beat.* **Restructured 2026-08-29 on Andreas's call, and this is now the strongest sequence in
 the deck.** It is a derivation, not a list of three methods:

@@ -1179,35 +1179,77 @@
 					fixed, and only the <b class="alert">mass-mapping method</b> varies
 				</h3>
 
-				<!-- the chain as a ruled track: only the stop that varies is on the accent. -->
-				<div class="rail">
-					<div class="rstop"><span class="n">shear catalogue</span><span class="d"></span><span class="s">25
-							cosmologies, cosmo&#8209;SLICS</span></div>
-					<div class="rstop on"><span class="n">reconstruction</span><span class="d"></span><span class="s">KS
-							&nbsp;/&nbsp; iKS &nbsp;/&nbsp; MCALens</span><span class="tnote">the only thing that
-							varies</span></div>
-					<div class="rstop"><span class="n">wavelet peak counts</span><span class="d"></span><span
-							class="s">starlet, 2&prime;&ndash;32&prime; + coarse</span><span class="s2">which statistic,
-							and why &rarr; Part 3</span></div>
-					<div class="rstop"><span class="n">emulator + MCMC</span><span class="d"></span><span
-							class="s">&Omega;<sub>m</sub>, &sigma;<sub>8</sub>, h, w<sub>0</sub></span><span
-							class="s2">how the inference works &rarr; Parts 3&ndash;4</span></div>
+				<!-- The paper's own pipeline (Tersenov+ 2025, Sect. 4), drawn as a schematic
+				     rather than as the recurring photo chain: glyphs for the fixed steps, the
+				     three reconstructions of one field fanned out for the step that varies.
+				     Rebuilt 2026-09-08 (Andreas: schematic, closer to what the paper does). -->
+				<!-- zero-size marker: on the click the rest of the schematic stands down,
+				     the held-fixed notes appear and the mass-map node fans into three maps.
+				     Keyed on reveal's .visible in CSS, so ?print-pdf gets both states. -->
+				<span class="fragment fixstep" data-fragment-index="1"></span>
+
+				<div class="ppipe">
+					<div class="pnode">
+						<div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 36 H66 V84 H18 Z M18 36 L38 16 H86 L66 36 M66 84 L86 64 V16"/><g class="dot"><circle cx="30" cy="50" r="2.2"/><circle cx="47" cy="62" r="2.2"/><circle cx="56" cy="46" r="2.2"/><circle cx="36" cy="72" r="2.2"/><circle cx="58" cy="74" r="2.2"/><circle cx="43" cy="44" r="2.2"/></g></svg></div>
+						<div class="pname">simulations</div>
+						<div class="psub">cosmo&#8209;SLICS, 25 cosmologies</div>
+						<div class="fixnote">held fixed</div>
+					</div>
+					<div class="parw" aria-hidden="true"></div>
+					<div class="pnode">
+						<div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="8" y="8" width="84" height="84" rx="3" class="frame"/><path d="M39.2 40.0 L47.1 35.6 M56.2 36.7 L62.8 42.8 M64.6 51.7 L60.8 59.9 M52.9 64.4 L43.9 63.4 M37.2 57.2 L35.4 48.3 M48.3 77.4 L38.6 75.0 M32.5 71.2 L26.1 63.5 M23.4 56.8 L22.7 46.8 M24.5 39.9 L29.8 31.4 M35.3 26.8 L44.6 23.1 M51.7 22.6 L61.4 25.0 M67.5 28.8 L73.9 36.5 M76.6 43.2 L77.3 53.2 M75.5 60.1 L70.2 68.6 M64.7 73.2 L55.4 76.9 M71.4 17.0 L79.1 23.5 M83.6 29.6 L87.7 38.8 M89.1 46.2 L88.8 56.2 M86.9 63.6 L82.3 72.4 M77.4 78.2 L69.3 84.2 M62.4 87.3 L52.6 89.2 M45.0 89.0 L35.3 86.5 M28.6 83.0 L20.9 76.5 M16.4 70.4 L12.3 61.2 M10.9 53.8 L11.2 43.8 M13.1 36.4 L17.7 27.6 M22.6 21.8 L30.7 15.8 M37.6 12.7 L47.4 10.8 M55.0 11.0 L64.7 13.5"/></svg></div>
+						<div class="pname">shear maps</div>
+						<div class="psub">1&prime; pixels, noise and mask added</div>
+						<div class="fixnote">held fixed</div>
+					</div>
+					<div class="parw" aria-hidden="true"></div>
+					<div class="pnode varies">
+						<div class="pglyph fan">
+							<div class="fcard c3"><img src="../assets/figures/maps/kappa_cand_gauss.png"
+									alt="a heavily smoothed reconstruction"></div>
+							<div class="fcard c2"><img src="../assets/figures/maps/kappa_cand_noisy.png"
+									alt="a noise-dominated reconstruction"></div>
+							<div class="fcard c1"><img src="../assets/figures/maps/kappa_cand_truth.png"
+									alt="a sharp reconstruction"></div>
+						</div>
+						<div class="pname">mass maps</div>
+						<div class="psub">KS, iKS, MCALens</div>
+						<div class="fixnote">the only thing that varies</div>
+					</div>
+					<div class="parw" aria-hidden="true"></div>
+					<div class="pnode">
+						<div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><rect class="bar" x="14" y="42" width="11" height="44"/><rect class="bar" x="28" y="22" width="11" height="64"/><rect class="bar" x="42" y="12" width="11" height="74"/><rect class="bar" x="56" y="34" width="11" height="52"/><rect class="bar" x="70" y="56" width="11" height="30"/><path d="M8 86 H92"/></svg></div>
+						<div class="pname">summary statistic</div>
+						<div class="psub">peak counts, single and multi&#8209;scale</div>
+						<div class="fixnote">held fixed, Part 3</div>
+					</div>
+					<div class="parw" aria-hidden="true"></div>
+					<div class="pnode">
+						<div class="pglyph"><span class="math">$\log \mathcal{L}(\theta)$</span></div>
+						<div class="pname">inference</div>
+						<div class="psub">GP emulator, Gaussian likelihood, MCMC</div>
+						<div class="fixnote">held fixed, Parts 3&ndash;4</div>
+					</div>
+					<div class="parw" aria-hidden="true"></div>
+					<div class="pnode">
+						<div class="pglyph"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="hair" d="M50 12 V88 M12 50 H88"/><g transform="rotate(-35 50 50)"><ellipse cx="50" cy="50" rx="36" ry="19"/><ellipse class="inner" cx="50" cy="50" rx="19" ry="9.5"/></g></svg></div>
+						<div class="pname">posterior</div>
+						<div class="psub">&Omega;<sub>m</sub>, &sigma;<sub>8</sub>, h, w<sub>0</sub></div>
+						<div class="fixnote">the output we compare</div>
+					</div>
 				</div>
 
 				<p class="pull">
-					Everything else is fixed, so any change in the posterior comes from the <b class="alert">reconstruction</b>.
+					Everything else is fixed, so any change in the posterior comes from the <b
+						class="alert">reconstruction</b>.
 				</p>
-
-				<p class="lead-line">
-					The map ($10^5$ correlated pixels) has to be <b>compressed</b> into a summary statistic before inference. Which statistic to use is the subject of <b class="alert">Part 3</b>; here it is <b>held fixed</b>.</p>
 				<aside class="notes">
-					SAY: fast and flat. Twenty-five cosmologies from cosmo-SLICS — everything here is on simulations,
+					SAY: fast and flat. Twenty-five cosmologies from cosmo-SLICS, everything here on simulations,
 					because we need a truth to compare against. DES-Y1 footprint, nineteen tiles of a hundred square
-					degrees. Same statistic on every map, same emulator, same likelihood, same sampler. Only the
-					reconstruction changes. [CLICK] One sentence on the last two boxes and then move: a map is a
-					hundred thousand correlated pixels, so we have to compress it before any likelihood can touch it,
-					and which statistic you compress with is its own question — that is Part 3. Here it is nailed down
-					on purpose. Do NOT get drawn into peak counts now.
+					degrees. Same statistic on every map, same emulator, same likelihood, same sampler. [CLICK] Only the
+					reconstruction changes, and it changes the map a lot. One sentence on the last boxes and then move: the map is compressed into
+					a summary statistic before inference, and which statistic is its own question, that is Part 3.
+					Here it is nailed down on purpose. Do NOT get drawn into peak counts now.
 				</aside>
 			</section>
 
