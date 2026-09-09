@@ -677,17 +677,19 @@ from it, and the inference of the cosmological parameters from that statistic.
 
 ---
 
-## A3.2 — the map has to be compressed · frame 28 · 0:24
+## A3.2 — the map has to be compressed · frame 28 · 0:32
 
-The chain again. The map is a hundred thousand correlated pixels, so it is compressed into a
-summary statistic before the comparison with theory. [CLICK] The choice of statistic determines how
-much information is retained. [CLICK] In Part 1 this step was held fixed. Now it is the subject.
+So back to our pipeline. We have a map, and we want to compare it with theory to infer the cosmological parameters.
+The map is a hundred thousand correlated pixels, so it would be extremely hard to work with directly. Instead, 
+we compress it into a summary statistic before the comparison with theory. 
+[CLICK] The choice of statistic determines how
+much information is retained. 
 
 ---
 
-## A3.3 — the two-point function · frame 29 · 0:48
+## A3.3 — the two-point function · frame 29 · 0:52
 
-The standard statistic is the two-point correlation function: how correlated the shear is between
+The standard statistic for weak lensing is the two-point correlation function: how correlated the shear is between
 pairs of galaxies separated by an angle theta, measured in real space as xi-plus and xi-minus, or
 in harmonic space as the power spectrum.
 
@@ -695,17 +697,21 @@ in harmonic space as the power spectrum.
 analysis, and for good reasons. It can be predicted analytically, its covariance is understood,
 and there are two decades of work on its systematics.
 
-[CLICK] **▲** For a Gaussian random field, the power spectrum contains all the information. But the
-late-time density field is not Gaussian.
+[CLICK] **▲** For a Gaussian random field, the power spectrum is a sufficient statistic: it
+contains all the information. 
+But the late-time density field is not Gaussian.
 
 ---
 
-## A3.4 — same power spectrum · frame 30 · 0:24
+## A3.4 — same power spectrum · frame 30 · 0:22
 
-Gravitational collapse makes the field non-Gaussian: matter concentrates into haloes and filaments
-around voids. These two fields have exactly the same power spectrum. One is a simulated large-
-scale-structure map; the other is a Gaussian random field with the same power spectrum. A two-point
-analysis cannot distinguish them.
+Gravitational collapse and nonlinear structure formation
+makes the field non-Gaussian: matter concentrates into haloes and filaments
+around voids. 
+
+And here you can clearly see the issue with that: these two completely different fields have the same power spectrum.
+
+A two-point analysis cannot distinguish them.
 
 ---
 
@@ -718,90 +724,49 @@ wavelet statistics, the ℓ1-norm, Minkowski functionals, and others.
 
 ---
 
-## A3.6 — the gain · frame 32 · 0:33
+## A3.6 — the gain · frame 32 · 0:13
 
-And this information improves the constraints. This is a forecast by Ajani et al., on the same
-convergence maps, for the neutrino mass, Omega-m and A-s. The power spectrum, in blue, gives the
-widest contours. Peak counts at a single smoothing scale, in green, are tighter. Multi-scale peak
-counts, in red and black, are tighter still. The data are the same; only the summary statistic
-changes.
+And this information seems to be quite valuable: from our forecasts, done on simulations, adding different higher-order statistics to the power spectrum significantly improves the constraints. 
 
----
+## A3.10 — wavelets · frame 33 · 1:32
 
-## A3.7 — peak counts · frame 101 · SKIP · 0:24
+But to talk about the higher-order statistics we investigate and develop in this thesis, we need to open a small parenthesis on a mathematical tool that is central to them: wavelets.
 
-> **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 34 defines peak counts and draws their shape.
-> Kept for questions.
 
-A peak is a local maximum of the signal-to-noise field: the map smoothed by a filter, in units of
-the noise. Peaks sit where kappa is high, so they trace the massive structures, and counting them
-by height is a one-point statistic that sees what the power spectrum cannot.
+We are all familiar with Fourier analysis, which decomposes a signal into sines and cosines. Wavelet analysis is similar, but instead of sines and cosines it uses wavelets: localised, oscillating functions that can be dilated and translated to analyse the signal at different scales and positions.
 
----
+<!-- In Fourier analysis the basis functions are sines, each with a single
+frequency and extending over the whole map, so a Fourier coefficient says which scales are present but nothing about where.  -->
 
-## A3.8 — one starlet transform · frame 102 · SKIP · 0:32
-
-> **MOVED TO BACKUP (Andreas, 2026-09-06).** In the backup the order is right: the wavelet primer at
-> 98–100, then this.
-
-A single filter size is a choice, and the wrong one throws information away. The starlet transform
-writes the map as a sum of band-pass images, each carrying structure of one characteristic angular
-size, plus a coarse map. Count peaks band by band and the analysis is multi-scale from one
-transform. Because the bands cover different frequency ranges, the covariance is close to
-diagonal.
-
----
-
-## A3.9 — the starlet ℓ1-norm · frame 103 · SKIP · 0:22
-
-> **MOVED TO BACKUP (Andreas, 2026-09-06).** Frame 34 defines the ℓ1-norm with the same formula and
-> shows its shape.
-
-The ℓ1-norm generalises the peak count. Instead of counting maxima, sum the absolute starlet
-coefficients in each signal-to-noise bin, band by band. Every pixel contributes, voids as well as
-peaks, and there is no threshold to choose and no definition of a peak to defend.
-
----
-
-## A3.10 — wavelets · frame 33 · 1:16
-
-Both of the higher-order statistics we use are built on a wavelet transform, so a short
-introduction to wavelets. In Fourier analysis the basis functions are sines, each with a single
-frequency and extending over the whole map, so a Fourier coefficient says which scales are present
-but nothing about where. A wavelet is a localised, oscillating function with zero mean. Dilating
-and translating it gives a family of functions, and the wavelet coefficient at scale a and position
+For example here you can see the signal being decomposed into wavelet coefficients at different scales. The wavelet coefficient at scale a and position
 b measures how much structure of size a there is at position b.
 
-[CLICK] This is well suited to convergence maps, because the cosmic web consists of localised
-structures, clusters, filaments and voids, each with a characteristic size and position. Such a
-field is sparse in the wavelet domain: it is described by a few large coefficients. And the
-different scales can be analysed, or removed, separately, which we will use in Part 4.
+
+[CLICK] This is well suited to convergence maps, which consists of localised
+structures, clusters, filaments and voids, each with a characteristic size and position. 
+Such a field is *sparse* in the wavelet domain: it is described by a few large coefficients. 
+And the
+different scales can be analysed, or removed, separately.
 
 ---
 
-## A3.11 — the two statistics · frame 34 · 1:22
+## A3.11 — the two statistics · frame 34 · 1:52
 
-> **The band labels printed on the figure are not ours**; it is a thesis illustration at a finer
-> pixel scale. The analysis uses the four finest dyadic bands, roughly 10 to 80 arcminutes.
+So the higher-order statistics we will focuse on both start from the wavelet decomposision of the map, using an isotropic wavelet called the starlet.
 
-Both statistics are one-point statistics, histograms of coefficient values, on the starlet
-transform of the map, which writes the map as a sum of band-pass images, each carrying structure of
-a characteristic angular size.
+And you can see how the starlet transform decomposes the map into a set of band-pass images, each carrying structure of a characteristic angular size.
 
-[CLICK] Wavelet peak counts: in each band, find the local maxima of the signal-to-noise field and
-count them per signal-to-noise bin. Well established, but it uses only the peaks, a subset of the
-field.
+One thing you can do with these band-pass images is to count the peaks on them, the local maxima of the convergence field, and build a histogram of their amplitudes. This is the wavelet peak counts statistic.
 
-[CLICK] Schematically, the peak-count histograms, scale by scale; they live almost entirely at
-positive signal-to-noise.
+It is very sensitive to the non-Gaussian features of the field, and it encodes very useful information for cosmology, because as you can imagine, peaks are associated with haloes, and the abundance and distribution of haloes depends greatly on the cosmological parameters.
 
-[CLICK] The starlet ℓ1-norm generalises this: instead of counting maxima, sum the absolute values
-of all the coefficients in each signal-to-noise bin, per band. **▲** Every pixel contributes, the
-voids as well as the peaks, and there is no peak definition or threshold to choose.
+But by just counting the peaks, we are throwing away a lot of information: the voids, the filaments, and the rest of the field. So something else you can do is to sum the absolute values of all the wavelet coefficients, in each band, and build a histogram of those sums. This is the starlet ℓ1-norm statistic. You can imagine it as a PDF of the field in the wavelet domain.
 
-[CLICK] Its shape is different: bimodal, with a dip at zero, because coefficients near zero
+
+
+<!-- [CLICK] Its shape is different: bimodal, with a dip at zero, because coefficients near zero
 contribute little to a sum of absolute values. The negative side is the voids. This is the
-statistic we use for the rest of the talk.
+statistic we use for the rest of the talk. -->
 
 ---
 
@@ -813,83 +778,86 @@ To do that in a way that encodes all the uncertainties that come into play, we u
 
 ---
 
-## A3.13 — classical inference · frame 36 · 0:50
+## A3.13 — classical inference · frame 36 · 1:14
 
-In the classical approach we use Bayes' theorem: the posterior probability of the parameters given
-the data is proportional to the likelihood of the data given the parameters, times the prior. The
-likelihood is usually assumed to be Gaussian in the data vector, with a theoretical prediction for
-the mean and a covariance matrix. For the power spectrum this is a good approximation, because
-each band power averages over many independent modes. [CLICK] The posterior is then sampled with
-MCMC.
+The posterior on the parameters comes from Bayes' theorem: the posterior probability of the
+parameters given the data is proportional to the likelihood, how probable the measured data are
+for a given set of parameters, times the prior, what we assume about the parameters before seeing
+the data. 
 
-For the higher-order statistics we have neither a theoretical prediction for the mean nor a
-Gaussian distribution, so we need something else.
+In the classical approach the likelihood is written down analytically,
+usually as a Gaussian in the data vector, with a theoretical prediction for the mean and a covariance matrix. 
 
----
+For example, for the power spectrum this is a good approximation, because each band power averages over many independent modes. 
 
-## A3.14 — generative modelling · frame 37 · 0:48
+[CLICK] Having an expression for the likelihood, we then approximate the posterior numerically: we
+sample it with Markov chain Monte Carlo methods, and the samples give the constraints on the parameters.
 
-That something comes from generative modelling. The problem is to learn the distribution from
-which a set of samples was drawn: the true distribution is unknown, we observe samples from it,
-and we fit a parametric model. A trained model can generate new samples, and, for some model
-classes, evaluate the density. The second property is the one we need, because for inference the
-density is the posterior.
-
-[CLICK] The framework does not depend on what x is. These are generated faces, from 2014 to 2017.
-The machinery we use for cosmological inference is the same.
+For the higher-order statistics we have neither a theoretical prediction for the mean nor a Gaussian distribution, so we need something else.
 
 ---
 
-## A3.15 — normalizing flows · frame 38 · 0:48
+## A3.14 — generative modelling · frame 37 · 0:59
 
-The model class we use is the normalizing flow. Start from a simple distribution, a unit Gaussian,
-and learn an invertible map to the target distribution. Because the map is invertible, the density
-follows from the change-of-variables formula, and each layer is built with a triangular Jacobian,
-so the determinant is cheap to compute. So a flow is flexible, it can be sampled, and its density
-can be evaluated.
+The tool comes from generative modelling. The problem is this: there is a probability distribution
+we do not know, and what we have is a set of samples drawn from it. We want to learn the
+distribution from the samples, by fitting a parametric model distribution to them. Once
+the model is trained we can generate new samples from it, and, for some classes of models, also evaluate its density, the probability it assigns to any point. 
 
-[CLICK] If we condition the layers on the data x, we get a model of the posterior, q of theta given
-x, which is fit by maximum likelihood.
+[CLICK] Generative models are the family of models everyone has heard about in the last few years;
+they are the algorithms behind image generation, for example. And here you can see how much these models have advanced over the last few years.
 
----
-
-## A3.16 — simulation-based inference · frame 39 · 1:09
-
-We cannot evaluate the likelihood, but we can sample from it, by running the simulator. So we draw
-parameters from the prior, run the forward model, and keep the pair of parameters and data, a few
-hundred thousand times.
-
-[CLICK] The pairs are the training set for a conditional normalizing flow, fit by maximum
-likelihood; the optimum of that loss is the true posterior. Then we give the trained flow the real
-observation, and it returns the posterior immediately.
-
-The simulations are the only expensive step, and they are run once. Because the inference is then
-essentially free, we can run it on thousands of simulated observations where the truth is known,
-and check that the posteriors are calibrated. **▲** That test matters, because the likelihood was
-never written down; every posterior in Parts 3 and 4 has passed it.
+<!-- For us the samples are cosmological parameters and summary statistics rather than images, and the models are the same. -->
 
 ---
 
-## A3.16b — the divider, Part 3 · frame 40 · 0:23
+## A3.15 — normalizing flows · frame 38 · 1:05
 
-Part 3, the third paper. We now have a hand-built statistic, and a way to obtain a posterior from
-it. The third question: how much of the cosmological information do the summary statistics keep,
-and does it take a neural network to extract all of it?
+The generative model class we use is the normalizing flow. 
+Start from a simple distribution, a unit Gaussian,
+and transform it into the target distribution through a series of simple invertible
+transformations, one after the other; their composition is flexible. Because every step is invertible, any point can be mapped back to the Gaussian, and the model density follows from the change-of-variables formula, with a Jacobian determinant that is cheap because the layers have triangular Jacobians.
+
+These bijective transformations are parametrised by neral networks, which are trained to maximise the likelihood of the training samples. So essentially the flow learns from the samples the best way to transform a Gaussian into the target distribution. 
+
+The training objective is just the maximum likelihood of the model density on the training samples.
 
 ---
 
-## A3.17 — why build a statistic by hand · frame 41 · 0:58
+## A3.16 — simulation-based inference · frame 39 · 1:03
 
-So we have a statistic that extracts more than the power spectrum. But the summary statistic is the
-one step of this chain we still choose by hand, and increasingly the field replaces it with a
-neural network trained to compress the maps, usually described as optimal. If that is true, why
-build a statistic by hand?
+So how do we use this for cosmological inference?
+We have no analytical likelihood, but we have a simulator: a forward model that we give cosmological parameters and it
+produces simulated data, with all the stochasticity of the process. So we draw parameters from the
+prior, run the simulator on each, and keep the pairs of parameters and data.
 
-[CLICK] Beating the power spectrum is easy; any non-Gaussian statistic does it. The question is how
-much information there is to extract, and whether a hand-built statistic can reach it. The
-networks' optimality is nearly always shown against the power spectrum, rarely against a strong
-hand-built statistic under matched conditions. That is the comparison we set out to make.
+[CLICK] Those pairs are the training samples for a conditional normalizing flow, with the data as
+the conditioning input. Trained on them, the flow is directly a model of the posterior: give it the real observation, and it returns the posterior.
 
+The simulations are the only expensive step, and they are run once. Inference is then essentially free, so we can check on thousands of simulated observations.
+
+---
+
+## A3.16b — the divider, Part 3 · frame 40 · 0:21
+
+So now that we know how to do all that, we can ask the third question: how much of the cosmological information do the summary statistics keep, and do we need a neural network if we want to extract *all* of it?
+---
+
+## A3.17 — why build a statistic by hand · frame 41 · 1:10
+
+We are looking for the best summary statistic for weak lensing. The ℓ1-norm extracts more than the
+power spectrum. [CLICK] But beating the power spectrum is "easy". The real question is how much
+information the data contain, and how much of it a statistic keeps.
+
+But... since we are already using neural networks for the inference, why not let one learn the compression as well? 
+
+There are reasons to be careful. A network needs a lot of training data. What it learns is hard to
+interpret. And it generalises less predictably: a feature present in the simulations but not in
+the real data can bias the result without us noticing. 
+  
+Nevertheless, people have started doing it, and the theoretically optimal way is to build the
+network into the simulation-based inference pipeline and train it together with the flow, an idea
+called VMIM.
 ---
 
 ## A3.18 — what optimal means · frame 42 · 0:43
@@ -903,77 +871,74 @@ reaches it, that statistic is sufficient, as far as we can measure.
 
 ---
 
-## A3.19 — the setup · frame 43 · 0:24
+## A3.19 — the setup · frame 43 · 0:40
 
-The comparison is matched: the same ten-degree flat-sky patches, four tomographic bins, so four
-maps each; the same flow, tuned separately for each summary; both posteriors calibrated. Three
-hundred thousand patches over nine hundred cosmologies, so any difference is due to the summary,
-not to the training data.
-
----
-
-## A3.20 — the gap · frame 44 · 0:39
-
-The first result: the CNN wins, by thirty-six per cent in the figure of merit.
-
-[CLICK] But the comparison is not symmetric. The network takes all four tomographic maps together,
-in its first layer. The ℓ1-norm is computed on each bin separately, so it only sees the
-one-dimensional distribution of each bin. Whether this accounts for the gap, we do not know yet.
-The next step is to remove the asymmetry and measure how much of the gap remains.
+This is the analysis framework we built to answer that question, and in fact most of the work in this
+paper is in this figure: building the simulation-based inference pipeline, from the
+convergence maps to the cosmological parameters, and implementing both arms so that they share
+everything except the summary. One arm is the analytical higher-order statistics;
+the other is the neural compression, a convolutional network trained with the VMIM objective from
+the previous slide, through the same normalizing flow.
 
 ---
 
-## A3.21 — tomography · frame 45 · 0:55
+## A3.20 — the gap · frame 44 · 0:34
 
-Where could the missing information be? In the tomography. The observer is on the left; the source
+And here's the first result: the two statistics are not that far apart, but the CNN wins, by thirty-six per cent in the figure of merit. So the l1-norm clearly loses a part of the infromation in the data.
+
+[CLICK] However, the comparison is not symmetric: there is an important property of these maps
+that the ℓ1-norm, as we have used it so far, does not take into account.
+
+---
+
+## A3.21 — tomography · frame 45 · 1:15
+
+That property is weak-lensing tomography. The observer is on the left; the source
 galaxies are sliced into redshift bins. [CLICK] Take the most distant bin. [CLICK] Its light is
 lensed by all the matter in front of it, [CLICK] which gives its convergence map. [CLICK] A nearer
 bin [CLICK] is lensed by a shorter column, [CLICK] and gives a fainter map. [CLICK] One map per
 bin, and the matter lensing a nearer bin also lenses every bin behind it: the kernels overlap.
-[CLICK] So the maps are not independent. They share most of their signal, while the shape noise in
-each is independent, and that shared structure is what a per-bin statistic cannot see.
+[CLICK] So the maps are not independent: the same structure appears in several bins, with an amplitude
+that depends on how far away it is. How the signal changes from bin to bin is what tells us where
+the matter sits along the line of sight, and so how structure grew with time. That is much of the
+cosmological information in tomography, and a per-bin statistic, which sees each map on its own,
+cannot see it.
 
 ---
 
-## A3.22 — two routes · frame 46 · 1:23
+## A3.22 — two routes · frame 46 · 2:08
 
-Two ways to give the ℓ1-norm access to the cross-bin information: change the input, or change the
-statistic.
+With two-point statistics, extending them to capture the cross-bin information is easy: we also
+compute the two-point functions between separate bins. For higher-order statistics such as the
+ℓ1-norm there is no obvious equivalent. 
 
-Route one, change the input: for each pair of bins, multiply the two maps pixel by pixel. The
-product is non-zero only where both bins have structure at the same place. Six bin pairs give six
-cross-maps, and the same ℓ1-norm is computed on each.
+We tried to design two ways to give the ℓ1-norm access to the cross-bin information.
 
-[CLICK] Route two, change the statistic. At a given scale, every pixel has a coefficient in each
-bin, and the per-bin ℓ1-norm sees only the marginal histogram of each, the two curves on the axes
-here. [CLICK] Instead, lay a grid on the plane of the two bins' coefficients, and in each cell sum
-the ℓ1 weight, half the sum of the two absolute values, of the pixels in it. This is the joint
-ℓ1-norm.
+The first option was to create extra maps that capture the "cross" structure: for each pair of bins, multiply the two maps pixel by pixel. The
+product is strong only where both bins have structure at the same place. 
+To extract the informations from those, we compute the ℓ1-norm on them as well.
 
-[CLICK] **▲** The difference: the cross-map reduces each bin pair to a single field before the
-statistic is computed; the joint ℓ1-norm uses the full two-dimensional distribution, and needs no
-additional maps.
+[CLICK] The second approach changes the statistic itself. In this figure, the two curves on the axes
+are the standard ℓ1-norms of two bins, one on each axis. They are the marginals of a fuller
+picture: the plane between them, where each point is a position on the sky, placed by its value in
+one bin and its value in the other. [CLICK] The joint ℓ1-norm is the ℓ1-norm extended to that 2D plane:
+the same sum of absolute values, in the cells of this grid instead of in the bins of a histogram.
+So it records how the strengths in the two bins pair up, position by position: how often a given
+strength in one bin comes with a given strength in the other. That is the inter-bin information. If the ℓ1-norm is the PDF of a map in the wavelet
+domain, think of the joint ℓ1-norm as the joint PDF of two tomographic bins.
+
 
 ---
 
-## A3.23 — the answer · frame 47 · 1:03
+## A3.23 — the answer · frame 47 · 0:48
+So let's see what we get with our updated higher-order statistics.
 
-Same maps, same flow, four summaries. The per-bin ℓ1-norm: a figure of merit of two thousand four
-hundred and forty-eight. [CLICK] Adding the product cross-maps: three thousand and forty-five.
-Better, but not enough. [CLICK] The joint ℓ1-norm, with no additional maps and no training: three
-thousand three hundred and seventy-one. [CLICK] And the CNN: three thousand three hundred and
-twenty-six.
+Same maps, same flow, four summaries. The per-bin ℓ1-norm. [CLICK] Adding the product cross-maps. [CLICK] The joint ℓ1-norm. [CLICK] And the CNN: which falls almost perfectly onto the joint l1. 
 
-**▲** That is a tie, and I want to call it a tie rather than a win: the network's coverage is
-slightly conservative, which plausibly accounts for the small difference. Both summaries appear to
-saturate the information these maps make accessible, and since the network was trained to be
-information-optimal, this is a sufficiency result for the joint ℓ1-norm.
+So both neural nets and the joint l1 appear to
+give the same performance in terms of extracting cosmological information. And since the network was trained to be information-optimal, this shows that the joint ℓ1-norm essentially encodes all the cosmologically useful information in the weak lensing maps.
 
-The result holds on every parameter, over nine thousand mock observations.
-
-> That last sentence is **not on the slide**; the `oneline` is commented out. Say it over the
-> final arm. The per-mock violins are backup 88.
-
+And it does without any training, being computationally efficient, interpretable and robust.
 ---
 ---
 
@@ -984,95 +949,95 @@ The result holds on every parameter, over nine thousand mock observations.
 
 ---
 
-## A4.0 — the divider · frame 48 · 0:22
-
-Part 4, the fourth paper. Everything so far assumed that the simulations are right. They are not,
-entirely. The fourth question: once we remove the scales that the simulations get wrong, do the
-higher-order statistics still constrain the parameters better than the power spectrum?
-
+## A4.0 — the divider · frame 48 · 0:18
+So now that we have shown how great our higher order statistics are and how well they works in idealized cases, let's go to our final paper to see what happens in a more messy, realistic scenario.
 ---
 
-## A4.1 — the collision of scales · frame 49 · 1:18
+## A4.1 — the collision of scales · frame 49 · 2:35
 
-The dominant systematic at small scales is baryonic feedback: energy from active galactic nuclei
+
+Real data have systematic effects: things present in the measurement that are not in our model,
+of instrumental origin, like errors in the galaxy shapes, or physical, like the effect of baryons
+on the matter distribution. Not all of them can be modelled, and an effect that is in the data but
+not in the analysis biases the result.
+So to do a proper analysis that can be trusted, we need to carefully investigate how our statistics are affected by each systematic.
+And while most groups are doing it at just looking at the impact on the datavector, this is not enough. A proper investigation should show the effect on the posteriors.
+
+The dominant astrophysical systematic effect at small scales is baryonic feedback: energy from active galactic nuclei
 and supernovae pushes gas out of haloes and suppresses the matter distribution on small scales.
-The simulations we train on are dark-matter-only, and the feedback models disagree with each
-other, so this is physics we cannot model reliably.
+The simulations we can use for inference dark-matter-only, and the feedback models disagree with each other, so this is physics we cannot model reliably.
 
 The problem is that the non-Gaussian information and the contamination live on the same small
-scales. The conservative approach is to remove those scales, and the question is what that costs.
-[CLICK] In the optimistic case, only the smallest scales are contaminated, and most of the non-
-Gaussian information survives. [CLICK] In the pessimistic case, the contamination reaches much
+scales. Since we cannot fully reliably model them for HOS, the conservative approach is to remove those scales, and the question is how impactful this is.
+[CLICK] So we may find ourselves either in the optimistic case: only the smallest scales are contaminated, and most of the non-
+Gaussian information survives. [CLICK] Or in the pessimistic case: the contamination reaches much
 further, and after the cut the power spectrum would do just as well.
 
-So, two questions: how much does unmodelled feedback bias the higher-order statistics, and how does
+So, two questions follow: how exactly does unmodelled feedback bias the higher-order statistics, and how does
 that grow with area; and once the contaminated scales are cut, is there still a gain over the power
-spectrum?
+spectrum, or all of our efforts in designing better statistics were in vain, cause they are useless in the real world?
 
 ---
 
-## A4.2 — the pipeline · frame 50 · 0:25
+## A4.2 — the pipeline · frame 50 · 0:48
 
-The pipeline is the one from before. [CLICK] Convergence maps from CosmoGrid, [CLICK] with Euclid-
-like noise, [CLICK] the wavelet transform and the statistics, [CLICK] and a conditional flow. The
-one detail that matters: the statistics are computed separately on each wavelet band, so a
-contaminated band can be dropped without touching the rest.
+The pipeline is very similar to the simulation-based one from the previous paper. [CLICK] Convergence maps from
+CosmoGrid at known cosmologies, [CLICK] with Euclid-like shape noise and masks, [CLICK] the starlet
+transform, with each statistic measured on each wavelet scale separately, [CLICK] and the
+concatenated data vector conditions a normalizing flow, which gives the posterior.
+
+The one point to keep is the separation of scales: because the statistics are measured scale by
+scale, the data vector is organised by scale, and a contaminated scale can be removed by dropping
+its band. That is what makes scale cuts possible for higher-order statistics.
 
 ---
 
 ## A4.3 — how large the bias is · frame 51 · 1:04
 
-First question: how large is the bias if we do nothing, at full resolution. The inference is
-trained on dark-matter-only simulations, and the bias is the tension, in sigma, between the
-posteriors from a mock observation with baryonic feedback and from one without.
+First question: how large is the bias if we do nothing. CosmoGrid gives every realisation with and
+without baryonic feedback, so we train the flow on the dark-matter-only maps, which is the case of
+no baryon model at all, and then feed it a baryonified observation. We run this for a range of
+survey areas, to see how the bias evolves as surveys get larger.
 
-At fourteen thousand square degrees, a Stage IV area, the power spectrum is biased by two point two
-sigma, peak counts and the ℓ1-norm by three point six. The bias grows with area, because the error
-bars shrink while the systematic stays the same: at full sky the power spectrum reaches about three
-and a half sigma, and both higher-order statistics exceed six.
-
-**▲** So the higher-order statistics are more biased than the power spectrum, because they are
-more sensitive to the contaminated small scales.
+For the area of a previous-generation survey the bias is not significant. But the error bars shrink
+with area while the systematic stays the same, so for a survey like Euclid it becomes really bad,
+and at full sky worse still. **▲** And as expected, the higher-order statistics are more biased
+than the power spectrum, because they are more sensitive to the contaminated small scales.
 
 ---
 
-## A4.4 — the cuts · frame 52 · 0:58
+## A4.4 — the cuts · frame 52 · 0:38
 
-So we cut scales, with the criterion that the bias drops below zero point three sigma. For the
-power spectrum, the cut is a maximum multipole tuned to each area, from eight hundred and sixty at
-two thousand square degrees to three hundred and forty at full sky. For the wavelet statistics, the
-contamination is concentrated in the finest band, so dropping that band is enough at every area.
-
-**▲** But the bands are dyadic, so whole bands are the only cut available, and at the smaller areas
-this also removes clean, quasi-linear scales. So the wavelet cut is coarser than the power
-spectrum's, and therefore conservative. Everything on the next slide is a conservative estimate.
+To bring the bias below our threshold of zero point three sigma, we remove small-scale information
+step by step until it is. For the power spectrum, by lowering the maximum multipole, which gives an
+ell-max for each area, from eight hundred and sixty at two thousand square degrees to three hundred
+and forty at full sky. For the wavelet statistics, by removing the finest bands, and there dropping
+the finest band alone is enough at every area.
 
 ---
 
 ## A4.5 — is there anything left · frame 53 · 1:22
 
-Second question: on the baryon-safe scales, is there anything left? Same maps, cuts applied, three
-summaries.
+So we have seen how the higher-order statistics are biased by unmodelled feedback, and how to cut
+to remove the bias. The important question is whether anything is left to gain over the power
+spectrum once the cuts are applied. These are the Stage IV posteriors, on baryon-safe scales only.
+[CLICK] The power spectrum first. [CLICK] Peak counts. [CLICK] And the ℓ1-norm.
 
-[CLICK] The power spectrum, on the scales it keeps. [CLICK] Peak counts. [CLICK] And the ℓ1-norm:
-**▲** one point eight times tighter than the power spectrum in the figure of merit at Stage IV,
-and two point six times tighter at full sky. Its degeneracy directions in the planes with w-nought
-also differ from the power spectrum's, so the two remain complementary.
+**▲** On those scales the ℓ1-norm reaches a figure of merit one point eight times the power
+spectrum's, and at full sky, where the wavelet cut fits better, two point six. The peak counts are
+comparable to the power spectrum, and they carry complementary information, since their
+degeneracy directions in the w-nought planes differ.
 
-The peak counts reach parity with the power spectrum at Stage IV, slightly better at full sky, and
-worse at smaller areas. **▲** They trail mostly because of the cut: removing a whole band takes a
-larger fraction of the peak-count information than the sliding ell-max takes from the power
-spectrum.
+**▲** So higher-order statistics are not only deep non-linear probes: the signal survives on
+quasi-linear scales, with no baryon model at all. And in principle we can do better, since our cut
+is not optimised, and as feedback modelling improves the analysis moves back into the non-linear
+regime, where the gain is larger.
 
-So the non-Gaussian information survives on quasi-linear scales. **▲** And these numbers are
-conservative: the whole-band cut is not optimised, and better baryon modelling would allow smaller
-scales, where the gain is larger.
-
-The answer to the fourth question is yes.
 
 > The ×1.8 at Stage IV carries a ±0.6 band (`PAPER_FACTS.md` §4); if pressed, "about a factor of
 > two". At 2,000 deg² the ℓ1 advantage is not significant; it is significant from 5,000 deg²
-> upward.
+> upward. Peaks: ×1.07 at Stage IV, ×1.17 at full sky, trailing at smaller areas because of the
+> whole-band cut.
 
 ---
 
