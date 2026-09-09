@@ -1,34 +1,5 @@
 # SPEAKER_SCRIPT — PhD defense, University of Crete, 14 September 2026
 
-Format per `../docs/TALK-GUIDELINES.md` §11b. **`[CLICK]`** = fragment advance. **▲** = must
-survive verbatim as the wording drifts in rehearsal. Everything else on the page is spoken.
-
-> Stage directions were stripped on 2026-09-07 (Andreas): *"I know what to do. You don't have to
-> tell me that, and this just makes the script harder to read."* The handful that carried something
-> other than delivery advice — words you might say, a hazard on a figure, an answer to a question —
-> are `>` notes now. **Do not put them back**: if a new note is not sayable and not a fact about the
-> deck, it does not belong in the file.
-
-**Every timing in this file is measured, not estimated** — spoken words divided by the rate, with
-cues and blockquotes excluded. The rate is **120 wpm**, and it is provisional: 140 is a *reading*
-rate and delivery is slower than that. Time yourself on one beat and set it with `--wpm`. The measurement is done by
-`../tools/measure-script.py`, which also checks every `[CLICK]` cue against the deck's real
-fragment count:
-
-```
-tools/measure-script.py PhD_Defense_2026           # report
-tools/measure-script.py PhD_Defense_2026 --write   # ...and stamp the headings
-```
-
-Run it after every edit. A heading you typed by hand is a heading that is wrong.
-
-> **Rewritten end to end 2026-09-06**, against the deck as it stands at **114 frames**. The
-> previous version covered Acts 0–2 only, was written before most of the slides existed, and had
-> been overtaken by four structural passes: the joint-ℓ1 paper moving ahead of the baryon paper,
-> the wavelet excursion, the statistics-shape plots, and the introduction rebuild. Acts 3 and 4 and
-> the close are new. Every beat now names the **frame** it is spoken over, which is what makes the
-> cue audit possible.
-
 ## The budget
 
 | act | frames | measured | notes |
@@ -48,129 +19,9 @@ Run it after every edit. A heading you typed by hand is a heading that is wrong.
 > structural, and *The arithmetic, and how to close it* — after the close, below — names it. **Set
 > the wpm from a real timing before trusting any of these numbers.**
 
-### Seven slides moved to backup, 2026-09-06
-
-The main line is **54 frames**, down from 62. Seven left it for the backup section, each placed
-beside its relatives rather than dumped at the end, so they can be found under questioning. **All
-frame numbers in this file are the numbers after the move.**
-
-| was | is now | slide | sits beside |
-|---|---|---|---|
-| 17 | **106** | *Every mass-mapping method is a Bayesian inference with a different prior on κ* — the Bayes slide | the LAM original of the same idea, 107 |
-| 28 | **112** | *PnPMass on residuals* | the training slide, 114 |
-| 29 | **113** | *Pixel-wise uncertainties from a second network, calibrated with conformal prediction* — the UQ chain | now a **vertical under 112**, as asked |
-| 37 | **100** | *Peak counts* | the wavelet primer, 97–99 |
-| 38 | **101** | *One starlet transform* | " |
-| 39 | **102** | *The starlet ℓ1-norm* | " |
-| 59 | **66** | *Nulling promises localized scale cuts* | the three BNT explainers, 68–70 |
-| 60 | **67** | *The information is recoverable* | " |
-
-**Frame 5 — the two tensions — stays where it is**, as a vertical under frame 4. It is skipped by
-not pressing DOWN, which costs nothing and leaves it one keystroke away.
-
-Their beats are kept below, marked SKIP, and are still audited against the deck at their new
-numbers. **Two of them took material with them and it had to be rehomed** — see the banners on
-**A1.8** (the word *prior*, the Part 3 pointer, the point-estimate flag) and **A4.6** (the whole
-nulling thread).
-
-> **Renumbered 2026-09-09.** The two tensions left the main line for backup 56 (Andreas), and a Part 3
-> card went in at frame 40 the same day, so against the two tables above every main-line frame from
-> the old 6 to the old 39 is one lower, and from the old 40 onward unchanged. Beat headings,
-> act headers and the cut ladder carry the new numbers; the tables above are a dated record and were
-> left as written. Backup numbers were already right. Same day: A1.6 to the close rewritten for
-> clarity and register (`SCRIPT_PASS.md`).
-
 **The slack in a 45-minute slot is deliberate and must stay slack** — pauses, the beat after a
 headline, and the seconds a room needs to look at a figure before you talk over it. It is not room
 for more material.
-
-## The animation policy — 2026-09-07
-
-Andreas, after walking the deck: *"we clearly have overdone this."* The main line carried **97
-clicks over 39 frames**, most of them revealing text in the order the eye reads it anyway. Every
-build was audited against one rule:
-
-> **A build survives only if it (a) withholds an answer the room should not read early, (b) swaps
-> one thing for another in place, (c) moves focus around a diagram that stays on screen, or (d)
-> *is* the animation** — a flipbook, or a canvas explainer stepped by markers.
->
-> Anything that merely reveals text in reading order goes. The eye already does that, and every
-> click is a moment you spend on the clicker instead of on the room.
-
-**97 clicks → 67, across 31 frames.** Sixteen slides lost some or all of their build; two of them
-were then put back, and both are marked below:
-
-| frame | was | now | why |
-|---|---|---|---|
-| 3 | 4 | 1 | the pie→cone swap survives; the three annotations ride in with it and you point |
-| 12 | 1 | 0 | a callout of extra detail |
-| 16 | 4 | 0 | five methods read as a list **(Andreas)** |
-| 17 | 2 | 1 | the proximal box survives; *how it solves* does not |
-| 19 | 1 | 0 | a lead line under a diagram |
-| 24 | 4 | 0 | a comparison table **(Andreas)** |
-| 25 | 1 | 0 | one click for the whole body |
-| 37 | 2 | 1 | the MCMC animation survives; the equation reveal does not |
-| 38 | 2 | 1 | the faces survive; the bullet does not |
-| 40 | 3 | 1 | the three-stage diagram goes up whole; *the cost is paid once* is still withheld |
-| ~~45~~ | 8 | **8** | *stripped, then restored 2026-09-07.* Not a flipbook: the picture stays and the **highlight moves**, and what it moves through is the reason the bins are not independent. It was the one call in this audit I got wrong |
-| 53 | 5 | 3 | **(Andreas)** the contour and its numbers are one beat: the bullets now land with the ℓ1-norm |
-| ~~46~~ | 3 | **3** | *restored 2026-09-07* — route one wants the screen to itself before route two lands beside it |
-| 51 | 7 | 0 | seven clicks of one plot **(Andreas)** |
-| 52 | 1 | 0 | one click for the whole body |
-| 55 | 1 | 0 | the conclusions go up whole |
-
-**What survives, and why it earns the click.** Frame 9's four questions and frames 29/36's pipeline
-focus move the light around a diagram that stays put. Frames 26 and 42/50 *are* animations — the
-PnPMass iteration, and the two canvas explainers whose markers step them through their acts. Frame
-30 swaps a video for a figure, frame 35 swaps each definition for its shape, frame 46 swaps the
-mask for the joint definition. And frames 47 and 53 hold back an answer: the ladder to the tie, and
-the contours on baryon-safe scales — **frame 53 Andreas named explicitly**, because that is where
-Part 4's question gets its answer and the tension is worth keeping.
-
-Single-click frames that survive are all the same shape: a claim withheld until the room has looked
-at the figure (7, 8, 11, 14, 15, 18, 34, 39, 41, 44). Those are not builds, they are punchlines.
-
-**If you add a fragment, put it through the rule first**, and re-run `measure-script.py` — it will
-tell you if a cue has gone stale.
-
----
-
-## What the script pass exposed
-
-Four things that are deck problems, not script problems. They are listed here because the script
-is where they became impossible to ignore, and each one is cheap to fix.
-
-1. **There are no Part 3 and Part 4 dividers.** Frame 9 promises four parts; the deck names Parts 1
-   and 2 on black dividers and then runs Parts 3 and 4 together behind one *movement II* opener at
-   frame 28. The room is told there are four questions and then shown two labelled parts. Two
-   divider slides would close it, and they are also the natural place to put the paper references
-   for Papers 3 and 4, which currently appear only on the conclusions.
-2. ~~Three slides define peak counts, the starlet transform and the ℓ1-norm that frame 35 then
-   defines again, better, ninety seconds later~~ — **moved to backup 2026-09-06**, where they now
-   sit at 100–102, after the wavelet primer, which is the order they should be read in. A3.10 opens
-   with a bridge, since the wavelet excursion has become the room's first encounter with either
-   statistic.
-3. **Frame 26 is still seven clicks of PnPMass flipbook** with no notes, and `STRUCTURE.md` §5 has
-   said since the Part 1 rebuild that it belongs in backup. Its partner has already gone to 112;
-   this is the other half of the same block, and it is tier 1.
-4. **Twelve slides' `aside class="notes"` carry `[CLICK]` counts that do not match their own
-   fragments** — frame 39 says four clicks and has one, frame 37 says three and has two. The notes
-   were written before the builds settled. This script is now the authority; the notes should be
-   trimmed to pointers rather than maintained in parallel.
-
----
-
-# Act 0 — the setup · frames 1–8
-
-Three things this opening must do:
-
-1. Give a wide audience — family, students, two committee members who do not work on lensing — a
-   picture of the Universe they can hold for the next forty-five minutes.
-2. Make the case for **weak lensing specifically**, not cosmology generally.
-3. Land the hinge: **at Stage IV precision, the analysis becomes the limitation.** Every act
-   afterwards is an instance of it.
-
-Fixed points (Andreas, 2026-08-26): **ΛCDM**, **cosmological probes**, **Euclid**.
 
 ---
 
@@ -207,7 +58,7 @@ It rests on this short list of assumptions, basically that gravity is given by g
 our different observations 
 to a remarkable precision.
 
-[CLICK] **▲** But it is still not a fully satisfactory answer, for three reasons. First of all, it is a
+[CLICK] **▲** But it is still not a fully satisfactory answer, for a few reasons. First of all, it is a
 **phenomenological** description rather than a first-principles explanation. About ninety-five per
 cent of what it describes is two **dark components** whose nature we do not know. 
 And independent probes of the same parameters have started to show **tensions** — statistically significant disagreements in the cosmological parameters they report. 
@@ -220,53 +71,34 @@ So how do you study the Universe, and test a model like that? Well, there are se
 
 [CLICK] **▲** But the one we follow in this talk is **gravitational lensing**.
 
-<!-- ---
-
-## A0.4v — the two tensions · frame 56 · SKIP · 0:55
-
-> **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
-> not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
-> beat that can come back for free if the clock turns out generous — the decision is made *on*
-> frame 4, not in advance.
-
-The consistency between independent probes is itself the test of the model. Measure the initial
-conditions with the microwave background, evolve them forward assuming ΛCDM, predict what we should
-see today — and then measure it. If ΛCDM is right, those agree.
-
-As the uncertainties fell towards the per-cent level, they stopped agreeing perfectly. The
-present-day expansion rate comes out differently from the early-Universe extrapolation than from
-direct measurement. And the amplitude of clustering — S-eight, the combination lensing constrains
-best — came out about one point seven sigma below the Planck extrapolation in DES and KiDS.
-
-[CLICK] Three ways to read that. New physics. A statistical fluctuation. **▲** Or something in the
-analysis itself. -->
-
 ---
 
-## A0.5 — strong and weak lensing · frame 5 · 0:55
+## A0.5 — strong and weak lensing · frame 5 · 0:46
 Here is the basic idea of gravitational lensing. 
 
 Light from a distant source passes every mass on the way to us, and each one bends its path, so the
 image arrives distorted.
 
 Occasionally that is dramatic — arcs, multiple images, Einstein rings, visible by eye. That is the
-**strong** regime, and it needs a very massive object almost on the line of sight, so it is rare.
+**strong** regime, and it is very rare.
 
 **▲** What happens *everywhere* is the **weak** regime: every galaxy behind any structure has its
-shape slightly changed. This gives us a hint of the matter (including the dark matter) distributed along the line of sight, and that hint is what we want to read.
+shape slightly changed. This gives us an indication of how the matter (including the dark matter) is distributed -- the Large Scale Structure of the Universe. 
 
 ---
 
-## A0.6 — Euclid, and what the signal is · frame 6 · 0:55
+## A0.6 — Euclid, and what the signal is · frame 6 · 0:57
 
 And we are about to be able to do this to a new level of precision. 
 The next generation of cosmological surveys is here, and the one I work on is **Euclid**.
 Euclid launched in 2023, it is taking data now,
-and it will measure the shapes of billions of galaxies over a third of the sky. **▲** Roughly an
+and it will measure the shapes of billions of galaxies over a third of the sky, giving us roughly an
 order of magnitude more statistical power than anything we have.
 
-[CLICK] **▲** And that signal encodes the growth of structure and the geometry of the Universe since
-the Big Bang. But none of it comes out on its own — getting it out is an algorithms problem.
+[CLICK] **▲** That signal encodes the growth of structure and the geometry of the Universe since
+the Big Bang. 
+
+But in order to extract this information and do cosmology with it we need really sophisticated algorithms and statistics.
 
 That is what this thesis is about.
 
@@ -288,19 +120,19 @@ The actual cosmology parts are only the parts on the very right.
 Here is a similar thing, but reduced to the last steps that are the scientific part of the analysis.
 
 Galaxy shapes go in. From the shapes we make a map of the mass distribution. From the map we extract a few numbers, the summary statistics.
-We compare those with theoretical predictions, or with simulations, in a bayesian framework, and out come the probability distributions of the parameters.
+We compare those with theoretical predictions, or with simulations, in a bayesian framework, and we get the probability distributions of the parameters.
 
 [CLICK] **▲** The first half of the talk, the first two papers, is about this step: making the map.
-Several algorithms do it. But does the choice matter for the cosmological results, and can we build a really advanced one whose error bars we can trust, and which can be implemented in a 
-survey like Euclid?
+<!-- Several algorithms do it. But does the choice matter for the cosmological results, and can we build a really advanced one whose error bars we can trust, and which can be implemented in a 
+survey like Euclid? -->
 
 [CLICK] **▲** The second half, the last two papers, is about everything after it: 
 extracting information from the the map, and using it to infer cosmology.
-How much of the cosmological information do the summary statistics keep, and does that survive 
-the realistic case, where we have physics that the simulations get wrong?
+<!-- How much of the cosmological information do the summary statistics keep, and does that survive 
+the realistic case, where we have physics that the simulations get wrong? -->
 
 Every one of these steps can bias the result or distort the error bars, if it fails to capture the relevant physical or observational effects.
-That's why for the results to be trustworthy, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwirse, we risk producing highly unreliable posterior estimates, distorted uncertainty quantification, and incorrect scientific conclusions.
+That's why for the results to be trustworthy, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwirse, we risk producing incorrect scientific conclusions.
 
 <!-- , and the whole chain rests on the simulations being right. If they miss a physical or
 observational effect, the posterior at the end looks perfectly normal, and it is wrong. The more of
@@ -414,28 +246,6 @@ features, which is closer to a field of haloes. MCALens combines the two, a Gaus
 component. And deep learning learns the regulariser from simulations; that is Part 2.
 
 ---
-<!-- 
-## A1.8 — mass mapping as Bayesian inference · frame 107 · SKIP · 0:52
-
-> **SKIPPED (Andreas, 2026-09-06).** Backup 107. The word *prior* moved to A1.7; the Part 3 pointer
-> was dropped on 2026-09-09 (A3.13 stands on its own); the point-estimate flag sits on A1.9. Frame 36
-> is now the only place Bayes appears in the talk.
-
-In Bayesian terms: the posterior probability of a map given the shear is the likelihood of the
-shear given the map, which is the forward model we already have, times the prior, what we assume
-about the map before looking at the data.
-
-[CLICK] The regulariser is the prior. Kaiser–Squires assumes essentially nothing. [CLICK] Wiener
-filtering assumes a Gaussian field. [CLICK] Sparse recovery assumes the map is sparse in a wavelet
-basis. [CLICK] MCALens assumes both at once.
-
-[CLICK] The same three terms come back in Part 3, with the cosmological parameters as the unknown
-instead of a map. There, the likelihood is the term we cannot write down.
-
-> Everything in Part 1 takes the most probable map, a point estimate. Part 2 adds the uncertainty,
-> and Part 3 wants the full posterior on the parameters. Starck is the likeliest person to ask.
-
---- -->
 
 ## A1.9 — MCALens · frame 16 · 1:03
 
@@ -527,6 +337,10 @@ while with MCALens the more small-scale information we add, the better the const
 What this means is that MCALens is much better at recovering the small-scale structure, which KS loses to the noise. 
 
 ---
+---
+
+# Act 2 — Part 2, PnPMass · frames 22–26
+---
 
 ## A2.1 — the divider · frame 22 · 0:26
 
@@ -593,47 +407,6 @@ point.
 
 ---
 
-## A2.5 — the residual variant · frame 113 · SKIP · 0:30
-
-> **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
-> one clause. The uncertainty slide is its vertical: press DOWN from 113.
-
-[CLICK] There is a variant that performs slightly better. Instead of denoising the map at each
-step, we denoise the residual: the difference between where the data step lands and the previous
-map. [CLICK] [CLICK] The network then only sees the part that is changing, which is closer to the
-white-noise problem it was trained on. [CLICK] [CLICK] Same eight iterations, slightly better
-maps.
-
----
-
-## A2.6 — the uncertainty, in full · frame 114 · SKIP · 1:36
-
-> **MOVED TO BACKUP (Andreas, 2026-09-06).** It is the mechanism behind the calibrated error bars
-> A2.7 reports, and conformal prediction is Tsakalides's own vocabulary, so expect it in questions.
-> Vertical under 113. **A2.7 carries three sentences of it**; do not skip those as well. Q&A tier 2,
-> question 8 is the follow-up.
-
-The map is only half of the result. The shear goes in, the denoiser gives the map, and a second
-network, trained the same way on the same simulated pairs, gives the error.
-
-[CLICK] Where does the uncertainty come from, when the reconstruction is deterministic? From two
-sources. Noise and the mask leave a whole family of maps consistent with the data, the
-ill-posedness from Part 1. And the map selected from that family is chosen by a denoiser learned
-from simulations, which has its own model error. Both have to be covered.
-
-The second network is trained on the squared residual of the reconstruction; the minimiser of that
-loss is the posterior variance, pixel by pixel. One forward pass, no sampling.
-
-[CLICK] But a network's own variance estimate comes with no guarantee; neural uncertainties are
-typically overconfident. So we calibrate it with conformalised quantile regression on a held-out
-calibration set. The guarantee is distribution-free and finite-sample, and it does not require the
-network to be right.
-
-[CLICK] **▲** So instead of "the network says plus or minus sigma", we have a stated coverage level
-that holds whether or not the model is well specified.
-
----
-
 ## A2.7 — accurate, with calibrated uncertainties · frame 26 · 1:43
 
 
@@ -646,9 +419,6 @@ reconstruction pixel by pixel, in one forward pass. **▲** Because a network's 
 comes with no guarantee, we calibrate it with conformal prediction, conformalised quantile
 regression on a held-out set, which gives a distribution-free coverage guarantee that holds whether
 or not the network is well specified. -->
-
-
-
 
 And here are the results: on the x-axis we plot the
 reconstruction error, and on the y-axis we plot the
@@ -680,8 +450,8 @@ from it, and the inference of the cosmological parameters from that statistic.
 ## A3.2 — the map has to be compressed · frame 28 · 0:32
 
 So back to our pipeline. We have a map, and we want to compare it with theory to infer the cosmological parameters.
-The map is a hundred thousand correlated pixels, so it would be extremely hard to work with directly. Instead, 
-we compress it into a summary statistic before the comparison with theory. 
+The map is of the order of a hundred thousand correlated pixels, so it would be extremely hard to work with directly. Instead, 
+we compress it into a summary statistic before we compare it with theory. 
 [CLICK] The choice of statistic determines how
 much information is retained. 
 
@@ -1040,6 +810,157 @@ regime, where the gain is larger.
 > whole-band cut.
 
 ---
+---
+
+# Close · frames 54–54
+
+## C.1 — the question board — REMOVED 2026-09-07
+
+> The board that repeated the four questions before the conclusions is **hidden** (Andreas): the
+> close carries the questions *and* their answers on one slide.
+
+## C.2 — conclusions · frame 54 · 1:49
+
+> **Rebuilt 2026-09-07 to match this beat.** The slide carries the four questions with their
+> answers, in short form. The room has met each question on its divider, so name each one in a
+> few words and give the answer. The paper references are on the part dividers.
+
+The four questions, and the answers.
+
+One, the mass-mapping method: yes, it matters. Changing only the reconstruction moves the figure
+of merit by a hundred and fifty-seven per cent, and the reconstruction error by four. **▲**
+Reconstruction error is not a good proxy for constraining power.
+
+Two, the algorithm: yes. PnPMass is within one per cent of the networks fine-tuned to the
+observation, has the smallest calibrated error bars of all the methods we tested, and is trained
+once, for any mask and noise level.
+
+Three, the summary statistic: we do not need the network. Read the bins jointly, and a fixed
+wavelet ℓ1-norm matches a compressor trained to be information-optimal, with no training.
+
+Four, the scales the simulations get wrong: yes, the statistics still beat the standard analysis.
+With every contaminated scale removed, the ℓ1-norm is still one point eight times tighter than the
+power spectrum at Stage IV, and two point six at full sky, **▲** with the most conservative cut
+available.
+
+> The nulling result belongs here too and is deliberately not said; see A4.6. If it has come up
+> during the talk, add one sentence: *and the same joint reading is what makes redshift nulling
+> survivable for a higher-order analysis, which is in the thesis.*
+
+Two of these were about the map and two about the summary statistic, and the answers have the same
+form: a step usually treated as a neutral choice changes the cosmological result. And in every case
+the uncertainties were calibrated and tested before any comparison was made. That is what makes
+these results trustworthy.
+
+Thank you.
+
+---
+---
+
+# Beats for the slides that are not in the main line
+
+Six beats, in deck order, for slides that sit in the backup section or are skipped on the day.
+They were moved out of the acts on 2026-09-10 (Andreas) so that Act 0 to the Close reads as one
+uninterrupted run of what is actually said. Each keeps the banner explaining why it left the main
+line and what, if anything, moved out of it first. **A0.4v and A1.8 are inside HTML comment
+fences**, exactly as they were in the acts, which is why their headings do not render.
+
+---
+
+<!-- ---
+
+## A0.4v — the two tensions · frame 56 · SKIP · 0:55
+
+> **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
+> not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
+> beat that can come back for free if the clock turns out generous — the decision is made *on*
+> frame 4, not in advance.
+
+The consistency between independent probes is itself the test of the model. Measure the initial
+conditions with the microwave background, evolve them forward assuming ΛCDM, predict what we should
+see today — and then measure it. If ΛCDM is right, those agree.
+
+As the uncertainties fell towards the per-cent level, they stopped agreeing perfectly. The
+present-day expansion rate comes out differently from the early-Universe extrapolation than from
+direct measurement. And the amplitude of clustering — S-eight, the combination lensing constrains
+best — came out about one point seven sigma below the Planck extrapolation in DES and KiDS.
+
+[CLICK] Three ways to read that. New physics. A statistical fluctuation. **▲** Or something in the
+analysis itself. -->
+
+---
+
+<!-- 
+## A1.8 — mass mapping as Bayesian inference · frame 107 · SKIP · 0:52
+
+> **SKIPPED (Andreas, 2026-09-06).** Backup 107. The word *prior* moved to A1.7; the Part 3 pointer
+> was dropped on 2026-09-09 (A3.13 stands on its own); the point-estimate flag sits on A1.9. Frame 36
+> is now the only place Bayes appears in the talk.
+
+In Bayesian terms: the posterior probability of a map given the shear is the likelihood of the
+shear given the map, which is the forward model we already have, times the prior, what we assume
+about the map before looking at the data.
+
+[CLICK] The regulariser is the prior. Kaiser–Squires assumes essentially nothing. [CLICK] Wiener
+filtering assumes a Gaussian field. [CLICK] Sparse recovery assumes the map is sparse in a wavelet
+basis. [CLICK] MCALens assumes both at once.
+
+[CLICK] The same three terms come back in Part 3, with the cosmological parameters as the unknown
+instead of a map. There, the likelihood is the term we cannot write down.
+
+> Everything in Part 1 takes the most probable map, a point estimate. Part 2 adds the uncertainty,
+> and Part 3 wants the full posterior on the parameters. Starck is the likeliest person to ask.
+
+--- -->
+
+---
+
+## A2.5 — the residual variant · frame 113 · SKIP · 0:30
+
+> **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
+> one clause. The uncertainty slide is its vertical: press DOWN from 113.
+
+[CLICK] There is a variant that performs slightly better. Instead of denoising the map at each
+step, we denoise the residual: the difference between where the data step lands and the previous
+map. [CLICK] [CLICK] The network then only sees the part that is changing, which is closer to the
+white-noise problem it was trained on. [CLICK] [CLICK] Same eight iterations, slightly better
+maps.
+
+---
+
+---
+
+## A2.6 — the uncertainty, in full · frame 114 · SKIP · 1:36
+
+> **MOVED TO BACKUP (Andreas, 2026-09-06).** It is the mechanism behind the calibrated error bars
+> A2.7 reports, and conformal prediction is Tsakalides's own vocabulary, so expect it in questions.
+> Vertical under 113. **A2.7 carries three sentences of it**; do not skip those as well. Q&A tier 2,
+> question 8 is the follow-up.
+
+The map is only half of the result. The shear goes in, the denoiser gives the map, and a second
+network, trained the same way on the same simulated pairs, gives the error.
+
+[CLICK] Where does the uncertainty come from, when the reconstruction is deterministic? From two
+sources. Noise and the mask leave a whole family of maps consistent with the data, the
+ill-posedness from Part 1. And the map selected from that family is chosen by a denoiser learned
+from simulations, which has its own model error. Both have to be covered.
+
+The second network is trained on the squared residual of the reconstruction; the minimiser of that
+loss is the posterior variance, pixel by pixel. One forward pass, no sampling.
+
+[CLICK] But a network's own variance estimate comes with no guarantee; neural uncertainties are
+typically overconfident. So we calibrate it with conformalised quantile regression on a held-out
+calibration set. The guarantee is distribution-free and finite-sample, and it does not require the
+network to be right.
+
+[CLICK] **▲** So instead of "the network says plus or minus sigma", we have a stated coverage level
+that holds whether or not the model is well specified.
+
+---
+
+---
+
+---
 
 ## A4.6 — nulling, and what goes wrong · frame 67 · SKIP · 1:50
 
@@ -1110,51 +1031,6 @@ higher-order analysis anything, provided some stage of the pipeline reads the bi
 The joint ℓ1-norm keeps seventy-two per cent, not all of it. The remainder is three- and four-bin
 structure that a pairwise statistic cannot reach, and that is the one place the network keeps an
 advantage.
-
----
----
-
-# Close · frames 54–54
-
-## C.1 — the question board — REMOVED 2026-09-07
-
-> The board that repeated the four questions before the conclusions is **hidden** (Andreas): the
-> close carries the questions *and* their answers on one slide.
-
-## C.2 — conclusions · frame 54 · 1:49
-
-> **Rebuilt 2026-09-07 to match this beat.** The slide carries the four questions with their
-> answers, in short form. The room has met each question on its divider, so name each one in a
-> few words and give the answer. The paper references are on the part dividers.
-
-The four questions, and the answers.
-
-One, the mass-mapping method: yes, it matters. Changing only the reconstruction moves the figure
-of merit by a hundred and fifty-seven per cent, and the reconstruction error by four. **▲**
-Reconstruction error is not a good proxy for constraining power.
-
-Two, the algorithm: yes. PnPMass is within one per cent of the networks fine-tuned to the
-observation, has the smallest calibrated error bars of all the methods we tested, and is trained
-once, for any mask and noise level.
-
-Three, the summary statistic: we do not need the network. Read the bins jointly, and a fixed
-wavelet ℓ1-norm matches a compressor trained to be information-optimal, with no training.
-
-Four, the scales the simulations get wrong: yes, the statistics still beat the standard analysis.
-With every contaminated scale removed, the ℓ1-norm is still one point eight times tighter than the
-power spectrum at Stage IV, and two point six at full sky, **▲** with the most conservative cut
-available.
-
-> The nulling result belongs here too and is deliberately not said; see A4.6. If it has come up
-> during the talk, add one sentence: *and the same joint reading is what makes redshift nulling
-> survivable for a higher-order analysis, which is in the thesis.*
-
-Two of these were about the map and two about the summary statistic, and the answers have the same
-form: a step usually treated as a neutral choice changes the cosmological result. And in every case
-the uncertainties were calibrated and tested before any comparison was made. That is what makes
-these results trustworthy.
-
-Thank you.
 
 ---
 ---
@@ -1435,3 +1311,122 @@ slide *and* out of the mouth. The Chapter 3 timing table — the argument is tha
 once, not that inference is fast; leading with speed invites the table, where PnPMass loses per
 map. And the band labels printed on frame 35's figure, which are a thesis illustration at a finer
 pixel scale than the analysis.
+
+---
+---
+
+# Decisions and history
+
+Three records of how the deck and this script got here. They sat in front of Act 0 until
+2026-09-10. Nothing in them is spoken, and the frame numbers in their tables are the numbers of
+the day each was written, not today's.
+
+---
+
+### Seven slides moved to backup, 2026-09-06
+
+The main line is **54 frames**, down from 62. Seven left it for the backup section, each placed
+beside its relatives rather than dumped at the end, so they can be found under questioning. **All
+frame numbers in this file are the numbers after the move.**
+
+| was | is now | slide | sits beside |
+|---|---|---|---|
+| 17 | **106** | *Every mass-mapping method is a Bayesian inference with a different prior on κ* — the Bayes slide | the LAM original of the same idea, 107 |
+| 28 | **112** | *PnPMass on residuals* | the training slide, 114 |
+| 29 | **113** | *Pixel-wise uncertainties from a second network, calibrated with conformal prediction* — the UQ chain | now a **vertical under 112**, as asked |
+| 37 | **100** | *Peak counts* | the wavelet primer, 97–99 |
+| 38 | **101** | *One starlet transform* | " |
+| 39 | **102** | *The starlet ℓ1-norm* | " |
+| 59 | **66** | *Nulling promises localized scale cuts* | the three BNT explainers, 68–70 |
+| 60 | **67** | *The information is recoverable* | " |
+
+**Frame 5 — the two tensions — stays where it is**, as a vertical under frame 4. It is skipped by
+not pressing DOWN, which costs nothing and leaves it one keystroke away.
+
+Their beats are kept above, in *Beats for the slides that are not in the main line*, marked SKIP, and are still audited against the deck at their new
+numbers. **Two of them took material with them and it had to be rehomed** — see the banners on
+**A1.8** (the word *prior*, the Part 3 pointer, the point-estimate flag) and **A4.6** (the whole
+nulling thread).
+
+> **Renumbered 2026-09-09.** The two tensions left the main line for backup 56 (Andreas), and a Part 3
+> card went in at frame 40 the same day, so against the two tables above every main-line frame from
+> the old 6 to the old 39 is one lower, and from the old 40 onward unchanged. Beat headings,
+> act headers and the cut ladder carry the new numbers; the tables above are a dated record and were
+> left as written. Backup numbers were already right. Same day: A1.6 to the close rewritten for
+> clarity and register (`SCRIPT_PASS.md`).
+
+---
+
+## The animation policy — 2026-09-07
+
+Andreas, after walking the deck: *"we clearly have overdone this."* The main line carried **97
+clicks over 39 frames**, most of them revealing text in the order the eye reads it anyway. Every
+build was audited against one rule:
+
+> **A build survives only if it (a) withholds an answer the room should not read early, (b) swaps
+> one thing for another in place, (c) moves focus around a diagram that stays on screen, or (d)
+> *is* the animation** — a flipbook, or a canvas explainer stepped by markers.
+>
+> Anything that merely reveals text in reading order goes. The eye already does that, and every
+> click is a moment you spend on the clicker instead of on the room.
+
+**97 clicks → 67, across 31 frames.** Sixteen slides lost some or all of their build; two of them
+were then put back, and both are marked below:
+
+| frame | was | now | why |
+|---|---|---|---|
+| 3 | 4 | 1 | the pie→cone swap survives; the three annotations ride in with it and you point |
+| 12 | 1 | 0 | a callout of extra detail |
+| 16 | 4 | 0 | five methods read as a list **(Andreas)** |
+| 17 | 2 | 1 | the proximal box survives; *how it solves* does not |
+| 19 | 1 | 0 | a lead line under a diagram |
+| 24 | 4 | 0 | a comparison table **(Andreas)** |
+| 25 | 1 | 0 | one click for the whole body |
+| 37 | 2 | 1 | the MCMC animation survives; the equation reveal does not |
+| 38 | 2 | 1 | the faces survive; the bullet does not |
+| 40 | 3 | 1 | the three-stage diagram goes up whole; *the cost is paid once* is still withheld |
+| ~~45~~ | 8 | **8** | *stripped, then restored 2026-09-07.* Not a flipbook: the picture stays and the **highlight moves**, and what it moves through is the reason the bins are not independent. It was the one call in this audit I got wrong |
+| 53 | 5 | 3 | **(Andreas)** the contour and its numbers are one beat: the bullets now land with the ℓ1-norm |
+| ~~46~~ | 3 | **3** | *restored 2026-09-07* — route one wants the screen to itself before route two lands beside it |
+| 51 | 7 | 0 | seven clicks of one plot **(Andreas)** |
+| 52 | 1 | 0 | one click for the whole body |
+| 55 | 1 | 0 | the conclusions go up whole |
+
+**What survives, and why it earns the click.** Frame 9's four questions and frames 29/36's pipeline
+focus move the light around a diagram that stays put. Frames 26 and 42/50 *are* animations — the
+PnPMass iteration, and the two canvas explainers whose markers step them through their acts. Frame
+30 swaps a video for a figure, frame 35 swaps each definition for its shape, frame 46 swaps the
+mask for the joint definition. And frames 47 and 53 hold back an answer: the ladder to the tie, and
+the contours on baryon-safe scales — **frame 53 Andreas named explicitly**, because that is where
+Part 4's question gets its answer and the tension is worth keeping.
+
+Single-click frames that survive are all the same shape: a claim withheld until the room has looked
+at the figure (7, 8, 11, 14, 15, 18, 34, 39, 41, 44). Those are not builds, they are punchlines.
+
+**If you add a fragment, put it through the rule first**, and re-run `measure-script.py` — it will
+tell you if a cue has gone stale.
+
+---
+
+## What the script pass exposed
+
+Four things that are deck problems, not script problems. They are listed here because the script
+is where they became impossible to ignore, and each one is cheap to fix.
+
+1. **There are no Part 3 and Part 4 dividers.** Frame 9 promises four parts; the deck names Parts 1
+   and 2 on black dividers and then runs Parts 3 and 4 together behind one *movement II* opener at
+   frame 28. The room is told there are four questions and then shown two labelled parts. Two
+   divider slides would close it, and they are also the natural place to put the paper references
+   for Papers 3 and 4, which currently appear only on the conclusions.
+2. ~~Three slides define peak counts, the starlet transform and the ℓ1-norm that frame 35 then
+   defines again, better, ninety seconds later~~ — **moved to backup 2026-09-06**, where they now
+   sit at 100–102, after the wavelet primer, which is the order they should be read in. A3.10 opens
+   with a bridge, since the wavelet excursion has become the room's first encounter with either
+   statistic.
+3. **Frame 26 is still seven clicks of PnPMass flipbook** with no notes, and `STRUCTURE.md` §5 has
+   said since the Part 1 rebuild that it belongs in backup. Its partner has already gone to 112;
+   this is the other half of the same block, and it is tier 1.
+4. **Twelve slides' `aside class="notes"` carry `[CLICK]` counts that do not match their own
+   fragments** — frame 39 says four clicks and has one, frame 37 says three and has two. The notes
+   were written before the builds settled. This script is now the authority; the notes should be
+   trimmed to pointers rather than maintained in parallel.

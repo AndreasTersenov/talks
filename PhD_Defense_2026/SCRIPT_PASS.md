@@ -162,3 +162,11 @@ Frame 35 (A3.12) was then simplified to match Andreas's own rewrite of the beat:
 that the summary statistic is compared with theoretical predictions in a Bayesian framework, with the
 summary, inference and posterior steps lit from the start and no clicks. The no-likelihood point and the
 simulations lane are made later, on the SBI slides.
+
+On 2026-09-10 the file was reorganised (Andreas: the interleaving was confusing). Act 0 to the
+Close is now an uninterrupted run of spoken beats; the six beats for backup or skipped slides
+moved to *Beats for the slides that are not in the main line*, immediately after the conclusions,
+and the three historical sections that used to sit in front of Act 0 (the backup-move table, the
+animation policy, what the script pass exposed) moved to *Decisions and history* at the end. The
+missing Act 2 header was restored. Verified a pure move: no line was lost except the one sentence
+reworded to point at the new location.
