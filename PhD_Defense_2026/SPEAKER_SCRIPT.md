@@ -167,11 +167,11 @@ Fixed points (Andreas, 2026-08-26): **ΛCDM**, **cosmological probes**, **Euclid
 
 ## A0.1 — title · frame 1 · 0:32
 
-Thank you, and good morning. Thank you all for coming, and thank you to the committee for reading
-this.
+Thank you, and good afternoon. Thank you all for coming, and thank you to the committee for reading
+this and being here in person.
 
-This is a talk about how we measure the Universe: what we can learn from the light that reaches us,
-and what it takes to trust what we learn from it.
+I'm very happy today to present the work that I have been doing for my PhD over the past 3 years.
+This thesis is about extracting information from weak gravitational lensing data, and using it to constrain cosmological parameters. In particular, it is about recovering as much of that information as we can, including the part the standard analysis leaves out, and about making sure that the cosmological results we build on it can be trusted.
 
 I would like to start with the picture we are trying to fill in.
 
@@ -270,33 +270,27 @@ Modern cosmological survey analyses are incredibly complex.
 To demonstrate how intricate the chain is, here is a diagram of the DES Year 3 (a previous generation survey) analysis, 
 from pixels to cosmology.
 
-[CLICK] Almost every box here is a paper on its own.
-Cosmology is the last two on the right.
+[CLICK] Almost every box here is a paper on its own, and much of it has to do with measurement and calibration. 
 
-**▲** Most of a real survey analysis is measurement and calibration, and I am not going to talk about
-most of it. I will focus on the later parts of the chain, which are the more scientific ones: 
-the inference of cosmology from the measured shapes.
-
+The actual cosmology parts are only the parts on the very right.
 ---
 
 ## A0.8 — the chain, and the two halves · frame 9 · 2:17
-Here is the same thing, reduced to the last steps that are the scientific part of the analysis.
+Here is a similar thing, but reduced to the last steps that are the scientific part of the analysis.
 
 Galaxy shapes go in. From the shapes we make a map of the mass distribution. From the map we extract a few numbers, the summary statistics.
 We compare those with theoretical predictions, or with simulations, in a bayesian framework, and out come the probability distributions of the parameters.
 
 [CLICK] **▲** The first half of the talk, the first two papers, is about this step: making the map.
-Several algorithms do it. Does the choice matter for the cosmological results, and can we build 
-a really advanced one whose error bars we can trust, and which can be implemented in a 
+Several algorithms do it. But does the choice matter for the cosmological results, and can we build a really advanced one whose error bars we can trust, and which can be implemented in a 
 survey like Euclid?
 
 [CLICK] **▲** The second half, the last two papers, is about everything after it: 
 extracting information from the the map, and using it to infer cosmology.
 How much of the cosmological information do the summary statistics keep, and does that survive 
-the realistic case, where physics the simulations get wrong?
+the realistic case, where we have physics that the simulations get wrong?
 
-Every one of these steps can bias the result or distort the
-error bars, if it fails to capture the relevant physical or observational effects.
+Every one of these steps can bias the result or distort the error bars, if it fails to capture the relevant physical or observational effects.
 That's why for the results to be trustworthy, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwirse, we risk producing highly unreliable posterior estimates, distorted uncertainty quantification, and incorrect scientific conclusions.
 
 <!-- , and the whole chain rests on the simulations being right. If they miss a physical or
@@ -322,23 +316,22 @@ Bayesian inference, where the likelihood is explicit, as neural networks are kno
 
 ## A1.1 — the question · frame 10 · 0:18
 
-Question one, on the same picture with the same step lit. Every map-based statistic in this talk
-starts from a reconstruction — so does the choice of method matter for the final constraints?
+So.. Let's start with our first paper. 
 
-First, what is being reconstructed.
+First, what is exactly being reconstructed.
 
 ---
 
 ## A1.2 — shear and convergence · frame 11 · 1:18
 
-The effect of weak lensing can be summarised in two effects: the convergence, which is the 
+The effect of weak lensing can be summarised in two quantities: the convergence, which is the 
 an isotropic magnification of the image, and the shear, which is the anisotropic stretching of the image.
 
 Convergence is not directly observable, because we do not know the intrinsic size of a galaxy. 
 
 The shear however is measurable through statistical analysis of the shapes of many galaxies. 
-The idea is that for one galaxy the stretch is about a per cent, far smaller than
-the shape it already had. **▲** But the lensing is **coherent**
+<!-- The idea is that for one galaxy the stretch is about a per cent, far smaller than the shape it already had.  -->
+**▲** The idea is that the lensing is **coherent**
 and to a good approximation, the intrinsic shapes are **random**. Therefore, if we average the ellipticities over many galaxies in a patch,
 the random part cancels, and what survives is the shear.
 
@@ -350,7 +343,7 @@ However, we would really like to know the convergence, for a few reasons.
 
 First of all, it is a scalar field, so it is easier to work with and extract infromation from than the shear, which is a spin-2 field. 
 
-Second, it has a direct physical interpretation: the convergence is just the projected matter along the line of sight, weighted by how efficiently each piece of it lenses. So it essentially tells us the distribution of matter in the Universe, which is what we want to know.
+Second, it has a direct physical interpretation: the convergence is the projected matter along the line of sight, weighted by how efficiently each piece of it lenses. So it essentially tells us the distribution of matter in the Universe, which is what we want to know.
 That's why convergence maps are also called mass maps.
 
 <!-- Two things ride in that integral: the kernel carries the geometry, the overdensity carries the
@@ -367,30 +360,19 @@ this quantity called the lensing potential, which is itself a projection of the 
 
 In Fourier space we can go from one to the other with a simple linear relation.
 
-**▲** Linear, fast, no free parameters — and on a complete, noiseless field, exact. There is a way
-across, and it is not an approximation.
-
 ---
 
 ## A1.5 — the relation is exact, the measurement is not · frame 14 · 1:06
 
-While the relation is exact, the data is imperfect. The shear is measured from galaxy shapes, which are noisy and incomplete. 
+While the relation is exact, the data is imperfect. The shear is measured from galaxy shapes, which are irregularly sampled, and have noise (much larger than the shear itself) and *masks* -- missing regions where there are no galaxies or where the data is not usable.
 
-The measurement is not — because we never observe gamma. Three things stand
-in the way, and they are all on this line.
-
-**Shape noise**, far larger than the shear itself, and the inversion amplifies it at small scales.
+<!-- **Shape noise**, far larger than the shear itself, and the inversion amplifies it at small scales.
 **The mask**: the operator is non-local, so a hole leaves whole modes unconstrained. And **a blind
-spot** — shear cannot see a constant added to kappa, so the overall level is not measurable.
+spot** — shear cannot see a constant added to kappa, so the overall level is not measurable. -->
 
-Put those together and you get a family of maps, visibly different, every one of which fits the
-measurement.
+This is why mass mapping is an **ill-posed inverse problem**: there are multiple possible solutions visibly different from each other and consistent with the data. 
 
-[CLICK] **▲** So you cannot simply invert. Choosing one means adding an assumption — and that
-assumption is not a technicality, it **is** the method.
-
-**▲** Everything in this chapter is a different answer to one question: what do you assume about
-kappa?
+**▲** To get a unique solution, we have to make an assumption about what the kappa looks like.
 
 ---
 
