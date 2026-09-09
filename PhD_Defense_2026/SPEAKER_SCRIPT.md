@@ -805,12 +805,11 @@ statistic we use for the rest of the talk.
 
 ---
 
-## A3.12 — no analytic likelihood · frame 35 · 0:26
+## A3.12 — from the summary to the parameters · frame 35 · 0:26
 
-Now the last step of the chain: from the summary statistic to the posterior on the parameters.
-[CLICK] The power spectrum has a theoretical prediction and an analytic likelihood. Peak counts,
-the ℓ1-norm, and neural summaries do not. [CLICK] So the comparison with the data has to go
-through simulations. This is simulation-based inference.
+Ok, so now we have some summary statistics, and we want to compare it with theory predictions we have assuming different cosmological models, to infer the cosmological parameters that best describe the data.
+
+To do that in a way that encodes all the uncertainties that come into play, we use Bayesian statistics.
 
 ---
 

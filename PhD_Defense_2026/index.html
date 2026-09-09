@@ -2865,38 +2865,26 @@
 
 
 
-			<!-- ============ the chain a third time — the summary has to become a posterior,
-			     and that is where the model lane lights up: no analytic likelihood for these
-			     statistics, so the comparison runs against simulations. ============ -->
+			<!-- ============ the chain a third time — the summary has to become a posterior.
+			     Simplified 2026-09-09 (Andreas): the right-hand end is lit from the start and the
+			     slide says only what we do with the summary statistic to get the parameters.
+			     Bayes is taught on the next slide, simulation-based inference after that; the
+			     no-likelihood point and the simulations lane are no longer made here. ============ -->
 			<section class="chainslide" data-theme="light">
-				<h3 class="slide-title tight">In general, higher-order statistics have no theoretical prediction, or
-					analytic likelihood, so the inference uses
-					<em class="alert">simulations</em>
+				<h3 class="slide-title tight">The summary statistic is compared with theoretical predictions to infer
+					the cosmological parameters, in a <em class="alert">Bayesian framework</em>
 				</h3>
 
-				<span class="pipe-focus fragment" data-fragment-index="2"></span>
+				<span class="pipe-focus visible" aria-hidden="true"></span>
 
-				<div class="chart-slot" data-focus="summ inf post prior sims syst"></div>
-
-				<p class="note fragment fade-in" data-fragment-index="1">
-					The power spectrum has a a theoretical prediction, and an analytic likelihood. <b>Peak counts</b>,
-					the
-					<b>&#8467;<sub>1</sub>&#8209;norm</b> and neural summaries do not.
-				</p>
-
-				<p class="note handoff-line fragment fade-in" data-fragment-index="2">
-					Instead, the comparison with the data goes through <b class="alert">simulations</b>.
-				</p>
+				<div class="chart-slot" data-focus="summ inf post"></div>
 
 				<aside class="notes">
-					Same picture, one more time, and now the right-hand end. We have a summary; we need a posterior on
-					the parameters. [CLICK] Here is the difficulty that shapes everything after it. For the power
-					spectrum you can write down a likelihood — Gaussian to good approximation, with a covariance you
-					can model. For peak counts, for the l1-norm, for anything a neural network computes, you cannot.
-					There is no analytic form. [CLICK] So the whole bottom row lights up. The likelihood is replaced by
-					simulations: draw cosmologies from a prior, run them, apply the systematics, compute the same
-					summary on each one, and learn the relationship. That is simulation-based inference, and it is what
-					the next slide is about.
+					The chain a third time, the right-hand end lit from the start, no clicks. SAY: we have a summary
+					statistic, and we compare it with the theoretical prediction for different cosmological models to
+					infer the parameters that best describe the data; to carry all the uncertainties, we do that with
+					Bayesian statistics. That is the whole slide. Bayes' theorem is next, simulation-based inference
+					after it.
 				</aside>
 			</section>
 

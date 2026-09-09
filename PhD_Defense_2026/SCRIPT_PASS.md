@@ -157,3 +157,8 @@ A Part 3 card went in at frame 40, after the SBI slide, opening the joint ℓ1 p
 three moved from A3.1 to the new beat A3.16b, and every frame from 40 onward in the table above is one
 higher in the deck now (A3.17 is 41, the close is 54, the backup starts at 56). The Part 4 card carries
 arXiv:2609.09131, and the two *in prep.* source lines for the joint ℓ1 paper now say *submitted*.
+
+Frame 35 (A3.12) was then simplified to match Andreas's own rewrite of the beat: the slide now says only
+that the summary statistic is compared with theoretical predictions in a Bayesian framework, with the
+summary, inference and posterior steps lit from the start and no clicks. The no-likelihood point and the
+simulations lane are made later, on the SBI slides.
