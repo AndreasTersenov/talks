@@ -658,12 +658,12 @@
 					</figure>
 				</div>
 
-				<div class="callout">
+				<!-- <div class="callout">
 					<span class="label">why reconstruct &kappa;</span>
 					$\kappa$ is a <b>scalar</b> field, while the shear is <b>spin&#8209;2</b> (two components that
 					rotate with the coordinate frame). Theory predicts $\kappa$, and all the statistics in this talk are
 					computed on $\kappa$ maps.
-				</div>
+				</div> -->
 
 				<aside class="notes">
 					Do not read the equation. Say what it is: add up all the matter along the line of sight, weighted
@@ -3045,11 +3045,11 @@
 						<figcaption>samples transported by the flow</figcaption>
 					</figure>
 				</div>
-
+<!-- 
 				<p class="pull fragment fade-in">
 					Conditioning the layers on data $x$ gives $q_\phi(\theta \mid x)$, <b class="alert">a model of the
 						posterior</b> that is fit by maximum likelihood.
-				</p>
+				</p> -->
 
 				<aside class="notes">
 					Flows, and the setup for the SBI slide. The problem: we need a way to
@@ -3098,7 +3098,7 @@
 
 				<p class="pull fragment" data-fragment-index="1">The simulations are the only expensive step, and they
 					are run <b>once</b>. The trained flow evaluates the posterior for <b class="alert">any</b>
-					observation immediately (<b>amortised</b> inference), which makes coverage tests cheap.</p>
+					observation immediately (<b>amortised</b> inference).</p>
 
 				<aside class="notes">
 					SBI in general; the next slide is this paper's particular pipeline. Frame it from the
@@ -3161,7 +3161,7 @@
 						<figcaption>cosmology</figcaption>
 					</figure>
 				</div>
-				<p class="oneline fragment fade-in">Beating the power spectrum is easy. <b class="alert">How much
+				<p class="oneline fragment fade-in">Beating the power spectrum is "easy". <b class="alert">How much
 						information is there to extract?</b></p>
 				<aside class="notes">A hinge, not a result - keep it short and do not front-load it. SAY: we have a
 					statistic that reads more than the power spectrum. But look at the middle box: the summary is the
@@ -3243,8 +3243,7 @@
 			     Placeholder below is step1 of the 4-arm build-up (auto-only, grey) so the
 			     deck stays valid; swap the src when the real render lands. -->
 			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> The CNN beats the <em
-						class="alert">per-bin</em> &#8467;1-norm by 36% in FoM</h3>
+				<h3 class="slide-title tight"><span class="sec">§3</span> The CNN beats the &#8467;1-norm by <em class="alert">36%</em> in the figure of merit</h3>
 				<div class="container" style="align-items:center; margin-top:0.3em;">
 					<div class="col" style="flex:1.28;">
 						<figure class="fig">
@@ -3267,22 +3266,16 @@
 							<span class="label">the gap</span>
 							<ul>
 								<li>The learned summary is <b class="alert">36% ahead</b> in FoM<sub>3</sub></li>
-								<li>But the comparison is not symmetric: the $\ell_1$-norm sees <b>one bin at a
-										time</b>, the network <b>all four bins together</b></li>
-								<li>Next: remove the asymmetry and see how much of the gap remains</li>
+								<li>But the comparison is <b>not symmetric</b>: something important about the maps is not taken
+									into account</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<span class="srcref">Tersenov+, submitted</span>
-				<aside class="notes">SAY: read the result plainly first - the CNN posterior is tighter, FoM3 3326
-					against 2448, about 36 per cent. Do not editorialise about the network being better, and do NOT yet
-					claim to know why. THEN point at the asymmetry in how the comparison is set up: the lensing kernels
-					overlap while the shape noise is independent, so the bins carry correlated information;
-					all four maps enter the network's first convolutional layer together, while the l1-norm is computed
-					one channel at a time and only ever sees the one-dimensional marginals. That is an observation about
-					the setup, not yet a diagnosis - it might account for all of the gap, some of it, or none. The next
-					two slides close the asymmetry and measure what happens, which is the only way to find out.
+				<aside class="notes">Read the result plainly: the two are not far apart, the CNN wins by 36 per cent in
+					FoM3. [CLICK] Then only that the comparison is not symmetric and leaves something important out.
+					Do NOT name the tomography here; the next slide explains it. Script A3.20 is the authority.
 				</aside>
 			</section>
 
@@ -3469,71 +3462,80 @@
 						at small scales</em></h3>
 				<p class="lead-line">To be able to <b class="alert">trust</b> our HOS results we must investigate how
 					they are affected by each systematic <b>at the contour level</b>.</p>
-				<svg class="scales" viewBox="0 0 760 286" width="1000" height="376" role="img"
-					aria-label="schematic: the non-Gaussian information peaks at intermediate scales while baryonic feedback rises at the smallest; how much must be removed decides whether anything is left">
-					<defs>
-						<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"
-							patternTransform="rotate(45)">
-							<line x1="0" y1="0" x2="0" y2="9" stroke="var(--fg-muted)" stroke-width="2.4"
-								opacity="0.55" />
-						</pattern>
-						<filter id="roughen" x="-8%" y="-20%" width="116%" height="140%">
-							<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4" seed="11"
-								result="n" />
-							<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-						<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="760" height="290">
-							<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="3"
-								result="ln" />
-							<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-						<filter id="roughen-text" x="-14%" y="-40%" width="128%" height="180%">
-							<feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="3" seed="5"
-								result="tn" />
-							<feDisplacementMap in="SourceGraphic" in2="tn" scale="2.4" xChannelSelector="R"
-								yChannelSelector="G" />
-						</filter>
-					</defs>
+				<div class="container" style="align-items:center; gap:1.2em; margin-top:0.2em;">
+					<div class="col" style="flex:1.3;">
+						<svg class="scales" viewBox="0 0 684 370" width="558" height="302" role="img"
+							aria-label="schematic: the non-Gaussian information peaks at intermediate scales while baryonic feedback rises at the smallest; how much must be removed decides whether anything is left">
+							<defs>
+								<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"
+									patternTransform="rotate(45)">
+									<line x1="0" y1="0" x2="0" y2="9" stroke="var(--fg-muted)" stroke-width="2.4"
+										opacity="0.55" />
+								</pattern>
+								<filter id="roughen" x="-8%" y="-20%" width="116%" height="140%">
+									<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4" seed="11"
+										result="n" />
+									<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
+										yChannelSelector="G" />
+								</filter>
+								<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="684" height="380">
+									<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="3"
+										result="ln" />
+									<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
+										yChannelSelector="G" />
+								</filter>
+								<filter id="roughen-text" x="-14%" y="-40%" width="128%" height="180%">
+									<feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="3" seed="5"
+										result="tn" />
+									<feDisplacementMap in="SourceGraphic" in2="tn" scale="2.4" xChannelSelector="R"
+										yChannelSelector="G" />
+								</filter>
+							</defs>
 
-					<!-- How far the contamination reaches, in two steps. The slide opens on the
-					     curves alone so the room reads the figure before it is asked a question
-					     about it; fade-in-then-out shows the optimistic band only while it is the
-					     current fragment, so the pessimistic one replaces it rather than stacking. -->
-					<g class="fragment fade-in-then-out" data-fragment-index="1">
-						<rect class="cut sketch" x="520" y="30" width="215" height="156" />
-						<text class="bandlab" x="627" y="22" text-anchor="middle">optimistic</text>
-					</g>
-					<g class="fragment fade-in" data-fragment-index="2">
-						<rect class="cut sketch" x="290" y="30" width="445" height="156" />
-						<text class="bandlab" x="512" y="22" text-anchor="middle">pessimistic</text>
-					</g>
+							<!-- How far the contamination reaches, in two steps. The slide opens on the
+							     curves alone so the room reads the figure before it is asked a question
+							     about it; fade-in-then-out shows the optimistic band only while it is the
+							     current fragment, so the pessimistic one replaces it rather than stacking. -->
+							<g class="fragment fade-in-then-out" data-fragment-index="1">
+								<rect class="cut sketch" x="468" y="43.5" width="193.5" height="226.2" />
+								<text class="bandlab" x="564.3" y="31.9" text-anchor="middle">optimistic</text>
+							</g>
+							<g class="fragment fade-in" data-fragment-index="2">
+								<rect class="cut sketch" x="261" y="43.5" width="400.5" height="226.2" />
+								<text class="bandlab" x="460.8" y="31.9" text-anchor="middle">pessimistic</text>
+							</g>
 
-					<!-- information beyond two-point: rises, peaks at intermediate scales -->
-					<path class="infofill sketch"
-						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68 L735,186 L95,186 Z" />
-					<path class="info sketch"
-						d="M95,184 C215,182 315,110 420,70 C480,50 545,48 610,54 C660,60 700,64 735,68" />
-					<!-- baryonic feedback: negligible until the smallest scales, then steep -->
-					<path class="feedfill sketch"
-						d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44 L735,186 L95,186 Z" />
-					<path class="feed sketch" d="M95,185 C240,185 360,182 455,172 C545,160 610,122 735,44" />
+							<!-- information beyond two-point: rises, peaks at intermediate scales -->
+							<path class="infofill sketch"
+								d="M85.5,266.8 C193.5,263.9 283.5,159.5 378,101.5 C432,72.5 490.5,69.6 549,78.3 C594,87 630,92.8 661.5,98.6 L661.5,269.7 L85.5,269.7 Z" />
+							<path class="info sketch"
+								d="M85.5,266.8 C193.5,263.9 283.5,159.5 378,101.5 C432,72.5 490.5,69.6 549,78.3 C594,87 630,92.8 661.5,98.6" />
+							<!-- baryonic feedback: negligible until the smallest scales, then steep -->
+							<path class="feedfill sketch"
+								d="M85.5,268.2 C216,268.2 324,263.9 409.5,249.4 C490.5,232 549,176.9 661.5,63.8 L661.5,269.7 L85.5,269.7 Z" />
+							<path class="feed sketch" d="M85.5,268.2 C216,268.2 324,263.9 409.5,249.4 C490.5,232 549,176.9 661.5,63.8" />
 
-					<!-- axis -->
-					<line class="frameline sketchline" x1="95" y1="186" x2="735" y2="186" />
-					<line class="frameline sketchline" x1="95" y1="186" x2="95" y2="28" />
-					<text class="axlab" x="95" y="210" text-anchor="start">large, linear scales</text>
-					<text class="axlab" x="735" y="210" text-anchor="end">small, non-linear scales</text>
-					<text class="axlab" x="78" y="34" text-anchor="end" transform="rotate(-90 78 34)">more &rarr;</text>
-					<text class="schematic-note" x="735" y="277" text-anchor="end">(schematic, not to scale)</text>
+							<!-- axis -->
+							<line class="frameline sketchline" x1="85.5" y1="269.7" x2="661.5" y2="269.7" />
+							<line class="frameline sketchline" x1="85.5" y1="269.7" x2="85.5" y2="40.6" />
+							<text class="axlab" x="85.5" y="293.7" text-anchor="start">large, linear scales</text>
+							<text class="axlab" x="661.5" y="293.7" text-anchor="end">small, non-linear scales</text>
+							<text class="axlab" x="70.2" y="49.3" text-anchor="end" transform="rotate(-90 70.2 49.3)">more &rarr;</text>
+							<text class="schematic-note" x="661.5" y="360.7" text-anchor="end">(schematic, not to scale)</text>
 
-					<!-- legend, below the axis so it never collides with the shaded range -->
-					<line class="info sketchline" x1="98" y1="238" x2="142" y2="238" />
-					<text class="lab acc" x="152" y="245">information beyond two-point</text>
-					<line class="feed sketchline" x1="98" y1="270" x2="142" y2="270" />
-					<text class="lab mut" x="152" y="277">baryonic feedback</text>
-				</svg>
+							<!-- legend, below the axis so it never collides with the shaded range -->
+							<line class="info sketchline" x1="88.2" y1="321.7" x2="127.8" y2="321.7" />
+							<text class="lab acc" x="136.8" y="328.7">information beyond two-point</text>
+							<line class="feed sketchline" x1="88.2" y1="353.7" x2="127.8" y2="353.7" />
+							<text class="lab mut" x="136.8" y="360.7">baryonic feedback</text>
+						</svg>
+					</div>
+					<div class="col" style="flex:1;">
+						<video class="plain" src="../assets/videos/illustris_movie_cube_sub_frame.mp4" loop muted autoplay
+							playsinline style="max-height:255px; border-radius:8px;"></video>
+						<p class="cap">Illustris: baryonic feedback reshaping the cosmic web</p>
+					</div>
+				</div>
 				<div class="coreq">
 					<div class="qcard">
 						<span class="qtab">question 1</span>
