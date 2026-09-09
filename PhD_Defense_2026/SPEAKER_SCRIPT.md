@@ -819,38 +819,33 @@ regime, where the gain is larger.
 > The board that repeated the four questions before the conclusions is **hidden** (Andreas): the
 > close carries the questions *and* their answers on one slide.
 
-## C.2 — conclusions · frame 54 · 1:49
+## C.2 — conclusions · frame 54 · 1:23
 
-> **Rebuilt 2026-09-07 to match this beat.** The slide carries the four questions with their
-> answers, in short form. The room has met each question on its divider, so name each one in a
-> few words and give the answer. The paper references are on the part dividers.
+> **The slide carries the four questions with their answers, in short form.** The room has met each
+> question on its divider, so do not read them out again: give the summary below and let the slide
+> hold the detail. The paper references are on the part dividers.
 
-The four questions, and the answers.
+So, to summarise.
 
-One, the mass-mapping method: yes, it matters. Changing only the reconstruction moves the figure
-of merit by a hundred and fifty-seven per cent, and the reconstruction error by four. **▲**
-Reconstruction error is not a good proxy for constraining power.
+This thesis followed the analysis chain from galaxy shapes to cosmological parameters, and worked on
+two steps of it: making the mass map, and reading it.
 
-Two, the algorithm: yes. PnPMass is within one per cent of the networks fine-tuned to the
-observation, has the smallest calibrated error bars of all the methods we tested, and is trained
-once, for any mask and noise level.
+On the map, the choice of mass-mapping method is not neutral. It changes the figure of merit by a
+hundred and fifty-seven per cent, while the reconstruction error changes by four. And with PnPMass
+we have a method that is accurate, with calibrated error bars, and trained once for any mask and
+noise level.
 
-Three, the summary statistic: we do not need the network. Read the bins jointly, and a fixed
-wavelet ℓ1-norm matches a compressor trained to be information-optimal, with no training.
+On the summary statistic, the joint ℓ1-norm extracts as much cosmological information as a neural
+compressor trained to be optimal, without any training. And it stays ahead of the power spectrum
+even after removing every scale that baryonic feedback contaminates.
 
-Four, the scales the simulations get wrong: yes, the statistics still beat the standard analysis.
-With every contaminated scale removed, the ℓ1-norm is still one point eight times tighter than the
-power spectrum at Stage IV, and two point six at full sky, **▲** with the most conservative cut
-available.
+**▲** So, steps of the analysis that are usually treated as neutral choices do change the
+cosmological result. And with methods that are calibrated and tested, we can extract more of the
+information in the data, and trust what we get out.
 
 > The nulling result belongs here too and is deliberately not said; see A4.6. If it has come up
 > during the talk, add one sentence: *and the same joint reading is what makes redshift nulling
 > survivable for a higher-order analysis, which is in the thesis.*
-
-Two of these were about the map and two about the summary statistic, and the answers have the same
-form: a step usually treated as a neutral choice changes the cosmological result. And in every case
-the uncertainties were calibrated and tested before any comparison was made. That is what makes
-these results trustworthy.
 
 Thank you.
 
