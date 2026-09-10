@@ -153,7 +153,7 @@
 /* optional journal running head: <div class="runhead"><span>title</span><span class="r">§2</span></div> */
 .reveal .slides section .runhead {
   display: flex; justify-content: space-between; align-items: baseline;
-  font-family: var(--label); font-size: 0.42em; letter-spacing: 0.07em;
+  font-family: var(--label); font-size: 0.55em; letter-spacing: 0.07em;
   color: var(--fg-muted); border-bottom: 1px solid var(--hair); padding-bottom: 0.4em; margin-bottom: 0.7em;
 }
 .reveal .slides section .runhead .r { color: var(--accent); }

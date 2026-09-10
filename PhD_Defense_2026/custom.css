@@ -628,7 +628,7 @@
 /* A1.2: the four-panel figure carries the slide; the words underneath are one line each */
 .reveal .slides section .massmaps { margin-bottom: 0.35em; }
 .reveal .slides section .massmaps img { width: 66%; }
-.reveal .slides section .massmaps figcaption { font-size: 0.5em; }
+.reveal .slides section .massmaps figcaption { font-size: 0.60em; }
 
 /* A1.3: the chain is short, so let it breathe rather than float in dead space */
 .reveal .slides section .fixedchain { margin-top: 1.4em; }
@@ -637,7 +637,7 @@
 /* A1.5: two corner plots plus a callout is the tightest slide in the act */
 .reveal .slides section .scalepair { gap: 1.4em; }
 .reveal .slides section .scalepair .fig img { width: 94%; }
-.reveal .slides section .scalepair figcaption { font-size: 0.5em; margin-top: 0.25em; }
+.reveal .slides section .scalepair figcaption { font-size: 0.60em; margin-top: 0.25em; }
 
 /* A2.1: peer cards, so they get equal weight and readable type */
 .reveal .slides section .methodcards { margin-top: 1.5em; gap: 1.2em; }
@@ -655,13 +655,13 @@
 /* A2.2: the diagram was crowding the takeaway off the bottom of the frame */
 .reveal .slides section .pnpdiag { margin: 0.2em 0 0.1em; }
 .reveal .slides section .pnpdiag img { width: 52%; }
-.reveal .slides section .pnpdiag figcaption { font-size: 0.5em; }
+.reveal .slides section .pnpdiag figcaption { font-size: 0.60em; }
 .reveal .slides section .defline { margin: 0.15em 0 0.5em; }
 .reveal .slides section .defline .katex-display { margin: 0.2em 0; font-size: 0.82em; }
 
 /* A2.3: the conformal-bounds panel is three maps wide, the other two are square */
 .reveal .slides section .uqrow.wide-first { grid-template-columns: 1.45fr 1fr 1fr; gap: 0.9em; }
-.reveal .slides section .uqrow figcaption { font-size: 0.5em; margin-top: 0.3em; }
+.reveal .slides section .uqrow figcaption { font-size: 0.60em; margin-top: 0.3em; }
 .reveal .slides section .uqcols { margin-top: 0.7em; }
 .reveal .slides section .uqcols .callout,
 .reveal .slides section .uqcols .takeaway { padding: 0.5em 0.85em; }
@@ -750,7 +750,7 @@
 .reveal .slides section.probes .figswap > * { grid-area: 1 / 1; align-self: center; }
 .reveal .slides section.probes .figswap > figure { margin: 0; }
 .reveal .slides section.probes .figswap > figure img { width: 62%; max-width: 100%; }
-.reveal .slides section.probes figcaption { font-size: 0.5em; line-height: 1.5; margin-top: 0.6em; }
+.reveal .slides section.probes figcaption { font-size: 0.60em; line-height: 1.5; margin-top: 0.6em; }
 
 .reveal .slides section.probes .tensionpair {
 	display: grid; grid-template-columns: 1fr 1fr; gap: 1.6em; align-items: start;
@@ -885,7 +885,7 @@
 }
 /* the trimmed map carries a wider left gutter (the y-axis label) than right, so
    the caption is nudged in to sit under the plot frame rather than the bbox */
-.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.46em; }
+.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.60em; }
 .reveal .slides section.kappadef .kmap figcaption b { color: var(--accent); }
 
 /* The second reason we want kappa — a scalar, not a spin-2 field.  Added
@@ -1304,7 +1304,7 @@
 
 .reveal .slides section.bayes2 .beat { text-align: center; }
 .reveal .slides section.bayes2 .blab {
-	font-size: 0.6em; line-height: 1.4; color: var(--fg);
+	font-size: 0.66em; line-height: 1.4; color: var(--fg);
 	margin: 0 auto 0.55em; min-height: 2.9em;
 	/* flex, so labels of different lengths bottom-align and the three symbols sit
 	   on one line. The single <span> child is load-bearing: a flex container turns
@@ -1317,7 +1317,7 @@
 .reveal .slides section.bayes2 .bname {
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.54em; line-height: 1.35; color: var(--fg-muted); margin-top: 0.5em;
+	font-size: 0.66em; line-height: 1.35; color: var(--fg-muted); margin-top: 0.5em;
 	/* every name reserves the rule the prior actually draws, so the three beats end
 	   at the same height and the symbols sit on one line */
 	border-bottom: 2px solid transparent; padding-bottom: 0.4em;
@@ -1839,7 +1839,7 @@
 	width: 100%; height: auto; margin: 0;
 	border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.pnpres figcaption { font-size: 0.46em; line-height: 1.45; }
+.reveal .slides section.pnpres figcaption { font-size: 0.58em; line-height: 1.45; }
 .reveal .slides section.pnpres .pr-side p {
 	margin: 0.4em 0 0; font-size: 0.46em; line-height: 1.6; color: var(--fg-muted);
 }
@@ -1912,7 +1912,7 @@
 	border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.twopt .tp-fig figure { margin: 0; }
-.reveal .slides section.twopt .tp-fig figcaption { font-size: 0.42em; text-align: center; }
+.reveal .slides section.twopt .tp-fig figcaption { font-size: 0.58em; text-align: center; }
 .reveal .slides section.twopt .tp-side p {
 	margin: 0.4em 0 0; font-size: 0.95em; line-height: 1.4; color: var(--fg);
 }
@@ -1957,7 +1957,7 @@
 	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
 	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.teach figcaption { font-size: 0.46em; line-height: 1.45; margin-top: 0.5em; }
+.reveal .slides section.teach figcaption { font-size: 0.58em; line-height: 1.45; margin-top: 0.5em; }
 .reveal .slides section.teach .tc-side p {
 	margin: 0 0 0.5em; font-size: 0.82em; line-height: 1.4; color: var(--fg); text-align: left;
 }
@@ -1981,7 +1981,7 @@
 	width: auto; height: auto; max-height: 44vh; max-width: 100%;
 	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.46em; text-align: center; margin-top: 0.5em; }
+.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.58em; text-align: center; margin-top: 0.5em; }
 .reveal .slides section.hosgain .pull { margin-top: 1em; }
 
 /* the scoreboard: four peer questions, so four cards is right — but not at
@@ -2019,7 +2019,7 @@
 	margin: 1.5em auto 0; font-size: 0.66em; color: var(--fg);
 }
 .reveal .slides section.bayesclass .bayeseq { margin: 0.5em auto 0; max-width: 96%; }
-.reveal .slides section.bayesclass .bayeseq .katex { font-size: 0.92em; }
+.reveal .slides section.bayesclass .bayeseq .katex { font-size: 1.08em; }
 .reveal .slides section.bayesclass .pull { margin-top: 1.5em; }
 
 /* the lower half: the likelihood written out and the sampler line on the left,
@@ -2069,11 +2069,11 @@
 	display: grid; grid-template-columns: 1fr auto; gap: 0 2.4em;
 	max-width: 94%; margin: 1.1em auto 0; align-items: center; text-align: left;
 }
-.reveal .slides section.flowslide .fl-left p {
+.reveal .slides section.flowslide .fl-left p:not(.floweq) {
 	margin: 0; font-size: 0.72em; line-height: 1.45; color: var(--fg);
 }
-.reveal .slides section.flowslide .floweq { margin-top: 0.5em !important; }
-.reveal .slides section.flowslide .floweq .katex { font-size: 0.9em; }
+.reveal .slides section.flowslide .floweq { margin: 0.5em 0 0 !important; font-size: 1em; }
+.reveal .slides section.flowslide .floweq .katex { font-size: 0.95em; }
 .reveal .slides section.flowslide .floweq .katex-display > .katex { text-align: left; }
 .reveal .slides section.flowslide .fl-left .points { margin-top: 0.7em; font-size: 0.72em; }
 
@@ -2159,7 +2159,7 @@
 	border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.flowslide .ft-gif figcaption {
-	font-size: 0.44em; text-align: center; margin-top: 0.3em;
+	font-size: 0.58em; text-align: center; margin-top: 0.3em;
 }
 
 /* the three causes, beside the fan rather than under it as prose */
@@ -2198,7 +2198,7 @@
 /* ---- slide 13, reorganised: the equation names the three troubles, the panel
    holds the pictures, and the bullets key back to the symbols. ---- */
 .reveal .slides section.invprob .ip-eq { margin: 1.1em auto 0; }
-.reveal .slides section.invprob .ip-eq .katex { font-size: 1.05em; }
+.reveal .slides section.invprob .ip-eq .katex { font-size: 1.3em; }
 .reveal .slides section.invprob .ip-panel {
 	display: flex; align-items: center; justify-content: center; gap: 2.4em;
 	width: 74%; margin: 1.2em auto 0; padding: 1.3em 1.6em;
@@ -2491,8 +2491,8 @@
 	background: color-mix(in srgb, var(--bg) 40%, transparent);
 	backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
 }
-.reveal .slides section .chart .prod.inimg figcaption b { font-size: 14.5px; }
-.reveal .slides section .chart .prod.inimg figcaption span { font-size: 11px; }
+.reveal .slides section .chart .prod.inimg figcaption b { font-size: 17px; }
+.reveal .slides section .chart .prod.inimg figcaption span { font-size: 13.5px; }
 
 /* --- placement ---------------------------------------------------------
    The data row runs left to right across the top with a slight stagger
@@ -2583,3 +2583,17 @@
 .reveal .slides section.closing .qlist .qans { color: var(--fg); }
 .reveal .slides section.closing .qlist .qtext { font-size: 0.93em; }
 
+
+/* --------------------------------------------------------------------------
+   FRAME 50 — the two scale cuts side by side.  Martin, 2026-09-10: the slide
+   named C_ell AND the starlet and only ever showed the power spectrum.  Two wide
+   strips stacked, each captioned with which statistic it belongs to, because
+   they do not share axes and must not be read as one plot.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .cutfigs { display: flex; flex-direction: column; gap: 0.35em; margin: 0.2em auto 0; width: 98%; }
+.reveal .slides section .cutfigs figure { margin: 0; display: flex; flex-direction: column; gap: 0.15em; }
+.reveal .slides section .cutfigs figcaption {
+	font-size: 0.55em; text-align: left; color: var(--fg-muted); margin: 0; order: -1;
+}
+.reveal .slides section .cutfigs img { max-height: 165px; width: auto; max-width: 100%; display: block; margin: 0 auto; }
+.reveal .slides section .cutfigs figure:last-child img { max-height: 245px; }
