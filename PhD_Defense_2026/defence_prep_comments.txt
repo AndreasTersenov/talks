@@ -1,0 +1,50 @@
+Comments
+
+Transcription for "20260910_113234.jpg"
+* Slide 13 → can't distinguish the underbrace of the equation
+* Global comment → some fonts quite small (check how it is on the screen in the room)
+* Narrative → work out transitions between the parts.
+    * Part 1 (bla bla bla) → result → Part 2 || (Note: The reviewer drew a parallel lines symbol here, implying an abrupt or disconnected transition).
+    * Part 1 (bla bla bla) → results → limitat° [limitations] → Part 2 ∪ (Note: The reviewer drew a connecting "bridge" symbol here, suggesting limitations are a good way to link the parts).
+* Slide 26 → What is the colorbar of miscoverage rate? Not used on the figure.
+* Slide 29 → missing UNIONS!!! Should quote KiDS-legacy and DESY6 rather that KiDS-1000 and DESY3.
+* Slide 31 → text too small
+* Slide 32 → That's a personal take but I have the feeling that you talk about wavelets too late. You already talk a lot about wavelet basis in the mass mapping part. Could be worth doing earlier? Have an introduction about all relevant notions earlier?
+* Slide 35 → posterior / likelihood / data too small
+    * → priors larger.
+    * → Gaussian likelihood equation larger (and centred?)
+* Slide 37 → change of variable formula too small.
+* Slide 40 → How do you define the "perfect summary statistic"?
+    * → I would try to phrase it in a less ambiguous manner.
+Transcription for "20260910_113243.jpg"
+* Potential question → How your Part 3 and Part 4 interact?
+    * → you say ℓ1 -norm is optimal, does it still hold after you remove the small scales?
+    * → If you don't [have] the experimental setup to answer can you discuss the difficulties of such comparisons?
+* Slide 51 → We really give away so many scales :(
+* General comment → uncount the backup slides
+    * → 115 slides is scary
+
+—
+
+Great job, I particularly liked the Part 3 results that I discovered. It's terrific. You can find attached my comments I wrote on the fly during your presentation. My global feeling is that you are more than ready for the final day. As for me, if you want to be picky about a few things here are my personal feeling:
+* The font on small slides are small (you can see it across my comments). I had no issues reading it but I have good eyes. You should at least test how it reads in the real room if you do not want to modify the slides.
+* I think the narrative slightly lacks transition. Particularly from Part1 to 2 and from Part 2 to 3. I think you can take the time before moving on to highlight one limitation of the work, or one objective that is not fulfilled yet to motivate what is coming next.
+* You introduce deeply many things at various stages of the presentation (VMIM, NPE, ...) I think you can gain the three minutes by not going into so much details and dive onto your contributions relying on the various tools. Also you will in my comments some of the notions introduced could be shuffled around in my opinion.
+* Very minor comment but also very dear to me, UNIONS is missing in the list of Stage III surveys. You are part of the collaboration you should proudly put it in the list even if it's not yet at the level of the others 
+
+
+—- 
+
+I have Two points :
+
+1 - You somewhat mentionned bayesian inference at slide 8 but then introduced formally at slide 35
+2 - When you show contour plots, you did not do a proper setup (I understand that they might be toy models but you implicitly tied the accuracy of mass mapping to the FOM which is the contour plots without saying in what context it was ) maybe you did but I missed it
+3 - [nitpick] You said multiple times in this talk .. I think you should say this defense?
+
+—- 
+
+- i found the text to be too small in general (e.g. slide 11 esp. the caption). you really have to fight claude on this, it loves sneaking in small font sizes!
+- wonder if some motivation for higher-order statistics should come earlier in the talk? at least briefly? this would then justify the work on mass mapping -> cosmological parameters. you also mentioned peak counts during the mass mapping -> parameters part without really defining them. my knee-jerk reaction during that part was "ok but why all this work to go to kappa when we can measure cosmology from the shear field directly" (i know the answer of course but in terms of the argument/narrative it felt a bit meandering)
+- most recent example of a generative image model from 2017?? surely there have been improvements since then :)
+- claude can get a little carried away with the bolding and italics. some is ok but some slides it felt like every other word was either bolded or italicized or both heh
+- can ask claude to ignore backup slides slide number
