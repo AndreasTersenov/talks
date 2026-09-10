@@ -497,21 +497,20 @@ b measures how much structure of size a there is at position b.
 
 [CLICK] This is well suited to convergence maps, which consists of localised
 structures, each with a characteristic size and position. 
-Such a field is *sparse* in the wavelet domain: it is described by a few large coefficients. 
-And the
-different scales can be analysed separately.
+
+And the different scales can be analysed separately.
 
 ---
 
 ## A3.11 — the two statistics · frame 31 · 1:47
 
-So the higher-order statistics we will focuse on both start from the wavelet decomposision of the map, using an isotropic wavelet **called the starlet**.
+So the higher-order statistics we will focus on both start from the wavelet decomposision of the map, using an isotropic wavelet **called the starlet**.
 
 And you can see how the starlet transform decomposes the map into **a set of band-pass images**, each carrying structure of a characteristic angular size.
 
 [CLICK] One thing you can do with these band-pass images is to count the peaks on them, the local maxima of the convergence field, and build a histogram of their amplitudes. This is the **wavelet peak counts statistic**.
 
-[CLICK] It is very sensitive to the non-Gaussian features of the field, and it encodes very useful information for cosmology, because as you can imagine, peaks are associated with haloes, and the abundance and distribution of haloes depends greatly on the cosmological parameters.
+[CLICK] It is very sensitive to the non-Gaussian features of the field, and it encodes very useful information for cosmology, because as you can imagine, peaks are associated with dark matter haloes, and the abundance and distribution of haloes depends greatly on the cosmological parameters.
 
 [CLICK] But by just counting the peaks, we are throwing away a lot of information: the voids, the filaments, and the rest of the field. So something else you can do is to sum the absolute values of all the wavelet coefficients, in each band, and build a histogram of those sums. This is the **starlet ℓ1-norm statistic**.
 
@@ -535,17 +534,16 @@ To do that in a way that encodes all the uncertainties that come into play, we u
 
 ## A3.13 — classical inference · frame 33 · 0:52
 
-From Bayes' theorem, the posterior is **proportional to the likelihood times the prior**: how
-probable the measured data are for a given cosmology, times what we assumed before we looked.
+From Bayes' theorem, the posterior probability of the
+parameters given the data is **proportional to the likelihood times the prior**: how
+probable the measured data are for a given cosmology, times what we assumed about the parameters before we looked at the data.
 
 The classical analysis writes that likelihood down **analytically**, usually as a Gaussian in the data
-vector, which needs a theoretical prediction for the mean and a covariance matrix. For the power
-spectrum that works, and it is what the field does.
+vector, which needs a theoretical prediction for the mean and a covariance matrix. For the power spectrum that works, and it is what the field does.
 
-[CLICK] Then you **sample the posterior with MCMC**, and the samples are the constraints.
+[CLICK] Then you **sample the posterior with MCMC**, and the samples give you the constraints.
 
-For peak counts or the ℓ1-norm we have *neither* an analytic prediction for the mean *nor* a Gaussian
-likelihood. So we need a different route.
+For peak counts or the ℓ1-norm we have *neither* an analytic prediction for the mean *nor* a Gaussian likelihood. So we need a different route.
 
 ---
 
@@ -555,9 +553,9 @@ The tool **comes from generative modelling**. The problem is this: there is a pr
 we do not know, and what we have is a set of samples drawn from it. 
 
 We want to learn the
-distribution from the samples, by fitting a parametric model distribution to them. 
+distribution from the samples, by fitting a parametric model to them. 
 
-Once the model is trained we can generate new samples from it, and, also **evaluate its density**, (so the probability it assigns to any point). 
+Once the model is trained we can generate new samples from it, and, also **evaluate its density** -- the probability it assigns to any point. 
 
 [CLICK] Generative models are the family of models everyone has heard about in the last few years;
 they are the algorithms behind image generation, for example. And here you can see how much these models have advanced over the last few years.
@@ -568,31 +566,34 @@ they are the algorithms behind image generation, for example. And here you can s
 
 ## A3.15 — normalizing flows · frame 35 · 0:49
 
-The generative model class **we use is the normalizing flow**. 
+The generative model class we use is **the normalizing flow**. 
 
-The idea is that you start from a simple distribution, a unit Gaussian,
+The idea is that you start from a unit Gaussian,
 and transform it into the target distribution through a series of **simple invertible
-transformations**, one after the other. 
+transformations**, each one parametrised by a neural network.
 
-Because every step is invertible, any point can be mapped back to the Gaussian, and the model density follows from the change-of-variables formula
+Because every step is invertible, the model's density follows from the **change-of-variables formula** — and the networks are trained to maximise the likelihood of the training samples. 
+
+So *the flow learns from the samples how to turn a Gaussian into the target distribution*.
+
 <!-- , with a Jacobian determinant that is cheap because the layers have triangular Jacobians. -->
 
-These bijective transformations are parametrised by neral networks, which are trained to maximise the likelihood of the training samples. So essentially *the flow learns from the samples* the best way to transform a Gaussian into the
-target distribution.
 
 ---
 
 ## A3.16 — simulation-based inference · frame 36 · 0:57
 
 So how do we use this for cosmological inference?
-**We have a simulator**: a forward model that we give cosmological parameters and it
-produces simulated data, with all the stochasticity of the process. So we draw parameters from the
+
+While in general we don't have an analytical likelihood, **we have a simulator**: a forward model that we give cosmological parameters and it
+produces simulated data, with all the stochasticity of the process. 
+
+So we draw parameters from the
 prior, run the simulator on each, and keep the **pairs of parameters and data**.
 
-[CLICK] Those pairs are the training samples for a **conditional normalizing flow**, with the data as
-the conditioning input. Trained on them, the flow is *directly a model of the posterior*: give it the real observation, and it returns the posterior.
+[CLICK] Those pairs are the training samples for a **conditional normalizing flow**. Trained on them, the flow is *directly a model of the posterior*: we then give it the real observation, and it returns the posterior.
 
-The simulations are the only expensive step, and they are run once. Inference is then essentially free, so we can check on thousands of simulated observations.
+<!-- The simulations are the only expensive step, and they are run once. Inference is then essentially free, so we can check on thousands of simulated observations. -->
 
 ---
 
@@ -603,7 +604,7 @@ So now that we know how to do all that, we can ask the **third question**: how m
 
 ## A3.17 — why build a statistic by hand · frame 38 · 1:08
 
-We are looking for the best summary statistic for weak lensing. We know the ℓ1-norm extracts more than the
+We are looking for the most informative summary statistic for weak lensing. We know the ℓ1-norm extracts more than the
 power spectrum. [CLICK] But beating the power spectrum is "easy". The real question is **how close to all of the
 information** in the map a summary can get.
 
@@ -620,7 +621,7 @@ called **VMIM**.
 
 ## A3.18 — what optimal means · frame 39 · 0:42
 
-First, what optimal means here. The network is a **compressor**: it maps the convergence maps to a
+The network is a **compressor**: it maps the convergence maps to a
 low-dimensional summary, and a flow maps the summary to a posterior. 
 
 [CLICK] The two are trained
@@ -636,14 +637,10 @@ So what we'd like to do is to compare our analytical HOS to these "optimal" lear
 
 ## A3.19 — the setup · frame 40 · 0:38
 
-This is the analysis framework we built to do that, and in fact most of the work in this
-paper is in this figure: building the simulation-based inference pipeline, from the
-convergence maps to the cosmological parameters, and implementing both arms so that they **share
-everything except the summary**. 
+This is the analysis framework we built to do that, and in fact most of the work in this paper is in this figure: building the simulation-based inference pipeline, from the
+convergence maps to the cosmological parameters, and designing both the analytical statistics and the neural compressor, for which we tested a lot of different architectures, always training with the VMIM objective.
 
-One arm is the analytical higher-order statistics;
-the other is the neural compression, a convolutional network trained with the VMIM objective from
-the previous slide, through the same normalizing flow.
+As you see, our two approaches share everything apart from the summary statistic.
 
 ---
 
@@ -673,12 +670,15 @@ lensed by all the matter in front of it,
 
 [CLICK] is lensed by a shorter column, 
 
-[CLICK] and gives a fainter map. 
+[CLICK] and gives another map. 
 
-[CLICK] One map per
+<!-- [CLICK] We get one map per
 bin, and the matter lensing a nearer bin also lenses every bin behind it: the **kernels overlap**.
 
-[CLICK] So the maps are *not independent*: the same structure appears in several bins.
+[CLICK] So the maps are *not independent*: the same structure appears in several bins. -->
+
+[CLICK] We get one map per
+bin, but the maps are *not independent*: the same structure appears in several bins.
 
 How the signal changes from bin to bin is what tells us where
 the matter sits along the line of sight, and so how structure grew with time. 
@@ -709,18 +709,20 @@ histogram over the pair, on the grid you see here.
 
 What this encodes is whether a structure that is strong in one map is also strong in the other.
 **The cells on the diagonal** collect the places where the two maps are equally strong; the cells
-off the diagonal, the places where one is strong and the other weak. And that is where the
-**redshift information** sits: matter at low redshift lenses both maps, matter at high redshift
-only the further one.
+off the diagonal, the places where one is strong and the other weak. 
 
-[CLICK] So: the cross-maps reduce each pair to **one field** before computing the statistic; the
-joint ℓ1-norm keeps the full two-dimensional distribution, and needs no extra maps at all.
+<!-- And that is where the
+**redshift information** sits: matter at low redshift lenses both maps, matter at high redshift
+only the further one. -->
+
+<!-- [CLICK] So: the cross-maps reduce each pair to **one field** before computing the statistic; the
+joint ℓ1-norm keeps the full two-dimensional distribution, and needs no extra maps at all. -->
 
 
 ---
 
 ## A3.23 — the answer · frame 44 · 0:46
-So let's see what we get with our updated higher-order statistics.
+So let's see what we get with our upgraded higher-order statistics.
 
 Same maps, same flow, four summaries. The per-bin ℓ1-norm. [CLICK] Adding the product cross-maps. [CLICK] The joint ℓ1-norm. [CLICK] And the CNN: which falls almost perfectly onto the joint l1. 
 
