@@ -317,17 +317,18 @@ cosmological constraints substantially, and for cosmological surveys it is reall
 
 ## A1.14 — where the gain comes from · frame 20 · 1:06
 
-Because of the way that we implemented our analysis, we could really look into how the reconstruction
-of the different spacial scales affects the constraining power. 
-And what we find is that if we look at the cosmological information coming from smaller and smaller scales
-in the map, we see that the constraining power of the Kaiser–Squires reconstruction stops improving below **eight arcminutes**,
+Thanks to the way that we implemented our analysis, we could really look into how the reconstruction
+of the different spatial scales affects the constraining power. 
+
+And what we find is that if we look at the information coming from smaller and smaller scales
+in the map, we see that the Kaiser–Squires saturates (stops improving) below **eight arcminutes**,
 while with MCALens the more small-scale information we add, *the better the constraints get*.
 
 What this means is that MCALens is much better at recovering the **small-scale structure**, which KS loses to the noise. 
-
-But MCALens is also an **iterative** algorithm: it is *slow*, and it hands you a map with **no error
-bars at all**. Neither of those is something a survey the size of Euclid can live with. That is where
-Part 2 starts.
+<!-- 
+But MCALens is **iterative**, and therefore *slow* — a real problem at Euclid's size. And no method
+we have, MCALens and Kaiser–Squires alike, tells you **how much to trust the map** it gives you.
+That is where Part 2 starts. -->
 
 ---
 ---
@@ -337,8 +338,10 @@ Part 2 starts.
 
 ## A2.1 — the divider · frame 21 · 0:20
 
-Part 2, the second paper. So: can we build a method that is **accurate and fast, with error bars we
-can trust**, for a survey the size of Euclid?
+So since we have established that the reconstruction method has a singnificant impact on the cosmological results, this gives us the motivation to build the best one we can for our surveys.
+<!-- 
+can we build a method that is **accurate and fast, with error bars we
+can trust**, for a survey the size of Euclid? -->
 
 This is what we develop in this paper, led by **Hubert Leterme**.
 
@@ -346,8 +349,8 @@ This is what we develop in this paper, led by **Hubert Leterme**.
 
 ## A2.2 — what we want from a method · frame 22 · 0:46
 
-So far we haven't really talked about deep learning.
-But it has already been applied to mass mapping, with several approaches, and it has been quite successful. 
+The obvious place to look is **deep learning** — and people have already tried it, with several
+approaches, and it works. 
 But what do we want from a method, in order to use it in a survey like Euclid? 
 **Four things**: accurate; flexible, meaning the same trained
 model works when the noise or the mask changes; fast; and with fast uncertainty quantification (we want error bars of the reconstruction, not just the map).
