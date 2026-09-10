@@ -67,7 +67,8 @@
 				<div class="title-footer">
 					<p class="affil affil-lead"><b class="alert">Andreas Tersenov</b> &nbsp; FORTH, U. Crete</p>
 					<p class="affil affil-sub">supervised by <b>Jean-Luc Starck</b>, <b>Martin Kilbinger</b> and
-						<b>Vasiliki Pavlidou</b></p>
+						<b>Vasiliki Pavlidou</b>
+					</p>
 				</div>
 
 				<!-- Out of the footer card and down to the bottom rail (Andreas, 2026-09-10). It is
@@ -666,7 +667,8 @@
 							alt="the convergence map of the UNIONS survey footprint, reconstructed with MCALens: filamentary structure across two disconnected sky patches, with the survey mask left grey">
 						<figcaption><b>UNIONS</b> convergence map, reconstructed with <b>MCALens</b> (real data; the
 							survey mask in grey).<br>Shape catalogue: Hervas&#8209;Peters et al. 2026,
-							<a href="https://arxiv.org/abs/2605.13549">arXiv:2605.13549</a></figcaption>
+							<a href="https://arxiv.org/abs/2605.13549">arXiv:2605.13549</a>
+						</figcaption>
 					</figure>
 				</div>
 
@@ -1602,15 +1604,20 @@
 						<div class="block pnp-pocket">
 							<div class="block-content">
 								<p><em>Use the PnP framework:</em> replace <b class="alert">prox</b> by an
-									off&#8209;the&#8209;shelf <b class="alert">deep denoiser</b> trained on simulations</p>
+									off&#8209;the&#8209;shelf <b class="alert">deep denoiser</b> trained on simulations
+								</p>
 								<div class="pnp-eqs">
-									<span>$\kappa^{n+1} = \mathrm{prox}_{\tau g}\left( \kappa^n - \tau \nabla f(\kappa^n) \right)$</span>
+									<span>$\kappa^{n+1} = \mathrm{prox}_{\tau g}\left( \kappa^n - \tau \nabla
+										f(\kappa^n) \right)$</span>
 									<span class="arw" aria-hidden="true">&rarr;</span>
-									<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</span>
+									<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left(
+										\mathbf{A}\kappa^n - \gamma \right) \right)$</span>
 								</div>
-								<p>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b> $\hat{\kappa}$,
-									and choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the training phase
-									<b>independent of the noise covariance</b></p>
+								<ul>
+									<li>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b> $\hat{\kappa}$</li>
+									<li>choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the method
+										<b>indep. of the noise covariance</b></li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -2313,7 +2320,8 @@
 
 							<ul class="points">
 								<li>every wide lensing survey measures cosmic shear this way:
-									<b>KiDS, DES, HSC, UNIONS</b></li>
+									<b>KiDS, DES, HSC, UNIONS</b>
+								</li>
 								<li>predicted <b>analytically</b>; its covariance is understood</li>
 								<li>two decades of work on its systematics</li>
 							</ul>
@@ -2419,7 +2427,8 @@
 						alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
 					<p class="lead-line">To access the information the power spectrum misses we need
 						<b class="alert">higher&#8209;order statistics</b>: peak counts, wavelet statistics, the
-						&#8467;<sub>1</sub>&#8209;norm, Minkowski functionals.</p>
+						&#8467;<sub>1</sub>&#8209;norm, Minkowski functionals.
+					</p>
 				</section>
 
 				<!-- ################################################################################################### -->
@@ -2428,7 +2437,8 @@
 				<!-- ################################################################################################### -->
 
 				<section class="hosgain" data-theme="light">
-					<h3 class="slide-title tight">Forecasts show that higher-order statistics constrain better than the power spectrum
+					<h3 class="slide-title tight">Forecasts show that higher-order statistics constrain better than the
+						power spectrum
 					</h3>
 
 					<!-- Swapped 2026-09-06 (Andreas) for the four-curve version from the same
@@ -3019,7 +3029,7 @@
 						<figcaption>samples transported by the flow</figcaption>
 					</figure>
 				</div>
-<!-- 
+				<!-- 
 				<p class="pull fragment fade-in">
 					Conditioning the layers on data $x$ gives $q_\phi(\theta \mid x)$, <b class="alert">a model of the
 						posterior</b> that is fit by maximum likelihood.
@@ -3114,7 +3124,8 @@
 			<!-- ============ ACT 2 OPENER — which summary should we compute? ============ -->
 			<section data-theme="light">
 				<h3 class="slide-title tight">How much of the map's information can a
-					<em class="alert">summary statistic</em> keep?</h3>
+					<em class="alert">summary statistic</em> keep?
+				</h3>
 				<div class="pipeflow big" style="margin:0.5em 0 0.7em;">
 					<figure>
 						<img src="../assets/figures/maps/kappa_patch.png" alt="tomographic convergence map">
@@ -3137,7 +3148,8 @@
 					</figure>
 				</div>
 				<p class="oneline fragment fade-in">Beating the power spectrum is "easy". The question is
-					<b class="alert">how close to all of it</b> we can get.</p>
+					<b class="alert">how close to all of it</b> we can get.
+				</p>
 				<aside class="notes">A hinge, not a result - keep it short and do not front-load it. SAY: we have a
 					statistic that reads more than the power spectrum. But look at the middle box: the summary is the
 					one part of this chain we still choose by hand, and the field increasingly fills that box with a
@@ -3218,7 +3230,8 @@
 			     Placeholder below is step1 of the 4-arm build-up (auto-only, grey) so the
 			     deck stays valid; swap the src when the real render lands. -->
 			<section data-theme="light" data-background-color="#ffffff">
-				<h3 class="slide-title tight"><span class="sec">§3</span> The CNN beats the &#8467;1-norm by <em class="alert">36%</em> in the figure of merit</h3>
+				<h3 class="slide-title tight"><span class="sec">§3</span> The CNN beats the &#8467;1-norm by <em
+						class="alert">36%</em> in the figure of merit</h3>
 				<div class="container" style="align-items:center; margin-top:0.3em;">
 					<div class="col" style="flex:1.28;">
 						<figure class="fig">
@@ -3241,7 +3254,8 @@
 							<span class="label">the gap</span>
 							<ul>
 								<li>The learned summary is <b class="alert">36% ahead</b> in FoM<sub>3</sub></li>
-								<li>But the comparison is <b>not symmetric</b>: something important about the maps is not taken
+								<li>But the comparison is <b>not symmetric</b>: something important about the maps is
+									not taken
 									into account</li>
 							</ul>
 						</div>
@@ -3448,12 +3462,13 @@
 										opacity="0.55" />
 								</pattern>
 								<filter id="roughen" x="-8%" y="-20%" width="116%" height="140%">
-									<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4" seed="11"
-										result="n" />
+									<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4"
+										seed="11" result="n" />
 									<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
 										yChannelSelector="G" />
 								</filter>
-								<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="684" height="380">
+								<filter id="roughen-line" filterUnits="userSpaceOnUse" x="0" y="0" width="684"
+									height="380">
 									<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="3"
 										result="ln" />
 									<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
@@ -3488,15 +3503,18 @@
 							<!-- baryonic feedback: negligible until the smallest scales, then steep -->
 							<path class="feedfill sketch"
 								d="M85.5,268.2 C216,268.2 324,263.9 409.5,249.4 C490.5,232 549,176.9 661.5,63.8 L661.5,269.7 L85.5,269.7 Z" />
-							<path class="feed sketch" d="M85.5,268.2 C216,268.2 324,263.9 409.5,249.4 C490.5,232 549,176.9 661.5,63.8" />
+							<path class="feed sketch"
+								d="M85.5,268.2 C216,268.2 324,263.9 409.5,249.4 C490.5,232 549,176.9 661.5,63.8" />
 
 							<!-- axis -->
 							<line class="frameline sketchline" x1="85.5" y1="269.7" x2="661.5" y2="269.7" />
 							<line class="frameline sketchline" x1="85.5" y1="269.7" x2="85.5" y2="40.6" />
 							<text class="axlab" x="85.5" y="293.7" text-anchor="start">large, linear scales</text>
 							<text class="axlab" x="661.5" y="293.7" text-anchor="end">small, non-linear scales</text>
-							<text class="axlab" x="70.2" y="49.3" text-anchor="end" transform="rotate(-90 70.2 49.3)">more &rarr;</text>
-							<text class="schematic-note" x="661.5" y="360.7" text-anchor="end">(schematic, not to scale)</text>
+							<text class="axlab" x="70.2" y="49.3" text-anchor="end"
+								transform="rotate(-90 70.2 49.3)">more &rarr;</text>
+							<text class="schematic-note" x="661.5" y="360.7" text-anchor="end">(schematic, not to
+								scale)</text>
 
 							<!-- legend, below the axis so it never collides with the shaded range -->
 							<line class="info sketchline" x1="88.2" y1="321.7" x2="127.8" y2="321.7" />
@@ -3506,8 +3524,8 @@
 						</svg>
 					</div>
 					<div class="col" style="flex:1;">
-						<video class="plain" src="../assets/videos/illustris_movie_cube_sub_frame.mp4" loop muted autoplay
-							playsinline style="max-height:255px; border-radius:8px;"></video>
+						<video class="plain" src="../assets/videos/illustris_movie_cube_sub_frame.mp4" loop muted
+							autoplay playsinline style="max-height:255px; border-radius:8px;"></video>
 						<p class="cap">Illustris: baryonic feedback reshaping the cosmic web</p>
 					</div>
 				</div>
