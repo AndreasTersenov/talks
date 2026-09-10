@@ -748,8 +748,8 @@ So now that we have shown how great our higher order statistics are and how well
 
 
 Real data have **systematic effects**: things present in the measurement that are not in our model,
-of instrumental origin, like errors in the galaxy shapes, or physical, like the effect of baryons
-on the matter distribution. Not all of them can be modelled, and an effect that is in the data but
+of instrumental origin, or physical. 
+Not all of them can be modelled, and an effect that is in the data but
 not in the analysis biases the result.
 Most groups check a systematic by looking at the data vector. That is not enough: what has to be
 shown is the effect on the **posterior**.
@@ -777,12 +777,13 @@ spectrum, or all of our efforts in designing better statistics were in vain, cau
 
 The pipeline is very similar to the simulation-based one from the previous paper. 
 
-[CLICK] CosmoGrid maps, [CLICK] Euclid-like noise and masks, [CLICK] the starlet transform,
+[CLICK] simulated maps at different cosmologies, [CLICK] Euclid-like noise and masks, [CLICK] the starlet transform,
 [CLICK] and the data vector conditions a flow. Same pipeline as before, with one difference.
 
+<!-- 
 The one point to keep is the **separation of scales**: because the statistics are measured scale by
 scale, the data vector is organised by scale, and a contaminated scale can be removed by dropping
-its band. That is what makes **scale cuts possible** for higher-order statistics.
+its band. That is what makes **scale cuts possible** for higher-order statistics. -->
 
 ---
 
@@ -795,7 +796,9 @@ survey areas, to see how the bias evolves as surveys get larger.
 
 For the area of a previous-generation survey the bias is not significant. But the error bars shrink
 with area while the systematic stays the same, so for a survey like Euclid it becomes *really bad*,
-and at full sky worse still. **▲** And as expected, the higher-order statistics are more biased
+and at full sky worse still.
+
+**▲** And as expected, the higher-order statistics are more biased
 than the power spectrum, because they are more sensitive to the contaminated small scales.
 
 ---
@@ -840,17 +843,17 @@ regime, where the gain is larger.
 
 So, to summarise.
 
-This thesis followed the analysis chain from galaxy shapes to cosmological parameters, and worked on
-two steps of it: making the mass map, and reading it.
+This thesis followed the analysis chain from galaxy shapes to cosmological parameters, and focused mostly on
+the steps of: making the mass map, extracting information out of it, and doing simulation-based inference.
 
-On the map, the choice of mass-mapping method is **not neutral**. It changes the figure of merit by a
-**hundred and fifty-seven per cent**, while the reconstruction error changes by four. And with PnPMass
-we have a method that is accurate, with calibrated error bars, and trained once for any mask and
-noise level.
+On the map front, we showed that the choice of mass-mapping method is **not neutral**. It changes the figure of merit significantly.
+We also developed PnPMass: a method which combines the physics of the problem with deep learning, and that is accurate, with calibrated error bars, and trained once for any mask and noise level.
 
-On the summary statistic, the **joint ℓ1-norm** extracts as much cosmological information as a neural
-compressor trained to be optimal, without any training. And it stays ahead of the power spectrum
-even after removing every scale that baryonic feedback contaminates.
+On the summary statistic, we developed the **joint ℓ1-norm**, and showed it extracts as much cosmological information as a neural
+compressor trained to be optimal, without any training. 
+
+And we showed that higher-order statistics provide significant additional information
+even after removing the scales contaminated by baryonic feedback.
 
 **▲** So, steps of the analysis that are usually treated as neutral choices do change the
 cosmological result. And with methods that are **calibrated and tested**, we can extract more of the
