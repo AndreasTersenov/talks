@@ -2643,3 +2643,25 @@
 .reveal .slides section figcaption { font-size: 17px; }
 .reveal .slides section .alert { font-style: normal; }
 
+/* --------------------------------------------------------------------------
+   PLUG-AND-PLAY, merged 2026-09-10.  The text is a wide low band across the
+   top and the iteration runs underneath it, so the abstract diagram and the
+   real maps stop competing for the same idea on two slides.
+   The figure is 1.92:1 after its own white margin, so at 78 % width it is
+   ~470px tall, which is what is left once the title and the band are paid for.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.pnpcombo .pnp-band { width: 96%; margin: 0.35em auto 0; text-align: left; }
+.reveal .slides section.pnpcombo .pnp-band .block-content { padding: 8px 18px 10px; }
+.reveal .slides section.pnpcombo .pnp-band p { margin: 0.1em 0; font-size: 0.72em; line-height: 1.32; }
+.reveal .slides section.pnpcombo .pnp-eqs {
+	display: flex; align-items: center; justify-content: center; gap: 1.1em; margin: 0.3em 0 0.15em;
+}
+.reveal .slides section.pnpcombo .pnp-eqs .katex { font-size: 0.78em; }
+.reveal .slides section.pnpcombo .pnp-eqs .arw { color: var(--accent); font-size: 1.15em; line-height: 1; }
+.reveal .slides section.pnpcombo .pnp-steps { width: 74%; margin: 0.3em auto 0; }
+/* reveal caps every slide image at max-width/max-height 95%, which was holding this
+   one well below the width it was given; the cap has to be lifted explicitly. */
+.reveal .slides section.pnpcombo .pnp-steps img {
+	width: 100%; max-width: none; max-height: none; height: auto;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}

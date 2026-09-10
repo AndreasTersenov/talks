@@ -1181,8 +1181,7 @@
 								</g>
 							</svg></div>
 						<div class="pname">simulations</div>
-						<div class="psub">cosmo&#8209;SLICS, 25 cosmologies</div>
-						<div class="fixnote">held fixed</div>
+						<div class="psub">cosmo&#8209;SLICS</div>
 					</div>
 					<div class="parw" aria-hidden="true"></div>
 					<div class="pnode">
@@ -1193,7 +1192,6 @@
 							</svg></div>
 						<div class="pname">shear maps</div>
 						<div class="psub">1&prime; pixels, noise and mask added</div>
-						<div class="fixnote">held fixed</div>
 					</div>
 					<div class="parw" aria-hidden="true"></div>
 					<div class="pnode varies">
@@ -1221,14 +1219,12 @@
 							</svg></div>
 						<div class="pname">summary statistic</div>
 						<div class="psub">peak counts, single and multi&#8209;scale</div>
-						<div class="fixnote">held fixed, Part 3</div>
 					</div>
 					<div class="parw" aria-hidden="true"></div>
 					<div class="pnode">
 						<div class="pglyph"><span class="math">$\log \mathcal{L}(\theta)$</span></div>
 						<div class="pname">inference</div>
 						<div class="psub">GP emulator, Gaussian likelihood, MCMC</div>
-						<div class="fixnote">held fixed, Parts 3&ndash;4</div>
 					</div>
 					<div class="parw" aria-hidden="true"></div>
 					<div class="pnode">
@@ -1407,8 +1403,7 @@
 
 				<div class="callout">
 					<span class="label">interpretation</span>
-					MCALens recovers <b>small&#8209;scale structure</b> that the linear inversion loses to noise, and
-					the peak counts are sensitive to exactly those scales.
+					MCALens recovers <b>small&#8209;scale structure</b> that the linear inversion loses to noise.
 				</div>
 				<aside class="notes">
 					SAY: start from the coarsest bands and add finer scales one at a time. KS improves when you add
@@ -1582,50 +1577,40 @@
 
 			<section>
 
-				<section data-background-color="#ffffff" class="light-slide">
+				<!-- MERGED 2026-09-10 (Andreas): this slide's right-hand column used to carry
+				     PnP_FB_diagram.png, an abstract Forward/Backward block diagram - which is the
+				     same iteration the "step by step" slide showed with actual maps. Two slides for
+				     one idea. The maps win, so they take the right-hand side's place and the text
+				     becomes a band across the top: wider, lower, one equation fewer.
+				     DROPPED with the merge: the third equation, kappa = Denoiser(kappa + data
+				     residual). The two that remain show the substitution itself - prox on the left,
+				     F_Theta on the right - and the B = A^T Sigma^-1 point below still needs B and A
+				     to have been written down, which the second equation does. -->
+				<section data-background-color="#ffffff" class="light-slide pnpcombo">
 					<h3 class="slide-title">Plug-and-Play Mass Mapping</h3>
 
-
-					<span>
-						<div class="container">
-							<div class="col">
-								<div class="block">
-									<div class="block-title"> Main idea:</div>
-									<div class="block-content">
-										<ul>
-											<li> <em>Use PnP framework:</em> replace <b class="alert">prox</b> by an
-												on-the-shelf <b class="alert">deep denoiser</b> trained on simulations
-											</li>
-											$$ \kappa^{n+1} = \mathrm{prox}_{\tau g} \left( \kappa^n - \tau \nabla
-											f(\kappa^n) \right) $$
-											$$ \kappa^{n+1} = F_{\Theta} \left( \kappa^n - \tau \mathbf{B} \left(
-											\mathbf{A}
-											\kappa^n - \gamma \right) \right) $$
-											$$ \kappa^{n+1} = \mathrm{Denoiser} \left( \kappa^n + \mathrm{Data \,
-											residual}
-											\right) $$
-											<li> Series <b class="alert">converges</b> towards a <b class="alert">fixed
-													point</b> $\hat{\kappa}$</li>
-											<li> If we choose $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ &rarr; training
-												phase
-												independent of the noise covariance matrix</li>
-									</div>
-								</div>
-								<br>
-
+					<div class="block pnp-band">
+						<div class="block-title">Main idea:</div>
+						<div class="block-content">
+							<p><em>Use the PnP framework:</em> replace <b class="alert">prox</b> by an off&#8209;the&#8209;shelf
+								<b class="alert">deep denoiser</b> trained on simulations</p>
+							<div class="pnp-eqs">
+								<span>$\kappa^{n+1} = \mathrm{prox}_{\tau g}\left( \kappa^n - \tau \nabla f(\kappa^n) \right)$</span>
+								<span class="arw" aria-hidden="true">&rarr;</span>
+								<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</span>
 							</div>
-							<div class="col">
-								<img src="../assets/diagrams/PnP_FB_diagram.png" alt="PnP Mass Mapping"
-									style="width:420px">
-								<br>
-								<br>
-								<em>Instead of explicitly writing down a prior, we learn what a "likely" $\kappa$ looks
-									like
-									from simulations and enforce it through denoising.</em>
-							</div>
+							<p>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b> $\hat{\kappa}$,
+								and choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the training phase
+								<b>independent of the noise covariance</b></p>
 						</div>
-					</span>
+					</div>
 
+					<div class="r-stack pnp-steps">
+						<img src="../assets/figures/maps/PnP_4_tight.png"
+							alt="PnPMass, iteration 1: the measured shear, initialisation at zero, the forward step giving a noisy map, and the denoiser giving a clean one beside the ground truth">
+						<img class="fragment" src="../assets/figures/maps/PnP_7_tight.png"
+							alt="PnPMass, iteration 2: the output of the first iteration fed back in">
+					</div>
 				</section>
 
 
@@ -1637,20 +1622,8 @@
 
 			<!-- ######################################### -->
 
-			<section>
-
-				<section data-background-color="#ffffff" class="light-slide">
-					<h3 class="slide-title">PnPMass step by step</h3>
-
-					<div class="r-stack">
-						<img src="../assets/figures/maps/PnP_4.png" alt="PnPMass, iteration 1: initialisation at zero, forward step, denoiser"
-							style="width:1200px; background: #ffffff;">
-						<img class="fragment" src="../assets/figures/maps/PnP_7.png" alt="PnPMass, iteration 2: the output fed back"
-							style="width:1200px; background: #ffffff;">
-					</div>
-				</section>
-
-			</section>
+			<!-- The "PnPMass step by step" slide stood here until 2026-09-10; its two frames are
+			     now the lower half of the Plug-and-Play slide above. -->
 
 
 			<!-- ################################################################################################### -->
@@ -2748,8 +2721,8 @@
 					<ul class="points dots pop-points">
 						<li>the cosmic web consists of <b class="alert">localised structures</b> (clusters, filaments,
 							voids) with a characteristic size and position</li>
-						<li>such a field is <b class="alert">sparse</b> in the wavelet domain: a few large coefficients
-						</li>
+						<!-- <li>such a field is <b class="alert">sparse</b> in the wavelet domain: a few large coefficients
+						</li> -->
 						<li>scales can be analysed, or removed, separately</li>
 					</ul>
 				</div>
@@ -2988,8 +2961,7 @@
 				<div class="popover fragment fade-in" data-fragment-index="2">
 					<img src="../assets/misc/image_generation_history_now.jpg"
 						alt="generated images over a decade: a blurred grey 2014 face, sharper 2015 and 2016 faces, a photorealistic 2017 face, and a present-day generation of a fat ginger cat in a floral beret painting a portrait">
-					<p class="pop-cap">Learn $\mathbb{P}_\theta$, then sample from it. Faces got real by 2017; what
-						changed since is <b>what you can ask for</b>.</p>
+					<p class="pop-cap">Learn $\mathbb{P}_\theta$, then sample from it.</p>
 					<p class="pop-src">2014&ndash;2017 panels adapted from Shirvani, <i>Image Generation Models: A
 							Technical History</i>, <a href="https://arxiv.org/abs/2603.07455">arXiv:2603.07455</a></p>
 				</div>

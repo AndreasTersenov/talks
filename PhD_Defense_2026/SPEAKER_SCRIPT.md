@@ -14,13 +14,13 @@ the rehearsal shows is too slow for how this script is actually read.
 |---|---|---|---|
 | Act 0 — the setup | 1–7 | 7:43 | the DES pipeline parked 2026-09-10 (Martin) |
 | Act 1 — Part 1, does the map matter? | 8–20 | 10:52 | ends on the limitation that opens Part 2 |
-| Act 2 — Part 2, PnPMass | 21–25 | 5:02 | frame 24 is the first cut |
-| Act 3 — Part 3, the summaries | 26–45 | 17:03 | still the longest act by far |
-| Act 4 — Part 4, baryons | 46–51 | 6:08 | |
-| Close | 52 | 1:19 | |
-| | **52 frames** | **48:08** | **at 126 wpm, against a 40:00 target** |
+| Act 2 — Part 2, PnPMass | 21–24 | 5:01 | frame 23 now carries the iteration too |
+| Act 3 — Part 3, the summaries | 25–44 | 17:03 | still the longest act by far |
+| Act 4 — Part 4, baryons | 45–50 | 6:08 | |
+| Close | 51 | 1:19 | |
+| | **51 frames** | **48:07** | **at 126 wpm, against a 40:00 target** |
 
-> **48:08 at 126 wpm; 55:08 at 110.** The read-through number to beat is **48:00**. Delivered from
+> **48:07 at 126 wpm; 55:07 at 110.** The read-through number to beat is **48:00**. Delivered from
 > memory expect **52 to 57 minutes**: slower per word, plus the pauses a read-through skips — a new
 > figure, turning to the screen, the beat after a headline — which over 52 frames is another two to
 > four minutes. Against a 45-minute slot that is a gap of about **ten minutes**.
@@ -349,7 +349,7 @@ Part 2 starts.
 ---
 ---
 
-# Act 2 — Part 2, PnPMass · frames 21–25
+# Act 2 — Part 2, PnPMass · frames 21–24
 ---
 
 ## A2.1 — the divider · frame 21 · 0:20
@@ -373,7 +373,7 @@ And really, **none of the existing methods have all four**. That is what we set 
 
 ---
 
-## A2.3 — plug-and-play · frame 23 · 1:25
+## A2.3 — plug-and-play · frame 23 · 1:59
 
 Our method is based on the **plug-and-play framework**, from the optimisation literature. 
 It is a way to solve an inverse problem with a learned prior, and it is very flexible.
@@ -391,26 +391,21 @@ noise over a range of levels.
 mask enter only in the data term, at inference time, so the same network applies to any noise level
 and any footprint. That is what **makes it flexible**.
 
-> **Tier-0 short path, replacing A2.4** (−0:22). Say this and skip frame 24:
->
-> > Eight iterations of that, alternating the data step and the denoiser, and the map converges.
-> > A variant that denoises the residual rather than the map does slightly better; it is in the
-> > backup.
-
----
-
-## A2.4 — the iteration, step by step · frame 24 · 0:35
-
-Here it is visualised.
-We start from the two components of the shear, and initialize the mass map at zero; 
-the the **forward step**, the gradient step on the data term, gives a
-noisy map, and then we plug in the **backward step**, the denoiser, which projects the solution to the manifold of fields that look like a **realistic mass map**.
+Here it is, visualised. We start from the two components of the shear and initialise the mass map
+at zero; the **forward step**, the gradient step on the data term, gives a noisy map, and then we
+plug in the **backward step**, the denoiser, which projects the solution to the manifold of fields
+that look like a **realistic mass map**.
 
 [CLICK] The output is fed back, and we iterate *until the algorithm converges*.
 
+> **Tier-0 short path** (&minus;0:20). Drop the walk-through and say only:
+>
+> > Eight iterations of that, alternating the data step and the denoiser, and the map converges. A
+> > variant that denoises the residual rather than the map does slightly better; it is in the backup.
+
 ---
 
-## A2.7 — accurate, with calibrated uncertainties · frame 25 · 1:57
+## A2.7 — accurate, with calibrated uncertainties · frame 24 · 1:57
 
 
 Not only does our method produce accurate maps, it also produces error bars for the reconstruction,
@@ -444,10 +439,10 @@ actual large survey, whereas PnPMass is *trained once and works for any field*.
 ---
 ---
 
-# Act 3 — Part 3, the summaries · frames 26–45
+# Act 3 — Part 3, the summaries · frames 25–44
 ---
 
-## A3.1 — the second half · frame 26 · 0:31
+## A3.1 — the second half · frame 25 · 0:31
 
 The second half of the talk is about what comes after the map: the **summary statistic** we extract
 from it, and the inference of the cosmological parameters from that statistic.
@@ -457,7 +452,7 @@ purpose**, so that nothing that moved could be blamed on it. Now it is the subje
 
 ---
 
-## A3.2 — the map has to be compressed · frame 27 · 0:30
+## A3.2 — the map has to be compressed · frame 26 · 0:30
 
 So back to our pipeline. We have a map, and we want to compare it with theory to infer the cosmological parameters.
 The map is of the order of a **hundred thousand correlated pixels**, so it would be extremely hard to work with directly.
@@ -466,7 +461,7 @@ The map is of the order of a **hundred thousand correlated pixels**, so it would
 
 ---
 
-## A3.3 — the two-point function · frame 28 · 0:50
+## A3.3 — the two-point function · frame 27 · 0:50
 
 The standard statistic for weak lensing is the **two-point correlation function**: how correlated the shear is between
 pairs of galaxies separated by an angle theta, measured in real space as xi-plus and xi-minus, or
@@ -482,7 +477,7 @@ But the late-time density field is *not Gaussian*.
 
 ---
 
-## A3.4 — same power spectrum · frame 29 · 0:32
+## A3.4 — same power spectrum · frame 28 · 0:32
 
 Gravitational collapse and nonlinear structure formation
 makes the field non-Gaussian: matter concentrates into haloes and filaments
@@ -497,11 +492,11 @@ peak counts, wavelet statistics, the ℓ1-norm, Minkowski functionals, and other
 
 ---
 
-## A3.6 — the gain · frame 30 · 0:12
+## A3.6 — the gain · frame 29 · 0:12
 
 And this information seems to be quite valuable: from our forecasts, done on simulations, adding different higher-order statistics to the power spectrum **significantly improves the constraints**. 
 
-## A3.10 — wavelets · frame 31 · 1:25
+## A3.10 — wavelets · frame 30 · 1:25
 
 But to talk about the higher-order statistics we investigate and develop in this thesis, we need to open a small parenthesis on a mathematical tool that is **central to them: wavelets**.
 
@@ -522,7 +517,7 @@ different scales can be analysed separately.
 
 ---
 
-## A3.11 — the two statistics · frame 32 · 1:47
+## A3.11 — the two statistics · frame 31 · 1:47
 
 So the higher-order statistics we will focuse on both start from the wavelet decomposision of the map, using an isotropic wavelet **called the starlet**.
 
@@ -544,7 +539,7 @@ statistic we use for the rest of the talk. -->
 
 ---
 
-## A3.12 — from the summary to the parameters · frame 33 · 0:25
+## A3.12 — from the summary to the parameters · frame 32 · 0:25
 
 Ok, so now we have some summary statistics, and we want to compare it with theory predictions we have assuming different cosmological models, to infer the cosmological parameters that best describe the data.
 
@@ -552,7 +547,7 @@ To do that in a way that encodes all the uncertainties that come into play, we u
 
 ---
 
-## A3.13 — classical inference · frame 34 · 0:52
+## A3.13 — classical inference · frame 33 · 0:52
 
 From Bayes' theorem, the posterior is **proportional to the likelihood times the prior**: how
 probable the measured data are for a given cosmology, times what we assumed before we looked.
@@ -568,7 +563,7 @@ likelihood. So we need a different route.
 
 ---
 
-## A3.14 — generative modelling · frame 35 · 0:54
+## A3.14 — generative modelling · frame 34 · 0:54
 
 The tool **comes from generative modelling**. The problem is this: there is a probability distribution
 we do not know, and what we have is a set of samples drawn from it. 
@@ -585,7 +580,7 @@ they are the algorithms behind image generation, for example. And here you can s
 
 ---
 
-## A3.15 — normalizing flows · frame 36 · 0:49
+## A3.15 — normalizing flows · frame 35 · 0:49
 
 The generative model class **we use is the normalizing flow**. 
 
@@ -601,7 +596,7 @@ target distribution.
 
 ---
 
-## A3.16 — simulation-based inference · frame 37 · 0:57
+## A3.16 — simulation-based inference · frame 36 · 0:57
 
 So how do we use this for cosmological inference?
 **We have a simulator**: a forward model that we give cosmological parameters and it
@@ -615,12 +610,12 @@ The simulations are the only expensive step, and they are run once. Inference is
 
 ---
 
-## A3.16b — the divider, Part 3 · frame 38 · 0:17
+## A3.16b — the divider, Part 3 · frame 37 · 0:17
 
 So now that we know how to do all that, we can ask the **third question**: how much of the cosmological information do the different summary statistics keep, and can HOS extract *all* of it?
 ---
 
-## A3.17 — why build a statistic by hand · frame 39 · 1:08
+## A3.17 — why build a statistic by hand · frame 38 · 1:08
 
 We are looking for the best summary statistic for weak lensing. We know the ℓ1-norm extracts more than the
 power spectrum. [CLICK] But beating the power spectrum is "easy". The real question is **how close to all of the
@@ -637,7 +632,7 @@ network into the simulation-based inference pipeline and train it together with 
 called **VMIM**.
 ---
 
-## A3.18 — what optimal means · frame 40 · 0:42
+## A3.18 — what optimal means · frame 39 · 0:42
 
 First, what optimal means here. The network is a **compressor**: it maps the convergence maps to a
 low-dimensional summary, and a flow maps the summary to a posterior. 
@@ -653,7 +648,7 @@ So what we'd like to do is to compare our analytical HOS to these "optimal" lear
 
 ---
 
-## A3.19 — the setup · frame 41 · 0:38
+## A3.19 — the setup · frame 40 · 0:38
 
 This is the analysis framework we built to do that, and in fact most of the work in this
 paper is in this figure: building the simulation-based inference pipeline, from the
@@ -666,7 +661,7 @@ the previous slide, through the same normalizing flow.
 
 ---
 
-## A3.20 — the gap · frame 42 · 0:32
+## A3.20 — the gap · frame 41 · 0:32
 
 And here's the first result: the two statistics are not that far apart, but the CNN wins, by **thirty-six per cent** in the figure of merit. So the l1-norm clearly loses a part of the infromation in the data.
 
@@ -675,7 +670,7 @@ that the ℓ1-norm, as we have used it so far, does not take into account.
 
 ---
 
-## A3.21 — tomography · frame 43 · 1:06
+## A3.21 — tomography · frame 42 · 1:06
 
 That property hides in **weak-lensing tomography**. 
 
@@ -706,7 +701,7 @@ That is much of the cosmological information in tomography, and a per-bin statis
 
 ---
 
-## A3.22 — two routes · frame 44 · 2:10
+## A3.22 — two routes · frame 43 · 2:10
 
 With two-point statistics, extending them to capture the cross-bin information is easy: we also
 compute the two-point functions between different tomographic bins. For higher-order statistics such as the
@@ -738,7 +733,7 @@ joint ℓ1-norm keeps the full two-dimensional distribution, and needs no extra 
 
 ---
 
-## A3.23 — the answer · frame 45 · 0:46
+## A3.23 — the answer · frame 44 · 0:46
 So let's see what we get with our updated higher-order statistics.
 
 Same maps, same flow, four summaries. The per-bin ℓ1-norm. [CLICK] Adding the product cross-maps. [CLICK] The joint ℓ1-norm. [CLICK] And the CNN: which falls almost perfectly onto the joint l1. 
@@ -750,18 +745,18 @@ And it does *without any training*, being computationally efficient, interpretab
 ---
 ---
 
-# Act 4 — Part 4, baryons · frames 46–51
+# Act 4 — Part 4, baryons · frames 45–50
 
 > The whole nulling / BNT thread is **out of the main line**; it is backup 66 and 67. See the
 > banner on A4.6.
 
 ---
 
-## A4.0 — the divider · frame 46 · 0:18
+## A4.0 — the divider · frame 45 · 0:18
 So now that we have shown how great our higher order statistics are and how well they works in idealized cases, let's go to our final paper to see what happens in a more **messy, realistic scenario**.
 ---
 
-## A4.1 — the collision of scales · frame 47 · 2:15
+## A4.1 — the collision of scales · frame 46 · 2:15
 
 
 Real data have **systematic effects**: things present in the measurement that are not in our model,
@@ -790,7 +785,7 @@ spectrum, or all of our efforts in designing better statistics were in vain, cau
 
 ---
 
-## A4.2 — the pipeline · frame 48 · 0:39
+## A4.2 — the pipeline · frame 47 · 0:39
 
 The pipeline is very similar to the simulation-based one from the previous paper. 
 
@@ -803,7 +798,7 @@ its band. That is what makes **scale cuts possible** for higher-order statistics
 
 ---
 
-## A4.3 — how large the bias is · frame 49 · 1:01
+## A4.3 — how large the bias is · frame 48 · 1:01
 
 First question: how large is the bias if we do nothing. CosmoGrid gives every realisation with and
 without baryonic feedback, so we train the flow on the **dark-matter-only maps**, which is the case of
@@ -817,7 +812,7 @@ than the power spectrum, because they are more sensitive to the contaminated sma
 
 ---
 
-## A4.4 — the cuts · frame 50 · 0:37
+## A4.4 — the cuts · frame 49 · 0:37
 
 To bring the bias below our threshold of **zero point three sigma**, we remove small-scale information
 step by step until it is. For the power spectrum, by lowering the maximum multipole, which gives an
@@ -827,7 +822,7 @@ and forty at full sky. For the wavelet statistics, by removing the finest bands,
 
 ---
 
-## A4.5 — is there anything left · frame 51 · 1:18
+## A4.5 — is there anything left · frame 50 · 1:18
 
 So we have seen how the higher-order statistics are biased by unmodelled feedback, and how to cut
 to remove the bias. The important question is whether anything is left to gain over the power
@@ -853,7 +848,7 @@ regime, where the gain is larger.
 ---
 ---
 
-## C.2 — conclusions · frame 52 · 1:19
+## C.2 — conclusions · frame 51 · 1:19
 
 So, to summarise.
 
@@ -915,7 +910,7 @@ The actual cosmology parts are *only the parts on the very right*.
 
 <!-- ---
 
-## A0.4v — the two tensions · frame 54 · SKIP · 0:52
+## A0.4v — the two tensions · frame 53 · SKIP · 0:52
 
 > **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
 > not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
@@ -937,7 +932,7 @@ analysis itself. -->
 ---
 
 <!-- 
-## A1.8 — mass mapping as Bayesian inference · frame 106 · SKIP · 0:50
+## A1.8 — mass mapping as Bayesian inference · frame 105 · SKIP · 0:50
 
 > **SKIPPED (Andreas, 2026-09-06).** Backup 107. The word *prior* moved to A1.7; the Part 3 pointer
 > was dropped on 2026-09-09 (A3.13 stands on its own); the point-estimate flag sits on A1.9. Frame 35
@@ -961,7 +956,7 @@ instead of a map. There, the likelihood is the term we cannot write down.
 
 ---
 
-## A2.5 — the residual variant · frame 112 · SKIP · 0:28
+## A2.5 — the residual variant · frame 111 · SKIP · 0:28
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
 > one clause. The uncertainty slide is its vertical: press DOWN from 113.
@@ -976,7 +971,7 @@ maps.
 
 ---
 
-## A2.6 — the uncertainty, in full · frame 113 · SKIP · 1:31
+## A2.6 — the uncertainty, in full · frame 112 · SKIP · 1:31
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** It is the mechanism behind the calibrated error bars
 > A2.7 reports, and conformal prediction is Tsakalides's own vocabulary, so expect it in questions.
@@ -1008,10 +1003,10 @@ that holds whether or not the model is well specified.
 
 ---
 
-## A3.5 — the phases · frame 99 · SKIP · 0:25
+## A3.5 — the phases · frame 98 · SKIP · 0:25
 
 > **MOVED TO BACKUP 2026-09-10 (Andreas).** No time for the phases and amplitudes detour.
-> Its last point, the list of higher-order statistics, moved onto frame 29, which now carries
+> Its last point, the list of higher-order statistics, moved onto frame 28, which now carries
 > the motivation. The slide sits at backup 100, in front of the statistics it motivates.
 
 The difference is in the Fourier phases. The power spectrum keeps only the amplitudes of the
@@ -1021,7 +1016,7 @@ wavelet statistics, the ℓ1-norm, Minkowski functionals, and others.
 
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 65 · SKIP · 1:45
+## A4.6 — nulling, and what goes wrong · frame 64 · SKIP · 1:45
 
 > **MOVED TO BACKUP; the whole nulling / BNT thread is out of the talk (Andreas, 2026-09-06).** Too
 > technical for the time available: it needs the transform, the noise-correlation mechanism and the
@@ -1060,7 +1055,7 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — the information is recovered by a joint reading · frame 66 · SKIP · 1:44
+## A4.7 — the information is recovered by a joint reading · frame 65 · SKIP · 1:44
 
 > **MOVED TO BACKUP with A4.6**; the two are one argument and neither works alone. Frames 66 and
 > 67, in front of the three explainers that account for them.
@@ -1116,7 +1111,7 @@ advantage.
 | Act 2 — Part 2 | 22–26 | 5:00 | 10 % |
 | Act 3 — Part 3 | 27–46 | 17:52 | 36 % |
 | Act 4 — Part 4 | 47–52 | 6:47 | 13 % |
-| Close | 52 | 1:23 | 3 % |
+| Close | 51 | 1:23 | 3 % |
 | *(not spoken)* | backup 55, 66–67, 100–103, 107, 113–114 | *8:50* | — |
 
 **The prose is spent.** On 2026-09-07 every beat in the file was rewritten for brevity — 61:37 to
@@ -1145,7 +1140,7 @@ which is A3.16's opening line.
 | 36 | generative modelling and the faces | **−0:48** |
 | 37 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 | **−0:48** |
 
-**Keep frame 40.** The definition of *optimal* is 0:38 and it is what makes A3.23 a sufficiency
+**Keep frame 39.** The definition of *optimal* is 0:38 and it is what makes A3.23 a sufficiency
 result rather than a benchmark win — the first thing the committee will press on.
 
 ## If it is still long on the day
@@ -1155,9 +1150,9 @@ In this order, and each is a real loss:
 | | cut | saves |
 |---|---|---|
 | 1 | A0.8's questions two and four, to one sentence each | −0:30 |
-| 2 | frame 30, the Ajani forecast — A3.11's shapes make the point with the actual statistics | −0:32 |
+| 2 | frame 29, the Ajani forecast — A3.11's shapes make the point with the actual statistics | −0:32 |
 | 3 | A2.2's read-down-the-table paragraph; go straight to *nothing had all four* | −0:25 |
-| 4 | frame 43's narration to the first slice and the closing claim, keeping all eight clicks | −0:30 |
+| 4 | frame 42's narration to the first slice and the closing claim, keeping all eight clicks | −0:30 |
 | 5 | frame 18, the three maps — frame 17's chain shows them in miniature | −0:30 |
 
 ## Never cut
@@ -1166,7 +1161,7 @@ In this order, and each is a real loss:
 - A1.13's *four per cent against a hundred and fifty-seven*, and the iKS null result.
 - A1.5's *the added assumption **is** the method*.
 - A2.7's two uncertainty sentences — all that survives of backup 113 — and its two limits.
-- A3.3's *the question is whether the field is Gaussian*, and the same-power-spectrum pair at frame 29.
+- A3.3's *the question is whether the field is Gaussian*, and the same-power-spectrum pair at frame 28.
 - A3.18's definition of optimal.
 - A3.23's *that is a tie, and I want to call it a tie*.
 - A4.4's *the wavelet cut is coarser, and therefore conservative*, and A4.5's closing summary.
@@ -1190,7 +1185,7 @@ Two answers. The reconstruction never leaves the data behind — the network is 
 iteration whose other step is a gradient towards the measured shear, and it converges to a fixed
 point of that pair. And for the inference we test it: because the trained flow answers any new
 observation in milliseconds, we can run it on thousands of simulated observations where we know the
-truth and check the posteriors actually cover. That is frame 64 in the backup.
+truth and check the posteriors actually cover. That is frame 63 in the backup.
 
 **"Isn't 157 per cent suspiciously large?"**
 It is a figure of merit, which is an inverse area in parameter space, so it moves faster than an
@@ -1223,7 +1218,7 @@ think the question is, and the first is the one I would ask myself.
 
 > **The nulling / BNT thread is not in the talk, and it is in the manuscript.** So it will come up,
 > and it will come up cold — the room will not have seen the transform, the noise-correlation
-> mechanism or the ladder. Questions 4 and 10 below are the answers, and backup frames 67–69 and 73–76
+> mechanism or the ladder. Questions 4 and 10 below are the answers, and backup frames 66–68 and 73–76
 > are the figures. **Lead with the thirty-second setup before the answer**, in these words:
 >
 > > Nulling — the BNT transform — re-mixes the tomographic bins so that each transformed field is
@@ -1388,7 +1383,7 @@ retention: per-bin ℓ1 **0.16**, + product cross-maps **0.24**, joint ℓ1 **0.
 inverse-volume conversion ×2.57⁴ ≈ 43.6: arithmetically right, reads as inflation, stays off the
 slide *and* out of the mouth. The Chapter 3 timing table — the argument is that training happens
 once, not that inference is fast; leading with speed invites the table, where PnPMass loses per
-map. And the band labels printed on frame 32's figure, which are a thesis illustration at a finer
+map. And the band labels printed on frame 31's figure, which are a thesis illustration at a finer
 pixel scale than the analysis.
 
 ---
