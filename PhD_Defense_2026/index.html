@@ -3651,34 +3651,22 @@
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§4</span> Removing the bias costs $C_\ell$ <em
 						class="alert"> multipole range</em>, and the starlet its <em class="alert">finest band</em></h3>
-				<ul style="font-size:0.82em; margin-bottom:0.4em;">
+				<ul style="font-size:0.82em; margin-bottom:0.5em;">
 					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-					<li>$C_\ell$: $\ell_{\rm max}$ tuned per survey area, from 860 at 2,000 deg&sup2; to 340 at full
-						sky</li>
+					<li>$C_\ell$: <b class="alert">$\ell_{\rm max}$ tuned per survey area</b>, from 860 at 2,000
+						deg&sup2; to <b class="alert">340</b> at full sky</li>
 					<li>starlet: the contamination is concentrated in the <b class="alert">finest band</b>, so dropping
 						$j=1$ is enough at every area</li>
 				</ul>
-
-				<!-- Both statistics, not just the power spectrum (Martin, 2026-09-10).  The two panels
-				     do not share axes and are not meant to: each shows where its own contamination
-				     lives, which is what decides the shape of the cut.  The l1 strip is
-				     tools/-generated step4 of the backup build. -->
-				<div class="cutfigs">
-					<figure>
-						<figcaption>$C_\ell$ &mdash; bias against the upper cut, one panel per area</figcaption>
-						<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
-							alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
-					</figure>
-					<figure>
-						<figcaption>starlet $\ell_1$ &mdash; where the contamination sits, band by band</figcaption>
-						<img class="plain" src="../assets/figures/statistics/p1_hos_frac_diff_l1/step4.png"
-							alt="the fractional baryonic change in the starlet l1-norm against signal-to-noise, one panel per wavelet band and one curve per tomographic bin: large in the finest band, small in the next two">
-					</figure>
+				<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
+					style="max-height:270px; display:block; margin:0 auto;"
+					alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
+				<div class="cutpair">
+					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut
+							tuned to each area</span></div>
+					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole
+							bands only, a more conservative cut</span></div>
 				</div>
-
-				<!-- The `.cutpair` row that used to sit here (C_ell -> a cut tuned to each area;
-				     starlet -> whole bands only) said in words what the two panels above now show.
-				     Removed 2026-09-10 to give them the height they needed to be legible. -->
 				<aside class="notes">Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power
 					spectrum gets a SLIDING lmax - it can be tuned to keep exactly the multipoles that are safe at each
 					area, from 860 at 2,000 down to 340 at full sky, which is a large fraction of the range removed but

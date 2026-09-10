@@ -2582,18 +2582,3 @@
 .reveal .slides section.closing .qlist > li.done .qtext { color: color-mix(in srgb, var(--fg) 86%, transparent); }
 .reveal .slides section.closing .qlist .qans { color: var(--fg); }
 .reveal .slides section.closing .qlist .qtext { font-size: 0.93em; }
-
-
-/* --------------------------------------------------------------------------
-   FRAME 50 — the two scale cuts side by side.  Martin, 2026-09-10: the slide
-   named C_ell AND the starlet and only ever showed the power spectrum.  Two wide
-   strips stacked, each captioned with which statistic it belongs to, because
-   they do not share axes and must not be read as one plot.
-   -------------------------------------------------------------------------- */
-.reveal .slides section .cutfigs { display: flex; flex-direction: column; gap: 0.35em; margin: 0.2em auto 0; width: 98%; }
-.reveal .slides section .cutfigs figure { margin: 0; display: flex; flex-direction: column; gap: 0.15em; }
-.reveal .slides section .cutfigs figcaption {
-	font-size: 0.55em; text-align: left; color: var(--fg-muted); margin: 0; order: -1;
-}
-.reveal .slides section .cutfigs img { max-height: 165px; width: auto; max-width: 100%; display: block; margin: 0 auto; }
-.reveal .slides section .cutfigs figure:last-child img { max-height: 245px; }

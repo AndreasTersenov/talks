@@ -833,13 +833,8 @@ than the power spectrum, because they are more sensitive to the contaminated sma
 To bring the bias below our threshold of **zero point three sigma**, we remove small-scale information
 step by step until it is. For the power spectrum, by lowering the maximum multipole, which gives an
 ell-max for each area, from eight hundred and sixty at two thousand square degrees to three hundred
-and forty at full sky. For the wavelet statistics it is the **band structure** that decides. The lower panel is where the
-baryons actually change the ℓ1-norm, band by band: it is almost entirely the **finest band**, and the
-next two are flat. So dropping *j = 1* alone is enough, at every area.
-
-And I want to be fair about this. The power spectrum gets a cut it can **tune**; the starlet can only
-drop whole bands, so ours is the **blunter instrument**, and at the smaller footprints it certainly
-throws away clean scales it did not have to. Everything on the next slide is therefore a **floor**.
+and forty at full sky. For the wavelet statistics, by removing the finest bands, and there dropping
+**the finest band alone** is enough at every area.
 
 ---
 
