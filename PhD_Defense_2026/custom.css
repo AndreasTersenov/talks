@@ -1125,13 +1125,15 @@
 .reveal .slides section .pipeline--compact .ssub { display: none; }
 
 /* --- the pipeline on an act opener ----------------------------------------
-   These LAM dividers carry `class="inverted"`, which looks alarming but is
-   inert: the only rule for it is `.reveal .slides section .inverted`, a
-   DESCENDANT selector, so it never matches a section carrying the class
-   itself. The slides read light-on-black because a default section is already
-   the dark theme, not because anything is being filtered. Do not "cancel" an
-   inversion here — there isn't one, and adding a filter turns the cobalt ring
-   olive.
+   The LAM `class="inverted"` was REMOVED from these dividers on 2026-09-10.
+   It was inert only while they were top-level sections: talks.css has
+   `.reveal .slides section .inverted { filter: invert(100%) }`, a DESCENDANT
+   selector, which does not match a section carrying the class itself. Putting
+   each paper in a vertical column made the dividers descendants of a wrapper
+   section, the rule went live, and every divider inverted — cobalt ring to
+   olive, white type to near-black. The slides read light-on-black because a
+   default section is already the dark theme; nothing needs filtering. Do not
+   put `inverted` back on a section.
    -------------------------------------------------------------------------- */
 .reveal .slides section.actopen .pipeline-slot {
 	display: block; width: 94%; margin: 1.9em auto 0;

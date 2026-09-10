@@ -569,10 +569,10 @@
 			     Part 1 — ONE VERTICAL COLUMN, frames 8-20.  Mass-mapping algorithms and cosmology (Tersenov+ 2024).
 			     The divider card is the top of the column and the paper hangs below it,
 			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     relies on navigationMode:'linear' — see Reveal.initialize.
+			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
 			################################################################## -->
 			<section>
-				<section class="inverted actopen" data-background="#000">
+				<section class="actopen" data-background="#000">
 					<h2> Part 1: Impact of weak-lensing mass-mapping
 						algorithms on cosmology inference </h2>
 
@@ -1415,10 +1415,10 @@
 			     Part 2 — ONE VERTICAL COLUMN, frames 21-24.  PnPMass (Tersenov+ 2025).
 			     The divider card is the top of the column and the paper hangs below it,
 			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     relies on navigationMode:'linear' — see Reveal.initialize.
+			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
 			################################################################## -->
 			<section>
-				<section class="inverted actopen" data-background="#000">
+				<section class="actopen" data-background="#000">
 					<h2> Part 2 </h2>
 					<h3> A plug-and-play approach with fast uncertainty quantification for
 						weak lensing mass mapping </h3>
@@ -1977,7 +1977,7 @@
 
 			<!-- ################################################################################################### -->
 
-			<section data-visibility="hidden" class="inverted" data-theme="light">
+			<section data-visibility="hidden" class="" data-theme="light">
 				<h2> So does the choice of the mass mapping algorithm matter for the final constraints?</h2>
 			</section>
 
@@ -2241,7 +2241,7 @@
 			<!-- ============ MOVEMENT II divider — new 2026-09-03.  The chain returns with the
 			     lit segment moved off the map and onto the summary and the inference, which is
 			     the whole content of the transition. ============ -->
-			<section class="inverted actopen" data-background="#000">
+			<section class="actopen" data-background="#000">
 				<span class="kicker">second half &mdash; the summaries</span>
 				<h2>Parts 3 and 4 move from the map to the <em class="alert">summary statistic</em></h2>
 				<p class="movsub">Parts 1 and 2 were about the mass map. Parts 3 and 4 are about the summary statistic,
@@ -3115,10 +3115,10 @@
 			     Part 3 — ONE VERTICAL COLUMN, frames 37-44.  The joint wavelet l1-norm (Tersenov+, submitted).
 			     The divider card is the top of the column and the paper hangs below it,
 			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     relies on navigationMode:'linear' — see Reveal.initialize.
+			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
 			################################################################## -->
 			<section>
-				<section class="inverted actopen" data-background="#000">
+				<section class="actopen" data-background="#000">
 					<h2> Part 3 </h2>
 					<h3> The joint wavelet &#8467;<sub>1</sub>&#8209;norm matches neural compression for
 						tomographic weak&#8209;lensing inference </h3>
@@ -3440,10 +3440,10 @@
 			     Part 4 — ONE VERTICAL COLUMN, frames 45-50.  Baryonic feedback and scale cuts.
 			     The divider card is the top of the column and the paper hangs below it,
 			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     relies on navigationMode:'linear' — see Reveal.initialize.
+			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
 			################################################################## -->
 			<section>
-				<section class="inverted actopen" data-background="#000">
+				<section class="actopen" data-background="#000">
 					<h2> Part 4 </h2>
 					<h3> Mitigating baryonic effects in weak lensing with higher&#8209;order statistics </h3>
 					<br>
@@ -6756,10 +6756,11 @@
 		Reveal.initialize({
 			controls: true,
 			controlsBackArrows: 'faded',
-			// Each of the four parts is a VERTICAL COLUMN, so reveal's default binding
-			// of Right to right() would jump a whole paper.  Linear mode makes
-			// Right/Down/Space and Left/Up all step through the deck in reading order.
-			navigationMode: 'linear',
+			// navigationMode stays 'default' — Andreas wants all four arrows to mean
+			// different things: Up/Down inside a paper's column, Left/Right between
+			// columns.  The consequence is that Right SKIPS the rest of a column, so
+			// advance with SPACE / PAGE DOWN (which is what a presenter remote sends)
+			// and keep the arrows for deliberate jumps.
 			progress: true,
 			// The room should see the length of the TALK, not of the file: 51 main-line
 			// frames, and nothing at all once we are in the backup.  reveal indexes the
