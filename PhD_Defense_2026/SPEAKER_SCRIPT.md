@@ -37,19 +37,18 @@ for more material.
 Thank you, and good afternoon. Thank you all for coming, and thank you to the committee for reading
 this and being here in person.
 
-I'm very happy today to present the work that I have been doing for my PhD over the past 3 years.
-This thesis is about extracting information from weak gravitational lensing data, and using it to constrain cosmological parameters. 
-In particular, it is about recovering as much of that information as we can, including the part the standard analysis leaves out, and about making sure that the cosmological results we build on it can be trusted.
+I'm very happy today to present the work that I have been doing for my PhD over the past 3 years, on methods for trustworthy non-Gaussian inference for weak-lensing cosmology.
 
-I would like to start with the picture we are trying to fill in.
+<!-- This thesis is about extracting information from weak gravitational lensing data, and using it to constrain cosmological parameters. 
+In particular, it is about recovering as much of that information as we can, including the part the standard analysis leaves out, and about making sure that the cosmological results we build on it can be trusted. -->
 
 ---
 
 ## A0.2 — the picture · frame 2 · 0:21
 
-This is the history of the Universe as we currently model it.
+I would like to start with the the history of the Universe as we currently model it.
 
-It starts in a hot, almost uniform state, with very small fluctuations in density. It expands. And
+It starts in a hot, almost uniform state, with very small fluctuations in density. Then it expands. And
 those fluctuations grow under gravity into the structure we observe today — galaxies, clusters, the
 cosmic web.
 
@@ -76,34 +75,31 @@ And independent probes of the same parameters have started to show **tensions** 
 
 So how do you study the Universe, and test a model like that? Well, there are **several probes** that do that...
 
-[CLICK] **▲** But the one we follow in this talk is **gravitational lensing**.
+[CLICK] **▲** But the one we follow in this thesis is **gravitational lensing**.
 
 ---
 
 ## A0.5 — strong and weak lensing · frame 5 · 0:44
 Here is the basic idea of gravitational lensing. 
 
-Light from a distant source passes every mass on the way to us, and each one **bends its path**, so the
-image arrives distorted.
+Light from a distant source passes through all the mass distribution on the way to us, and the gravity of this mass **bends its path**, so the image arrives distorted.
 
-Occasionally that is dramatic — arcs, multiple images, Einstein rings, visible by eye. That is the
-**strong** regime, and it is *very rare*.
+Occasionally that is dramatic — arcs, multiple images, Einstein rings, visible by eye. That is the **strong** regime, and it is *very rare*.
 
-**▲** What happens *everywhere* is the **weak** regime: every galaxy behind any structure has its
-shape slightly changed. This gives us an indication of how the matter (including the dark matter) is distributed -- the **Large Scale Structure of the Universe**. 
+**▲** What happens *everywhere* is the **weak** regime: every galaxy behind any structure has its shape slightly changed. This gives us an indication of how the matter (including the dark matter) is distributed. 
 
 ---
 
 ## A0.6 — Euclid, and what the signal is · frame 6 · 0:54
 
 And we are about to be able to do this to a new level of precision. 
-The next generation of cosmological surveys is here, and the one I work on is **Euclid**.
+The next generation of cosmological surveys is here, and the one I work on is the **Euclid** space telescope.
+
 Euclid launched in 2023, it is taking data now,
 and it will measure the shapes of **billions of galaxies** over **a third of the sky**, giving us roughly an
 *order of magnitude* more statistical power than anything we have.
 
-[CLICK] **▲** That signal encodes the growth of structure and the geometry of the Universe since
-the Big Bang. 
+[CLICK] **▲** That signal encodes the growth of structure and the geometry of the Universe since the Big Bang. 
 
 But in order to extract this information and do cosmology with it we need really sophisticated **algorithms and statistics**.
 
@@ -112,13 +108,10 @@ That is what this thesis is about.
 ---
 
 ## A0.8 — the chain, and the two halves · frame 7 · 3:18
-Modern cosmological survey analyses are **incredibly complex**, and almost every step in them is
-*a paper on its own*. Here is the chain reduced to the last steps, the ones that are the
-scientific part of the analysis.
+Modern cosmological survey analyses are **incredibly complex**. But here is the chain reduced to just the last steps, the ones that are the scientific part of the analysis.
 
 **Galaxy shapes go in**. From the shapes we make a **map of the mass distribution**. From the map we extract **a few numbers, the summary statistics**.
-We compare those with theoretical predictions, or with simulations, and we get the probability
-distributions of the parameters.
+We compare those with theoretical predictions, or with simulations, and we get the probability distributions of the parameters.
 
 This is what **we call the posterior**: how probable each combination of parameter values is, given the data. The two shaded regions contain **sixty-eight and ninety-five per cent** of that probability, so *the tighter they are*, the more precise the measurement.
 
