@@ -2675,9 +2675,11 @@
 	max-width: none; max-height: none;
 }
 .reveal .slides section.pnpcombo .pnp-pocket {
-	position: absolute; left: 2%; top: 0; width: 63%; margin: 0; text-align: left;
+	/* left: 3.5% puts the text on the TITLE's text edge (20px margin + 4px rule +
+	   18px padding = 42px), not on the slide margin. */
+	position: absolute; left: 3.5%; top: 0; width: 61.5%; margin: 0; text-align: left;
 }
-.reveal .slides section.pnpcombo .pnp-pocket .block-content { padding: 10px 15px 11px; }
+.reveal .slides section.pnpcombo .pnp-text { padding: 0; }
 /* a descending hierarchy in the block: lead line, then the equations, then the
    consequences as a list - the list was inheriting the section's 24px, which made
    it the LARGEST thing in the box. */
