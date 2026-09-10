@@ -45,20 +45,20 @@
 }
 .sbi-slide .sbi-lbl.on { opacity: 1; }
 .sbi-slide .sbi-lbl--head { font-size: 19px; font-weight: 700; color: var(--ink); }
-.sbi-slide .sbi-lbl--head .sub { display:block; font-size: 14px; font-weight: 600; color: var(--mute); margin-top: 2px; }
-.sbi-slide .sbi-lbl--mut  { font-size: 15px; font-weight: 700; color: var(--mute); }
-.sbi-slide .sbi-lbl--stat { font-size: 15px; font-weight: 600; color: var(--ink); transform: translate(0, -50%); }
+.sbi-slide .sbi-lbl--head .sub { display:block; font-size: 17px; font-weight: 600; color: var(--mute); margin-top: 2px; }
+.sbi-slide .sbi-lbl--mut  { font-size: 17px; font-weight: 700; color: var(--mute); }
+.sbi-slide .sbi-lbl--stat { font-size: 17px; font-weight: 600; color: var(--ink); transform: translate(0, -50%); }
 .sbi-slide .sbi-lbl--obj {
-  transform: translate(-50%, -50%); font-size: 16px;
+  transform: translate(-50%, -50%); font-size: 17px;
   background: #eef1f4; border: 1px solid #dde3e9; border-radius: 10px;
   padding: 6px 11px; text-align: center;
 }
-.sbi-slide .sbi-lbl--obj .ot { font-size: 11px; font-weight: 700; color: var(--mute); margin-bottom: 3px; }
+.sbi-slide .sbi-lbl--obj .ot { font-size: 17px; font-weight: 700; color: var(--mute); margin-bottom: 3px; }
 .sbi-slide .sbi-lbl--obj .katex { font-size: 1em; }
 .sbi-slide .sbi-lbl .katex { font-size: 1em; }
 
 /* vertical "condition" tag */
-.sbi-slide .sbi-lbl--cond { writing-mode: vertical-rl; font-size: 14px; font-weight: 700; color: var(--mute); letter-spacing: .04em; }
+.sbi-slide .sbi-lbl--cond { writing-mode: vertical-rl; font-size: 17px; font-weight: 700; color: var(--mute); letter-spacing: .04em; }
 
 /* ------------------------------- caption -------------------------------- */
 .sbi-slide .sbi-caption {
@@ -68,7 +68,7 @@
 .sbi-slide .sbi-caption .c-warm { color: var(--warm); font-weight: 700; }
 .sbi-slide .sbi-caption .c-acc  { color: var(--accent); font-weight: 700; }
 .sbi-slide .sbi-actno {
-  display: inline-block; font-size: 12.5px; font-weight: 800; color: #fff;
+  display: inline-block; font-size: 17px; font-weight: 800; color: #fff;
   background: var(--mute); border-radius: 6px; padding: 1px 8px; margin-right: 9px;
   vertical-align: 2px; font-variant-numeric: tabular-nums;
 }

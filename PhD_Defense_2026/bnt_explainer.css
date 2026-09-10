@@ -62,12 +62,12 @@
 .bnt-slide .bnt-mech-cov { display: block; width: 100%; height: 116px; }
 .bnt-slide .bnt-mech-ladder .bnt-bars { gap: 10px; }
 .bnt-slide .bnt-mech-ladder .bnt-bar { width: 38px; }
-.bnt-slide .bnt-mech-ladder .bnt-bar-ratio { font-size: 11.5px; left: -4px; right: -4px; }
-.bnt-slide .bnt-mech-ladder .bnt-bar-name { font-size: 10.5px; bottom: -19px; left: -4px; right: -4px; line-height: 1.05; }
+.bnt-slide .bnt-mech-ladder .bnt-bar-ratio { font-size: 17px; left: -4px; right: -4px; }
+.bnt-slide .bnt-mech-ladder .bnt-bar-name { font-size: 17px; bottom: -19px; left: -4px; right: -4px; line-height: 1.05; }
 .bnt-slide .bnt-cloud-tag {
   position: absolute;
   left: 12px; bottom: 10px;
-  font-size: 12.5px;
+  font-size: 17px;
   font-style: italic;
   color: var(--mute);
   background: rgba(255,255,255,0.72);
@@ -92,7 +92,7 @@
   flex-direction: column;
 }
 .bnt-slide .bnt-meter-title {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--mute);
   letter-spacing: 0.01em;
@@ -134,7 +134,7 @@
   position: absolute;
   top: -23px; left: -8px; right: -8px;
   text-align: center;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   z-index: 4;
@@ -145,7 +145,7 @@
   position: absolute;
   bottom: -21px; left: -8px; right: -8px;
   text-align: center;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -161,20 +161,20 @@
 .bnt-slide .bnt-baseline span {
   position: absolute;
   right: 0; top: -8px;
-  font-size: 10.5px;
+  font-size: 17px;
   color: var(--mute);
   background: #fbfcfd;
   padding: 0 3px;
 }
 .bnt-slide .bnt-meter-abs {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
   margin-top: 4px;
 }
 .bnt-slide .bnt-meter-marg {
-  font-size: 12px;
+  font-size: 17px;
   color: var(--mute);
   margin-top: 3px;
   min-height: 16px;
@@ -189,7 +189,7 @@
   padding: 8px 10px 10px;
 }
 .bnt-slide .bnt-kernels-title {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--mute);
   margin-bottom: 2px;
@@ -200,7 +200,7 @@
   height: 96px;
 }
 .bnt-slide .bnt-kernels-caption {
-  font-size: 11.5px;
+  font-size: 17px;
   color: var(--mute);
   margin-top: 2px;
   min-height: 15px;
@@ -222,7 +222,7 @@
 .bnt-slide .bnt-caption .c-peak { color: #b8860b; font-weight: 700; }
 .bnt-slide .bnt-actno {
   display: inline-block;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 800;
   color: #fff;
   background: var(--mute);
@@ -235,7 +235,7 @@
 
 /* ------------------------------ footnote -------------------------------- */
 .bnt-slide .bnt-footnote {
-  font-size: 12.5px;
+  font-size: 17px;
   line-height: 1.3;
   color: var(--mute);
   margin: 10px 2px 0;

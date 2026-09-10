@@ -37,7 +37,7 @@
   background: #fff; border: 1.5px solid #cfd8e0; border-radius: 14px;
   box-shadow: 0 1px 3px rgba(20,40,60,.06);
 }
-.ns-slide .ns-box .role { font-size: 15px; font-weight: 700; color: var(--mute); letter-spacing: .01em; }
+.ns-slide .ns-box .role { font-size: 17px; font-weight: 700; color: var(--mute); letter-spacing: .01em; }
 .ns-slide .ns-box .math { font-size: 25px; line-height: 1; color: #36424e; }
 .ns-slide .ns-box--net  { background: #eef3f7; border-color: #bcd0de; }
 .ns-slide .ns-box--flow { background: #e9f2f8; border-color: #a9cfe6; }
@@ -83,14 +83,14 @@
 }
 .ns-slide .ns-caption .ns-bul .katex { font-size: 1em; }
 .ns-slide .ns-actno {
-  display: inline-block; font-size: 12.5px; font-weight: 800; color: #fff;
+  display: inline-block; font-size: 17px; font-weight: 800; color: #fff;
   background: var(--mute); border-radius: 6px; padding: 1px 8px; margin-right: 9px;
   vertical-align: 2px; font-variant-numeric: tabular-nums;
 }
 .ns-slide .ns-plot {
   flex: 0 0 auto; width: 452px;
 }
-.ns-slide .ns-plot-title { font-size: 14px; font-weight: 700; color: var(--mute); margin: 0 0 6px 2px; }
+.ns-slide .ns-plot-title { font-size: 17px; font-weight: 700; color: var(--mute); margin: 0 0 6px 2px; }
 .ns-slide .ns-plot-canvas {
   display: block; width: 452px; height: 300px;
   background: #fff; border: 1px solid var(--line); border-radius: 10px;
