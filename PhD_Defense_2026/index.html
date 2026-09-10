@@ -218,8 +218,7 @@
 								<i>z</i>&nbsp;&asymp;&nbsp;1100 &nbsp;&nbsp;
 								<b>BAO + SNe</b> the expansion history &nbsp;&nbsp;
 								<b>Galaxy clustering</b> the growth of structure, through biased tracers &nbsp;&nbsp;
-								<b class="alert">Weak lensing</b> the total matter directly, sensitive to <b
-									class="alert">both</b>
+								<b class="alert">Weak lensing</b> the total matter directly, sensitive to both
 							</figcaption>
 						</figure>
 					</div>
@@ -363,7 +362,12 @@
 			     the deck is on paper.  The change of ground is the signal that we have
 			     stopped drawing the universe and started on the analysis of it.
 			============================================================================== -->
-			<section class="despipe" data-theme="light">
+			<!-- PARKED 2026-09-10 (Martin): "You have your own pipeline in the next slide, that
+			     should be sufficient, no?  The DES slide has a lot of distracting DES-specific
+			     text, like paper authors and Amon's personal contribution that is a bit
+			     confusing."  A0.8 opens by saying the analysis is complicated, so the claim
+			     survives the cut.  Saves 0:35.  Kept, not deleted. -->
+			<section class="despipe" data-theme="light" data-visibility="hidden">
 				<h3 class="slide-title tight">Real weak-lensing cosmological analyses are extremely complicated</h3>
 
 				<figure class="dpfig">
@@ -780,8 +784,8 @@
 				<h3 class="slide-title tight">In practice, mass mapping is an <em class="alert">ill-posed inverse
 						problem</em></h3>
 
-				<p class="ip-eq">$$\gamma \;=\; \underbrace{\mathbf{M}}_{\text{the mask}}\;
-					\underbrace{\mathbf{P}}_{\text{shear operator}}\, \kappa \;+\;
+				<p class="ip-eq">$$\gamma \;=\; \underbrace{\mathbf{M}}_{\text{the mask}}\quad
+					\underbrace{\mathbf{P}}_{\text{shear operator}}\; \kappa \;+\;
 					\underbrace{\mathbf{n}}_{\text{shape noise}}$$</p>
 
 				<div class="ip-panel">
@@ -2285,8 +2289,8 @@
 					compressed into a summary — and which statistic you compress with decides how much of the
 					information survives the compression. That was held fixed in Part 1 precisely so it could not
 					explain anything that moved. [CLICK] Now it is the subject: this one step, the map in and a
-					summary out. Part 3 asks whether that summary survives baryonic feedback. Part 4 builds the one
-					that does. We come back to the rest of the chain when we reach the inference.
+					summary out. Part 3 builds the summary that reads the most out of a map. Part 4 asks whether it
+					survives baryonic feedback. We come back to the rest of the chain when we reach the inference.
 				</aside>
 			</section>
 
@@ -2324,8 +2328,8 @@
 								$\theta$. Measured as $\xi_\pm(\theta)$, or as $C_\ell$.</p>
 
 							<ul class="points">
-								<li>every flagship result (<b>KiDS&#8209;1000, DES&nbsp;Y3, HSC&nbsp;Y3</b>) is a
-									two&#8209;point analysis</li>
+								<li>every wide lensing survey measures cosmic shear this way:
+									<b>KiDS, DES, HSC, UNIONS</b></li>
 								<li>predicted <b>analytically</b>; its covariance is understood</li>
 								<li>two decades of work on its systematics</li>
 							</ul>
@@ -2429,31 +2433,18 @@
 					</h3>
 					<img class="plain figfill" src="../assets/diagrams/pk_lss_light.png"
 						alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
-					<br>
-					<br>
+					<p class="lead-line">To access the information the power spectrum misses we need
+						<b class="alert">higher&#8209;order statistics</b>: peak counts, wavelet statistics, the
+						&#8467;<sub>1</sub>&#8209;norm, Minkowski functionals.</p>
 				</section>
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light">
-					<h3 class="slide-title tight">The non-Gaussian information is in the <em class="alert">phases</em>
-					</h3>
-					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light.png"
-						alt="the original density field, the same field keeping only the phases, and keeping only the amplitudes">
-					<ul class="points tp-points">
-						<li>the power spectrum keeps only the <b>Fourier amplitudes</b></li>
-						<li>the phases carry the structure of the cosmic web (filaments, haloes, voids)</li>
-						<li>higher-order statistics are needed to access it: <b>peak counts, wavelet statistics, the
-								&#8467;<sub>1</sub>&#8209;norm, Minkowski functionals</b></li>
-					</ul>
-
-				</section>
 
 				<!-- ################################################################################################### -->
 
 				<section class="hosgain" data-theme="light">
-					<h3 class="slide-title tight">Peak counts constrain better than the power spectrum, <em
-							class="alert">multi&#8209;scale peaks better still</em>
+					<h3 class="slide-title tight">Forecasts show that higher-order statistics constrain better than the power spectrum
 					</h3>
 
 					<!-- Swapped 2026-09-06 (Andreas) for the four-curve version from the same
@@ -2723,8 +2714,8 @@
 				<h3 class="slide-title tight">Key concept: <em class="alert">wavelets</em></h3>
 
 				<ul class="points dots wv-points">
-					<li>a wavelet $\psi$ is a <b class="alert">localised</b>, <b class="alert">oscillating</b> function
-						with <b class="alert">zero mean</b>, $\int \psi\,\mathrm{d}x = 0$</li>
+					<li>a wavelet $\psi$ is a localised, oscillating function with <b class="alert">zero mean</b>,
+						$\int \psi\,\mathrm{d}x = 0$</li>
 					<li>dilations and translations of $\psi$ form a family, $\psi_{a,b}(x) =
 						\tfrac{1}{\sqrt{a}}\,\psi\!\big(\tfrac{x-b}{a}\big)$</li>
 					<li>the coefficient $W(a,b) = \int f\,\psi_{a,b}\,\mathrm{d}x$ measures the <b>structure at scale
@@ -2748,10 +2739,10 @@
 					<p class="kicker pop-kicker">why wavelets for convergence maps</p>
 					<ul class="points dots pop-points">
 						<li>the cosmic web consists of <b class="alert">localised structures</b> (clusters, filaments,
-							voids) with a characteristic <b>size</b> and <b>position</b></li>
+							voids) with a characteristic size and position</li>
 						<li>such a field is <b class="alert">sparse</b> in the wavelet domain: a few large coefficients
 						</li>
-						<li>scales can be analysed, or removed, <b>separately</b></li>
+						<li>scales can be analysed, or removed, separately</li>
 					</ul>
 				</div>
 
@@ -3139,7 +3130,8 @@
 
 			<!-- ============ ACT 2 OPENER — which summary should we compute? ============ -->
 			<section data-theme="light">
-				<h3 class="slide-title tight">Looking for the <em class="alert">perfect summary statistic</em></h3>
+				<h3 class="slide-title tight">How much of the map's information can a
+					<em class="alert">summary statistic</em> keep?</h3>
 				<div class="pipeflow big" style="margin:0.5em 0 0.7em;">
 					<figure>
 						<img src="../assets/figures/maps/kappa_patch.png" alt="tomographic convergence map">
@@ -3161,8 +3153,8 @@
 						<figcaption>cosmology</figcaption>
 					</figure>
 				</div>
-				<p class="oneline fragment fade-in">Beating the power spectrum is "easy". <b class="alert">How much
-						information is there to extract?</b></p>
+				<p class="oneline fragment fade-in">Beating the power spectrum is "easy". The question is
+					<b class="alert">how close to all of it</b> we can get.</p>
 				<aside class="notes">A hinge, not a result - keep it short and do not front-load it. SAY: we have a
 					statistic that reads more than the power spectrum. But look at the middle box: the summary is the
 					one part of this chain we still choose by hand, and the field increasingly fills that box with a
@@ -3659,22 +3651,34 @@
 			<section data-theme="light">
 				<h3 class="slide-title tight"><span class="sec">§4</span> Removing the bias costs $C_\ell$ <em
 						class="alert"> multipole range</em>, and the starlet its <em class="alert">finest band</em></h3>
-				<ul style="font-size:0.82em; margin-bottom:0.5em;">
+				<ul style="font-size:0.82em; margin-bottom:0.4em;">
 					<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-					<li>$C_\ell$: <b class="alert">$\ell_{\rm max}$ tuned per survey area</b>, from 860 at 2,000
-						deg&sup2; to <b class="alert">340</b> at full sky</li>
+					<li>$C_\ell$: $\ell_{\rm max}$ tuned per survey area, from 860 at 2,000 deg&sup2; to 340 at full
+						sky</li>
 					<li>starlet: the contamination is concentrated in the <b class="alert">finest band</b>, so dropping
 						$j=1$ is enough at every area</li>
 				</ul>
-				<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
-					style="max-height:270px; display:block; margin:0 auto;"
-					alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
-				<div class="cutpair">
-					<div class="ci"><span class="w">$C_\ell$</span><span class="ar">&rarr;</span><span class="t">a cut
-							tuned to each area</span></div>
-					<div class="ci"><span class="w">starlet</span><span class="ar">&rarr;</span><span class="t">whole
-							bands only, a more conservative cut</span></div>
+
+				<!-- Both statistics, not just the power spectrum (Martin, 2026-09-10).  The two panels
+				     do not share axes and are not meant to: each shows where its own contamination
+				     lives, which is what decides the shape of the cut.  The l1 strip is
+				     tools/-generated step4 of the backup build. -->
+				<div class="cutfigs">
+					<figure>
+						<figcaption>$C_\ell$ &mdash; bias against the upper cut, one panel per area</figcaption>
+						<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
+							alt="power-spectrum baryon tension versus the upper scale cut, one panel per survey area, with the chosen cut marked against the 0.3 sigma threshold">
+					</figure>
+					<figure>
+						<figcaption>starlet $\ell_1$ &mdash; where the contamination sits, band by band</figcaption>
+						<img class="plain" src="../assets/figures/statistics/p1_hos_frac_diff_l1/step4.png"
+							alt="the fractional baryonic change in the starlet l1-norm against signal-to-noise, one panel per wavelet band and one curve per tomographic bin: large in the finest band, small in the next two">
+					</figure>
 				</div>
+
+				<!-- The `.cutpair` row that used to sit here (C_ell -> a cut tuned to each area;
+				     starlet -> whole bands only) said in words what the two panels above now show.
+				     Removed 2026-09-10 to give them the height they needed to be legible. -->
 				<aside class="notes">Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power
 					spectrum gets a SLIDING lmax - it can be tuned to keep exactly the multipoles that are safe at each
 					area, from 860 at 2,000 down to 340 at full sky, which is a large fraction of the range removed but
@@ -3805,15 +3809,14 @@
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
-						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological
+						<span class="qtext">Does the choice of mass-mapping algorithm matter for the cosmological
 							results?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
 								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
-						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can
-								trust</b>?</span>
+						<span class="qtext">Can one algorithm be accurate and fast, with error bars we can trust?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
 								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
 									bars</b>, trained <b>once</b>.</span></span>
@@ -3829,7 +3832,7 @@
 					<li class="done">
 						<span class="qn">Q4</span>
 						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics
-							still <b>beat the standard analysis</b>?</span>
+							still beat the standard analysis?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
 								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
 								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
@@ -3856,22 +3859,21 @@
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
-						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological
+						<span class="qtext">Does the choice of mass-mapping algorithm matter for the cosmological
 							results?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
 								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
-						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can
-								trust</b>?</span>
+						<span class="qtext">Can one algorithm be accurate and fast, with error bars we can trust?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
 								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
 									bars</b>, trained <b>once</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q3</span>
-						<span class="qtext">How much <b>information</b> do the summary statistics keep, and do we need a
+						<span class="qtext">How much information do the summary statistics keep, and do we need a
 							neural network to extract all of it?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> The joint
 								&#8467;1&#8209;norm <b>matches the
@@ -3880,7 +3882,7 @@
 					<li class="done">
 						<span class="qn">Q4</span>
 						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics
-							still <b>beat the standard analysis</b>?</span>
+							still beat the standard analysis?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
 								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
 								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
@@ -3907,15 +3909,14 @@
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
-						<span class="qtext">Does the choice of <b>mass-mapping algorithm</b> matter for the cosmological
+						<span class="qtext">Does the choice of mass-mapping algorithm matter for the cosmological
 							results?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The figure of merit moves
 								by <b>157&nbsp;%</b>, the reconstruction error by <b>4&nbsp;%</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
-						<span class="qtext">Can one algorithm be accurate and fast, <b>with error bars we can
-								trust</b>?</span>
+						<span class="qtext">Can one algorithm be accurate and fast, with error bars we can trust?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within
 								<b>1&nbsp;%</b> of the fine&#8209;tuned networks, with the <b>smallest calibrated error
 									bars</b>, trained <b>once</b>.</span></span>
@@ -3931,7 +3932,7 @@
 					<li class="done">
 						<span class="qn">Q4</span>
 						<span class="qtext">Once the scales the simulations get wrong are removed, do the statistics
-							still <b>beat the standard analysis</b>?</span>
+							still beat the standard analysis?</span>
 						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> On baryon&#8209;safe
 								scales the &#8467;1&#8209;norm is still <b>&#215;1.8</b> tighter than $C_\ell$ at
 								Stage&nbsp;IV, <b>&#215;2.6</b> at full sky.</span></span>
@@ -3986,7 +3987,7 @@
 			<!-- ============ everything below this point is BACKUP ============
 			     The divider is the visible boundary: clicking past the conclusions lands on it,
 			     which tells the room you have left the talk on purpose. -->
-			<section data-theme="light">
+			<section data-theme="light" id="backup-divider">
 				<div class="part-divider">
 					<h1>Backup</h1>
 					<!-- <hr class="accent-rule" style="margin:0.5em auto;"> -->
@@ -5922,6 +5923,26 @@
 
 
 
+			<!-- ============ BACKUP — moved out of the main line 2026-09-10 (Andreas): no time
+			     for the phases/amplitudes detour. Its last bullet, the list of higher-order
+			     statistics, moved onto the previous slide, which now carries the motivation.
+			     Placed here, in front of the statistics it motivates. ============ -->
+			<section class="teach" data-theme="light">
+				<h3 class="slide-title tight">The non-Gaussian information is in the <em class="alert">phases</em>
+				</h3>
+				<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light.png"
+					alt="the original density field, the same field keeping only the phases, and keeping only the amplitudes">
+				<ul class="points tp-points">
+					<li>the power spectrum keeps only the <b>Fourier amplitudes</b></li>
+					<li>the phases carry the structure of the cosmic web (filaments, haloes, voids)</li>
+					<li>higher-order statistics are needed to access it: <b>peak counts, wavelet statistics, the
+							&#8467;<sub>1</sub>&#8209;norm, Minkowski functionals</b></li>
+				</ul>
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
 			<!-- =============================================================================
 			     MOVED OUT OF THE MAIN LINE 2026-09-06 (Andreas): peak counts, the starlet
 			     transform and the l1-norm were each defined here and then defined AGAIN
@@ -6727,7 +6748,16 @@
 			controls: true,
 			controlsBackArrows: 'faded',
 			progress: true,
-			slideNumber: 'c/t',
+			// The room should see the length of the TALK, not of the file: 53 main-line
+			// frames, and nothing at all once we are in the backup.  reveal indexes the
+			// returned value at [0], [1], [2], so this must return an array.
+			slideNumber: function (slide) {
+				const all = Reveal.getSlides();
+				const backup = all.indexOf(document.getElementById('backup-divider'));
+				const here = all.indexOf(slide);
+				if (backup < 0 || here < 0) return [here + 1];
+				return here < backup ? [here + 1, '/', backup] : [''];
+			},
 			hash: true,
 			transition: 'slide',
 
