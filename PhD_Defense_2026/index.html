@@ -1600,16 +1600,16 @@
 							alt="PnPMass, iteration 2: the output of the first iteration fed back in">
 
 						<div class="block pnp-pocket">
-							<!-- One equation, not two. The pocket is 168px tall and the two-equation
-							     version needed ~200, which clipped the top Input-gamma panel. The prose
-							     names the substitution; F_Theta shows the result and writes down the
-							     B and A that the line below depends on. -->
 							<div class="block-content">
-								<p>Replace <b class="alert">prox</b> by an off&#8209;the&#8209;shelf
-									<b class="alert">deep denoiser</b> trained on simulations</p>
-								<p class="eq">$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</p>
-								<p>Converges to a <b class="alert">fixed point</b>; with
-									$\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ the training is
+								<p><em>Use the PnP framework:</em> replace <b class="alert">prox</b> by an
+									off&#8209;the&#8209;shelf <b class="alert">deep denoiser</b> trained on simulations</p>
+								<div class="pnp-eqs">
+									<span>$\kappa^{n+1} = \mathrm{prox}_{\tau g}\left( \kappa^n - \tau \nabla f(\kappa^n) \right)$</span>
+									<span class="arw" aria-hidden="true">&rarr;</span>
+									<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</span>
+								</div>
+								<p>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b> $\hat{\kappa}$,
+									and choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the training phase
 									<b>independent of the noise covariance</b></p>
 							</div>
 						</div>
