@@ -158,16 +158,17 @@ First, what is exactly being reconstructed.
 
 ## A1.2 — shear and convergence · frame 9 · 0:49
 
-The effect of weak lensing can be summarised in two quantities: the convergence, which is the 
+The effect of weak lensing on the shapes of the galaxies can be summarised in two quantities: the convergence, which is the 
 **an isotropic magnification** of the image, and the shear, which is **the anisotropic stretching** of the image.
 
-Convergence is **not directly observable**, because we do not know the intrinsic size of a galaxy. 
+Convergence is **not directly observable**
+<!-- , because we do not know the intrinsic size of a galaxy.  -->
 
-The shear however is measurable through statistical analysis of the shapes of many galaxies. 
+But the shear is measurable through statistical analysis of the shapes of many galaxies. 
 <!-- The idea is that for one galaxy the stretch is about a per cent, far smaller than the shape it already had.  -->
 **▲** The idea is that the lensing is **coherent**
-and to a good approximation, the intrinsic shapes are **random**. Therefore, if we average the ellipticities over many galaxies in a patch,
-the random part cancels, and what survives is the shear.
+and to a good approximation, the intrinsic shapes are **randomly distributed**. Therefore, if we average the ellipticities over many galaxies in a patch,
+the random part cancels, and what remains is the pure shear.
 
 ---
 
@@ -175,12 +176,9 @@ the random part cancels, and what survives is the shear.
 
 However, we would really like to know the convergence, for a few reasons.
 
-First of all, it is a **scalar field** — one number per pixel — while the shear is spin-2 and turns
-with the coordinate frame. That matters more than it sounds: the statistics this thesis is built on,
-**peak counts** and the **ℓ1-norm**, are one-point statistics of a map. You *cannot* count the peaks
-of a spin-2 field. 
+First of all, it is a **scalar field**, so it is much easier to work with and extract information from than the shear which is a spin-2 field. In fact most non-gaussian statistics which we will talk about later are only defined on convergence.
 
-Second, it has a direct physical interpretation: the convergence is the **projected matter along the line of sight**, weighted by how efficiently each piece of it lenses. So it essentially tells us the distribution of matter in the Universe, which is what we want to know.
+Second, it has a direct physical interpretation: the convergence is the **projected matter along the line of sight**, weighted by how efficiently each piece of it lenses. So it essentially tells us the distribution of matter in the Universe.
 That's why convergence maps are also called **mass maps**.
 
 <!-- Two things ride in that integral: the kernel carries the geometry, the overdensity carries the
@@ -201,7 +199,7 @@ In Fourier space we can go from one to the other with a **simple linear relation
 
 ## A1.5 — the relation is exact, the measurement is not · frame 12 · 0:57
 
-*While the relation is exact*, the data is **imperfect**. The shear is measured from galaxy shapes, which are irregularly sampled, and have noise (much larger than the shear itself) and *masks* -- missing regions where there are no galaxies or where the data is not usable.
+*While the relation is exact*, the data is **imperfect**. The shear is measured from galaxy shapes, which are irregularly sampled, and have noise (much larger than the shear itself) and *masks* -- missing regions where we have no data, or the data is not usable.
 
 <!-- **Shape noise**, far larger than the shear itself, and the inversion amplifies it at small scales.
 **The mask**: the operator is non-local, so a hole leaves whole modes unconstrained. And **a blind
@@ -216,8 +214,7 @@ This is why mass mapping is an **ill-posed inverse problem**: there are multiple
 ## A1.6 — Kaiser–Squires · frame 13 · 1:00
 
 The simplest method, and the standard one, is Kaiser–Squires: which simply applies the linear inversion directly
-to the measured shear. Almost every survey has used it for thirty years, and on a complete,
-noiseless field it is exact.
+to the measured shear. Almost every survey has used it for thirty years, mainly for its simplicity.
 
 [CLICK] But on real data (as you can see in this comparison here)
 it **amplifies the shape noise** at small scales, and also causes **leakage of the masked areas** across the whole map, because the
@@ -231,8 +228,9 @@ In fact, the actual "pure" Kaiser-Squires reconstruction is so noisy that it is 
 ## A1.7 — a data term plus a regulariser · frame 14 · 1:01
 
 But moving towards more advanced methods, every method can be written as an optimisation problem with two
-terms: a **data-fidelity term**, how well the map reproduces the measured shear, weighted by the noise
-covariance; and a **regulariser, which encodes the prior**, what we assume a plausible convergence map
+terms: a **data-fidelity term**, how well the map reproduces the measured shear, 
+<!-- weighted by the noise covariance -->
+; and a **regulariser, which encodes the prior**, what we assume a plausible convergence map
 looks like. The methods *differ in the regulariser*, and in the way they solve the optimisation problem.
 
 Kaiser–Squires has no regulariser, only the smoothing. Wiener filtering assumes a Gaussian field
@@ -247,10 +245,12 @@ And deep learning learns the regulariser from simulations; that is Part 2.
 ## A1.9 — MCALens · frame 15 · 0:45
 
 The state-of-the-art **unsupervised method is MCALens**.
-It models the convergence as the sum of two components: **a Gaussian component, estimated** with
-a Wiener filter, which needs only the power spectrum; and a **non-Gaussian component**, sparse in the
-starlet domain, which contains the peaks. The two are estimated by **alternating minimisation**: solve
-for one holding the other fixed, then the other, and iterate to convergence.
+It models the convergence as the sum of two components: **a Gaussian component**, estimated with
+a Wiener filter; 
+and a **non-Gaussian component**, representing the peaks in the field
+<!-- sparse in the starlet domain, which contains the peaks.  -->
+The two are estimated by **alternating minimisation**: solve
+for one holding the other fixed, then the other, and iterate until the algorithm converges.
 
 [CLICK] Each sub-problem is solved with what is called a "**proximal step**": a gradient step
 towards the measured shear, then an operator that pulls the result back to what the prior allows.
@@ -264,23 +264,20 @@ So different priors give different maps, all consistent with the measured shear.
 paper, mass-mapping methods were compared just on the **quality of the map**: how close the reconstruction
 comes to the truth in terms of mean-square error, in simulations. 
 But in practice,the map is *not the final product*. 
-What we care about is the **cosmological parameters**, and the reconstruction error does not tell us how the choice of method affects
-them.
+What we care about is the **cosmological parameters**, and the reconstruction error does not tell us how the choice of method affects them.
 
-[CLICK] For Euclid this is a practical question: is an advanced reconstruction method **worth the
-effort**, or is any reasonable method good enough?
+[CLICK] For cosmological surveys like Euclid this is a practical question: is an advanced reconstruction method **worth the effort**, or is any reasonable method good enough?
 
 ---
 
 ## A1.11 — the experiment · frame 17 · 0:53
 
 To answer it, we built a pipeline in which everything is **held fixed** except the mass-mapping method:
-we work with the **cosmo-SLICS** simulations, on a **DES-Y1 footprint** with Euclid-like galaxy
-density, and we run the whole chain from shear to posterior for each method.
-We use **multi-scale peak counts** as the statistic — the number of local maxima in the map, counted
-at each wavelet scale — and an emulator with a Gaussian likelihood and MCMC for the inference. These details are not that important right now, I will come back to all these steps in Part 3 and Part 4.
+we work with the **cosmo-SLICS** simulations, on a Euclid-like setup, and we run the whole chain from shear to posterior for each method.
+<!-- We use **multi-scale peak counts** as the statistic — the number of local maxima in the map, counted at each wavelet scale — and an emulator with a Gaussian likelihood and MCMC for the inference.  -->
+These details are not that important right now, I will come back to all these steps in Part 3 and Part 4.
 
-[CLICK] What matter is that **the only thing that varies** is the reconstruction method. 
+[CLICK] What matters is that **the only thing that varies** is the reconstruction method. 
 <!-- So any difference in the posteriors comes from the mass-mapping method. -->
 
 
@@ -291,12 +288,11 @@ at each wavelet scale — and an emulator with a Gaussian likelihood and MCMC fo
 Here are the three example reconstructions of the same simulated field, next to the truth. 
 The methods that we use as baseline are Kaiser–Squires, and a version of Kaiser–Squires with *inpainting*: a technique that fills the masked areas in a way that is matching statistically the existing field, and is supposed to reduce the mask leakage issues.
 
-These two are the methods that are planned to be used in **Euclid**: 
+These two are the methods that are planned to be used in **Euclid**, where 
 mass mapping has been treated as preprocessing with little
 effect on the cosmology, so the simplest method became the default. 
 
-MCALens on the other hand is our **state of the
-art method**. 
+MCALens on the other hand is our **state of the art method**. 
 
 So what are the posteriors that these lead to, in our work?
 
@@ -308,20 +304,14 @@ Here is the result.
 
 First thing we notice: **inpainting makes no difference**.
 
-But MCALens improves the figure of merit by a huge factor of two point six, **a hundred and fifty-seven percent**. 
+But MCALens improves the figure of merit (the tightness of the posterior) by the huge factor of two point six, **160%**. 
 
-So while MCALens improves the RMSE of the map by only **four per cent**, the figure of merit, so the tightness of the posterior, is improved
-by a hundred and fifty-seven. Map quality and constraining power are *not the same objective*.
+So while MCALens improves the RMSE of the map by only **four per cent**, the figure of merit, is improvedby a 160. 
+Map quality and constraining power are *not the same objective*.
 
 So what we see is that mass mapping is far from a neutral preprocessing step. The choice of reconstruction changes the
 cosmological constraints substantially, and for cosmological surveys it is really worth using an advanced method.
 
-> **If pressed on precision:** Chapter 2 reports no error bars; one chain per method.
->
-> **If pressed on the RMSE comparison:** the RMSE table smooths each map with the kernel that
-> minimises its own RMSE; the figure of merit uses the kernel that maximises its own constraining
-> power. They are not the same maps, and that is the point: optimising for map quality and for the
-> posterior are different problems.
 
 ---
 
