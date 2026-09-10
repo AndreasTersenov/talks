@@ -187,11 +187,11 @@
 					</div>
 				</div>
 
-				<p class="note fragment fade-in" data-fragment-index="1">
+				<!-- <p class="note fragment fade-in" data-fragment-index="1">
 					<span class="lab"></span>
 					&Lambda;CDM is a <b>phenomenological</b> model. About 95&nbsp;% of the energy budget is in two
 					components of unknown nature, and the value of $\Lambda$ is put in by hand.
-				</p>
+				</p> -->
 
 				<aside class="notes">
 					[CLICK] swaps the budget pie for the annotated cone and reveals the note. Then one click each:
@@ -568,8 +568,8 @@
 			<!-- ##################################################################
 			     Part 1 — ONE VERTICAL COLUMN, frames 8-20.  Mass-mapping algorithms and cosmology (Tersenov+ 2024).
 			     The divider card is the top of the column and the paper hangs below it,
-			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
+			     so the overview (ESC) reads as one box per paper.  Advance with SPACE or
+			     PAGE DOWN: the arrows are 2-D, and Right skips the rest of the column.
 			################################################################## -->
 			<section>
 				<section class="actopen" data-background="#000">
@@ -901,7 +901,7 @@
 								<ul>
 									<li>amplifies shape noise at small scales</li>
 									<li>mask effects leak across the map (non-local operator)</li>
-									<li>&kappa; recovered only up to a constant</li>
+									<!-- <li>&kappa; recovered only up to a constant</li> -->
 								</ul>
 							</div>
 						</div>
@@ -1414,8 +1414,8 @@
 			<!-- ##################################################################
 			     Part 2 — ONE VERTICAL COLUMN, frames 21-24.  PnPMass (Tersenov+ 2025).
 			     The divider card is the top of the column and the paper hangs below it,
-			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
+			     so the overview (ESC) reads as one box per paper.  Advance with SPACE or
+			     PAGE DOWN: the arrows are 2-D, and Right skips the rest of the column.
 			################################################################## -->
 			<section>
 				<section class="actopen" data-background="#000">
@@ -1434,74 +1434,76 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-background-color="#ffffff" class="light-slide">
+				<section data-theme="light" class="dlslide">
 					<h3 class="slide-title">What about Deep Learning for Mass Mapping?</h3>
-					<br>
-					<p>Yes, people have tried it (with various approaches) ...And it works!</p>
-					<p>However...</p>
-					<table border="1" style="border-collapse: collapse; text-align: center;">
+
+					<p class="lede">Yes, people have tried it (with various approaches) &hellip; and it works!</p>
+					<p class="lede however">However&hellip;</p>
+
+					<table class="dltable">
 						<thead>
-							<tr style="background-color: #f2f2f2;">
-								<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Mass mapping
-										method</b></th>
-								<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Type</b></th>
-								<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Accurate</b></th>
-								<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Flexible</b></th>
-								<th style="padding: 10px; border-right: 1px solid #000;"><b class="alert">Fast rec.</b></th>
-								<th style="padding: 10px;"><b class="alert">Fast UQ</b></th>
+							<tr>
+								<th>mass mapping method</th>
+								<th>type</th>
+								<th>accurate</th>
+								<th>flexible</th>
+								<th>fast rec.</th>
+								<th>fast UQ</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr style="color: #999999; background-color: #f5f5f5;">
-								<td style="padding: 10px; border-right: 1px solid #000;">Iterative Wiener</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Model-driven (Gaus. prior)</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px;">✗</td>
+							<tr class="stood">
+								<td>Iterative Wiener</td>
+								<td>model-driven, Gaussian prior</td>
+								<td class="no">&#10007;</td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
+								<td class="no">&#10007;</td>
 							</tr>
-							<tr style="color: #999999; background-color: #f5f5f5;">
-								<td style="padding: 10px; border-right: 1px solid #000;">MCALens</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Model-driven (Gaus. + sparse)</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">≈</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
-								<td style="padding: 10px;">✗</td>
-							</tr>
-							<tr>
-								<td style="padding: 10px; border-right: 1px solid #000;">DeepMass</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (UNet)</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;"><b>✗</b>*</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px;">✓</td>
+							<tr class="stood">
+								<td>MCALens</td>
+								<td>model-driven, Gaussian + sparse</td>
+								<td class="part">&#8776;</td>
+								<td class="yes">&#10003;</td>
+								<td class="no">&#10007;</td>
+								<td class="no">&#10007;</td>
 							</tr>
 							<tr>
-								<td style="padding: 10px; border-right: 1px solid #000;">DeepPosterior</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (UNet + MCMC)</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✗</td>
-								<td style="padding: 10px;">✗</td>
+								<td>DeepMass</td>
+								<td>data-driven, U-Net</td>
+								<td class="yes">&#10003;</td>
+								<td class="no">&#10007;<sup>*</sup></td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
 							</tr>
 							<tr>
-								<td style="padding: 10px; border-right: 1px solid #000;">MMGAN</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Data-driven (GAN)</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;"><b>✗</b>*</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">≈</td>
-								<td style="padding: 10px;">≈</td>
+								<td>DeepPosterior</td>
+								<td>data-driven, U-Net + MCMC</td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
+								<td class="no">&#10007;</td>
+								<td class="no">&#10007;</td>
 							</tr>
-							<tr style="background-color: #e6f3ff; font-weight: bold;">
-								<td style="padding: 10px; border-right: 1px solid #000;">What we'd like</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">Data-driven</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px; border-right: 1px solid #000;">✓</td>
-								<td style="padding: 10px;">✓</td>
+							<tr>
+								<td>MMGAN</td>
+								<td>data-driven, GAN</td>
+								<td class="yes">&#10003;</td>
+								<td class="no">&#10007;<sup>*</sup></td>
+								<td class="part">&#8776;</td>
+								<td class="part">&#8776;</td>
+							</tr>
+							<tr class="want">
+								<td>what we&rsquo;d like</td>
+								<td>data-driven</td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
+								<td class="yes">&#10003;</td>
 							</tr>
 						</tbody>
 					</table>
+
+					<p class="dlnote"><sup>*</sup> must be retrained when the noise level or the mask changes</p>
 				</section>
 
 
@@ -3114,8 +3116,8 @@
 			<!-- ##################################################################
 			     Part 3 — ONE VERTICAL COLUMN, frames 37-44.  The joint wavelet l1-norm (Tersenov+, submitted).
 			     The divider card is the top of the column and the paper hangs below it,
-			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
+			     so the overview (ESC) reads as one box per paper.  Advance with SPACE or
+			     PAGE DOWN: the arrows are 2-D, and Right skips the rest of the column.
 			################################################################## -->
 			<section>
 				<section class="actopen" data-background="#000">
@@ -3439,8 +3441,8 @@
 			<!-- ##################################################################
 			     Part 4 — ONE VERTICAL COLUMN, frames 45-50.  Baryonic feedback and scale cuts.
 			     The divider card is the top of the column and the paper hangs below it,
-			     so the overview (ESC) reads as one box per paper.  Advancing through it
-			     Advance with SPACE / PAGE DOWN: the arrows are 2-D (Right skips the column).
+			     so the overview (ESC) reads as one box per paper.  Advance with SPACE or
+			     PAGE DOWN: the arrows are 2-D, and Right skips the rest of the column.
 			################################################################## -->
 			<section>
 				<section class="actopen" data-background="#000">

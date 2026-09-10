@@ -2695,3 +2695,62 @@
 }
 .reveal .slides section.pnpcombo .pnp-eqs .katex { font-size: 0.85em; }
 .reveal .slides section.pnpcombo .pnp-eqs .arw { color: var(--accent); font-size: 1.05em; line-height: 1; }
+
+/* --------------------------------------------------------------------------
+   A2.2 — the mass-mapping scorecard, migrated 2026-09-11.  This was the last
+   main-line slide still in LAM style: `<table border="1">` with inline hex on
+   almost every cell (#f2f2f2 header, #999999/#f5f5f5 stood-down rows,
+   #e6f3ff highlight) and a `<br>` for spacing.  CLAUDE.md is explicit that a
+   stylesheet cannot reach `style="color:#…"`, so none of it followed the
+   theme; the same lift was done for `.ptable` on frame 3.  Colours are tokens
+   now, so the table self-themes and the slide sits on the deck's warm paper
+   like every other light slide.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.dlslide .lede {
+	text-align: left; font-size: 0.82em; margin: 0.25em 0 0;
+}
+.reveal .slides section.dlslide .lede.however { margin-top: 0.45em; }
+
+.reveal .slides section table.dltable {
+	width: 100%; border-collapse: collapse; table-layout: fixed;
+	font-size: 0.75em; line-height: 1.25; margin: 0.55em 0 0;   /* 18 px: the type floor */
+}
+.reveal .slides section table.dltable th {
+	color: var(--accent); font-family: var(--label);
+	font-style: var(--label-style); font-weight: 600;
+	text-align: center; padding: 0.35em 0.3em;
+	border-bottom: 2px solid var(--accent);
+}
+.reveal .slides section table.dltable th:nth-child(1) { text-align: left; width: 20%; }
+.reveal .slides section table.dltable th:nth-child(2) { text-align: left; width: 28%; }
+.reveal .slides section table.dltable td {
+	padding: 0.3em 0.3em; text-align: center;
+	border-bottom: 1px solid var(--hair);
+}
+.reveal .slides section table.dltable td:nth-child(1) { text-align: left; }
+.reveal .slides section table.dltable td:nth-child(2) {
+	text-align: left; color: var(--fg-muted); font-size: 0.95em;   /* 17.1 px */
+}
+/* the rule where the labels stop and the scorecard starts */
+.reveal .slides section table.dltable th:nth-child(2),
+.reveal .slides section table.dltable td:nth-child(2) {
+	border-right: 1px solid var(--edge);
+}
+/* Part 1's methods, stood down: they are context, not candidates. */
+.reveal .slides section table.dltable tr.stood td { color: var(--fg-muted); }
+.reveal .slides section table.dltable tr.stood .yes { color: var(--fg-muted); }
+/* One flat accent fill for the target row.  NOT called `hl`: talks.css:238 gives
+   `.hl` a highlighter-pen gradient (transparent to 60%, then 26% accent), which
+   on a table row paints a band across the bottom 40% of it.  `.ptable tr.hl` on
+   the backup slides has the same latent collision. */
+.reveal .slides section table.dltable tr.want td {
+	background: color-mix(in srgb, var(--accent) 15%, transparent);
+	font-weight: 600; border-bottom: none; color: var(--fg);
+}
+.reveal .slides section table.dltable .yes { color: var(--accent); font-weight: 600; }
+.reveal .slides section table.dltable .no,
+.reveal .slides section table.dltable .part { color: var(--fg-muted); }
+/* the asterisk on `flexible` — it had no footnote at all before */
+.reveal .slides section .dlnote {
+	font-size: 0.72em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
+}
