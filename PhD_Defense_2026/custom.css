@@ -2736,8 +2736,13 @@
 .reveal .slides section table.dltable td:nth-child(2) {
 	border-right: 1px solid var(--edge);
 }
-/* Part 1's methods, stood down: they are context, not candidates. */
-.reveal .slides section table.dltable tr.stood td { color: var(--fg-muted); }
+/* Part 1's methods, stood down: they are context, not candidates.  The LAM
+   original shaded these two rows as well as greying the text (#f5f5f5 against a
+   #ffffff slide, ~10/255 darker); 4 % of --fg over the paper is the same step. */
+.reveal .slides section table.dltable tr.stood td {
+	color: var(--fg-muted);
+	background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
 .reveal .slides section table.dltable tr.stood .yes { color: var(--fg-muted); }
 /* One flat accent fill for the target row.  NOT called `hl`: talks.css:238 gives
    `.hl` a highlighter-pen gradient (transparent to 60%, then 26% accent), which
