@@ -1589,27 +1589,30 @@
 				<section data-background-color="#ffffff" class="light-slide pnpcombo">
 					<h3 class="slide-title">Plug-and-Play Mass Mapping</h3>
 
-					<div class="block pnp-band">
-						<div class="block-title">Main idea:</div>
-						<div class="block-content">
-							<p><em>Use the PnP framework:</em> replace <b class="alert">prox</b> by an off&#8209;the&#8209;shelf
-								<b class="alert">deep denoiser</b> trained on simulations</p>
-							<div class="pnp-eqs">
-								<span>$\kappa^{n+1} = \mathrm{prox}_{\tau g}\left( \kappa^n - \tau \nabla f(\kappa^n) \right)$</span>
-								<span class="arw" aria-hidden="true">&rarr;</span>
-								<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</span>
-							</div>
-							<p>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b> $\hat{\kappa}$,
-								and choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the training phase
-								<b>independent of the noise covariance</b></p>
-						</div>
-					</div>
-
-					<div class="r-stack pnp-steps">
-						<img src="../assets/figures/maps/PnP_4_tight.png"
+					<!-- The figure leaves an L-shaped void at its top-left: nothing above the input
+					     maps and nothing left of the "Iteration i" label, measured at 33 % of its width
+					     by 27 % of its height. The text sits in that void instead of in a band above
+					     it, so the figure can run the full width of the slide. -->
+					<div class="pnp-stage">
+						<img class="pnp-frame" src="../assets/figures/maps/PnP_4_tight.png"
 							alt="PnPMass, iteration 1: the measured shear, initialisation at zero, the forward step giving a noisy map, and the denoiser giving a clean one beside the ground truth">
-						<img class="fragment" src="../assets/figures/maps/PnP_7_tight.png"
+						<img class="pnp-frame fragment" src="../assets/figures/maps/PnP_7_tight.png"
 							alt="PnPMass, iteration 2: the output of the first iteration fed back in">
+
+						<div class="block pnp-pocket">
+							<!-- One equation, not two. The pocket is 168px tall and the two-equation
+							     version needed ~200, which clipped the top Input-gamma panel. The prose
+							     names the substitution; F_Theta shows the result and writes down the
+							     B and A that the line below depends on. -->
+							<div class="block-content">
+								<p>Replace <b class="alert">prox</b> by an off&#8209;the&#8209;shelf
+									<b class="alert">deep denoiser</b> trained on simulations</p>
+								<p class="eq">$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left( \mathbf{A}\kappa^n - \gamma \right) \right)$</p>
+								<p>Converges to a <b class="alert">fixed point</b>; with
+									$\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ the training is
+									<b>independent of the noise covariance</b></p>
+							</div>
+						</div>
 					</div>
 				</section>
 

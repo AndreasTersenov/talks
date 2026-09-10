@@ -2644,24 +2644,35 @@
 .reveal .slides section .alert { font-style: normal; }
 
 /* --------------------------------------------------------------------------
-   PLUG-AND-PLAY, merged 2026-09-10.  The text is a wide low band across the
-   top and the iteration runs underneath it, so the abstract diagram and the
-   real maps stop competing for the same idea on two slides.
-   The figure is 1.92:1 after its own white margin, so at 78 % width it is
-   ~470px tall, which is what is left once the title and the band are paid for.
+   PLUG-AND-PLAY, merged 2026-09-10 and re-laid-out the same evening.
+   The stage carries the figure's own aspect ratio, so both frames fill it
+   exactly and the pocket's percentage coordinates mean the same thing at any
+   size.  reveal's .r-stack was doing neither: it left the image well short of
+   the width it was given and off-centre inside it.
    -------------------------------------------------------------------------- */
-.reveal .slides section.pnpcombo .pnp-band { width: 96%; margin: 0.35em auto 0; text-align: left; }
-.reveal .slides section.pnpcombo .pnp-band .block-content { padding: 8px 18px 10px; }
-.reveal .slides section.pnpcombo .pnp-band p { margin: 0.1em 0; font-size: 0.72em; line-height: 1.32; }
-.reveal .slides section.pnpcombo .pnp-eqs {
-	display: flex; align-items: center; justify-content: center; gap: 1.1em; margin: 0.3em 0 0.15em;
+/* Centred. The earlier right-shift was a workaround for a crop that was 260px too
+   wide: a single near-white stray pixel at x=2816 of the source PNG had been caught
+   by the ink scan and padded the figure with phantom whitespace on the right, which
+   is what made the content sit visibly left of centre. Re-cropped at a threshold
+   that ignores near-white, the figure is symmetric and needs no nudge. */
+.reveal .slides section.pnpcombo .pnp-stage {
+	position: relative; width: 90%; margin: 0.1em auto 0; aspect-ratio: 2412 / 1389;
 }
-.reveal .slides section.pnpcombo .pnp-eqs .katex { font-size: 0.78em; }
-.reveal .slides section.pnpcombo .pnp-eqs .arw { color: var(--accent); font-size: 1.15em; line-height: 1; }
-.reveal .slides section.pnpcombo .pnp-steps { width: 74%; margin: 0.3em auto 0; }
-/* reveal caps every slide image at max-width/max-height 95%, which was holding this
-   one well below the width it was given; the cap has to be lifted explicitly. */
-.reveal .slides section.pnpcombo .pnp-steps img {
-	width: 100%; max-width: none; max-height: none; height: auto;
+.reveal .slides section.pnpcombo .pnp-frame {
+	position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
+	max-width: none; max-height: none;
+}
+/* the void, measured off the PNG: free to 36.9 % of its width and 27 % of its height.
+   The negative left lets the block start at the slide's own margin rather than the
+   figure's, which is 36px further out. */
+.reveal .slides section.pnpcombo .pnp-pocket {
+	position: absolute; left: -3.3%; top: 0; width: 38.5%; margin: 0; text-align: left;
+}
+.reveal .slides section.pnpcombo .pnp-pocket .block-content { padding: 8px 13px 9px; }
+.reveal .slides section.pnpcombo .pnp-pocket p { margin: 0.14em 0; font-size: 0.72em; line-height: 1.26; }
+.reveal .slides section.pnpcombo .pnp-pocket p.eq { text-align: center; margin: 0.1em 0; }
+.reveal .slides section.pnpcombo .pnp-pocket p.eq .katex { font-size: 1em; }
+.reveal .slides section.pnpcombo .pnp-pocket p.dn {
+	text-align: center; margin: 0; color: var(--accent); line-height: 1; font-size: 0.8em;
 }
