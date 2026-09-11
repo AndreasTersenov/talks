@@ -1604,7 +1604,7 @@
    block above instead of hanging off its left edge.  The bullets keep their own
    left alignment - centred list items read as a poster. */
 .reveal .slides section.mca .mca-prox {
-	max-width: 90%; margin: 1.1em auto 0; text-align: center;
+	max-width: 96%; margin: 1.1em auto 0; text-align: center;
 }
 .reveal .slides section.mca .mca-prox .kicker { margin-bottom: 0.35em; }
 .reveal .slides section.mca .mca-prox .points {
@@ -2365,11 +2365,14 @@
    swallow every spare pixel, so the pair was pinned to the left edge with the
    slack piled up on the right.  Shrink both columns and centre the pair. */
 .reveal .slides section.mca .mca-proxrow {
-	display: grid; grid-template-columns: auto auto; gap: 0 2.2em;
+	display: grid; grid-template-columns: auto auto; gap: 0 1.8em;
 	align-items: center; justify-content: center;
 }
 .reveal .slides section.mca .mca-proxeq { margin: 0; }
-.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.78em; }
+/* 0.92em, not 0.78: this is the slide's one real formula and it was reading
+   smaller than the bullets glossing it. The row widens and its gap narrows to
+   pay for it, so the second bullet still holds one line. */
+.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.92em; }
 
 /* ---------------------------------------------------------------------------
    KEY CONCEPT: WAVELETS — the second excursion, built to rhyme with the
