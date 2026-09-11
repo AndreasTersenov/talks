@@ -6,24 +6,31 @@ they mark delivery only, and no wording changed with them.
 
 ## The budget
 
-Measured at **126 wpm** — the rate of the 2026-09-10 rehearsal, where 6,041 spoken words took
-**48:00** with the script in hand. Every earlier version of this table was planned at 110 wpm, which
-the rehearsal shows is too slow for how this script is actually read.
+Measured at **121 wpm** — the rate of the 2026-09-10 rehearsal, where the script as rehearsed
+(`01c9feb`) held **5,799 spoken words** and took **48:00** with the script in hand.
 
-| act | frames | at 126 wpm | notes |
+> **The 126 wpm this table used to quote was wrong**, and so was every word count under it.
+> `measure-script.py` dropped only lines *starting* with `<!--`, so multi-line and mid-line HTML
+> comments were counted as spoken — 666 phantom words by 2026-09-11. The rate was derived through
+> the same bug, from an inflated 6,141 words, so the two errors were cancelling and the headline
+> number looked roughly right. They stop cancelling the moment anything is cut: a trim to A1.7 that
+> saved 0:14 was reported as a 0:36 *increase*, because the parked sentences kept counting.
+> Fixed in `tools/measure-script.py` on 2026-09-11, in `spoken()` and in the `[CLICK]` audit.
+
+| act | frames | at 121 wpm | notes |
 |---|---|---|---|
-| Act 0 — the setup | 1–7 | 7:43 | the DES pipeline parked 2026-09-10 (Martin) |
-| Act 1 — Part 1, does the map matter? | 8–20 | 10:52 | ends on the limitation that opens Part 2 |
-| Act 2 — Part 2, PnPMass | 21–24 | 5:01 | frame 23 now carries the iteration too |
-| Act 3 — Part 3, the summaries | 25–44 | 17:03 | still the longest act by far |
-| Act 4 — Part 4, baryons | 45–50 | 6:08 | |
-| Close | 51 | 1:19 | |
-| | **51 frames** | **48:07** | **at 126 wpm, against a 40:00 target** |
+| Act 0 — the setup | 1–7 | 5:54 | the DES pipeline parked 2026-09-10 (Martin) |
+| Act 1 — Part 1, does the map matter? | 8–20 | 9:36 | A1.7 no longer walks the five methods |
+| Act 2 — Part 2, PnPMass | 21–24 | 4:40 | frame 23 now carries the iteration too |
+| Act 3 — Part 3, the summaries | 25–44 | 16:41 | still the longest act by far |
+| Act 4 — Part 4, baryons | 45–50 | 5:55 | |
+| Close | 51 | 1:29 | |
+| | **51 frames** | **44:14** | **at 121 wpm, against a 40:00 target** |
 
-> **48:07 at 126 wpm; 55:07 at 110.** The read-through number to beat is **48:00**. Delivered from
-> memory expect **52 to 57 minutes**: slower per word, plus the pauses a read-through skips — a new
-> figure, turning to the screen, the beat after a headline — which over 52 frames is another two to
-> four minutes. Against a 45-minute slot that is a gap of about **ten minutes**.
+> **44:14 read from the script.** Delivered from memory expect **48 to 53 minutes**: slower per
+> word, plus the pauses a read-through skips — a new figure, turning to the screen, the beat after a
+> headline — which over 51 frames is another two to four minutes. Against a 45-minute slot the gap
+> is **three to eight minutes**, not the ten this file claimed while the count was inflated.
 > `TRIM_CANDIDATES.md` and `REHEARSAL_FEEDBACK.md` list what is left, item by item.
 
 **The slack in a 45-minute slot is deliberate and must stay slack** — pauses, the beat after a
@@ -1091,69 +1098,74 @@ advantage.
 
 # The arithmetic, and how to close it
 
-**50:20 spoken against a 40:00 target**, at **120 wpm**. Over by **10:20**.
+**44:14 spoken against a 40:00 target**, at the measured **121 wpm**. Over by **4:14**.
 
-> **The rate matters more than any single cut.** 140 wpm is a *reading* rate; delivery has pauses
-> in it. Andreas, timing himself: it takes "significantly more time than what you are estimating".
-> 120 is the interim figure and it is a guess. **Read A0.8 aloud at delivery pace, time it, and set
-> the real number** — the beat is 416 words, so the rate is 416 divided by the minutes it takes:
+> **Re-verified 2026-09-11, and most of this ladder was already spent.** The version before this
+> one was sized at 50:20/120 wpm against a 54-frame deck, through a word count that included every
+> parked comment. Four of its seven items had since been taken, and their savings were being
+> promised twice. Every row below has been checked against the text as it stands; the dead ones are
+> named rather than deleted, because a ladder that quietly loses rows is how the double-counting
+> started.
 >
-> ```
-> tools/measure-script.py PhD_Defense_2026 --wpm 112 --write
-> ```
->
-> Every number below moves with it. At 110 wpm the talk is 51:45; at 130 it is 43:47.
+> **Do not trust a row you have not re-measured.** `tools/measure-script.py PhD_Defense_2026`
+> prints the true length of every beat.
 
 | act | frames | measured | share |
 |---|---|---|---|
-| Act 0 — the setup | 1–7 | 8:32 | 17 % |
-| Act 1 — Part 1 | 9–21 | 10:47 | 21 % |
-| Act 2 — Part 2 | 22–26 | 5:00 | 10 % |
-| Act 3 — Part 3 | 27–46 | 17:52 | 36 % |
-| Act 4 — Part 4 | 47–52 | 6:47 | 13 % |
-| Close | 51 | 1:23 | 3 % |
-| *(not spoken)* | backup 55, 66–67, 100–103, 107, 113–114 | *8:50* | — |
+| Act 0 — the setup | 1–7 | 5:54 | 13 % |
+| Act 1 — Part 1 | 8–20 | 9:36 | 22 % |
+| Act 2 — Part 2 | 21–24 | 4:40 | 11 % |
+| Act 3 — Part 3 | 25–44 | 16:41 | 38 % |
+| Act 4 — Part 4 | 45–50 | 5:55 | 13 % |
+| Close | 51 | 1:29 | 3 % |
+| *(not spoken)* | the parked beats | *7:54* | — |
 
-**The prose is spent.** On 2026-09-07 every beat in the file was rewritten for brevity — 61:37 to
-43:22, a thirty per cent cut with no slide touched. The 2026-09-09 rewrite for clarity held the
-main line to within a minute of that. There is not another ten per cent in the sentences without
-losing claims. What is left is structural.
+**The prose is spent.** Every beat was rewritten for brevity on 2026-09-07, then for clarity on
+2026-09-09, then again by hand on 2026-09-10 and 11. What is left is structural: whole frames, not
+sentences.
 
-## Tier 1 — two frames whose beat says nothing new · −0:57 · lands at 46:29
+## Already taken — do not count these again
+
+| what the old ladder promised | what happened |
+|---|---|
+| frame 25, the PnPMass iteration, **−0:32** | the iteration was **merged into frame 23** (2026-09-10). No separate frame to cut. |
+| frame 49, the SBI refresher, **−0:25** | now frame 47 and already down to **0:19**. Perhaps 0:08 left, not 0:25. |
+| frame 29, the Ajani forecast, **−0:32** | A3.6 is **0:13**. Nothing left to take. |
+| A2.2's read-down-the-table paragraph, **−0:25** | A2.2 was rewritten 2026-09-11 and is **0:45** total. |
+| frame 42's narration, **−0:30** | A3.21 was merged by hand 2026-09-11 and is **1:01**. |
+
+## Tier 1 — the inference runway · −1:12 to −2:38
+
+**This is the recommendation, and it is the only item three reviewers and Martin all named.**
+Frames 33–36 teach the classical Bayes route, generative modelling, normalizing flows and SBI, to a
+room where Tsakalides has that vocabulary professionally and three of the committee know it at the
+level of the code. **3:26 together.** Options, in increasing depth:
+
+| | what | lands at |
+|---|---|---|
+| trim all four in place | −0:35 | 43:39 |
+| merge 34 + 35, generative modelling and flows, into one frame | −0:47 and a frame | 43:27 |
+| …and fold 33, classical inference, into the chain slide at 32 | −1:12 and two frames | 43:02 |
+| Martin's version: SBI only, everything else a clause | −2:13 and three frames | 42:01 |
+
+Frame 36 is not negotiable — Part 4 reuses it verbatim, *"the data vector conditions a flow, same
+pipeline as before"*. **Keep frame 39**: the definition of *optimal* is 0:42 and it is what makes
+A3.23 a sufficiency result rather than a benchmark win.
+
+## Tier 2 — the frames that repeat a picture
 
 | frame | what | saves |
 |---|---|---|
-| 25 | the PnPMass iteration, two frames, which A2.3 has already described | **−0:32** |
-| 49 | the SBI refresher. A3.16 taught the same pipeline twelve minutes earlier | **−0:25** |
-
-## Tier 2 — the inference runway · −2:26 · lands at 44:03
-
-**This is the recommendation.** Frames 35, 36 and 37 teach the classical Bayes route, generative
-modelling and normalizing flows, to a room where Tsakalides has that vocabulary professionally,
-three of the committee know it at the level of the code, and the two astrophysicists need exactly
-one sentence: *for these statistics there is no likelihood, so we use the simulator instead* —
-which is A3.16's opening line.
-
-| frame | what | saves |
-|---|---|---|
-| 35 | classical inference with an explicit likelihood | **−0:50** |
-| 36 | generative modelling and the faces | **−0:48** |
-| 37 | normalizing flows. Fold *flexible, samplable, evaluable* into A3.16 | **−0:48** |
-
-**Keep frame 39.** The definition of *optimal* is 0:38 and it is what makes A3.23 a sufficiency
-result rather than a benchmark win — the first thing the committee will press on.
+| 18 | the three maps — frame 17's chain shows them in miniature | **−0:57** |
+| 30 | the wavelet excursion, now **1:28**. **Take this last** — it is what stops the ℓ1-norm sounding arbitrary, and Part 4's scale cuts lean on it | −1:28 |
 
 ## If it is still long on the day
 
-In this order, and each is a real loss:
-
 | | cut | saves |
 |---|---|---|
-| 1 | A0.8's questions two and four, to one sentence each | −0:30 |
-| 2 | frame 29, the Ajani forecast — A3.11's shapes make the point with the actual statistics | −0:32 |
-| 3 | A2.2's read-down-the-table paragraph; go straight to *nothing had all four* | −0:25 |
-| 4 | frame 42's narration to the first slice and the closing claim, keeping all eight clicks | −0:30 |
-| 5 | frame 18, the three maps — frame 17's chain shows them in miniature | −0:30 |
+| 1 | A0.8's second and fourth questions, to one sentence each | −0:20 |
+| 2 | A4.1, the collision of scales, is **2:13** and the longest beat in the talk | −0:30 |
+| 3 | A3.22, two routes, is **1:49** and carries three clicks | −0:25 |
 
 ## Never cut
 

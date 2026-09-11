@@ -1,17 +1,20 @@
 # Where the time is, and what can come out — 2026-09-10
 
-> **Updated later the same day.** The phases slide left the main line for backup 100, the
-> posterior gloss went into A0.8, and A3.4 took over the list of higher-order statistics. Every
-> frame number below is the numbering after that move; beat ids are unchanged.
-
-> **Superseded in part, 2026-09-10 (evening).** The CosmoStat rehearsal ran the talk in **48:00**
-> reading from the script — 6,041 spoken words, so **126 wpm**, not the 110 this document was
-> planned at. The measurement below still ranks the items correctly; its absolute times are
-> **14 % pessimistic**. Since it was written, the DES-pipeline frame has been parked (**every frame
-> from the old 8 up is now one lower**, and the numbers below have been shifted accordingly),
-> frame 33's classical-inference beat has been cut from 1:20 to 0:52, and all three `[CLICK]`
-> mismatches are fixed. What the rehearsal room asked for is in `REHEARSAL_FEEDBACK.md`, and some
-> of it *added* time deliberately. Current state: **49:32 at 126 wpm**.
+> ## SUPERSEDED, 2026-09-11. Read `SPEAKER_SCRIPT.md`'s cut ladder instead.
+>
+> Everything below was measured through a broken word count. `measure-script.py` dropped only
+> lines *starting* with `<!--`, so multi-line and mid-line HTML comments were counted as spoken —
+> and this script is edited by parking sentences in comments, so the error grew with every trim.
+> The rate was derived through the same bug. Both were fixed on 2026-09-11; the talk measures
+> **44:14 at 121 wpm**, not the 55:22 at 110 or the 49:32 at 126 this file has claimed.
+>
+> The *ranking* below is still useful — it is a careful read of every beat against its slide, and
+> the order of the items has held up. **The times are all wrong, and several items have since been
+> taken.** Group A was applied 2026-09-10 and delivered 0:45 of a promised 2:07, because two of its
+> eight items had been overtaken by rewrites. Group B was rejected. Group D's frame numbers predate
+> the DES-pipeline parking and the 23+24 merge.
+>
+> Re-verify anything here against `tools/measure-script.py PhD_Defense_2026` before acting on it.
 
 A read of every spoken beat in `SPEAKER_SCRIPT.md` against the slide it is spoken over, looking for
 repetition, overexplaining, and material that can be passed over quickly. **Nothing here has been

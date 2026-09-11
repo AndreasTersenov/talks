@@ -18,8 +18,14 @@ actually noticed.
 
 ## What 48 minutes means
 
-The script measures **6,041 spoken words**. Delivered in 48:00, that is **126 wpm** — well above the
-110 wpm this file and `TRIM_CANDIDATES.md` have been planning against, which predicted 54:55. The
+> **Corrected 2026-09-11.** The 6,041-word count below was inflated: `measure-script.py` counted
+> HTML comments as spoken. The rehearsed script holds **5,799** real spoken words, so the measured
+> rate is **121 wpm**, not 126. Both the tool and the rate were fixed on 2026-09-11. The talk now
+> measures **44:14**, and the gap against a 45-minute slot is three to eight minutes delivered,
+> not ten. Everything in this file that quotes a time was computed before that fix.
+
+The script measures **5,799 spoken words**. Delivered in 48:00, that is **121 wpm** — well above the
+110 wpm this file and `TRIM_CANDIDATES.md` have been planning against, which predicted 52:43. The
 model was pessimistic on rate and roughly right on total, because a read-through skips most of the
 pause overhead it was budgeting for.
 
@@ -28,7 +34,7 @@ The number to plan against now is **not** 48:00. A read-through is the fast end 
 | | |
 |---|---|
 | read from the script, measured | **48:00** |
-| from memory, slower per word (≈115 wpm) | ≈52:30 |
+| from memory, slower per word (≈110 wpm) | ≈52:30 |
 | + the pauses a read-through skips — a new figure, turning to the screen, the beat after a headline, over 53 frames | +2 to 4 min |
 | **realistic delivered** | **52 – 57 min** |
 

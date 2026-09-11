@@ -10,9 +10,9 @@ Defense is **14 September 2026**. Everything below is committed and pushed excep
 | | |
 |---|---|
 | main line | **51 frames** (113 in the file; the rest is backup) |
-| spoken length | **47:44 at 126 wpm** |
-| the rate to plan at | **126 wpm** — measured, not assumed (see below) |
-| `[CLICK]` audit | clean |
+| spoken length | **44:14 at 121 wpm** (was reported as 47:44/126 — both were wrong, see below) |
+| the rate to plan at | **121 wpm** — measured, not assumed (see below) |
+| `[CLICK]` audit | **4 mismatches**: frames 6, 24, 42, 43 |
 | `check-asset-links.py` | clean for this deck |
 | type floor | 17 px on the 1200×720 canvas, two-tier |
 | last commit | `b875ca7` |
@@ -23,10 +23,18 @@ rewording Act 0 and switching "this talk" → "this thesis"). Do not commit it w
 
 ### The one number that matters
 
-The CosmoStat rehearsal on 2026-09-10 ran **6,041 spoken words in 48:00** → **126 wpm**. Every
-timing in this repo before that date was planned at 110 wpm and is ~14 % pessimistic. Delivered
-from memory expect **52–57 min** against a **45-minute slot**, so there is still roughly **ten
-minutes** to find.
+The CosmoStat rehearsal on 2026-09-10 ran the script in **48:00**, reading.
+
+**Corrected 2026-09-11.** That was first read as 6,041 words → 126 wpm, but `measure-script.py`
+counted HTML comments as spoken: it dropped only lines *starting* with `<!--`, so multi-line and
+mid-line comments leaked. The rehearsed script holds **5,799** real spoken words, so the rate is
+**121 wpm**. Both errors were in the same direction and cancelled, which is why nobody noticed —
+but they stop cancelling the moment anything is cut, because this script is edited by *parking*
+sentences in comments. On 2026-09-11 a trim to A1.7 that saved 0:14 was reported as a 0:36
+increase. Fixed in `spoken()` and in the `[CLICK]` audit.
+
+The talk is **44:14** read from the script. Delivered from memory expect **48–53 min** against a
+**45-minute slot**, so the gap is **three to eight minutes**, not the ten this file used to claim.
 
 ---
 
