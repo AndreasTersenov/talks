@@ -515,9 +515,16 @@
 .reveal .slides section .l1formula .katex-display { margin: 0; }
 /* one plain-language line under the formula: what the set S_{j,i} actually is.
    It lives inside the fixed 200px formula box, so it costs no column height. */
+/* 0.75em, not the 0.833em floor: this is a gloss on the symbols in the display
+   equation above it, so it reads a step below the statement it explains.
+   NOTE custom.css also has a .defline rule — margins only, and this file loads
+   after it, so this is the one that sets the size. See REVEAL-GOTCHAS 4b. */
 .reveal .slides section .defline {
-  font-size: 0.833em; line-height: 1.4; color: var(--fg-muted);
+  font-size: 0.75em; line-height: 1.4; color: var(--fg-muted);
   text-align: center; margin: 0.9em 0 0;
+  /* two lines either way at this width; balance stops the second being an
+     orphaned "in bin i" */
+  text-wrap: balance;
 }
 
 /* A .cap that carries a sentence rather than a label wants the body face;
