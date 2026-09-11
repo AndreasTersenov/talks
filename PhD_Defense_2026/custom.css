@@ -946,31 +946,40 @@
 }
 .reveal .slides section.kappadef ul.gloss b { color: var(--fg); font-weight: 600; }
 
-/* Two columns from 2026-09-03 — see the note on the slide. */
-.reveal .slides section.kappadef .kdrow {
-	display: flex; align-items: center; justify-content: center;
-	gap: 1.5em; margin: 0.8em auto 0; max-width: 95%;
+/* Stacked from 2026-09-12. Two columns since 2026-09-03, rejected then on the
+   arithmetic in the slide's own note: the UNIONS figure's 1.25 aspect would
+   have forced it to ~28% of the width. That was against two display equations
+   and three bullets. Against the four short lines the block carries now the sum
+   flips — 466px tall stacked against 400px beside the text — and the empty half
+   of the slide goes away with it. The order also matches A1.3: two reasons,
+   then "here is a real mass map".
+   ------------------------------------------------------------------------- */
+.reveal .slides section.kappadef .kdtop { max-width: 96%; margin: 0.4em auto 0; }
+.reveal .slides section.kappadef .kdtop .block.lecture { margin: 0; }
+.reveal .slides section.kappadef .kdtop ul.gloss {
+	width: auto; margin: 0; padding-left: 1.05em; font-size: 0.875em;
 }
-.reveal .slides section.kappadef .kdrow .block.lecture { flex: 1 1 44%; margin: 0; }
-/* unboxed since 2026-09-12: a card around two bullets read as a component when
-   it is just the slide's left half. Same flex basis as the block it replaced. */
-.reveal .slides section.kappadef .kdrow .kdtext { flex: 1 1 44%; margin: 0; padding-left: 1.2em; }
-/* one left edge for all three: without the card there is nothing else holding
-   them together, and a centred kicker over a fit-content list over a centred
-   closing line reads as three unrelated things. */
-.reveal .slides section.kappadef .kdtext .kicker {
-	display: block; margin: 0 0 0.6em; text-align: left;
+/* centred: it is the bridge into the map, so it funnels rather than continuing
+   the left edge of the two reasons above it */
+.reveal .slides section.kappadef .kdtop .kd-close {
+	text-align: center; margin: 0.4em 0 0; font-size: 0.875em; color: var(--fg);
 }
-.reveal .slides section.kappadef .kdtext ul.gloss {
-	width: auto; margin: 0; padding-left: 1.05em;
-}
-.reveal .slides section.kappadef .kdtext .kd-close {
-	text-align: left; margin: 0.85em 0 0;
-}
+.reveal .slides section.kappadef .kdrow { display: block; margin: 0.35em auto 0; max-width: 100%; }
 .reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.833em; }
-.reveal .slides section.kappadef .kmap { flex: 1 1 54%; width: auto; margin: 0; }
+/* the credit sits beside the map, not under it: as a caption it cost a line of
+   height off a figure that is the point of the slide, and the map is 1.25 wide
+   against a 1200px canvas, so the width was there for free. */
+.reveal .slides section.kappadef .kmap {
+	display: flex; align-items: flex-end; justify-content: center;
+	gap: 1.1em; width: auto; margin: 0 auto;
+}
+.reveal .slides section.kappadef .kmap figcaption {
+	flex: 0 0 178px; text-align: left; margin: 0 0 0.4em;
+	font-size: 0.75em; line-height: 1.35;
+}
+.reveal .slides section.kappadef .kmap img { max-height: 452px; width: auto; margin: 0; }
 .reveal .slides section.kappadef .kmap img {
-	display: block; width: 100%; height: auto;
+	display: block; height: auto;
 	border: 0; box-shadow: none; background: transparent;
 }
 /* the trimmed map carries a wider left gutter (the y-axis label) than right, so
