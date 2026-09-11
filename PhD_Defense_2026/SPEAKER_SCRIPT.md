@@ -135,7 +135,7 @@ extracting information from the the map, and using it to infer cosmology.
 the realistic case, where we have physics that the simulations get wrong? -->
 
 Every one of these steps can bias the result or distort the error bars, if it fails to capture the relevant physical or observational effects.
-That's why for the **results to be trustworthy**, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwirse, we risk producing incorrect scientific conclusions.
+That's why for the **results to be trustworthy**, we need methods that properly quantify the unceirtainty, are calibrated, and tested for being unbiased. Otherwise, we risk producing incorrect scientific conclusions.
 
 <!-- , and the whole chain rests on the simulations being right. If they miss a physical or
 observational effect, the posterior at the end looks perfectly normal, and it is wrong. The more of
