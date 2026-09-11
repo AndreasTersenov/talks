@@ -39,18 +39,18 @@
 .reveal .slides section .part-divider hr.accent-rule { margin-left: auto; margin-right: auto; }
 .reveal .slides section .part-divider .lead { font-size: 0.92em; color: var(--fg-muted); margin-top: 0.65em; line-height: 1.4; }
 .reveal .slides section .figrow .arrow{ font-size: 2.4em; color: var(--accent); flex: 0 0 auto; }
-.reveal .slides section .cap          { font-family: var(--label); font-size: 0.708em; line-height: 1.4; color: var(--fg-muted); margin-top: 0.5em; }
+.reveal .slides section .cap          { font-family: var(--label); font-size: 0.833em; line-height: 1.4; color: var(--fg-muted); margin-top: 0.5em; }
 .reveal .slides section .cap b        { color: var(--accent); font-weight: 500; }
 
 /* a compact honesty/caveat note (honesty flags travel onto the slide) */
 .reveal .slides section .caveat {
-  font-size: 0.708em; line-height: 1.42; color: var(--fg);
+  font-size: 0.833em; line-height: 1.42; color: var(--fg);
   border-left: 3px solid var(--accent); padding: 0.2em 0 0.2em 0.7em; margin: 0.6em auto 0; max-width: 90%; text-align: left;
 }
 .reveal .slides section .caveat b { color: var(--accent-ink); font-weight: 600; }
 
 /* method legend chips */
-.reveal .slides section .legend { display: flex; gap: 1.2em; justify-content: center; font-family: var(--label); font-size: 0.708em; margin-top: 0.4em; }
+.reveal .slides section .legend { display: flex; gap: 1.2em; justify-content: center; font-family: var(--label); font-size: 0.833em; margin-top: 0.4em; }
 .reveal .slides section .legend .k { display: inline-flex; align-items: center; gap: 0.4em; }
 .reveal .slides section .legend .sw { width: 26px; height: 0; border-top-width: 4px; border-top-style: solid; display: inline-block; }
 .reveal .slides section .legend .sw.cnn { border-color: var(--cnn); }
@@ -61,7 +61,7 @@
 .reveal .slides section .skeptic { display: flex; gap: 26px; align-items: center; }
 .reveal .slides section .skeptic .who { flex: 0 0 auto; text-align: center; }
 .reveal .slides section .skeptic .who .face { font-size: 86px; line-height: 1; }
-.reveal .slides section .skeptic .who .role { font-family: var(--label); font-size: 0.708em; letter-spacing: 0.06em; color: var(--fg-muted); margin-top: 0.4em; }
+.reveal .slides section .skeptic .who .role { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; color: var(--fg-muted); margin-top: 0.4em; }
 .reveal .slides section .bubble {
   position: relative; background: var(--surface); border: 1px solid var(--edge); border-radius: 14px;
   padding: 0.7em 1em; font-style: italic; font-size: 0.9em; box-shadow: var(--shadow); max-width: 380px;
@@ -71,13 +71,13 @@
   border-right-color: var(--surface); filter: drop-shadow(-1px 0 0 var(--edge));
 }
 .reveal .slides section .checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45em 1.6em; text-align: left; }
-.reveal .slides section .checklist li { font-size: 0.708em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg-muted); margin: 0; }
+.reveal .slides section .checklist li { font-size: 0.833em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg-muted); margin: 0; }
 .reveal .slides section .checklist li .mk { font-family: var(--label); font-weight: 600; flex: 0 0 1.4em; }
 .reveal .slides section .checklist li.addr   { color: var(--fg); font-weight: 600; }
 .reveal .slides section .checklist li.addr .mk { color: var(--accent); }     /* this talk takes it on */
 .reveal .slides section .checklist li.free   { color: var(--fg); }
 .reveal .slides section .checklist li.free .mk { color: var(--cnn); }         /* SBI removes for free */
-.reveal .slides section .checklist li .tag { font-family: var(--label); font-size: 0.708em; letter-spacing: 0.06em; color: var(--accent); margin-left: 0.3em; }
+.reveal .slides section .checklist li .tag { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; color: var(--accent); margin-left: 0.3em; }
 .reveal .slides section .checklist li.free .tag { color: var(--cnn); }
 
 /* ---- SVG illustration frames (S3 tomography, S5 peaks, S6 l1) ---------- */
@@ -90,13 +90,13 @@
 /* ---- S17: cost / benefit balance -------------------------------------- */
 .reveal .slides section .balance { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: stretch; }
 .reveal .slides section .pan { background: var(--surface); border: 1px solid var(--edge); border-radius: 10px; padding: 0.7em 1em; text-align: left; }
-.reveal .slides section .pan h4 { font-family: var(--label); font-size: 0.708em; letter-spacing: 0.06em; margin: 0 0 0.4em; }
+.reveal .slides section .pan h4 { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; margin: 0 0 0.4em; }
 .reveal .slides section .pan.benefit { border-top: 3px solid var(--l1); }
 .reveal .slides section .pan.benefit h4 { color: var(--l1); }
 .reveal .slides section .pan.cost { border-top: 3px solid var(--cnn); }
 .reveal .slides section .pan.cost h4 { color: var(--cnn); }
 .reveal .slides section .pan ul { margin: 0; padding-left: 1.1em; }
-.reveal .slides section .pan li { font-size: 0.708em; margin-bottom: 0.3em; }
+.reveal .slides section .pan li { font-size: 0.833em; margin-bottom: 0.3em; }
 .reveal .slides section .pan .big { font-family: var(--r-heading-font); font-weight: 600; font-size: 2.2em; line-height: 1; color: var(--l1); }
 .reveal .slides section .thumb { margin-top: 0.6em; }
 
@@ -106,7 +106,7 @@
 /* ---- S3: tomography build-up (Justine Zeghal screenshots, black bg flipbook) ---- */
 .reveal .slides section .tomo-flip { position: relative; width: 1000px; max-width: 90%; margin: 0.15em auto 0; aspect-ratio: 3000 / 1418; }
 .reveal .slides section .tomo-flip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: transparent; border: 0; box-shadow: none; margin: 0; }
-.reveal .slides section .tomo-note { font-size: 0.708em; color: #d2d6db; max-width: 84%; margin: 0.5em auto 0; text-align: center; line-height: 1.35; }
+.reveal .slides section .tomo-note { font-size: 0.833em; color: #d2d6db; max-width: 84%; margin: 0.5em auto 0; text-align: center; line-height: 1.35; }
 .reveal .slides section .tomo-note em { color: var(--accent-ink); font-style: normal; font-weight: 600; }
 .reveal .slides section .tomo-credit { position: absolute; right: 22px; bottom: 12px; font-family: var(--label); font-size: 0.542em; letter-spacing: 0.05em; color: #8b9099; }
 
@@ -193,7 +193,7 @@
 }
 
 .reveal .slides section .veil-card .cap {
-	font-family: var(--label); font-size: 0.708em; letter-spacing: 0.03em;
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
 	color: var(--fg-muted); margin: 0.6em 0 0;
 }
 
@@ -258,7 +258,7 @@
 .reveal .slides section .figgrid figure img   { height: auto; object-fit: contain; }
 .reveal .slides section .figgrid figure video.crop-right { object-position: right center; }
 .reveal .slides section .figgrid figcaption {
-	font-family: var(--label); font-size: 0.708em; letter-spacing: 0.03em;
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
 	color: var(--fg-muted); text-align: right; margin-top: 0.45em;
 }
 
@@ -282,13 +282,13 @@
 	object-fit: contain; border-radius: 10px; border: 1px solid var(--edge); margin: 0;
 }
 .reveal .slides section .probesgrid figcaption {
-	font-size: 0.708em; line-height: 1.35; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.35; color: var(--fg-muted);
 	text-align: left; margin-top: 0.5em;
 }
 
 .reveal .slides section table.ptable {
 	width: 100%; border-collapse: collapse; table-layout: fixed;
-	font-size: 0.72em; line-height: 1.3;
+	font-size: 0.833em; line-height: 1.3;
 }
 .reveal .slides section table.ptable th {
 	background: var(--surface-2, #26272c); color: var(--accent);
@@ -374,7 +374,7 @@
 	text-anchor: middle; paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 9px;
 }
 .reveal .slides section .conecap {
-	font-family: var(--label); font-size: 0.708em; color: var(--fg-muted);
+	font-family: var(--label); font-size: 0.833em; color: var(--fg-muted);
 	text-align: right; margin-top: 0.35em;
 }
 
@@ -445,7 +445,7 @@
 }
 .reveal .slides section .bare figure { margin: 0; }
 .reveal .slides section .bare figcaption {
-	font-family: var(--label); font-size: 0.708em; letter-spacing: 0.03em;
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
 	color: var(--fg-muted); text-align: center; margin-top: 0.55em; line-height: 1.35;
 }
 .reveal .slides section .bare figcaption b { color: var(--accent); }
@@ -463,7 +463,7 @@
 }
 .reveal .slides section .note b { color: var(--accent); }
 .reveal .slides section .note .lab {
-	display: block; font-family: var(--label); font-size: 0.708em; letter-spacing: 0.06em;
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em;
 	color: var(--fg-muted); margin-bottom: 0.2em;
 }
 
@@ -471,7 +471,7 @@
 .reveal .slides section .params { display: flex; gap: 2.6em; justify-content: center; margin: 0.9em 0 0; }
 .reveal .slides section .params .p { text-align: center; }
 .reveal .slides section .params .p .sym { display: block; font-size: 1.5em; color: var(--accent); line-height: 1.15; }
-.reveal .slides section .params .p .def { display: block; font-size: 0.708em; color: var(--fg-muted); max-width: 10em; line-height: 1.3; margin-top: 0.3em; }
+.reveal .slides section .params .p .def { display: block; font-size: 0.833em; color: var(--fg-muted); max-width: 10em; line-height: 1.3; margin-top: 0.3em; }
 
 /* A0.7 — the hinge. Words ARE the content (guidelines 4.2, third exception),
    so they get the whole frame rather than sitting in a box in the top half. */
@@ -498,10 +498,10 @@
 	max-width: none; max-height: none; margin: 0; border-radius: 5px;
 }
 .reveal .slides section .chainfig .step .cap {
-	display: block; font-size: 0.708em; line-height: 1.3; margin-top: 0.5em; color: var(--fg);
+	display: block; font-size: 0.833em; line-height: 1.3; margin-top: 0.5em; color: var(--fg);
 }
 .reveal .slides section .chainfig .step .n {
-	display: block; font-family: var(--label); font-size: 0.708em; letter-spacing: 0.06em;
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em;
 	color: var(--fg-muted); margin-top: 0.3em;
 }
 .reveal .slides section .chainfig .arw { align-self: center; color: var(--accent); font-size: 1.5em; padding-bottom: 2.2em; }
@@ -521,8 +521,8 @@
 	border-left: 4px solid var(--accent); padding-left: 0.5em; margin: 0.2em 0 0.7em;
 }
 .reveal .slides section .actdiv .actref {
-	font-family: var(--label); font-size: 0.708em; letter-spacing: 0.05em;
-	color: var(--fg-muted); margin: 0; padding-left: 0.72em;
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.05em;
+	color: var(--fg-muted); margin: 0; padding-left: 0.833em;
 }
 .reveal .slides section .actdiv .actref b { color: var(--fg); font-weight: 500; }
 .reveal .slides section .actdiv .actqr {
@@ -549,11 +549,11 @@
 	background: color-mix(in srgb, var(--accent) 8%, var(--surface));
 }
 .reveal .slides section .fixedchain .fname {
-	font-size: 0.708em; line-height: 1.25; font-weight: 600; color: var(--fg);
+	font-size: 0.833em; line-height: 1.25; font-weight: 600; color: var(--fg);
 }
 .reveal .slides section .fixedchain .fstep.swap .fname { color: var(--accent-ink); }
 .reveal .slides section .fixedchain .fsub {
-	font-family: var(--label); font-size: 0.708em; letter-spacing: 0.04em;
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.04em;
 	color: var(--fg-muted); margin-top: 0.45em; line-height: 1.35;
 }
 .reveal .slides section .fixedchain .farw {
@@ -624,13 +624,13 @@
 }
 .reveal .slides section .mcard.want { border-left: 3px solid var(--accent); }
 .reveal .slides section .mcard .mtag {
-	display: block; font-family: var(--label); font-size: 0.708em; letter-spacing: 0.07em;
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.07em;
 	color: var(--accent); margin-bottom: 0.45em;
 }
 .reveal .slides section .mcard h4 {
 	font-size: 0.82em; margin: 0 0 0.5em; line-height: 1.2;
 }
-.reveal .slides section .mcard p { font-size: 0.708em; line-height: 1.4; margin: 0.4em 0 0; }
+.reveal .slides section .mcard p { font-size: 0.833em; line-height: 1.4; margin: 0.4em 0 0; }
 .reveal .slides section .mcard .has   { color: var(--fg); }
 .reveal .slides section .mcard .lacks { color: var(--fg-muted); }
 /* pair each line with a glyph so the has/lacks split does not rest on colour alone */
@@ -658,13 +658,13 @@
 .reveal .slides section .coreq.scoreboard {
 	display: grid; grid-template-columns: 1fr 1fr; gap: 0.7em 1em; max-width: 96%;
 }
-.reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.708em; line-height: 1.35; }
-.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.708em; }
+.reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.833em; line-height: 1.35; }
+.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.833em; }
 
 /* A1.2: the four-panel figure carries the slide; the words underneath are one line each */
 .reveal .slides section .massmaps { margin-bottom: 0.35em; }
 .reveal .slides section .massmaps img { width: 66%; }
-.reveal .slides section .massmaps figcaption { font-size: 0.708em; }
+.reveal .slides section .massmaps figcaption { font-size: 0.833em; }
 
 /* A1.3: the chain is short, so let it breathe rather than float in dead space */
 .reveal .slides section .fixedchain { margin-top: 1.4em; }
@@ -673,13 +673,13 @@
 /* A1.5: two corner plots plus a callout is the tightest slide in the act */
 .reveal .slides section .scalepair { gap: 1.4em; }
 .reveal .slides section .scalepair .fig img { width: 94%; }
-.reveal .slides section .scalepair figcaption { font-size: 0.708em; margin-top: 0.25em; }
+.reveal .slides section .scalepair figcaption { font-size: 0.833em; margin-top: 0.25em; }
 
 /* A2.1: peer cards, so they get equal weight and readable type */
 .reveal .slides section .methodcards { margin-top: 1.5em; gap: 1.2em; }
 .reveal .slides section .mcard { padding: 1.1em 1.15em 1.2em; }
 .reveal .slides section .mcard h4 { font-size: 0.92em; }
-.reveal .slides section .mcard p { font-size: 0.708em; }
+.reveal .slides section .mcard p { font-size: 0.833em; }
 /* the glyph is a separate marker, not part of the sentence */
 .reveal .slides section .mcard .has::before,
 .reveal .slides section .mcard .lacks::before {
@@ -691,13 +691,13 @@
 /* A2.2: the diagram was crowding the takeaway off the bottom of the frame */
 .reveal .slides section .pnpdiag { margin: 0.2em 0 0.1em; }
 .reveal .slides section .pnpdiag img { width: 52%; }
-.reveal .slides section .pnpdiag figcaption { font-size: 0.708em; }
+.reveal .slides section .pnpdiag figcaption { font-size: 0.833em; }
 .reveal .slides section .defline { margin: 0.15em 0 0.5em; }
 .reveal .slides section .defline .katex-display { margin: 0.2em 0; font-size: 0.82em; }
 
 /* A2.3: the conformal-bounds panel is three maps wide, the other two are square */
 .reveal .slides section .uqrow.wide-first { grid-template-columns: 1.45fr 1fr 1fr; gap: 0.9em; }
-.reveal .slides section .uqrow figcaption { font-size: 0.708em; margin-top: 0.3em; }
+.reveal .slides section .uqrow figcaption { font-size: 0.833em; margin-top: 0.3em; }
 .reveal .slides section .uqcols { margin-top: 0.7em; }
 .reveal .slides section .uqcols .callout,
 .reveal .slides section .uqcols .takeaway { padding: 0.5em 0.85em; }
@@ -705,7 +705,11 @@
 .reveal .slides section .uqcols .takeaway { font-size: 0.92em; }
 
 /* A1.5 fit: the callout was landing a few px past the bottom of the 720 canvas */
-.reveal .slides section .scalepair .fig img { width: 88%; }
+/* 84%, not 88%: at the 20px type floor (2026-09-11) the captions and the
+   interpretation callout grew, and the slide reached 718 of the 720px canvas.
+   This is the LAST .scalepair img rule in the file, so it is the one that wins
+   — see REVEAL-GOTCHAS 4b before editing either of the two above. */
+.reveal .slides section .scalepair .fig img { width: 84%; }
 .reveal .slides section .scalepair + .callout { padding: 0.45em 0.9em; margin-top: 0.6em; }
 .reveal .slides section .scalepair + .callout,
 .reveal .slides section .scalepair + .callout b { font-size: 0.94em; }
@@ -722,11 +726,11 @@
 .reveal .slides section .uqcols .takeaway { font-size: 0.84em; }
 .reveal .slides section .uqbanner + .uqrow + .uqcols { margin-top: 0.5em; }
 /* scoped: a deck-wide .caveat rule would resize the 17 already-tuned ones in Acts 3-4 */
-.reveal .slides section .uqcols + .caveat { font-size: 0.708em; }
+.reveal .slides section .uqcols + .caveat { font-size: 0.833em; }
 
 /* A0.3: the derived-parameters caveat, between the parameter columns and the assumptions */
 .reveal .slides section .derived {
-	font-size: 0.708em; line-height: 1.4; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.4; color: var(--fg-muted);
 	max-width: 88%; margin: 0.1em auto 0.7em; text-align: center;
 }
 .reveal .slides section .derived b { color: var(--accent); font-weight: 500; }
@@ -736,17 +740,17 @@
 .reveal .slides section.lcdm .qcols { margin: 0.3em 0.4em 0.3em; gap: 0.9em; }
 .reveal .slides section.lcdm .qcols h4 { font-size: 0.92em; margin-bottom: 0.15em; }
 .reveal .slides section.lcdm .qcols .par { font-size: 0.92em; margin: 0.1em 0; }
-.reveal .slides section.lcdm .qcols .gloss { font-size: 0.708em; line-height: 1.35; }
-.reveal .slides section.lcdm .derived { font-size: 0.708em; margin: 0 auto 0.45em; }
+.reveal .slides section.lcdm .qcols .gloss { font-size: 0.833em; line-height: 1.35; }
+.reveal .slides section.lcdm .derived { font-size: 0.833em; margin: 0 auto 0.45em; }
 
 .reveal .slides section.lcdm .block.lecture { margin: 0; padding: 0.5em 0.9em 0.6em; }
-.reveal .slides section.lcdm .block-title { font-size: 0.708em; margin-bottom: 0.35em; }
+.reveal .slides section.lcdm .block-title { font-size: 0.833em; margin-bottom: 0.35em; }
 .reveal .slides section.lcdm .figgrid { grid-template-columns: 1.55fr 1fr; gap: 1em; align-items: center; }
-.reveal .slides section.lcdm .assume { font-size: 0.708em; line-height: 1.45; padding-left: 0.9em; }
+.reveal .slides section.lcdm .assume { font-size: 0.833em; line-height: 1.45; padding-left: 0.9em; }
 .reveal .slides section.lcdm .assume li { margin-bottom: 0.18em; }
 .reveal .slides section.lcdm .figgrid figure { margin: 0; }
 .reveal .slides section.lcdm .figgrid img { max-height: 190px; width: auto; margin: 0 auto; display: block; }
-.reveal .slides section.lcdm .note { font-size: 0.708em; margin-top: 0.55em; max-width: 95%; }
+.reveal .slides section.lcdm .note { font-size: 0.833em; margin-top: 0.55em; max-width: 95%; }
 /* the headline already says "the assumptions"; the block just holds them */
 .reveal .slides section.lcdm .block.lecture { padding: 0.75em 1em; }
 .reveal .slides section.lcdm .block.lecture .block-content { margin: 0; }
@@ -789,8 +793,8 @@
 .reveal .slides section.lcdm .cone svg.coneov .lead { stroke-width: 7px; }
 
 /* legibility pass — these were below the type floor at lecture distance */
-.reveal .slides section.lcdm .qcols .gloss { font-size: 0.708em; }
-.reveal .slides section.lcdm .derived { font-size: 0.708em; }
+.reveal .slides section.lcdm .qcols .gloss { font-size: 0.833em; }
+.reveal .slides section.lcdm .derived { font-size: 0.833em; }
 /* the figure sets the block's height, so the list is sized to fill it rather than
    float in the middle of a tall cell */
 /* 2026-09-11: sized up when the parameter row was parked. THIS is the rule that wins —
@@ -799,7 +803,7 @@
 .reveal .slides section.lcdm .assume li { margin-bottom: 0.75em; }
 .reveal .slides section.lcdm .assume li:last-child { margin-bottom: 0; }
 .reveal .slides section.lcdm .figgrid { align-items: center; }
-.reveal .slides section.lcdm .note { font-size: 0.708em; }
+.reveal .slides section.lcdm .note { font-size: 0.833em; }
 
 /* ============================================================================
  * A0.4 — the probes, then the tensions. Dark slide: the probes composite is
@@ -811,7 +815,7 @@
 .reveal .slides section.probes .figswap > * { grid-area: 1 / 1; align-self: center; }
 .reveal .slides section.probes .figswap > figure { margin: 0; }
 .reveal .slides section.probes .figswap > figure img { width: 62%; max-width: 100%; }
-.reveal .slides section.probes figcaption { font-size: 0.708em; line-height: 1.5; margin-top: 0.6em; }
+.reveal .slides section.probes figcaption { font-size: 0.833em; line-height: 1.5; margin-top: 0.6em; }
 /* 2026-09-11: the caption is parked, so the composite takes the room it was leaving
    for four lines nobody says. The width lives on `.probeshot` further down — the ring
    is positioned in percentages of that wrapper, so the wrapper has to carry the size or
@@ -832,7 +836,7 @@
 	display: block; margin-top: 0.35em; font-family: var(--label);
 	font-size: 0.82em; color: var(--fg-muted); opacity: 0.75;
 }
-.reveal .slides section.probes .note { font-size: 0.708em; margin-top: 0.7em; }
+.reveal .slides section.probes .note { font-size: 0.833em; margin-top: 0.7em; }
 
 /* ============================================================================
  * A0.5 — the lensing geometry. The source image is 800x617; it sits in a wider
@@ -909,7 +913,7 @@
    Hanging en-dashes rather than dots — a typeset list, not a UI list. */
 .reveal .slides section.wlq .qpair ul {
 	list-style: disc outside; padding-left: 1.05em; margin: auto 0 0;
-	font-size: 0.708em; line-height: 1.45; text-align: left;
+	font-size: 0.833em; line-height: 1.45; text-align: left;
 	/* the list block is centred in the card, the lines inside it stay left-aligned:
 	   align-self does the cross-axis centring, margin-top:auto keeps it at the foot */
 	align-self: center;
@@ -918,7 +922,7 @@
 .reveal .slides section.wlq .qpair li b { color: var(--fg); font-weight: 600; }
 .reveal .slides section.wlq .qpair li b.alert { color: var(--accent); }
 
-.reveal .slides section.wlq .note { font-size: 0.708em; margin-top: 0.9em; max-width: 95%; }
+.reveal .slides section.wlq .note { font-size: 0.833em; margin-top: 0.9em; max-width: 95%; }
 
 /* A0.10 — the convergence definition, with the map as the evidence band. */
 .reveal .slides section.kappadef .block.lecture { margin: 0 10px; }
@@ -927,7 +931,7 @@
 .reveal .slides section.kappadef .katex-display { margin: 0.35em 0 0.2em; font-size: 0.86em; }
 .reveal .slides section.kappadef ul.gloss {
 	list-style: disc outside; padding-left: 1.05em;
-	font-size: 0.708em; line-height: 1.45; text-align: left; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.45; text-align: left; color: var(--fg-muted);
 	/* Centred as a block under the centred equation; lines stay left-aligned.
 	   `display: block` is load-bearing: darkenergy.css sets .reveal ul to
 	   inline-block, and auto side margins do nothing to an inline-block — it just
@@ -943,7 +947,7 @@
 	gap: 1.5em; margin: 0.8em auto 0; max-width: 95%;
 }
 .reveal .slides section.kappadef .kdrow .block.lecture { flex: 1 1 44%; margin: 0; }
-.reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.72em; }
+.reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.833em; }
 .reveal .slides section.kappadef .kmap { flex: 1 1 54%; width: auto; margin: 0; }
 .reveal .slides section.kappadef .kmap img {
 	display: block; width: 100%; height: auto;
@@ -951,7 +955,7 @@
 }
 /* the trimmed map carries a wider left gutter (the y-axis label) than right, so
    the caption is nudged in to sit under the plot frame rather than the bbox */
-.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.708em; }
+.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.833em; }
 .reveal .slides section.kappadef .kmap figcaption b { color: var(--accent); }
 
 /* The second reason we want kappa — a scalar, not a spin-2 field.  Added
@@ -959,7 +963,7 @@
    to pay for it and this callout is deliberately the most compact on the deck. */
 .reveal .slides section.kappadef .callout {
 	margin: 0.55em auto 0; max-width: 78%; padding: 0.45em 0.9em;
-	font-size: 0.708em; line-height: 1.45;
+	font-size: 0.833em; line-height: 1.45;
 }
 .reveal .slides section.kappadef .callout .label { margin-bottom: 0.12em; }
 
@@ -986,7 +990,7 @@
 .reveal .slides section.kgrel .kgcols ul {
 	display: block; list-style: disc outside; padding-left: 1.05em;
 	width: fit-content; margin: 0 auto;
-	font-size: 0.708em; line-height: 1.5; text-align: left;
+	font-size: 0.833em; line-height: 1.5; text-align: left;
 }
 .reveal .slides section.kgrel .kgcols li { margin: 0.26em 0; }
 
@@ -1061,7 +1065,7 @@
 /* inference has no object to photograph, so it is a smaller process node */
 .reveal .slides section .pipeline .thumb.proc {
 	background: transparent; border: 1px dashed var(--hair);
-	font-family: var(--r-heading-font); font-size: 0.708em; color: var(--fg-muted);
+	font-family: var(--r-heading-font); font-size: 0.833em; color: var(--fg-muted);
 }
 /* the inference node: a comparison, drawn. Several simulated summaries at
    different cosmologies in the muted ink, the measured one in the accent. */
@@ -1072,12 +1076,12 @@
 
 .reveal .slides section .pipeline .sname {
 	font-family: var(--r-heading-font); font-weight: 600;
-	font-size: 0.708em; line-height: 1.2; color: var(--fg);
+	font-size: 0.833em; line-height: 1.2; color: var(--fg);
 }
 .reveal .slides section .pipeline .ssub {
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.708em; line-height: 1.3; color: var(--fg-muted); margin-top: 0.18em;
+	font-size: 0.833em; line-height: 1.3; color: var(--fg-muted); margin-top: 0.18em;
 }
 
 /* --- the model lane, row 2 ------------------------------------------------ */
@@ -1104,11 +1108,11 @@
 	padding: 0.45em 0.4em 0.5em;
 }
 .reveal .slides section .pipeline .stage.model .sname { font-size: 0.708em; }
-.reveal .slides section .pipeline .stage.model .ssub  { font-size: 0.708em; }
+.reveal .slides section .pipeline .stage.model .ssub  { font-size: 0.833em; }
 .reveal .slides section .pipeline .stage.model .thumb { aspect-ratio: 5 / 2; margin-bottom: 0.35em; }
 /* the prior gets the same dashed process mark as inference — the lane opens on
    π(θ) and the data lane closes on p(θ|x), which is the whole shape of the thing */
-.reveal .slides section .pipeline .stage.model .thumb.proc { font-size: 0.708em; }
+.reveal .slides section .pipeline .stage.model .thumb.proc { font-size: 0.833em; }
 /* The edge that rejoins the data lane, drawn as an elbow rather than a stray
    glyph: a floating arrow between two boxes reads as decoration, a line that
    leaves one box and arrives at another reads as a diagram. It is the one edge
@@ -1195,7 +1199,7 @@
 /* A0.10 — the hand-off. Nothing but the recalled diagram and one line, so the
    pipeline gets more room here than it does on 0.8, where a note sits under it. */
 .reveal .slides section.handoff .pipeline-slot { display: block; margin: 1.4em auto 0; }
-.reveal .slides section.handoff .note { font-size: 0.708em; margin-top: 1.5em; max-width: 88%; }
+.reveal .slides section.handoff .note { font-size: 0.833em; margin-top: 1.5em; max-width: 88%; }
 
 /* ---------------------------------------------------------------------------
    Kaiser-Squires, rebuilt light. Same construction as 0.6a and 0.6c: a wide
@@ -1222,7 +1226,7 @@
 .reveal .slides section.ksmain .kscols ul {
 	display: block; list-style: disc outside; padding-left: 1.05em;
 	width: fit-content; margin: 0 auto;
-	font-size: 0.708em; line-height: 1.5; text-align: left;
+	font-size: 0.833em; line-height: 1.5; text-align: left;
 }
 .reveal .slides section.ksmain .kscols li { margin: 0.24em 0; }
 
@@ -1275,7 +1279,7 @@
 }
 /* the plain-English line — the one a first-timer actually reads */
 .reveal .slides section.bayes .tsub {
-	font-size: 0.708em; line-height: 1.45; color: var(--fg);
+	font-size: 0.833em; line-height: 1.45; color: var(--fg);
 	margin-top: 0.45em; max-width: 19em;
 }
 .reveal .slides section.bayes .tsub em { font-style: italic; font-weight: 600; }
@@ -1283,7 +1287,7 @@
 .reveal .slides section.bayes .trole {
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.708em; line-height: 1.4; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.4; color: var(--fg-muted);
 	margin-top: 0.55em; padding-top: 0.45em; border-top: 1px solid var(--hair);
 	width: 100%; text-align: center;
 }
@@ -1313,19 +1317,19 @@
 }
 .reveal .slides section.bayes .pcard + .pcard { border-left: 1px solid var(--hair); }
 .reveal .slides section.bayes .pname {
-	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.74em; color: var(--accent);
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.855em; color: var(--accent);
 }
 /* the learned prior is the odd one out — it is not chosen, and Part 2 is about it */
 .reveal .slides section.bayes .pcard.learned .pname { font-style: italic; }
 .reveal .slides section.bayes .passume {
-	font-size: 0.708em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.4em;
+	font-size: 0.833em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.4em;
 }
 .reveal .slides section.bayes .passume b { color: var(--fg); font-weight: 600; }
 
 /* the forward reference: this is why Bayes is taught here and not at the SBI
    slide, so it earns a line of its own rather than living only in the notes */
 .reveal .slides section.bayes .note.carry {
-	font-size: 0.708em; margin: 1.5em auto 0; max-width: 84%;
+	font-size: 0.833em; margin: 1.5em auto 0; max-width: 84%;
 }
 
 /* ---------------------------------------------------------------------------
@@ -1352,7 +1356,7 @@
 	--anno: #c2521f;
 }
 .reveal .slides section.bayes2 .lede {
-	font-family: var(--r-heading-font); font-size: 0.72em; line-height: 1.5;
+	font-family: var(--r-heading-font); font-size: 0.833em; line-height: 1.5;
 	color: var(--fg-muted); text-align: left;
 	max-width: 92%; margin: 0.5em auto 1.4em;
 }
@@ -1372,7 +1376,7 @@
 
 .reveal .slides section.bayes2 .beat { text-align: center; }
 .reveal .slides section.bayes2 .blab {
-	font-size: 0.708em; line-height: 1.4; color: var(--fg);
+	font-size: 0.833em; line-height: 1.4; color: var(--fg);
 	margin: 0 auto 0.55em; min-height: 2.9em;
 	/* flex, so labels of different lengths bottom-align and the three symbols sit
 	   on one line. The single <span> child is load-bearing: a flex container turns
@@ -1420,18 +1424,18 @@
 .reveal .slides section.bayes2 .ch + .ch { border-left: 1px solid var(--hair); }
 .reveal .slides section.bayes2 .ch .n {
 	display: inline-block; font-family: var(--r-heading-font); font-weight: 600;
-	font-size: 0.708em; color: var(--anno); margin-right: 0.45em;
+	font-size: 0.833em; color: var(--anno); margin-right: 0.45em;
 }
 .reveal .slides section.bayes2 .ch .cn {
-	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.74em; color: var(--fg);
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.855em; color: var(--fg);
 }
 .reveal .slides section.bayes2 .ch.learned .cn { font-style: italic; color: var(--accent); }
 .reveal .slides section.bayes2 .ch .ca {
-	display: block; font-size: 0.708em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.35em;
+	display: block; font-size: 0.833em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.35em;
 }
 .reveal .slides section.bayes2 .ch .ca b { color: var(--fg); font-weight: 600; }
 .reveal .slides section.bayes2 .note.carry {
-	font-size: 0.708em; margin: 1.3em auto 0; max-width: 84%;
+	font-size: 0.833em; margin: 1.3em auto 0; max-width: 84%;
 }
 
 /* the label's single child, so the flex bottom-alignment has one item to align */
@@ -1459,7 +1463,7 @@
 	background: var(--bg); padding: 0 0.55em;
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.708em; color: var(--fg-muted);
+	font-size: 0.833em; color: var(--fg-muted);
 }
 .reveal .slides section.invprob .ip-lane.inv .ip-tag { color: var(--accent); }
 
@@ -1474,14 +1478,14 @@
 	margin: 0; max-width: none; max-height: none; box-shadow: none;
 }
 .reveal .slides section.invprob .ip-cell figcaption {
-	font-size: 0.708em; color: var(--fg-muted); margin-top: 0.4em;
+	font-size: 0.833em; color: var(--fg-muted); margin-top: 0.4em;
 }
 
 .reveal .slides section.invprob .ip-arrow {
 	display: flex; flex-direction: column; align-items: center;
 	gap: 0.3em; min-width: 118px;
 }
-.reveal .slides section.invprob .ip-op { font-size: 0.708em; color: var(--fg); }
+.reveal .slides section.invprob .ip-op { font-size: 0.833em; color: var(--fg); }
 .reveal .slides section.invprob .ip-shaft {
 	display: block; position: relative; width: 100%; height: 0;
 	border-top: 1.5px solid var(--fg-muted);
@@ -1514,7 +1518,7 @@
    cards are now genuinely different reconstructions of the same field. */
 .reveal .slides section.invprob .ip-fancap {
 	position: absolute; left: -16px; right: -16px; bottom: 0; z-index: 4;
-	text-align: center; font-size: 0.708em; color: var(--accent);
+	text-align: center; font-size: 0.833em; color: var(--accent);
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
 }
@@ -1523,7 +1527,7 @@
 	/* sits INSIDE the row, so the lane is filled left-to-right rather than
 	   leaving the picture huddled in the middle of a very wide box */
 	flex: 0 1 24%; text-align: left; align-self: center;
-	font-size: 0.708em; color: var(--fg-muted); line-height: 1.5;
+	font-size: 0.833em; color: var(--fg-muted); line-height: 1.5;
 	margin: 0; padding-left: 1.1em; border-left: 2px solid var(--edge);
 }
 .reveal .slides section.invprob .ip-lane.inv .ip-verdict {
@@ -1531,7 +1535,7 @@
 }
 .reveal .slides section.invprob .ip-verdict b { color: var(--fg); }
 .reveal .slides section.invprob .takeaway {
-	margin: 1em auto 0; max-width: 90%; font-size: 0.708em;
+	margin: 1em auto 0; max-width: 90%; font-size: 0.833em;
 }
 
 
@@ -1582,7 +1586,7 @@
 	display: block; margin-top: 0.15em;
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.708em; color: var(--fg);
+	font-size: 0.833em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p {
 	margin: 0.55em 0 0; font-size: 0.78em; line-height: 1.35; color: var(--fg);
@@ -1591,7 +1595,7 @@
 .reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
 
 .reveal .slides section.mca .block.lecture { margin: 1.2em auto 0; max-width: 90%; }
-.reveal .slides section.mca .block.lecture .block-title { font-size: 0.72em; }
+.reveal .slides section.mca .block.lecture .block-title { font-size: 0.833em; }
 
 /* the proximal step sits UNDER the algorithm block, unboxed — a second box in a
    row reads as a stack of boxes rather than as a consequence of the first. */
@@ -1604,22 +1608,22 @@
 }
 .reveal .slides section.mca .mca-prox .kicker { margin-bottom: 0.35em; }
 .reveal .slides section.mca .mca-prox .points {
-	font-size: 0.72em; margin: 0; text-align: left;
+	font-size: 0.833em; margin: 0; text-align: left;
 }
 .reveal .slides section.mca .mca-loop {
 	display: flex; align-items: center; justify-content: center; gap: 1.1em;
-	margin: 0.1em 0 0; font-size: 0.708em; color: var(--fg);
+	margin: 0.1em 0 0; font-size: 0.833em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-cyc { font-size: 1.5em; color: var(--accent); line-height: 1; }
 .reveal .slides section.mca .mca-sub {
-	margin: 0.5em 0 0; font-size: 0.708em; line-height: 1.5;
+	margin: 0.5em 0 0; font-size: 0.833em; line-height: 1.5;
 	color: var(--fg-muted); text-align: center;
 }
 .reveal .slides section.mca .mca-sub b { color: var(--fg); }
 
 .reveal .slides section.mca .callout {
 	margin: 0.9em auto 0; max-width: 90%; padding: 0.6em 1.1em;
-	font-size: 0.708em; line-height: 1.5;
+	font-size: 0.833em; line-height: 1.5;
 }
 .reveal .slides section.mca .mca-fwd {
 	display: block; margin-top: 0.4em; padding-top: 0.4em;
@@ -1635,7 +1639,7 @@
    set larger than the theme default, which was sized as a footnote.
    --------------------------------------------------------------------------- */
 .reveal .slides section.stakes .pull {
-	font-size: 0.78em; line-height: 1.4; margin-top: 2.2em; max-width: 94%;
+	font-size: 0.95em; line-height: 1.4; margin-top: 2.2em; max-width: 94%;
 }
 
 
@@ -1666,7 +1670,7 @@
 .reveal .slides section .mmitem.sota { border-left-color: var(--accent); }
 .reveal .slides section .mmname {
 	display: flex; align-items: center; gap: 0.5em;
-	font-size: 0.708em; font-weight: 600; color: var(--fg);
+	font-size: 0.833em; font-weight: 600; color: var(--fg);
 }
 .reveal .slides section .mmitem.sota .mmname { color: var(--accent); }
 .reveal .slides section .mmwhat {
@@ -1679,7 +1683,7 @@
 .reveal .slides section .mmname .mtag {
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.72em; font-weight: 400; color: var(--fg-muted);
+	font-size: 0.833em; font-weight: 400; color: var(--fg-muted);
 	border: 1px solid var(--edge); border-radius: 999px;
 	padding: 0.05em 0.6em; white-space: nowrap;
 }
@@ -1696,7 +1700,7 @@
 	border-top: 1px dashed var(--edge);
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.708em; color: var(--accent); line-height: 1.3;
+	font-size: 0.833em; color: var(--accent); line-height: 1.3;
 }
 
 
@@ -1710,9 +1714,9 @@
 	max-width: none; max-height: none; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.despipe .dpfig figcaption {
-	text-align: right; font-size: 0.708em; color: var(--fg-muted); margin-top: 0.3em;
+	text-align: right; font-size: 0.833em; color: var(--fg-muted); margin-top: 0.3em;
 }
-.reveal .slides section.despipe .note { font-size: 0.708em; margin-top: 0.6em; max-width: 88%; }
+.reveal .slides section.despipe .note { font-size: 0.833em; margin-top: 0.6em; max-width: 88%; }
 
 
 /* ---------------------------------------------------------------------------
@@ -1748,7 +1752,7 @@
 .reveal .slides section .rail .rstop.on::before { border-top: 1.5px solid var(--accent); }
 
 .reveal .slides section .rail .rstop .n {
-	align-self: center; font-size: 0.708em; line-height: 1.2; color: var(--fg-muted);
+	align-self: center; font-size: 0.833em; line-height: 1.2; color: var(--fg-muted);
 }
 .reveal .slides section .rail .rstop.on .n { color: var(--fg); }
 .reveal .slides section .rail .rstop .d {
@@ -1762,15 +1766,15 @@
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking); line-height: 1.35;
 }
-.reveal .slides section .rail .rstop .s  { margin-top: 0.45em; font-size: 0.708em; color: var(--fg-muted); }
-.reveal .slides section .rail .rstop .s2 { margin-top: 0.35em; font-size: 0.708em;  color: var(--fg-muted); opacity: 0.8; }
-.reveal .slides section .rail .rstop .tnote { margin-top: 0.5em; font-size: 0.708em; color: var(--accent); }
+.reveal .slides section .rail .rstop .s  { margin-top: 0.45em; font-size: 0.833em; color: var(--fg-muted); }
+.reveal .slides section .rail .rstop .s2 { margin-top: 0.35em; font-size: 0.833em;  color: var(--fg-muted); opacity: 0.8; }
+.reveal .slides section .rail .rstop .tnote { margin-top: 0.5em; font-size: 0.833em; color: var(--accent); }
 
 .reveal .slides section .pull {
 	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
 	border-top: 1px solid var(--edge);
 	font-family: var(--label); font-style: normal;
-	font-size: 0.708em; line-height: 1.45; color: var(--fg); text-align: left;
+	font-size: 0.833em; line-height: 1.45; color: var(--fg); text-align: left;
 }
 .reveal .slides section .pull i { color: var(--fg-muted); }
 
@@ -1869,7 +1873,11 @@
 /* the fan: three cards at 74 % of the glyph box, stacked dead centre until the
    click, then the front one slides down-left and the back one up-right */
 .reveal .slides section.fixedpipe .pglyph.fan .fcard {
-	position: absolute; left: 13%; top: 13%; width: 74%; aspect-ratio: 1 / 1;
+	/* height: 74%, not aspect-ratio: the glyph box is already a fixed 6em square,
+	   so 74% of each axis is the same square and nothing has to be derived. The
+	   aspect-ratio form letterboxed the map on at least one renderer, leaving a
+	   white band under the picture where .fcard's own --surface showed through. */
+	position: absolute; left: 13%; top: 13%; width: 74%; height: 74%;
 	border-radius: 5px; overflow: hidden; background: var(--surface);
 	border: 1px solid color-mix(in srgb, var(--fg-muted) 55%, transparent);
 	transition: transform 0.5s ease;
@@ -1907,9 +1915,9 @@
 	width: 100%; height: auto; margin: 0;
 	border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.pnpres figcaption { font-size: 0.708em; line-height: 1.45; }
+.reveal .slides section.pnpres figcaption { font-size: 0.833em; line-height: 1.45; }
 .reveal .slides section.pnpres .pr-side p {
-	margin: 0.4em 0 0; font-size: 0.708em; line-height: 1.6; color: var(--fg-muted);
+	margin: 0.4em 0 0; font-size: 0.833em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.pnpres .pr-side p b { color: var(--fg); }
 .reveal .slides section.pnpres .pr-side .kicker { margin: 0 0 0.1em; }
@@ -1918,7 +1926,7 @@
 .reveal .slides section.pnpres .pull { margin-top: 1.2em; }
 .reveal .slides section.pnpres .pr-note {
 	max-width: 94%; margin: 0.65em auto 0; text-align: left;
-	font-size: 0.708em; line-height: 1.6; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.6; color: var(--fg-muted);
 }
 .reveal .slides section.pnpres .pr-note b { color: var(--fg); }
 .reveal .slides section.pnpres .pr-points {
@@ -1946,7 +1954,7 @@
    places the two parts, so it must not compete with it. */
 .reveal .slides section.actopen .movsub {
 	max-width: 68%; margin: 0.6em auto 0;
-	font-size: 0.708em; line-height: 1.5; color: var(--fg-muted);
+	font-size: 0.833em; line-height: 1.5; color: var(--fg-muted);
 }
 
 
@@ -1956,7 +1964,7 @@
    --------------------------------------------------------------------------- */
 .reveal .slides section .points {
 	display: block; list-style: none; margin: 0.6em 0 0; padding: 0;
-	font-size: 0.708em; line-height: 1.5; color: var(--fg); text-align: left;
+	font-size: 0.833em; line-height: 1.5; color: var(--fg); text-align: left;
 }
 .reveal .slides section .points li { position: relative; margin: 0.5em 0 0; padding-left: 1.1em; }
 .reveal .slides section .points li::before {
@@ -1980,7 +1988,7 @@
 	border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.twopt .tp-fig figure { margin: 0; }
-.reveal .slides section.twopt .tp-fig figcaption { font-size: 0.708em; text-align: center; }
+.reveal .slides section.twopt .tp-fig figcaption { font-size: 0.833em; text-align: center; }
 .reveal .slides section.twopt .tp-side p {
 	margin: 0.4em 0 0; font-size: 0.95em; line-height: 1.4; color: var(--fg);
 }
@@ -2025,7 +2033,7 @@
 	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
 	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.teach figcaption { font-size: 0.708em; line-height: 1.45; margin-top: 0.5em; }
+.reveal .slides section.teach figcaption { font-size: 0.833em; line-height: 1.45; margin-top: 0.5em; }
 .reveal .slides section.teach .tc-side p {
 	margin: 0 0 0.5em; font-size: 0.82em; line-height: 1.4; color: var(--fg); text-align: left;
 }
@@ -2040,22 +2048,22 @@
 }
 
 /* the HOS-gain slide is one big figure and one line under it */
-.reveal .slides section.hosgain .hg-fig { margin: 0.8em auto 0; max-width: 92%; }
+.reveal .slides section.hosgain .hg-fig { margin: 0.8em auto 0; max-width: 100%; }
 /* 62vh let the corner plot push the caption and the closing line off the bottom
    once the four-curve figure went in on 2026-09-06.  The binding constraint has to
    be the height, not the width: this figure is nearly square, so at any sensible
    width it is taller than the space between the title and the pull line. */
 .reveal .slides section.hosgain .hg-fig img {
-	width: auto; height: auto; max-height: 44vh; max-width: 100%;
+	width: auto; height: auto; max-height: 60vh; max-width: 100%;
 	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
-.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.708em; text-align: center; margin-top: 0.5em; }
+.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.833em; text-align: center; margin-top: 0.5em; }
 .reveal .slides section.hosgain .pull { margin-top: 1em; }
 
 /* the scoreboard: four peer questions, so four cards is right — but not at
    caption size, and not floating in the top half of the slide. */
 .reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.86em !important; line-height: 1.35; }
-.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.708em !important; }
+.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.833em !important; }
 
 /* a figure that is the whole point of its slide gets the height to be one */
 .reveal .slides section img.figfill {
@@ -2084,7 +2092,7 @@
    label above, symbol, name below — because that is how this deck has already
    taught the room to read a Bayes formula. */
 .reveal .slides section.bayesclass .lede.carry {
-	margin: 1.5em auto 0; font-size: 0.708em; color: var(--fg);
+	margin: 1.5em auto 0; font-size: 0.833em; color: var(--fg);
 }
 .reveal .slides section.bayesclass .bayeseq { margin: 0.5em auto 0; max-width: 96%; }
 .reveal .slides section.bayesclass .bayeseq .katex { font-size: 1.08em; }
@@ -2138,12 +2146,12 @@
 	max-width: 94%; margin: 1.1em auto 0; align-items: center; text-align: left;
 }
 .reveal .slides section.flowslide .fl-left p:not(.floweq) {
-	margin: 0; font-size: 0.72em; line-height: 1.45; color: var(--fg);
+	margin: 0; font-size: 0.833em; line-height: 1.45; color: var(--fg);
 }
 .reveal .slides section.flowslide .floweq { margin: 0.5em 0 0 !important; font-size: 1em; }
 .reveal .slides section.flowslide .floweq .katex { font-size: 0.95em; }
 .reveal .slides section.flowslide .floweq .katex-display > .katex { text-align: left; }
-.reveal .slides section.flowslide .fl-left .points { margin-top: 0.7em; font-size: 0.72em; }
+.reveal .slides section.flowslide .fl-left .points { margin-top: 0.7em; font-size: 0.833em; }
 
 .reveal .slides section.flowslide .pull { margin-top: 1.1em; }
 
@@ -2168,7 +2176,7 @@
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.genmodel .points.gm-points {
-	max-width: 92%; margin: 1.2em auto 0; font-size: 0.74em;
+	max-width: 92%; margin: 1.2em auto 0; font-size: 0.855em;
 }
 .reveal .slides section.genmodel .pull { max-width: 92%; margin-top: 1.1em; }
 
@@ -2210,7 +2218,7 @@
 	display: block;
 }
 .reveal .slides section.genmodel .pop-cap {
-	margin: 0.85em 0 0; font-size: 0.708em; line-height: 1.4; color: var(--fg);
+	margin: 0.85em 0 0; font-size: 0.833em; line-height: 1.4; color: var(--fg);
 	text-align: left;
 }
 .reveal .slides section.genmodel .pop-src {
@@ -2234,12 +2242,12 @@
 	border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.flowslide .ft-gif figcaption {
-	font-size: 0.708em; text-align: center; margin-top: 0.3em;
+	font-size: 0.833em; text-align: center; margin-top: 0.3em;
 }
 
 /* the three causes, beside the fan rather than under it as prose */
 .reveal .slides section.invprob .points.ip-points {
-	margin: 0; padding-left: 1.6em; font-size: 0.708em; align-self: center;
+	margin: 0; padding-left: 1.6em; font-size: 0.833em; align-self: center;
 	border-left: 1px solid var(--edge);
 }
 .reveal .slides section.invprob .points.ip-points li { margin-top: 0.55em; }
@@ -2283,7 +2291,7 @@
 .reveal .slides section.invprob .points.ip-points {
 	display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 2em;
 	max-width: 94%; margin: 1.2em auto 0; padding: 0;
-	font-size: 0.708em; border: 0;
+	font-size: 0.833em; border: 0;
 }
 .reveal .slides section.invprob .points.ip-points li { margin: 0; }
 .reveal .slides section.invprob .pull { max-width: 94%; margin-top: 1.1em; }
@@ -2298,8 +2306,8 @@
 	grid-template-columns: repeat(5, 1fr); margin-top: 1.4em;
 }
 .reveal .slides section.mmopt .choices.mmchoices .ch { padding: 0 0.85em; }
-.reveal .slides section.mmopt .choices.mmchoices .cn { font-size: 0.708em; }
-.reveal .slides section.mmopt .choices.mmchoices .ca { font-size: 0.708em; line-height: 1.4; }
+.reveal .slides section.mmopt .choices.mmchoices .cn { font-size: 0.833em; }
+.reveal .slides section.mmopt .choices.mmchoices .ca { font-size: 0.833em; line-height: 1.4; }
 .reveal .slides section.mmopt .mmsrc {
 	margin: 1.5em auto 0; max-width: 92%;
 	font-family: var(--label); font-style: var(--label-style);
@@ -2308,7 +2316,7 @@
 /* the three glosses on one line under the equation, not a paragraph */
 .reveal .slides section.mmopt .points.mmgloss {
 	display: flex; justify-content: center; gap: 2.4em;
-	max-width: 92%; margin: 0.6em auto 0; padding: 0; font-size: 0.708em;
+	max-width: 92%; margin: 0.6em auto 0; padding: 0; font-size: 0.833em;
 }
 .reveal .slides section.mmopt .points.mmgloss li { margin: 0; }
 
@@ -2370,7 +2378,7 @@
 }
 .reveal .slides section.wvx .pop-kicker { margin: 0.9em 0 0.35em; }
 .reveal .slides section.wvx .points.pop-points {
-	margin: 0; font-size: 0.708em; text-align: left;
+	margin: 0; font-size: 0.833em; text-align: left;
 }
 /* the two figures are one group, centred: the card already separates them, so
    they sit close, and the wide one takes as much height as the slide allows. */
@@ -2379,12 +2387,12 @@
 	gap: 0.5em; margin: 0.8em auto 0; max-width: 100%;
 }
 .reveal .slides section.wvx .wv-card {
-	flex: 0 0 20%; margin: 0; padding: 0.4em 0.3em 0.15em;
+	flex: 0 0 27%; margin: 0; padding: 0.4em 0.3em 0.15em;
 	/* no fill: the figure ships the same paper colour, so a filled card shows a
 	   visible inner rectangle. The border alone does the separating. */
 	background: transparent; border: 1px solid var(--edge); border-radius: 8px;
 }
-.reveal .slides section.wvx .wv-wide { flex: 0 1 78%; margin: 0; }
+.reveal .slides section.wvx .wv-wide { flex: 0 1 71%; margin: 0; }
 .reveal .slides section.wvx .wv-card img,
 .reveal .slides section.wvx .wv-wide img {
 	width: 100%; height: auto; object-fit: contain;
@@ -2408,7 +2416,7 @@
 	display: block;
 }
 .reveal .slides section.wvx .pop-cap {
-	margin: 0.85em 0 0; font-size: 0.708em; line-height: 1.4; color: var(--fg);
+	margin: 0.85em 0 0; font-size: 0.833em; line-height: 1.4; color: var(--fg);
 	text-align: left;
 }
 .reveal .slides section.wvx .pop-src {
@@ -2504,10 +2512,10 @@
 .reveal .slides section.thesismap .qstep.s4.current-fragment ~ .qbay > .qslot.k4 {
 	opacity: 1; visibility: visible;
 }
-.reveal .slides section.thesismap .qbay > .qslot.note { font-size: 0.72em; line-height: 1.4; }
+.reveal .slides section.thesismap .qbay > .qslot.note { font-size: 0.833em; line-height: 1.4; }
 .reveal .slides section.thesismap .qbay > .qslot.coreq { display: block; }
-.reveal .slides section.thesismap .qbay .qcard p { font-size: 0.74em; line-height: 1.35; }
-.reveal .slides section.thesismap .qbay .qtab { font-size: 0.708em; }
+.reveal .slides section.thesismap .qbay .qcard p { font-size: 0.855em; line-height: 1.35; }
+.reveal .slides section.thesismap .qbay .qtab { font-size: 0.833em; }
 
 /* --- the diagram, one step lit per question ------------------------------ */
 /* the claim (s0) is about the whole chain, so nothing is dimmed on it */
@@ -2713,19 +2721,19 @@
 :root { --label-style: normal; }
 /* .kicker (0.5em) and .slide-title .sec (0.6em) are set in talks.css; both landed
    under the floor, so they are raised here rather than in the shared theme. */
-.reveal .slides section .kicker { font-size: 0.708em; }
-.reveal .slides section .slide-title .sec { font-size: 0.708em; }
+.reveal .slides section .kicker { font-size: 0.833em; }
+.reveal .slides section .slide-title .sec { font-size: 0.833em; }
 
 /* The last few sat BELOW the floor only because their em multiplied against an
    already-shrunk parent (a .label inside a .callout, a .mtag inside .mcard p).
    em cannot express "no smaller than" through nesting, so these are stated in the
    canvas's own px — reveal scales the whole stage, so 17px here is 17px there. */
 .reveal .slides section .callout .label,
-.reveal .slides section .takeaway .label { font-size: 17px; }
-.reveal .slides section .block-title { font-size: 17px; }
+.reveal .slides section .takeaway .label { font-size: 20px; }
+.reveal .slides section .block-title { font-size: 20px; }
 .reveal .slides section .mcard .mtag,
-.reveal .slides section .mmname .mtag { font-size: 17px; }
-.reveal .slides section figcaption { font-size: 17px; }
+.reveal .slides section .mmname .mtag { font-size: 20px; }
+.reveal .slides section figcaption { font-size: 20px; }
 .reveal .slides section .alert { font-style: normal; }
 
 /* --------------------------------------------------------------------------
@@ -2873,7 +2881,7 @@
 .reveal .slides section table.dltable tr.want td { border-top: 2px solid var(--accent); }
 
 .reveal .slides section .dlnote {
-	font-size: 0.72em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
+	font-size: 0.833em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
 }
 /* the footnote hangs off the table, so it is centred with it rather than with the slide */
 .reveal .slides section.dlslide .dlnote { width: 84%; margin-left: auto; margin-right: auto; }
