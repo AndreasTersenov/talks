@@ -594,7 +594,7 @@
 /* 2026-09-11: the figure is drawn short now, so WIDTH is what binds and the cap is
    only a backstop. Width is also what sets the type size on the canvas, so the panel
    can be shorter than the corner plot without any label shrinking. */
-.reveal .slides section .resultcol .stemfig img { max-height: 360px; }
+.reveal .slides section .resultcol .stemfig img { max-height: 360px; max-width: 500px; }
 /* the bullets under it sat at 16.99 px, a hair under the floor */
 .reveal .slides section .resultcol .takeaway .points { font-size: 0.82em; line-height: 1.45; }
 

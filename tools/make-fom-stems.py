@@ -134,7 +134,7 @@ def massmapping():
     ftags = ["1.00×", "1.00×", "2.6×"]
     d     = 0.19
 
-    fig, ax = plt.subplots(figsize=(6.4, 3.75))
+    fig, ax = plt.subplots(figsize=(5.55, 3.55))
     fig.patch.set_facecolor(PAPER)
     frame(ax)
     ax.axhline(1.0, color=EDGE, lw=1.1, ls=(0, (5, 4)), zorder=1)
