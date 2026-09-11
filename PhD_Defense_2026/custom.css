@@ -2293,6 +2293,19 @@
 	max-width: 92%; margin: 0.6em auto 0; padding: 0; font-size: 0.708em;
 }
 .reveal .slides section.mmopt .points.mmgloss li { margin: 0; }
+
+/* 2026-09-11: the five method cards are parked, so the equation is the slide. It gets the
+   room they were taking — nothing else here is small because it has to be. These are the
+   LAST rules for these selectors; see REVEAL-GOTCHAS §4b before adding more above. */
+.reveal .slides section.mmopt .lede { font-size: 1.0em; line-height: 1.55; margin: 0.9em auto 0; }
+.reveal .slides section.mmopt .mmeq { margin: 1.5em auto 0.4em; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 1.5em; }
+.reveal .slides section.mmopt .points.mmgloss {
+	gap: 2.4em; margin: 1.9em auto 0; font-size: 0.92em; align-items: baseline;
+}
+/* the two short glosses are labels; only the third is a sentence and may wrap */
+.reveal .slides section.mmopt .points.mmgloss li:nth-child(1),
+.reveal .slides section.mmopt .points.mmgloss li:nth-child(2) { white-space: nowrap; }
 .reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
 .reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
 /* `auto auto` + justify-content, NOT `auto 1fr`: 1fr made the gloss column
