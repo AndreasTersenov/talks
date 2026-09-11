@@ -591,7 +591,12 @@
    max-height 300px it displayed at 0.37x native -- which put its own labels at 15-17px
    on the canvas, under the floor. The slide had 99px of slack; 360px spends it and the
    figure's type clears 17px. This is the LAST rule for the selector (REVEAL-GOTCHAS 4b). */
-.reveal .slides section .resultcol .stemfig img { max-height: 400px; }
+/* 2026-09-11: the figure is drawn short now, so WIDTH is what binds and the cap is
+   only a backstop. Width is also what sets the type size on the canvas, so the panel
+   can be shorter than the corner plot without any label shrinking. */
+.reveal .slides section .resultcol .stemfig img { max-height: 360px; }
+/* the bullets under it sat at 16.99 px, a hair under the floor */
+.reveal .slides section .resultcol .takeaway .points { font-size: 0.82em; line-height: 1.45; }
 
 /* Kept for the one surviving .ladder (frame 66, backup) and for the two parked
    in index.html.  The rungs must not borrow the Wong l1/CNN pair, which encodes

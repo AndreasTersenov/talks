@@ -102,6 +102,11 @@ def massmapping():
     The "higher is better for both" note under the axis was removed 2026-09-11
     (Andreas): "improvement over Kaiser-Squires" already says it.
 
+    Kept deliberately SHORT in the y direction (2026-09-11, Andreas): at a taller
+    aspect the panel displayed larger than the corner plot beside it and crowded the
+    bullets underneath. The width is what sets the type size on the canvas, so the
+    height can come down without touching a single font.
+
     The two are told apart by MARKER, not colour: colour means the method here,
     on the corner plot beside it, and in the legend. Open diamond = map quality,
     filled = constraining power.
@@ -129,7 +134,7 @@ def massmapping():
     ftags = ["1.00×", "1.00×", "2.6×"]
     d     = 0.19
 
-    fig, ax = plt.subplots(figsize=(6.4, 4.55))
+    fig, ax = plt.subplots(figsize=(6.4, 3.75))
     fig.patch.set_facecolor(PAPER)
     frame(ax)
     ax.axhline(1.0, color=EDGE, lw=1.1, ls=(0, (5, 4)), zorder=1)
@@ -159,7 +164,7 @@ def massmapping():
     ax.set_ylim(0, 3.2)
     ax.set_yticks([0, 1, 2, 3])
     ax.set_yticklabels(["0", "1", "2", "3"], fontsize=14.5)
-    ax.set_ylabel("improvement over Kaiser–Squires", fontsize=14.5, color=INK, labelpad=6)
+    ax.set_ylabel("improvement over KS", fontsize=14.5, color=INK, labelpad=6)
     ax.set_xticks(xs)
     ax.set_xticklabels(names, fontsize=15, color=INK)
     fig.tight_layout()
