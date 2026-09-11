@@ -970,14 +970,17 @@
    height off a figure that is the point of the slide, and the map is 1.25 wide
    against a 1200px canvas, so the width was there for free. */
 .reveal .slides section.kappadef .kmap {
-	display: flex; align-items: flex-end; justify-content: center;
-	gap: 1.1em; width: auto; margin: 0 auto;
+	position: relative; display: block; width: 100%; margin: 0 auto;
 }
+/* absolute, not a flex sibling: as a flex row the PAIR centred, which left the
+   map itself sitting left of the slide's centre. Out of flow, the map centres
+   on its own and the credit parks in the margin the map's 1.25 aspect leaves —
+   on the left, where reveal's arrows are not. */
 .reveal .slides section.kappadef .kmap figcaption {
-	flex: 0 0 178px; text-align: left; margin: 0 0 0.4em;
-	font-size: 0.75em; line-height: 1.35;
+	position: absolute; left: 1.5%; bottom: 0.4em; width: 200px;
+	text-align: left; margin: 0; font-size: 0.75em; line-height: 1.35;
 }
-.reveal .slides section.kappadef .kmap img { max-height: 452px; width: auto; margin: 0; }
+.reveal .slides section.kappadef .kmap img { max-height: 452px; width: auto; margin: 0 auto; }
 .reveal .slides section.kappadef .kmap img {
 	display: block; height: auto;
 	border: 0; box-shadow: none; background: transparent;
