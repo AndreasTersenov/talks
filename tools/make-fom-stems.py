@@ -93,10 +93,12 @@ def massmapping():
     subs  = ["the baseline", "no change", "sparse + Gaussian"]
     vals  = [1.00, 1.00, 2.57]
     tags  = ["1.00×", "1.00×", "2.6×"]
+    # reconstruction RMSE relative to KS: 1018 / 1023 / 976 (x1e-5) -> PAPER_FACTS 105
+    rmse_tags = ["1.00×", "1.01×", "0.96×"]
     cols  = ["#808080", "#e03424", "#006fed"]
     xs    = [0, 1, 2]
 
-    fig, ax = plt.subplots(figsize=(5.5, 3.95))
+    fig, ax = plt.subplots(figsize=(5.9, 4.85))
     fig.patch.set_facecolor(PAPER)
     frame(ax)
 
@@ -105,22 +107,40 @@ def massmapping():
 
     for x, v, t, c in zip(xs, vals, tags, cols):
         ax.text(x, v + 0.13, t, ha="center", va="bottom",
-                fontsize=15, color=c)
+                fontsize=16.5, color=c)
 
     ax.set_xlim(-0.62, 2.62)
     ax.set_ylim(0, 3.15)
     ax.set_yticks([0, 1, 2, 3])
-    ax.set_yticklabels(["0", "1", "2", "3"], fontsize=13)
+    ax.set_yticklabels(["0", "1", "2", "3"], fontsize=14.5)
     ax.set_ylabel("figure of merit, relative to KS",
-                  fontsize=13, color=INK, labelpad=6)
+                  fontsize=14.5, color=INK, labelpad=6)
     ax.set_xticks(xs)
-    ax.set_xticklabels(names, fontsize=13.5, color=INK)
+    ax.set_xticklabels(names, fontsize=15, color=INK)
     for x, s in zip(xs, subs):
-        ax.text(x, -0.30, s, ha="center", va="top", fontsize=11,
+        ax.text(x, -0.30, s, ha="center", va="top", fontsize=13,
                 color=MUTED, style="italic", transform=ax.transData,
                 clip_on=False)
 
-    fig.tight_layout(rect=(0, 0.045, 1, 1))
+    # The RMSE row, added 2026-09-11. The slide claims MCALens improves the RMSE by
+    # 4 % and the figure of merit by 157 %, and until now only the second number was
+    # drawn. Putting the ratios under the same three columns makes the contrast the
+    # figure's own: the row ABOVE the diamonds spreads 1.00 / 1.00 / 2.6, the row
+    # BELOW the axis barely moves. Ratios rather than the absolutes (1018 / 1023 /
+    # 976, x1e-5) because 1018 against 976 has to be turned into "4 %" in the head.
+    #
+    # CAVEAT, PAPER_FACTS 114: these are NOT the same maps. The RMSE table smooths
+    # each map with the kernel minimising its own RMSE (2'), the FoM analysis with
+    # the kernel maximising constraining power (1'). That is the point rather than a
+    # flaw -- the two objectives are different -- but it must be in the notes.
+    ax.text(1.0, -0.62, "reconstruction RMSE, relative to KS", ha="center", va="top",
+            fontsize=13.5, color=MUTED, style="italic", transform=ax.transData,
+            clip_on=False)
+    for x, rt, c in zip(xs, rmse_tags, cols):
+        ax.text(x, -0.86, rt, ha="center", va="top", fontsize=15,
+                color=c, transform=ax.transData, clip_on=False)
+
+    fig.tight_layout(rect=(0, 0.135, 1, 1))
     out = "assets/figures/statistics/fom_massmapping_stems.png"
     fig.savefig(out, dpi=220, facecolor=PAPER)
     trim(out)
@@ -166,7 +186,7 @@ def summaries():
         ax.text(x, -830, s, ha="center", va="top", fontsize=10.5,
                 color=MUTED, style="italic", linespacing=1.25, clip_on=False)
 
-    fig.tight_layout(rect=(0, 0.10, 1, 1))
+    fig.tight_layout(rect=(0, 0.135, 1, 1))
     out = "assets/figures/statistics/fom_summaries_stems.png"
     fig.savefig(out, dpi=220, facecolor=PAPER)
     trim(out)

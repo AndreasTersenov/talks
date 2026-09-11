@@ -587,6 +587,12 @@
 .reveal .slides section .stemfig { margin: 0; }
 .reveal .slides section .stemfig img { max-width: 100%; height: auto; }
 
+/* 2026-09-11: the stems figure carries the RMSE row now, so it is taller, and at
+   max-height 300px it displayed at 0.37x native -- which put its own labels at 15-17px
+   on the canvas, under the floor. The slide had 99px of slack; 360px spends it and the
+   figure's type clears 17px. This is the LAST rule for the selector (REVEAL-GOTCHAS 4b). */
+.reveal .slides section .resultcol .stemfig img { max-height: 360px; }
+
 /* Kept for the one surviving .ladder (frame 66, backup) and for the two parked
    in index.html.  The rungs must not borrow the Wong l1/CNN pair, which encodes
    the summary statistic in Act 4 (TALK-GUIDELINES 4.5). */
