@@ -695,12 +695,12 @@ With two-point statistics, extending them to capture the cross-bin information i
 compute the two-point functions between different tomographic bins. For higher-order statistics such as the
 ℓ1-norm there is no obvious equivalent. 
 
-We tried to design two ways to give the ℓ1-norm access to the cross-bin information.
+We designed two ways to give the ℓ1-norm access to the cross-bin information.
 
 The first option was to create extra maps that capture the "cross" structure: for each pair of
 tomographic bins, multiply the two maps pixel by pixel. The product is strong only where both
 maps have structure at the same place. 
-To extract the informations from those, we compute the ℓ1-norm on them as well.
+To extract the information from those, we compute the ℓ1-norm on them as well.
 
 [CLICK] The second approach changes the statistic itself. We define a statistic that generalises
 the ℓ1-norm from a single map to **a pair of tomographic bins**.
@@ -758,7 +758,7 @@ shown is the effect on the **posterior**.
 
 The dominant astrophysical systematic effect at small scales is **baryonic feedback**: energy from active galactic nuclei
 and supernovae pushes gas out of haloes and suppresses the matter distribution on small scales.
-The simulations we can use for inference dark-matter-only, and the feedback models disagree with each other, so this is physics we cannot model reliably.
+The simulations we can use for inference are dark-matter-only, and the feedback models disagree with each other, so this is physics we cannot model reliably.
 
 The problem is that the non-Gaussian information and the contamination live on **the same small
 scales**. Since we cannot fully reliably model them for HOS, the conservative approach is to remove those scales, and the question is how impactful this is.
