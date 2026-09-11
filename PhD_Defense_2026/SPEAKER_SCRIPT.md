@@ -120,7 +120,10 @@ Modern cosmological survey analyses are **incredibly complex**. But here is the 
 **Galaxy shapes go in**. From the shapes we make a **map of the mass distribution**. From the map we extract **a few numbers, the summary statistics**.
 We compare those with theoretical predictions, or with simulations, and we get the probability distributions of the parameters.
 
-This is what **we call the posterior**: how probable each combination of parameter values is, given the data. The two shaded regions contain **sixty-eight and ninety-five per cent** of that probability, so *the tighter they are*, the more precise the measurement.
+<!-- MOVED to A1.13 on 2026-09-11. This gloss was put here on 2026-09-10, but frame 19
+is where the first real contours appear, so that is where it belongs — and it answers R2's
+"you showed contour plots without a proper setup". A0.8 still names the posterior above.
+This is what **we call the posterior**: how probable each combination of parameter values is, given the data. The two shaded regions contain **sixty-eight and ninety-five per cent** of that probability, so *the tighter they are*, the more precise the measurement. -->
 
 [CLICK] **▲** The first half of the talk, the first two papers, is about this step: **making the map**.
 <!-- Several algorithms do it. But does the choice matter for the cosmological results, and can we build a really advanced one whose error bars we can trust, and which can be implemented in a 
@@ -257,7 +260,8 @@ And deep learning learns the regulariser from simulations; that is Part 2. -->
 
 ## A1.9 — MCALens · frame 15 · 0:44
 
-The state-of-the-art **unsupervised method is MCALens**.
+Among **model-driven** methods — those with a hand-crafted prior, rather than one learned from
+data — the state of the art is **MCALens**.
 It models the convergence as the sum of two components: **a Gaussian component**, estimated with
 a Wiener filter; 
 and a **non-Gaussian component**, representing the peaks in the field
@@ -313,17 +317,21 @@ So what are the posteriors that these lead to, in our work?
 
 ## A1.13 — the answer · frame 19 · 0:50
 
-Here is the result.
+Here is the result. This is the **first corner plot** I am showing, so let me say what it is.
 
-First thing we notice: **inpainting makes no difference**.
+Each of these contours is the joint distribution of a *pair* of parameters; each curve on the diagonal is one parameter on its own. The two shades represent the **sixty-eight and ninety-five per cent** probability mass — *the smaller the contour, the more precise the measurement*. 
 
-But MCALens improves the figure of merit (the tightness of the posterior) by the huge factor of two point six, **160%**. 
+The first thing we notice is that **inpainting makes no difference**: the grey and the red contours are almost identical — in fact the grey is hard to see at all behind the red. 
 
-So while MCALens improves the RMSE of the map by only **four per cent**, the figure of merit, is improvedby a 160. 
-Map quality and constraining power are *not the same objective*.
+But the more important thing is that **MCALens is visibly tighter**, on every parameter.
 
-So what we see is that mass mapping is far from a neutral preprocessing step. The choice of reconstruction changes the
-cosmological constraints substantially, and for cosmological surveys it is really worth using an advanced method.
+On the right, both stems are **improvement over Kaiser–Squires**, so higher is better for both.
+The **open** diamonds are the improvement on the map itself, the RMSE, and MCALens is **four per cent** better. The
+**filled** diamonds are the constraining power: a factor of **two point six**, **160 %**.
+
+So we see that map quality and constraining power are *not the same objective*. And that by using an advanced mass mapping method we get a huge gain in precision.
+
+So WL surveys should use advanced reconstruction methods to maximise their scientific outputs.
 
 
 ---
