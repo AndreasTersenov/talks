@@ -96,9 +96,9 @@ for step, off in [(4, 2.30), (5, 1.15), (6, 0.0)]:
     axw.plot(xx[m], p[m] + off, color=ACCENT, lw=2.4, solid_capstyle="round")
 axw.set_xlim(-WIN, WIN)
 axw.set_ylim(-0.95, 3.30)
-axw.set_title("one shape, stretched", color=INK, fontsize=15, pad=10)
+axw.set_title("one shape, stretched", color=INK, fontsize=18, pad=10)
 axw.text(0, -0.78, "compact, oscillating, zero mean",
-         ha="center", va="center", color=MUTED, fontsize=12)
+         ha="center", va="center", color=MUTED, fontsize=15.5)
 for sp in axw.spines.values():
     sp.set_visible(False)
 axw.set_xticks([]); axw.set_yticks([])
@@ -119,26 +119,26 @@ for i, (lab, y, col, sc, lw) in enumerate(rows):
     off = -i * gap
     axb.axhline(off, color=EDGE, lw=0.7, zorder=0)
     axb.plot(t, y / sc * 0.45 + off, color=col, lw=lw, zorder=3)
-    axb.text(-30, off, lab, ha="right", va="center", fontsize=12,
+    axb.text(-30, off, lab, ha="right", va="center", fontsize=15,
              color=INK if i == 0 else MUTED)
 
 for x0, txt in [(150, "small"), (390, "medium"), (630, "large")]:
     axb.annotate(txt, xy=(x0, -len(rows) * gap + 0.55), xytext=(x0, 0.80),
-                 fontsize=11.5, color=MUTED, ha="center",
+                 fontsize=15, color=MUTED, ha="center",
                  arrowprops=dict(arrowstyle="-", color=EDGE, lw=1, ls=(0, (3, 3))))
 
 axb.set_xlim(-110, n + 8)
 axb.set_ylim(-len(rows) * gap - 1.18, 1.20)
 axb.set_title("slide it across the data, at every size", color=INK,
-              fontsize=15, pad=10)
+              fontsize=18, pad=10)
 axb.text(n / 2, -len(rows) * gap - 0.34,
          r"each feature answers in the band that matches its size"
          "\n"
          r"signal $=\ w_1 + w_2 + w_3 + w_4 + c_4$   — nothing is lost",
-         ha="center", fontsize=11.5, color=MUTED)
+         ha="center", fontsize=15, color=MUTED)
 for sp in axb.spines.values():
     sp.set_visible(False)
 axb.set_xticks([]); axb.set_yticks([])
-figB.subplots_adjust(left=0.055, right=0.99, top=0.89, bottom=0.03)
+figB.subplots_adjust(left=0.085, right=0.99, top=0.89, bottom=0.03)
 figB.savefig("assets/diagrams/wavelet_transform.png", dpi=200, facecolor=PAPER)
 print("wrote assets/diagrams/wavelet_transform.png")
