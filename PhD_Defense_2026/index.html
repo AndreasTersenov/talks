@@ -1732,9 +1732,9 @@
 							<ul class="pr-points">
 								<li>lower left is better; after calibration, all methods reach the <b>target coverage</b>
 								</li>
-								<li>accuracy comparable to the deep&#8209;learning methods</li>
-								<li>smallest calibrated intervals of all methods, on all 512 test maps</li>
-								<li>mask and noise covariance enter at inference time, not in training</li>
+								<li>accuracy comparable to the SOTA deep&#8209;learning methods</li>
+								<li>smallest calibrated intervals of all methods</li>
+								<li>PnPMass is indep. of mask and noise covariance</li>
 							</ul>
 
 							<p class="kicker fragment fade-in" data-fragment-index="1">the uncertainty map traces the
@@ -3041,10 +3041,12 @@
 						<p class="floweq">$$\log q_\phi(x) \;=\; \log p\big(f^{-1}(x)\big) \;+\;
 							\log\left|\det \frac{\partial f^{-1}}{\partial x}\right|$$</p>
 
+						<!-- HIDDEN 2026-09-11: the triangular-Jacobian line is engineering detail that is
+						     never used again in the talk, and there is no time to explain it.
 						<ul class="points">
 							<li>each layer has a <b>triangular</b> Jacobian, so the determinant is cheap to compute</li>
-							<li><b>flexible</b>, with tractable <b>sampling</b> and <b>density evaluation</b></li>
 						</ul>
+						-->
 					</div>
 
 					<figure class="ft-gif">
@@ -3052,6 +3054,12 @@
 							alt="samples being carried by the flow, rearranging from a Gaussian cloud into the target shape">
 						<figcaption>samples transported by the flow</figcaption>
 					</figure>
+				</div>
+
+				<div class="takeaway flowtake">
+					<span class="label">the result</span>
+					a <b>flexible</b> model that is easy to <b class="alert">sample from</b> and whose
+					<b class="alert">density</b> we can evaluate
 				</div>
 				<!-- 
 				<p class="pull fragment fade-in">

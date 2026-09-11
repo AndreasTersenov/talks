@@ -2136,6 +2136,13 @@
 
 .reveal .slides section.flowslide .pull { margin-top: 1.1em; }
 
+/* 2026-09-11: the Jacobian bullet is parked and the surviving point is the slide's
+   conclusion, so it sits under the whole body as a takeaway rather than as the second
+   item of a two-item list. Appended last for these selectors — REVEAL-GOTCHAS §4b. */
+.reveal .slides section.flowslide .takeaway.flowtake {
+	margin: 1.1em auto 0; max-width: 96%; font-size: 0.86em;
+}
+
 /* ---------------------------------------------------------------------------
    GENERATIVE MODELLING — the dark slide in a light deck.  It carries the ML
    framing before the flow slide, and the change of ground is the point.
