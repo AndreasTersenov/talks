@@ -156,7 +156,35 @@ def main():
     dest = os.path.join(root, d, "SPEAKER_SCRIPT_PRINT.md")
     io.open(dest, "w", encoding="utf-8").write("\n".join(out).rstrip() + "\n")
     print("wrote %s — %d beats, %s spoken" % (dest, len(beats), mmss(total)))
-    write_html(os.path.join(root, d, "SPEAKER_SCRIPT_PRINT.html"), title, total, beats, items)
+    html = os.path.join(root, d, "SPEAKER_SCRIPT_PRINT.html")
+    write_html(html, title, total, beats, items)
+    write_pdf(html, os.path.join(root, d, "SPEAKER_SCRIPT_PRINT.pdf"))
+
+
+def write_pdf(html, dest):
+    """Headless Chrome is the only renderer here that honours @page and columns.
+
+    pandoc/wkhtmltopdf would need extra install and neither does CSS columns
+    properly. If no Chrome is found we say so and leave the HTML, which prints
+    correctly from any browser anyway.
+    """
+    import shutil, subprocess
+    cands = [
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    ] + [c for c in (shutil.which("google-chrome"), shutil.which("chromium"),
+                     shutil.which("chromium-browser")) if c]
+    exe = next((c for c in cands if os.path.exists(c)), None)
+    if not exe:
+        print("no Chrome found — print %s from a browser instead" % os.path.basename(html))
+        return
+    subprocess.run([exe, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+                    "--print-to-pdf=" + dest, "file://" + os.path.abspath(html)],
+                   check=True, capture_output=True)
+    import re as _re
+    pages = len(_re.findall(rb"/Type\s*/Page[^s]", io.open(dest, "rb").read()))
+    print("wrote %s — %d pages" % (dest, pages))
 
 
 # ------------------------------------------------------------------- for paper
