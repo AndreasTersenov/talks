@@ -743,11 +743,13 @@
 .reveal .slides section.lcdm .figgrid img { max-height: none; width: 100%; }
 
 /* 2026-09-11: the parameter row is parked, so the assumptions block inherits the top
-   third it used to give away. Larger type and more air, not a bigger box. */
-.reveal .slides section.lcdm .block.lecture { margin-top: 0.8em; padding: 1.1em 1.4em; }
-.reveal .slides section.lcdm .assume { font-size: 0.88em; line-height: 1.6; padding-left: 1.1em; }
-.reveal .slides section.lcdm .assume li { margin-bottom: 0.5em; }
-.reveal .slides section.lcdm .figgrid { grid-template-columns: 1.15fr 1fr; gap: 1.6em; }
+   third it used to give away — larger type, more leading, and a figure big enough that
+   the block is as tall as the slide can carry rather than a strip across the middle. */
+.reveal .slides section.lcdm .block.lecture { margin-top: 0.7em; padding: 1.3em 1.5em; }
+.reveal .slides section.lcdm .figgrid { grid-template-columns: 1fr 1.05fr; gap: 1.7em; }
+/* the figure is what sets the block's height: uncap it and let it fill its column */
+.reveal .slides section.lcdm .figgrid img { max-height: none; max-width: none; width: 100%; }
+.reveal .slides section.lcdm .cone svg.coneov .an { font-size: 58px; }
 
 /* A0.3: the block's figure swaps on the fragment — budget pie, then the same cone
    annotated with what the model does not explain. Both occupy one grid cell. */
@@ -765,8 +767,10 @@
 .reveal .slides section.lcdm .derived { font-size: 0.708em; }
 /* the figure sets the block's height, so the list is sized to fill it rather than
    float in the middle of a tall cell */
-.reveal .slides section.lcdm .assume { font-size: 0.84em; line-height: 1.55; }
-.reveal .slides section.lcdm .assume li { margin-bottom: 0.5em; }
+/* 2026-09-11: sized up when the parameter row was parked. THIS is the rule that wins —
+   two earlier `.lcdm .assume` rules above are overridden by it, so edit here. */
+.reveal .slides section.lcdm .assume { font-size: 1.05em; line-height: 1.78; padding-left: 1.1em; }
+.reveal .slides section.lcdm .assume li { margin-bottom: 0.75em; }
 .reveal .slides section.lcdm .assume li:last-child { margin-bottom: 0; }
 .reveal .slides section.lcdm .figgrid { align-items: center; }
 .reveal .slides section.lcdm .note { font-size: 0.708em; }
