@@ -147,9 +147,13 @@
 
 				<!-- <p class="derived">Everything else is <b class="alert">derived</b>. $\Omega_\Lambda$ is not a free parameter &mdash; in a flat	universe it is whatever closes the budget once the rest is counted.</p> -->
 
-				<div class="block lecture">
-					<div class="block-content figgrid">
-						<div>
+				<!-- 2026-09-11: the figure sits OUTSIDE the block. `.block` is the theme's ruled
+				     callout for text, and this figure carries its own black ground — nested inside a
+				     lighter panel it read as a panel within a panel. Out here the image's ground is
+				     the slide's, so the picture ends where the picture ends. -->
+				<div class="lcdmrow">
+					<div class="block lecture">
+						<div class="block-content">
 							<ul class="assume">
 								<li><b>Gravity</b>: general relativity, unmodified</li>
 								<li><b>Geometry</b>: spatially flat, homogeneous and isotropic on large scales
@@ -160,7 +164,8 @@
 									from inflation</li>
 							</ul>
 						</div>
-						<div class="figswap">
+					</div>
+					<div class="figswap">
 							<figure class="fragment fade-out" data-fragment-index="1">
 								<img src="../assets/diagrams/dedm_pie_chart.001.jpeg"
 									alt="energy budget of the Universe: about 70 per cent dark energy and 30 per cent total matter, with the matter slice broken down further">
@@ -187,7 +192,6 @@
 									</g>
 								</svg>
 							</div>
-						</div>
 					</div>
 				</div>
 

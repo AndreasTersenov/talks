@@ -101,6 +101,42 @@ Note `getComputedStyle().width` is the **content** box while `getBoundingClientR
 
 ---
 
+## 4b. "My CSS did not apply" is usually a duplicate selector further down the file
+
+A per-talk `custom.css` grows by appending — a slide gets revised, a rule is added at the end, and
+the old rule for the same selector is left in place. The last one wins, silently. Three separate
+instances of this cost about an hour on 2026-09-11 in `PhD_Defense_2026`:
+
+- `.lcdm .assume` was declared **three times**. An edit to the second changed nothing, and the
+  screenshot looked almost identical, so it read as "the change is too small" rather than "the
+  change did not happen".
+- `.probes .probeshot { width }` — an override added near the related `.figswap` rules lost to the
+  original declaration 1600 lines lower down.
+- `.inverted` came from the *theme*, not the deck: `talks.css` gives it a highlighter-pen gradient
+  meant for inline text. It had never matched, because the sections carrying the class were
+  top-level and the selector is a **descendant** one — until those sections were nested in a
+  vertical stack, at which point every Part divider inverted.
+
+**Before editing a size or a colour, grep the selector across every stylesheet the deck loads and
+edit the occurrence that wins.** Do not assume a deck-local rule beats the theme, and do not assume
+your rule is the only one.
+
+**Afterwards, read the computed value back** rather than trusting the edit — §4's DOM probe, or:
+
+```js
+getComputedStyle(document.querySelector('.reveal .slides section.lcdm .assume')).fontSize
+```
+
+If the computed value is not what you wrote, you edited a rule that loses. A screenshot will not
+tell you this; a number will.
+
+Related: a class that "looks alarming but is inert" is inert **only for the DOM shape it is in
+today**. Nesting a section, wrapping an element, or moving a slide into a stack can make a
+descendant selector start matching. When a restructure changes nesting depth, sweep the classes
+used on the moved elements against every stylesheet before assuming nothing else moved.
+
+---
+
 ## 5. Verify builds in the PDF too, not just the browser
 
 `?print-pdf` renders one page per fragment state. Confirm the classes rather than trusting it:
