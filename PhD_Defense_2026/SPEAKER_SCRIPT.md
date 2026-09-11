@@ -495,10 +495,12 @@ For example here you can see the signal being decomposed into wavelet coefficien
 b measures how much structure of size a there is at position b.
 
 
-[CLICK] This is well suited to convergence maps, which consists of localised
-structures, each with a characteristic size and position. 
+[CLICK] This is well suited to convergence maps, which consist of localised
+structures, each with a characteristic size and position. Convolve the map with a small wavelet and
+you get its small-scale structure; with a large one, its large-scale structure.
 
-And the different scales can be analysed separately.
+Each band covers a **different range of frequencies**, so we can study the map **scale by scale**,
+with the bands carrying largely independent information.
 
 ---
 
