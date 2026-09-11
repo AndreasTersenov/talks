@@ -90,7 +90,8 @@ def stems(ax, xs, vals, cols, lw=3.4, ms=13):
 # ------------------------------------------------------- slide 21: mass mapping
 def massmapping():
     names = ["Kaiser–Squires", "inpainting KS", "MCALens"]
-    subs  = ["the baseline", "no change", "sparse + Gaussian"]
+    # the italic descriptors under each name were removed 2026-09-11 (Andreas):
+    # the RMSE row is the useful thing in that space.
     vals  = [1.00, 1.00, 2.57]
     tags  = ["1.00×", "1.00×", "2.6×"]
     # reconstruction RMSE relative to KS: 1018 / 1023 / 976 (x1e-5) -> PAPER_FACTS 105
@@ -98,7 +99,7 @@ def massmapping():
     cols  = ["#808080", "#e03424", "#006fed"]
     xs    = [0, 1, 2]
 
-    fig, ax = plt.subplots(figsize=(5.9, 4.85))
+    fig, ax = plt.subplots(figsize=(5.9, 4.55))
     fig.patch.set_facecolor(PAPER)
     frame(ax)
 
@@ -117,11 +118,6 @@ def massmapping():
                   fontsize=14.5, color=INK, labelpad=6)
     ax.set_xticks(xs)
     ax.set_xticklabels(names, fontsize=15, color=INK)
-    for x, s in zip(xs, subs):
-        ax.text(x, -0.30, s, ha="center", va="top", fontsize=13,
-                color=MUTED, style="italic", transform=ax.transData,
-                clip_on=False)
-
     # The RMSE row, added 2026-09-11. The slide claims MCALens improves the RMSE by
     # 4 % and the figure of merit by 157 %, and until now only the second number was
     # drawn. Putting the ratios under the same three columns makes the contrast the
@@ -133,14 +129,14 @@ def massmapping():
     # each map with the kernel minimising its own RMSE (2'), the FoM analysis with
     # the kernel maximising constraining power (1'). That is the point rather than a
     # flaw -- the two objectives are different -- but it must be in the notes.
-    ax.text(1.0, -0.62, "reconstruction RMSE, relative to KS", ha="center", va="top",
+    ax.text(1.0, -0.34, "reconstruction RMSE, relative to KS", ha="center", va="top",
             fontsize=13.5, color=MUTED, style="italic", transform=ax.transData,
             clip_on=False)
     for x, rt, c in zip(xs, rmse_tags, cols):
-        ax.text(x, -0.86, rt, ha="center", va="top", fontsize=15,
+        ax.text(x, -0.56, rt, ha="center", va="top", fontsize=15,
                 color=c, transform=ax.transData, clip_on=False)
 
-    fig.tight_layout(rect=(0, 0.135, 1, 1))
+    fig.tight_layout(rect=(0, 0.095, 1, 1))
     out = "assets/figures/statistics/fom_massmapping_stems.png"
     fig.savefig(out, dpi=220, facecolor=PAPER)
     trim(out)
