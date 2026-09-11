@@ -46,11 +46,14 @@ PANELS = [
 ]
 
 
+CROP = None                      # set by the first call; see save, below
+
+
 def draw(upto):
     fig, ax = plt.subplots(figsize=(13.6, 5.6), dpi=200)
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
-    ax.set_xlim(0, 100); ax.set_ylim(-10, 50)
+    ax.set_xlim(0, 100); ax.set_ylim(-11.8, 50)
     ax.set_xticks([]); ax.set_yticks([]); ax.set_aspect("equal")
     for sp in ax.spines.values():
         sp.set_visible(False)
@@ -91,7 +94,7 @@ def draw(upto):
 
     # the tinted regions, one per stage revealed so far
     for k, (x0, x1, col, alpha) in enumerate(PANELS[:upto], start=1):
-        ax.add_patch(FancyBboxPatch((x0, -8.4), x1 - x0, 57.6,
+        ax.add_patch(FancyBboxPatch((x0, -10.6), x1 - x0, 59.8,
                                     boxstyle="round,pad=0.6,rounding_size=1.6",
                                     facecolor=col, alpha=alpha, edgecolor="none",
                                     zorder=0))
@@ -99,7 +102,7 @@ def draw(upto):
     rng = np.random.default_rng(5)
 
     # ======================================================== 1. simulation
-    ax.text(13, 47.5, r"prior  $\pi(\theta)$", ha="center", fontsize=12.5, color=INK)
+    ax.text(13, 47.5, r"prior  $\pi(\theta)$", ha="center", fontsize=15, color=INK)
     for w, a in ((9.0, 0.18), (6.0, 0.34), (3.2, 0.85)):
         ax.add_patch(Ellipse((13, 41), w, 0.62 * w, angle=25, facecolor=ACCENT,
                              alpha=a, edgecolor="none"))
@@ -107,11 +110,11 @@ def draw(upto):
     ax.scatter(th[:, 0], th[:, 1], s=11, color=INK, zorder=5, linewidths=0)
 
     arrow(13, 36.5, 13, 31.5)
-    ax.text(14.4, 34, r"$\theta$", fontsize=12, color=MUTED)
+    ax.text(14.4, 34, r"$\theta$", fontsize=14.5, color=MUTED)
 
     ax.add_patch(FancyBboxPatch((7.5, 25.0), 11, 6, boxstyle="round,pad=0.4",
                                 facecolor=PAPER, edgecolor=INK, lw=1.5))
-    ax.text(13, 28.0, "simulator", ha="center", va="center", fontsize=12, color=INK)
+    ax.text(13, 28.0, "simulator", ha="center", va="center", fontsize=14.5, color=INK)
 
     arrow(13, 24.0, 13, 19.5)
     xs = rng.normal(size=(600, 2))
@@ -120,11 +123,11 @@ def draw(upto):
     keep = (px > 4) & (px < 22) & (py > 7.5) & (py < 19)
     ax.scatter(px[keep], py[keep], s=3.2, color=ACCENT, alpha=0.55, linewidths=0)
     ax.text(13, 5.0, r"simulated data   $x \sim p(x \mid \theta)$",
-            ha="center", fontsize=12, color=INK)
+            ha="center", fontsize=14.5, color=INK)
 
     # ========================================================== 2. learning
     if upto >= 2:
-        ax.text(37, 40.5, r"base  $\mathcal{N}$", ha="center", fontsize=12.5,
+        ax.text(34.5, 40.5, r"base  $\mathcal{N}$", ha="center", fontsize=15,
                 color=INK)
         for w, a in ((8.0, 0.18), (5.2, 0.34), (2.8, 0.85)):
             ax.add_patch(Ellipse((37, 30), w, w * 0.62 * 1.6, facecolor=ACCENT,
@@ -142,29 +145,29 @@ def draw(upto):
             ax.scatter([cx] * k, ys, s=70, facecolor=PAPER, edgecolor=ACCENT,
                        lw=1.3, zorder=3)
             prev = (cx, ys)
-        ax.text(58.7, 40.5, r"conditional flow   $q_\phi(\theta \mid x)$",
-                ha="center", fontsize=12.5, color=ACCENT)
+        ax.text(56.0, 40.5, r"conditional flow   $q_\phi(\theta \mid x)$",
+                ha="center", fontsize=15, color=ACCENT)
 
         ax.plot([21, 58.7], [13.5, 13.5], color=INK, lw=1.3, solid_capstyle="butt")
         arrow(58.7, 13.5, 58.7, 25.5, color=INK)
-        ax.text(40, 15.4, r"the pairs  $(\theta,\, x)$", ha="center", fontsize=12,
+        ax.text(40, 15.4, r"the pairs  $(\theta,\, x)$", ha="center", fontsize=14.5,
                 color=INK)
         ax.text(40, 10.6, "trained by maximum likelihood", ha="center",
-                fontsize=10.5, color=MUTED)
+                fontsize=13, color=MUTED)
 
     # ========================================================= 3. inference
     if upto >= 3:
         ax.add_patch(FancyBboxPatch((73.5, 42.5), 21, 5.6, boxstyle="round,pad=0.4",
                                     facecolor=PAPER, edgecolor=INK, lw=1.5))
         ax.text(84, 45.3, r"observed  $x_{\rm obs}$", ha="center", va="center",
-                fontsize=12, color=INK)
+                fontsize=14.5, color=INK)
         arrow(84, 41.6, 84, 36.5)
         arrow(68.5, 30, 74.0, 30, color=WARM)
-        ax.text(71.3, 32.2, "trained", ha="center", fontsize=10.5, color=WARM)
+        ax.text(71.3, 32.2, "trained", ha="center", fontsize=13, color=WARM)
         blob(84.5, 29.0)
-        ax.text(84, 14.5, "posterior estimate", ha="center", fontsize=12, color=INK)
+        ax.text(84, 14.5, "posterior estimate", ha="center", fontsize=14.5, color=INK)
         ax.text(84, 10.3, r"$q_\phi(\theta \mid x_{\rm obs})$", ha="center",
-                fontsize=13, color=ACCENT)
+                fontsize=15.5, color=ACCENT)
 
     # ============================================================= captions
     STAGES = [(3.5, 22.5, "1.  Simulation", "draw $\\theta$, simulate,\nkeep the $(\\theta,\\, x)$ pairs"),
@@ -172,32 +175,38 @@ def draw(upto):
               (74.0, 97.0, "3.  Inference", "evaluate at $x_{\\rm obs}$;\ncheap to repeat")]
     for k, (x0, x1, name, sub) in enumerate(STAGES[:upto], start=1):
         col = "#c2521f" if k == 1 else ACCENT
-        ax.text((x0 + x1) / 2, -3.2, name, ha="center", va="top", fontsize=13,
+        ax.text((x0 + x1) / 2, -2.8, name, ha="center", va="top", fontsize=15.5,
                 color=col)
-        ax.text((x0 + x1) / 2, -5.1, sub, ha="center", va="top", fontsize=10.5,
+        ax.text((x0 + x1) / 2, -5.9, sub, ha="center", va="top", fontsize=13,
                 color=MUTED, linespacing=1.4)
 
     fig.subplots_adjust(0, 0, 1, 1)
     out = f"assets/diagrams/sbi_build_{upto}.png"
-    # Crop to the DATA box, not to the ink. set_aspect("equal") on a 13.6x5.6
-    # figure holding a 100x60 data range leaves the drawing filling the height
-    # and only 68.6% of the width, centred — 35% of every pixel emitted was
-    # empty margin, and on the slide that margin ate the size budget: the
-    # diagram rendered at 687px of a 1164px box. apply_aspect() has already
-    # shrunk the axes position by the time we ask for it, so this is the real
-    # extent; it is identical for all three builds, so they still align.
-    # bbox_inches="tight" would NOT do — it crops to each build's own ink, and
-    # build 1 has ink across a third of the width.
+    # Crop to the drawing, once, and reuse that box for all three builds.
+    #
+    # set_aspect("equal") on a 13.6x5.6 figure holding a 100x60 data range leaves
+    # the drawing filling the height and only 68.6% of the width, centred — 35%
+    # of every pixel emitted was empty margin, and on the slide that margin ate
+    # the size budget: the diagram rendered at 687px inside a 1164px box.
+    #
+    # The box comes from the FULL build's tight bbox, which is why the loop at
+    # the foot runs 3 first. bbox_inches="tight" per-figure would NOT do: it
+    # crops each build to its own ink, and build 1 covers a third of the width,
+    # so the three would no longer stack in register.
+    global CROP
+    fig.subplots_adjust(0, 0, 1, 1)
     fig.canvas.draw()
-    pos = ax.get_position()
-    W, H = fig.get_size_inches()
-    pad = 0.08
-    bb = Bbox.from_extents(pos.x0 * W - pad, pos.y0 * H - pad,
-                           pos.x1 * W + pad, pos.y1 * H + pad)
-    fig.savefig(out, facecolor=PAPER, bbox_inches=bb)
+    if CROP is None:
+        tb = fig.get_tightbbox(fig.canvas.get_renderer())
+        pad = 0.08
+        CROP = Bbox.from_extents(tb.x0 - pad, tb.y0 - pad,
+                                 tb.x1 + pad, tb.y1 + pad)
+    out = f"assets/diagrams/sbi_build_{upto}.png"
+    fig.savefig(out, facecolor=PAPER, bbox_inches=CROP)
     plt.close(fig)
     print("wrote", out)
 
 
-for k in (1, 2, 3):
+# 3 first: the full build defines the crop that all three share.
+for k in (3, 1, 2):
     draw(k)

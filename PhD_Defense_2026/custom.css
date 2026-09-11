@@ -2200,8 +2200,12 @@
    so the same deck sized this figure differently on a laptop and a projector.
    560 is the vertical budget left by the title and the lede. */
 .reveal .slides section.sbigen .sbi-fig img {
-	width: 100%; height: auto; max-height: 560px; object-fit: contain;
-	margin: 0; border: 0; box-shadow: none; background: transparent;
+	/* max-width: none — reveal caps every slide image at 95%, so width: 100%
+	   was really 95% (1105.8 of 1164px). And `margin: 0` overrode the
+	   `margin: auto` reveal puts on .r-stack children, so that narrower image
+	   sat flush left in its grid cell: the figure read 29px left of centre. */
+	width: 100%; max-width: none; height: auto; max-height: 560px; object-fit: contain;
+	margin: 0 auto; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.sbigen .pull { max-width: 94%; margin-top: 1em; }
 
