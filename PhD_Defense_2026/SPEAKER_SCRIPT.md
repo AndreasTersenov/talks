@@ -114,7 +114,7 @@ That is what this thesis is about.
 
 ---
 
-## A0.8 — the chain, and the two halves · frame 7 · 1:43
+## A0.8 — the chain, and the two halves · frame 7 · 1:22
 Modern cosmological survey analyses are **incredibly complex**. But here is the chain reduced to just the last steps, which are the scientific part of the analysis.
 
 **Galaxy shapes go in**. From the shapes we make a **map of the mass distribution**. From the map we extract **a few numbers, the summary statistics**.
@@ -158,11 +158,9 @@ Bayesian inference, where the likelihood is explicit, as neural networks are kno
 
 ---
 
-## A1.1 — the question · frame 8 · 0:06
+## A1.1 — the question · frame 8 · 0:10
 
-So.. Let's start with **our first paper**. 
-
-First, what is exactly being reconstructed.
+So.. Let's start with **our first paper**. But to motivate it, we need to get back to the **weak-lensing basics**.
 
 ---
 
@@ -235,7 +233,7 @@ In fact, the actual "pure" Kaiser-Squires reconstruction is so noisy that it is 
 
 ---
 
-## A1.7 — a data term plus a regulariser · frame 14 · 0:48
+## A1.7 — a data term plus a regulariser · frame 14 · 0:38
 
 But moving towards more advanced methods, every method can be written as an optimisation problem with two
 terms: a **data-fidelity term**, how well the map reproduces the measured shear
@@ -258,7 +256,7 @@ And deep learning learns the regulariser from simulations; that is Part 2. -->
 
 ---
 
-## A1.9 — MCALens · frame 15 · 0:44
+## A1.9 — MCALens · frame 15 · 0:51
 
 Among **model-driven** methods — those with a hand-crafted prior, rather than one learned from
 data — the state of the art is **MCALens**.
@@ -315,7 +313,7 @@ So what are the posteriors that these lead to, in our work?
 
 ---
 
-## A1.13 — the answer · frame 19 · 0:50
+## A1.13 — the answer · frame 19 · 1:41
 
 Here is the result. This is the **first corner plot** I am showing, so let me say what it is.
 
