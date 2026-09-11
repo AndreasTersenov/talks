@@ -2832,13 +2832,13 @@
    These are appended LAST on purpose -- see REVEAL-GOTCHAS §4b. Three rules
    above already set `.dltable` font-size and `td:nth-child(2)`; edit HERE.
    -------------------------------------------------------------------------- */
-.reveal .slides section.dlslide .lede { font-size: 0.9em; margin: 0.2em 0 0; }
+.reveal .slides section.dlslide .lede { font-size: 0.9em; margin: 0.2em 0 0; text-align: center; }
 .reveal .slides section.dlslide .lede.however { margin-top: 0.35em; }
 /* 84%, left-aligned: at full width the four score columns were ~156 px apart for a single
    glyph each, so a row read as four isolated marks rather than as a pattern. Left-aligned
    rather than centred so the table's left edge shares x with the lede and the footnote. */
 .reveal .slides section table.dltable {
-	font-size: 0.82em; margin: 0.9em auto 0 0; width: 84%;
+	font-size: 0.82em; margin: 0.9em auto 0; width: 84%;
 }
 .reveal .slides section table.dltable th:nth-child(1) { width: 24%; }
 .reveal .slides section table.dltable th:nth-child(2) { width: 32%; }
@@ -2857,3 +2857,5 @@
 .reveal .slides section .dlnote {
 	font-size: 0.72em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
 }
+/* the footnote hangs off the table, so it is centred with it rather than with the slide */
+.reveal .slides section.dlslide .dlnote { width: 84%; margin-left: auto; margin-right: auto; }
