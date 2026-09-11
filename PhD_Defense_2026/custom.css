@@ -939,6 +939,11 @@
 	display: block; width: fit-content; margin: 0.6em auto 0;
 }
 .reveal .slides section.kappadef ul.gloss li { margin: 0.24em 0; }
+/* the block's payoff line, set apart from the two reasons above it */
+.reveal .slides section.kappadef .kd-close {
+	font-size: 0.833em; line-height: 1.4; color: var(--fg);
+	text-align: center; margin: 0.9em 0 0.1em;
+}
 .reveal .slides section.kappadef ul.gloss b { color: var(--fg); font-weight: 600; }
 
 /* Two columns from 2026-09-03 — see the note on the slide. */
