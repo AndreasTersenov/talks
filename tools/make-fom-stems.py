@@ -89,61 +89,86 @@ def stems(ax, xs, vals, cols, lw=3.4, ms=13):
 
 # ------------------------------------------------------- slide 21: mass mapping
 def massmapping():
-    names = ["Kaiser–Squires", "inpainting KS", "MCALens"]
-    # the italic descriptors under each name were removed 2026-09-11 (Andreas):
-    # the RMSE row is the useful thing in that space.
-    vals  = [1.00, 1.00, 2.57]
-    tags  = ["1.00×", "1.00×", "2.6×"]
-    # reconstruction RMSE relative to KS: 1018 / 1023 / 976 (x1e-5) -> PAPER_FACTS 105
-    rmse_tags = ["1.00×", "1.01×", "0.96×"]
-    cols  = ["#808080", "#e03424", "#006fed"]
-    xs    = [0, 1, 2]
+    """Frame 19: map quality and constraining power, side by side.
 
-    fig, ax = plt.subplots(figsize=(5.9, 4.55))
+    Both quantities are shown as IMPROVEMENT OVER KAISER-SQUIRES, so higher is
+    better for both and the reader holds one rule rather than two. For the figure
+    of merit that is the ratio as published; for the RMSE it is the reciprocal,
+    KS / method, because RMSE is lower-is-better. That inversion is disclosed in
+    the axis label -- "improvement over Kaiser-Squires" -- and it is exactly the
+    claim the slide makes, that MCALens is 4 % better on the map and 157 % better
+    on the posterior.
+
+    The "higher is better for both" note under the axis was removed 2026-09-11
+    (Andreas): "improvement over Kaiser-Squires" already says it.
+
+    The two are told apart by MARKER, not colour: colour means the method here,
+    on the corner plot beside it, and in the legend. Open diamond = map quality,
+    filled = constraining power.
+
+    CAVEAT, PAPER_FACTS 114: these are not the same maps. The RMSE table smooths
+    with the kernel minimising its own RMSE (2'), the FoM analysis with the one
+    maximising constraining power (1'). That is the point rather than a flaw, but
+    it belongs in the speaker notes.
+
+    Numbers, PAPER_FACTS 105 and the ledger's FoM row:
+      RMSE (x1e-5)  KS 1018 +/- 2 · iKS 1023 +/- 2 · MCALens 976 +/- 2
+                    -> improvement 1.000 / 0.995 / 1.043
+      FoM           KS 758 · iKS 755 · MCALens 1947 -> 1.00 / 1.00 / 2.57
+    Note iKS is marginally WORSE on RMSE (0.995); it rounds to 1.00x and draws
+    level, which is honest at this precision.
+    """
+    from matplotlib.lines import Line2D
+
+    names = ["Kaiser–Squires", "inpainting KS", "MCALens"]
+    cols  = ["#808080", "#e03424", "#006fed"]
+    xs    = np.array([0, 1, 2])
+    rmse  = [1018 / 1018, 1018 / 1023, 1018 / 976]
+    rtags = ["1.00×", "1.00×", "1.04×"]
+    fom   = [1.00, 1.00, 2.57]
+    ftags = ["1.00×", "1.00×", "2.6×"]
+    d     = 0.19
+
+    fig, ax = plt.subplots(figsize=(6.4, 4.55))
     fig.patch.set_facecolor(PAPER)
     frame(ax)
-
     ax.axhline(1.0, color=EDGE, lw=1.1, ls=(0, (5, 4)), zorder=1)
-    stems(ax, xs, vals, cols)
 
-    for x, v, t, c in zip(xs, vals, tags, cols):
-        ax.text(x, v + 0.13, t, ha="center", va="bottom",
-                fontsize=16.5, color=c)
+    for x, v, c in zip(xs - d, rmse, cols):          # map quality, open head
+        ax.vlines(x, 0, v, color=c, lw=3.0, alpha=0.55, zorder=2)
+        ax.plot([x], [v], marker="D", ms=12, mfc=PAPER, mec=c, mew=2.4, zorder=3)
+    for x, v, c in zip(xs + d, fom, cols):           # constraining power, solid head
+        ax.vlines(x, 0, v, color=c, lw=3.4, zorder=2)
+        ax.plot([x], [v], marker="D", ms=12.5, color=c,
+                markeredgecolor=PAPER, markeredgewidth=1.2, zorder=3)
+
+    for x, v, t, c in zip(xs - d, rmse, rtags, cols):
+        ax.text(x, v + 0.11, t, ha="center", va="bottom", fontsize=14.5, color=c, alpha=0.85)
+    for x, v, t, c in zip(xs + d, fom, ftags, cols):
+        ax.text(x, v + 0.11, t, ha="center", va="bottom", fontsize=15.5, color=c)
+
+    ax.legend(handles=[
+        Line2D([], [], color=MUTED, lw=3.0, alpha=0.55, marker="D", ms=11,
+               mfc=PAPER, mec=MUTED, mew=2.2, label="map quality  (RMSE)"),
+        Line2D([], [], color=MUTED, lw=3.4, marker="D", ms=11,
+               mfc=MUTED, mec=PAPER, mew=1.2, label="constraining power  (FoM)")],
+        loc="upper left", frameon=False, fontsize=14, labelcolor=INK,
+        handlelength=2.4, borderaxespad=0.6)
 
     ax.set_xlim(-0.62, 2.62)
-    ax.set_ylim(0, 3.15)
+    ax.set_ylim(0, 3.2)
     ax.set_yticks([0, 1, 2, 3])
     ax.set_yticklabels(["0", "1", "2", "3"], fontsize=14.5)
-    ax.set_ylabel("figure of merit, relative to KS",
-                  fontsize=14.5, color=INK, labelpad=6)
+    ax.set_ylabel("improvement over Kaiser–Squires", fontsize=14.5, color=INK, labelpad=6)
     ax.set_xticks(xs)
     ax.set_xticklabels(names, fontsize=15, color=INK)
-    # The RMSE row, added 2026-09-11. The slide claims MCALens improves the RMSE by
-    # 4 % and the figure of merit by 157 %, and until now only the second number was
-    # drawn. Putting the ratios under the same three columns makes the contrast the
-    # figure's own: the row ABOVE the diamonds spreads 1.00 / 1.00 / 2.6, the row
-    # BELOW the axis barely moves. Ratios rather than the absolutes (1018 / 1023 /
-    # 976, x1e-5) because 1018 against 976 has to be turned into "4 %" in the head.
-    #
-    # CAVEAT, PAPER_FACTS 114: these are NOT the same maps. The RMSE table smooths
-    # each map with the kernel minimising its own RMSE (2'), the FoM analysis with
-    # the kernel maximising constraining power (1'). That is the point rather than a
-    # flaw -- the two objectives are different -- but it must be in the notes.
-    ax.text(1.0, -0.34, "reconstruction RMSE, relative to KS", ha="center", va="top",
-            fontsize=13.5, color=MUTED, style="italic", transform=ax.transData,
-            clip_on=False)
-    for x, rt, c in zip(xs, rmse_tags, cols):
-        ax.text(x, -0.56, rt, ha="center", va="top", fontsize=15,
-                color=c, transform=ax.transData, clip_on=False)
-
-    fig.tight_layout(rect=(0, 0.095, 1, 1))
+    fig.tight_layout()
     out = "assets/figures/statistics/fom_massmapping_stems.png"
     fig.savefig(out, dpi=220, facecolor=PAPER)
     trim(out)
     print("wrote", out, Image.open(out).size)
 
 
-# --------------------------------------------------------- slide 56: summaries
 def summaries():
     names = [r"$\ell_1$, auto-maps", r"$\ell_1$ + product",
              r"joint $\ell_1$-norm", "CNN, VMIM"]
