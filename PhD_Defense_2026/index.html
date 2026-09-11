@@ -1385,14 +1385,14 @@
 							<span class="kicker">Kaiser&ndash;Squires</span>
 							<img class="plain" src="../assets/figures/posteriors/countours_ks_different_scales_light.png"
 								alt="corner plot for Kaiser-Squires with three, four, five and six starlet scales included; the contours stop shrinking after the fourth">
-							<figcaption>adding the 4&prime; and 2&prime; scales <b>does not change</b> the contours
+							<figcaption>adding the 4&prime; and 2&prime; scales does not change the contours
 							</figcaption>
 						</figure>
 						<figure class="fig">
 							<span class="kicker">MCALens</span>
 							<img class="plain" src="../assets/figures/posteriors/countours_mca_different_scales_light.png"
 								alt="the same corner plot for MCALens; the contours continue to shrink as each finer scale is added">
-							<figcaption>every added scale <b>tightens</b> the contours</figcaption>
+							<figcaption>every added scale tightens the contours</figcaption>
 						</figure>
 					</div>
 
@@ -2736,7 +2736,7 @@
 						alt="a convergence map convolved with a small wavelet gives a map of the small-scale structure; the same map convolved with a large wavelet gives a map of the large-scale structure">
 					<p class="kicker pop-kicker">why wavelets for convergence maps</p>
 					<ul class="points dots pop-points">
-						<li>the cosmic web consists of <b class="alert">localised structures</b> (clusters, filaments,
+						<li>the LSS consists of <b class="alert">localised structures</b> (clusters, filaments,
 							voids) with a characteristic size and position</li>
 						<!-- <li>such a field is <b class="alert">sparse</b> in the wavelet domain: a few large coefficients
 						</li> -->
@@ -2969,10 +2969,9 @@
 				<ul class="points gm-points">
 					<li>the true distribution $\mathbb{P}$ is unknown; we observe samples $X = \{x_0, x_1, \ldots,
 						x_n\}$ and fit a parametric model $\mathbb{P}_\theta$</li>
-					<li>a trained model can <b class="alert">generate</b> new samples, and for some model classes <b
-							class="alert">evaluate</b> the density $p_\theta(x)$</li>
-					<li>the framework <b>does not depend on what $x$ is</b>: the same machinery generates <b>faces,
-							images, video, molecules</b></li>
+					<li>a trained model can <b class="alert">generate</b> new samples, and evaluate the density $p_\theta(x)$</li>
+					<li>the framework does not depend on what $x$ is: the same machinery generates faces,
+							images, video, molecules,...</li>
 				</ul>
 
 				<div class="popover fragment fade-in" data-fragment-index="2">
@@ -3084,9 +3083,9 @@
 						alt="stages two and three added: the parameter-data pairs training a conditional normalizing flow, and the trained flow evaluated at the real observation to give a posterior">
 				</div>
 
-				<p class="pull fragment" data-fragment-index="1">The simulations are the only expensive step, and they
+				<!-- <p class="pull fragment" data-fragment-index="1">The simulations are the only expensive step, and they
 					are run <b>once</b>. The trained flow evaluates the posterior for <b class="alert">any</b>
-					observation immediately (<b>amortised</b> inference).</p>
+					observation immediately (<b>amortised</b> inference).</p> -->
 
 				<aside class="notes">
 					SBI in general; the next slide is this paper's particular pipeline. Frame it from the
