@@ -2821,6 +2821,32 @@
 .reveal .slides section table.dltable .no,
 .reveal .slides section table.dltable .part { color: var(--fg-muted); }
 /* the asterisk on `flexible` — it had no footnote at all before */
+/* --------------------------------------------------------------------------
+   A2.2 visual pass, 2026-09-11. The scorecard IS the content of this slide --
+   the argument is "scan the columns, no row is all ticks" -- but every element
+   rendered at one weight, so nothing led. Three changes: the method name is the
+   row's label and the type is its gloss, not a second label of equal weight;
+   the marks are the data and are sized like it; and the target row is separated
+   by an accent rule so it reads as the specification rather than a sixth method.
+
+   These are appended LAST on purpose -- see REVEAL-GOTCHAS §4b. Three rules
+   above already set `.dltable` font-size and `td:nth-child(2)`; edit HERE.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.dlslide .lede { font-size: 0.9em; margin: 0.2em 0 0; }
+.reveal .slides section.dlslide .lede.however { margin-top: 0.35em; }
+.reveal .slides section table.dltable { font-size: 0.82em; margin-top: 0.9em; }
+.reveal .slides section table.dltable th { font-size: 0.92em; padding: 0.5em 0.3em; }
+.reveal .slides section table.dltable td { padding: 0.42em 0.3em; }
+.reveal .slides section table.dltable td:nth-child(1) { font-weight: 600; }
+/* 0.88em, not 0.82: 0.82 of a 0.82em table lands at 16 px, under the type floor */
+.reveal .slides section table.dltable td:nth-child(2) { font-size: 0.88em; }
+.reveal .slides section table.dltable .yes,
+.reveal .slides section table.dltable .no,
+.reveal .slides section table.dltable .part { font-size: 1.3em; }
+/* air under the last real method, then a rule: the target row is not a sixth entry */
+.reveal .slides section table.dltable tbody tr:nth-child(5) td { padding-bottom: 1.1em; }
+.reveal .slides section table.dltable tr.want td { border-top: 2px solid var(--accent); }
+
 .reveal .slides section .dlnote {
 	font-size: 0.72em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
 }
