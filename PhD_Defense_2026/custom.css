@@ -2196,8 +2196,11 @@
 /* the r-stack is a grid; without a definite width it shrink-wraps to the
    intrinsic image size, so the width has to be set here, not on the img. */
 .reveal .slides section.sbigen .sbi-fig { margin: 0.8em auto 0; width: 97%; max-width: 97%; }
+/* px, not vh: vh resolves against the browser window, not the 1200x720 canvas,
+   so the same deck sized this figure differently on a laptop and a projector.
+   560 is the vertical budget left by the title and the lede. */
 .reveal .slides section.sbigen .sbi-fig img {
-	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
+	width: 100%; height: auto; max-height: 560px; object-fit: contain;
 	margin: 0; border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.sbigen .pull { max-width: 94%; margin-top: 1em; }

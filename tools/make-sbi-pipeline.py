@@ -28,6 +28,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.transforms import Bbox
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Ellipse
 
 PAPER  = "#f7f5f0"
@@ -178,7 +179,22 @@ def draw(upto):
 
     fig.subplots_adjust(0, 0, 1, 1)
     out = f"assets/diagrams/sbi_build_{upto}.png"
-    fig.savefig(out, facecolor=PAPER)      # NO bbox_inches: the three must align
+    # Crop to the DATA box, not to the ink. set_aspect("equal") on a 13.6x5.6
+    # figure holding a 100x60 data range leaves the drawing filling the height
+    # and only 68.6% of the width, centred — 35% of every pixel emitted was
+    # empty margin, and on the slide that margin ate the size budget: the
+    # diagram rendered at 687px of a 1164px box. apply_aspect() has already
+    # shrunk the axes position by the time we ask for it, so this is the real
+    # extent; it is identical for all three builds, so they still align.
+    # bbox_inches="tight" would NOT do — it crops to each build's own ink, and
+    # build 1 has ink across a third of the width.
+    fig.canvas.draw()
+    pos = ax.get_position()
+    W, H = fig.get_size_inches()
+    pad = 0.08
+    bb = Bbox.from_extents(pos.x0 * W - pad, pos.y0 * H - pad,
+                           pos.x1 * W + pad, pos.y1 * H + pad)
+    fig.savefig(out, facecolor=PAPER, bbox_inches=bb)
     plt.close(fig)
     print("wrote", out)
 
