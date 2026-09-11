@@ -122,12 +122,12 @@ def draw(upto):
     py = 13.5 + 1.5 * (xs[:, 1] + 0.7 * xs[:, 0] ** 2 - 0.9)
     keep = (px > 4) & (px < 22) & (py > 7.5) & (py < 19)
     ax.scatter(px[keep], py[keep], s=3.2, color=ACCENT, alpha=0.55, linewidths=0)
-    ax.text(13, 5.0, r"simulated data   $x \sim p(x \mid \theta)$",
-            ha="center", fontsize=14.5, color=INK)
+    ax.text(13, 6.8, "simulated data\n" r"$x \sim p(x \mid \theta)$",
+            ha="center", va="top", fontsize=14.5, color=INK, linespacing=1.45)
 
     # ========================================================== 2. learning
     if upto >= 2:
-        ax.text(34.5, 40.5, r"base  $\mathcal{N}$", ha="center", fontsize=15,
+        ax.text(37, 40.5, r"base  $\mathcal{N}$", ha="center", fontsize=14,
                 color=INK)
         for w, a in ((8.0, 0.18), (5.2, 0.34), (2.8, 0.85)):
             ax.add_patch(Ellipse((37, 30), w, w * 0.62 * 1.6, facecolor=ACCENT,
@@ -145,8 +145,8 @@ def draw(upto):
             ax.scatter([cx] * k, ys, s=70, facecolor=PAPER, edgecolor=ACCENT,
                        lw=1.3, zorder=3)
             prev = (cx, ys)
-        ax.text(56.0, 40.5, r"conditional flow   $q_\phi(\theta \mid x)$",
-                ha="center", fontsize=15, color=ACCENT)
+        ax.text(58.7, 45.6, "conditional flow\n" r"$q_\phi(\theta \mid x)$",
+                ha="center", va="top", fontsize=14, color=ACCENT, linespacing=1.35)
 
         ax.plot([21, 58.7], [13.5, 13.5], color=INK, lw=1.3, solid_capstyle="butt")
         arrow(58.7, 13.5, 58.7, 25.5, color=INK)
