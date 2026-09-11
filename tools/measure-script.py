@@ -28,13 +28,17 @@ from html.parser import HTMLParser
 # Words per minute. 140 is the guidelines' figure for an audience working in a second or
 # third language — but that is a READING rate, and it assumes continuous speech. Real
 # delivery has pauses in it: the beat after a headline, the two seconds a room needs to
-# look at a figure, turning to the screen and back. Andreas, timing himself against this
-# script on 2026-09-07: it "actually takes significantly more time than what you are
-# estimating". 120 is the interim number; override it once there is a measurement:
+# look at a figure, turning to the screen and back.
 #
-#     tools/measure-script.py PhD_Defense_2026 --wpm 112
+# MEASURED, 2026-09-10: the CosmoStat rehearsal ran the PhD defense script in 48:00 flat,
+# reading. That script (01c9feb) holds 5,799 spoken words once HTML comments are properly
+# stripped, so the delivered rate is 121 wpm. An earlier reading of this put it at 126,
+# but that was computed with the comment bug below still in place, against an inflated
+# 6,141 words. Use 121; from memory rather than reading, budget slower still.
 #
-WPM = 120.0
+#     tools/measure-script.py PhD_Defense_2026 --wpm 121
+#
+WPM = 121.0
 
 
 # ----------------------------------------------------------------- the deck
@@ -99,9 +103,21 @@ FRAMEREF = re.compile(r"·\s*frames?\s+(\d+)(?:\s*[–-]\s*(\d+))?", re.I)
 TIMEREF = re.compile(r"·\s*(\d+):([0-5]\d)\s*$")
 
 
+def uncommented(lines):
+    """The body with every HTML comment span removed.
+
+    The line filter below only drops lines that START with `<!--`, so a multi-line
+    comment leaked every line after its first, and a comment opened mid-line leaked its
+    whole tail. On the defense script that was 666 phantom words — 5:30 — and it grew
+    every time a trimmed sentence was parked rather than deleted, so a cut could be
+    reported as an increase. Kill the spans first.
+    """
+    return re.sub(r"<!--.*?-->", " ", "\n".join(lines), flags=re.S)
+
+
 def spoken(lines):
     """Words actually said: drop stage directions, notes, headings, tables, comments."""
-    text = "\n".join(l for l in lines
+    text = "\n".join(l for l in uncommented(lines).split("\n")
                      if not l.lstrip().startswith(">")
                      and not l.lstrip().startswith("#")
                      and not l.lstrip().startswith("|")
@@ -166,7 +182,8 @@ def main():
                 problems.append("%s: names frame %d, deck has %d" % (b["id"], hi, len(frames)))
             else:
                 want = sum(frames[k - 1]["steps"] for k in range(lo, hi + 1))
-                got = len(re.findall(r"\[CLICK", "\n".join(b["body"])))
+                # a [CLICK] inside an HTML comment is parked, not spoken — same bug
+                got = len(re.findall(r"\[CLICK", uncommented(b["body"])))
                 b["want"], b["got"] = want, got
                 if want != got:
                     problems.append("%s (frame%s %s): %d [CLICK] cues, deck has %d fragment steps"
