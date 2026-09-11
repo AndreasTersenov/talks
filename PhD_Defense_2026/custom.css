@@ -741,7 +741,13 @@
 .reveal .slides section.lcdm .block.lecture .block-content { margin: 0; }
 .reveal .slides section.lcdm .figgrid { grid-template-columns: 1.05fr 1fr; }
 .reveal .slides section.lcdm .figgrid img { max-height: none; width: 100%; }
-.reveal .slides section.lcdm .assume { font-size: 0.708em; }
+
+/* 2026-09-11: the parameter row is parked, so the assumptions block inherits the top
+   third it used to give away. Larger type and more air, not a bigger box. */
+.reveal .slides section.lcdm .block.lecture { margin-top: 0.8em; padding: 1.1em 1.4em; }
+.reveal .slides section.lcdm .assume { font-size: 0.88em; line-height: 1.6; padding-left: 1.1em; }
+.reveal .slides section.lcdm .assume li { margin-bottom: 0.5em; }
+.reveal .slides section.lcdm .figgrid { grid-template-columns: 1.15fr 1fr; gap: 1.6em; }
 
 /* A0.3: the block's figure swaps on the fragment — budget pie, then the same cone
    annotated with what the model does not explain. Both occupy one grid cell. */
@@ -776,6 +782,11 @@
 .reveal .slides section.probes .figswap > figure { margin: 0; }
 .reveal .slides section.probes .figswap > figure img { width: 62%; max-width: 100%; }
 .reveal .slides section.probes figcaption { font-size: 0.708em; line-height: 1.5; margin-top: 0.6em; }
+/* 2026-09-11: the caption is parked, so the composite takes the room it was leaving
+   for four lines nobody says. The width lives on `.probeshot` further down — the ring
+   is positioned in percentages of that wrapper, so the wrapper has to carry the size or
+   the ring is left behind. */
+.reveal .slides section.probes .figswap { margin-top: 1.2em; }
 
 .reveal .slides section.probes .tensionpair {
 	display: grid; grid-template-columns: 1fr 1fr; gap: 1.6em; align-items: start;
@@ -2363,7 +2374,9 @@
    panel is left 0.5176, top 0.4841, width 0.4485, height 0.3571 of the image
    (rows 244-423, columns 442-824 of 854x504); the values below add roughly ten
    pixels of air on each side. */
-.reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 62%; }
+/* 62% -> 82% on 2026-09-11, when the unspoken caption was parked. The ring below is in
+   percentages of this box, so it follows automatically. */
+.reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 82%; }
 /* margin: 0 is load-bearing. The theme gives images a vertical margin, which
    made the inline-block taller than the picture, so the box's percentage top
    and height resolved against a box ~10% taller than the image and it sat low
