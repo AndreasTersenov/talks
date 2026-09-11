@@ -241,8 +241,7 @@ terms: a **data-fidelity term**, how well the map reproduces the measured shear
 looks like.
 
 The data term is the **same for all of them**. What changes from one method to the next is *the prior
-they assume*, and the way the optimisation is solved — from no prior at all, at the top, down to a
-prior **learned from simulations**, which is where Part 2 goes.
+they assume for* $\kappa$, and the way the optimisation is solved.
 
 <!-- Parked 2026-09-11: the method-by-method walk. MCALens gets a full slide next and the other four
 are never used again; the five cards stay on screen. This also carried the only spoken gloss of

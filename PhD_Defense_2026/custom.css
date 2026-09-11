@@ -2306,6 +2306,26 @@
 /* the two short glosses are labels; only the third is a sentence and may wrap */
 .reveal .slides section.mmopt .points.mmgloss li:nth-child(1),
 .reveal .slides section.mmopt .points.mmgloss li:nth-child(2) { white-space: nowrap; }
+
+/* 2026-09-11: three tiers instead of one wall. The title gets air under it, the equation
+   sits in a block so it reads as the object of the slide rather than as another line of
+   text, and the glosses stay outside it as annotation. */
+/* `.slide-title.tight` is set in new_slides.css, which loads AFTER this file at equal
+   specificity — so this needs `.tight` too or it silently loses. REVEAL-GOTCHAS §4b. */
+.reveal .slides section.mmopt .slide-title.tight { margin-bottom: 1.6em; }
+/* the lede is now the block's tab: it states in words what the equation states in
+   symbols, so it belongs with it rather than under the title, where its serif and its
+   left edge made the two read as one paragraph. */
+.reveal .slides section.mmopt .block.eqblock .block-title {
+	font-size: 0.88em; margin-bottom: 0.9em;
+}
+/* the block hugs the equation: 1.5em of padding made a 254px box around 105px of maths */
+.reveal .slides section.mmopt .block.eqblock {
+	margin: 0 auto; padding: 1.1em 1.8em; max-width: 94%;
+}
+.reveal .slides section.mmopt .block.eqblock .block-content { margin: 0; }
+.reveal .slides section.mmopt .block.eqblock .mmeq { margin: 0; }
+.reveal .slides section.mmopt .points.mmgloss { margin-top: 1.5em; }
 .reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
 .reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
 /* `auto auto` + justify-content, NOT `auto 1fr`: 1fr made the gloss column

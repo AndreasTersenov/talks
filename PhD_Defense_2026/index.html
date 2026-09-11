@@ -953,15 +953,16 @@
 					<h3 class="slide-title tight">Every mass-mapping method minimises a data term plus a <em
 							class="alert">regulariser</em> that encodes the prior</h3>
 
-					<p class="lede">
-						Find the $\kappa$ that <b>fits the measured shear</b> and is <b>plausible under a prior</b>.
-					</p>
-
-					<p class="mmeq">$$\hat{\kappa} \;\in\; \arg\min_{\kappa}\;
-						\underbrace{\tfrac{1}{2}\big\lVert \mathbf{P}\kappa - \gamma
-						\big\rVert^{2}_{\mathbf{N}^{-1}}}_{\text{data fidelity: does it match the shear?}}
-						\;+\; \lambda\,
-						\underbrace{\mathcal{R}(\kappa)}_{\text{regulariser: is it a plausible map?}}$$</p>
+					<div class="block eqblock">
+						<div class="block-title">find the $\kappa$ that fits the measured shear and is plausible under a prior</div>
+						<div class="block-content">
+							<p class="mmeq">$$\hat{\kappa} \;\in\; \arg\min_{\kappa}\;
+								\underbrace{\tfrac{1}{2}\big\lVert \mathbf{P}\kappa - \gamma
+								\big\rVert^{2}_{\mathbf{N}^{-1}}}_{\text{data fidelity: does it match the shear?}}
+								\;+\; \lambda\,
+								\underbrace{\mathcal{R}(\kappa)}_{\text{regulariser: is it a plausible map?}}$$</p>
+						</div>
+					</div>
 
 					<ul class="points dots mmgloss">
 						<li>$\mathbf{N}$, noise covariance</li>
