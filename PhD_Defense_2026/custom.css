@@ -952,6 +952,21 @@
 	gap: 1.5em; margin: 0.8em auto 0; max-width: 95%;
 }
 .reveal .slides section.kappadef .kdrow .block.lecture { flex: 1 1 44%; margin: 0; }
+/* unboxed since 2026-09-12: a card around two bullets read as a component when
+   it is just the slide's left half. Same flex basis as the block it replaced. */
+.reveal .slides section.kappadef .kdrow .kdtext { flex: 1 1 44%; margin: 0; padding-left: 1.2em; }
+/* one left edge for all three: without the card there is nothing else holding
+   them together, and a centred kicker over a fit-content list over a centred
+   closing line reads as three unrelated things. */
+.reveal .slides section.kappadef .kdtext .kicker {
+	display: block; margin: 0 0 0.6em; text-align: left;
+}
+.reveal .slides section.kappadef .kdtext ul.gloss {
+	width: auto; margin: 0; padding-left: 1.05em;
+}
+.reveal .slides section.kappadef .kdtext .kd-close {
+	text-align: left; margin: 0.85em 0 0;
+}
 .reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.833em; }
 .reveal .slides section.kappadef .kmap { flex: 1 1 54%; width: auto; margin: 0; }
 .reveal .slides section.kappadef .kmap img {
