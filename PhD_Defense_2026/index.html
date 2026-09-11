@@ -2809,12 +2809,15 @@
 					<div class="col fragment fade-in" data-fragment-index="0">
 						<div class="kicker">wavelet peak counts</div>
 						<div class="r-stack statswap">
-							<img class="plain fragment fade-out" data-fragment-index="1"
+							<img class="plain"
 								src="../assets/figures/maps/kappa_peaks_circled.png"
 								alt="a smoothed convergence map with its signal-to-noise peaks circled">
+							<!-- HIDDEN 2026-09-11, kept for a future talk. Showing the statistic's own shape
+							     means explaining its axes, and there is no time for that. The first view stays.
 							<img class="plain fragment fade-in" data-fragment-index="1"
 								src="../assets/diagrams/hos_peaks_shape.png"
-								alt="schematic peak counts against signal-to-noise, one curve per starlet scale: the counts fall by about a factor of four from each scale to the next, and every curve peaks a little above a signal-to-noise of one">
+								alt="schematic peak counts against signal-to-noise, one curve per starlet scale">
+							-->
 						</div>
 						<p class="cap">local maxima of the SNR field, counted per SNR bin &rarr; focus only on a subset
 							of the field
@@ -2822,7 +2825,7 @@
 					<div class="col fragment fade-in" data-fragment-index="2">
 						<div class="kicker">starlet &#8467;1-norm</div>
 						<div class="r-stack statswap">
-							<div class="l1formula fragment fade-out" data-fragment-index="3">
+							<div class="l1formula">
 								<div>
 									$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u]
 									\big|
@@ -2831,9 +2834,11 @@
 										falls in bin $i$</p>
 								</div>
 							</div>
+							<!-- HIDDEN 2026-09-11, kept for a future talk — same reason as the peaks plot above.
 							<img class="plain fragment fade-in" data-fragment-index="3"
 								src="../assets/diagrams/hos_l1_shape.png"
-								alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale: each curve is bimodal about zero, with a hump on the void side and a slightly higher one on the peak side, and the coarser scales are broader and flatter">
+								alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale">
+							-->
 						</div>
 						<p class="cap">sum of <b>absolute coefficients</b> per band and SNR bin &rarr; encodes
 							information from every pixel (peaks, voids, ...)</p>
