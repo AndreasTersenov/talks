@@ -1221,6 +1221,44 @@ Lensing responds to the total matter, so there is no galaxy-bias model between w
 what we want. And it is sensitive to the geometry and the growth at once, which is what makes it a
 test of the model rather than a measurement of one number.
 
+**"What is a Wiener filter?"**
+The optimal linear reconstruction if you assume the field is Gaussian. Put a Gaussian prior with a
+given power spectrum on κ and Gaussian noise on the data, and the posterior is Gaussian too, so it
+has a closed form: every Fourier mode is multiplied by its signal power over signal-plus-noise.
+Where the signal dominates the mode passes through, where the noise dominates it is suppressed.
+That is why it needs nothing but the two power spectra. Kaiser–Squires with Gaussian smoothing, on
+frame 13, is the crude version of the same idea: a fixed kernel damps every scale by the same
+amount whatever the signal-to-noise there, and the Wiener filter damps each one by what it deserves.
+
+> *If pressed on the circularity* — yes, it needs a power spectrum, and in practice you take a
+> fiducial one or estimate it from the data and iterate. A weak dependence for the reconstruction,
+> but an assumption, and part of what a hand-crafted prior costs. Which is the motivation for
+> learning the prior in Part 2.
+
+**"What does 'sparse in the starlet domain' mean?"**
+That the structures in a convergence map are compact and few, so in a wavelet basis matched to
+their shape almost every coefficient is near zero and a handful are large. A halo shows up as a few
+large coefficients at the scale that matches it; white noise does the opposite and spreads itself
+thinly over all of them. So the prior says the signal is concentrated and the noise is not, and
+enforcing it is a threshold — keep the large coefficients, zero the small ones, at a level set from
+the noise in each band rather than by hand.
+
+**The reason MCALens needs both components**, if they ask why Wiener alone will not do: the Wiener
+filter suppresses by *scale*, the threshold suppresses by *amplitude*. Being linear, the Wiener
+filter decides per Fourier mode, so at a noise-dominated scale it damps everything there including a
+genuine peak. The threshold is nonlinear and works coefficient by coefficient, so it keeps the peak
+and kills the noise around it. That is the structure a Gaussian prior cannot represent, and it is
+why the gain on frame 20 appears below 8′.
+
+> *Two to have ready.* **The starlet specifically** because it is isotropic, so its atoms look like
+> the roughly round things actually in the map, and undecimated, so thresholding does not leave
+> artefacts that depend on where a structure sits on the grid. **And it is the same ℓ₁ as the
+> summary statistic in Parts 3 and 4, doing a different job**: here a regulariser, a penalty inside
+> the reconstruction that decides which map you get; there a summary computed on a finished map,
+> whatever made it. Do not let the two be conflated. κ is also not really sparse — what is well
+> described as sparse is the non-Gaussian excess over the Gaussian part, which is the actual
+> argument for splitting the model in two.
+
 **"What is the single most important thing in the thesis?"**
 That the analysis choices are not neutral. Two of the four results are the same shape: a step
 everyone treats as preprocessing — which reconstruction, which frame the bins are in — turns out to
