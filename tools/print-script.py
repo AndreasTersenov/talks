@@ -254,4 +254,5 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.86em;
     print("wrote %s — print stylesheet, two columns" % dest)
 
 
-main()
+if __name__ == "__main__":          # importable: print-notes.py reuses write_pdf/inline
+    main()
