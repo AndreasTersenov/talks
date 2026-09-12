@@ -922,7 +922,7 @@ The actual cosmology parts are *only the parts on the very right*.
 
 <!-- ---
 
-## A0.4v — the two tensions · frame 53 · SKIP · 0:55
+## A0.4v — the two tensions · frame 54 · SKIP · 0:55
 
 > **SKIPPED (Andreas, 2026-09-06).** It is a vertical under A0.4, so skipping it costs nothing but
 > not pressing DOWN, and nothing later in the talk depends on it. Kept here because it is the one
@@ -944,7 +944,7 @@ analysis itself. -->
 ---
 
 <!-- 
-## A1.8 — mass mapping as Bayesian inference · frame 105 · SKIP · 0:52
+## A1.8 — mass mapping as Bayesian inference · frame 65 · SKIP · 0:52
 
 > **SKIPPED (Andreas, 2026-09-06).** Backup 107. The word *prior* moved to A1.7; the Part 3 pointer
 > was dropped on 2026-09-09 (A3.13 stands on its own); the point-estimate flag sits on A1.9. Frame 35
@@ -968,7 +968,7 @@ instead of a map. There, the likelihood is the term we cannot write down.
 
 ---
 
-## A2.5 — the residual variant · frame 111 · SKIP · 0:29
+## A2.5 — the residual variant · frame 71 · SKIP · 0:29
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** A variant, not a result. A2.3's short path names it in
 > one clause. The uncertainty slide is its vertical: press DOWN from 113.
@@ -983,7 +983,7 @@ maps.
 
 ---
 
-## A2.6 — the uncertainty, in full · frame 112 · SKIP · 1:35
+## A2.6 — the uncertainty, in full · frame 72 · SKIP · 1:35
 
 > **MOVED TO BACKUP (Andreas, 2026-09-06).** It is the mechanism behind the calibrated error bars
 > A2.7 reports, and conformal prediction is Tsakalides's own vocabulary, so expect it in questions.
@@ -1015,7 +1015,7 @@ that holds whether or not the model is well specified.
 
 ---
 
-## A3.5 — the phases · frame 98 · SKIP · 0:26
+## A3.5 — the phases · frame 78 · SKIP · 0:26
 
 > **MOVED TO BACKUP 2026-09-10 (Andreas).** No time for the phases and amplitudes detour.
 > Its last point, the list of higher-order statistics, moved onto frame 28, which now carries
@@ -1028,7 +1028,7 @@ wavelet statistics, the ℓ1-norm, Minkowski functionals, and others.
 
 ---
 
-## A4.6 — nulling, and what goes wrong · frame 64 · SKIP · 1:50
+## A4.6 — nulling, and what goes wrong · frame 98 · SKIP · 1:50
 
 > **MOVED TO BACKUP; the whole nulling / BNT thread is out of the talk (Andreas, 2026-09-06).** Too
 > technical for the time available: it needs the transform, the noise-correlation mechanism and the
@@ -1067,7 +1067,7 @@ the signal-to-noise was, in their words, highly non-trivial.
 
 ---
 
-## A4.7 — the information is recovered by a joint reading · frame 65 · SKIP · 1:48
+## A4.7 — the information is recovered by a joint reading · frame 99 · SKIP · 1:48
 
 > **MOVED TO BACKUP with A4.6**; the two are one argument and neither works alone. Frames 66 and
 > 67, in front of the three explainers that account for them.
@@ -1202,7 +1202,7 @@ Two answers. The reconstruction never leaves the data behind — the network is 
 iteration whose other step is a gradient towards the measured shear, and it converges to a fixed
 point of that pair. And for the inference we test it: because the trained flow answers any new
 observation in milliseconds, we can run it on thousands of simulated observations where we know the
-truth and check the posteriors actually cover. That is frame 63 in the backup.
+truth and check the posteriors actually cover. That is frame 88 in the backup.
 
 **"Isn't 157 per cent suspiciously large?"**
 It is a figure of merit, which is an inverse area in parameter space, so it moves faster than an
