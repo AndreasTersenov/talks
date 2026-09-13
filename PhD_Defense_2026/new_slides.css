@@ -875,3 +875,100 @@
 .reveal .slides section.cqr .footnote {
 	margin: 0.45em 5.5em 0 0; max-width: none; text-align: left;
 }
+
+/* ----------------------------------------------------------------------------
+   Backup: the filtering / l1 explainer cards (added 2026-09-13), built from the
+   PhD_Day_2025 originals and, after 2026-09-13, written in their author's form:
+   a bordered block, bold label, colon, arrow to the consequence.  Five of the six
+   are one block of bullets; only the filter card is two columns.  No figures, so
+   the whole budget is type, and the .points size inside a .block is the lever.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.filt .slide-title,
+.reveal .slides section.dasym .slide-title,
+.reveal .slides section.l1l2 .slide-title,
+.reveal .slides section.pdfl1 .slide-title,
+.reveal .slides section.fbias .slide-title,
+.reveal .slides section.lrnfilt .slide-title { margin-bottom: 0.15em; }
+
+/* the one two-column card */
+.reveal .slides section.filt .container {
+	align-items: stretch; gap: 0 1.2em; margin-top: 0.6em;
+}
+.reveal .slides section.filt .col { display: flex; flex-direction: column; }
+
+/* the single-block cards: one wide bordered block holding the list */
+.reveal .slides section.l1l2 .l1l2block,
+.reveal .slides section.pdfl1 .pdfblock,
+.reveal .slides section.fbias .fbiasblock,
+.reveal .slides section.lrnfilt .lrnblock { max-width: 92%; margin: 0.6em auto 0; }
+
+.reveal .slides section.filt .block,
+.reveal .slides section.l1l2 .block,
+.reveal .slides section.pdfl1 .block,
+.reveal .slides section.fbias .block,
+.reveal .slides section.lrnfilt .block { margin: 0; height: 100%; }
+.reveal .slides section.filt .block-title,
+.reveal .slides section.l1l2 .block-title,
+.reveal .slides section.pdfl1 .block-title,
+.reveal .slides section.fbias .block-title,
+.reveal .slides section.lrnfilt .block-title { padding: 7px 16px 4px; }
+.reveal .slides section.filt .block-content,
+.reveal .slides section.l1l2 .block-content,
+.reveal .slides section.pdfl1 .block-content,
+.reveal .slides section.fbias .block-content,
+.reveal .slides section.lrnfilt .block-content { padding: 8px 16px 12px; }
+
+/* bullets inside a bordered block: the block carries the indent, so the list
+   gives back its own top margin */
+.reveal .slides section.filt .block-content .points {
+	font-size: 0.95em; line-height: 1.44; margin: 0.2em 0 0;
+}
+.reveal .slides section.l1l2 .block-content .points,
+.reveal .slides section.pdfl1 .block-content .points,
+.reveal .slides section.fbias .block-content .points {
+	font-size: 1.02em; line-height: 1.48; margin: 0.2em 0 0;
+}
+.reveal .slides section.lrnfilt .block-content .points {
+	font-size: 0.95em; line-height: 1.42; margin: 0.2em 0 0;
+}
+.reveal .slides section.filt .block-content .points li,
+.reveal .slides section.l1l2 .block-content .points li,
+.reveal .slides section.pdfl1 .block-content .points li,
+.reveal .slides section.fbias .block-content .points li,
+.reveal .slides section.lrnfilt .block-content .points li { margin: 0.5em 0 0; }
+.reveal .slides section.filt .block-content .points li:first-child,
+.reveal .slides section.l1l2 .block-content .points li:first-child,
+.reveal .slides section.pdfl1 .block-content .points li:first-child,
+.reveal .slides section.fbias .block-content .points li:first-child,
+.reveal .slides section.lrnfilt .block-content .points li:first-child { margin-top: 0; }
+
+/* the reference list sets its sub-items on their own lines, as the original did */
+.reveal .slides section.lrnfilt .block-content .points li { margin-top: 0.7em; }
+
+/* the density-contrast definition sits on its own line above the bullets */
+.reveal .slides section.dasym .dseq { margin: 0.5em 0 0; }
+.reveal .slides section.dasym .dseq .katex-display { margin: 0.2em 0; }
+.reveal .slides section.dasym .dseq .katex { font-size: 0.9em; }
+.reveal .slides section.dasym .points.dspoints {
+	max-width: 90%; margin: 0.9em auto 0; font-size: 1.05em; line-height: 1.5;
+}
+.reveal .slides section.dasym .points.dspoints li { margin: 0.55em 0 0; }
+
+/* a journal reference at the tail of a bullet, in the label voice */
+.reveal .slides section.lrnfilt .cite {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	color: var(--fg-muted); white-space: nowrap;
+}
+
+/* the closing accent line, the original's cyan arrow */
+.reveal .slides section.l1l2 .oneline { max-width: 92%; margin: 0.7em auto 0; font-size: 0.95em; }
+
+/* the nav arrows are drawn over the bottom-right corner, so a full-width
+   footnote runs under them. Reserve their column and read the line left. */
+.reveal .slides section.filt .footnote,
+.reveal .slides section.l1l2 .footnote,
+.reveal .slides section.pdfl1 .footnote,
+.reveal .slides section.fbias .footnote {
+	margin: 0.6em 5.5em 0 0; max-width: none; text-align: left;
+}

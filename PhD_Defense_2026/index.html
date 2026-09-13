@@ -6167,6 +6167,73 @@
 
 
 
+				<!-- ============ ADDED 2026-09-13. Merges two cards from PhD_Day_2025/index_Vilasini.html
+				     ("Why filter at all?" and "Fourier vs Gaussian vs Starlet"), each of which was four
+				     bullets on an otherwise empty canvas.  "Reduces mode mixing" was cut at one point and
+				     restored on Andreas's call: a wavelet basis does separate the scales well, and "reduces"
+				     is the honest verb.  The footnote carries the caveat that the bands are band-passes and
+				     adjacent ones overlap, which is why the covariance is nearly diagonal. ============ -->
+
+				<section class="filt" data-theme="light">
+					<h3 class="slide-title tight">Why filter at all, and <em class="alert">which filter</em>?</h3>
+
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Core motivations</div>
+								<div class="block-content">
+									<ul class="points">
+										<li><b>Pixel domain mixes scales</b> &rarr; hard to attribute physics by
+											scale.</li>
+										<li><b>Filtering = change of basis</b> &rarr; separates spatial
+											frequencies; reduces mode mixing.</li>
+										<li><b>Non-stationarity</b>: WL $\kappa$ is scale-variant &amp; non-Gaussian
+											&rarr; need localization in space+scale.</li>
+										<li><b>Sparsity</b>: the right basis concentrates energy in few coefficients
+											&rarr; higher SNR for HOS tails.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Comparative view</div>
+								<div class="block-content">
+									<ul class="points">
+										<li><b>Fourier</b>: perfect spectral selectivity, but <em>global</em> (no
+											spatial localization).</li>
+										<li><b>Gaussian</b>: low-pass; simple, but mixes nearby scales and blurs
+											features.</li>
+										<li><b>Starlet (&agrave; trous)</b>: isotropic, undecimated, shift-invariant
+											multiscale bands.</li>
+										<li>Update rules: $c_{j+1} = c_j * h_j$, $w_{j+1} = c_j - c_{j+1}$;
+											reconstruct with $\sum_j w_j + c_J$.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="footnote">The bands are band-passes and adjacent ones overlap in multipole, so the
+						covariance comes out nearly diagonal rather than diagonal.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; and the place to send &ldquo;why not just
+								smooth the map?&rdquo;</li>
+							<li><strong>the problem</strong> &mdash; one pixel holds every scale at once, so a
+								statistic on the pixels cannot say which scale it is answering about</li>
+							<li><strong>the three options</strong> &mdash; Fourier knows the scale and not the place.
+								Gaussian smoothing is a low-pass, so one map per aperture. The starlet gives every
+								scale in one pass</li>
+							<li><strong>sparsity is the third reason</strong> &mdash; the same property the
+								mass-mapping prior uses in Part 1</li>
+							<li><strong>the honest caveat</strong> &mdash; the bands overlap. Nearly diagonal, not
+								diagonal</li>
+						</ul>
+					</aside>
+				</section>
 				<!-- ============ BACKUP — moved out of the main line 2026-09-10 (Andreas): no time
 				     for the phases/amplitudes detour. Its last bullet, the list of higher-order
 				     statistics, moved onto the previous slide, which now carries the motivation.
@@ -6266,6 +6333,191 @@
 					</ul>
 				</section>
 
+				<!-- ============ ADDED 2026-09-13, from PhD_Day_2025/index_Vilasini.html ("Asymmetry of
+				     delta and its imprint on wavelet l1").  The original's closing claim, that the l1-norm
+				     is dominated by peaks and not by the underdense regions, contradicts the selling point
+				     of the l1 slide above it (peaks AND voids, no threshold).  Rewritten so the asymmetry
+				     is about the shape of the coefficient distribution, which is what the SNR binning
+				     reads.  The kappa bullet is the projection refinement, not in the original. ============ -->
+
+				<section class="dasym" data-theme="light">
+					<h3 class="slide-title tight">Asymmetry of $\delta$ and its imprint on wavelet
+						<em class="alert">$\ell_1$</em></h3>
+
+					<p class="dseq">$$\delta = \frac{\rho - \bar\rho}{\bar\rho}, \qquad
+						\delta \ge -1 \;\; (\rho \to 0), \qquad \delta \to +\infty \;\; (\rho \gg \bar\rho)$$</p>
+
+					<ul class="points dspoints">
+						<li>Gravitational collapse produces <b>unbounded high-density peaks</b>, but voids
+							<b>cannot go below &minus;1</b>.</li>
+						<li>This asymmetry yields <b>larger wavelet amplitudes in the positive tail</b> than in the
+							negative tail.</li>
+						<li>Thus the <b>wavelet $\ell_1$-norm</b> at a given scale is <b>dominated by rare collapsed
+								peaks</b>; unlike peak counts it still reads the underdense side, in its negative SNR
+							bins.</li>
+						<li>$\kappa$ is a projection of $\delta$ &rarr; bounded below at the empty beam, unbounded
+							above, and Gaussianized by the sum along the line of sight.</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; why a higher-order statistic sees anything at
+								all</li>
+							<li><strong>the one-line version</strong> &mdash; you can only empty a region once, and
+								you can collapse it without limit. Gravity is not symmetric, so neither is the
+								field</li>
+							<li><strong>the refinement, if pushed</strong> &mdash; &kappa; is a projection, and
+								projecting adds up many structures, which Gaussianises. That is why the non-Gaussian
+								signal lives on small scales</li>
+							<li><strong>&#9650; do not drop the second clause of bullet 3</strong> &mdash; the
+								positive side dominates the sum, but the l1-norm still reads the voids. That is the
+								whole advantage over peak counts</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-13, from PhD_Day_2025/index_Vilasini.html ("Why l1 instead
+				     of l2 on wavelet coefficients?").  Two of the original's four bullets are dropped: the
+				     "shape noise is small-amplitude" claim is false for lensing, and the optimisation-cost
+				     bullet is about minimising l1, which is not what we do here.  The argument kept is the
+				     one from the paper that defines the statistic, Ajani, Starck & Pettorino 2021
+				     (A&A 645, L11): |w| > |w|^2 for small coefficients and |w| < |w|^2 for large ones, so
+				     the linear norm favours a few large coefficients where the square favours many small
+				     ones.  REVISION 2026-09-13: an earlier version led on Parseval, that the total l2 per
+				     band IS that band's power.  That identity is true and was verified numerically, but it
+				     compares an unbinned l2 against an SNR-binned l1, and nobody in this lineage argues it
+				     that way.  Dropped on Andreas's call. ============ -->
+
+				<section class="l1l2" data-theme="light">
+					<h3 class="slide-title tight">Why $\ell_1$ instead of $\ell_2$ on wavelet coefficients?</h3>
+
+					<div class="block l1l2block">
+						<div class="block-content">
+							<ul class="points">
+								<li><b>Robust to tails</b>: $\ell_2$ squares values &rarr; the sum is driven by rare
+									extremes; $\ell_1$ grows linearly &rarr; the tail contributes in proportion.</li>
+								<li><b>Sparsity</b>: non-Gaussian structure is sparse in wavelets; $\ell_1$
+									concentrates information, $\ell_2$ dilutes it across many small modes.</li>
+								<li><b>Binning does the work</b>: $\ell_1$ is summed per band <em>and</em> per SNR
+									bin &rarr; the bins trace the shape of the coefficient distribution.</li>
+								<li><b>Cost vs alignment</b>: $\ell_1$ is non-smooth and harder to optimise, but its
+									geometry matches the sparsity of the field we measure.</li>
+							</ul>
+						</div>
+					</div>
+
+					<p class="oneline">&rarr; $\ell_1$ <b>maximizes cosmological signal-to-noise on non-Gaussian
+							structure</b>.</p>
+
+					<p class="footnote">Ajani, Starck &amp; Pettorino 2021, the paper that defines the starlet
+						&#8467;<sub>1</sub>&#8209;norm.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; usually as &ldquo;why not just square
+								them?&rdquo;</li>
+							<li><strong>the mechanism</strong> &mdash; squaring up-weights the big coefficients. Twice
+								as large counts four times</li>
+							<li><strong>why that is the wrong way round here</strong> &mdash; the non-Gaussian signal
+								is a few large coefficients, and squaring lets the single largest one drive the
+								estimator</li>
+							<li><strong>the real work is the binning</strong> &mdash; per band and per SNR bin. The
+								bins are what read the distribution</li>
+							<li><strong>the echo</strong> &mdash; same norm as the sparsity prior in Part 1. There we
+								minimise it, here we measure it</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-13, from PhD_Day_2025/index_Vilasini.html ("PDF vs wavelet
+				     l1: differentiability matters").  The original said the l1-norm is sub-differentiable
+				     and left it there, which is only half true once the statistic is binned in SNR: an l1
+				     bin has hard edges too.  The distinction that survives is count vs sum, piecewise
+				     constant vs piecewise smooth, and the footnote states the remaining cost. ============ -->
+
+				<section class="pdfl1" data-theme="light">
+					<h3 class="slide-title tight">PDF vs wavelet $\ell_1$: <em class="alert">differentiability
+							matters</em></h3>
+
+					<div class="block pdfblock">
+						<div class="block-title">Key distinction</div>
+						<div class="block-content">
+							<ul class="points">
+								<li><b>Histogram / PDF (measured)</b> is a <b>piecewise-constant</b> functional of
+									samples &rarr; zero or undefined gradients at bin edges.</li>
+								<li><b>Wavelet $\ell_1 = \sum_i |w_i|$</b> is <b>sub-differentiable everywhere</b>.</li>
+								<li>Thus $\ell_1$ can flow gradients in any <b>differentiable forward / inverse
+										pipeline</b>; PDFs cannot without a kernel or a soft-binning
+									reparametrization.</li>
+								<li>Interpretation: the PDF is a <b>descriptive</b> statistic; $\ell_1$ is also an
+									<b>optimizable functional</b> of the field.</li>
+							</ul>
+						</div>
+					</div>
+
+					<p class="footnote">Bin edges are still a choice in both cases, and our derivatives with respect
+						to cosmology are finite differences on simulations either way.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; usually by someone who wants to know why not
+								the convergence PDF, which is a strong statistic in its own right</li>
+							<li><strong>the distinction</strong> &mdash; a histogram bin counts, so it is flat in the
+								field until a sample crosses an edge. An l1 bin sums |w|, so it moves when the
+								coefficient moves</li>
+							<li><strong>why anyone cares</strong> &mdash; a differentiable summary can go inside a
+								differentiable forward model, or act as a loss</li>
+							<li><strong>concede this</strong> &mdash; our own parameter derivatives are finite
+								differences on sims regardless, so this is an argument about where the statistic
+								<em>could</em> go, not about what we did</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-13.  Rebuilt from PhD_Day_2025/index_Vilasini.html ("Does
+				     filtering bias inference?"), whose three bullets were generic: theory-tracked summaries,
+				     unbiased if the forward model matches, null tests on Gaussian mocks.  Grounded here in
+				     what this deck actually does: the summary is measured by the same code on both sides,
+				     the covariance is from a finite set of realisations, the likelihood is not assumed, and
+				     the coverage is measured (TARP-DRP + SBC, both frames). ============ -->
+
+				<section class="fbias" data-theme="light">
+					<h3 class="slide-title tight">Does filtering <em class="alert">bias inference</em>?</h3>
+
+					<div class="block fbiasblock">
+						<div class="block-title">Inference integrity</div>
+						<div class="block-content">
+							<ul class="points">
+								<li>Filtering is part of the <b>summary definition</b>, not a treatment applied to the
+									data &rarr; the same transform runs on the observed map and on every mock.</li>
+								<li>It biases only when applied on <b>one side</b>: to the data but not the
+									prediction, or with a mask and apodisation that differ between data and mocks.</li>
+								<li><b>Covariance</b>: estimated from a finite set of realizations &rarr; a noisy
+									$\mathbf{C}^{-1}$ moves the contours, whatever the filter.</li>
+								<li><b>Likelihood</b>: no analytic mean for peaks or $\ell_1$ &rarr; simulation-based
+									inference rather than an assumed Gaussian.</li>
+								<li><b>Diagnostics</b>: TARP-DRP coverage and SBC rank uniformity, every arm, in the
+									standard frame and the nulled one.</li>
+							</ul>
+						</div>
+					</div>
+
+					<p class="footnote">Which makes it a measurement rather than an argument. The coverage card in
+						Part&nbsp;2 is the answer.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>the move</strong> &mdash; accept the question, then relocate it. Filtering
+								is not a treatment applied to the data, it is what the summary <em>is</em></li>
+							<li><strong>the one case where it does bias</strong> &mdash; a filter applied on one
+								side only, or a mask handled differently in the data and the mocks</li>
+							<li><strong>then hand them the real risks</strong> &mdash; a covariance from too few
+								realisations, and a likelihood assumed rather than measured</li>
+							<li><strong>&#9650; close on evidence</strong> &mdash; and that is why we ran coverage
+								tests on every arm, in both frames. Point at the TARP + SBC slide</li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 
 			<!-- ===== BACKUP COLUMN 5 — Part 3 - learned vs analytical summaries ===== -->
@@ -6426,6 +6678,59 @@
 				</section>
 
 
+				<!-- ============ ADDED 2026-09-13.  Rebuilt from PhD_Day_2025/index_Vilasini.html
+				     ("Learning optimal filters vs fixed multiscale starlet").  Both of the original's
+				     citations were wrong: "Peter & McQuinn (2016), Deep network cosmological parameter
+				     inference from convergence maps, MNRAS 475 894" does not exist, and D'Isanto &
+				     Polsterer 2018 is A&A 609 A111, a photometric-redshift paper rather than anything
+				     about filters.  Replaced with the four that actually did this on lensing maps, each
+				     checked.  The trade-off half is the ledger slide above, so this card carries the
+				     literature and points there for the verdict. ============ -->
+
+				<section class="lrnfilt" data-theme="light">
+					<h3 class="slide-title tight">Learning optimal filters vs <em class="alert">fixed multiscale
+							starlet</em></h3>
+
+					<div class="block lrnblock">
+						<div class="block-content">
+							<ul class="points">
+								<li><b>Learned summaries in lensing:</b><br>
+									&ndash; Gupta et al. (2018), CNN on noiseless $\kappa$ maps, $\times 5$ over
+									$C_\ell$ and $\times 4$ over peaks <span class="cite">PRD 97, 103515</span><br>
+									&ndash; Fluri et al. (2018), the same with shape noise
+									<span class="cite">PRD 98, 123518</span><br>
+									&ndash; Ribli et al. (2019), beats peak counts, then points back at an analytic
+									statistic: peak steepness <span class="cite">Nat. Astron. 3, 93</span><br>
+									&ndash; Jeffrey, Alsing &amp; Lanusse (2021), neural compression for
+									likelihood-free inference on DES SV <span class="cite">MNRAS 501, 954</span></li>
+								<li><b>Trade-offs of learned filters:</b><br>
+									&ndash; Address one task but become training-dataset dependent.<br>
+									&ndash; Lose scale-by-scale interpretability and analytic covariance modelling.<br>
+									&ndash; No formula to publish; reproduction needs the weights.</li>
+								<li><b>Why we retain the starlet:</b><br>
+									&ndash; Isotropic, undecimated multiresolution bands (clear physics per scale).<br>
+									&ndash; Fast algorithmic complexity $\mathcal{O}(N J)$, band responses known.<br>
+									&ndash; Amenable to analytic summary modelling and systematic control for
+									pipelines like Euclid.</li>
+							</ul>
+						</div>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; &ldquo;why not learn the filter as well?&rdquo;
+								The ledger slide two back is the answer on cost and risk; this one is the
+								literature</li>
+							<li><strong>the four</strong> &mdash; Gupta 2018 noiseless, Fluri 2018 with noise, Ribli
+								2019 beats peaks, Jeffrey 2021 is the compression route we use ourselves</li>
+							<li><strong>the generous reading</strong> &mdash; Ribli's CNN pointed at peak steepness,
+								and someone then wrote that statistic down. Learned summaries are good at finding the
+								feature</li>
+							<li><strong>&#9650; our own answer</strong> &mdash; at equal figure of merit we keep the
+								analytical statistic, for the reasons on the ledger slide</li>
+						</ul>
+					</aside>
+				</section>
 				<!-- ============ S13 — A3: the ladder, nulled frame ============ -->
 
 				<!-- ============ S14 — conclusions: the question slide, answered ============ -->

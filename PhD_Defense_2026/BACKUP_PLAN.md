@@ -131,3 +131,78 @@ A0.4v (frame 54) is unaffected — it sits before the first insertion.
 
 **Separately stale, and older than this:** line 1276 points the BNT thread at *"backup frames 66–68
 and 73–76"*. Those numbers predate the 2026-09-12 column rebuild; the BNT figures are now 103–111.
+
+---
+
+# Amendment — 2026-09-13 (second pass)
+
+## Six cards brought over from `PhD_Day_2025/index_Vilasini.html`
+
+Andreas sent seven screenshots from that deck as candidates. Five were rebuilt, two of those
+merged into one; two more were rebuilt from scratch because their content did not survive
+checking. All of them keep the explainer-card brief: a notion the talk uses without explaining.
+
+| new card | column | built from |
+|---|---|---|
+| *Why filter at all, and why the starlet* | statistics | **merges** "Why filter at all?" + "Fourier vs Gaussian vs Starlet" |
+| *Gravity makes a one-sided field…* | statistics | "Asymmetry of δ and its imprint on wavelet ℓ1" |
+| *Why ℓ1 and not ℓ2 on the wavelet coefficients* | statistics | "Why ℓ1 instead of ℓ2 on wavelet coefficients?" |
+| *The PDF and the ℓ1-norm measure the same kind of thing…* | statistics | "PDF vs wavelet ℓ1: differentiability matters" |
+| *Does the choice of filter bias the inference?* | statistics | "Does filtering bias inference?", **rebuilt** |
+| *Learning the summary instead of fixing it* | learned vs analytical | "Learning optimal filters vs fixed multiscale starlet", **rebuilt** |
+
+### Written in the original author's form
+
+First drafts rewrote these in this deck's prose register and Andreas rejected them twice: too long,
+then still not hers. The cards now keep her structure and voice — a bordered block, a bold label, a
+colon, an arrow to the consequence, and a closing accent line where she had one. Her titles are kept
+verbatim. **Only claims that are demonstrably wrong were changed**, and each change is listed here.
+
+| her text | what it now says | why |
+|---|---|---|
+| "the ℓ1-norm … is dominated by rare collapsed peaks, **not by the underdense regions**" | "…dominated by rare collapsed peaks; unlike peak counts it still reads the underdense side, in its negative SNR bins" | as written it contradicts the ℓ1 slide two frames earlier, whose selling point is peaks *and* voids |
+| "**Noise behaviour**: shape noise is small-amplitude; ℓ2 amplifies it quadratically" | replaced by "**Binning does the work**: ℓ1 is summed per band *and* per SNR bin" | shape noise is not small-amplitude in lensing, it dominates |
+| "Use **theory-tracked summaries** … with a modelled covariance" / "null tests on Gaussian mocks" | covariance from a finite set of realizations, simulation-based inference, TARP-DRP + SBC | there is no analytic model for the ℓ1 covariance here, and the tests actually run are TARP and SBC |
+| "Peter & McQuinn (2016) … MNRAS 475, 894" / "D'Isanto & Polsterer (2018) … A&A 620, A87" | Gupta+ 2018 (PRD 97, 103515), Fluri+ 2018 (PRD 98, 123518), Ribli+ 2019 (Nat. Astron. 3, 93), Jeffrey, Alsing & Lanusse 2021 (MNRAS 501, 954) | the first does not exist; the second is A&A **609**, A111 and is a photometric-redshift paper |
+
+"Reduces mode mixing" was cut from the filtering bullet at one point and restored on Andreas's
+call: a wavelet basis does separate the scales well, and *reduces* is the honest verb. The caveat,
+that the bands are band-passes and adjacent ones overlap in multipole, sits in the footnote instead.
+
+Also: the stray `©` before "training-dataset dependent" is gone, and *Why filter at all?* and *Fourier
+vs Gaussian vs Starlet* are merged into one two-column card, keeping both of her block titles.
+
+### One thing tried and dropped
+
+An intermediate version of the ℓ1-vs-ℓ2 card led on Parseval: the total ℓ2 over a band is exactly
+that band's power, so an unbinned ℓ2 returns only C_ℓ. The identity is real — `w_j = ψ_j * I` is a
+linear convolution, so it holds per realisation, and it was checked numerically against the à trous
+transform on a skewed field, agreeing to twelve digits. Dropped on Andreas's call: nobody in this
+lineage motivates ℓ1 that way, and the slide compared an unbinned ℓ2 against an SNR-binned ℓ1,
+which is not like-for-like. The card cites Ajani, Starck & Pettorino 2021 instead. Parked here in
+case it is ever wanted.
+
+**125 rendered frames** (was 119). Backup columns now 8/11/7/13/14/20.
+
+## The script's backup pointers moved again — this table supersedes the one above
+
+| beat | line | says | should say |
+|---|---|---|---|
+| A1.8 mass mapping as Bayesian inference | 947 | frame 65 | **66** *(unchanged)* |
+| A2.5 the residual variant | 971 | frame 71 | **75** *(unchanged)* |
+| A2.6 the uncertainty, in full | 986 | frame 72 | **76** *(unchanged)* |
+| A3.5 the phases | 1018 | frame 78 | **84** |
+| A4.6 nulling, and what goes wrong | 1031 | frame 98 | **109** |
+| A4.7 the information is recovered | 1070 | frame 99 | **110** |
+| Q&A coverage pointer | 1205 | frame 88 | **99** |
+
+Line 1276's BNT thread, *"backup frames 66–68 and 73–76"*, now points at **109–117**.
+
+`SPEAKER_SCRIPT.md` was not edited.
+
+## Noticed, not changed
+
+The column-4 divider card is titled *Method detail* and its lead describes Kaiser–Squires, the
+Bayesian stack, sparse recovery, MCALens and the PnPMass implementation. That is the content of
+columns 2 and 3. Column 4 holds the statistics: wavelets, peaks, the ℓ1-norm, and now the five
+cards above. The card needs a new title and lead.
