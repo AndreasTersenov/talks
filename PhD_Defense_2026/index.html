@@ -5726,27 +5726,111 @@
 					</p>
 
 					<aside class="notes">
-						SAY: the map is only half a result. Read the chain left to right: the shear goes in, the
-						denoiser
-						gives the map, and then a second network, trained the same way on the same simulated pairs,
-						gives
-						the error. [CLICK] Where does the spread even come from — the reconstruction looks
-						deterministic,
-						you put shear in and get a map out. Two sources. The shape noise and the mask leave a whole
-						family
-						of maps consistent with the data — that is the fan from Part 1, and it never went away. And the
-						thing that picks one map out of that family is a denoiser we learned from simulations, so it
-						brings
-						its own model error. Whatever we predict has to cover both. It is trained to predict the squared
-						residual of the reconstruction, and the
-						minimiser of that loss is exactly the posterior variance. One forward pass. No sampling, no
-						MCMC.
-						[CLICK] But a network's own variance is not a guarantee — neural uncertainties are famously
-						overconfident. So we calibrate: conformal quantile regression, a held-out set, a per-pixel
-						rescaling, and the coverage comes out at the level we claimed. It is distribution-free; it does
-						not
-						require the network to be right. [CLICK] That is the shift. Not "the network says plus-minus
-						sigma", but a stated coverage level that holds anyway.
+						<ul>
+							<li><strong>the chain</strong> &mdash; shear in, the denoiser gives the map, a second
+								network trained on the same simulated pairs gives the error</li>
+							<li><strong>&raquo; where the spread comes from</strong> &mdash; noise and mask leave a
+								whole family of maps consistent with the data &mdash; the fan from Part 1 &mdash; and
+								the learned prior picks one of them. Both have to be covered</li>
+							<li><strong>how</strong> &mdash; trained on the squared residual of the reconstruction. The
+								minimiser of that loss <em>is</em> the posterior variance. One forward pass, no sampling
+							</li>
+							<li><strong>&raquo; then calibrate</strong> &mdash; a network's own variance is
+								overconfident. CQR, a held-out set, a per-pixel rescaling</li>
+							<li><strong>&raquo; &#9650; the shift</strong> &mdash; not &ldquo;the network says plus or
+								minus sigma&rdquo;, but a stated coverage level that holds anyway</li>
+						</ul>
+						<!-- PARKED 2026-09-13, the prose note this replaced:
+						     SAY: the map is only half a result. Read the chain left to right: the shear goes in, the
+						      denoiser
+						      gives the map, and then a second network, trained the same way on the same simulated pairs,
+						      gives
+						      the error. [CLICK] Where does the spread even come from — the reconstruction looks
+						      deterministic,
+						      you put shear in and get a map out. Two sources. The shape noise and the mask leave a whole
+						      family
+						      of maps consistent with the data — that is the fan from Part 1, and it never went away. And the
+						      thing that picks one map out of that family is a denoiser we learned from simulations, so it
+						      brings
+						      its own model error. Whatever we predict has to cover both. It is trained to predict the squared
+						      residual of the reconstruction, and the
+						      minimiser of that loss is exactly the posterior variance. One forward pass. No sampling, no
+						      MCMC.
+						      [CLICK] But a network's own variance is not a guarantee — neural uncertainties are famously
+						      overconfident. So we calibrate: conformal quantile regression, a held-out set, a per-pixel
+						      rescaling, and the coverage comes out at the level we claimed. It is distribution-free; it does
+						      not
+						      require the network to be right. [CLICK] That is the shift. Not "the network says plus-minus
+						      sigma", but a stated coverage level that holds anyway.
+						-->
+					</aside>
+				</section>
+
+				<!-- ADDED 2026-09-13, a "what is this?" backup card following the UQ slide, which
+				     names CQR but does not explain it. The conformity score, the (1-alpha)(1+1/n)
+				     quantile, the two-sided guarantee and the calibration-set floors are all from
+				     Leterme, Tersenov, Fadili & Starck 2026 (A&A 710, A292) Sect. 5.2; the method
+				     is Romano, Patterson & Candes 2019. Figure: tools/make-cqr-schematic.py. -->
+				<section class="cqr" data-theme="light">
+					<h3 class="slide-title tight">Conformal calibration fixes the <em class="alert">size</em> of the
+						error bar, without trusting the network</h3>
+
+					<p class="lead-line">A network's error bar comes out the wrong size, and nothing tells you by how
+						much. This is how you fix it.</p>
+
+					<img src="../assets/diagrams/cqr_schematic.png" class="plain cqrfig"
+						alt="three panels: the network's interval drawn on fourteen held-out examples with seven truths landing outside; the sorted conformity scores with the quantile q marked; the same intervals widened by q, with three truths outside, the requested rate">
+
+					<div class="container cqcols">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">What you get</div>
+								<div class="block-content">
+									<p class="cqeq">$$\alpha - \tfrac{1}{n+1} \;\le\;
+										\mathbb{P}\big\{\kappa \notin [\hat\kappa^-,\, \hat\kappa^+]\big\}
+										\;\le\; \alpha$$</p>
+									<p>That fraction falls outside, whatever produced the bar. The calibration set can
+										be small, nothing has to be Gaussian, and the network does not have to be
+										right. The one condition is <b class="alert">exchangeability</b>: calibration
+										maps and real data drawn on equal terms.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="block">
+								<div class="block-title">What you do not get</div>
+								<div class="block-content">
+									<p>The guarantee is <b class="alert">marginal</b>: an average over many maps, not
+										a promise about the one in front of you. Some regions do worse than the
+										average, and <b>peaks</b> are the known case &mdash; the Wiener bars miss there
+										systematically even after calibration.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="footnote">Here: $2\sigma$, so $\alpha \approx 4.55\%$, from <b>1024</b> calibration maps.
+						The correction sets a minimum size for that set: <b>21</b> maps at $2\sigma$, <b>370</b> at
+						$3\sigma$, <b>15&thinsp;787</b> at $4\sigma$.</p>
+
+					<p class="srcref">Romano et al. 2019 &middot; Leterme, Tersenov, Fadili &amp; Starck 2026</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>the problem, in words</strong> &mdash; the second network predicts a variance,
+								and you could call that a 2&sigma; bar. But nothing forces a network's variance to be
+								right, so the bar is the wrong size and you do not know by how much.</li>
+							<li><strong>the fix, in words</strong> &mdash; hold out maps where you know the truth. For
+								each one, ask how far outside the bar the truth landed. Take the 95th percentile of
+								that, and widen every bar by it. Now 5% land outside, by construction.</li>
+							<li><strong>why it is strong</strong> &mdash; you never assumed the network was right, or
+								that anything was Gaussian. A terrible network gives honest but very wide bars.</li>
+							<li><strong>it can also shrink</strong> &mdash; if the bars were too conservative the
+								quantile is negative. That is what happened to DeepMass, whose bars came out smaller
+								after calibration.</li>
+							<li><strong>the honest limit</strong> &mdash; marginal, not conditional. On average over
+								maps, not guaranteed on the one map you have, and peaks are where it shows.</li>
+						</ul>
 					</aside>
 				</section>
 

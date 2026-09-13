@@ -849,3 +849,29 @@
 	margin: 0.15em 5.5em 0 0; max-width: none; text-align: left;
 }
 
+/* ----------------------------------------------------------------------------
+   Backup: conformal calibration (added 2026-09-13). The schematic is a wide
+   3.8:1 band across the full width, with the guarantee and the caveat under it.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.cqr .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.cqr .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.cqr .cqrfig {
+	display: block; margin: 0.4em auto 0; width: 100%; height: auto;
+	max-height: 240px; max-width: 100%; object-fit: contain;
+}
+.reveal .slides section.cqr .container { align-items: flex-start; gap: 0 1.2em; margin-top: 0.5em; }
+.reveal .slides section.cqr .col { display: flex; flex-direction: column; }
+.reveal .slides section.cqr .block { margin: 0; }
+.reveal .slides section.cqr .block-title { padding: 7px 14px 4px; }
+.reveal .slides section.cqr .block-content { padding: 7px 14px 9px; }
+.reveal .slides section.cqr .block-content p { margin: 0 0 0.45em; }
+.reveal .slides section.cqr .block-content p:last-child { margin-bottom: 0; }
+.reveal .slides section.cqr .cqeq { margin: 0.1em 0 0.5em; }
+.reveal .slides section.cqr .cqeq .katex-display { margin: 0.15em 0; }
+.reveal .slides section.cqr .cqeq .katex { font-size: 0.9em; }
+.reveal .slides section.cqr .srcref {
+	position: static; text-align: right; margin: 0.2em 5.5em 0 0; font-size: 0.7em;
+}
+.reveal .slides section.cqr .footnote {
+	margin: 0.45em 5.5em 0 0; max-width: none; text-align: left;
+}
