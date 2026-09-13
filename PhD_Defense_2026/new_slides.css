@@ -790,3 +790,62 @@
 	margin: 0.5em 5.5em 0 0; max-width: none; text-align: left;
 }
 
+/* ----------------------------------------------------------------------------
+   Backup: the PnPMass denoiser, and the transformer it is built from
+   (added 2026-09-13). Same spacing discipline as .inpaint above — the blocks
+   only need their padding back, and the figures are capped so the columns
+   clear 720.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.dnoise .slide-title,
+.reveal .slides section.attn .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.dnoise .lead-line { margin: 0.3em auto 0; }
+
+.reveal .slides section.dnoise .container,
+.reveal .slides section.attn .container {
+	align-items: flex-start;
+	gap: 0 1.2em;
+	margin-top: 0.4em;
+}
+.reveal .slides section.dnoise .col,
+.reveal .slides section.attn .col { display: flex; flex-direction: column; gap: 0.55em; }
+.reveal .slides section.dnoise .block,
+.reveal .slides section.attn .block { margin: 0; }
+.reveal .slides section.dnoise .block-title,
+.reveal .slides section.attn .block-title { padding: 7px 14px 4px; }
+.reveal .slides section.dnoise .block-content,
+.reveal .slides section.attn .block-content { padding: 7px 14px 9px; }
+.reveal .slides section.dnoise .block-content p,
+.reveal .slides section.attn .block-content p { margin: 0 0 0.45em; }
+.reveal .slides section.dnoise .block-content p:last-child,
+.reveal .slides section.attn .block-content p:last-child { margin-bottom: 0; }
+
+.reveal .slides section.dnoise .dneq { margin: 0.25em 0; }
+.reveal .slides section.dnoise .dneq .katex-display { margin: 0.2em 0; }
+.reveal .slides section.dnoise .dneq .katex { font-size: 0.88em; }
+
+.reveal .slides section.dnoise .dnfig {
+	display: block; margin: 0 auto; width: 100%; height: auto;
+	max-height: 300px; max-width: 100%; object-fit: contain;
+}
+/* the attention figure is the slide — it carries both panels and the equations,
+   so it takes the wider column and as much height as the text allows */
+.reveal .slides section.attn .col:first-child { flex: 1.25; }
+.reveal .slides section.attn .atfig {
+	display: block; margin: 0 auto; width: 100%; height: auto;
+	max-height: 560px; max-width: 100%; object-fit: contain;
+}
+
+.reveal .slides section.dnoise .srcref,
+.reveal .slides section.attn .srcref { font-size: 0.7em; }
+
+/* both credits come out of the absolute bottom-right corner: there they land on
+   the footnote's first line, and on the nav arrows. Static, right-aligned, in
+   the flow above the footnote. */
+.reveal .slides section.dnoise .srcref,
+.reveal .slides section.attn .srcref {
+	position: static; text-align: right; margin: 0.2em 5.5em 0 0;
+}
+.reveal .slides section.dnoise .footnote {
+	margin: 0.15em 5.5em 0 0; max-width: none; text-align: left;
+}
+

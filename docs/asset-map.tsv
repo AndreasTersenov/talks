@@ -1,5 +1,7 @@
 2022-07-07-094001.881425logo-UOC.png	logos	-
 2pt-phase-amp.png	diagrams	-
+attention_vs_convolution.pdf	diagrams	-
+attention_vs_convolution.png	diagrams	-
 Background-Euclid.jpeg	backgrounds	-
 Cls.pdf	figures	statistics
 Correlation_Matrices_MSPC_ks_mca_dark.pdf	figures	matrices
@@ -65,6 +67,8 @@ Screenshot_UNIONS_FM.png	misc	-
 Swyft_vs_MCMC_varnuis_COSMO.pdf	figures	posteriors
 Swyft_vs_MCMC_varnuis_DDM.pdf	figures	posteriors
 Swyft_vs_MCMC_varnuis_NUISANCE.pdf	figures	posteriors
+unet_encoder_decoder.pdf	diagrams	-
+unet_encoder_decoder.png	diagrams	-
 UNIONS-Logo-TextBlack-1K.png	logos	-
 UNIONS-MainVisual-2048x988.jpg	backgrounds	-
 Uncertainty_bounds.png	figures	maps

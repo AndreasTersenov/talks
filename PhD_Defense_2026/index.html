@@ -5515,6 +5515,145 @@
 				============================================================================== -->
 
 
+				<!-- ADDED 2026-09-13, a "what is this?" backup pair: the denoiser, then the
+				     transformer it is built from. Everything here is from Leterme, Tersenov,
+				     Fadili & Starck 2026 (A&A 710, A292) as condensed in the thesis chapter:
+				     SUNet / 7.2 M / the sigma input channel from "Denoiser training and PnPMass
+				     implementation"; the B = A^T Sigma^-1/2 whitening argument and the
+				     Sigma_0 ~ tau^2 I result from "Choice of operator B"; the training range
+				     [0, 0.2] from the experiments section. -->
+				<section class="dnoise" data-theme="light">
+					<h3 class="slide-title tight">The denoiser is trained <em class="alert">once</em>, on white noise,
+						and never sees the mask or the covariance</h3>
+
+					<p class="lead-line">The forward step carries the physics. The denoiser only has to know what a
+						plausible convergence field looks like.</p>
+
+					<div class="container dncols">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">The network</div>
+								<div class="block-content">
+									<p><b class="alert">SUNet</b>: a U-Net whose blocks are
+										<b class="alert">Swin-Transformer</b> blocks rather than convolutions, with
+										<b>7.2 M</b> parameters. The noise level &sigma; goes in as an extra input
+										channel, so one model covers a range of noise instead of one level.
+									</p>
+								</div>
+							</div>
+
+							<img src="../assets/diagrams/unet_encoder_decoder.png" class="plain dnfig"
+								alt="a U-Net: an encoder contracting to a bottleneck, a decoder expanding back to full resolution, and skip connections carrying fine detail across at each scale">
+						</div>
+
+						<div class="col">
+							<div class="block">
+								<div class="block-title">How it learns</div>
+								<div class="block-content">
+									<p>Take a simulated &kappa;, add white Gaussian noise, ask for the &kappa; back.</p>
+									<p class="dneq">$$\hat\theta \;=\; \arg\min_{\theta}\; \frac{1}{n} \sum_i
+										\big\lVert D_{\theta}\big(\kappa_i + n_i\big) - \kappa_i \big\rVert^2$$</p>
+									<p>&sigma; is drawn uniformly over <b>0 to 0.2</b>. No shear, no mask and no survey
+										enter the training set.</p>
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="block-title">Why the mask and the covariance drop out</div>
+								<div class="block-content">
+									<p>The forward step may use any linear operator. PnPMass takes
+										<b class="alert">$\mathbf{B} = \mathbf{A}^{\!\top}\Sigma^{-1/2}$</b>, which
+										<b>whitens</b> the residual before adding it back. The denoiser then sees
+										&kappa; plus white noise of width $\tau$, whatever mask and galaxy density went
+										into $\Sigma$. A MAP step would use $\Sigma^{-1}$, and the noise would arrive
+										coloured.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="srcref">Leterme, Tersenov, Fadili &amp; Starck 2026, A&amp;A 710, A292</p>
+
+					<p class="footnote">What survives is the scalar $\tau$, whose usable range depends on $\Sigma$.
+						DeepMass needs the full covariance, and a retraining for every footprint.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>its job</strong> &mdash; the loop alternates a data step and this. The data step
+								knows about shear, mask and noise; the denoiser only knows what a mass map looks like.
+							</li>
+							<li><strong>how it learns, in words</strong> &mdash; nothing clever. Show it a simulated map
+								with noise added, ask for the map back, repeat a few hundred thousand times. It is not
+								trained on the lensing problem at all.</li>
+							<li><strong>the trick</strong> &mdash; you get to choose the operator in the forward step.
+								Choosing the <em>minus one half</em> power of the covariance whitens the residual, so
+								the noise arriving at the denoiser is white whatever the survey did. Half power, not
+								the inverse the likelihood would give you.</li>
+							<li><strong>if pushed</strong> &mdash; one scalar is left, the step size, and the network
+								takes the noise level as an input, so a single training covers the range.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section class="attn" data-theme="light">
+					<h3 class="slide-title tight">A transformer lets <em class="alert">every patch look at every other
+							patch</em></h3>
+
+					<div class="container atcols">
+						<div class="col">
+							<img src="../assets/diagrams/attention_vs_convolution.png" class="plain atfig"
+								alt="top: the local receptive field of a convolution against the global receptive field of self-attention, drawn on a convergence map; bottom: one self-attention update, where a query patch is compared with all patches to give attention weights, and the output is their weighted sum">
+						</div>
+						<div class="col">
+							<div class="block">
+								<div class="block-title">One update</div>
+								<div class="block-content">
+									<p>Cut the map into patches. Compare one patch with all the others, turn the
+										comparisons into weights, and replace it with the weighted average of the
+										rest.</p>
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="block-title">Why it is worth the trouble</div>
+								<div class="block-content">
+									<p>The weights come from the <b class="alert">content</b> of the patches, not from
+										where they sit, so the network learns which distant regions belong together. A
+										convolution can only ever look at a fixed neighbourhood.</p>
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="block-title">The catch, and the fix</div>
+								<div class="block-content">
+									<p>Comparing every pair costs time growing as the <b>square</b> of the number of
+										patches. The <b class="alert">Swin</b> variant keeps attention inside local
+										windows that shift between layers, so global reach is rebuilt over several
+										layers.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="srcref">Vaswani et al. 2017 &middot; Liu et al. 2021</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>the picture, top</strong> &mdash; left is a convolution, which only ever sees
+								its own neighbourhood. Right is attention: the green patch can pull from anywhere on
+								the map in one step.</li>
+							<li><strong>the picture, bottom</strong> &mdash; walk it left to right. Compare the query
+								patch with the others, that gives the bars, the bars are the weights, the output is the
+								weighted sum. That is the whole mechanism.</li>
+							<li><strong>why here</strong> &mdash; the lensing field has correlations across the map. A
+								small filter cannot see them; attention can.</li>
+							<li><strong>Swin</strong> &mdash; attention over the whole map is quadratic and too
+								expensive, so you do it inside windows and shift the windows between layers.</li>
+						</ul>
+					</aside>
+				</section>
+
 				<!-- ################################################################################################### -->
 				<section data-background-color="#ffffff" class="light-slide">
 					<h3 class="slide-title">PnPMass on residuals</h3>
