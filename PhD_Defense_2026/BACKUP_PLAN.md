@@ -76,3 +76,58 @@ Done in one pass, since 98 is both an old and a new value. `PROSE_PASS.md`,
 The Part 3 and Part 4 cards say *"Part 2 of 2"* and *"Part 1 of 2"* — the **papers'** numbering,
 which runs opposite to the talk's. In talk order Part 3 comes first, so the columns are right
 but the cards read backwards. Retitling them is a one-line change if it bothers you on the day.
+
+---
+
+# Amendment — 2026-09-13
+
+## Four explainer cards added
+
+Andreas asked for backup slides on notions the talk names without explaining, to be built one at a
+time as he finds them going through the deck. Four so far, all in the mass-mapping half:
+
+| slide | column | sources |
+|---|---|---|
+| *Inpainting fills the mask before the inversion, with a sparsity prior in the DCT* | mass mapping methods | Pires et al. 2009 §4.2–4.4 |
+| *The denoiser is trained once, on white noise…* | PnPMass | Leterme+ 2026 (A&A 710, A292) |
+| *A transformer lets every patch look at every other patch* | PnPMass | thesis `figures/intro/N4_attention.pdf` |
+| *Conformal calibration fixes the size of the error bar…* | PnPMass | Romano+ 2019; Leterme+ 2026 §5.2 |
+
+Every fact on them was read out of the primary source rather than reconstructed; the provenance is
+in an HTML comment above each section. Two thesis figures were copied into the shared assets
+(`attention_vs_convolution`, `unet_encoder_decoder`) and one was drawn for the CQR slide
+(`tools/make-cqr-schematic.py`).
+
+## Column 2 split in two
+
+Was: one *Mass mapping methods* column carrying both papers. Now two, so the two papers of the
+first half have a column each, matching what the other columns already do for Parts 3 and 4:
+
+| h | column | frames | holds |
+|---|---|---|---|
+| 26 | Mass mapping methods | 11 | the inverse problem, KS, inpainting, the Bayesian view, Wiener, sparse recovery, MCALens |
+| 27 | **PnPMass** (new card) | 7 | the denoiser, the transformer, the residual variant, the uncertainties, CQR, implementation |
+
+The shared mass-mapping vocabulary (KS, Wiener, sparse recovery, MCALens) stays with the first
+paper, since that paper is the comparison of exactly those methods.
+
+**119 rendered frames** (was 113 before 2026-09-13). Columns now 8/11/7/8/13/20.
+
+## The script's backup pointers moved
+
+Six insertions shifted every backup frame from 64 on. `SPEAKER_SCRIPT.md` was **not** edited:
+
+| beat | line | says | should say |
+|---|---|---|---|
+| A1.8 mass mapping as Bayesian inference | 947 | frame 65 | **66** |
+| A2.5 the residual variant | 971 | frame 71 | **75** |
+| A2.6 the uncertainty, in full | 986 | frame 72 | **76** |
+| A3.5 the phases | 1018 | frame 78 | **83** |
+| A4.6 nulling, and what goes wrong | 1031 | frame 98 | **103** |
+| A4.7 the information is recovered | 1070 | frame 99 | **104** |
+| Q&A coverage pointer | 1205 | frame 88 | **93** |
+
+A0.4v (frame 54) is unaffected — it sits before the first insertion.
+
+**Separately stale, and older than this:** line 1276 points the BNT thread at *"backup frames 66–68
+and 73–76"*. Those numbers predate the 2026-09-12 column rebuild; the BNT figures are now 103–111.
