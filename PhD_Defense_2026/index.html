@@ -5074,6 +5074,88 @@
 					</span>
 				</section>
 
+				<!-- ADDED 2026-09-13, a "what is this?" backup card, deliberately general: it
+				     explains inpainting, not what it bought in Part 1. Facts checked against the
+				     primary sources rather than reconstructed - the minimisation, the DCT choice
+				     over wavelets/curvelets, the MCA iteration and the ~100 iterations are all
+				     Pires et al. 2009 (arXiv:0804.4068) sections 4.2-4.4. -->
+				<section class="inpaint" data-theme="light">
+					<h3 class="slide-title tight">Inpainting fills the mask <em class="alert">before</em> the
+						inversion, with a sparsity prior in the DCT</h3>
+
+					<p class="lead-line">Kaiser&ndash;Squires inverts in Fourier space, where a gap left at zero is not
+						a local problem: it spreads over every mode. Border artefacts and E/B leakage follow.</p>
+
+					<div class="container inpcols">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">The idea</div>
+								<div class="block-content">
+									<p>A mask costs you <b class="alert">sparsity</b>: its cut edges are badly
+										represented in the DCT and throw off spurious coefficients. So take the map
+										with the <b class="alert">fewest coefficients</b> that still matches the data
+										outside the mask.</p>
+									<p class="inpeq">$$\min_{\kappa}\; \lVert \Phi^{\mathsf{T}}\kappa \rVert_0
+										\quad \text{s.t.} \quad
+										\lVert \kappa_{\rm obs} - \mathbf{M}\kappa \rVert_2 \le \sigma$$</p>
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="block-title">Solved by iterative thresholding</div>
+								<div class="block-content">
+									<p class="inpeq">$$\kappa^{\,n+1} \;=\; \Delta_{\Phi,\lambda_n}\!\left(
+										\kappa^{\,n} + \mathbf{M}\big(\kappa_{\rm obs} - \kappa^{\,n}\big)\right)$$</p>
+									<p>Decompose, <b class="alert">hard-threshold</b> at $\lambda_n$, reconstruct, put
+										the observed pixels back. Repeat. $\lambda_n$ starts at the largest coefficient
+										and cools to zero over about a hundred iterations, so the strong coefficients go
+										in first and the faint detail last.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col">
+							<img src="../assets/figures/maps/Inpainting_light.png" class="plain inpfig"
+								alt="the same field reconstructed by Kaiser-Squires and by iterative Kaiser-Squires; in the KS panel the masked regions are flat, and after inpainting they carry structure matching the rest of the field">
+
+							<div class="block">
+								<div class="block-title">Why the DCT</div>
+								<div class="block-content">
+									<p>Pires et al. tried wavelets, curvelets and their combinations. Wavelets fit an
+										isolated halo better. But most of a &kappa; map is the <em>texture</em> between
+										the haloes, and there the <b class="alert">DCT</b> wins.</p>
+								</div>
+							</div>
+
+							<p class="srcref">Pires et al. 2009 &middot; Elad et al. 2005</p>
+						</div>
+					</div>
+
+					<p class="footnote">Inpainting is preprocessing, so it bolts onto any method: inpainted Wiener,
+						sparse recovery and MCALens variants all exist. A method with its own prior can instead put
+						$\mathbf{M}$ in the forward operator and let the reconstruction fill the gap.</p>
+
+
+					<aside class="notes">
+						<ul>
+							<li><strong>why it is needed</strong> &mdash; KS goes through Fourier, so a hole left at
+								zero
+								contaminates every scale at once, not just its own patch.</li>
+							<li><strong>the idea, in words</strong> &mdash; a map with a hole cut in it needs far more
+								DCT
+								coefficients than the same map without one. Ask for the filling that needs the fewest,
+								and you get one that looks like the rest of the field.</li>
+							<li><strong>the iteration, in words</strong> &mdash; transform, keep the coefficients above
+								the
+								threshold, transform back, restore the real pixels, lower the threshold, repeat. Big
+								structures land first, fine detail last.</li>
+							<li><strong>the DCT</strong> &mdash; they tried wavelets and curvelets too. Wavelets are
+								better
+								on a single halo, but a &kappa; map is mostly the texture in between.</li>
+						</ul>
+					</aside>
+				</section>
+
 				<section data-theme="light">
 					<h3 class="slide-title">Mass mapping as an inverse problem</h3>
 					<br>
