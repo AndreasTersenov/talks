@@ -5068,6 +5068,157 @@
 				     the talk walks through.
 				============================================================================== -->
 
+
+				<!-- ============ ADDED 2026-09-14: a reference card for "what are the parameters, and
+				     which ones does lensing constrain?".  S_8 is written the way frame 58 already
+				     writes it.  The fiducial in the footnote is the cosmoGRID setting used throughout
+				     the thesis (paper 2, Sect. 2): Om = 0.26, sig8 = 0.84, Ob = 0.0493, ns = 0.9649,
+				     H0 = 67.36, w = -1.  The sensitivity column is the standard picture, not a
+				     measurement from this work. ============ -->
+
+				<section class="params" data-theme="light">
+					<h3 class="slide-title tight">The cosmological parameters, and <em class="alert">which ones
+							lensing sees</em></h3>
+
+					<p class="lead-line">$\kappa$ is a projection of the matter field, so what lensing measures is
+						how much matter there is and how clumped it is.</p>
+
+					<table class="ptable ptbl">
+						<tr>
+							<th>parameter</th>
+							<th>what it is</th>
+							<th>lensing</th>
+						</tr>
+						<tr class="key">
+							<td>$\Omega_m$</td>
+							<td>the fraction of the Universe that is matter</td>
+							<td>strong</td>
+						</tr>
+						<tr class="key">
+							<td>$\sigma_8$</td>
+							<td>how clumpy that matter is, on $8\,h^{-1}$Mpc scales</td>
+							<td>strong</td>
+						</tr>
+						<tr class="key">
+							<td>$S_8$</td>
+							<td>$\sigma_8\sqrt{\Omega_m/0.3}$, the combination those two collapse into</td>
+							<td>what we measure</td>
+						</tr>
+						<tr>
+							<td>$w_0$</td>
+							<td>the dark energy equation of state, $p = w\rho$</td>
+							<td>moderate</td>
+						</tr>
+						<tr>
+							<td>$h$</td>
+							<td>the expansion rate today</td>
+							<td>weak</td>
+						</tr>
+						<tr>
+							<td>$n_s$</td>
+							<td>the tilt of the primordial power spectrum</td>
+							<td>weak</td>
+						</tr>
+						<tr>
+							<td>$\Omega_b$</td>
+							<td>how much of that matter is baryons</td>
+							<td>weak</td>
+						</tr>
+					</table>
+
+					<p class="footnote">The amplitude of $\kappa$ goes roughly as $\sigma_8\Omega_m^{0.5}$, so that
+						combination is pinned and the two separately are not. Shape parameters are the CMB&rsquo;s
+						job.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; and a good place to send &ldquo;why do you
+								always quote S8?&rdquo;</li>
+							<li><strong>&#9650; the reason, in one line</strong> &mdash; lensing sees the amplitude of
+								the projected matter field, and that amplitude is set by how much matter there is
+								times how clumped it is. One number, not two</li>
+							<li><strong>which is why the contour is a banana</strong> &mdash; along
+								&sigma;8 &Omega;m^0.5 it is tight, across it is not. S8 is just that direction given
+								a name</li>
+							<li><strong>dark energy</strong> &mdash; enters twice, through the distances and through
+								how fast structure grows. Real sensitivity, weaker than the other two. Our figure of
+								merit is in Om, sigma8, w0</li>
+							<li><strong>if pushed on h, ns, Omega_b</strong> &mdash; these change the shape of the
+								spectrum rather than its amplitude, and the CMB measures shape far better. We take
+								priors on them</li>
+							<li><strong>if asked about neutrinos</strong> &mdash; massive neutrinos suppress
+								small-scale power, so lensing does carry some sensitivity, and higher-order
+								statistics more than the power spectrum. Not a parameter we vary here</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-14: Born vs Limber vs ray tracing, which get confused
+				     because they sound like three points on one axis and are not.  Sources:
+				       Born            weak-lensing.tex l.98 - the potential evaluated on the
+				                       unperturbed ray, first order in Phi (Bartelmann & Schneider 2001)
+				       ray tracing     inference.simulations.draft.tex l.44-51 - rays propagated plane
+				                       by plane along the true path, lens-lens couplings kept; post-Born
+				                       corrections on kappa well below current errors (Hilbert+ 2009)
+				       Limber          weak-lensing.tex l.663-682 - transverse modes only, k = l/f_K;
+				                       sub-percent at Stage IV scales (Kilbinger 2015)
+				       our maps        CosmoGridV1 / UFalcon sum lens planes along the straight ray,
+				                       i.e. Born
+				       Wiener prior    weak-lensing.tex l.1007 uses a fiducial Limber P_kappa ============ -->
+
+				<section class="born" data-theme="light">
+					<h3 class="slide-title tight">Born, Limber, ray tracing: <em class="alert">three different
+							things</em></h3>
+
+					<p class="lead-line">Two are about the path light takes through a simulation. The third is about
+						the projection integral in an analytic prediction.</p>
+
+					<table class="ptable borntbl">
+						<tr>
+							<th></th>
+							<th>what it assumes</th>
+							<th>where it stands</th>
+						</tr>
+						<tr class="key">
+							<td>Born</td>
+							<td>the potential is read on the straight, undeflected ray</td>
+							<td>first order in $\Phi$; post-Born terms on $\kappa$ sit well below current errors</td>
+						</tr>
+						<tr>
+							<td>ray tracing</td>
+							<td>nothing: rays are deflected plane by plane, along their true path</td>
+							<td>keeps the lens&ndash;lens coupling; kept for the shear and the post-Born terms</td>
+						</tr>
+						<tr>
+							<td>Limber</td>
+							<td>only transverse modes reach the projection, $k = \ell / f_K(\chi)$</td>
+							<td>better than a percent on Stage&nbsp;IV scales</td>
+						</tr>
+					</table>
+
+					<p class="footnote">Our maps are Born: <span class="mono">CosmoGridV1</span> sums lens planes
+						along the straight ray. Limber enters only where an analytic $P_\kappa$ is needed, as in the
+						Wiener prior; every statistic here is measured on maps.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; and the confusion is worth heading off: these
+								are not three levels of the same approximation</li>
+							<li><strong>&#9650; the split</strong> &mdash; Born and ray tracing are two ways to turn a
+								simulation into a map. Limber is an approximation in the theory prediction. Different
+								axes</li>
+							<li><strong>Born, in one line</strong> &mdash; evaluate the potential along the straight
+								line instead of the bent one. First order in the potential</li>
+							<li><strong>ray tracing, in one line</strong> &mdash; push the ray through the planes one
+								at a time and let it bend, so it samples the mass it actually passed</li>
+							<li><strong>why we can live with Born</strong> &mdash; the post-Born corrections to the
+								convergence are far below the statistical errors of current surveys. They matter more
+								for the shear, and more for higher-order statistics than for the power spectrum</li>
+							<li><strong>if pushed on Limber</strong> &mdash; it fails at low multipoles and for narrow
+								kernels. Neither bites here: our kernels are broad and we are not at low l</li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 
 			<!-- ===== BACKUP COLUMN 2 — Mass mapping methods ===== -->
@@ -6518,6 +6669,91 @@
 						</ul>
 					</aside>
 				</section>
+
+				<!-- ============ ADDED 2026-09-13, at Andreas's request: a reference card for
+				     "what does that correspond to in Mpc?".  Every number is computed or sourced,
+				     none are round-figure recollections:
+				       - the band table (nominal theta, l at peak) is paper 2's Table tab:starlet_bands,
+				         measured at N_side=512
+				       - the maps, the four bins and the noise are paper 2 Sect. 2: cosmoGRID
+				         Stage-III probe maps, HEALPix N_side=512, l <= 1024, mean source
+				         z ~ [0.3,0.5,0.7,0.9], n_gal = 30/arcmin^2, sigma_eps = 0.26
+				       - R and k are computed in tools/make-scale-table.py for the cosmoGRID
+				         fiducial (Om=0.26, h=0.6736), over z_lens = 0.1-0.6.  The single-source-plane
+				         lensing kernel peaks at z = 0.15/0.26/0.36/0.47 for the four bins, so that
+				         interval is where the weight sits
+				       - the PS baryon-safe cut l ~ 340 and "drop j=1" are paper 2 Sect. 5.2 ============ -->
+
+				<!-- ============ ADDED 2026-09-13, at Andreas's request, then simplified on his second
+				     pass: no per-band breakdown and no wavenumbers, just angular scale against
+				     comoving size, and the familiar structures on the same ruler.  The angular rows
+				     are computed in tools/make-scale-table.py for the cosmoGRID fiducial
+				     (Om=0.26, h=0.6736) over z_lens = 0.1-0.6, the interval where the single-source-
+				     plane lensing kernels of the four bins peak (z = 0.15/0.26/0.36/0.47).  The
+				     structure rows are standard values, not measurements from this thesis. ============ -->
+
+				<!-- ============ ADDED 2026-09-13, at Andreas's request, then simplified and then
+				     corrected on his reading.  Two fixes worth recording:
+				       - the angular rows are now broken out by lens redshift.  A fixed angle is a
+				         physical size only once z is fixed, R = theta * chi(z), and a dash-range hid
+				         that behind what looked like a fixed conversion.
+				       - the BAO row said 105 h^-1 Mpc, which is the figure from papers assuming
+				         h ~ 0.71.  With this card's h = 0.6736 the sound horizon r_d = 147.09 Mpc is
+				         99 h^-1 Mpc.  Both units are now on the row, since 147 is the number people
+				         remember and it is in Mpc, not h^-1 Mpc.
+				     Angular rows from tools/make-scale-table.py (cosmoGRID fiducial, Om = 0.26,
+				     h = 0.6736).  The structure rows are standard values, not measurements from this
+				     thesis. ============ -->
+
+				<section class="mpc" data-theme="light">
+					<h3 class="slide-title tight">Physical scales in cosmology</h3>
+
+					<table class="ptable mpctable"> 
+						<tr class="unit"> 
+							<th></th>
+							<th colspan="3">comoving size [$h^{-1}$Mpc]</th>
+						</tr>
+						<tr>
+							<th>angular scale</th>
+							<th>$z=0.1$</th>
+							<th>$z=0.3$</th>
+							<th>$z=0.6$</th>
+						</tr>
+						<tr><td>1&prime;</td><td>0.09</td><td>0.25</td><td>0.46</td></tr>
+						<tr><td>10&prime;</td><td>0.9</td><td>2.4</td><td>4.6</td></tr>
+						<tr><td>20&prime;</td><td>1.7</td><td>4.9</td><td>9.1</td></tr>
+						<tr><td>1&deg;</td><td>5.1</td><td>15</td><td>27</td></tr>
+						<tr class="sep">
+							<th>structure</th>
+							<th colspan="3"></th>
+						</tr>
+						<tr><td>galaxy halo</td><td colspan="3">0.1 &ndash; 0.3</td></tr>
+						<tr><td>cluster, $R_{200}$</td><td colspan="3">1 &ndash; 2</td></tr>
+						<tr class="hl"><td>$\sigma_8$ sphere, non-linear scale</td><td colspan="3">8</td></tr>
+						<tr><td>linear regime</td><td colspan="3">&gtrsim; 63</td></tr>
+						<tr><td>BAO, sound horizon $r_d$</td><td colspan="3">99</td></tr>
+					</table>
+
+					<p class="footnote">Comoving, for $\Omega_m = 0.26$, $h = 0.674$. The BAO sound horizon is 147 Mpc, which is the 99 above once divided by $h$.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>the reference card</strong> &mdash; for &ldquo;what is that in Mpc?&rdquo;.
+								Find the row, do not read the table</li>
+							<li><strong>&#9650; say the caveat first</strong> &mdash; an angle is a size only once
+								you fix the redshift. That is why there are three columns</li>
+							<li><strong>the one-line answer</strong> &mdash; arcminute scales are sub-Mpc to a few
+								Mpc. Our bands, 10 to 80 arcmin, run from about 1 to 40</li>
+							<li><strong>the anchor</strong> &mdash; 8 h&#8315;&sup1; Mpc is the sigma-8 sphere and the
+								turn to non-linear. That is the scale everyone in the room already has</li>
+							<li><strong>if asked about baryons</strong> &mdash; feedback bites below about 1
+								h&#8315;&sup1; Mpc, which is the finest band and nothing else. That is why one band is
+								the whole scale cut</li>
+							<li><strong>if asked about BAO</strong> &mdash; 147 Mpc is the number people remember, and
+								it is 99 in h&#8315;&sup1; Mpc. Either way far above anything we measure</li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 
 			<!-- ===== BACKUP COLUMN 5 — Part 3 - learned vs analytical summaries ===== -->
@@ -6933,6 +7169,84 @@
 						      minimum validation standard a new statistic should meet?" The same battery (TARP/SBC, plus L-C2ST
 						      where dimension allows) to every arm, analytical and learned alike.
 						-->
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-14: an explainer for the two coverage tests, placed
+				     next to the card that shows their results.  Both references checked:
+				       SBC   Talts, Betancourt, Simpson, Vehtari & Gelman 2018, arXiv:1804.06788
+				       TARP  Lemos, Coogan, Hezaveh & Perreault-Levasseur 2023, ICML (PMLR 202),
+				             arXiv:2302.03026 - the necessary-and-sufficient claim is theirs.
+				     The rank-histogram shapes and the coverage-plot reading are the standard
+				     diagnostics; the deck's own figure plots expected coverage against credibility
+				     level, so above the diagonal is conservative. ============ -->
+
+				<section class="calib" data-theme="light">
+					<h3 class="slide-title tight">TARP and SBC: <em class="alert">do the error bars mean what they
+							say?</em></h3>
+
+					<p class="lead-line">When the pipeline says it is 68% confident, is it right 68% of the time?
+						Both tests answer that by rerunning the analysis on simulations where the true parameters are
+						known.</p>
+
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">SBC, one parameter at a time</div>
+								<div class="block-content">
+									<ul class="points">
+										<li>For each simulation, count how many of the pipeline's sampled values fall
+											below the true one.</li>
+										<li>If the pipeline is honest the true value is just one more draw from what
+											it produced, so that count is
+											<b class="alert">equally likely to be anything</b>.</li>
+										<li>Counts piling up at the extremes mean the error bars are
+											<b>too small</b>; piling up in the middle means <b>too large</b>.</li>
+										<li class="src"><span class="cite">Talts et al. 2018</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="block">
+								<div class="block-title">TARP, all of them at once</div>
+								<div class="block-content">
+									<ul class="points">
+										<li>Runs the same check on <b class="alert">all parameters together</b>, using
+											distances to a randomly chosen point in parameter space.</li>
+										<li>Comes with a proof: a posterior that passes TARP is <b>correct</b>.
+											Passing the one-parameter test does not guarantee that.</li>
+										<li class="src"><span class="cite">Lemos et al. 2023</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="footnote">Both average over many simulated datasets: they vouch for the pipeline in
+						general, not for the one dataset we have.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; or if someone challenges the contours rather
+								than the method</li>
+							<li><strong>&#9650; the question both answer</strong> &mdash; when we say 68%, are we
+								right 68% of the time</li>
+							<li><strong>SBC, the mechanism</strong> &mdash; that count is the rank. A correct
+								posterior makes the truth just another draw from it, so the rank histogram over many
+								simulations comes out flat. U-shaped means too narrow, humped means too wide, sloped
+								means biased</li>
+							<li><strong>TARP, the mechanism</strong> &mdash; pick a random point, count the samples
+								closer to it than the truth is. That fraction is the smallest credible level that
+								would have caught the truth, and averaging it gives the coverage actually
+								achieved</li>
+							<li><strong>why both</strong> &mdash; they fail differently. SBC on every parameter
+								separately can pass while the joint posterior is still wrong, which is what the TARP
+								proof closes</li>
+							<li><strong>the caveat, say it before they do</strong> &mdash; both average over
+								simulations, so they certify the pipeline, not this dataset. L-C2ST is the local
+								version where the dimension allows it</li>
+						</ul>
 					</aside>
 				</section>
 
@@ -8088,6 +8402,170 @@
 				     only change made is PDF <img> refs repointed to .png rasterisations.
 				     ########################################################################## -->
 
+
+				<!-- ============ ADDED 2026-09-14: the systematics beyond baryonic feedback, taken from
+				     the thesis introduction rather than reconstructed:
+				       IA, photo-z, masks, covariance  chapters/introduction/weak-lensing.systematics
+				                                       and statistical-framework.systematics-{astro,obs}
+				       shape measurement               sec:intro-shear-measurement
+				       source clustering               weak-lensing.tex l.679, where it is one of the
+				                                       approximations entering the Limber C_kappa and is
+				                                       stated to hold to sub-percent for Stage IV
+				                                       (Kilbinger 2015).  The thesis does not develop the
+				                                       HOS side of it, so this card does not claim one.
+				     The closing line is the thesis's own: all of these act hardest on the small
+				     non-linear scales, which is where HOS draw their advantage. ============ -->
+
+				<section class="systs" data-theme="light">
+					<h3 class="slide-title tight">The other systematics, and <em class="alert">where each one
+							stands</em></h3>
+
+					<p class="lead-line">Baryonic feedback is Part&nbsp;4. These are the rest.</p>
+
+					<table class="ptable systbl">
+						<tr>
+							<th>systematic</th>
+							<th>what it is</th>
+							<th>how it is handled</th>
+						</tr>
+						<tr class="key">
+							<td>intrinsic alignments</td>
+							<td>galaxies align with the tidal field, so shapes correlate without any lensing</td>
+							<td>2pt: NLA, TATT. HOS: open</td>
+						</tr>
+						<tr>
+							<td>photometric redshifts</td>
+							<td>$n(z)$ from colours, not spectra. Stage IV needs $\bar z$ per bin to 0.002</td>
+							<td>shift and width nuisances</td>
+						</tr>
+						<tr>
+							<td>shape measurement</td>
+							<td>PSF modelling, multiplicative and additive shear calibration, blending</td>
+							<td>calibrated on image simulations</td>
+						</tr>
+						<tr class="key">
+							<td>masks and geometry</td>
+							<td>Kaiser&ndash;Squires is non-local, so gaps leak across the map: spurious peaks and
+								B&#8209;modes</td>
+							<td>inpainting, regularised mapping</td>
+						</tr>
+						<tr>
+							<td>covariance</td>
+							<td>no closed form for HOS. Hartlap factor, super-sample covariance</td>
+							<td>large simulation suites</td>
+						</tr>
+						<tr>
+							<td>source clustering</td>
+							<td>sources are assumed unclustered, and uncorrelated with the lenses</td>
+							<td>sub-percent for 2pt</td>
+						</tr>
+					</table>
+
+					<p class="footnote">Every one of these is better understood for the two-point function than for
+						higher-order statistics, and all of them bite hardest on the small scales where HOS earn
+						their advantage.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>only if asked</strong> &mdash; &ldquo;what about the other
+								systematics?&rdquo;</li>
+							<li><strong>&#9650; the honest summary</strong> &mdash; baryons are the one we took on.
+								The others are real, and for higher-order statistics most of them are less well
+								characterised than for the power spectrum</li>
+							<li><strong>intrinsic alignments, if pressed</strong> &mdash; two terms. II correlates
+								neighbours in the same tidal field and tomography suppresses it. GI correlates a
+								foreground shape with the shear it induces behind, survives redshift separation, and
+								is degenerate with the amplitude of structure. That is the one that matters</li>
+							<li><strong>why IA is the open one for us</strong> &mdash; the alignment signal is itself
+								non-Gaussian, so a nuisance amplitude fitted to the 2-point function does not tell
+								you how it propagates into peaks or the l1-norm</li>
+							<li><strong>masks are our own subject</strong> &mdash; that is what the inpainting card in
+								the mass-mapping column is about</li>
+							<li><strong>if they ask which worries you most</strong> &mdash; intrinsic alignments, for
+								the reason above. Say so plainly</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- ============ ADDED 2026-09-14: the "what next" card, drawn from the thesis
+				     Perspectives section (chapters/conclusion.tex, sec:conclusion-limitations-
+				     perspectives).  Six of the eleven items there, chosen as the ones that answer
+				     "what would you do next" rather than "what are the caveats".  The end-to-end
+				     item is marked because the thesis calls it, in those words, the most direct
+				     continuation of this work.  Left out here but in the thesis: validating the
+				     scale cut against FLAMINGO and marginalising the BCM parameters, a finer filter
+				     bank for area-dependent cuts, the large-deviation-theory cross-check of the PDF
+				     and the l1-norm, and field-level inference as an absolute reference for
+				     sufficiency. ============ -->
+
+				<section class="outlook" data-theme="light">
+					<h3 class="slide-title tight">What comes next</h3>
+
+					<p class="lead-line">All of it on simulations, deliberately. That is the first thing to
+						change.</p>
+
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Near term</div>
+								<div class="block-content">
+									<ul class="points">
+										<li><b>To data</b> &mdash; UNIONS, <em>Euclid</em>. Every systematic built
+											into the forward model at map level.</li>
+										<li><b class="alert">Close the loop</b> &mdash; PnPMass maps and their pixel
+											uncertainties &rarr; a higher-order inference, end to end.</li>
+										<li><b>Learned maps, same pipeline</b> &mdash; what survives away from the
+											training cosmology. Fix by training across them, or conditioning the
+											denoiser.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="block">
+								<div class="block-title">Further out</div>
+								<div class="block-content">
+									<ul class="points">
+										<li><b>PnPMass, next versions</b> &mdash; spherical for Stage&nbsp;IV,
+											tomographic for the inter-bin correlations, BNT-aware for cross-bin
+											information in the map.</li>
+										<li><b>Conditional coverage</b> &mdash; the conformal guarantee where the
+											miscoverage sits, at the peaks.</li>
+										<li><b>The systematics left out</b> &mdash; alignments, source clustering,
+											photo-z into the forward model. Then stress-test peaks, the
+											&#8467;<sub>1</sub>&#8209;norm, the compressor.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<p class="footnote">Not specific to lensing: a trained denoiser in a proximal scheme fits any
+						linear inverse problem with known noise. Galaxy clustering; 21&#8209;cm, where foreground
+						removal sits where mass mapping sits here.</p>
+
+					<aside class="notes">
+						<ul>
+							<li><strong>the honest opening</strong> &mdash; everything in the thesis is simulations,
+								on purpose, because isolating one analysis step needs the ground truth. Taking it to
+								data is the next thing</li>
+							<li><strong>&#9650; if you name only one</strong> &mdash; connect the two halves. The
+								mass-mapping side and the statistics side were built in parallel and never run
+								end to end. The thesis calls that the most direct continuation</li>
+							<li><strong>the learned-map caveat, if pressed</strong> &mdash; a network trained at a
+								fiducial cosmology cannot bias the inference when it is applied to the sims and the
+								data alike. What it can do is lose constraining power away from its training
+								point</li>
+							<li><strong>the one that excites you</strong> &mdash; BNT-aware reconstruction. It would
+								recover at the map level the cross-bin information that per-channel statistics cannot
+								reach, which is exactly the puzzle Part 4 ended on</li>
+							<li><strong>if asked about other probes</strong> &mdash; the thesis proposes the method
+								transferring, not a cross-correlation analysis. Galaxy clustering first, 21-cm as the
+								interesting one, because foreground removal occupies the same slot in the chain that
+								mass mapping does here</li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 
 			<!-- ===== parked: the LAM-era lensing pedagogy, all hidden. Left flat and
