@@ -160,7 +160,7 @@
 	/* normal flow, not absolute: reveal's section box is shrink-to-fit, so `bottom`
 	   resolves against the content rather than the slide and lands on the footer. */
 	margin: 2.3em auto 0; text-align: center;
-	font-family: var(--label); font-size: 0.66em; letter-spacing: 0.02em;
+	font-family: var(--label); font-size: 0.78em; letter-spacing: 0.02em;
 }
 .reveal .slides section .slides-link .lab { color: var(--fg-muted); margin-right: 0.55em; }
 .reveal .slides section .slides-link a {
@@ -596,7 +596,7 @@
    can be shorter than the corner plot without any label shrinking. */
 .reveal .slides section .resultcol .stemfig img { max-height: 360px; max-width: 500px; }
 /* the bullets under it sat at 16.99 px, a hair under the floor */
-.reveal .slides section .resultcol .takeaway .points { font-size: 0.82em; line-height: 1.45; }
+.reveal .slides section .resultcol .takeaway .points { font-size: 0.88em; line-height: 1.45; }
 
 /* Kept for the one surviving .ladder (frame 66, backup) and for the two parked
    in index.html.  The rungs must not borrow the Wong l1/CNN pair, which encodes
@@ -1197,8 +1197,8 @@
 /* --- compact variant, for the act openers --------------------------------- */
 .reveal .slides section .pipeline--compact .thumb { display: none; }
 .reveal .slides section .pipeline--compact .stage { padding: 0.45em 0.3em; }
-.reveal .slides section .pipeline--compact .sname { font-size: 0.708em; }
-.reveal .slides section .pipeline--compact .stage.model .sname { font-size: 0.708em; }
+.reveal .slides section .pipeline--compact .sname { font-size: 0.833em; }
+.reveal .slides section .pipeline--compact .stage.model .sname { font-size: 0.833em; }
 .reveal .slides section .pipeline--compact .ssub { display: none; }
 
 /* --- the pipeline on an act opener ----------------------------------------
@@ -1421,7 +1421,7 @@
 .reveal .slides section.bayes2 .bname {
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.71em; line-height: 1.35; color: var(--fg-muted); margin-top: 0.5em;
+	font-size: 0.78em; line-height: 1.35; color: var(--fg-muted); margin-top: 0.5em;
 	/* every name reserves the rule the prior actually draws, so the three beats end
 	   at the same height and the symbols sit on one line */
 	border-bottom: 2px solid transparent; padding-bottom: 0.4em;
@@ -1621,7 +1621,7 @@
 	font-size: 0.833em; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p {
-	margin: 0.55em 0 0; font-size: 0.78em; line-height: 1.35; color: var(--fg);
+	margin: 0.55em 0 0; font-size: 0.86em; line-height: 1.35; color: var(--fg);
 }
 .reveal .slides section.mca .mca-term p b { color: var(--fg); }
 .reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
@@ -1692,7 +1692,7 @@
 	display: block; margin-bottom: 0.55em;
 	font-family: var(--label); font-style: var(--label-style);
 	letter-spacing: var(--label-tracking);
-	font-size: 0.711em; color: var(--fg-muted);
+	font-size: 0.78em; color: var(--fg-muted);
 }
 .reveal .slides section .mmitem {
 	border-left: 2px solid var(--edge);
@@ -1702,12 +1702,12 @@
 .reveal .slides section .mmitem.sota { border-left-color: var(--accent); }
 .reveal .slides section .mmname {
 	display: flex; align-items: center; gap: 0.5em;
-	font-size: 0.833em; font-weight: 600; color: var(--fg);
+	font-size: 0.875em; font-weight: 600; color: var(--fg);
 }
 .reveal .slides section .mmitem.sota .mmname { color: var(--accent); }
 .reveal .slides section .mmwhat {
 	display: block; margin-top: 0.12em;
-	font-size: 0.711em; line-height: 1.5; color: var(--fg-muted);
+	font-size: 0.78em; line-height: 1.5; color: var(--fg-muted);
 }
 .reveal .slides section .mmwhat b { color: var(--fg); font-weight: 600; }
 .reveal .slides section .mmitem.sota .mmwhat b { color: var(--accent); }
@@ -1806,7 +1806,7 @@
 	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
 	border-top: 1px solid var(--edge);
 	font-family: var(--label); font-style: normal;
-	font-size: 0.833em; line-height: 1.45; color: var(--fg); text-align: left;
+	font-size: 0.875em; line-height: 1.45; color: var(--fg); text-align: left;
 }
 .reveal .slides section .pull i { color: var(--fg-muted); }
 
@@ -1868,12 +1868,12 @@
 .reveal .slides section.fixedpipe .pglyph svg .hair  { stroke-width: 1.2; stroke-dasharray: 3 3; opacity: 0.6; }
 .reveal .slides section.fixedpipe .pglyph .math { font-size: 0.95em; }
 .reveal .slides section.fixedpipe .pname {
-	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.708em; line-height: 1.2; color: var(--fg);
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.833em; line-height: 1.2; color: var(--fg);
 	transition: color 0.4s ease;
 }
 .reveal .slides section.fixedpipe .psub {
 	margin-top: 0.15em; font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 0.708em; line-height: 1.3; color: var(--fg-muted);
+	letter-spacing: var(--label-tracking); font-size: 0.833em; line-height: 1.3; color: var(--fg-muted);
 }
 /* the flow line: a rule with a head, sitting at glyph height */
 .reveal .slides section.fixedpipe .parw {
@@ -1889,7 +1889,7 @@
 /* the click: the rest stands down, the notes appear, the varying node is lit */
 .reveal .slides section.fixedpipe .pnode .fixnote {
 	margin-top: 0.4em; font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 0.708em; line-height: 1.3;
+	letter-spacing: var(--label-tracking); font-size: 0.833em; line-height: 1.3;
 	color: var(--fg-muted); opacity: 0; transition: opacity 0.4s ease;
 }
 .reveal .slides section.fixedpipe .pnode.varies .fixnote { color: var(--accent); }
@@ -1963,7 +1963,7 @@
 .reveal .slides section.pnpres .pr-note b { color: var(--fg); }
 .reveal .slides section.pnpres .pr-points {
 	display: block; list-style: none; margin: 0.2em 0 0; padding: 0;
-	font-size: 0.8em; line-height: 1.4; color: var(--fg);
+	font-size: 0.86em; line-height: 1.4; color: var(--fg);
 }
 .reveal .slides section.pnpres .pr-points li {
 	position: relative; margin: 0.45em 0 0; padding-left: 1.1em;
@@ -1996,7 +1996,7 @@
    --------------------------------------------------------------------------- */
 .reveal .slides section .points {
 	display: block; list-style: none; margin: 0.6em 0 0; padding: 0;
-	font-size: 0.833em; line-height: 1.5; color: var(--fg); text-align: left;
+	font-size: 0.875em; line-height: 1.5; color: var(--fg); text-align: left;
 }
 .reveal .slides section .points li { position: relative; margin: 0.5em 0 0; padding-left: 1.1em; }
 .reveal .slides section .points li::before {
@@ -2112,7 +2112,7 @@
 
 /* the baryon-safe slide: two claims and their floor, unboxed */
 .reveal .slides section .hos-side { text-align: left; }
-.reveal .slides section .hos-side .points { font-size: 0.78em; margin-top: 0.2em; }
+.reveal .slides section .hos-side .points { font-size: 0.86em; margin-top: 0.2em; }
 .reveal .slides section .hos-side .kicker { margin: 1.1em 0 0; }
 .reveal .slides section .hos-side .kicker:first-child { margin-top: 0; }
 
@@ -2200,7 +2200,7 @@
    --------------------------------------------------------------------------- */
 .reveal .slides section.genmodel .gm-lede {
 	max-width: 92%; margin: 0.7em auto 0; text-align: left;
-	font-size: 0.8em; line-height: 1.45; color: var(--fg);
+	font-size: 0.875em; line-height: 1.45; color: var(--fg);
 }
 .reveal .slides section.genmodel .gm-fig { margin: 1.1em auto 0; max-width: 88%; }
 .reveal .slides section.genmodel .gm-fig img {
@@ -2221,7 +2221,7 @@
    --------------------------------------------------------------------------- */
 .reveal .slides section.sbigen .sbi-lede {
 	max-width: 94%; margin: 0.7em auto 0; text-align: left;
-	font-size: 0.78em; line-height: 1.45; color: var(--fg);
+	font-size: 0.84em; line-height: 1.45; color: var(--fg);
 }
 /* the three builds are stacked and revealed in turn — same canvas, same crop, so
    the figure grows rather than jumping. */
@@ -2262,7 +2262,7 @@
 }
 .reveal .slides section.genmodel .pop-src {
 	margin: 0.35em 0 0; font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
+	letter-spacing: var(--label-tracking); font-size: 0.542em; color: var(--fg-muted);
 	text-align: left;
 }
 
@@ -2281,7 +2281,7 @@
 	border: 0; box-shadow: none; background: transparent;
 }
 .reveal .slides section.flowslide .ft-gif figcaption {
-	font-size: 0.833em; text-align: center; margin-top: 0.3em;
+	font-size: 0.875em; text-align: center; margin-top: 0.3em;
 }
 
 /* the three causes, beside the fan rather than under it as prose */
@@ -2314,7 +2314,7 @@
 /* slide 9: shrink-wrap the list so `margin: auto` actually centres it —
    darkenergy makes every ul inline-block, and auto margins do nothing there. */
 .reveal .slides section.kgrel .points.kgpoints {
-	display: table; max-width: none; margin: 1.3em auto 0; font-size: 0.82em;
+	display: table; max-width: none; margin: 1.3em auto 0; font-size: 0.90em;
 }
 
 /* ---- slide 13, reorganised: the equation names the three troubles, the panel
@@ -2416,7 +2416,7 @@
 /* shrink-wrap the list so `margin: auto` actually centres it — darkenergy makes
    every ul inline-block, and auto margins do nothing there. */
 .reveal .slides section.wvx .points.wv-points {
-	display: table; max-width: none; margin: 0.8em auto 0; font-size: 0.76em;
+	display: table; max-width: none; margin: 0.8em auto 0; font-size: 0.88em;
 }
 .reveal .slides section.wvx .pop-kicker { margin: 0.9em 0 0.35em; }
 .reveal .slides section.wvx .points.pop-points {
@@ -2619,13 +2619,13 @@
 }
 .reveal .slides section .chart .prod figcaption { margin-top: 0.3em; line-height: 1.2; }
 .reveal .slides section .chart .prod figcaption b {
-	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 17px; color: var(--fg);
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 18.5px; color: var(--fg);
 	transition: color 0.4s ease;
 }
 .reveal .slides section .chart .prod figcaption span,
 .reveal .slides section .chart .proc span {
 	display: block; font-family: var(--label); font-style: var(--label-style);
-	letter-spacing: var(--label-tracking); font-size: 17px; line-height: 1.3; color: var(--fg-muted);
+	letter-spacing: var(--label-tracking); font-size: 18.5px; line-height: 1.3; color: var(--fg-muted);
 }
 /* processes: small tinted boxes sitting on the arrows, like the coloured boxes in the DES figure */
 .reveal .slides section .chart .proc {
@@ -2635,7 +2635,7 @@
 	border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--edge));
 }
 .reveal .slides section .chart .proc b {
-	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 17px; line-height: 1.15; color: var(--fg);
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 18.5px; line-height: 1.15; color: var(--fg);
 	transition: color 0.4s ease;
 }
 .reveal .slides section .chart .proc.dashed {
@@ -2651,8 +2651,8 @@
 	background: color-mix(in srgb, var(--bg) 40%, transparent);
 	backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
 }
-.reveal .slides section .chart .prod.inimg figcaption b { font-size: 17px; }
-.reveal .slides section .chart .prod.inimg figcaption span { font-size: 17px; }
+.reveal .slides section .chart .prod.inimg figcaption b { font-size: 18.5px; }
+.reveal .slides section .chart .prod.inimg figcaption span { font-size: 18.5px; }
 
 /* --- placement ---------------------------------------------------------
    The data row runs left to right across the top with a slight stagger
@@ -2763,7 +2763,7 @@
 :root { --label-style: normal; }
 /* .kicker (0.5em) and .slide-title .sec (0.6em) are set in talks.css; both landed
    under the floor, so they are raised here rather than in the shared theme. */
-.reveal .slides section .kicker { font-size: 0.833em; }
+.reveal .slides section .kicker { font-size: 0.875em; }
 .reveal .slides section .slide-title .sec { font-size: 0.833em; }
 
 /* The last few sat BELOW the floor only because their em multiplied against an
@@ -2772,9 +2772,9 @@
    canvas's own px — reveal scales the whole stage, so 17px here is 17px there. */
 .reveal .slides section .callout .label,
 .reveal .slides section .takeaway .label { font-size: 20px; }
-.reveal .slides section .block-title { font-size: 20px; }
+.reveal .slides section .block-title { font-size: 21px; }
 .reveal .slides section .mcard .mtag,
-.reveal .slides section .mmname .mtag { font-size: 20px; }
+.reveal .slides section .mmname .mtag { font-size: 21px; }
 .reveal .slides section figcaption { font-size: 20px; }
 .reveal .slides section .alert { font-style: normal; }
 
@@ -2820,7 +2820,7 @@
    it the LARGEST thing in the box. */
 .reveal .slides section.pnpcombo .pnp-pocket p { margin: 0.22em 0; font-size: 0.9em; line-height: 1.3; }
 .reveal .slides section.pnpcombo .pnp-pocket ul {
-	margin: 0.4em 0 0.1em; padding-left: 1.15em; font-size: 0.8em; line-height: 1.3;
+	margin: 0.4em 0 0.1em; padding-left: 1.15em; font-size: 0.86em; line-height: 1.3;
 }
 .reveal .slides section.pnpcombo .pnp-pocket li { margin: 0.12em 0; }
 .reveal .slides section.pnpcombo .pnp-eqs {
@@ -2906,7 +2906,7 @@
    glyph each, so a row read as four isolated marks rather than as a pattern. Left-aligned
    rather than centred so the table's left edge shares x with the lede and the footnote. */
 .reveal .slides section table.dltable {
-	font-size: 0.82em; margin: 0.9em auto 0; width: 84%;
+	font-size: 0.88em; margin: 0.9em auto 0; width: 90%;
 }
 .reveal .slides section table.dltable th:nth-child(1) { width: 24%; }
 .reveal .slides section table.dltable th:nth-child(2) { width: 32%; }
@@ -2926,4 +2926,29 @@
 	font-size: 0.833em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
 }
 /* the footnote hangs off the table, so it is centred with it rather than with the slide */
-.reveal .slides section.dlslide .dlnote { width: 84%; margin-left: auto; margin-right: auto; }
+.reveal .slides section.dlslide .dlnote { width: 90%; margin-left: auto; margin-right: auto; }
+
+
+/* --------------------------------------------------------------------------
+   A2.3 type lift for a small projector, 2026-09-14, wave 2.  The 20 px floor
+   was being read as a target: 23 main frames sat exactly on it while carrying
+   80-550 px of unused height, so the shared components (.points, .pull,
+   .kicker, .block-title, .mtag) were raised at their own declarations above.
+   Raised there rather than here on purpose, so every per-slide rule that had
+   deliberately set a component LARGER still wins -- overriding with
+   !important flattened frame 6's `ESA mission` kicker from 31 px to 21.
+
+   Two exceptions, appended here because they have to out-specify the shared
+   rules -- see REVEAL-GOTCHAS S4b:
+   -------------------------------------------------------------------------- */
+/* a .kicker inside a <figure> is a caption, not an eyebrow: hold it at the
+   floor.  It is also what was growing frames 20 and 106, both already full. */
+.reveal .slides section figure .kicker { font-size: 0.833em; }
+
+/* figcaption stays at 20 deck-wide -- lifting it pushed six dense backup
+   frames past the canvas -- so it is lifted only where the slide has room. */
+.reveal .slides section.hosgain .hg-fig figcaption,
+.reveal .slides section.flowslide figcaption,
+.reveal .slides section .ip-panel figcaption,
+.reveal .slides section.twopt figcaption,
+.reveal .slides section .pipeflow.big figcaption { font-size: 21px; }

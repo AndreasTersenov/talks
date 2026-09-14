@@ -78,18 +78,6 @@
 				<p class="slides-link"><span class="lab">slides at</span><a
 						href="https://andreastersenov.github.io/talks/PhD_Defense_2026/">andreastersenov.github.io/talks/PhD_Defense_2026</a>
 				</p>
-				<aside class="notes">
-					<p><strong>title</strong></p>
-					<ul>
-						<li>thanks — committee, for reading and being here</li>
-						<li><strong>3 years</strong>; trustworthy non-Gaussian inference for weak-lensing cosmology</li>
-					</ul>
-					<!-- PARKED 2026-09-13, the note this replaced:
-					     45 min, mostly uninterrupted, then general-audience questions, then the closed
-					      examination. Four chapters: A&amp;A 698 A25 (2025); A&amp;A 710 A292 (2026, second author); two
-					      submitted to A&amp;A.
-					-->
-				</aside>
 			</section>
 
 
@@ -220,9 +208,11 @@
 					<p><strong>ΛCDM</strong></p>
 					<ul>
 						<li><strong>six</strong> free parameters</li>
-						<li>assumptions: GR · homogeneous+isotropic on large scales · inflation, near-Gaussian, adiabatic · baryons + CDM + Λ</li>
+						<li>assumptions: GR · homogeneous+isotropic on large scales · inflation, near-Gaussian,
+							adiabatic · baryons + CDM + Λ</li>
 						<li>▲ extremely successful — six numbers fit everything to remarkable precision</li>
-						<li><strong>»</strong> but not satisfactory: phenomenological not first-principles · <strong>95 %</strong> is two dark components · tensions between probes</li>
+						<li><strong>»</strong> but not satisfactory: phenomenological not first-principles · <strong>95
+								%</strong> is two dark components · tensions between probes</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     [CLICK] swaps the budget pie for the annotated cone and reveals the note. Then one click each:
@@ -338,7 +328,8 @@
 					<ul>
 						<li>light bends passing the mass on the way to us → distorted image</li>
 						<li>dramatic = arcs, rings, multiple images — <strong>strong</strong>, very rare</li>
-						<li>▲ <strong>weak</strong> happens everywhere: every galaxy slightly changed → how matter, incl. dark, is distributed</li>
+						<li>▲ <strong>weak</strong> happens everywhere: every galaxy slightly changed → how matter,
+							incl. dark, is distributed</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     Same idea as the cone, drawn properly. Light from distant galaxies does not travel through empty
@@ -394,7 +385,8 @@
 					<p><strong>Euclid</strong></p>
 					<ul>
 						<li>launched <strong>2023</strong>, taking data now</li>
-						<li><strong>billions of galaxies</strong>, <strong>a third of the sky</strong>, ~<strong>order of magnitude</strong> more statistical power</li>
+						<li><strong>billions of galaxies</strong>, <strong>a third of the sky</strong>, ~<strong>order
+								of magnitude</strong> more statistical power</li>
 						<li><strong>»</strong> ▲ signal encodes growth of structure + geometry since the Big Bang</li>
 						<li>but needs sophisticated algorithms and statistics — that is this thesis</li>
 					</ul>
@@ -666,7 +658,8 @@
 				============================================================================== -->
 				<section class="wlq" data-theme="light">
 					<h3 class="slide-title tight">We measure the <em class="alert">shear</em>, but theory predicts the
-						<em class="alert">convergence</em></h3>
+						<em class="alert">convergence</em>
+					</h3>
 
 					<figure class="wlbanner">
 						<img src="../assets/diagrams/WL_distortions_trim.png"
@@ -707,7 +700,8 @@
 						<ul>
 							<li>convergence = isotropic magnification; shear = anisotropic stretching</li>
 							<li>convergence <strong>not directly observable</strong></li>
-							<li>▲ lensing is <strong>coherent</strong>, intrinsic shapes <strong>random</strong> → average many galaxies, random cancels, shear remains</li>
+							<li>▲ lensing is <strong>coherent</strong>, intrinsic shapes <strong>random</strong> →
+								average many galaxies, random cancels, shear remains</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     The theme change is deliberate; do not remark on it. Point at the three panels: a circle behind
@@ -731,7 +725,8 @@
 				============================================================================== -->
 				<section class="kappadef" data-theme="light">
 					<h3 class="slide-title tight">The convergence is a projection of the matter density, sensitive to
-						<em class="alert">geometry</em> and <em class="alert">growth</em></h3>
+						<em class="alert">geometry</em> and <em class="alert">growth</em>
+					</h3>
 
 					<!-- Two columns since 2026-09-03: the figure became the real UNIONS
 					     reconstruction, whose aspect is 1.25 against the simulated strip's 2.76.
@@ -793,8 +788,10 @@
 					<aside class="notes">
 						<p><strong>what convergence is</strong></p>
 						<ul>
-							<li><strong>scalar</strong> field (shear is spin-2) — easier; most HOS only defined on κ</li>
-							<li><strong>projected matter</strong> along the line of sight, weighted by lensing efficiency</li>
+							<li><strong>scalar</strong> field (shear is spin-2) — easier; most HOS only defined on κ
+							</li>
+							<li><strong>projected matter</strong> along the line of sight, weighted by lensing
+								efficiency</li>
 							<li>→ convergence maps = <strong>mass maps</strong></li>
 							<li>real example: <strong>UNIONS</strong></li>
 						</ul>
@@ -850,7 +847,8 @@
 					<aside class="notes">
 						<p><strong>same potential</strong></p>
 						<ul>
-							<li>both are second derivatives of the <strong>lensing potential</strong> (projection of the gravitational potential)</li>
+							<li>both are second derivatives of the <strong>lensing potential</strong> (projection of the
+								gravitational potential)</li>
 							<li>Fourier space → simple linear relation</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -969,7 +967,8 @@
 						<p><strong>exact relation, imperfect data</strong></p>
 						<ul>
 							<li>irregular sampling · noise <strong>much larger than the shear</strong> · masks</li>
-							<li>→ <strong>ill-posed inverse problem</strong>: several visibly different solutions fit the data</li>
+							<li>→ <strong>ill-posed inverse problem</strong>: several visibly different solutions fit
+								the data</li>
 							<li><strong>»</strong> ▲ need an assumption about what κ looks like</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -1051,9 +1050,12 @@
 					<aside class="notes">
 						<p><strong>Kaiser–Squires</strong></p>
 						<ul>
-							<li>linear inversion applied directly; <strong>thirty years</strong>, almost every survey, for simplicity</li>
-							<li><strong>»</strong> amplifies shape noise at small scales · mask leakage across the whole map (non-local operator)</li>
-							<li>pure KS almost unreadable → Gaussian filtering in practice, at the cost of small scales</li>
+							<li>linear inversion applied directly; <strong>thirty years</strong>, almost every survey,
+								for simplicity</li>
+							<li><strong>»</strong> amplifies shape noise at small scales · mask leakage across the whole
+								map (non-local operator)</li>
+							<li>pure KS almost unreadable → Gaussian filtering in practice, at the cost of small scales
+							</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     Be fair to it:thirty years of surveys, and for good reasons — linear, no tuning, one transform,
@@ -1147,8 +1149,10 @@
 					<aside class="notes">
 						<p><strong>data term + regulariser</strong></p>
 						<ul>
-							<li>every method = optimisation: <strong>data fidelity</strong> + <strong>regulariser (the prior)</strong></li>
-							<li>data term is the <strong>same for all</strong>; what changes is the prior on κ and how it is solved</li>
+							<li>every method = optimisation: <strong>data fidelity</strong> + <strong>regulariser (the
+									prior)</strong></li>
+							<li>data term is the <strong>same for all</strong>; what changes is the prior on κ and how
+								it is solved</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     The frame first, and it is deliberately NOT Bayesian — that comes later, when we infer
@@ -1258,9 +1262,12 @@
 						<p><strong>MCALens</strong></p>
 						<ul>
 							<li>state of the art among <strong>model-driven</strong> (hand-crafted prior)</li>
-							<li>κ = <strong>Gaussian</strong> (Wiener filter) + <strong>non-Gaussian</strong> (the peaks)</li>
-							<li><strong>alternating minimisation</strong> — solve one holding the other, iterate to convergence</li>
-							<li><strong>»</strong> each sub-problem is a <strong>proximal step</strong>: gradient towards the shear, then operator pulling back to the prior</li>
+							<li>κ = <strong>Gaussian</strong> (Wiener filter) + <strong>non-Gaussian</strong> (the
+								peaks)</li>
+							<li><strong>alternating minimisation</strong> — solve one holding the other, iterate to
+								convergence</li>
+							<li><strong>»</strong> each sub-problem is a <strong>proximal step</strong>: gradient
+								towards the shear, then operator pulling back to the prior</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     MCALens is the only method here that does not treat the field as one thing. It splits it: a
@@ -1302,7 +1309,8 @@
 					============================================================================== -->
 				<section class="stakes" data-theme="light">
 					<h3 class="slide-title tight">Different priors give different maps. Does the difference affect the
-						<em class="alert">cosmological results</em>?</h3>
+						<em class="alert">cosmological results</em>?
+					</h3>
 
 					<p class="pull fragment fade-in" data-fragment-index="1">
 						A practical question for <b>Euclid</b>: is an <b class="alert">advanced reconstruction method
@@ -1313,9 +1321,11 @@
 					<aside class="notes">
 						<p><strong>the question</strong></p>
 						<ul>
-							<li>until this paper methods were compared on <strong>map quality</strong> — MSE against the truth</li>
+							<li>until this paper methods were compared on <strong>map quality</strong> — MSE against the
+								truth</li>
 							<li>but the map is not the final product; we care about the <strong>parameters</strong></li>
-							<li><strong>»</strong> practical for Euclid: is an advanced method <strong>worth the effort</strong>, or is any reasonable one good enough?</li>
+							<li><strong>»</strong> practical for Euclid: is an advanced method <strong>worth the
+									effort</strong>, or is any reasonable one good enough?</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     Three methods, three different maps, and every one reproduces the shear it was given. Up to this
@@ -1493,8 +1503,10 @@
 					<aside class="notes">
 						<p><strong>the three maps</strong></p>
 						<ul>
-							<li>baselines: <strong>KS</strong>, and <strong>KS + inpainting</strong> (fills the mask to match the field statistically, meant to cut leakage)</li>
-							<li>these two are what <strong>Euclid</strong> plans — mass mapping treated as preprocessing, so the simplest became default</li>
+							<li>baselines: <strong>KS</strong>, and <strong>KS + inpainting</strong> (fills the mask to
+								match the field statistically, meant to cut leakage)</li>
+							<li>these two are what <strong>Euclid</strong> plans — mass mapping treated as
+								preprocessing, so the simplest became default</li>
 							<li><strong>MCALens</strong> is the state of the art</li>
 							<li>so what posteriors do they give?</li>
 						</ul>
@@ -1579,10 +1591,14 @@
 					<aside class="notes">
 						<p><strong>the answer &mdash; <em>first corner plot, take your time</em></strong></p>
 						<ul>
-							<li>explain the plot: off-diagonal = joint distribution of a pair; diagonal = one parameter; two shades = <strong>68 and 95 %</strong>; smaller = more precise</li>
-							<li><strong>inpainting makes no difference</strong> — grey and red almost identical, grey hard to see behind the red</li>
+							<li>explain the plot: off-diagonal = joint distribution of a pair; diagonal = one parameter;
+								two shades = <strong>68 and 95 %</strong>; smaller = more precise</li>
+							<li><strong>inpainting makes no difference</strong> — grey and red almost identical, grey
+								hard to see behind the red</li>
 							<li><strong>MCALens visibly tighter on every parameter</strong></li>
-							<li>stems: both are improvement over KS. <strong>open</strong> = RMSE, <strong>4 %</strong> better. <strong>filled</strong> = constraining power, <strong>×2.6</strong>, <strong>160 %</strong></li>
+							<li>stems: both are improvement over KS. <strong>open</strong> = RMSE, <strong>4 %</strong>
+								better. <strong>filled</strong> = constraining power, <strong>×2.6</strong>, <strong>160
+									%</strong></li>
 							<li>map quality and constraining power are <strong>not the same objective</strong></li>
 							<li>→ surveys should use advanced reconstruction to maximise scientific output</li>
 						</ul>
@@ -1629,7 +1645,8 @@
 					<aside class="notes">
 						<p><strong>where the gain comes from</strong></p>
 						<ul>
-							<li>add smaller and smaller scales: KS <strong>saturates below 8′</strong>; MCALens keeps improving</li>
+							<li>add smaller and smaller scales: KS <strong>saturates below 8′</strong>; MCALens keeps
+								improving</li>
 							<li>MCALens recovers the <strong>small-scale structure</strong> KS loses to noise</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -1748,7 +1765,8 @@
 						<p><strong>what we want</strong></p>
 						<ul>
 							<li>obvious place to look is <strong>deep learning</strong> — tried, and it works</li>
-							<li><strong>four things</strong>: accurate · flexible (same model when noise or mask changes) · fast · fast uncertainty quantification</li>
+							<li><strong>four things</strong>: accurate · flexible (same model when noise or mask
+								changes) · fast · fast uncertainty quantification</li>
 							<li><strong>none of the existing methods have all four</strong></li>
 						</ul>
 					</aside>
@@ -1884,15 +1902,23 @@
 					<aside class="notes">
 						<p><strong>plug-and-play</strong></p>
 						<ul>
-							<li>from the optimisation literature; inverse problem with a <strong>learned</strong> prior, very flexible</li>
+							<li>from the optimisation literature; inverse problem with a <strong>learned</strong> prior,
+								very flexible</li>
 							<li>start from the Part 1 iteration: gradient step on the data term, then proximal step</li>
-							<li>PnP replaces the proximal operator with a <strong>deep denoiser</strong> trained on simulations → converges to a <strong>fixed point</strong></li>
-							<li>better than analytical priors: the denoiser learns a far more complex, realistic prior</li>
-							<li><strong>Swin transformer</strong>, <strong>7 million</strong> parameters, trained once on white Gaussian noise over a range of levels</li>
-							<li>▲ noise covariance and mask enter <strong>only in the data term, at inference</strong> → same network for any noise, any footprint. That is the flexibility</li>
-							<li>walk-through: two shear components, κ initialised at zero → <strong>forward</strong> (gradient) gives a noisy map → <strong>backward</strong> (denoiser) projects onto realistic mass maps</li>
+							<li>PnP replaces the proximal operator with a <strong>deep denoiser</strong> trained on
+								simulations → converges to a <strong>fixed point</strong></li>
+							<li>better than analytical priors: the denoiser learns a far more complex, realistic prior
+							</li>
+							<li><strong>Swin transformer</strong>, <strong>7 million</strong> parameters, trained once
+								on white Gaussian noise over a range of levels</li>
+							<li>▲ noise covariance and mask enter <strong>only in the data term, at inference</strong> →
+								same network for any noise, any footprint. That is the flexibility</li>
+							<li>walk-through: two shear components, κ initialised at zero → <strong>forward</strong>
+								(gradient) gives a noisy map → <strong>backward</strong> (denoiser) projects onto
+								realistic mass maps</li>
 							<li><strong>»</strong> output fed back, iterate to convergence</li>
-							<li><em>short path if behind: eight iterations, alternating data step and denoiser; residual variant slightly better, in the backup</em></li>
+							<li><em>short path if behind: eight iterations, alternating data step and denoiser; residual
+									variant slightly better, in the backup</em></li>
 						</ul>
 					</aside>
 				</section>
@@ -2014,12 +2040,19 @@
 					<aside class="notes">
 						<p><strong>accurate, calibrated</strong></p>
 						<ul>
-							<li>accurate maps <strong>and</strong> error bars, <strong>perfectly calibrated, with mathematical guarantees</strong></li>
-							<li>via <strong>moment networks</strong> + <strong>conformalized quantile regression</strong></li>
-							<li>axes: x = reconstruction error, y = size of calibrated bars → <strong>lower left is better</strong></li>
-							<li>colour = miscoverage: circles above target before, every diamond on it after. Not <em>who covers</em> — everyone covers, that is the guarantee — but who covers with the <strong>tightest bars</strong></li>
-							<li>▲ accuracy within <strong>~1 %</strong> of <strong>DeepMass</strong>, trained for that exact mask and noise; <strong>smallest calibrated bars</strong> of all</li>
-							<li><strong>»</strong> DeepMass needs retraining per mask/noise → not applicable to a real survey; PnPMass trained <strong>once</strong>, any field</li>
+							<li>accurate maps <strong>and</strong> error bars, <strong>perfectly calibrated, with
+									mathematical guarantees</strong></li>
+							<li>via <strong>moment networks</strong> + <strong>conformalized quantile
+									regression</strong></li>
+							<li>axes: x = reconstruction error, y = size of calibrated bars → <strong>lower left is
+									better</strong></li>
+							<li>colour = miscoverage: circles above target before, every diamond on it after. Not
+								<em>who covers</em> — everyone covers, that is the guarantee — but who covers with the
+								<strong>tightest bars</strong></li>
+							<li>▲ accuracy within <strong>~1 %</strong> of <strong>DeepMass</strong>, trained for that
+								exact mask and noise; <strong>smallest calibrated bars</strong> of all</li>
+							<li><strong>»</strong> DeepMass needs retraining per mask/noise → not applicable to a real
+								survey; PnPMass trained <strong>once</strong>, any field</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     SAY: this is the whole result in one plot. Left and down is better — reconstruction error
@@ -2544,7 +2577,8 @@
 					<p><strong>the second half</strong></p>
 					<ul>
 						<li>what comes after the map: the <strong>summary statistic</strong>, and inference from it</li>
-						<li>so far the statistic was <strong>held fixed on purpose</strong> — nothing that moved could be blamed on it. Now it is the subject</li>
+						<li>so far the statistic was <strong>held fixed on purpose</strong> — nothing that moved could
+							be blamed on it. Now it is the subject</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     SAY: stop and look at where we are. Both projects so far — does the reconstruction matter, and
@@ -2581,7 +2615,8 @@
 				<aside class="notes">
 					<p><strong>compression</strong></p>
 					<ul>
-						<li>map is ~<strong>a hundred thousand correlated pixels</strong> — very hard to use directly</li>
+						<li>map is ~<strong>a hundred thousand correlated pixels</strong> — very hard to use directly
+						</li>
 						<li><strong>»</strong> compress to a low-dimensional summary</li>
 						<li><strong>»</strong> the choice determines how much information is kept</li>
 					</ul>
@@ -2647,9 +2682,13 @@
 				<aside class="notes">
 					<p><strong>two-point</strong></p>
 					<ul>
-						<li>standard: <strong>two-point correlation function</strong> — ξ± in real space, power spectrum in harmonic</li>
-						<li><strong>»</strong> every flagship result of the decade — <strong>KiDS, DES, HSC</strong> — is two-point: analytic prediction, understood covariance, two decades of systematics work</li>
-						<li><strong>»</strong> ▲ for a <strong>Gaussian</strong> field the power spectrum is <strong>sufficient</strong>. The late-time field is not Gaussian</li>
+						<li>standard: <strong>two-point correlation function</strong> — ξ± in real space, power spectrum
+							in harmonic</li>
+						<li><strong>»</strong> every flagship result of the decade — <strong>KiDS, DES, HSC</strong> —
+							is two-point: analytic prediction, understood covariance, two decades of systematics work
+						</li>
+						<li><strong>»</strong> ▲ for a <strong>Gaussian</strong> field the power spectrum is
+							<strong>sufficient</strong>. The late-time field is not Gaussian</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     SAY: start from the thing everybody uses. The two-point function asks a simple question — take
@@ -2751,7 +2790,8 @@
 					<p><strong>same power spectrum</strong></p>
 					<ul>
 						<li>collapse and non-linear growth → haloes and filaments around voids</li>
-						<li>these two completely different fields have <strong>the same power spectrum</strong> — two-point cannot tell them apart</li>
+						<li>these two completely different fields have <strong>the same power spectrum</strong> —
+							two-point cannot tell them apart</li>
 						<li>→ need <strong>higher-order</strong>: peaks, wavelets, ℓ1-norm, Minkowski functionals</li>
 					</ul>
 				</aside>
@@ -2786,7 +2826,8 @@
 				<aside class="notes">
 					<p><strong>the gain</strong></p>
 					<ul>
-						<li>forecasts on simulations: adding HOS to the power spectrum <strong>significantly improves</strong> the constraints</li>
+						<li>forecasts on simulations: adding HOS to the power spectrum <strong>significantly
+								improves</strong> the constraints</li>
 					</ul>
 				</aside>
 			</section>
@@ -3073,10 +3114,16 @@
 				<aside class="notes">
 					<p><strong>wavelets &mdash; <em>the parenthesis</em></strong></p>
 					<ul>
-						<li>Fourier uses sines and cosines; wavelets are <strong>localised, oscillating</strong>, <strong>dilated and translated</strong></li>
-						<li>coefficient at scale <em>a</em>, position <em>b</em> = how much structure of size <em>a</em> sits at <em>b</em></li>
-						<li><strong>»</strong> suited to convergence maps — localised structures with a characteristic size and position. Small wavelet → small-scale structure; large → large-scale</li>
-						<li>each band covers a different frequency range → study <strong>scale by scale</strong>, largely independent</li>
+						<li>Fourier uses sines and cosines; wavelets are <strong>localised, oscillating</strong>,
+							<strong>dilated and translated</strong></li>
+						<li>Here you can see the signal being decomposed into wavelet coefficients at different scales.
+						</li>
+						<li>coefficient at scale <em>a</em>, position <em>b</em> = how much structure of size <em>a</em>
+							sits at <em>b</em></li>
+						<li><strong>»</strong> suited to convergence maps — localised structures with a characteristic
+							size and position. Small wavelet → small-scale structure; large → large-scale</li>
+						<li>each band covers a different frequency range → study <strong>scale by scale</strong>,
+							largely independent</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     EXCURSION - two frames, 50 seconds, then move on. The figures teach; these are the words.
@@ -3137,7 +3184,8 @@
 								alt="schematic peak counts against signal-to-noise, one curve per starlet scale">
 							-->
 						</div>
-						<p class="cap">local maxima of the $\kappa$ field, counted per $\kappa$ bin &rarr; focus only on a subset
+						<p class="cap">local maxima of the $\kappa$ field, counted per $\kappa$ bin &rarr; focus only on
+							a subset
 							of the field
 					</div>
 					<div class="col fragment fade-in" data-fragment-index="2">
@@ -3148,7 +3196,8 @@
 									$$\ell_1^{\,j,i} \;=\; \sum_{u=1}^{\#\mathcal{S}_{j,i}} \big| \mathcal{S}_{j,i}[u]
 									\big|
 									\;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
-									<p class="defline">$\mathcal{S}_{j,i}$ are the coefficients of scale $j$ whose $\kappa$
+									<p class="defline">$\mathcal{S}_{j,i}$ are the coefficients of scale $j$ whose
+										$\kappa$
 										falls in bin $i$</p>
 								</div>
 							</div>
@@ -3166,12 +3215,19 @@
 				<aside class="notes">
 					<p><strong>the two statistics</strong></p>
 					<ul>
-						<li>both start from the wavelet decomposition, isotropic wavelet called the <strong>starlet</strong></li>
-						<li>transform → set of <strong>band-pass images</strong>, each a characteristic angular size</li>
-						<li><strong>»</strong> count peaks on each band, histogram their amplitudes = <strong>wavelet peak counts</strong></li>
-						<li><strong>»</strong> sensitive to non-Gaussian features; peaks ↔ dark matter haloes, whose abundance depends strongly on cosmology</li>
-						<li><strong>»</strong> but counting peaks throws away voids, filaments, the rest → sum the <strong>absolute values</strong> of all coefficients per band, histogram those = <strong>starlet ℓ1-norm</strong></li>
-						<li><strong>»</strong> think of it as a <strong>PDF of the field in the wavelet domain</strong></li>
+						<li>both start from the wavelet decomposition, isotropic wavelet called the
+							<strong>starlet</strong></li>
+						<li>transform → set of <strong>band-pass images</strong>, each a characteristic angular size
+						</li>
+						<li><strong>»</strong> count peaks on each band, histogram their amplitudes = <strong>wavelet
+								peak counts</strong></li>
+						<li><strong>»</strong> sensitive to non-Gaussian features; peaks ↔ dark matter haloes, whose
+							abundance depends strongly on cosmology</li>
+						<li><strong>»</strong> but counting peaks throws away voids, filaments, the rest → sum the
+							<strong>absolute values</strong> of all coefficients per band, histogram those =
+							<strong>starlet ℓ1-norm</strong></li>
+						<li><strong>»</strong> think of it as a <strong>PDF of the field in the wavelet domain</strong>
+						</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     SAY: both of our higher-order statistics are ONE-POINT statistics - histograms of
@@ -3296,9 +3352,11 @@
 					<p><strong>classical inference</strong></p>
 					<ul>
 						<li>Bayes: posterior ∝ <strong>likelihood × prior</strong></li>
-						<li>classical writes the likelihood <strong>analytically</strong>, usually Gaussian in the data vector → needs a mean prediction and a covariance. Works for the power spectrum</li>
+						<li>classical writes the likelihood <strong>analytically</strong>, usually Gaussian in the data
+							vector → needs a mean prediction and a covariance. Works for the power spectrum</li>
 						<li><strong>»</strong> sample with <strong>MCMC</strong></li>
-						<li>for peaks or ℓ1: <strong>neither</strong> an analytic mean <strong>nor</strong> a Gaussian likelihood → different route</li>
+						<li>for peaks or ℓ1: <strong>neither</strong> an analytic mean <strong>nor</strong> a Gaussian
+							likelihood → different route</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     The classical route. Bayes itself is not the content; everyone here has it. Read it as a sentence:
@@ -3426,8 +3484,10 @@
 				<aside class="notes">
 					<p><strong>normalizing flows</strong></p>
 					<ul>
-						<li>start from a unit Gaussian → target, through <strong>simple invertible transformations</strong>, each a neural network</li>
-						<li>invertible → density from the <strong>change-of-variables formula</strong>; trained to maximise the likelihood of the samples</li>
+						<li>start from a unit Gaussian → target, through <strong>simple invertible
+								transformations</strong>, each a neural network</li>
+						<li>invertible → density from the <strong>change-of-variables formula</strong>; trained to
+							maximise the likelihood of the samples</li>
 						<li>the flow learns from samples how to turn a Gaussian into the target</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
@@ -3483,9 +3543,11 @@
 				<aside class="notes">
 					<p><strong>simulation-based inference</strong></p>
 					<ul>
-						<li>no analytic likelihood, but <strong>we have a simulator</strong> — parameters in, simulated data out, with all the stochasticity</li>
+						<li>no analytic likelihood, but <strong>we have a simulator</strong> — parameters in, simulated
+							data out, with all the stochasticity</li>
 						<li>draw from the prior, run, keep the <strong>(parameter, data) pairs</strong></li>
-						<li><strong>»</strong> those train a <strong>conditional</strong> flow → the flow <strong>is</strong> the posterior. Give it the real observation, get the posterior</li>
+						<li><strong>»</strong> those train a <strong>conditional</strong> flow → the flow
+							<strong>is</strong> the posterior. Give it the real observation, get the posterior</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     SBI in general; the next slide is this paper's particular pipeline. Frame it from the
@@ -3534,7 +3596,8 @@
 					<aside class="notes">
 						<p><strong>Part 3 divider</strong></p>
 						<ul>
-							<li><strong>third question</strong>: how much information do the statistics keep, and can HOS extract <em>all</em> of it?</li>
+							<li><strong>third question</strong>: how much information do the different statistics keep,
+								and can design a HOS that extracts <em>all</em> of it?</li>
 						</ul>
 					</aside>
 				</section>
@@ -3570,12 +3633,13 @@
 						<b class="alert">how close to all of it</b> we can get.
 					</p>
 					<aside class="notes">
-						<p><strong>why build a statistic by hand</strong></p>
 						<ul>
-							<li>ℓ1 beats the power spectrum — <strong>»</strong> but that is &quot;easy&quot;. Real question is <strong>how close to all of it</strong></li>
+							<li>we are looking for the most informative summary in WL</li>
+							<li>ℓ1 beats the power spectrum, but that is &quot;easy&quot;. Real
+								question is <strong>how close to all of</strong> the info in a map a summary can get</li>
 							<li>we already use networks for inference — why not learn the compression too?</li>
-							<li><strong>reasons to be careful</strong>: needs a lot of training data · hard to interpret · generalises less predictably — a feature in the sims but not the data biases the result unnoticed</li>
-							<li>the theoretically optimal way: build the network into the SBI pipeline, train it with the flow — <strong>VMIM</strong></li>
+							<li><strong>reasons to be careful</strong>: training data · interpretability · generalisation · inspectability</li>
+							<li>the theoretically optimal way: build the network into the SBI pipeline, train it under the <strong>VMIM</strong> objective</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     A hinge, not a result - keep it short and do not front-load it. SAY: we have a
@@ -3646,9 +3710,11 @@
 					<aside class="notes">
 						<p><strong>what optimal means</strong></p>
 						<ul>
-							<li>network = <strong>compressor</strong>, maps → low-dimensional summary; flow maps summary → posterior</li>
-							<li><strong>»</strong> trained together to maximise the <strong>mutual information</strong> between summary and parameters ≡ maximising the expected log posterior</li>
-							<li><strong>»</strong> so in theory it estimates the <strong>most information any summary of these maps can carry</strong></li>
+							<li>network = <strong>compressor</strong>, maps → low-dimensional summary; flow maps summary
+								→ posterior</li>
+							<li>VMIM idea: train the two nets *together* to maximise the <strong>mutual information</strong>
+								btw summary & parameters ≡ maximising the expected log posterior</li>
+							<li>so in theory it estimates the <strong>most information any summary of these maps can carry</strong></li>
 							<li>→ compare our analytical HOS against that</li>
 						</ul>
 					</aside>
@@ -3667,7 +3733,8 @@
 					<aside class="notes">
 						<p><strong>the setup</strong></p>
 						<ul>
-							<li>most of the work in this paper is in this figure — the whole SBI pipeline, maps to parameters, plus both the analytical statistics and the neural compressor (many architectures, always VMIM)</li>
+							<li>most of work in paper went into creating the components here — designing the whole SBI pipeline, maps to parameters, + designing both the analytical statistics (for which developed gpu software to run them on scale) and the neural compressor (many
+								architectures, and setups -> at the end ResNet18 CNN)</li>
 							<li>the two approaches share <strong>everything apart from the summary</strong></li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -3722,8 +3789,10 @@
 					<aside class="notes">
 						<p><strong>the gap</strong></p>
 						<ul>
-							<li>first result: not far apart, but the CNN wins by <strong>36 %</strong> in FoM → ℓ1 loses part of the information</li>
-							<li><strong>»</strong> but the comparison is <strong>not symmetric</strong> — a property of these maps the ℓ1 does not yet use</li>
+							<li>first result: not far apart, but the CNN wins by <strong>36 %</strong> in FoM → ℓ1 loses
+								part of the information</li>
+							<li><strong>»</strong> but the comparison is <strong>not symmetric</strong> — a property of
+								these maps the ℓ1 does not yet use</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     Read the result plainly: the two are not far apart, the CNN wins by 36 per cent
@@ -3759,8 +3828,12 @@
 						<p><strong>tomography &mdash; <em>eight clicks, one per build step</em></strong></p>
 						<ul>
 							<li>sources sliced into <strong>redshift bins</strong></li>
-							<li><strong>»</strong> most distant bin <strong>»</strong> lensed by all the matter in front <strong>»</strong> gives its map <strong>»</strong> a nearer bin <strong>»</strong> shorter column <strong>»</strong> another map <strong>»</strong> one map per bin, <strong>not independent</strong> — the same structure appears in several</li>
-							<li>how the signal changes bin to bin says where the matter sits along the line of sight → how structure grew</li>
+							<li> most distant bin lensed by all the matter in front
+								<strong>»</strong> gives its map <strong>»</strong> a nearer bin <strong>»</strong>
+								shorter column <strong>»</strong> another map <strong>»</strong> one map per bin,
+								<strong>not independent</strong> — the same structure appears in several</li>
+							<li>how the signal changes bin to bin says where the matter sits along the line of sight →
+								how structure grew</li>
 							<li>a <strong>per-bin</strong> statistic cannot see it</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -3803,7 +3876,8 @@
 									</figure>
 								</div>
 							</div>
-							<p class="rcap">The pixel-wise product of two bins is strong only where <b>both</b> have structure. One map per bin pair, each analysed with the same &#8467;1-norm.</p>
+							<p class="rcap">The pixel-wise product of two bins is strong only where <b>both</b> have
+								structure. One map per bin pair, each analysed with the same &#8467;1-norm.</p>
 						</div>
 
 						<div class="route fragment fade-in" data-fragment-index="1">
@@ -3835,11 +3909,19 @@
 					<aside class="notes">
 						<p><strong>two routes</strong></p>
 						<ul>
-							<li>two-point extends easily — cross-bin correlations. For HOS there is no obvious equivalent</li>
-							<li><strong>first</strong>: extra maps for the cross structure — multiply each pair of bins pixel by pixel; strong only where <strong>both</strong> have structure at the same place. Compute the ℓ1 on those too</li>
-							<li><strong>»</strong> <strong>second</strong>: change the statistic — generalise the ℓ1 from one map to a <strong>pair</strong> of bins</li>
-							<li>each pixel has a coefficient in each map → instead of one histogram per map (the two curves on the axes) <strong>»</strong> one <strong>two-dimensional</strong> histogram over the pair</li>
-							<li><strong>diagonal</strong> cells = both maps equally strong; <strong>off-diagonal</strong> = one strong, one weak</li>
+							<li>two-point extends easily — cross-bin correlations. For HOS there is no obvious
+								equivalent</li>
+							<li><strong>first</strong>: extra maps for the cross structure — multiply each pair of bins
+								pix by pix; strong only where <strong>both</strong> have structure at the same
+								place. Compute the ℓ1 on those too</li>
+							<li><strong>second</strong>: change the stat — define stat that generalises the ℓ1
+								from one map to a <strong>pair</strong> of tomo bins</li>
+							<li>each pixel has a wavelet coeff in each of the 2 maps → instead of building one l1 histogram per map (the two
+								curves on the axes) → build one <strong>two-dimensional</strong> histogram
+								over the pair</li>
+							<li><strong>diagonal</strong> cells = collect places where both maps equally strong;
+								<strong>off-diagonal</strong> = one strong, one weak</li>
+								<li>Named this stat "joint l1-norm" & you can think about it as a joint multiscale PDF in wavelet domain</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     SAY: the gap is structural, so there are exactly two places to intervene - the
@@ -3901,8 +3983,11 @@
 					<aside class="notes">
 						<p><strong>the answer</strong></p>
 						<ul>
-							<li>same maps, same flow, four summaries: per-bin ℓ1 <strong>»</strong> + product cross-maps <strong>»</strong> joint ℓ1 <strong>»</strong> CNN — falls almost perfectly on the joint ℓ1</li>
-							<li>network was trained to be information-optimal → the <strong>joint ℓ1 essentially encodes all the cosmologically useful information</strong></li>
+							<li>same maps, same flow, four summaries: per-bin ℓ1 <strong>»</strong> + product cross-maps
+								<strong>»</strong> joint ℓ1 <strong>»</strong> CNN — falls almost perfectly on the joint
+								ℓ1</li>
+							<li>network was trained to be information-optimal → the <strong>joint ℓ1 essentially encodes
+									all the cosmologically useful information</strong></li>
 							<li>and with <strong>no training</strong> — efficient, interpretable, robust</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
@@ -3964,7 +4049,8 @@
 					<aside class="notes">
 						<p><strong>Part 4 divider</strong></p>
 						<ul>
-							<li>HOS work well in idealised cases → final paper, a <strong>messy, realistic</strong> scenario</li>
+							<li>HOS work well in idealised cases → final paper, a <strong>messy, realistic</strong>
+								scenario</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     The turn from Part 3 to Part 4, and it is a turn in KIND, not just in topic. Part 3 asked how
@@ -4078,16 +4164,23 @@
 						</div>
 					</div>
 					<aside class="notes">
-						<p><strong>the collision of scales &mdash; <em>longest beat, 2:13</em></strong></p>
 						<ul>
-							<li>systematics = in the measurement, not in the model; instrumental or physical. Unmodelled → biased result</li>
-							<li>most groups check the <strong>data vector</strong>. Not enough — what matters is the effect on the <strong>posterior</strong></li>
-							<li>dominant astrophysical one at small scales: <strong>baryonic feedback</strong> — AGN and supernovae push gas out of haloes, suppressing small scales</li>
-							<li>our inference sims are <strong>dark-matter-only</strong>, and feedback models disagree → cannot model reliably</li>
-							<li>the problem: non-Gaussian information and contamination live on <strong>the same small scales</strong> → conservative answer is to cut them</li>
-							<li><strong>»</strong> <em>optimistic</em>: only the smallest scales contaminated, most of the information survives</li>
-							<li><strong>»</strong> <em>pessimistic</em>: contamination reaches further, and after the cut the power spectrum does just as well</li>
-							<li>two questions: how much does unmodelled feedback bias HOS, and how does it grow with area — and after the cut is there anything left over the power spectrum</li>
+							<li>systematics = phys/obs effects in the measurement, not in the model. Unmodelled → biased result</li>
+							<!-- <li>most groups check the <strong>data vector</strong>. Not enough — what matters is the
+								effect on the <strong>posterior</strong></li> -->
+							<li>dominant astrophysical one at small scales: <strong>baryonic feedback</strong> — AGN and
+								supernovae push gas out of haloes, suppressing small scales</li>
+							<li>our inference sims are <strong>DMO</strong>, and feedback models disagree →
+								physics we can't model reliably</li>
+							<li>the problem: non-Gaussian information and most systematics live on <strong>the same small
+									scales</strong> → can't model them reliably for HOS -> conservative answer is to cut them</li>
+							<li><strong>»</strong> <em>optimistic</em>: only the smallest scales contaminated, most of
+								the non-gaus info survives</li>
+							<li><strong>»</strong> <em>pessimistic</em>: contamination reaches further, and after the
+								cut the power spectrum does just as well</li>
+							<li>two questions: how much does unmodelled feedback bias HOS, and how does it grow with
+								area as surveys expand</li>
+							<li>And after the cut is there anything left over the power spectrum, or our efforts in designing better stats were in vein, cause they are useless in real world?</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     SAY: higher-order statistics are usually demonstrated on clean simulations;
@@ -4153,8 +4246,10 @@
 						<p><strong>the pipeline</strong></p>
 						<ul>
 							<li>same SBI pipeline as the previous paper</li>
-							<li><strong>»</strong> maps at different cosmologies <strong>»</strong> Euclid-like noise and masks <strong>»</strong> starlet transform <strong>»</strong> data vector conditions a flow</li>
-							<li>one difference</li>
+							<li><strong>»</strong> maps at different cosmologies <strong>»</strong> Euclid-like noise
+								and masks <strong>»</strong> starlet transform <strong>»</strong> data vector conditions
+								a flow</li>
+							<li>which gives us the posterior and we can calculate how biased it is.</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     A deliberate refresher - it has been a while since the general SBI slide, so
@@ -4178,12 +4273,13 @@
 							<img class="plain" src="../assets/figures/statistics/p1_bias_vs_area/step3.png"
 								style="max-height:270px;"
 								alt="baryon tension in sigma versus survey area for the power spectrum, peak counts and the l1-norm: all three rise with area, the two higher-order statistics well above the power spectrum">
-							<ul style="font-size:0.78em;">
+							<ul style="font-size:0.86em;">
 								<li>At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b
 										class="alert">2.2&sigma;</b>, peaks and the $\ell_1$-norm <b
 										class="alert">3.6&sigma;</b></li>
 								<li>At <b class="alert">full sky</b>: $C_\ell$ reaches $\sim3.5\sigma$, both HOS exceed
-									<b class="alert">6&sigma;</b></li>
+									<b class="alert">6&sigma;</b>
+								</li>
 								<li>HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the
 									baryonically-contaminated small scales</li>
 							</ul>
@@ -4212,12 +4308,16 @@
 					     tail. The footnote centres again once this is gone. -->
 					<!-- <span class="srcref">Tersenov+ 2026, A&amp;A</span> -->
 					<aside class="notes">
-						<p><strong>how large the bias is</strong></p>
 						<ul>
-							<li><strong>CosmoGrid</strong> gives every realisation with and without feedback → train the flow on <strong>dark-matter-only</strong> (no baryon model at all), feed it a <strong>baryonified</strong> observation</li>
+							<li>how large the bias is if we do nothing</li>
+							<li>train the
+								flow on <strong>DMO</strong> (no baryon model at all), feed it a realistic
+								<strong>baryonified</strong> observation</li>
 							<li>run across survey areas to see how the bias evolves</li>
-							<li>previous-generation area: not significant. Errors shrink with area, systematic does not → <strong>Euclid: really bad</strong>; full sky worse</li>
-							<li>▲ HOS more biased than the power spectrum — more sensitive to the contaminated small scales</li>
+							<li>previous-generation area: not significant. Errors shrink with area,
+								→ <strong>Euclid: really bad</strong></li>
+							<li>▲ HOS more biased than the power spectrum — more sensitive to the contaminated small
+								scales</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     Bias grows with survey area (more area, smaller errors, higher sensitivity). At
@@ -4239,7 +4339,7 @@
 					<h3 class="slide-title tight"><span class="sec">§4</span> Removing the bias costs $C_\ell$ <em
 							class="alert"> multipole range</em>, and the starlet its <em class="alert">finest band</em>
 					</h3>
-					<ul style="font-size:0.82em; margin-bottom:0.5em;">
+					<ul style="font-size:0.88em; margin-bottom:0.5em;">
 						<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
 						<li>$C_\ell$: <b class="alert">$\ell_{\rm max}$ tuned per survey area</b>, from 860 at 2,000
 							deg&sup2; to <b class="alert">340</b> at full sky</li>
@@ -4261,9 +4361,11 @@
 					<aside class="notes">
 						<p><strong>the cuts</strong></p>
 						<ul>
-							<li>remove small scales until the bias is under <strong>0.3σ</strong></li>
-							<li>power spectrum: lower ℓmax — <strong>860 at 2,000 deg²</strong> down to <strong>340 at full sky</strong></li>
-							<li>wavelets: drop bands — <strong>the finest band alone</strong> is enough at every area</li>
+							<li>to unbias posteriors</li>
+							<li>remove small scales step by step until the bias is under <strong>0.3σ</strong></li>
+							<li>power spectrum: cut the high multipoles</li>
+							<li>wavelets: drop small wavelet bands
+							</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     Criterion: baryonic bias below 0.3 sigma. Be careful to be fair here. The power
@@ -4329,14 +4431,14 @@
 						</div>
 					</div>
 					<aside class="notes">
-						<p><strong>is there anything left</strong></p>
 						<ul>
-							<li>Stage IV posteriors, <strong>baryon-safe scales only</strong>: <strong>»</strong> power spectrum <strong>»</strong> peak counts <strong>»</strong> ℓ1-norm</li>
-							<li>▲ ℓ1 reaches <strong>×1.8</strong> the power spectrum&#x27;s FoM; <strong>×2.6</strong> at full sky where the wavelet cut fits better</li>
-							<li>peaks comparable to the power spectrum but <strong>complementary</strong> — different degeneracy directions in the w₀ planes</li>
-							<li>▲ HOS are not only deep non-linear probes — the signal survives on <strong>quasi-linear</strong> scales with <strong>no baryon model at all</strong></li>
-							<li>and we can do better: the cut is not optimised, and as feedback modelling improves the analysis moves back into the non-linear regime, where the gain is larger</li>
-							<li><em>if pressed: ×1.8 carries ±0.6 — &quot;about a factor of two&quot;. Not significant at 2,000 deg², significant from 5,000 up. Peaks ×1.07 Stage IV, ×1.17 full sky</em></li>
+							<li>Saw how HOS are biased by baryons + how to cut to remove the bias</li>
+							<li>Stage IV posteriors, <strong>baryon-safe scales only</strong></li>
+							<li>▲ even at baf-safe scales ℓ1 reaches <strong>~ x2</strong> the power spectrum&#x27;s FoM</li>
+							<li>▲ HOS are not only deep non-linear probes — the signal survives on
+								<strong>quasi-linear</strong> scales with <strong>no baryon model at all</strong></li>
+							<li>and we can do better: the cut is not optimised, and as feedback modelling improves the
+								analysis moves back into the non-linear regime, where the gain is larger</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     On baryon-safe scales the starlet l1-norm constrains x1.80 tighter than C_l at
@@ -4494,11 +4596,11 @@
 					</li>
 					<li class="done">
 						<span class="qn">Q3</span>
-						<span class="qtext">How much information do the summary statistics keep, and do we need a
-							neural network to extract all of it?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>No.</b> The joint
-								&#8467;1&#8209;norm <b>matches the
-									VMIM&#8209;trained compressor</b>.</span></span>
+						<span class="qtext">Can an <b>interpretable</b> statistic keep as much information as a
+							neural network?</span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> The joint
+								&#8467;1&#8209;norm matches a CNN trained to be <b>information&#8209;optimal</b>, and it is
+								<b>analytic, without any to training</b>.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q4</span>
@@ -4510,14 +4612,13 @@
 					</li>
 				</ul>
 				<aside class="notes">
-					<p><strong>conclusions</strong></p>
 					<ul>
-						<li>followed the chain from shapes to parameters: making the map, extracting information, simulation-based inference</li>
-						<li><strong>map</strong>: the choice of method is <strong>not neutral</strong> — it changes the FoM significantly. And <strong>PnPMass</strong> — physics + deep learning, accurate, calibrated bars, trained once for any mask and noise</li>
-						<li><strong>summary</strong>: the <strong>joint ℓ1-norm</strong> extracts as much as a neural compressor trained to be optimal, <strong>without any training</strong></li>
-						<li><strong>systematics</strong>: HOS still give significant additional information after cutting the baryon-contaminated scales</li>
-						<li>▲ steps usually treated as neutral choices <strong>do</strong> change the result. With calibrated and tested methods we extract more, and <strong>trust what we get out</strong></li>
-						<li><em>if nulling came up: and the same joint reading is what makes redshift nulling survivable for a higher-order analysis, which is in the thesis</em></li>
+						<li>thesis followed the chain from shapes to parameters: focusing on making the map, extracting information, SBI</li>
+						<li><strong>map front</strong>: the choice of method is a big impact on the resulting constraining power for cosmology. And <strong>PnPMass</strong> — physics + deep learning, accurate,
+							calibrated bars, trained once for any mask and noise</li>
+						<li><strong>summary</strong>: developed the <strong>joint ℓ1-norm</strong> extracts as much as a neural
+							compressor trained to be optimal, <strong>without any training</strong></li>
+						<li>Showed that HOS still give significant additional information after	cutting the baryon-contaminated scales</li>
 						<li>thank you</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
@@ -4638,11 +4739,8 @@
 			<section>
 				<section class="altdiv" data-background-color="#000">
 					<div class="part-divider">
-						<span class="kicker">alternatives &mdash; not part of the talk</span>
-						<h2>Earlier intro versions</h2>
+						<h2>Cosmology</h2>
 						<hr class="accent-rule" style="margin:0.5em auto;">
-						<p class="lead">The annotated cone, the field equation, the standalone tension slide, and the
-							parameters-and-probes pair. Kept for comparison.</p>
 					</div>
 					<aside class="notes">If you land here in the talk you have gone too far. Everything past this is
 						superseded.</aside>
@@ -4713,7 +4811,7 @@
 
 				<!-- ============ S6 — A1: the baryon-safe floor ============ -->
 
-				<section data-background-color="#000">
+				<section data-background-color="#000" data-visibility="hidden">
 					<h3 class="slide-title tight">It was the third one</h3>
 
 					<p class="hinge">
@@ -4723,7 +4821,8 @@
 
 					<p class="hingesub fragment fade-in" data-fragment-index="1">
 						KiDS re-analysed with better shape and redshift calibration, and the tension fell <b>below
-							1&sigma;</b>. And when the statistical errors shrink by an order of magnitude, that is what is
+							1&sigma;</b>. And when the statistical errors shrink by an order of magnitude, that is what
+						is
 						left.
 					</p>
 
@@ -4747,8 +4846,9 @@
 				     mix indexed and unindexed fragments on one slide: REVEAL-GOTCHAS section 1).
 				============================================================================== -->
 
-				<section data-background-color="#000">
-					<h3 class="slide-title tight">&Lambda;CDM fits almost all of it &mdash; and three things in this picture
+				<section data-background-color="#000" data-visibility="hidden">
+					<h3 class="slide-title tight">&Lambda;CDM fits almost all of it &mdash; and three things in this
+						picture
 						are still <em class="alert">open</em></h3>
 					<div class="cone">
 						<img src="../assets/diagrams/WMAP_timeline_large.jpg"
@@ -4859,7 +4959,8 @@
 								<figcaption>DES Y3 + KiDS-1000 joint reanalysis, Abbott et al. 2023</figcaption>
 							</figure>
 							<div>
-								<p>$S_8 \equiv \sigma_8\sqrt{\Omega_{\mathrm{m}}/0.3}$ &mdash; the combination cosmic shear
+								<p>$S_8 \equiv \sigma_8\sqrt{\Omega_{\mathrm{m}}/0.3}$ &mdash; the combination cosmic
+									shear
 									measures best. The joint reanalysis sat <b class="alert">1.7&sigma;</b> below
 									<em>Planck</em>.
 								</p>
@@ -4869,7 +4970,8 @@
 									<li>A statistical fluctuation</li>
 									<li class="key"><b class="alert">Systematics in the analysis</b></li>
 								</ol>
-								<p class="gloss fragment fade-in">KiDS-Legacy re-analysed in 2025 and found $S_8 = 0.815$,
+								<p class="gloss fragment fade-in">KiDS-Legacy re-analysed in 2025 and found $S_8 =
+									0.815$,
 									below 1&sigma;. It was the third one.</p>
 							</div>
 						</div>
@@ -5041,7 +5143,8 @@
 										alt="four cosmological probes: the CMB, baryon acoustic oscillations, galaxy clustering, and gravitational lensing">
 									<figcaption>Clockwise: <b class="alert">CMB</b> &mdash; initial conditions; <b
 											class="alert">BAO &amp; SNe</b> &mdash; geometry; <b class="alert">Galaxy
-											clustering</b> &mdash; matter growth; <b class="alert">Weak lensing</b> &mdash;
+											clustering</b> &mdash; matter growth; <b class="alert">Weak lensing</b>
+										&mdash;
 										total matter</figcaption>
 								</figure>
 							</div>
@@ -5233,7 +5336,7 @@
 					</div>
 				</section>
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>
 					<div class="container">
 						<div class="col">
@@ -5250,7 +5353,8 @@
 					<div style="position:relative; width:1000px; height:100px; margin:0 auto;">
 						<div class="fragment current-visible plain fade-up"
 							style="position:absolute;top:0;left:0;width:1000px;">
-							$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 = \partial_1
+							$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 =
+							\partial_1
 							\partial_2 \ \Psi \quad;\quad \kappa = \frac{1}{2} (\partial_1^2 + \partial_2^2) \ \Psi$$
 						</div>
 						<div class="fragment current-visible plain fade-up"
@@ -5263,7 +5367,8 @@
 				<section data-theme="light">
 					<h3 class="slide-title">Kaiser-Squires inversion</h3>
 					<ul>
-						<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an estimate of
+						<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an
+							estimate of
 							the convergence from measurements of the shear
 
 							$$\kappa = \dfrac12 \Delta \psi, \,\, \gamma_1 = \dfrac12 \left( \partial_1^2 \psi -
@@ -5280,16 +5385,19 @@
 								<div class="block">
 									<div class="block-title"> Kaiser-Squires estimator:</div>
 									<div class="block-content">
-										$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2 k_1
+										$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2
+										k_1
 										k_2}{k^2}\right)\left(\tilde{\gamma}_1+i
-										\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i \tilde{\gamma}_2\right)
+										\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i
+										\tilde{\gamma}_2\right)
 										$$
 									</div>
 								</div>
 							</div>
 						</div>
 						<br>
-						&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence E
+						&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence
+							E
 							and B
 							modes. </em>
 					</span>
@@ -5377,7 +5485,7 @@
 					</aside>
 				</section>
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title">Mass mapping as an inverse problem</h3>
 					<br>
 					<ul>
@@ -5425,12 +5533,13 @@
 				     Variant A is the vertical directly below. Keep whichever wins.
 				============================================================================== -->
 
-				<section class="bayes2" data-theme="light">
+				<section class="bayes2" data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight">Every mass-mapping method is a Bayesian inference with a different <em
 							class="alert">prior</em> on &kappa;</h3>
 
 					<p class="lede">
-						The posterior probability of a map given the shear is proportional to the likelihood of the shear
+						The posterior probability of a map given the shear is proportional to the likelihood of the
+						shear
 						given the map, times the prior on the map.
 					</p>
 
@@ -5478,7 +5587,8 @@
 					</div>
 
 					<p class="note carry fragment fade-in" data-fragment-index="5">
-						The same structure returns in <b>Part 3</b>, with the cosmological parameters as the unknown and no
+						The same structure returns in <b>Part 3</b>, with the cosmological parameters as the unknown and
+						no
 						explicit likelihood.
 					</p>
 
@@ -5508,7 +5618,7 @@
 					</aside>
 				</section>
 
-				<section class="bayes" data-theme="light">
+				<section class="bayes" data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight">The Bayesian view makes the <em class="alert">prior</em> explicit</h3>
 
 					<div class="anatomy">
@@ -5562,7 +5672,8 @@
 					</div>
 
 					<p class="note carry fragment fade-in" data-fragment-index="5">
-						The same structure returns in <b>Part 3</b>, with the cosmological parameters as the unknown and no
+						The same structure returns in <b>Part 3</b>, with the cosmological parameters as the unknown and
+						no
 						explicit likelihood.
 					</p>
 
@@ -5597,7 +5708,8 @@
 				<section data-theme="light">
 					<h3 class="slide-title">Overview of mass mapping methods</h3>
 					<ul>
-						<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr; Gaussian
+						<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr;
+							Gaussian
 							random field, Likelihood
 							&rarr; Gaussian, Solution &rarr; corresponds to MAP for gaussian $\kappa$</li>
 						<br>
@@ -5707,7 +5819,8 @@
 				<section data-theme="light">
 					<h3 class="slide-title">Sparse recovery</h3>
 					<ul>
-						<li>Decomposes the signal into another domain (dictionary), where it is <b class="alert">sparse</b>
+						<li>Decomposes the signal into another domain (dictionary), where it is <b
+								class="alert">sparse</b>
 						</li>
 						<br>
 						<li>Implement the <em class="alert">wavelet transform</em> &rarr; decomposes the signal into <b
@@ -6128,8 +6241,8 @@
 						</div>
 					</span>
 
-					<img src="../assets/figures/maps/Mass_mapping_RMSE_comparison1.png" alt="Mass Mapping RMSE Comparison"
-						style="width:auto" class="fragment fade-in">
+					<img src="../assets/figures/maps/Mass_mapping_RMSE_comparison1.png"
+						alt="Mass Mapping RMSE Comparison" style="width:auto" class="fragment fade-in">
 
 				</section>
 
@@ -6154,7 +6267,8 @@
 				     Figures from tools/make-wavelet-primer.py. ============ -->
 
 				<section class="teach" data-theme="light">
-					<h3 class="slide-title tight">Wavelets are localised in both <em class="alert">scale and position</em>
+					<h3 class="slide-title tight">Wavelets are localised in both <em class="alert">scale and
+							position</em>
 					</h3>
 
 					<figure class="tc-wide tall">
@@ -6166,12 +6280,15 @@
 						<li>a wavelet is a <b>localised</b>, <b>oscillating</b> function $\psi$ with zero mean,
 							$\int\psi\,\mathrm{d}x = 0$</li>
 						<li>dilations and translations form a family, $\psi_{a,b}(x) = \tfrac{1}{\sqrt{a}}\,
-							\psi\!\left(\tfrac{x-b}{a}\right)$; the coefficient $W(a,b) = \int f\,\psi_{a,b}$ measures the
+							\psi\!\left(\tfrac{x-b}{a}\right)$; the coefficient $W(a,b) = \int f\,\psi_{a,b}$ measures
+							the
 							<b>structure at scale $a$ and position $b$</b>
 						</li>
-						<li>a sine has <b>infinite support</b>: full frequency resolution, no spatial resolution. A wavelet
+						<li>a sine has <b>infinite support</b>: full frequency resolution, no spatial resolution. A
+							wavelet
 							trades some of the former for the latter</li>
-						<li>for a field of <b>localised structures</b> (peaks, filaments, voids) this is the right trade.
+						<li>for a field of <b>localised structures</b> (peaks, filaments, voids) this is the right
+							trade.
 							The power spectrum is the Fourier statistic; <b class="alert">peaks and the
 								&#8467;<sub>1</sub>&#8209;norm are the wavelet ones</b></li>
 					</ul>
@@ -6220,11 +6337,14 @@
 					</figure>
 
 					<ul class="points tc-points">
-						<li>convolving the data with the dilated wavelet at each scale gives one <b>band&#8209;pass image
+						<li>convolving the data with the dilated wavelet at each scale gives one <b>band&#8209;pass
+								image
 								per scale</b>, plus a coarse residual</li>
-						<li>the <b>starlet</b> is <b>isotropic</b> and <b>undecimated</b>: every band keeps the full pixel
+						<li>the <b>starlet</b> is <b>isotropic</b> and <b>undecimated</b>: every band keeps the full
+							pixel
 							grid, and the reconstruction is exact, $I = c_J + \sum_j w_j$</li>
-						<li>a structure of a given angular size appears in a <b>single band</b>, so a scale cut amounts to
+						<li>a structure of a given angular size appears in a <b>single band</b>, so a scale cut amounts
+							to
 							dropping one band</li>
 					</ul>
 
@@ -6415,7 +6535,7 @@
 				============================================================================== -->
 				<!-- ################################################################################################### -->
 
-				<section class="teach" data-theme="light">
+				<section class="teach" data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight">Peak counts: the <em class="alert">maxima of the
 							signal&#8209;to&#8209;noise field</em></h3>
 
@@ -6431,7 +6551,8 @@
 								, the signal-to-noise field of the filtered map.</p>
 							<ul class="points">
 								<li>peaks trace regions of high $\kappa$, i.e. <b>massive structures</b></li>
-								<li>the peak function (counts per SNR bin) is a <b>one&#8209;point</b> statistic sensitive
+								<li>the peak function (counts per SNR bin) is a <b>one&#8209;point</b> statistic
+									sensitive
 									to non-Gaussian information</li>
 							</ul>
 						</div>
@@ -6441,8 +6562,9 @@
 
 				<!-- ################################################################################################### -->
 
-				<section class="teach" data-theme="light">
-					<h3 class="slide-title tight">A single starlet transform gives <em class="alert">peak counts at every
+				<section class="teach" data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight">A single starlet transform gives <em class="alert">peak counts at
+							every
 							scale</em>
 					</h3>
 
@@ -6465,8 +6587,9 @@
 
 				<!-- ################################################################################################### -->
 
-				<section class="teach" data-theme="light">
-					<h3 class="slide-title tight">The starlet $\ell_1$&#8209;norm uses <em class="alert">every pixel</em>
+				<section class="teach" data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight">The starlet $\ell_1$&#8209;norm uses <em class="alert">every
+							pixel</em>
 					</h3>
 
 					<figure class="tc-wide">
@@ -6479,7 +6602,8 @@
 
 					<ul class="points tc-points">
 						<li>the sum of <b>absolute starlet coefficients</b>, per band and per SNR bin</li>
-						<li>peaks <b>and voids</b> are included automatically, with no threshold and no peak definition</li>
+						<li>peaks <b>and voids</b> are included automatically, with no threshold and no peak definition
+						</li>
 						<li>information from <b>all</b> the pixels, at every scale</li>
 					</ul>
 				</section>
@@ -6763,7 +6887,8 @@
 						<span class="kicker">Part 2 of 2</span>
 						<h2>Learned vs analytical,<br>and can we trust it?</h2>
 						<hr class="accent-rule" style="margin:0.5em auto;">
-						<p class="lead">The analytical &#8467;1-norm vs a learned CNN, calibration, and the answer to the
+						<p class="lead">The analytical &#8467;1-norm vs a learned CNN, calibration, and the answer to
+							the
 							BNT puzzle.</p>
 					</div>
 					<aside class="notes">
@@ -6788,10 +6913,12 @@
 				<!-- Part 2 intro / motivation -->
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">Q1</span> The joint &#8467;1-norm reaches the FoM of the
+					<h3 class="slide-title tight"><span class="sec">Q1</span> The joint &#8467;1-norm reaches the FoM of
+						the
 						<em class="alert">optimal compressor</em>
 					</h3>
-					<p class="axis-note" style="text-align:center;">three-parameter figure of merit, matched pipeline</p>
+					<p class="axis-note" style="text-align:center;">three-parameter figure of merit, matched pipeline
+					</p>
 					<figure class="fig stemfig">
 						<img class="plain" src="../assets/figures/statistics/fom_summaries_stems.png"
 							style="max-height:295px;"
@@ -6838,7 +6965,8 @@
 						<img class="plain" src="../assets/figures/statistics/p2_cp_fom3_bars/step3.png"
 							style="max-height:275px; width:auto; max-width:100%;"
 							alt="per-mock distributions of the marginal uncertainties and the figure of merit for the l1 plus product, joint l1 and CNN summaries; the medians coincide">
-						<figcaption>a tie on every parameter over 9,000 mock observations, so not an artefact of the figure
+						<figcaption>a tie on every parameter over 9,000 mock observations, so not an artefact of the
+							figure
 							of merit</figcaption>
 					</figure>
 					<aside class="notes">
@@ -6868,7 +6996,8 @@
 				<!-- ============ S10 — what sufficiency buys ============ -->
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">Q1</span> At equal constraining power, the analytical
+					<h3 class="slide-title tight"><span class="sec">Q1</span> At equal constraining power, the
+						analytical
 						statistic is cheaper and safer to use</h3>
 					<div class="tie-strip">
 						<span class="lbl">constraining power</span>
@@ -6896,7 +7025,8 @@
 							</ul>
 						</div>
 					</div>
-					<p class="oneline fragment fade-in">One advantage of the compressor remains: it reads the bins jointly
+					<p class="oneline fragment fade-in">One advantage of the compressor remains: it reads the bins
+						jointly
 						<b>by construction</b>. This matters in the nulled frame.
 					</p>
 					<aside class="notes">
@@ -6984,7 +7114,8 @@
 						</div>
 						<div class="bubble">"I don't believe any of your contours."</div>
 					</div>
-					<div class="kicker" style="text-align:center; margin-bottom:0.2em;">what would make HOS flagship-grade?
+					<div class="kicker" style="text-align:center; margin-bottom:0.2em;">what would make HOS
+						flagship-grade?
 					</div>
 					<ul class="checklist3">
 						<li>blinding</li>
@@ -7022,7 +7153,7 @@
 
 				<!-- Part 1 divider (dark, chapter break) -->
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight"><span class="sec">§3</span> Part 2: learned summaries, and the BNT
 						cliffhanger</h3>
 					<div class="takeaway" style="max-width:92%;">
@@ -7033,7 +7164,8 @@
 						<div class="block-title">what is a learned summary?</div>
 						<div class="block-content" style="font-size:0.74em;">
 							<ul>
-								<li>A neural network that compresses the &kappa; map directly into a few numbers, instead of
+								<li>A neural network that compresses the &kappa; map directly into a few numbers,
+									instead of
 									a hand-designed statistic</li>
 								<li>Trained with <b class="alert">VMIM</b> to keep the cosmological information: the
 									"optimal learned compressor"</li>
@@ -7277,25 +7409,28 @@
 				     Condensed from the June slides 22 (tomography), 23 (what BNT does) and
 				     24 (it inflates the per-bin contours). Its own investigation, not a corollary. -->
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight"><span class="sec">§3</span> The analytical statistic ties the CNN, <em
 							class="alert">at lower cost and risk</em></h3>
 					<div class="balance" style="margin-top:0.3em;">
 						<div class="pan benefit">
 							<h4>the benefit</h4>
 							<div class="big">a tie</div>
-							<p style="font-size:0.7em; margin:0.3em 0 0;">Joint &#8467;1 3371, CNN 3326, both calibrated.
+							<p style="font-size:0.7em; margin:0.3em 0 0;">Joint &#8467;1 3371, CNN 3326, both
+								calibrated.
 								The optimised network buys no measurable constraining power.</p>
 						</div>
 						<div class="pan cost">
 							<h4>the cost</h4>
 							<ul>
 								<li>extensive architecture and hyperparameter search</li>
-								<li>a very large dataset (899 cosmologies, 3.2&times;10<sup>5</sup> patches); VMIM needs the
+								<li>a very large dataset (899 cosmologies, 3.2&times;10<sup>5</sup> patches); VMIM needs
+									the
 									scale or it biases</li>
 								<li>unphysical-information traps (patch geometry, map-mean / mass-sheet mode, 20&deg;
 									projection features) that tighten contours dishonestly</li>
-								<li><b>and these largely escape TARP and SBC</b>: the contours look calibrated and are still
+								<li><b>and these largely escape TARP and SBC</b>: the contours look calibrated and are
+									still
 									wrong</li>
 							</ul>
 						</div>
@@ -7357,12 +7492,14 @@
 							<li>Product &kappa;<sub>i</sub>&kappa;<sub>j</sub> (= &xi;<sub>ij</sub>): <b>+24%</b> over
 								auto-only</li>
 							<li>A convolution buys <b>+9%</b>, and is sensitive to the training realisation</li>
-							<li>2448 &rarr; 2671 &rarr; 3045 &rarr; 3255, and the joint &#8467;1 closes it at <b>3371</b>
+							<li>2448 &rarr; 2671 &rarr; 3045 &rarr; 3255, and the joint &#8467;1 closes it at
+								<b>3371</b>
 							</li>
 						</ul>
 					</div>
 					<p class="caveat">A full-sphere cross construction inflates this, but its channels carry
-						<b>12&ndash;20%</b> of their variance at &#8467;&nbsp;&lt;&nbsp;18 against <b>0.4&ndash;1%</b> for
+						<b>12&ndash;20%</b> of their variance at &#8467;&nbsp;&lt;&nbsp;18 against <b>0.4&ndash;1%</b>
+						for
 						the autos. That is leakage. We use only the physically buildable flat-sky arms.
 					</p>
 					<aside class="notes">
@@ -7394,7 +7531,7 @@
 				     unpublished number and its figure has no replacement in the 2026-08 renders.
 				     Left in place at your instruction; do not promote it into the main flow. -->
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight"><span class="sec">backup</span> Where the &#8467;1-norm&rsquo;s
 						constraining power comes from</h3>
 					<div class="fig">
@@ -7419,12 +7556,15 @@
 				</section>
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">backup</span> The &#8467;1-norm across cosmologies</h3>
+					<h3 class="slide-title tight"><span class="sec">backup</span> The &#8467;1-norm across cosmologies
+					</h3>
 					<div class="fig">
-						<img class="plain" src="../assets/figures/statistics/p2_l1_hist_vs_s8.png" style="max-height:340px;"
+						<img class="plain" src="../assets/figures/statistics/p2_l1_hist_vs_s8.png"
+							style="max-height:340px;"
 							alt="starlet l1-norm data vectors coloured by sigma-8, per wavelet scale and tomographic bin">
 					</div>
-					<p class="caveat">Coloured by $\sigma_8$. The statistic responds smoothly and monotonically across the
+					<p class="caveat">Coloured by $\sigma_8$. The statistic responds smoothly and monotonically across
+						the
 						prior: no training, no emulator, and the dependence is visible by eye.</p>
 					<aside class="notes">
 						<ul>
@@ -7480,8 +7620,10 @@
 							FoM<sub>3</sub> across 9,000 mocks: medians 3045, <b>3371</b>, 3326</figcaption>
 					</div>
 					<p class="caveat">The answer to &ldquo;FoM<sub>3</sub> is fragile in a degenerate parameter
-						space&rdquo;: the marginals are quoted alongside it, and this is the population rather than a point.
-						The &plusmn; on the medians is the spread over three independently trained compressors, the dominant
+						space&rdquo;: the marginals are quoted alongside it, and this is the population rather than a
+						point.
+						The &plusmn; on the medians is the spread over three independently trained compressors, the
+						dominant
 						source of run-to-run variability.</p>
 					<aside class="notes">
 						<ul>
@@ -7528,11 +7670,13 @@
 
 				<!-- S4 — Stage IV: systematics-limited. Animation + toolkit (left); baryonic effects + core questions (right) -->
 
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">Q2</span> Without any feedback model, the &#8467;1-norm
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">Q2</span> Without any feedback model, the
+						&#8467;1-norm
 						<em class="alert">stays ahead</em> of the power spectrum
 					</h3>
-					<p class="axis-note" style="text-align:center;">figure of merit relative to the power spectrum, on each
+					<p class="axis-note" style="text-align:center;">figure of merit relative to the power spectrum, on
+						each
 						statistic's own baryon-safe scales</p>
 					<svg class="chart" viewBox="0 0 760 360" width="900" height="426" role="img"
 						aria-label="Figure of merit ratio to the power spectrum versus survey area">
@@ -7595,13 +7739,15 @@
 
 				<!-- ============ S9 — A2: the tie  (HEADLINE) ============ -->
 
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§4</span> Stage IV is no longer statistics-limited, it
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">§4</span> Stage IV is no longer statistics-limited,
+						it
 						is systematics-limited</h3>
 					<div class="block" style="margin:0.2em 0 0.5em;">
 						<div class="block-title">to trust a statistic</div>
 						<div class="block-content" style="font-size:0.72em;">
-							Before we trust any summary statistic, we have to quantify how each systematic affects it, and
+							Before we trust any summary statistic, we have to quantify how each systematic affects it,
+							and
 							at the <b class="alert">contour level</b> (the inferred parameters).
 						</div>
 					</div>
@@ -7698,7 +7844,8 @@
 							</div>
 							<p class="cap prose"
 								style="text-align:center; margin-top:0.5em; max-width:36ch; margin-left:auto; margin-right:auto;">
-								A fixed angular scale stops mixing redshifts, so the cut can go <b>only where the systematic
+								A fixed angular scale stops mixing redshifts, so the cut can go <b>only where the
+									systematic
 									is</b></p>
 						</div>
 
@@ -7718,7 +7865,8 @@
 						</div>
 					</div>
 
-					<p class="oneline fragment fade-in">BNT = a fixed, <b>invertible</b> transform &rarr; nothing can have
+					<p class="oneline fragment fade-in">BNT = a fixed, <b>invertible</b> transform &rarr; nothing can
+						have
 						been lost...</p>
 					<span class="srcref">Tersenov+ 2026, A&amp;A &nbsp;and&nbsp; Tersenov+, submitted</span>
 
@@ -7766,14 +7914,16 @@
 				     Reuses the act-2 rung labels deliberately: same four summaries, nulled frame. -->
 
 				<section data-theme="light" data-background-color="#ffffff">
-					<h3 class="slide-title tight"><span class="sec">§4</span> The information is recovered by a summary that
+					<h3 class="slide-title tight"><span class="sec">§4</span> The information is recovered by a summary
+						that
 						reads the bins <em class="alert">jointly</em></h3>
 					<div class="twoup">
 						<div class="left" style="flex:1 1 50%;">
 							<p class="axis-note">figure of merit retained under the nulling</p>
 							<div class="ladder compact">
 								<div class="rung fragment fade-in" data-fragment-index="1">
-									<div class="reads">one bin at a time<span class="sub">&#8467;1, auto-maps</span></div>
+									<div class="reads">one bin at a time<span class="sub">&#8467;1, auto-maps</span>
+									</div>
 									<div class="track">
 										<div class="bar" style="width:16%"></div>
 									</div>
@@ -7796,7 +7946,8 @@
 									<div class="val">0.72&#215;</div>
 								</div>
 								<div class="rung learned fragment fade-in" data-fragment-index="4">
-									<div class="reads">all four channels at once<span class="sub">CNN, VMIM-trained</span>
+									<div class="reads">all four channels at once<span class="sub">CNN,
+											VMIM-trained</span>
 									</div>
 									<div class="track">
 										<div class="bar" style="width:100%"></div>
@@ -7804,7 +7955,8 @@
 									<div class="val">~1&#215;</div>
 								</div>
 							</div>
-							<p class="cap prose" style="margin-top:0.6em;">Same four summaries. In the standard frame they
+							<p class="cap prose" style="margin-top:0.6em;">Same four summaries. In the standard frame
+								they
 								span 38% in FoM; in the nulled frame, a factor of <b>six</b>.</p>
 						</div>
 						<div class="right" style="flex:1 1 50%;">
@@ -7832,7 +7984,8 @@
 							</figure>
 						</div>
 					</div>
-					<p class="oneline fragment fade-in" data-fragment-index="5">Nulling costs <b>no constraining power</b>
+					<p class="oneline fragment fade-in" data-fragment-index="5">Nulling costs <b>no constraining
+							power</b>
 						provided some stage of the pipeline reads the bins jointly. The power spectrum with its <b
 							class="alert">cross-spectra</b> is the simplest example.</p>
 					<aside class="notes">
@@ -7905,7 +8058,8 @@
 					</div>
 
 					<div class="bnt-caption" aria-live="polite"></div>
-					<button class="bnt-replay" type="button" title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
+					<button class="bnt-replay" type="button"
+						title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
 					<span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
@@ -7934,7 +8088,8 @@
 						</div>
 					</div>
 					<div class="bnt-caption" aria-live="polite"></div>
-					<button class="bnt-replay" type="button" title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
+					<button class="bnt-replay" type="button"
+						title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
 					<span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
@@ -7954,7 +8109,8 @@
 						</div>
 					</div>
 					<div class="bnt-caption" aria-live="polite"></div>
-					<button class="bnt-replay" type="button" title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
+					<button class="bnt-replay" type="button"
+						title="Replay the sequence (R)">&#8635;&nbsp;replay</button>
 					<span class="fragment bnt-frag" data-bnt-act="2" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="3" aria-hidden="true"></span>
 					<span class="fragment bnt-frag" data-bnt-act="4" aria-hidden="true"></span>
@@ -7963,21 +8119,25 @@
 
 				<!-- S17 — recast for COSMO: the premise is a TIE, not a +7% gap (PAPER_FACTS §4.3) -->
 
-				<section data-theme="light">
+				<section data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight"><span class="sec">backup</span> Do baryons break HOS? No.</h3>
 					<div class="takeaway" style="max-width:94%;">
 						<span class="label">Part 1, baryons</span>
-						Usable non-Gaussian information persists on baryon-safe scales (the <b class="alert">&#8467;1-norm
-							beats P(k) &times;1.8 at Stage IV, &times;2.6 at full sky</b>), cleaned by a single scale cut.
+						Usable non-Gaussian information persists on baryon-safe scales (the <b
+							class="alert">&#8467;1-norm
+							beats P(k) &times;1.8 at Stage IV, &times;2.6 at full sky</b>), cleaned by a single scale
+						cut.
 					</div>
 					<div class="takeaway" style="max-width:94%; margin-top:0.45em;">
 						<span class="label">Part 2, learned vs analytical</span>
-						Read the bins jointly and the hand-built &#8467;1-norm <b class="alert">matches the optimal learned
+						Read the bins jointly and the hand-built &#8467;1-norm <b class="alert">matches the optimal
+							learned
 							summary</b>: 3371 against 3326, a tie, both calibrated.
 					</div>
 					<div class="takeaway" style="max-width:94%; margin-top:0.45em;">
 						<span class="label">BNT</span>
-						The apparent BNT break is a <b class="alert">frame artifact</b>: what survives tracks how jointly
+						The apparent BNT break is a <b class="alert">frame artifact</b>: what survives tracks how
+						jointly
 						the summary reads the bins: 0.16, 0.24, 0.72, 0.96.
 					</div>
 					<div class="callout" style="max-width:94%; margin-top:0.5em;">
@@ -7998,7 +8158,8 @@
 				<!-- S9b (TRIM-FOLD) — the SNR blow-up in the maps; park with data-visibility="hidden" to trim -->
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§4</span> BNT amplifies and correlates the shape noise
+					<h3 class="slide-title tight"><span class="sec">§4</span> BNT amplifies and correlates the shape
+						noise
 						in the maps</h3>
 					<div class="figcol" style="margin-top:0.3em;">
 						<figure class="fig">
@@ -8032,7 +8193,8 @@
 				<!-- Backup: noiseless companion to the BNT maps slide -->
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§4</span> Without noise, BNT redistributes the signal
+					<h3 class="slide-title tight"><span class="sec">§4</span> Without noise, BNT redistributes the
+						signal
 						without loss</h3>
 					<div class="figcol" style="margin-top:0.3em;">
 						<figure class="fig">
@@ -8066,50 +8228,7 @@
 				</section>
 
 
-				<!-- S14 ★ — figure: p2_ablation (2-step) -->
-
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§4</span> One whitening rotation recovers the full
-						&#8467;1-norm FoM (1.06&times;), so no information is lost <span class="kicker"
-							style="color:var(--fg-muted);">unpublished &mdash; not in Paper II</span></h3>
-					<div class="fig"><img class="plain" src="../assets/figures/statistics/p2_M3_bnt_whitening.png"
-							style="max-height:318px;"
-							alt="no-BNT, BNT collapsed, and whitened (recovered to 1.06x) per arm"></div>
-					<div class="takeaway" style="max-width:92%;">
-						<span class="label">the information is recovered</span>
-						<ul>
-							<li>One fixed <em>whitening</em> rotation Q recovers the full no-BNT FoM3 for <span
-									style="color:var(--l1);font-weight:600">&#8467;1</span> too (<b>1.06&times;</b>)</li>
-							<li>The collapse is a per-channel <em>frame</em> artifact: mix the bins, or re-rotate once</li>
-							<li>Confirms the intuition block</li>
-						</ul>
-					</div>
-					<p class="caveat">Closes the Vinciguerra loop: their forecast said recovering the BNT SNR for HOS is
-						"highly non-trivial"; here it is, in one fixed rotation. A frames result: a one-point statistic's
-						information content is basis-dependent, and BNT is simply a poor frame for a per-channel statistic.
-					</p>
-					<aside class="notes">
-						<ul>
-							<li><strong>the decisive diagnostic</strong></li>
-							<li><strong>what it shows</strong> &mdash; one fixed whitening rotation recovers the
-								per-channel l1 fully, at <strong>1.06&times;</strong></li>
-							<li><strong>so</strong> &mdash; the collapse is a frame artifact, not lost information. Only
-								a channel-mixing compressor or a whitened frame recovers it</li>
-							<li><strong>do not re-explain</strong> &mdash; this confirms the intuition block
-								quantitatively. The block already made the argument</li>
-							<li><strong>closes the Vinciguerra loop</strong> &mdash; their forecast called recovering
-								the BNT SNR for HOS &ldquo;highly non-trivial&rdquo;. Here it is one fixed rotation</li>
-							<li><strong>for the Starck-lineage half of the room</strong> &mdash; a one-point statistic's
-								information content is basis-dependent</li>
-						</ul>
-						<!-- PARKED 2026-09-13, the prose note this replaced:
-						     The decisive diagnostic. One fixed whitening rotation Q = (BB^T)^(-1/2) B recovers
-						      the per-channel l1 fully (1.06x). So the collapse is a frame artifact, not lost info; only a
-						      channel-mixing (CNN) or whitened frame recovers it. Quantitatively confirms the intuition block (do
-						      not re-explain it). Frames lesson for the Starck-lineage room.
-						-->
-					</aside>
-				</section>
+				
 
 
 				<!-- S18 ★ — figure: p1_bnt_inflates_l1 + p2_bnt_learned (problem -> resolution pair) -->
@@ -8134,8 +8253,10 @@
 					<div class="takeaway" style="max-width:92%;">
 						<span class="label">the common thread: cross-bin information</span>
 						<ul>
-							<li>P(k) &rarr; <span style="color:var(--l1);font-weight:600">&#8467;1</span> (much more, even
-								on safe scales) &rarr; <span style="color:var(--cnn);font-weight:600">learned</span> (<b>a
+							<li>P(k) &rarr; <span style="color:var(--l1);font-weight:600">&#8467;1</span> (much more,
+								even
+								on safe scales) &rarr; <span style="color:var(--cnn);font-weight:600">learned</span>
+								(<b>a
 									tie</b>, both calibrated)</li>
 							<li>Per-bin statistics cannot access cross-bin info (break under BNT); a channel-mixing
 								compressor can (BNT-lossless)</li>
@@ -8143,7 +8264,8 @@
 						</ul>
 					</div>
 					<p class="caveat"><b>Outlook:</b> a route to baryon-robust non-Gaussian SBI that keeps BNT's per-bin
-						scale cuts without the contour inflation. A next step rather than a finished end-to-end measurement.
+						scale cuts without the contour inflation. A next step rather than a finished end-to-end
+						measurement.
 					</p>
 					<aside class="notes">
 						<ul>
@@ -8165,47 +8287,19 @@
 					</aside>
 				</section>
 
-				<!-- ===== backup: figures added 2026-08-20 from the final paper renders ===== -->
+				
 
 				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">backup</span> Constraining power against survey area,
-						all three statistics</h3>
-					<div class="fig">
-						<div class="r-stack">
-							<img class="plain" src="../assets/figures/statistics/p1_fom_vs_area/step1.png"
-								style="max-height:400px;"
-								alt="figure of merit against mask area for the power spectrum, peak counts and the l1-norm, each with its fitted power-law slope">
-							<img class="plain fragment" src="../assets/figures/statistics/p1_fom_vs_area/step2.png"
-								style="max-height:400px;" alt="">
-							<img class="plain fragment" src="../assets/figures/statistics/p1_fom_vs_area/step3.png"
-								style="max-height:400px;" alt="">
-						</div>
-					</div>
-					<p class="caveat">On baryon-safe scales. Fitted slopes: power spectrum $+1.24$, peaks $+1.37$,
-						$\ell_1$-norm $+1.34$, against the ideal $A^{+3/2}$.</p>
-					<aside class="notes">
-						<ul>
-							<li><strong>what it is</strong> &mdash; the absolute version of the ratio chart in Act 1
-							</li>
-							<li><strong>reach for this</strong> &mdash; if someone asks how the advantage scales with
-								area</li>
-						</ul>
-						<!-- PARKED 2026-09-13, the prose note this replaced:
-						     The absolute version of the ratio chart in Act 1. Reach for this if someone asks
-						      how the advantage scales with area.
-						-->
-					</aside>
-				</section>
-
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">backup</span> The starlet band responses in multipole
+					<h3 class="slide-title tight"><span class="sec">backup</span> The starlet band responses in
+						multipole
 					</h3>
 					<div class="fig">
 						<img class="plain" src="../assets/figures/statistics/p1_starlet_scale_ell/step5.png"
 							style="max-height:330px;"
 							alt="normalised squared response of each starlet band against multipole, the four dyadic bands plus the coarse scale">
 					</div>
-					<p class="caveat">This is what "drop $j=1$" removes: the highest-frequency band, everything above $\ell
+					<p class="caveat">This is what "drop $j=1$" removes: the highest-frequency band, everything above
+						$\ell
 						\approx 500$. The other bands are untouched, at every survey area.</p>
 					<aside class="notes">
 						<ul>
@@ -8234,8 +8328,10 @@
 								style="max-height:400px;" alt="">
 						</div>
 					</div>
-					<p class="caveat">Baryon sensitivity localises to the first transformed bin, so the cut goes there alone
-						and bins 2&ndash;4 keep $\ell_{\rm max} \approx 1024$: <b>92 of 120 bandpowers</b> retained against
+					<p class="caveat">Baryon sensitivity localises to the first transformed bin, so the cut goes there
+						alone
+						and bins 2&ndash;4 keep $\ell_{\rm max} \approx 1024$: <b>92 of 120 bandpowers</b> retained
+						against
 						50 for the global cut. &sigma;(&Omega;<sub>m</sub>) &minus;14%, &sigma;(&sigma;<sub>8</sub>)
 						&minus;19%.</p>
 					<aside class="notes">
@@ -8259,8 +8355,9 @@
 					</aside>
 				</section>
 
-				<section data-theme="light" data-background-color="#ffffff">
-					<h3 class="slide-title tight"><span class="sec">backup</span> Baryonic suppression of the tomographic
+				<section data-theme="light" data-background-color="#ffffff" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">backup</span> Baryonic suppression of the
+						tomographic
 						power spectra</h3>
 					<div class="fig">
 						<div class="r-stack">
@@ -8291,8 +8388,9 @@
 					</aside>
 				</section>
 
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">backup</span> Baryonic response of the &#8467;1-norm,
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">backup</span> Baryonic response of the
+						&#8467;1-norm,
 						scale by scale</h3>
 					<div class="fig">
 						<div class="r-stack">
@@ -8308,7 +8406,8 @@
 						</div>
 					</div>
 					<p class="caveat">Concentrated in the <b>positive SNR tail</b>, and vanishing in the noise-dominated
-						bulk ($|\nu| \lesssim 2.5$). That is why an SNR-space cut is available to higher-order statistics
+						bulk ($|\nu| \lesssim 2.5$). That is why an SNR-space cut is available to higher-order
+						statistics
 						and not to the power spectrum. Left to future work in the paper.</p>
 					<aside class="notes">
 						<ul>
@@ -8324,8 +8423,9 @@
 					</aside>
 				</section>
 
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">backup</span> Coverage in the nulled frame: every arm
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">backup</span> Coverage in the nulled frame: every
+						arm
 						still passes</h3>
 					<div class="fig">
 						<div class="r-stack">
@@ -8341,7 +8441,8 @@
 						</div>
 					</div>
 					<p class="caveat">The collapse is <b>calibrated</b>: the wide contours report a real loss in that
-						representation, not over-confidence. So the retention ladder measures information, not the quality
+						representation, not over-confidence. So the retention ladder measures information, not the
+						quality
 						of a fit.</p>
 					<aside class="notes">
 						<ul>
@@ -8356,11 +8457,13 @@
 					</aside>
 				</section>
 
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§4</span> The channel-mixing CNN is unaffected by the
+				<section data-theme="light" data-visibility="hidden">
+					<h3 class="slide-title tight"><span class="sec">§4</span> The channel-mixing CNN is unaffected by
+						the
 						transform (<span class="alert">0.96&times;</span>)</h3>
 					<div class="fig">
-						<img class="plain" src="../assets/figures/posteriors/p2_bnt_learned.png" style="max-height:420px;"
+						<img class="plain" src="../assets/figures/posteriors/p2_bnt_learned.png"
+							style="max-height:420px;"
 							alt="the CNN posterior in the standard and the nulled frame, the two contours lying on top of each other">
 					</div>
 					<div class="takeaway" style="max-width:88%;">
