@@ -1,0 +1,2978 @@
+/* ===========================================================================
+ * custom.css — deck-local styles for "Do Baryons Break HOS?" (Non-Gaussian 2026)
+ * Build-in-deck illustrations + figure layouts. Uses the Preprint theme TOKENS
+ * (var(--accent), var(--fg), var(--surface), ...) so it self-themes per slide.
+ * Method identity uses the LOCKED Wong hex only: CNN blue #0072B2, L1 vermillion
+ * #D55E00 (color = method; never theme chrome).
+ * ======================================================================== */
+
+:root {
+  --cnn:  #0072B2;   /* Wong blue       — learned / CNN */
+  --l1:   #D55E00;   /* Wong vermillion — analytical / l1-norm */
+  --ps:   #6c7884;   /* neutral grey    — power spectrum / baseline */
+}
+
+/* white-bg figures read as bright cards on the paper slide: round their corners like the blocks.
+   (Only img.plain figures; the black tomography flipbook and the <video> are not .plain, so untouched.) */
+.reveal .slides section img.plain { border-radius: 10px; }
+
+/* dark "mat" for figures whose labels are light (the magma starlet / l1 panels) so they
+   stay readable on a light slide */
+.reveal .slides section .darkmat { display: inline-block; background: #15161b; border: 1px solid var(--edge); border-radius: 12px; padding: 12px 16px; box-shadow: var(--shadow); margin: 0 auto; }
+.reveal .slides section .darkmat img { box-shadow: none; margin: 0; }
+
+/* ---- figure layouts ---------------------------------------------------- */
+.reveal .slides section .fig          { margin: 0 auto; }
+.reveal .slides section .fig img      { display: block; margin: 0 auto; max-height: 500px; width: auto; }
+.reveal .slides section .fig-sm img   { max-height: 360px; }
+.reveal .slides section .fig-tall img { max-height: 560px; }
+.reveal .slides section .figrow       { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.reveal .slides section .figrow img   { max-height: 430px; width: auto; }
+.reveal .slides section .figcol       { display: flex; flex-direction: column; align-items: center; gap: 0.3em; }
+.reveal .slides section .figcol img   { max-height: 240px; max-width: 94%; width: auto; }
+.reveal .slides section .figcol figcaption { text-align: center; }
+
+/* ---- Part 1 / Part 2 section divider (dark, punctuation) ---------------- */
+.reveal .slides section .part-divider { text-align: center; max-width: 82%; margin: 0 auto; }
+.reveal .slides section .part-divider .kicker { text-align: center; }
+.reveal .slides section .part-divider h2 { font-size: 2.1em; line-height: 1.12; margin: 0.15em 0; }
+.reveal .slides section .part-divider hr.accent-rule { margin-left: auto; margin-right: auto; }
+.reveal .slides section .part-divider .lead { font-size: 0.92em; color: var(--fg-muted); margin-top: 0.65em; line-height: 1.4; }
+.reveal .slides section .figrow .arrow{ font-size: 2.4em; color: var(--accent); flex: 0 0 auto; }
+.reveal .slides section .cap          { font-family: var(--label); font-size: 0.833em; line-height: 1.4; color: var(--fg-muted); margin-top: 0.5em; }
+.reveal .slides section .cap b        { color: var(--accent); font-weight: 500; }
+
+/* a compact honesty/caveat note (honesty flags travel onto the slide) */
+.reveal .slides section .caveat {
+  font-size: 0.833em; line-height: 1.42; color: var(--fg);
+  border-left: 3px solid var(--accent); padding: 0.2em 0 0.2em 0.7em; margin: 0.6em auto 0; max-width: 90%; text-align: left;
+}
+.reveal .slides section .caveat b { color: var(--accent-ink); font-weight: 600; }
+
+/* method legend chips */
+.reveal .slides section .legend { display: flex; gap: 1.2em; justify-content: center; font-family: var(--label); font-size: 0.833em; margin-top: 0.4em; }
+.reveal .slides section .legend .k { display: inline-flex; align-items: center; gap: 0.4em; }
+.reveal .slides section .legend .sw { width: 26px; height: 0; border-top-width: 4px; border-top-style: solid; display: inline-block; }
+.reveal .slides section .legend .sw.cnn { border-color: var(--cnn); }
+.reveal .slides section .legend .sw.l1  { border-color: var(--l1);  border-top-style: solid; }
+.reveal .slides section .legend .sw.l1.hatch { border-top-style: dashed; }
+
+/* ---- S2: trust checklist ---------------------------------------------- */
+.reveal .slides section .skeptic { display: flex; gap: 26px; align-items: center; }
+.reveal .slides section .skeptic .who { flex: 0 0 auto; text-align: center; }
+.reveal .slides section .skeptic .who .face { font-size: 86px; line-height: 1; }
+.reveal .slides section .skeptic .who .role { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; color: var(--fg-muted); margin-top: 0.4em; }
+.reveal .slides section .bubble {
+  position: relative; background: var(--surface); border: 1px solid var(--edge); border-radius: 14px;
+  padding: 0.7em 1em; font-style: italic; font-size: 0.9em; box-shadow: var(--shadow); max-width: 380px;
+}
+.reveal .slides section .bubble::after {
+  content: ""; position: absolute; left: -16px; top: 38px; border: 9px solid transparent;
+  border-right-color: var(--surface); filter: drop-shadow(-1px 0 0 var(--edge));
+}
+.reveal .slides section .checklist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45em 1.6em; text-align: left; }
+.reveal .slides section .checklist li { font-size: 0.833em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg-muted); margin: 0; }
+.reveal .slides section .checklist li .mk { font-family: var(--label); font-weight: 600; flex: 0 0 1.4em; }
+.reveal .slides section .checklist li.addr   { color: var(--fg); font-weight: 600; }
+.reveal .slides section .checklist li.addr .mk { color: var(--accent); }     /* this talk takes it on */
+.reveal .slides section .checklist li.free   { color: var(--fg); }
+.reveal .slides section .checklist li.free .mk { color: var(--cnn); }         /* SBI removes for free */
+.reveal .slides section .checklist li .tag { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; color: var(--accent); margin-left: 0.3em; }
+.reveal .slides section .checklist li.free .tag { color: var(--cnn); }
+
+/* ---- SVG illustration frames (S3 tomography, S5 peaks, S6 l1) ---------- */
+.reveal .slides section .svgfig { display: block; margin: 0 auto; }
+.reveal .slides section .svgfig text { font-family: var(--label); fill: var(--fg-muted); }
+.reveal .slides section .svgfig .axis { stroke: var(--hair); stroke-width: 1.5; }
+.reveal .slides section .svgfig .lab  { fill: var(--fg); }
+.reveal .slides section .svgfig .accent { fill: var(--accent); }
+
+/* ---- S17: cost / benefit balance -------------------------------------- */
+.reveal .slides section .balance { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4em; align-items: stretch; }
+.reveal .slides section .pan { background: var(--surface); border: 1px solid var(--edge); border-radius: 10px; padding: 0.7em 1em; text-align: left; }
+.reveal .slides section .pan h4 { font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em; margin: 0 0 0.4em; }
+.reveal .slides section .pan.benefit { border-top: 3px solid var(--l1); }
+.reveal .slides section .pan.benefit h4 { color: var(--l1); }
+.reveal .slides section .pan.cost { border-top: 3px solid var(--cnn); }
+.reveal .slides section .pan.cost h4 { color: var(--cnn); }
+.reveal .slides section .pan ul { margin: 0; padding-left: 1.1em; }
+.reveal .slides section .pan li { font-size: 0.833em; margin-bottom: 0.3em; }
+.reveal .slides section .pan .big { font-family: var(--r-heading-font); font-weight: 600; font-size: 2.2em; line-height: 1; color: var(--l1); }
+.reveal .slides section .thumb { margin-top: 0.6em; }
+
+/* tighten figure-slide titles a touch so big figures fit under them */
+.reveal .slides section .slide-title.tight { font-size: 1.15em; margin-bottom: 0.75em; }
+
+/* ---- S3: tomography build-up (Justine Zeghal screenshots, black bg flipbook) ---- */
+.reveal .slides section .tomo-flip { position: relative; width: 1000px; max-width: 90%; margin: 0.15em auto 0; aspect-ratio: 3000 / 1418; }
+.reveal .slides section .tomo-flip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: transparent; border: 0; box-shadow: none; margin: 0; }
+.reveal .slides section .tomo-note { font-size: 0.833em; color: #d2d6db; max-width: 84%; margin: 0.5em auto 0; text-align: center; line-height: 1.35; }
+.reveal .slides section .tomo-note em { color: var(--accent-ink); font-style: normal; font-weight: 600; }
+.reveal .slides section .tomo-credit { position: absolute; right: 22px; bottom: 12px; font-family: var(--label); font-size: 0.542em; letter-spacing: 0.05em; color: #8b9099; }
+
+/* ---- S2 (revised): centered skeptic + uniform 3-col checklist ---------- */
+.reveal .slides section .checklist3 { list-style: none; margin: 0.5em auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, max-content); justify-content: center; gap: 0.6em 1.9em; text-align: left; }
+.reveal .slides section .checklist3 li { font-size: 0.82em; display: flex; align-items: baseline; gap: 0.5em; color: var(--fg); margin: 0; }
+.reveal .slides section .checklist3 li::before { content: "\25CB"; color: var(--accent); font-size: 0.8em; flex: 0 0 auto; }
+.reveal .slides section .checklist3 li::marker { content: none; }
+
+/* --------------------------------------------------------------------------
+   Title-slide logo plate. The University of Crete seal is fixed dark-red
+   artwork with no light-on-dark variant, and the title slide is always dark
+   (particles backdrop), so the mark needs its own light ground to clear the
+   contrast bar in TALK-GUIDELINES 4.5. Not a theme colour: this plate is
+   deliberately light in both themes because the slide under it is.
+   -------------------------------------------------------------------------- */
+.reveal .slides section img.plain.logo-plate {
+	background: #f4f1ea;
+	border-radius: 50%;
+	padding: 8px;
+	box-sizing: content-box;
+}
+
+/* --------------------------------------------------------------------------
+   Title-slide footer. The name/supervisor/URL block sat directly on the
+   photographic backdrop with no veil, unlike .title-card, so the mono text
+   fell over the horizon and lost contrast. Same veil treatment as the title
+   card, one step softer. Sizes live here rather than in style="" attributes.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .title-footer {
+	display: inline-block;
+	margin: 0.6em auto 0;
+	padding: 0.5em 1.3em;
+	background: var(--title-veil);
+	border: 1px solid var(--edge);
+	border-radius: 12px;
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+}
+.reveal .slides section .title-footer .affil-lead { font-size: 1.08em; color: var(--fg); margin: 0; }
+.reveal .slides section .title-footer .affil-sub  { font-size: 0.86em; margin: 0.45em 0 0; }
+/* the three names were grey-on-busy and hard to pick out; the connective stays muted
+   so that the names are the only thing the eye lands on. */
+.reveal .slides section .title-footer .affil-sub b { color: var(--fg); font-weight: 600; }
+
+/* THE SLIDES LINK — its own rail at the foot of the title slide, on a veil of its own so
+   it reads whatever the starfield is doing behind it.  --link is warm on purpose: the
+   deck's cobalt accent is the colour of the sky in this background image. */
+.reveal .slides section .slides-link {
+	--link: #ffb765;
+	/* normal flow, not absolute: reveal's section box is shrink-to-fit, so `bottom`
+	   resolves against the content rather than the slide and lands on the footer. */
+	margin: 2.3em auto 0; text-align: center;
+	font-family: var(--label); font-size: 0.78em; letter-spacing: 0.02em;
+}
+.reveal .slides section .slides-link .lab { color: var(--fg-muted); margin-right: 0.55em; }
+.reveal .slides section .slides-link a {
+	color: var(--link);
+	text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.24em;
+	padding: 0.15em 0.7em 0.25em; border-radius: 8px;
+	background: var(--title-veil);
+	-webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+@media print {
+	.reveal .slides section .slides-link a { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+@media print {
+	.reveal .slides section .title-footer { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* ==========================================================================
+   ACT 0 — the setup. Components for the lifted-and-restyled intro slides.
+   All colour comes from theme tokens; the sources these were lifted from
+   (../PhD_Day_2025) hardcoded #66b3ff / #bbb / #6bdcff inline, which the
+   theme cannot override. See ../CLAUDE.md.
+   ========================================================================== */
+
+
+
+
+@media print {
+	.reveal .slides section .veil-card { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+.reveal .slides section .veil-card .cap {
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
+	color: var(--fg-muted); margin: 0.6em 0 0;
+}
+
+
+
+/* ==========================================================================
+   ACT 0 — lecture register, after ../PhD_Day_2025 and Vilasini's deck.
+
+   SCALE IS THE POINT. The deck base is 24px at 1200x720, so the preprint
+   theme's quiet 0.5-0.7em labels come out at 12-17px: below the type floor of
+   TALK-GUIDELINES 4.3c and visibly timid beside the source slides, whose
+   headings run ~1.25em and whose display maths runs ~1.5em. Sizes below are
+   matched to those. Figures and videos sit in boxes, never full-bleed.
+   ========================================================================== */
+
+/* the three framing columns */
+.reveal .slides section .qcols {
+	display: grid; grid-template-columns: repeat(3, 1fr);
+	gap: 1.1em; margin: 0.5em 0.4em 0.7em; text-align: center;
+}
+.reveal .slides section .qcols h4 {
+	font-family: var(--r-heading-font); font-size: 1.2em; font-weight: 600;
+	letter-spacing: 0; color: var(--accent); margin: 0 0 0.25em; text-transform: none;
+}
+.reveal .slides section .qcols .par   { font-size: 1.4em; color: var(--fg); margin: 0 0 0.2em; line-height: 1.2; }
+.reveal .slides section .qcols .gloss { font-size: 0.98em; color: var(--fg-muted); margin: 0; line-height: 1.25; }
+
+/* a .block in lecture register: big centred title instead of the small mono tab */
+.reveal .slides section .block.lecture { margin: 0 8px; }
+.reveal .slides section .block.lecture .block-title {
+	font-family: var(--r-heading-font); font-size: 1.3em; font-weight: 600;
+	letter-spacing: 0; color: var(--accent); text-align: center;
+	border-bottom: none; padding: 0.45em 0 0.1em;
+	/* `lecture` block titles were never on the mono label voice — they are the
+	   heading serif, roman. Held there explicitly so the 2026-09-01 label sweep,
+	   which italicises .block-title, does not reach them. */
+	font-style: normal;
+}
+.reveal .slides section .block.lecture .block-content { padding: 0.4em 1.1em 0.9em; }
+
+/* text | figure grid inside a block */
+.reveal .slides section .figgrid {
+	display: grid; grid-template-columns: 1fr 1fr;
+	gap: 1.3em; align-items: center; text-align: left;
+}
+.reveal .slides section .figgrid.wide { grid-template-columns: 1.25fr 1fr; }
+.reveal .slides section .figgrid p        { font-size: 1.0em; line-height: 1.4; margin: 0 0 0.55em; }
+.reveal .slides section .figgrid p.gloss  { font-size: 0.9em; color: var(--fg-muted); }
+.reveal .slides section .figgrid ul       { font-size: 1.0em; line-height: 1.45; margin: 0.2em 0 0; padding-left: 1.1em; }
+.reveal .slides section .figgrid ul li    { margin-bottom: 0.25em; }
+.reveal .slides section .figgrid figure   { margin: 0; }
+
+/* Shared frame. No vh caps: reveal scales the deck by a CSS transform, so a vh
+   limit is measured against the real viewport and applied again after scaling. */
+.reveal .slides section .figgrid figure video,
+.reveal .slides section .figgrid figure img {
+	display: block; width: 100%; max-width: none; max-height: none;
+	border-radius: 8px; border: 1px solid var(--edge); margin: 0;
+}
+/* video crops to a less letterboxed frame; a figure is never cropped */
+.reveal .slides section .figgrid figure video { aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.reveal .slides section .figgrid figure img   { height: auto; object-fit: contain; }
+.reveal .slides section .figgrid figure video.crop-right { object-position: right center; }
+.reveal .slides section .figgrid figcaption {
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
+	color: var(--fg-muted); text-align: right; margin-top: 0.45em;
+}
+
+/* --------------------------------------------------------------------------
+   A0.3 — the Planck parameter table, ported from ../PhD_Day_2025 §4.
+   Her inline hex (#333 header, #ffaa7f header text, #c38bff row glow) is
+   lifted to theme tokens here so the stylesheet can actually reach it; the
+   highlighted rows keep their function, marking the parameters weak lensing
+   constrains.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .probesgrid {
+	display: grid; grid-template-columns: 58% 42%;
+	gap: 0.8em; align-items: start; text-align: left;
+}
+.reveal .slides section .probesgrid > div:last-child > .gloss {
+	font-size: 0.9em; color: var(--fg-muted); margin: 0 0 0.5em;
+}
+.reveal .slides section .probesgrid figure { margin: 0; }
+.reveal .slides section .probesgrid figure img {
+	display: block; width: 100%; height: auto; max-width: none; max-height: none;
+	object-fit: contain; border-radius: 10px; border: 1px solid var(--edge); margin: 0;
+}
+.reveal .slides section .probesgrid figcaption {
+	font-size: 0.833em; line-height: 1.35; color: var(--fg-muted);
+	text-align: left; margin-top: 0.5em;
+}
+
+.reveal .slides section table.ptable {
+	width: 100%; border-collapse: collapse; table-layout: fixed;
+	font-size: 0.833em; line-height: 1.3;
+}
+.reveal .slides section table.ptable th {
+	background: var(--surface-2, #26272c); color: var(--accent);
+	font-family: var(--label); font-weight: 500; text-align: left;
+	padding: 0.35em 0.45em; border-bottom: 1px solid var(--edge);
+}
+.reveal .slides section table.ptable th:nth-child(1) { width: 38%; }
+.reveal .slides section table.ptable th:nth-child(2) { width: 18%; }
+.reveal .slides section table.ptable td {
+	padding: 0.3em 0.45em; border-bottom: 1px solid var(--hair);
+}
+/* Highlighted rows: ONE flat fill, no outline. The previous version had both a
+   tint and an inset accent border, which read as two different blues. */
+.reveal .slides section table.ptable tr.hl td {
+	background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.reveal .slides section .tsrc {
+	font-size: 0.6em; color: var(--fg-muted); margin: 0.7em 0 0; text-align: left;
+}
+
+/* ==========================================================================
+   ACT 0 (v2) — the recurring cosmic-history cone, after N. Martinet's
+   Heraklion 2026 deck: one image the audience learns once, then re-annotated
+   for each new idea instead of a new picture each time.
+
+   Geometry per REVEAL-GOTCHAS section 3: the wrapper is PINNED (explicit
+   width + the asset's own aspect-ratio) and the <img> lifts reveal's
+   max-width/max-height 95% cap, so the SVG overlay measures against the
+   image box and not against a smaller auto-sized one. The overlay uses a
+   viewBox in the asset's own pixel coordinates, so annotations are placed in
+   image pixels rather than guessed percentages.
+   ========================================================================== */
+/* Frame 2's timeline carries no annotation overlay, so it does not need .cone's
+   fixed 1980x1111 box - it only has to be centred and as big as the slide allows.
+   Sized by height, because the cropped file is 1.47:1 and 88% of the slide width
+   would run it off the bottom. */
+.reveal .slides section .cone-plain { margin: 0.3em auto 0; }
+.reveal .slides section .cone-plain img {
+	display: block; margin: 0 auto;
+	width: auto; height: auto;
+	max-width: 100%; max-height: 575px;     /* both lift reveal's 95% cap */
+	border: 0; border-radius: 6px;
+}
+
+.reveal .slides section .cone {
+	position: relative; display: block;
+	width: 88%; aspect-ratio: 1980 / 1111;
+	margin: 0.3em auto 0;
+}
+.reveal .slides section .cone img {
+	display: block; width: 100%; height: 100%; margin: 0;
+	max-width: none; max-height: none;      /* lift reveal's 95% cap */
+	border: 0; border-radius: 6px;
+}
+.reveal .slides section .cone svg.coneov {
+	position: absolute; inset: 0; width: 100%; height: 100%;
+	overflow: visible; pointer-events: none;
+}
+/* Annotations sit on a photograph, so every mark carries its own dark halo — and they
+   are warm, because the cone image is blue-white starfield and cobalt disappears into it.
+   Same coral the rays and galaxies already use: one colour meaning "our mark, over
+   someone else's image". */
+.reveal .slides section .cone { --anno: #ff6d5a; }
+.reveal .slides section .cone svg.coneov .an {
+	fill: var(--anno); font-family: var(--r-heading-font);
+	font-size: 56px; font-weight: 600; font-style: italic;
+	paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 9px;
+	stroke-linejoin: round;
+}
+.reveal .slides section .cone svg.coneov .ring {
+	fill: none; stroke: var(--anno); stroke-width: 6px;
+}
+.reveal .slides section .cone svg.coneov .lead {
+	fill: none; stroke: var(--anno); stroke-width: 5px;
+}
+.reveal .slides section .cone svg.coneov .ray {
+	fill: none; stroke: #ff6d5a; stroke-width: 5px;
+}
+.reveal .slides section .cone svg.coneov .gal { fill: none; stroke: #ff6d5a; stroke-width: 5px; }
+.reveal .slides section .cone svg.coneov .brace { fill: none; stroke: var(--accent); stroke-width: 6px; }
+.reveal .slides section .cone svg.coneov .blab {
+	fill: var(--accent); font-family: var(--r-heading-font); font-size: 52px; font-weight: 600;
+	text-anchor: middle; paint-order: stroke; stroke: rgba(0,0,0,.85); stroke-width: 9px;
+}
+.reveal .slides section .conecap {
+	font-family: var(--label); font-size: 0.833em; color: var(--fg-muted);
+	text-align: right; margin-top: 0.35em;
+}
+
+/* the three readings of a tension */
+.reveal .slides section .readings { margin: 0.2em 0 0; padding-left: 1.1em; font-size: 1.0em; line-height: 1.5; }
+.reveal .slides section .readings li { margin-bottom: 0.3em; }
+.reveal .slides section .readings li.key { color: var(--fg); }
+
+/* --------------------------------------------------------------------------
+   A0.4 — the field equation, three terms, three answers.  After N. Martinet's
+   Heraklion 2026 p6.  The rings are each term's own border rather than an SVG
+   overlay: KaTeX's internal layout is not predictable, so anything positioned
+   absolutely over a rendered equation drifts the moment the font metrics or
+   the zoom change. Each column owns its term AND its label, so they cannot
+   fall out of alignment.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .einstein {
+	display: flex; align-items: flex-start; justify-content: center;
+	gap: 0.35em; margin: 1.1em 0 0;
+}
+.reveal .slides section .einstein .op {
+	font-size: 1.9em; line-height: 1.6; color: var(--fg-muted); padding: 0 0.05em;
+}
+.reveal .slides section .einstein .term {
+	display: flex; flex-direction: column; align-items: center; gap: 0.55em;
+}
+.reveal .slides section .einstein .term .math {
+	font-size: 1.9em; line-height: 1.35;
+	padding: 0.16em 0.6em;
+	border: 3px solid transparent; border-radius: 50%;
+	transition: border-color .25s ease;
+}
+/* custom fragment: the equation is visible from the start; each click rings one
+   term and reveals its label. reveal's .fragment defaults to opacity 0, so the
+   base state has to be re-asserted. */
+.reveal .slides section .einstein .term.fragment { opacity: 1; visibility: visible; }
+.reveal .slides section .einstein .term.fragment.visible .math { border-color: var(--accent); }
+.reveal .slides section .einstein .term .lab {
+	font-size: 0.82em; line-height: 1.3; color: var(--fg-muted);
+	max-width: 8.5em; text-align: center;
+}
+.reveal .slides section .einstein .term.fragment .lab { opacity: 0; transition: opacity .25s ease; }
+.reveal .slides section .einstein .term.fragment.visible .lab { opacity: 1; color: var(--fg); }
+.reveal .slides section .einstein .term .lab b { color: var(--accent); display: block; }
+
+/* Scaffolding only: marks the two candidate openings while both are live.
+   Delete this rule together with the .verdiv slides once one is chosen. */
+.reveal .slides section.verdiv .kicker { color: #ff9d5a; }
+
+/* ==========================================================================
+   ACT 0 v3 — chrome-free. The previous pass nested a bordered .block inside a
+   bordered grid cell inside a bordered <figure>, then added a boxed callout:
+   four rectangles around every idea. Here the figure IS the slide, as in the
+   cosmo26 content slides. No outer block, no borders on figures, and the
+   supporting lines are left-ruled text rather than boxes.
+   ========================================================================== */
+
+/* two columns, no container */
+.reveal .slides section .bare {
+	display: grid; grid-template-columns: 1.05fr 1fr;
+	gap: 2.2em; align-items: center; text-align: left; margin-top: 0.5em;
+}
+.reveal .slides section .bare.figleft { grid-template-columns: 1.15fr 1fr; }
+.reveal .slides section .bare img {
+	display: block; width: 100%; height: auto;
+	max-width: none; max-height: 340px; object-fit: contain;
+	margin: 0 auto; border: 0; border-radius: 4px;
+}
+.reveal .slides section .bare figure { margin: 0; }
+.reveal .slides section .bare figcaption {
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.03em;
+	color: var(--fg-muted); text-align: center; margin-top: 0.55em; line-height: 1.35;
+}
+.reveal .slides section .bare figcaption b { color: var(--accent); }
+
+/* assumptions, unboxed */
+.reveal .slides section .assume { margin: 0; padding-left: 1.05em; font-size: 0.92em; line-height: 1.5; }
+.reveal .slides section .assume li { margin-bottom: 0.3em; }
+.reveal .slides section .assume li b { color: var(--accent); }
+
+/* a supporting line: an accent rule, not a box */
+.reveal .slides section .note {
+	border-left: 3px solid var(--accent); padding-left: 0.75em;
+	margin: 1.1em auto 0; max-width: 90%; text-align: left;
+	font-size: 0.92em; line-height: 1.45;
+}
+.reveal .slides section .note b { color: var(--accent); }
+.reveal .slides section .note .lab {
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em;
+	color: var(--fg-muted); margin-bottom: 0.2em;
+}
+
+/* the three reported parameters */
+.reveal .slides section .params { display: flex; gap: 2.6em; justify-content: center; margin: 0.9em 0 0; }
+.reveal .slides section .params .p { text-align: center; }
+.reveal .slides section .params .p .sym { display: block; font-size: 1.5em; color: var(--accent); line-height: 1.15; }
+.reveal .slides section .params .p .def { display: block; font-size: 0.833em; color: var(--fg-muted); max-width: 10em; line-height: 1.3; margin-top: 0.3em; }
+
+/* A0.7 — the hinge. Words ARE the content (guidelines 4.2, third exception),
+   so they get the whole frame rather than sitting in a box in the top half. */
+.reveal .slides section .hinge {
+	max-width: 92%; margin: 0 auto; text-align: left;
+	font-family: var(--r-heading-font); font-weight: 600;
+	font-size: 2.0em; line-height: 1.32;
+}
+.reveal .slides section .hinge em { color: var(--accent); font-style: italic; }
+.reveal .slides section .hingesub {
+	max-width: 92%; margin: 1.3em auto 0; text-align: left;
+	font-size: 0.9em; color: var(--fg-muted); line-height: 1.45;
+}
+.reveal .slides section .hingesub b { color: var(--accent); }
+
+/* A0.8 — the chain, built from the real figures rather than grey rectangles */
+.reveal .slides section .chainfig {
+	display: flex; align-items: flex-start; justify-content: center;
+	gap: 0.35em; margin: 0.9em 0 0;
+}
+.reveal .slides section .chainfig .step { flex: 0 1 auto; text-align: center; max-width: 210px; }
+.reveal .slides section .chainfig .step img {
+	display: block; width: 100%; height: 150px; object-fit: contain;
+	max-width: none; max-height: none; margin: 0; border-radius: 5px;
+}
+.reveal .slides section .chainfig .step .cap {
+	display: block; font-size: 0.833em; line-height: 1.3; margin-top: 0.5em; color: var(--fg);
+}
+.reveal .slides section .chainfig .step .n {
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.06em;
+	color: var(--fg-muted); margin-top: 0.3em;
+}
+.reveal .slides section .chainfig .arw { align-self: center; color: var(--accent); font-size: 1.5em; padding-bottom: 2.2em; }
+
+/* ============================================================================
+ * ACTS 1-2  (Ch2 mass mapping, Ch3 PnPMass)
+ * Lifted from ../LAM_2026 and restyled. Tokens only -- no hardcoded colour, so
+ * both themes and the PDF export follow the per-section data-theme.
+ * ========================================================================== */
+
+/* --- act divider: the act's question, large, on dark ---------------------- */
+.reveal .slides section .actdiv {
+	max-width: 82%; margin: 0 auto; text-align: left;
+}
+.reveal .slides section .actdiv .actq {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 1.5em; line-height: 1.28;
+	border-left: 4px solid var(--accent); padding-left: 0.5em; margin: 0.2em 0 0.7em;
+}
+.reveal .slides section .actdiv .actref {
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.05em;
+	color: var(--fg-muted); margin: 0; padding-left: 0.833em;
+}
+.reveal .slides section .actdiv .actref b { color: var(--fg); font-weight: 500; }
+.reveal .slides section .actdiv .actqr {
+	position: absolute; right: 0; bottom: 0; width: 108px; height: auto;
+	max-width: none; border-radius: 4px; opacity: 0.9;
+}
+
+/* --- A1.2: the four-panel reconstruction comparison ----------------------- */
+.reveal .slides section .massmaps img { width: 76%; max-width: 100%; }
+
+/* --- A1.3: what is held fixed, and the one thing that is not -------------- */
+.reveal .slides section .fixedchain {
+	display: flex; align-items: stretch; justify-content: center;
+	gap: 0.4em; margin: 1.1em 0 0.2em;
+}
+.reveal .slides section .fixedchain .fstep {
+	flex: 1 1 0; max-width: 12em; padding: 0.7em 0.6em;
+	border: 1px solid var(--edge); border-radius: 6px; background: var(--surface);
+	display: flex; flex-direction: column; justify-content: center;
+}
+/* the only factor that varies gets the accent rule; everything else recedes */
+.reveal .slides section .fixedchain .fstep.swap {
+	border-color: var(--accent); border-width: 1px 1px 1px 3px;
+	background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+.reveal .slides section .fixedchain .fname {
+	font-size: 0.833em; line-height: 1.25; font-weight: 600; color: var(--fg);
+}
+.reveal .slides section .fixedchain .fstep.swap .fname { color: var(--accent-ink); }
+.reveal .slides section .fixedchain .fsub {
+	font-family: var(--label); font-size: 0.833em; letter-spacing: 0.04em;
+	color: var(--fg-muted); margin-top: 0.45em; line-height: 1.35;
+}
+.reveal .slides section .fixedchain .farw {
+	align-self: center; color: var(--accent); font-size: 1.25em;
+}
+
+/* --- A1.4: contours beside the ratio ladder ------------------------------- */
+.reveal .slides section .resultpair {
+	display: grid; grid-template-columns: 1.02fr 1fr; gap: 1.6em;
+	align-items: center; margin-top: 0.3em;
+}
+.reveal .slides section .resultpair .fig { margin: 0; }
+/* NOT `width: 100%`: .fig img above caps the height at 500px, and an explicit
+   width against that cap breaks the aspect ratio - it stretched the 2000x2000
+   corner plot to 587x500.  Let the cap size it and centre what is left. */
+.reveal .slides section .resultpair .fig img { max-width: 100%; width: auto; }
+/* the stem plot carries three categories and needs far less room than the
+   corner plot it sits beside */
+.reveal .slides section .resultcol .stemfig img { max-height: 300px; }
+.reveal .slides section .resultcol { text-align: left; }
+.reveal .slides section .resultcol .takeaway { margin: 1.1em 0 0; max-width: 100%; }
+
+/* A stem plot standing where a .ladder used to (frames 21 and 56).  The bars
+   were CSS divs sitting next to real matplotlib panels on the same slide, and
+   the mismatch was the problem; these are matplotlib too, from
+   tools/make-fom-stems.py, and each one borrows the colours of the published
+   figure it shares the slide with, so a colour names the same method twice.
+   Nothing to style but the margin - the figure carries its own type.
+   (`width: 100%` would fight frame 56's max-height and squash the picture; the
+   .resultpair rule below already stretches frame 21's.) */
+.reveal .slides section .stemfig { margin: 0; }
+.reveal .slides section .stemfig img { max-width: 100%; height: auto; }
+
+/* 2026-09-11: the stems figure carries the RMSE row now, so it is taller, and at
+   max-height 300px it displayed at 0.37x native -- which put its own labels at 15-17px
+   on the canvas, under the floor. The slide had 99px of slack; 360px spends it and the
+   figure's type clears 17px. This is the LAST rule for the selector (REVEAL-GOTCHAS 4b). */
+/* 2026-09-11: the figure is drawn short now, so WIDTH is what binds and the cap is
+   only a backstop. Width is also what sets the type size on the canvas, so the panel
+   can be shorter than the corner plot without any label shrinking. */
+.reveal .slides section .resultcol .stemfig img { max-height: 360px; max-width: 500px; }
+/* the bullets under it sat at 16.99 px, a hair under the floor */
+.reveal .slides section .resultcol .takeaway .points { font-size: 0.88em; line-height: 1.45; }
+
+/* Kept for the one surviving .ladder (frame 66, backup) and for the two parked
+   in index.html.  The rungs must not borrow the Wong l1/CNN pair, which encodes
+   the summary statistic in Act 4 (TALK-GUIDELINES 4.5). */
+.reveal .slides section .ladder.mm .bar { background: var(--fg-muted); }
+.reveal .slides section .ladder.mm .rung.learned .bar { background: var(--accent); border: 0; }
+.reveal .slides section .ladder.mm .ceilnote { color: var(--fg-muted); padding-right: 0; }
+
+/* --- A1.5: the two scale ladders side by side ----------------------------- */
+.reveal .slides section .scalepair {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1.8em; margin-top: 0.4em;
+}
+.reveal .slides section .scalepair .fig { margin: 0; }
+.reveal .slides section .scalepair .fig img { width: 100%; max-width: 100%; }
+.reveal .slides section .scalepair .kicker { margin-bottom: 0.25em; }
+
+/* --- A2.1: the method families, as cards rather than a comparison table --- */
+.reveal .slides section .methodcards {
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1em;
+	margin-top: 1.1em; text-align: left;
+}
+.reveal .slides section .mcard {
+	border: 1px solid var(--edge); border-radius: 8px; background: var(--surface);
+	padding: 0.9em 1em 1em;
+}
+.reveal .slides section .mcard.want { border-left: 3px solid var(--accent); }
+.reveal .slides section .mcard .mtag {
+	display: block; font-family: var(--label); font-size: 0.833em; letter-spacing: 0.07em;
+	color: var(--accent); margin-bottom: 0.45em;
+}
+.reveal .slides section .mcard h4 {
+	font-size: 0.82em; margin: 0 0 0.5em; line-height: 1.2;
+}
+.reveal .slides section .mcard p { font-size: 0.833em; line-height: 1.4; margin: 0.4em 0 0; }
+.reveal .slides section .mcard .has   { color: var(--fg); }
+.reveal .slides section .mcard .lacks { color: var(--fg-muted); }
+/* pair each line with a glyph so the has/lacks split does not rest on colour alone */
+.reveal .slides section .mcard .has::before   { content: "+ "; color: var(--accent); font-family: var(--label); }
+.reveal .slides section .mcard .lacks::before { content: "\2013 "; font-family: var(--label); }
+.reveal .slides section .mcard.want .lacks { visibility: hidden; }
+
+/* --- A2.2 / A2.3 --------------------------------------------------------- */
+.reveal .slides section .pnpdiag img { width: 82%; max-width: 100%; }
+.reveal .slides section .uqrow {
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2em; margin-top: 0.3em;
+}
+.reveal .slides section .uqrow .fig { margin: 0; }
+.reveal .slides section .uqrow .fig img { width: 100%; max-width: 100%; }
+.reveal .slides section .uqcols {
+	display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.1em; margin-top: 0.9em;
+}
+.reveal .slides section .uqcols .callout,
+.reveal .slides section .uqcols .takeaway { margin: 0; max-width: 100%; }
+
+/* --- fit passes, measured from 1920x1080 headless screenshots against the
+ *     1200x720 logical canvas ------------------------------------------------ */
+
+/* A0.10: four questions read as a 2x2 field, not a column of four */
+.reveal .slides section .coreq.scoreboard {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 0.7em 1em; max-width: 96%;
+}
+.reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.833em; line-height: 1.35; }
+.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.833em; }
+
+/* A1.2: the four-panel figure carries the slide; the words underneath are one line each */
+.reveal .slides section .massmaps { margin-bottom: 0.35em; }
+.reveal .slides section .massmaps img { width: 66%; }
+.reveal .slides section .massmaps figcaption { font-size: 0.833em; }
+
+/* A1.3: the chain is short, so let it breathe rather than float in dead space */
+.reveal .slides section .fixedchain { margin-top: 1.4em; }
+.reveal .slides section .fixedchain .fstep { padding: 0.85em 0.7em; }
+
+/* A1.5: two corner plots plus a callout is the tightest slide in the act */
+.reveal .slides section .scalepair { gap: 1.4em; }
+.reveal .slides section .scalepair .fig img { width: 94%; }
+.reveal .slides section .scalepair figcaption { font-size: 0.833em; margin-top: 0.25em; }
+
+/* A2.1: peer cards, so they get equal weight and readable type */
+.reveal .slides section .methodcards { margin-top: 1.5em; gap: 1.2em; }
+.reveal .slides section .mcard { padding: 1.1em 1.15em 1.2em; }
+.reveal .slides section .mcard h4 { font-size: 0.92em; }
+.reveal .slides section .mcard p { font-size: 0.833em; }
+/* the glyph is a separate marker, not part of the sentence */
+.reveal .slides section .mcard .has::before,
+.reveal .slides section .mcard .lacks::before {
+	display: inline-block; width: 1.1em; margin-left: -1.1em;
+}
+.reveal .slides section .mcard .has,
+.reveal .slides section .mcard .lacks { padding-left: 1.1em; }
+
+/* A2.2: the diagram was crowding the takeaway off the bottom of the frame */
+.reveal .slides section .pnpdiag { margin: 0.2em 0 0.1em; }
+.reveal .slides section .pnpdiag img { width: 52%; }
+.reveal .slides section .pnpdiag figcaption { font-size: 0.833em; }
+.reveal .slides section .defline { margin: 0.15em 0 0.5em; }
+.reveal .slides section .defline .katex-display { margin: 0.2em 0; font-size: 0.82em; }
+
+/* A2.3: the conformal-bounds panel is three maps wide, the other two are square */
+.reveal .slides section .uqrow.wide-first { grid-template-columns: 1.45fr 1fr 1fr; gap: 0.9em; }
+.reveal .slides section .uqrow figcaption { font-size: 0.833em; margin-top: 0.3em; }
+.reveal .slides section .uqcols { margin-top: 0.7em; }
+.reveal .slides section .uqcols .callout,
+.reveal .slides section .uqcols .takeaway { padding: 0.5em 0.85em; }
+.reveal .slides section .uqcols .callout p,
+.reveal .slides section .uqcols .takeaway { font-size: 0.92em; }
+
+/* A1.5 fit: the callout was landing a few px past the bottom of the 720 canvas */
+/* 84%, not 88%: at the 20px type floor (2026-09-11) the captions and the
+   interpretation callout grew, and the slide reached 718 of the 720px canvas.
+   This is the LAST .scalepair img rule in the file, so it is the one that wins
+   — see REVEAL-GOTCHAS 4b before editing either of the two above. */
+.reveal .slides section .scalepair .fig img { width: 84%; }
+.reveal .slides section .scalepair + .callout { padding: 0.45em 0.9em; margin-top: 0.6em; }
+.reveal .slides section .scalepair + .callout,
+.reveal .slides section .scalepair + .callout b { font-size: 0.94em; }
+
+/* A2.3: the bounds figure is the one to look at, so it gets the full width and the
+   two calibration plots sit under it rather than beside it */
+.reveal .slides section .uqbanner { margin: 0.15em 0 0.3em; }
+.reveal .slides section .uqbanner img { width: 58%; max-width: 100%; }
+.reveal .slides section .uqrow { grid-template-columns: 1fr 1fr; gap: 1.4em; margin-top: 0.1em; }
+.reveal .slides section .uqrow .fig img { width: 66%; }
+.reveal .slides section .uqcols .callout,
+.reveal .slides section .uqcols .takeaway { padding: 0.4em 0.75em; }
+.reveal .slides section .uqcols .callout,
+.reveal .slides section .uqcols .takeaway { font-size: 0.84em; }
+.reveal .slides section .uqbanner + .uqrow + .uqcols { margin-top: 0.5em; }
+/* scoped: a deck-wide .caveat rule would resize the 17 already-tuned ones in Acts 3-4 */
+.reveal .slides section .uqcols + .caveat { font-size: 0.833em; }
+
+/* A0.3: the derived-parameters caveat, between the parameter columns and the assumptions */
+.reveal .slides section .derived {
+	font-size: 0.833em; line-height: 1.4; color: var(--fg-muted);
+	max-width: 88%; margin: 0.1em auto 0.7em; text-align: center;
+}
+.reveal .slides section .derived b { color: var(--accent); font-weight: 500; }
+
+/* A0.3 fit: the parameter columns take the top third, so the assumptions block has to
+   live in what is left. Scoped to .lcdm — slide 13 uses the same components at full size. */
+.reveal .slides section.lcdm .qcols { margin: 0.3em 0.4em 0.3em; gap: 0.9em; }
+.reveal .slides section.lcdm .qcols h4 { font-size: 0.92em; margin-bottom: 0.15em; }
+.reveal .slides section.lcdm .qcols .par { font-size: 0.92em; margin: 0.1em 0; }
+.reveal .slides section.lcdm .qcols .gloss { font-size: 0.833em; line-height: 1.35; }
+.reveal .slides section.lcdm .derived { font-size: 0.833em; margin: 0 auto 0.45em; }
+
+.reveal .slides section.lcdm .block.lecture { margin: 0; padding: 0.5em 0.9em 0.6em; }
+.reveal .slides section.lcdm .block-title { font-size: 0.833em; margin-bottom: 0.35em; }
+.reveal .slides section.lcdm .figgrid { grid-template-columns: 1.55fr 1fr; gap: 1em; align-items: center; }
+.reveal .slides section.lcdm .assume { font-size: 0.833em; line-height: 1.45; padding-left: 0.9em; }
+.reveal .slides section.lcdm .assume li { margin-bottom: 0.18em; }
+.reveal .slides section.lcdm .figgrid figure { margin: 0; }
+.reveal .slides section.lcdm .figgrid img { max-height: 190px; width: auto; margin: 0 auto; display: block; }
+.reveal .slides section.lcdm .note { font-size: 0.833em; margin-top: 0.55em; max-width: 95%; }
+/* the headline already says "the assumptions"; the block just holds them */
+.reveal .slides section.lcdm .block.lecture { padding: 0.75em 1em; }
+.reveal .slides section.lcdm .block.lecture .block-content { margin: 0; }
+.reveal .slides section.lcdm .figgrid { grid-template-columns: 1.05fr 1fr; }
+.reveal .slides section.lcdm .figgrid img { max-height: none; width: 100%; }
+
+/* 2026-09-11: the parameter row is parked, so the assumptions block inherits the top
+   third it used to give away — larger type, more leading, and a figure big enough that
+   the block is as tall as the slide can carry rather than a strip across the middle. */
+.reveal .slides section.lcdm .block.lecture { margin-top: 0.7em; padding: 1.3em 1.5em; }
+.reveal .slides section.lcdm .figgrid { grid-template-columns: 1fr 1.05fr; gap: 1.7em; }
+/* the figure is what sets the block's height: uncap it and let it fill its column */
+.reveal .slides section.lcdm .figgrid img { max-height: none; max-width: none; width: 100%; }
+.reveal .slides section.lcdm .cone svg.coneov .an { font-size: 58px; }
+
+/* 2026-09-11: figure OUTSIDE the block — see the comment on the section. The row is the
+   layout; the block holds only the assumptions, which is what `.block` is for. */
+.reveal .slides section.lcdm .lcdmrow {
+	display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.7em;
+	align-items: center; margin-top: 0.7em;
+}
+.reveal .slides section.lcdm .lcdmrow .block.lecture { margin: 0; padding: 1.1em 1.3em; }
+.reveal .slides section.lcdm .lcdmrow .figswap { width: 100%; display: grid; }
+.reveal .slides section.lcdm .lcdmrow .figswap > * { grid-area: 1 / 1; align-self: center; }
+.reveal .slides section.lcdm .lcdmrow .figswap figure { margin: 0; }
+.reveal .slides section.lcdm .lcdmrow .figswap img {
+	width: 100%; max-width: none; max-height: none;
+	border: 0; box-shadow: none; background: transparent; margin: 0;
+}
+
+/* A0.3: the block's figure swaps on the fragment — budget pie, then the same cone
+   annotated with what the model does not explain. Both occupy one grid cell. */
+.reveal .slides section.lcdm .figswap { display: grid; }
+.reveal .slides section.lcdm .figswap > * { grid-area: 1 / 1; align-self: center; }
+.reveal .slides section.lcdm .figswap figure { margin: 0; }
+.reveal .slides section.lcdm .cone { width: 100%; margin: 0; }
+/* the overlay's type is in viewBox units, so it shrinks with the smaller frame */
+.reveal .slides section.lcdm .cone svg.coneov .an { font-size: 64px; }
+.reveal .slides section.lcdm .cone svg.coneov .ring { stroke-width: 7px; }
+.reveal .slides section.lcdm .cone svg.coneov .lead { stroke-width: 7px; }
+
+/* legibility pass — these were below the type floor at lecture distance */
+.reveal .slides section.lcdm .qcols .gloss { font-size: 0.833em; }
+.reveal .slides section.lcdm .derived { font-size: 0.833em; }
+/* the figure sets the block's height, so the list is sized to fill it rather than
+   float in the middle of a tall cell */
+/* 2026-09-11: sized up when the parameter row was parked. THIS is the rule that wins —
+   two earlier `.lcdm .assume` rules above are overridden by it, so edit here. */
+.reveal .slides section.lcdm .assume { font-size: 1.05em; line-height: 1.78; padding-left: 1.1em; }
+.reveal .slides section.lcdm .assume li { margin-bottom: 0.75em; }
+.reveal .slides section.lcdm .assume li:last-child { margin-bottom: 0; }
+.reveal .slides section.lcdm .figgrid { align-items: center; }
+.reveal .slides section.lcdm .note { font-size: 0.833em; }
+
+/* ============================================================================
+ * A0.4 — the probes, then the tensions. Dark slide: the probes composite is
+ * dark-native, but the two tension compilations are white-background journal
+ * figures, so they are mounted on paper plates rather than floated on black
+ * (a white PNG bleeding into a dark slide reads as a bug).
+ * ========================================================================== */
+.reveal .slides section.probes .figswap { display: grid; margin-top: 0.4em; }
+.reveal .slides section.probes .figswap > * { grid-area: 1 / 1; align-self: center; }
+.reveal .slides section.probes .figswap > figure { margin: 0; }
+.reveal .slides section.probes .figswap > figure img { width: 62%; max-width: 100%; }
+.reveal .slides section.probes figcaption { font-size: 0.833em; line-height: 1.5; margin-top: 0.6em; }
+/* 2026-09-11: the caption is parked, so the composite takes the room it was leaving
+   for four lines nobody says. The width lives on `.probeshot` further down — the ring
+   is positioned in percentages of that wrapper, so the wrapper has to carry the size or
+   the ring is left behind. */
+.reveal .slides section.probes .figswap { margin-top: 1.2em; }
+
+.reveal .slides section.probes .tensionpair {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1.6em; align-items: start;
+}
+.reveal .slides section.probes .tensionpair figure { margin: 0; }
+.reveal .slides section.probes .plate {
+	background: #f7f5f0; border-radius: 7px; padding: 0.5em 0.6em;
+	box-shadow: 0 4px 18px rgba(0,0,0,.45);
+}
+.reveal .slides section.probes .plate img { width: 100%; max-width: 100%; margin: 0; display: block; }
+.reveal .slides section.probes .tensionpair figcaption { text-align: left; }
+.reveal .slides section.probes .src {
+	display: block; margin-top: 0.35em; font-family: var(--label);
+	font-size: 0.82em; color: var(--fg-muted); opacity: 0.75;
+}
+.reveal .slides section.probes .note { font-size: 0.833em; margin-top: 0.7em; }
+
+/* ============================================================================
+ * A0.5 — the lensing geometry. The source image is 800x617; it sits in a wider
+ * frame so the distance axis and the labels get their own gutters, with a single
+ * overlay spanning the whole thing so leaders can cross into the picture.
+ * viewBox 1250x617: left gutter 0-162, image 162-962, right gutter 962-1250.
+ * ========================================================================== */
+.reveal .slides section .lensfig {
+	position: relative; width: 86%; aspect-ratio: 1250 / 617; margin: 0.5em auto 0;
+}
+.reveal .slides section .lensfig img {
+	position: absolute; left: 13%; top: 0; width: 64%;
+	max-width: none; max-height: none; margin: 0; border: 0;
+}
+.reveal .slides section .lensfig svg.lensov {
+	position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
+}
+.reveal .slides section .lensfig .axline,
+.reveal .slides section .lensfig .leader {
+	fill: none; stroke: var(--fg-muted); stroke-width: 3px;
+}
+.reveal .slides section .lensfig .ltxt,
+.reveal .slides section .lensfig .axlab {
+	fill: var(--fg); font-family: var(--r-main-font); font-size: 30px;
+	paint-order: stroke; stroke: rgba(0,0,0,.8); stroke-width: 6px; stroke-linejoin: round;
+}
+.reveal .slides section .lensfig .axlab { fill: var(--fg-muted); text-anchor: middle; }
+.reveal .slides section .lensfig .scope .tube { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section .lensfig .scope .legs {
+	fill: none; stroke: var(--fg-muted); stroke-width: 3.4px; stroke-linecap: round;
+}
+.reveal .slides section .credit-line {
+	font-family: var(--label); font-size: 0.541em; line-height: 1.45; color: var(--fg-muted);
+	opacity: 0.8; max-width: 88%; margin: 0.8em auto 0;
+}
+
+/* ---------------------------------------------------------------------------
+   A0.9 / A0.10 — shear and convergence.  The first two LIGHT slides of the
+   talk: the intro's dark run ends at Euclid and the paper theme starts here,
+   marking the move from the picture to the quantities.
+
+   Both are rebuilt from ../LAM_2026 §5 and §6, which carried inline
+   text-align, an inline `color: red`, and an <img height="300"> attribute —
+   none of which a stylesheet can reach, and all of which read wrong on paper.
+   The figure is WL_distortions_trim.png: the same diagram with its dead
+   transparent strip cropped off and its near-white plate converted to
+   transparent ink, so the panels sit ON the paper rather than on a faintly
+   cooler rectangle.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.wlq .wlbanner { width: 66%; margin: 0.35em auto 1em; }
+.reveal .slides section.wlq .wlbanner img {
+	display: block; width: 100%; height: auto;
+	border: 0; box-shadow: none; background: transparent;
+}
+
+.reveal .slides section.wlq .qpair {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; align-items: stretch;
+}
+/* The two cards take the `lecture` block variant — serif accent heading rather
+   than the mono tab. The mono label voice is for two- to four-word tags; a
+   whole clause set in it reads as machine-set, which is what it looked like
+   when the observability line was a tracked lowercase rule of its own. It is
+   now the second sentence of the card, in ordinary prose. */
+.reveal .slides section.wlq .qpair .block { margin: 0; display: flex; flex-direction: column; }
+.reveal .slides section.wlq .qpair .block.lecture .block-title {
+	font-size: 0.95em; padding: 0.4em 0 0.15em; letter-spacing: 0;
+}
+.reveal .slides section.wlq .qpair .block-content {
+	padding: 0.15em 1em 0.85em; flex: 1; display: flex; flex-direction: column;
+}
+.reveal .slides section.wlq .qpair .katex-display { margin: 0.3em 0 0.25em; font-size: 0.8em; }
+/* Slide body is points, not paragraphs (Andreas, 2026-09-01): "in slides it's
+   better to break down into specific points with as few words as needed."
+   Hanging en-dashes rather than dots — a typeset list, not a UI list. */
+.reveal .slides section.wlq .qpair ul {
+	list-style: disc outside; padding-left: 1.05em; margin: auto 0 0;
+	font-size: 0.833em; line-height: 1.45; text-align: left;
+	/* the list block is centred in the card, the lines inside it stay left-aligned:
+	   align-self does the cross-axis centring, margin-top:auto keeps it at the foot */
+	align-self: center;
+}
+.reveal .slides section.wlq .qpair li { margin: 0.24em 0; }
+.reveal .slides section.wlq .qpair li b { color: var(--fg); font-weight: 600; }
+.reveal .slides section.wlq .qpair li b.alert { color: var(--accent); }
+
+.reveal .slides section.wlq .note { font-size: 0.833em; margin-top: 0.9em; max-width: 95%; }
+
+/* A0.10 — the convergence definition, with the map as the evidence band. */
+.reveal .slides section.kappadef .block.lecture { margin: 0 10px; }
+.reveal .slides section.kappadef .block.lecture .block-title { font-size: 0.95em; padding-bottom: 0.05em; }
+.reveal .slides section.kappadef .block-content { padding: 0.1em 1.2em 0.7em; }
+.reveal .slides section.kappadef .katex-display { margin: 0.35em 0 0.2em; font-size: 0.86em; }
+.reveal .slides section.kappadef ul.gloss {
+	list-style: disc outside; padding-left: 1.05em;
+	font-size: 0.833em; line-height: 1.45; text-align: left; color: var(--fg-muted);
+	/* Centred as a block under the centred equation; lines stay left-aligned.
+	   `display: block` is load-bearing: darkenergy.css sets .reveal ul to
+	   inline-block, and auto side margins do nothing to an inline-block — it just
+	   sits wherever the parent's text-align puts it, which here is hard left. */
+	display: block; width: fit-content; margin: 0.6em auto 0;
+}
+.reveal .slides section.kappadef ul.gloss li { margin: 0.24em 0; }
+/* the block's payoff line, set apart from the two reasons above it */
+.reveal .slides section.kappadef .kd-close {
+	font-size: 0.833em; line-height: 1.4; color: var(--fg);
+	text-align: center; margin: 0.9em 0 0.1em;
+}
+.reveal .slides section.kappadef ul.gloss b { color: var(--fg); font-weight: 600; }
+
+/* Stacked from 2026-09-12. Two columns since 2026-09-03, rejected then on the
+   arithmetic in the slide's own note: the UNIONS figure's 1.25 aspect would
+   have forced it to ~28% of the width. That was against two display equations
+   and three bullets. Against the four short lines the block carries now the sum
+   flips — 466px tall stacked against 400px beside the text — and the empty half
+   of the slide goes away with it. The order also matches A1.3: two reasons,
+   then "here is a real mass map".
+   ------------------------------------------------------------------------- */
+.reveal .slides section.kappadef .kdtop { max-width: 96%; margin: 0.4em auto 0; }
+.reveal .slides section.kappadef .kdtop .block.lecture { margin: 0; }
+.reveal .slides section.kappadef .kdtop ul.gloss {
+	width: auto; margin: 0; padding-left: 1.05em; font-size: 0.875em;
+}
+/* centred: it is the bridge into the map, so it funnels rather than continuing
+   the left edge of the two reasons above it */
+.reveal .slides section.kappadef .kdtop .kd-close {
+	text-align: center; margin: 0.4em 0 0; font-size: 0.875em; color: var(--fg);
+}
+.reveal .slides section.kappadef .kdrow { display: block; margin: 0.35em auto 0; max-width: 100%; }
+.reveal .slides section.kappadef .kdrow .katex-display { font-size: 0.833em; }
+/* the credit sits beside the map, not under it: as a caption it cost a line of
+   height off a figure that is the point of the slide, and the map is 1.25 wide
+   against a 1200px canvas, so the width was there for free. */
+.reveal .slides section.kappadef .kmap {
+	position: relative; display: block; width: 100%; margin: 0 auto;
+}
+/* absolute, not a flex sibling: as a flex row the PAIR centred, which left the
+   map itself sitting left of the slide's centre. Out of flow, the map centres
+   on its own and the credit parks in the margin the map's 1.25 aspect leaves —
+   on the left, where reveal's arrows are not. */
+.reveal .slides section.kappadef .kmap figcaption {
+	position: absolute; left: 1.5%; bottom: 0.4em; width: 200px;
+	text-align: left; margin: 0; font-size: 0.75em; line-height: 1.35;
+}
+.reveal .slides section.kappadef .kmap img { max-height: 452px; width: auto; margin: 0 auto; }
+.reveal .slides section.kappadef .kmap img {
+	display: block; height: auto;
+	border: 0; box-shadow: none; background: transparent;
+}
+/* the trimmed map carries a wider left gutter (the y-axis label) than right, so
+   the caption is nudged in to sit under the plot frame rather than the bbox */
+.reveal .slides section.kappadef .kmap figcaption { text-align: center; margin-top: 0.25em; font-size: 0.833em; }
+.reveal .slides section.kappadef .kmap figcaption b { color: var(--accent); }
+
+/* The second reason we want kappa — a scalar, not a spin-2 field.  Added
+   2026-09-03; the slide was already full, so the map came down from 80% to 62%
+   to pay for it and this callout is deliberately the most compact on the deck. */
+.reveal .slides section.kappadef .callout {
+	margin: 0.55em auto 0; max-width: 78%; padding: 0.45em 0.9em;
+	font-size: 0.833em; line-height: 1.45;
+}
+.reveal .slides section.kappadef .callout .label { margin-bottom: 0.12em; }
+
+
+/* ---------------------------------------------------------------------------
+   A1.0 — the kappa/gamma relation.  Same construction as the 0.6a cards: a wide
+   figure over a pair of `lecture` blocks, points not prose, lists centred as
+   blocks (note `display: block` — darkenergy makes every ul inline-block, so
+   auto margins are ignored without it; REVEAL-GOTCHAS 8c).
+   -------------------------------------------------------------------------- */
+.reveal .slides section.kgrel .kgfig { width: 96%; margin: 0.4em auto 1em; }
+.reveal .slides section.kgrel .kgfig img {
+	display: block; width: 100%; height: auto;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.kgrel .kgcols {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; align-items: stretch;
+}
+.reveal .slides section.kgrel .kgcols .block { margin: 0; }
+.reveal .slides section.kgrel .kgcols .block.lecture .block-title {
+	font-size: 0.88em; padding: 0.4em 0 0.15em; letter-spacing: 0;
+}
+.reveal .slides section.kgrel .kgcols .block-content { padding: 0.1em 1em 0.7em; }
+.reveal .slides section.kgrel .kgcols ul {
+	display: block; list-style: disc outside; padding-left: 1.05em;
+	width: fit-content; margin: 0 auto;
+	font-size: 0.833em; line-height: 1.5; text-align: left;
+}
+.reveal .slides section.kgrel .kgcols li { margin: 0.26em 0; }
+
+/* ---------------------------------------------------------------------------
+   THE ANALYSIS CHAIN — the deck's recurring geography.
+
+   Two lanes that meet at inference:
+     data   catalogue -> shear maps -> mass maps -> summaries -> inference -> posterior
+     model                       systematics -> N-body simulations ---^
+
+   Systematics sit on the MODEL lane on purpose. They are modelled and
+   marginalised in the prediction, not something that happens to the data in
+   transit — the same reading as Martinet's diagram. The lanes are told apart by
+   fill and border (solid surface vs dashed tint), not by colour alone.
+
+   Markup lives in the `#wl-pipeline` <template>; pipeline.js clones it into each
+   `.pipeline-slot` and lights the stage named by `data-active`.
+
+   Grid is 11 explicit columns — stage, arrow, stage, … — with UNEQUAL weights, so
+   the boxes are not all one size and the model lane can anchor itself under the
+   data stages it belongs to by column number rather than by guessed percentages.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .pipeline {
+	display: grid;
+	/* 1 catalogue · 3 shear · 5 mass maps · 7 summaries · 9 inference · 11 posterior.
+	   Deliberately uneven. A row of six identical boxes reads as a table, not a
+	   pipeline; the widths follow what each stage has to show. */
+	grid-template-columns:
+		1.04fr auto 1.08fr auto 1.08fr auto 0.90fr auto 0.70fr auto 1.00fr;
+	align-items: center;
+	column-gap: 0.3em;
+	row-gap: 0.75em;
+	width: 100%;
+	text-align: center;
+}
+
+.reveal .slides section .pipeline .stage {
+	grid-row: 1;
+	display: flex; flex-direction: column; align-items: center;
+	padding: 0.5em 0.35em 0.55em;
+	border: 1px solid var(--edge); border-radius: 8px;
+	background: var(--surface);
+	transition: opacity 0.25s ease;
+}
+.reveal .slides section .pipeline .arw {
+	grid-row: 1; align-self: center;
+	color: var(--fg-muted); font-size: 0.8em; line-height: 1;
+}
+
+/* Each thumbnail takes the shape of what is in it rather than a common square:
+   the histogram is landscape, the contour panel is nearly square, the process
+   nodes are wide and short. Heights therefore differ down the row, and the boxes
+   are centred on the flow line so that reads as intentional rather than ragged. */
+.reveal .slides section .pipeline [data-stage="summaries"]  .thumb { aspect-ratio: 4 / 3; }
+.reveal .slides section .pipeline [data-stage="posterior"]  .thumb { aspect-ratio: 290 / 299; }
+.reveal .slides section .pipeline [data-stage="inference"]  .thumb { aspect-ratio: 3 / 2; }
+
+.reveal .slides section .pipeline .thumb {
+	width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
+	border-radius: 5px; margin-bottom: 0.45em;
+	display: flex; align-items: center; justify-content: center;
+	color: var(--accent);
+}
+.reveal .slides section .pipeline .thumb img {
+	width: 100%; height: 100%; object-fit: cover;
+	display: block; border: 0; box-shadow: none; margin: 0;
+}
+/* a plot is not a photograph: let it fit inside the box so the axis labels
+   survive, instead of cropping to fill the way the maps and the sky field do */
+.reveal .slides section .pipeline .thumb.plot img { object-fit: contain; }
+.reveal .slides section .pipeline .thumb svg { width: 76%; height: 76%; }
+/* inference has no object to photograph, so it is a smaller process node */
+.reveal .slides section .pipeline .thumb.proc {
+	background: transparent; border: 1px dashed var(--hair);
+	font-family: var(--r-heading-font); font-size: 0.833em; color: var(--fg-muted);
+}
+/* the inference node: a comparison, drawn. Several simulated summaries at
+   different cosmologies in the muted ink, the measured one in the accent. */
+.reveal .slides section .pipeline .thumb.proc.compare svg { width: 86%; height: 86%; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.reveal .slides section .pipeline .thumb.proc.compare .base { stroke: currentColor; stroke-width: 1.2; opacity: 0.5; }
+.reveal .slides section .pipeline .thumb.proc.compare .sim  { stroke: currentColor; stroke-width: 1.6; opacity: 0.45; }
+.reveal .slides section .pipeline .thumb.proc.compare .data { stroke: var(--accent); stroke-width: 2.6; }
+
+.reveal .slides section .pipeline .sname {
+	font-family: var(--r-heading-font); font-weight: 600;
+	font-size: 0.833em; line-height: 1.2; color: var(--fg);
+}
+.reveal .slides section .pipeline .ssub {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; line-height: 1.3; color: var(--fg-muted); margin-top: 0.18em;
+}
+
+/* --- the model lane, row 2 ------------------------------------------------ */
+.reveal .slides section .pipeline .stage.model { grid-row: 2; }
+.reveal .slides section .pipeline .arw.model   { grid-row: 2; }
+/* The model lane runs in causal order: cosmologies are drawn from the prior,
+   the simulations are run at those cosmologies, and the systematics are applied
+   to the mock observables afterwards. An earlier version had systematics first,
+   which is backwards — you cannot contaminate a simulation you have not run. */
+.reveal .slides section .pipeline [data-stage="prior"]       { grid-column: 1; }
+.reveal .slides section .pipeline [data-stage="simulations"] { grid-column: 3; }
+.reveal .slides section .pipeline [data-stage="systematics"] { grid-column: 5; }
+/* every model-lane cell is placed explicitly. Auto-placement is not an option:
+   the stages are pinned and the arrows are not, so the arrows get dropped into
+   whatever columns are free — which after the lane label was removed meant
+   columns 1 and 2, stranded off to the left of the lane they belong to. */
+.reveal .slides section .pipeline .arw.model.m1 { grid-column: 2; }
+.reveal .slides section .pipeline .arw.model.m2 { grid-column: 4; }
+
+/* dashed and tinted: the model side is built, not measured */
+.reveal .slides section .pipeline .stage.model {
+	border-style: dashed;
+	background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+	padding: 0.45em 0.4em 0.5em;
+}
+.reveal .slides section .pipeline .stage.model .sname { font-size: 0.708em; }
+.reveal .slides section .pipeline .stage.model .ssub  { font-size: 0.833em; }
+.reveal .slides section .pipeline .stage.model .thumb { aspect-ratio: 5 / 2; margin-bottom: 0.35em; }
+/* the prior gets the same dashed process mark as inference — the lane opens on
+   π(θ) and the data lane closes on p(θ|x), which is the whole shape of the thing */
+.reveal .slides section .pipeline .stage.model .thumb.proc { font-size: 0.833em; }
+/* The edge that rejoins the data lane, drawn as an elbow rather than a stray
+   glyph: a floating arrow between two boxes reads as decoration, a line that
+   leaves one box and arrives at another reads as a diagram. It is the one edge
+   that changes lane, and it is where simulation-based inference happens, so it
+   is also the only accent-coloured connector. */
+.reveal .slides section .pipeline .arw.join {
+	/* runs from the end of the model lane to underneath inference, so the riser
+	   comes up into the box itself rather than stopping in the gap beside it */
+	grid-column: 6 / 10; grid-row: 2; align-self: stretch; justify-self: stretch;
+	position: relative; font-size: 0;
+}
+.reveal .slides section .pipeline .arw.join::before {
+	content: ""; position: absolute;
+	left: 1%; right: 20%; top: -1.9em; bottom: 46%;
+	border-right: 1.6px solid var(--accent);
+	border-bottom: 1.6px solid var(--accent);
+	border-bottom-right-radius: 7px;
+}
+/* the arrowhead, sitting on top of the riser */
+.reveal .slides section .pipeline .arw.join::after {
+	content: ""; position: absolute;
+	right: calc(20% - 4.8px); top: calc(-1.9em - 5px);
+	border-left: 5px solid transparent; border-right: 5px solid transparent;
+	border-bottom: 7px solid var(--accent);
+}
+
+/* --- the focus state: one stage lit, the rest stood down ------------------ */
+/* Reached two ways — immediately (`.is-focused`, from data-active) or on a click
+   (`.focus-armed` + a `.pipe-focus` fragment turning visible earlier in the
+   section). The second form is a plain sibling selector on reveal's own
+   `.visible` class, so the built state exports to PDF correctly. */
+.reveal .slides section .pipeline .stage,
+.reveal .slides section .pipeline .arw {
+	transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+.reveal .slides section .pipeline.is-focused .stage,
+.reveal .slides section .pipeline.is-focused .arw,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .arw { opacity: 0.34; }
+
+.reveal .slides section .pipeline.is-focused .stage.is-active,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage.is-active {
+	opacity: 1;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.reveal .slides section .pipeline.is-focused .stage.is-active .sname,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .stage.is-active .sname { color: var(--accent); }
+
+/* --- compact variant, for the act openers --------------------------------- */
+.reveal .slides section .pipeline--compact .thumb { display: none; }
+.reveal .slides section .pipeline--compact .stage { padding: 0.45em 0.3em; }
+.reveal .slides section .pipeline--compact .sname { font-size: 0.833em; }
+.reveal .slides section .pipeline--compact .stage.model .sname { font-size: 0.833em; }
+.reveal .slides section .pipeline--compact .ssub { display: none; }
+
+/* --- the pipeline on an act opener ----------------------------------------
+   The LAM `class="inverted"` was REMOVED from these dividers on 2026-09-10.
+   It was inert only while they were top-level sections: talks.css has
+   `.reveal .slides section .inverted { filter: invert(100%) }`, a DESCENDANT
+   selector, which does not match a section carrying the class itself. Putting
+   each paper in a vertical column made the dividers descendants of a wrapper
+   section, the rule went live, and every divider inverted — cobalt ring to
+   olive, white type to near-black. The slides read light-on-black because a
+   default section is already the dark theme; nothing needs filtering. Do not
+   put `inverted` back on a section.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.actopen .pipeline-slot {
+	display: block; width: 94%; margin: 1.9em auto 0;
+}
+/* 0.34 disappears against black; the stood-down stages still have to be read */
+.reveal .slides section.actopen .pipeline.is-focused .stage,
+.reveal .slides section.actopen .pipeline.is-focused .arw { opacity: 0.52; }
+.reveal .slides section.actopen .pipeline .stage { background: transparent; }
+.reveal .slides section.actopen .pipeline.is-focused .stage.is-active {
+	background: var(--surface);
+}
+
+/* An arrow between two lit stages is lit as well: naming two adjacent stages
+   means the STEP between them. pipeline.js adds the class; see lightTransitions. */
+.reveal .slides section .pipeline.is-focused .arw.is-active,
+.reveal .slides section .pipe-focus.visible ~ .pipeline-slot .pipeline.focus-armed .arw.is-active { opacity: 1; color: var(--accent); }
+
+/* A0.10 — the hand-off. Nothing but the recalled diagram and one line, so the
+   pipeline gets more room here than it does on 0.8, where a note sits under it. */
+.reveal .slides section.handoff .pipeline-slot { display: block; margin: 1.4em auto 0; }
+.reveal .slides section.handoff .note { font-size: 0.833em; margin-top: 1.5em; max-width: 88%; }
+
+/* ---------------------------------------------------------------------------
+   Kaiser-Squires, rebuilt light. Same construction as 0.6a and 0.6c: a wide
+   figure over a pair of `lecture` blocks, points not prose, lists centred as
+   blocks. The two verticals below it (derivation, operator algebra) are still
+   the LAM originals and are deliberately untouched — they are answer-a-question
+   material, not slides anyone is meant to read from the floor.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.ksmain .ksfig { width: 72%; margin: 0.35em auto 0.55em; }
+.reveal .slides section.ksmain .ksfig img {
+	display: block; width: 100%; height: auto;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.ksmain .ksfig figcaption { text-align: center; margin-top: 0.15em; }
+
+.reveal .slides section.ksmain .kscols {
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; align-items: stretch;
+}
+.reveal .slides section.ksmain .kscols .block { margin: 0; }
+.reveal .slides section.ksmain .kscols .block.lecture .block-title {
+	font-size: 0.88em; padding: 0.35em 0 0.12em; letter-spacing: 0;
+}
+.reveal .slides section.ksmain .kscols .block-content { padding: 0.1em 1em 0.6em; }
+.reveal .slides section.ksmain .kscols ul {
+	display: block; list-style: disc outside; padding-left: 1.05em;
+	width: fit-content; margin: 0 auto;
+	font-size: 0.833em; line-height: 1.5; text-align: left;
+}
+.reveal .slides section.ksmain .kscols li { margin: 0.24em 0; }
+
+/* ---------------------------------------------------------------------------
+   A1.4 — reconstruction as inference: the anatomy of Bayes' rule.
+
+   NO BOXES. An earlier version put all seven elements in identical rounded
+   cards and Andreas called it robotic — correctly: seven of the same container
+   is the clearest tell that a layout was generated rather than composed, and it
+   also flattened the one thing this slide is trying to say. The three terms are
+   NOT parallel. One is what we want, one is physics we already have, one is a
+   choice — so they are set as three different registers of type, and only the
+   prior gets a ground of its own, because only the prior is the argument.
+
+   Each term reads top to bottom in four voices: the symbol, its name, a
+   plain-English gloss for anyone meeting Bayes for the first time (after /
+   explains / before is the contrast that makes it click), and a role line.
+
+   `.anatomy` and `.fanrow` still share one grid template — that is what makes
+   the riser land under the prior without a magic percentage.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.bayes .anatomy,
+.reveal .slides section.bayes .fanrow {
+	display: grid;
+	grid-template-columns: 1fr auto 1.28fr auto 1.22fr;
+	column-gap: 0.9em;
+	align-items: start;
+	width: 97%; margin: 0 auto;
+}
+.reveal .slides section.bayes .fanrow { height: 1.7em; }
+
+.reveal .slides section.bayes .term {
+	display: flex; flex-direction: column; align-items: center;
+	padding: 0.55em 0.75em 0.75em;
+	border: 0; background: none; border-radius: 12px;
+}
+.reveal .slides section.bayes .op {
+	align-self: start; margin-top: 0.55em;
+	color: var(--fg-muted); font-family: var(--r-heading-font);
+	font-size: 1.5em; line-height: 1;
+}
+
+/* one symbol, one name, one gloss, one role — the same four rows in every
+   column, so nothing extra may be inserted into one of them without
+   knocking the other two out of alignment. */
+.reveal .slides section.bayes .teq { font-size: 1.55em; line-height: 1.1; }
+.reveal .slides section.bayes .tname {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.8em;
+	color: var(--accent); margin-top: 0.5em;
+}
+/* the plain-English line — the one a first-timer actually reads */
+.reveal .slides section.bayes .tsub {
+	font-size: 0.833em; line-height: 1.45; color: var(--fg);
+	margin-top: 0.45em; max-width: 19em;
+}
+.reveal .slides section.bayes .tsub em { font-style: italic; font-weight: 600; }
+/* and the role: goal, given, choice */
+.reveal .slides section.bayes .trole {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; line-height: 1.4; color: var(--fg-muted);
+	margin-top: 0.55em; padding-top: 0.45em; border-top: 1px solid var(--hair);
+	width: 100%; text-align: center;
+}
+
+/* the only term with a ground of its own, because it is the argument */
+.reveal .slides section.bayes .term.prior {
+	background: color-mix(in srgb, var(--accent) 8%, transparent);
+	box-shadow: inset 0 -2.5px 0 0 var(--accent);
+}
+.reveal .slides section.bayes .term.prior .trole { color: var(--accent); border-top-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+
+/* the riser sits in column 5 — the prior column — and meets the strip below */
+.reveal .slides section.bayes .riser {
+	width: 0; height: 100%; margin: 0 auto;
+	border-left: 1.6px solid var(--accent);
+}
+
+/* the four choices: hairline-separated, not four more cards */
+.reveal .slides section.bayes .priors {
+	display: grid; grid-template-columns: repeat(4, 1fr);
+	width: 97%; margin: 0 auto;
+	padding-top: 1.1em; border-top: 1.6px solid var(--accent);
+}
+.reveal .slides section.bayes .pcard {
+	padding: 0.1em 1.1em 0.2em; text-align: center;
+	border: 0; background: none; border-radius: 0;
+}
+.reveal .slides section.bayes .pcard + .pcard { border-left: 1px solid var(--hair); }
+.reveal .slides section.bayes .pname {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.855em; color: var(--accent);
+}
+/* the learned prior is the odd one out — it is not chosen, and Part 2 is about it */
+.reveal .slides section.bayes .pcard.learned .pname { font-style: italic; }
+.reveal .slides section.bayes .passume {
+	font-size: 0.833em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.4em;
+}
+.reveal .slides section.bayes .passume b { color: var(--fg); font-weight: 600; }
+
+/* the forward reference: this is why Bayes is taught here and not at the SBI
+   slide, so it earns a line of its own rather than living only in the notes */
+.reveal .slides section.bayes .note.carry {
+	font-size: 0.833em; margin: 1.5em auto 0; max-width: 84%;
+}
+
+/* ---------------------------------------------------------------------------
+   A1.4 VARIANT B — Bayes as a sentence rather than a table.
+
+   Variant A (`.bayes`) is three equal columns of centred type. It is correct
+   and it is symmetrical, and Andreas read the symmetry as generated. So this
+   one is deliberately asymmetric:
+
+     · STORY order — assume, weigh, believe — not the textbook order. That is
+       the order a first-timer meets the idea in, and it gives the row a
+       direction to read in;
+     · the labels sit ABOVE the symbols, so the whole line scans as prose that
+       happens to contain maths, rather than as a header row over a data row;
+     · the prior is bigger than the other two and set in the WARM annotation
+       colour, not the cobalt everything else uses — one deliberate second
+       colour, for the one term the talk is about;
+     · the fan hangs off the LEFT-hand term. That is what actually breaks the
+       grid: nothing else on the slide is centred on the page.
+
+   Both variants are kept; delete the loser.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.bayes2 {
+	--anno: #c2521f;
+}
+.reveal .slides section.bayes2 .lede {
+	font-family: var(--r-heading-font); font-size: 0.833em; line-height: 1.5;
+	color: var(--fg-muted); text-align: left;
+	max-width: 92%; margin: 0.5em auto 1.4em;
+}
+.reveal .slides section.bayes2 .lede em { font-style: italic; font-weight: 600; color: var(--fg);
+}
+.reveal .slides section.bayes2 .lede b { color: var(--fg); font-weight: 600; }
+
+/* the sentence: three beats and two operators, sized by importance not by grid */
+.reveal .slides section.bayes2 .story,
+.reveal .slides section.bayes2 .hang {
+	display: grid;
+	grid-template-columns: 1.14fr auto 1.32fr auto 1.24fr;
+	column-gap: 0.8em; align-items: end;
+	width: 96%; margin: 0 auto;
+}
+.reveal .slides section.bayes2 .hang { height: 1.5em; align-items: start; }
+
+.reveal .slides section.bayes2 .beat { text-align: center; }
+.reveal .slides section.bayes2 .blab {
+	font-size: 0.833em; line-height: 1.4; color: var(--fg);
+	margin: 0 auto 0.55em; min-height: 2.9em;
+	/* flex, so labels of different lengths bottom-align and the three symbols sit
+	   on one line. The single <span> child is load-bearing: a flex container turns
+	   each text node into its own item and drops the whitespace between them, so
+	   "before" would weld itself to the words on either side. */
+	display: flex; align-items: flex-end; justify-content: center;
+}
+.reveal .slides section.bayes2 .blab em { font-style: italic; font-weight: 600; }
+.reveal .slides section.bayes2 .bsym { font-size: 1.62em; line-height: 1.1; }
+.reveal .slides section.bayes2 .bname {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.78em; line-height: 1.35; color: var(--fg-muted); margin-top: 0.5em;
+	/* every name reserves the rule the prior actually draws, so the three beats end
+	   at the same height and the symbols sit on one line */
+	border-bottom: 2px solid transparent; padding-bottom: 0.4em;
+}
+.reveal .slides section.bayes2 .bop {
+	align-self: center; color: var(--fg-muted);
+	font-family: var(--r-heading-font); font-size: 1.35em; line-height: 1;
+	padding-bottom: 0.5em;
+}
+
+/* the one term the talk is about: bigger, warm, and the only thing underlined */
+.reveal .slides section.bayes2 .beat.choice .bsym { font-size: 2.05em; color: var(--anno); }
+.reveal .slides section.bayes2 .beat.choice .blab { color: var(--fg); }
+.reveal .slides section.bayes2 .beat.choice .bname {
+	color: var(--anno); border-bottom-color: var(--anno);
+	display: inline-block;
+}
+
+/* the fan hangs off the PRIOR, which is now the last column — still nothing on
+   this slide is centred on the page, which is what keeps it off the grid */
+.reveal .slides section.bayes2 .drop {
+	grid-column: 5; width: 0; height: 100%; margin: 0 auto;
+	border-left: 1.6px solid var(--anno);
+}
+
+.reveal .slides section.bayes2 .choices {
+	width: 96%; margin: 0 auto; padding-top: 0.9em;
+	border-top: 1.6px solid var(--anno);
+	display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 0.2em;
+}
+.reveal .slides section.bayes2 .ch { padding: 0 1em; text-align: left; }
+.reveal .slides section.bayes2 .ch + .ch { border-left: 1px solid var(--hair); }
+.reveal .slides section.bayes2 .ch .n {
+	display: inline-block; font-family: var(--r-heading-font); font-weight: 600;
+	font-size: 0.833em; color: var(--anno); margin-right: 0.45em;
+}
+.reveal .slides section.bayes2 .ch .cn {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.855em; color: var(--fg);
+}
+.reveal .slides section.bayes2 .ch.learned .cn { font-style: italic; color: var(--accent); }
+.reveal .slides section.bayes2 .ch .ca {
+	display: block; font-size: 0.833em; line-height: 1.45; color: var(--fg-muted); margin-top: 0.35em;
+}
+.reveal .slides section.bayes2 .ch .ca b { color: var(--fg); font-weight: 600; }
+.reveal .slides section.bayes2 .note.carry {
+	font-size: 0.833em; margin: 1.3em auto 0; max-width: 84%;
+}
+
+/* the label's single child, so the flex bottom-alignment has one item to align */
+.reveal .slides section.bayes2 .blab > span { display: block; max-width: 16em; }
+
+
+/* ---------------------------------------------------------------------------
+   A1.2 — the inverse problem, and why mass mapping is hard.  New 2026-09-03.
+   Two lanes, one per direction. The forward lane ends in a single answer; the
+   inverse lane ends in a FAN of candidate maps, which is the whole argument.
+   The fan is one asset under three filters -- genuinely different
+   reconstructions of the same shear, so the picture is not a metaphor.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.invprob .ip-lane {
+	position: relative;
+	border: 1px solid var(--edge); border-radius: 10px;
+	padding: 1.05em 1.5em 0.95em; margin: 1em auto 0; max-width: 88%;
+	background: color-mix(in srgb, var(--surface) 55%, transparent);
+}
+.reveal .slides section.invprob .ip-lane.inv {
+	border-color: color-mix(in srgb, var(--accent) 45%, var(--edge));
+}
+.reveal .slides section.invprob .ip-tag {
+	position: absolute; top: -0.68em; left: 1.3em;
+	background: var(--bg); padding: 0 0.55em;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; color: var(--fg-muted);
+}
+.reveal .slides section.invprob .ip-lane.inv .ip-tag { color: var(--accent); }
+
+.reveal .slides section.invprob .ip-row {
+	display: flex; align-items: center; justify-content: center; gap: 1.6em;
+}
+.reveal .slides section.invprob .ip-cell { margin: 0; text-align: center; }
+.reveal .slides section.invprob .ip-cell img {
+	display: block; width: 112px; height: 112px; object-fit: cover;
+	border-radius: 6px; border: 1px solid var(--edge);
+	/* lift reveal's 95% cap so the box is the size we asked for */
+	margin: 0; max-width: none; max-height: none; box-shadow: none;
+}
+.reveal .slides section.invprob .ip-cell figcaption {
+	font-size: 0.833em; color: var(--fg-muted); margin-top: 0.4em;
+}
+
+.reveal .slides section.invprob .ip-arrow {
+	display: flex; flex-direction: column; align-items: center;
+	gap: 0.3em; min-width: 118px;
+}
+.reveal .slides section.invprob .ip-op { font-size: 0.833em; color: var(--fg); }
+.reveal .slides section.invprob .ip-shaft {
+	display: block; position: relative; width: 100%; height: 0;
+	border-top: 1.5px solid var(--fg-muted);
+}
+.reveal .slides section.invprob .ip-shaft::after {
+	content: ""; position: absolute; right: -1px; top: -4.5px;
+	border-left: 8px solid var(--fg-muted);
+	border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent;
+}
+.reveal .slides section.invprob .ip-lane.inv .ip-shaft { border-top-color: var(--accent); }
+.reveal .slides section.invprob .ip-lane.inv .ip-shaft::after { border-left-color: var(--accent); }
+
+/* the fan of candidate reconstructions */
+.reveal .slides section.invprob .ip-fan {
+	position: relative; width: 200px; height: 152px; flex: 0 0 auto;
+}
+.reveal .slides section.invprob .ip-card {
+	position: absolute; width: 112px; height: 112px;
+	border-radius: 6px; overflow: hidden; background: var(--surface);
+	border: 1px solid color-mix(in srgb, var(--fg-muted) 55%, transparent);
+}
+.reveal .slides section.invprob .ip-card img {
+	display: block; width: 100%; height: 100%; object-fit: cover;
+	margin: 0; max-width: none; max-height: none; border: 0; box-shadow: none;
+}
+.reveal .slides section.invprob .ip-card.c1 { left: 0;    top: 14px; z-index: 3; }
+.reveal .slides section.invprob .ip-card.c2 { left: 44px; top: 7px;  z-index: 2; }
+.reveal .slides section.invprob .ip-card.c3 { left: 88px; top: 0;    z-index: 1; }
+/* The filters that used to fake a difference are gone (2026-09-03): the three
+   cards are now genuinely different reconstructions of the same field. */
+.reveal .slides section.invprob .ip-fancap {
+	position: absolute; left: -16px; right: -16px; bottom: 0; z-index: 4;
+	text-align: center; font-size: 0.833em; color: var(--accent);
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+}
+
+.reveal .slides section.invprob .ip-verdict {
+	/* sits INSIDE the row, so the lane is filled left-to-right rather than
+	   leaving the picture huddled in the middle of a very wide box */
+	flex: 0 1 24%; text-align: left; align-self: center;
+	font-size: 0.833em; color: var(--fg-muted); line-height: 1.5;
+	margin: 0; padding-left: 1.1em; border-left: 2px solid var(--edge);
+}
+.reveal .slides section.invprob .ip-lane.inv .ip-verdict {
+	border-left-color: color-mix(in srgb, var(--accent) 45%, var(--edge));
+}
+.reveal .slides section.invprob .ip-verdict b { color: var(--fg); }
+.reveal .slides section.invprob .takeaway {
+	margin: 1em auto 0; max-width: 90%; font-size: 0.833em;
+}
+
+
+/* ---------------------------------------------------------------------------
+   MCALens, rebuilt 2026-09-03.  The decomposition is set as two labelled terms
+   either side of a plus, rather than as an \underbrace equation -- the room can
+   read a two-column comparison, and cannot read an underbrace at the back.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.mca .mca-split {
+	display: flex; align-items: stretch; justify-content: center;
+	gap: 0.9em; margin: 1.1em auto 0; max-width: 90%;
+}
+.reveal .slides section.mca .mca-lhs,
+.reveal .slides section.mca .mca-plus {
+	align-self: center; font-size: 0.95em; color: var(--fg-muted);
+}
+.reveal .slides section.mca .mca-term {
+	position: relative; overflow: hidden;
+	flex: 1 1 0; text-align: center;
+	border: 1px solid var(--edge); border-radius: 10px;
+	padding: 0.75em 1em 0.85em;
+	background: color-mix(in srgb, var(--surface) 60%, transparent);
+}
+.reveal .slides section.mca .mca-term.ng {
+	border-color: color-mix(in srgb, var(--accent) 50%, var(--edge));
+	background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+/* Each card wears the field it describes: a smooth convergence patch behind the
+   Gaussian term, the same patch after sparse recovery behind the non-Gaussian one.
+   The texture sits in a ::before under a paper wash, so the card stays readable —
+   raise --mca-tex-ink to make the maps louder, lower it to make them quieter. */
+.reveal .slides section.mca .mca-term {
+	--mca-tex-ink: 0.34;
+}
+.reveal .slides section.mca .mca-term::before {
+	content: ""; position: absolute; inset: 0; z-index: 0;
+	background-image: var(--mca-tex);
+	background-size: cover; background-position: center;
+	opacity: var(--mca-tex-ink);
+	filter: saturate(0.85);
+}
+.reveal .slides section.mca .mca-term.g  { --mca-tex: url(../assets/figures/maps/kappa_texture_gaussian.png); }
+.reveal .slides section.mca .mca-term.ng { --mca-tex: url(../assets/figures/maps/kappa_texture_sparse.png); }
+.reveal .slides section.mca .mca-term > * { position: relative; z-index: 2; }
+.reveal .slides section.mca .mca-sym { display: block; font-size: 0.9em; }
+.reveal .slides section.mca .mca-term.ng .mca-sym { color: var(--accent); }
+.reveal .slides section.mca .mca-name {
+	display: block; margin-top: 0.15em;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; color: var(--fg);
+}
+.reveal .slides section.mca .mca-term p {
+	margin: 0.55em 0 0; font-size: 0.86em; line-height: 1.35; color: var(--fg);
+}
+.reveal .slides section.mca .mca-term p b { color: var(--fg); }
+.reveal .slides section.mca .mca-term.ng p b { color: var(--accent); }
+
+.reveal .slides section.mca .block.lecture { margin: 1.2em auto 0; max-width: 90%; }
+.reveal .slides section.mca .block.lecture .block-title { font-size: 0.833em; }
+
+/* the proximal step sits UNDER the algorithm block, unboxed — a second box in a
+   row reads as a stack of boxes rather than as a consequence of the first. */
+/* Centred, not left-aligned: the row is a formula and its gloss, and with the
+   grid shrink-wrapped (see .mca-proxrow) the pair sits under the middle of the
+   block above instead of hanging off its left edge.  The bullets keep their own
+   left alignment - centred list items read as a poster. */
+.reveal .slides section.mca .mca-prox {
+	max-width: 96%; margin: 1.1em auto 0; text-align: center;
+}
+.reveal .slides section.mca .mca-prox .kicker { margin-bottom: 0.35em; }
+.reveal .slides section.mca .mca-prox .points {
+	font-size: 0.833em; margin: 0; text-align: left;
+}
+.reveal .slides section.mca .mca-loop {
+	display: flex; align-items: center; justify-content: center; gap: 1.1em;
+	margin: 0.1em 0 0; font-size: 0.833em; color: var(--fg);
+}
+.reveal .slides section.mca .mca-cyc { font-size: 1.5em; color: var(--accent); line-height: 1; }
+.reveal .slides section.mca .mca-sub {
+	margin: 0.5em 0 0; font-size: 0.833em; line-height: 1.5;
+	color: var(--fg-muted); text-align: center;
+}
+.reveal .slides section.mca .mca-sub b { color: var(--fg); }
+
+.reveal .slides section.mca .callout {
+	margin: 0.9em auto 0; max-width: 90%; padding: 0.6em 1.1em;
+	font-size: 0.833em; line-height: 1.5;
+}
+.reveal .slides section.mca .mca-fwd {
+	display: block; margin-top: 0.4em; padding-top: 0.4em;
+	border-top: 1px dashed var(--edge); color: var(--fg-muted);
+}
+
+
+/* ---------------------------------------------------------------------------
+   THE STAKES — cut to two lines 2026-09-08.  Was a weighted two-column contrast
+   (reconstruction error on the left, the open question on the right) with a QR
+   reference under it; the contrast is now spoken and the QR sits on the divider.
+   What is left is the question in the title and one pull line, so the pull is
+   set larger than the theme default, which was sized as a footnote.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.stakes .pull {
+	font-size: 0.95em; line-height: 1.4; margin-top: 2.2em; max-width: 94%;
+}
+
+
+/* ---------------------------------------------------------------------------
+   A1.2 — the four panels beside a key of what each method ASSUMES.  Adapted
+   2026-09-03.  The RMSE table that used to sit here is gone: it ranked the maps
+   on fidelity, which is precisely the metric this part of the talk argues is
+   the wrong one to choose a reconstruction by.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .mmrow {
+	display: flex; align-items: center; justify-content: center;
+	gap: 1.6em; margin: 0.7em auto 0; max-width: 96%;
+}
+.reveal .slides section .mmrow .massmaps { flex: 0 1 58%; margin: 0; }
+.reveal .slides section .mmrow .massmaps img { width: 100%; max-width: none; }
+.reveal .slides section .mmkey { flex: 0 1 36%; text-align: left; }
+.reveal .slides section .mmkey-head {
+	display: block; margin-bottom: 0.55em;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.78em; color: var(--fg-muted);
+}
+.reveal .slides section .mmitem {
+	border-left: 2px solid var(--edge);
+	padding: 0.3em 0 0.3em 0.75em; margin-bottom: 0.5em;
+}
+.reveal .slides section .mmitem.truth { border-left-style: dashed; }
+.reveal .slides section .mmitem.sota { border-left-color: var(--accent); }
+.reveal .slides section .mmname {
+	display: flex; align-items: center; gap: 0.5em;
+	font-size: 0.875em; font-weight: 600; color: var(--fg);
+}
+.reveal .slides section .mmitem.sota .mmname { color: var(--accent); }
+.reveal .slides section .mmwhat {
+	display: block; margin-top: 0.12em;
+	font-size: 0.78em; line-height: 1.5; color: var(--fg-muted);
+}
+.reveal .slides section .mmwhat b { color: var(--fg); font-weight: 600; }
+.reveal .slides section .mmitem.sota .mmwhat b { color: var(--accent); }
+/* badges — reuse the .mtag look from .methodcards */
+.reveal .slides section .mmname .mtag {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; font-weight: 400; color: var(--fg-muted);
+	border: 1px solid var(--edge); border-radius: 999px;
+	padding: 0.05em 0.6em; white-space: nowrap;
+}
+.reveal .slides section .mmname .mtag.sota {
+	color: var(--accent); border-color: color-mix(in srgb, var(--accent) 55%, var(--edge));
+	background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* A1.3 — forward pointers on the two steps Part 1 deliberately holds fixed.
+   Added 2026-09-03: the compression and inference steps belong to Parts 3-4,
+   and saying so on the slide stops the room wondering why they flash past. */
+.reveal .slides section .fstep .fwd {
+	display: block; margin-top: 0.45em; padding-top: 0.4em;
+	border-top: 1px dashed var(--edge);
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	font-size: 0.833em; color: var(--accent); line-height: 1.3;
+}
+
+
+/* ---------------------------------------------------------------------------
+   The real DES analysis, shown before our own chain so the chain reads as a
+   deliberate simplification. New 2026-09-03.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.despipe .dpfig { width: 80%; margin: 0.85em auto 0; }
+.reveal .slides section.despipe .dpfig img {
+	display: block; width: 100%; height: auto; margin: 0;
+	max-width: none; max-height: none; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.despipe .dpfig figcaption {
+	text-align: right; font-size: 0.833em; color: var(--fg-muted); margin-top: 0.3em;
+}
+.reveal .slides section.despipe .note { font-size: 0.833em; margin-top: 0.6em; max-width: 88%; }
+
+
+/* ---------------------------------------------------------------------------
+   RAIL and PULL — shared, 2026-09-03.  Two components introduced to get the
+   deck off its one-container habit: every element had become a rounded box with
+   a hairline, so nothing had rank and the whole thing read as machine-set.
+
+   .rail  — a pipeline drawn as a ruled line with stops on it instead of a row
+            of cards.  Add .on to the stop(s) the slide is actually about: they
+            take the accent, in the ink AND in the segment of rule under them,
+            so "this is the part that matters" is carried by the drawing.
+            Each stop paints its own segment of the line, so the rule stays
+            continuous however many stops there are.
+   .pull  — a closing line set as a pull quote: one rule above, serif, ranged
+            left.  Replaces the reflex of ending every slide with a fifth box.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .rail {
+	position: relative;
+	display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+	gap: 0 1.6em; margin: 1.6em auto 0; max-width: 92%;
+}
+.reveal .slides section .rail .rstop {
+	position: relative;
+	display: grid; grid-template-rows: 2.1em 12px auto; justify-items: center; text-align: center;
+}
+/* the rule: each stop draws its own span of it, plus half the gap either side */
+.reveal .slides section .rail .rstop::before {
+	content: ""; position: absolute; left: -0.8em; right: -0.8em; top: calc(2.1em + 6px);
+	border-top: 1px solid var(--edge);
+}
+.reveal .slides section .rail .rstop:first-child::before { left: 18%; }
+.reveal .slides section .rail .rstop:last-child::before  { right: 18%; }
+.reveal .slides section .rail .rstop.on::before { border-top: 1.5px solid var(--accent); }
+
+.reveal .slides section .rail .rstop .n {
+	align-self: center; font-size: 0.833em; line-height: 1.2; color: var(--fg-muted);
+}
+.reveal .slides section .rail .rstop.on .n { color: var(--fg); }
+.reveal .slides section .rail .rstop .d {
+	width: 9px; height: 9px; border-radius: 50%; align-self: center; z-index: 1;
+	background: var(--bg); border: 1.5px solid var(--fg-muted);
+}
+.reveal .slides section .rail .rstop.on .d { background: var(--accent); border-color: var(--accent); }
+.reveal .slides section .rail .rstop .s,
+.reveal .slides section .rail .rstop .s2,
+.reveal .slides section .rail .rstop .tnote {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); line-height: 1.35;
+}
+.reveal .slides section .rail .rstop .s  { margin-top: 0.45em; font-size: 0.833em; color: var(--fg-muted); }
+.reveal .slides section .rail .rstop .s2 { margin-top: 0.35em; font-size: 0.833em;  color: var(--fg-muted); opacity: 0.8; }
+.reveal .slides section .rail .rstop .tnote { margin-top: 0.5em; font-size: 0.833em; color: var(--accent); }
+
+.reveal .slides section .pull {
+	max-width: 92%; margin: 1.9em auto 0; padding-top: 0.7em;
+	border-top: 1px solid var(--edge);
+	font-family: var(--label); font-style: normal;
+	font-size: 0.875em; line-height: 1.45; color: var(--fg); text-align: left;
+}
+.reveal .slides section .pull i { color: var(--fg-muted); }
+
+
+/* ---------------------------------------------------------------------------
+   UNCERTAINTY (§2) — the two steps, asymmetric: the loss gets the width, the
+   calibration is an aside behind one hairline.  No cards.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.uq .uqbody {
+	display: grid; grid-template-columns: 1.45fr 1fr; gap: 0 2.2em;
+	margin: 2.8em auto 0; max-width: 92%; text-align: left;
+}
+.reveal .slides section.uq .uqaside {
+	padding-left: 2.2em; border-left: 1px solid var(--edge); margin-left: -1.1em;
+}
+.reveal .slides section.uq .uqbody p {
+	margin: 0.6em 0 0; font-size: 0.82em; line-height: 1.4; color: var(--fg);
+}
+.reveal .slides section.uq .uqbody p b { color: var(--fg); }
+.reveal .slides section.uq .uqbody .kicker { margin-bottom: 0.15em; }
+.reveal .slides section.uq .uqloss { text-align: center; margin: 0.35em 0 0.1em !important; }
+.reveal .slides section.uq .uqloss .katex { font-size: 1.05em; color: var(--fg); }
+
+
+/* the forward-pointer paragraph under the rail: a quiet note, so the pull quote
+   above it stays the loudest thing on the slide. */
+/* ---------------------------------------------------------------------------
+   A1.3 — the pipeline held fixed.  Rebuilt 2026-09-08 as a SCHEMATIC of the
+   paper's own pipeline (Sect. 4 of Tersenov+ 2025), deliberately unlike the
+   recurring photo chain: six nodes on a flow line, stroke glyphs for the fixed
+   steps, and for the step that varies the three reconstructions of one field
+   from the ill-posed slide, stacked as one map until the click and then fanned.
+   One click, keyed on reveal's own `.visible` on the `.fixstep` marker, so
+   ?print-pdf exports both states: the rest stands down, the held-fixed notes
+   appear, the varying node takes the accent.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.fixedpipe .fixstep { display: inline; padding: 0; margin: 0; line-height: 0; }
+.reveal .slides section.fixedpipe .ppipe {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr auto 1.15fr auto 1fr auto 1.05fr auto 1fr;
+	align-items: start; column-gap: 0.2em;
+	width: 96%; margin: 1.5em auto 0; text-align: center;
+}
+.reveal .slides section.fixedpipe .pnode {
+	display: flex; flex-direction: column; align-items: center;
+	padding: 0.45em 0.25em 0.5em; border: 1px solid transparent; border-radius: 8px;
+	transition: opacity 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+/* every glyph box is the same square, so the flow line meets each one at its centre */
+.reveal .slides section.fixedpipe .pglyph {
+	width: 6em; height: 6em; margin-bottom: 0.5em; position: relative;
+	display: flex; align-items: center; justify-content: center; color: var(--fg-muted);
+}
+.reveal .slides section.fixedpipe .pglyph svg { width: 88%; height: 88%; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.reveal .slides section.fixedpipe .pglyph svg .frame { stroke-width: 1.4; opacity: 0.55; }
+.reveal .slides section.fixedpipe .pglyph svg .dot   { fill: currentColor; stroke: none; }
+.reveal .slides section.fixedpipe .pglyph svg .bar   { fill: currentColor; stroke: none; opacity: 0.5; }
+.reveal .slides section.fixedpipe .pglyph svg .inner { fill: currentColor; fill-opacity: 0.22; }
+.reveal .slides section.fixedpipe .pglyph svg .hair  { stroke-width: 1.2; stroke-dasharray: 3 3; opacity: 0.6; }
+.reveal .slides section.fixedpipe .pglyph .math { font-size: 0.95em; }
+.reveal .slides section.fixedpipe .pname {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.833em; line-height: 1.2; color: var(--fg);
+	transition: color 0.4s ease;
+}
+.reveal .slides section.fixedpipe .psub {
+	margin-top: 0.15em; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.833em; line-height: 1.3; color: var(--fg-muted);
+}
+/* the flow line: a rule with a head, sitting at glyph height */
+.reveal .slides section.fixedpipe .parw {
+	position: relative; width: 1.3em; height: 1px; background: var(--fg-muted);
+	margin-top: calc(0.45em + 3em); opacity: 0.8;
+	transition: opacity 0.4s ease;
+}
+.reveal .slides section.fixedpipe .parw::after {
+	content: ""; position: absolute; right: -1px; top: -3.5px;
+	border-left: 6px solid var(--fg-muted); border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+}
+
+/* the click: the rest stands down, the notes appear, the varying node is lit */
+.reveal .slides section.fixedpipe .pnode .fixnote {
+	margin-top: 0.4em; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.833em; line-height: 1.3;
+	color: var(--fg-muted); opacity: 0; transition: opacity 0.4s ease;
+}
+.reveal .slides section.fixedpipe .pnode.varies .fixnote { color: var(--accent); }
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .fixnote { opacity: 1; }
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .pnode:not(.varies),
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .parw { opacity: 0.45; }
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .pnode.varies {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .pnode.varies .pname { color: var(--accent); }
+
+/* the fan: three cards at 74 % of the glyph box, stacked dead centre until the
+   click, then the front one slides down-left and the back one up-right */
+.reveal .slides section.fixedpipe .pglyph.fan .fcard {
+	/* height: 74%, not aspect-ratio: the glyph box is already a fixed 6em square,
+	   so 74% of each axis is the same square and nothing has to be derived. The
+	   aspect-ratio form letterboxed the map on at least one renderer, leaving a
+	   white band under the picture where .fcard's own --surface showed through. */
+	position: absolute; left: 13%; top: 13%; width: 74%; height: 74%;
+	border-radius: 5px; overflow: hidden; background: var(--surface);
+	border: 1px solid color-mix(in srgb, var(--fg-muted) 55%, transparent);
+	transition: transform 0.5s ease;
+}
+/* reveal caps every img at 95 % of its box, which leaves a white strip on two
+   sides of a card; lift it, as the ill-posed slide's cards do */
+.reveal .slides section.fixedpipe .pglyph.fan .fcard img {
+	width: 100%; height: 100%; max-width: none; max-height: none;
+	object-fit: cover; display: block; margin: 0; border: 0; box-shadow: none;
+}
+.reveal .slides section.fixedpipe .pglyph.fan .fcard.c1 { z-index: 3; }
+.reveal .slides section.fixedpipe .pglyph.fan .fcard.c2 { z-index: 2; }
+.reveal .slides section.fixedpipe .pglyph.fan .fcard.c3 { z-index: 1; }
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .fcard.c1 { transform: translate(-17.5%, 17.5%); }
+.reveal .slides section.fixedpipe .fixstep.visible ~ .ppipe .fcard.c3 { transform: translate(17.5%, -17.5%); }
+
+.reveal .slides section.fixedpipe .pull { margin-top: 1.5em; }
+
+
+/* ---------------------------------------------------------------------------
+   PnPMass RESULTS — new 2026-09-03.  The headline plot at size, the mechanism
+   beside it, the honesty line last.  No cards: figures and rules only.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.pnpres .pr-grid {
+	display: grid; grid-template-columns: 1.02fr 1fr; gap: 0 2.2em;
+	margin: 1.2em auto 0; max-width: 94%; align-items: start; text-align: left;
+}
+.reveal .slides section.pnpres figure { margin: 0; }
+.reveal .slides section.pnpres .pr-main img {
+	width: 100%; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpres .pr-sigma { margin-top: 0.5em; }
+.reveal .slides section.pnpres .pr-sigma img {
+	width: 100%; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpres figcaption { font-size: 0.833em; line-height: 1.45; }
+.reveal .slides section.pnpres .pr-side p {
+	margin: 0.4em 0 0; font-size: 0.833em; line-height: 1.6; color: var(--fg-muted);
+}
+.reveal .slides section.pnpres .pr-side p b { color: var(--fg); }
+.reveal .slides section.pnpres .pr-side .kicker { margin: 0 0 0.1em; }
+.reveal .slides section.pnpres .pr-side p + .kicker { margin-top: 0.9em; }
+.reveal .slides section.pnpres .pr-side .kicker + p { margin-top: 0; }
+.reveal .slides section.pnpres .pull { margin-top: 1.2em; }
+.reveal .slides section.pnpres .pr-note {
+	max-width: 94%; margin: 0.65em auto 0; text-align: left;
+	font-size: 0.833em; line-height: 1.6; color: var(--fg-muted);
+}
+.reveal .slides section.pnpres .pr-note b { color: var(--fg); }
+.reveal .slides section.pnpres .pr-points {
+	display: block; list-style: none; margin: 0.2em 0 0; padding: 0;
+	font-size: 0.86em; line-height: 1.4; color: var(--fg);
+}
+.reveal .slides section.pnpres .pr-points li {
+	position: relative; margin: 0.45em 0 0; padding-left: 1.1em;
+}
+.reveal .slides section.pnpres .pr-points li::before {
+	content: ""; position: absolute; left: 0; top: 0.55em;
+	width: 0.5em; height: 0; border-top: 1px solid var(--accent);
+}
+.reveal .slides section.pnpres .pr-points li b { color: var(--fg); }
+.reveal .slides section.pnpres .pr-points + .kicker { margin-top: 1em; }
+.reveal .slides section.uq .uqwhy {
+	max-width: 92%; margin: 1.6em auto 0; text-align: left;
+	font-size: 0.8em; line-height: 1.4; color: var(--fg);
+}
+.reveal .slides section.uq .uqwhy b { color: var(--fg); }
+.reveal .slides section.uq .uqwhy .kicker { display: inline; margin-right: 0.55em; }
+.reveal .slides section.uq .uqbody { margin-top: 1.3em; }
+
+/* the movement-II divider's subtitle: the h2 carries the claim, this only
+   places the two parts, so it must not compete with it. */
+.reveal .slides section.actopen .movsub {
+	max-width: 68%; margin: 0.6em auto 0;
+	font-size: 0.833em; line-height: 1.5; color: var(--fg-muted);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Generic short-point list — a claim per line, an accent tick instead of a
+   bullet.  .pnpres had its own copy; this is the shared one.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .points {
+	display: block; list-style: none; margin: 0.6em 0 0; padding: 0;
+	font-size: 0.875em; line-height: 1.5; color: var(--fg); text-align: left;
+}
+.reveal .slides section .points li { position: relative; margin: 0.5em 0 0; padding-left: 1.1em; }
+.reveal .slides section .points li::before {
+	content: ""; position: absolute; left: 0; top: 0.6em;
+	width: 0.5em; height: 0; border-top: 1px solid var(--accent);
+}
+.reveal .slides section .points li b { color: var(--fg); }
+
+/* ---------------------------------------------------------------------------
+   THE 2-POINT BASELINE — the animation on the left, what it buys on the right.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.twopt .tp-grid {
+	display: grid; grid-template-columns: 1fr 1.1fr; gap: 0 2.4em;
+	margin: 1.2em auto 0; max-width: 94%; align-items: center; text-align: left;
+}
+.reveal .slides section.twopt .tp-fig { width: 100%; min-height: 52vh; }
+.reveal .slides section.twopt .tp-fig video,
+.reveal .slides section.twopt .tp-fig img {
+	max-height: 56vh; max-width: 100%; width: auto; height: auto;
+	display: block; margin: 0 auto;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.twopt .tp-fig figure { margin: 0; }
+.reveal .slides section.twopt .tp-fig figcaption { font-size: 0.833em; text-align: center; }
+.reveal .slides section.twopt .tp-side p {
+	margin: 0.4em 0 0; font-size: 0.95em; line-height: 1.4; color: var(--fg);
+}
+.reveal .slides section.twopt .tp-side .kicker { margin-bottom: 0.1em; }
+.reveal .slides section.twopt .pull { margin-top: 1.1em; }
+
+
+/* ---------------------------------------------------------------------------
+   TYPE SCALE, set 2026-09-03 after these slides read as too small from the back
+   of the room.  Main content copy is 0.62-0.68em; anything at 0.42-0.48em must
+   be a caption, a source line or a footnote — never the argument itself.
+   --------------------------------------------------------------------------- */
+
+
+/* the 2-point slide's points sit just under the lead sentence, so they take a
+   step down from it rather than matching it. */
+.reveal .slides section.twopt .points { font-size: 0.86em; }
+
+/* the phases slide: figure across the top, three points beneath it at reading size */
+.reveal .slides section .points.tp-points {
+	max-width: 86%; margin: 1.1em auto 0; font-size: 0.85em;
+}
+
+/* the phases slide: figure across the top, three points beneath it at reading size */
+.reveal .slides section .points.tp-points {
+	max-width: 86%; margin: 1.1em auto 0; font-size: 0.85em;
+}
+
+
+/* ---------------------------------------------------------------------------
+   ACT 3 TEACHING SLIDES — rebuilt 2026-09-04 out of the LAM originals, which
+   set their content in bullet lists at 0.9em inside bordered blocks and left
+   half the slide empty.  Figure and words share the width; the type is sized to
+   the room, not to the scale.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.teach .tc-grid {
+	display: grid; grid-template-columns: 1.35fr 1fr; gap: 0 2.4em;
+	margin: 1.3em auto 0; max-width: 94%; align-items: center; text-align: left;
+}
+.reveal .slides section.teach figure { margin: 0; }
+.reveal .slides section.teach figure img {
+	width: 100%; height: auto; max-height: 58vh; object-fit: contain;
+	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.teach figcaption { font-size: 0.833em; line-height: 1.45; margin-top: 0.5em; }
+.reveal .slides section.teach .tc-side p {
+	margin: 0 0 0.5em; font-size: 0.82em; line-height: 1.4; color: var(--fg); text-align: left;
+}
+.reveal .slides section.teach .tc-side .points { font-size: 0.82em; }
+.reveal .slides section.teach .l1eq { text-align: center; }
+.reveal .slides section.teach .l1eq .katex { font-size: 0.8em; }
+
+.reveal .slides section.teach .tc-wide { margin: 1.2em auto 0; max-width: 92%; }
+.reveal .slides section.teach .tc-wide img { max-height: 34vh; width: 100%; object-fit: contain; }
+.reveal .slides section.teach .points.tc-points {
+	max-width: 92%; margin: 1em auto 0; font-size: 0.84em;
+}
+
+/* the HOS-gain slide is one big figure and one line under it */
+.reveal .slides section.hosgain .hg-fig { margin: 0.8em auto 0; max-width: 100%; }
+/* 62vh let the corner plot push the caption and the closing line off the bottom
+   once the four-curve figure went in on 2026-09-06.  The binding constraint has to
+   be the height, not the width: this figure is nearly square, so at any sensible
+   width it is taller than the space between the title and the pull line. */
+.reveal .slides section.hosgain .hg-fig img {
+	width: auto; height: auto; max-height: 60vh; max-width: 100%;
+	display: block; margin: 0 auto; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.hosgain .hg-fig figcaption { font-size: 0.833em; text-align: center; margin-top: 0.5em; }
+.reveal .slides section.hosgain .pull { margin-top: 1em; }
+
+/* the scoreboard: four peer questions, so four cards is right — but not at
+   caption size, and not floating in the top half of the slide. */
+.reveal .slides section .coreq.scoreboard .qcard p { font-size: 0.86em !important; line-height: 1.35; }
+.reveal .slides section .coreq.scoreboard .qtab { font-size: 0.833em !important; }
+
+/* a figure that is the whole point of its slide gets the height to be one */
+.reveal .slides section img.figfill {
+	display: block; margin: 1.2em auto 0;
+	width: 92%; height: auto; max-height: 62vh; max-width: 92%;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section img.figfill.wide { max-height: 42vh; }
+/* the l1-norm slide's figure row and its definition both want more room */
+.reveal .slides section.teach .l1eq .katex { font-size: 1em; }
+
+/* the l1-norm slide: a wide band strip, its definition, then the three points */
+.reveal .slides section.teach .l1eq { margin: 0.7em auto 0; }
+
+/* the baryon-safe slide: two claims and their floor, unboxed */
+.reveal .slides section .hos-side { text-align: left; }
+.reveal .slides section .hos-side .points { font-size: 0.86em; margin-top: 0.2em; }
+.reveal .slides section .hos-side .kicker { margin: 1.1em 0 0; }
+.reveal .slides section .hos-side .kicker:first-child { margin-top: 0; }
+
+/* a wide figure that is itself the argument gets more of the slide */
+.reveal .slides section.teach .tc-wide.tall img { max-height: 40vh; }
+.reveal .slides section.teach .tc-wide.tall { margin-top: 0.7em; }
+
+/* the classical-inference backup slide.  It borrows .bayes2's sentence layout —
+   label above, symbol, name below — because that is how this deck has already
+   taught the room to read a Bayes formula. */
+.reveal .slides section.bayesclass .lede.carry {
+	margin: 1.5em auto 0; font-size: 0.833em; color: var(--fg);
+}
+.reveal .slides section.bayesclass .bayeseq { margin: 0.5em auto 0; max-width: 96%; }
+.reveal .slides section.bayesclass .bayeseq .katex { font-size: 1.08em; }
+.reveal .slides section.bayesclass .pull { margin-top: 1.5em; }
+
+/* the lower half: the likelihood written out and the sampler line on the left,
+   the chain running beside them on the right, the two blocks centred on each
+   other rather than stacked. */
+.reveal .slides section.bayesclass .lowergrid {
+	display: grid; grid-template-columns: 1fr auto; gap: 0 2.4em;
+	align-items: center; max-width: 94%; margin: 1.3em auto 0;
+}
+.reveal .slides section.bayesclass .lg-left { min-width: 0; }
+.reveal .slides section.bayesclass .lowergrid .lede.carry { margin: 0; }
+.reveal .slides section.bayesclass .lowergrid .lede.carry + .bayeseq { margin-top: 0.5em; }
+.reveal .slides section.bayesclass .bayeseq + .lede.carry { margin-top: 0.9em; }
+.reveal .slides section.bayesclass .samplegif { margin: 0; }
+.reveal .slides section.bayesclass .samplegif img {
+	width: 330px; max-width: 330px; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+
+/* KaTeX centres display math; here it belongs on the same left edge as the
+   sentences above and below it. */
+.reveal .slides section.bayesclass .bayeseq,
+.reveal .slides section.bayesclass .bayeseq .katex-display { text-align: left; }
+/* KaTeX's own rule is `.katex-display > .katex { text-align: center }`, which the
+   parent alone cannot beat — target the child. */
+.reveal .slides section.bayesclass .bayeseq .katex-display > .katex { text-align: left; }
+
+/* The operators between the three terms.  Two separate problems: the beats here
+   are wide, so 1.35em reads as punctuation rather than as the joins of a
+   sentence; and the proportional-to glyph is drawn far smaller than the times in
+   this serif, so matching font sizes does NOT match optical sizes.  They are
+   therefore sized independently, and both are bottom-aligned with a padding that
+   puts them on the symbols' optical centre rather than the row's. */
+.reveal .slides section.bayesclass .bop {
+	align-self: end; line-height: 1;
+	font-size: 2.1em; padding-bottom: 0.78em;
+}
+.reveal .slides section.bayesclass .bop.rel {
+	font-size: 3.4em; padding-bottom: 0.40em;
+}
+
+/* ---------------------------------------------------------------------------
+   NORMALIZING FLOWS — the figure carries the idea, the change of variables sits
+   under it on the left, and what it buys you on the right.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.flowslide .flowbody {
+	display: grid; grid-template-columns: 1fr auto; gap: 0 2.4em;
+	max-width: 94%; margin: 1.1em auto 0; align-items: center; text-align: left;
+}
+.reveal .slides section.flowslide .fl-left p:not(.floweq) {
+	margin: 0; font-size: 0.833em; line-height: 1.45; color: var(--fg);
+}
+.reveal .slides section.flowslide .floweq { margin: 0.5em 0 0 !important; font-size: 1em; }
+.reveal .slides section.flowslide .floweq .katex { font-size: 0.95em; }
+.reveal .slides section.flowslide .floweq .katex-display > .katex { text-align: left; }
+.reveal .slides section.flowslide .fl-left .points { margin-top: 0.7em; font-size: 0.833em; }
+
+.reveal .slides section.flowslide .pull { margin-top: 1.1em; }
+
+/* 2026-09-11: the Jacobian bullet is parked and the surviving point is the slide's
+   conclusion, so it sits under the whole body as a takeaway rather than as the second
+   item of a two-item list. Appended last for these selectors — REVEAL-GOTCHAS §4b. */
+.reveal .slides section.flowslide .takeaway.flowtake {
+	margin: 1.1em auto 0; max-width: 96%; font-size: 0.86em;
+}
+
+/* ---------------------------------------------------------------------------
+   GENERATIVE MODELLING — the dark slide in a light deck.  It carries the ML
+   framing before the flow slide, and the change of ground is the point.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.genmodel .gm-lede {
+	max-width: 92%; margin: 0.7em auto 0; text-align: left;
+	font-size: 0.875em; line-height: 1.45; color: var(--fg);
+}
+.reveal .slides section.genmodel .gm-fig { margin: 1.1em auto 0; max-width: 88%; }
+.reveal .slides section.genmodel .gm-fig img {
+	width: 100%; height: auto; max-height: 38vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.genmodel .points.gm-points {
+	max-width: 92%; margin: 1.2em auto 0; font-size: 0.855em;
+}
+.reveal .slides section.genmodel .pull { max-width: 92%; margin-top: 1.1em; }
+
+/* ---------------------------------------------------------------------------
+   SBI, in general — ONE diagram, not three panels.  Split apart, the procedure
+   stopped reading as a procedure: the (theta, x) pairs have to be seen
+   travelling from the simulator into the network, and the trained network has
+   to be seen producing the posterior.  The stages are marked by brackets
+   underneath instead.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.sbigen .sbi-lede {
+	max-width: 94%; margin: 0.7em auto 0; text-align: left;
+	font-size: 0.84em; line-height: 1.45; color: var(--fg);
+}
+/* the three builds are stacked and revealed in turn — same canvas, same crop, so
+   the figure grows rather than jumping. */
+/* the r-stack is a grid; without a definite width it shrink-wraps to the
+   intrinsic image size, so the width has to be set here, not on the img. */
+.reveal .slides section.sbigen .sbi-fig { margin: 0.8em auto 0; width: 97%; max-width: 97%; }
+/* px, not vh: vh resolves against the browser window, not the 1200x720 canvas,
+   so the same deck sized this figure differently on a laptop and a projector.
+   560 is the vertical budget left by the title and the lede. */
+.reveal .slides section.sbigen .sbi-fig img {
+	/* max-width: none — reveal caps every slide image at 95%, so width: 100%
+	   was really 95% (1105.8 of 1164px). And `margin: 0` overrode the
+	   `margin: auto` reveal puts on .r-stack children, so that narrower image
+	   sat flush left in its grid cell: the figure read 29px left of centre. */
+	width: 100%; max-width: none; height: auto; max-height: 560px; object-fit: contain;
+	margin: 0 auto; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.sbigen .pull { max-width: 94%; margin-top: 1em; }
+
+/* the pop-over: a card that lands ON the slide rather than replacing it — the
+   triptych stays visible around it, so the aside reads as an aside. */
+.reveal .slides section.genmodel { position: relative; }
+.reveal .slides section.genmodel .popover {
+	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);
+	z-index: 30; width: 74%; padding: 1.1em 1.2em 1.05em;
+	background: var(--surface);
+	border: 1px solid var(--edge); border-radius: 10px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+}
+.reveal .slides section.genmodel .popover img {
+	width: 100%; max-width: 100%; height: auto; margin: 0;
+	border: 0; border-radius: 4px; box-shadow: none; background: transparent;
+	display: block;
+}
+.reveal .slides section.genmodel .pop-cap {
+	margin: 0.85em 0 0; font-size: 0.833em; line-height: 1.4; color: var(--fg);
+	text-align: left;
+}
+.reveal .slides section.genmodel .pop-src {
+	margin: 0.35em 0 0; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.542em; color: var(--fg-muted);
+	text-align: left;
+}
+
+/* the flow slide: the chain of maps is the slide's argument, so it gets the top
+   band at full width and real size — it carries detail that has to be legible.
+   The words underneath are cut to what the figure cannot say, and the sample
+   animation sits bottom-right as an aside. */
+.reveal .slides section.flowslide .ft-chain { margin: 1em auto 0; max-width: 96%; }
+.reveal .slides section.flowslide .ft-chain img {
+	width: 100%; height: auto; max-height: 40vh; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.flowslide .ft-gif { margin: 0; }
+.reveal .slides section.flowslide .ft-gif img {
+	width: 235px; max-width: 235px; height: auto; margin: 0;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.flowslide .ft-gif figcaption {
+	font-size: 0.875em; text-align: center; margin-top: 0.3em;
+}
+
+/* the three causes, beside the fan rather than under it as prose */
+.reveal .slides section.invprob .points.ip-points {
+	margin: 0; padding-left: 1.6em; font-size: 0.833em; align-self: center;
+	border-left: 1px solid var(--edge);
+}
+.reveal .slides section.invprob .points.ip-points li { margin-top: 0.55em; }
+.reveal .slides section.invprob .points.ip-points li:first-child { margin-top: 0; }
+
+/* slide 9 keeps only the relation, so it is three lines under the figure — not a
+   lone card stranded in half a two-column grid. */
+.reveal .slides section.kgrel .points.kgpoints {
+	max-width: 62%; margin: 1.2em auto 0; font-size: 0.8em;
+}
+
+/* with the top lane gone, the surviving row can take the space it left */
+.reveal .slides section.invprob .ip-cell img { width: 152px; height: 152px; }
+.reveal .slides section.invprob .ip-fan { width: 262px; height: 196px; }
+.reveal .slides section.invprob .ip-card { width: 152px; height: 152px; }
+.reveal .slides section.invprob .ip-card.c1 { left: 0;   top: 20px; }
+.reveal .slides section.invprob .ip-card.c2 { left: 58px; top: 10px; }
+.reveal .slides section.invprob .ip-card.c3 { left: 116px; top: 0; }
+
+/* a real bullet, for lists that read as a list rather than as tagged claims */
+.reveal .slides section .points.dots li::before {
+	content: "\2022"; border: 0; width: auto; height: auto;
+	top: 0; color: var(--accent); font-size: 1.05em; line-height: 1.4;
+}
+/* slide 9: shrink-wrap the list so `margin: auto` actually centres it —
+   darkenergy makes every ul inline-block, and auto margins do nothing there. */
+.reveal .slides section.kgrel .points.kgpoints {
+	display: table; max-width: none; margin: 1.3em auto 0; font-size: 0.90em;
+}
+
+/* ---- slide 13, reorganised: the equation names the three troubles, the panel
+   holds the pictures, and the bullets key back to the symbols. ---- */
+.reveal .slides section.invprob .ip-eq { margin: 1.1em auto 0; }
+.reveal .slides section.invprob .ip-eq .katex { font-size: 1.3em; }
+.reveal .slides section.invprob .ip-panel {
+	display: flex; align-items: center; justify-content: center; gap: 2.4em;
+	width: 74%; margin: 1.2em auto 0; padding: 1.3em 1.6em;
+	background: color-mix(in srgb, var(--surface) 70%, transparent);
+	border: 1px solid var(--edge); border-radius: 12px;
+}
+.reveal .slides section.invprob .points.ip-points {
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 2em;
+	max-width: 94%; margin: 1.2em auto 0; padding: 0;
+	font-size: 0.833em; border: 0;
+}
+.reveal .slides section.invprob .points.ip-points li { margin: 0; }
+.reveal .slides section.invprob .pull { max-width: 94%; margin-top: 1.1em; }
+
+/* ---------------------------------------------------------------------------
+   THE METHODS, AS OPTIMISATION — 2026-09-05.  Borrows .bayes2's .choices ladder
+   but the ladder now runs over the regulariser, not over the prior.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.mmopt .mmeq { margin: 1.2em auto 0.2em; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 0.98em; }
+.reveal .slides section.mmopt .choices.mmchoices {
+	grid-template-columns: repeat(5, 1fr); margin-top: 1.4em;
+}
+.reveal .slides section.mmopt .choices.mmchoices .ch { padding: 0 0.85em; }
+.reveal .slides section.mmopt .choices.mmchoices .cn { font-size: 0.833em; }
+.reveal .slides section.mmopt .choices.mmchoices .ca { font-size: 0.833em; line-height: 1.4; }
+.reveal .slides section.mmopt .mmsrc {
+	margin: 1.5em auto 0; max-width: 92%;
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.541em; color: var(--fg-muted);
+}
+/* the three glosses on one line under the equation, not a paragraph */
+.reveal .slides section.mmopt .points.mmgloss {
+	display: flex; justify-content: center; gap: 2.4em;
+	max-width: 92%; margin: 0.6em auto 0; padding: 0; font-size: 0.833em;
+}
+.reveal .slides section.mmopt .points.mmgloss li { margin: 0; }
+
+/* 2026-09-11: the five method cards are parked, so the equation is the slide. It gets the
+   room they were taking — nothing else here is small because it has to be. These are the
+   LAST rules for these selectors; see REVEAL-GOTCHAS §4b before adding more above. */
+.reveal .slides section.mmopt .lede { font-size: 1.0em; line-height: 1.55; margin: 0.9em auto 0; }
+.reveal .slides section.mmopt .mmeq { margin: 1.5em auto 0.4em; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 1.5em; }
+.reveal .slides section.mmopt .points.mmgloss {
+	gap: 2.4em; margin: 1.9em auto 0; font-size: 0.92em; align-items: baseline;
+}
+/* the two short glosses are labels; only the third is a sentence and may wrap */
+.reveal .slides section.mmopt .points.mmgloss li:nth-child(1),
+.reveal .slides section.mmopt .points.mmgloss li:nth-child(2) { white-space: nowrap; }
+
+/* 2026-09-11: three tiers instead of one wall. The title gets air under it, the equation
+   sits in a block so it reads as the object of the slide rather than as another line of
+   text, and the glosses stay outside it as annotation. */
+/* `.slide-title.tight` is set in new_slides.css, which loads AFTER this file at equal
+   specificity — so this needs `.tight` too or it silently loses. REVEAL-GOTCHAS §4b. */
+.reveal .slides section.mmopt .slide-title.tight { margin-bottom: 1.6em; }
+/* the lede is now the block's tab: it states in words what the equation states in
+   symbols, so it belongs with it rather than under the title, where its serif and its
+   left edge made the two read as one paragraph. */
+.reveal .slides section.mmopt .block.eqblock .block-title {
+	font-size: 0.88em; margin-bottom: 0.9em;
+}
+/* the block hugs the equation: 1.5em of padding made a 254px box around 105px of maths */
+.reveal .slides section.mmopt .block.eqblock {
+	margin: 0 auto; padding: 1.1em 1.8em; max-width: 94%;
+}
+.reveal .slides section.mmopt .block.eqblock .block-content { margin: 0; }
+.reveal .slides section.mmopt .block.eqblock .mmeq { margin: 0; }
+.reveal .slides section.mmopt .points.mmgloss { margin-top: 1.5em; }
+.reveal .slides section.mmopt .kicker.mmkick { margin: 1.5em 0 0.3em; text-align: center; }
+.reveal .slides section.mmopt .choices.mmchoices { margin-top: 0.5em; }
+/* `auto auto` + justify-content, NOT `auto 1fr`: 1fr made the gloss column
+   swallow every spare pixel, so the pair was pinned to the left edge with the
+   slack piled up on the right.  Shrink both columns and centre the pair. */
+.reveal .slides section.mca .mca-proxrow {
+	display: grid; grid-template-columns: auto auto; gap: 0 1.8em;
+	align-items: center; justify-content: center;
+}
+.reveal .slides section.mca .mca-proxeq { margin: 0; }
+/* 0.92em, not 0.78: this is the slide's one real formula and it was reading
+   smaller than the bullets glossing it. The row widens and its gap narrows to
+   pay for it, so the second bullet still holds one line. */
+.reveal .slides section.mca .mca-proxeq .katex { font-size: 0.92em; }
+
+/* ---------------------------------------------------------------------------
+   KEY CONCEPT: WAVELETS — the second excursion, built to rhyme with the
+   generative-modelling slide: same lede/figure/points rhythm, same pop-over
+   device.  The long-form primers stay in backup; this one carries only the
+   angle the wavelet statistics need.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.wvx { position: relative; }
+/* shrink-wrap the list so `margin: auto` actually centres it — darkenergy makes
+   every ul inline-block, and auto margins do nothing there. */
+.reveal .slides section.wvx .points.wv-points {
+	display: table; max-width: none; margin: 0.8em auto 0; font-size: 0.88em;
+}
+.reveal .slides section.wvx .pop-kicker { margin: 0.9em 0 0.35em; }
+.reveal .slides section.wvx .points.pop-points {
+	margin: 0; font-size: 0.833em; text-align: left;
+}
+/* the two figures are one group, centred: the card already separates them, so
+   they sit close, and the wide one takes as much height as the slide allows. */
+.reveal .slides section.wvx .wv-row {
+	display: flex; align-items: center; justify-content: center;
+	gap: 0.5em; margin: 0.8em auto 0; max-width: 100%;
+}
+.reveal .slides section.wvx .wv-card {
+	flex: 0 0 27%; margin: 0; padding: 0.4em 0.3em 0.15em;
+	/* no fill: the figure ships the same paper colour, so a filled card shows a
+	   visible inner rectangle. The border alone does the separating. */
+	background: transparent; border: 1px solid var(--edge); border-radius: 8px;
+}
+.reveal .slides section.wvx .wv-wide { flex: 0 1 71%; margin: 0; }
+.reveal .slides section.wvx .wv-card img,
+.reveal .slides section.wvx .wv-wide img {
+	width: 100%; height: auto; object-fit: contain;
+	margin: 0; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.wvx .wv-card img { max-height: 42vh; }
+.reveal .slides section.wvx .wv-wide img { max-height: 60vh; }
+.reveal .slides section.wvx .popover {
+	position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%);
+	z-index: 30; width: 72%; padding: 1.0em 1.2em 0.95em;
+	background: var(--surface);
+	border: 1px solid var(--edge); border-radius: 10px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+}
+/* the mosaic is nearly square, so it has to be capped by HEIGHT or the card
+   grows past the slide. */
+.reveal .slides section.wvx .popover img {
+	width: 100%; max-width: 100%; height: auto; max-height: 62vh;
+	object-fit: contain; margin: 0;
+	border: 0; border-radius: 4px; box-shadow: none; background: transparent;
+	display: block;
+}
+.reveal .slides section.wvx .pop-cap {
+	margin: 0.85em 0 0; font-size: 0.833em; line-height: 1.4; color: var(--fg);
+	text-align: left;
+}
+.reveal .slides section.wvx .pop-src {
+	margin: 0.35em 0 0; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 0.46em; color: var(--fg-muted);
+	text-align: left;
+}
+
+/* ---------------------------------------------------------------------------
+   SLIDE 40 — the definition swaps for the shape.  An r-stack is a CSS grid, so
+   it shrink-wraps to the intrinsic image size unless the CONTAINER is given a
+   size; fixing the height as well stops the row jumping when the contents swap.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .statpair .r-stack.statswap {
+	width: 100%; height: 24vh; align-items: center; justify-items: center;
+}
+.reveal .slides section .statpair .r-stack.statswap > img {
+	max-width: 100%; max-height: 24vh; width: auto; height: auto;
+	object-fit: contain; margin: 0; border: 0; box-shadow: none;
+	background: transparent;
+}
+.reveal .slides section .statpair .r-stack.statswap > .l1formula {
+	display: flex; align-items: center; justify-content: center;
+	width: 100%; height: 100%;
+}
+
+/* the lensing panel gets a box on the first click: four probes go up, one of
+   them is what the talk is about, and the composite has no way of saying so.
+   Measured off probes.png rather than eyeballed, and measured properly: the
+   widest ROW of the bottom-right ellipse and the tallest COLUMN through its
+   centre, which is the ellipse's real extent - a plain bounding box over the
+   quadrant caught the neighbours' glow and sat visibly off the object. The
+   panel is left 0.5176, top 0.4841, width 0.4485, height 0.3571 of the image
+   (rows 244-423, columns 442-824 of 854x504); the values below add roughly ten
+   pixels of air on each side. */
+/* 62% -> 82% on 2026-09-11, when the unspoken caption was parked. The ring below is in
+   percentages of this box, so it follows automatically. */
+.reveal .slides section.probes .probeshot { position: relative; display: inline-block; width: 82%; }
+/* margin: 0 is load-bearing. The theme gives images a vertical margin, which
+   made the inline-block taller than the picture, so the box's percentage top
+   and height resolved against a box ~10% taller than the image and it sat low
+   by roughly a fifth of its own height. */
+.reveal .slides section.probes .figswap > figure .probeshot img {
+	width: 100%; max-width: 100%; display: block; margin: 0;
+}
+.reveal .slides section.probes .probe-ring {
+	position: absolute; left: 50.6%; top: 46.4%; width: 47.2%; height: 39.7%;
+	border: 2px solid var(--accent); border-radius: 6px;
+	box-shadow: 0 0 22px rgba(125, 146, 255, 0.30); pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   A0.8 — THE THESIS MAP.  The chain, then the four questions of the thesis
+   asked one at a time, each lighting the step of the chain it is about.
+   (Rebuilt 2026-09-06; see the comment on the section.)
+
+   Two mechanisms, both keyed on reveal's own `.current-fragment` rather than on
+   a `fragmentshown` listener, because ?print-pdf sets the classes directly and
+   fires no events:
+
+     .qstep.sK  zero-size marker fragments, BEFORE the slot and the bay, so a
+                general-sibling selector reaches both.
+     .qslot.kK  the cards, stacked in one grid cell so the slide never changes
+                height and the diagram above it never walks up the screen.
+
+   `.current-fragment`, not `.visible`: fragments stay `.visible` once shown, so
+   `.visible` would leave every earlier question lit as well.  Only one step is
+   ever current, which is exactly the semantics wanted here.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.thesismap .qstep {
+	display: inline; padding: 0; margin: 0; line-height: 0;
+}
+.reveal .slides section.thesismap .pipeline-slot { display: block; margin: 0.9em auto 0; }
+
+/* --- the bay: five cards, one cell -------------------------------------- */
+.reveal .slides section.thesismap .qbay {
+	display: grid; grid-template-columns: 1fr;
+	max-width: 94%; margin: 1.15em auto 0;
+	/* room for the tallest card, so the pipeline stays put across all five steps */
+	min-height: 4.6em;
+}
+.reveal .slides section.thesismap .qbay > .qslot {
+	grid-area: 1 / 1;
+	opacity: 0; visibility: hidden;
+	transition: opacity 0.35s ease;
+	margin: 0; max-width: 100%;
+	align-self: start;
+}
+.reveal .slides section.thesismap .qstep.s0.current-fragment ~ .qbay > .qslot.k0,
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .qbay > .qslot.k1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .qbay > .qslot.k2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .qbay > .qslot.k3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .qbay > .qslot.k4 {
+	opacity: 1; visibility: visible;
+}
+.reveal .slides section.thesismap .qbay > .qslot.note { font-size: 0.833em; line-height: 1.4; }
+.reveal .slides section.thesismap .qbay > .qslot.coreq { display: block; }
+.reveal .slides section.thesismap .qbay .qcard p { font-size: 0.855em; line-height: 1.35; }
+.reveal .slides section.thesismap .qbay .qtab { font-size: 0.833em; }
+
+/* --- the diagram, one step lit per question ------------------------------ */
+/* the claim (s0) is about the whole chain, so nothing is dimmed on it */
+.reveal .slides section.thesismap .qstep:not(.s0).current-fragment ~ .pipeline-slot .pipeline.steps-armed .stage,
+.reveal .slides section.thesismap .qstep:not(.s0).current-fragment ~ .pipeline-slot .pipeline.steps-armed .arw {
+	opacity: 0.3;
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .stage.on-1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .stage.on-2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .stage.on-3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .stage.on-4 {
+	opacity: 1;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .stage.on-1 .sname,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .stage.on-2 .sname,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .stage.on-3 .sname,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .stage.on-4 .sname {
+	color: var(--accent);
+}
+.reveal .slides section.thesismap .qstep.s1.current-fragment ~ .pipeline-slot .pipeline .arw.on-1,
+.reveal .slides section.thesismap .qstep.s2.current-fragment ~ .pipeline-slot .pipeline .arw.on-2,
+.reveal .slides section.thesismap .qstep.s3.current-fragment ~ .pipeline-slot .pipeline .arw.on-3,
+.reveal .slides section.thesismap .qstep.s4.current-fragment ~ .pipeline-slot .pipeline .arw.on-4 {
+	opacity: 1; color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------------
+   THE CHAIN AS A FLOWCHART (2026-09-08) — 0.8 and the two chain returns.  After three rounds of rows
+   (cards, then bare tiles, then tiles on a wire) the slide still read as a
+   table.  This is a hand-placed diagram in the spirit of the DES Y3 figure on
+   the slide before it: data products are pictures of different sizes, the
+   processes on the arrows are small tinted boxes, the model side is its own
+   lower branch feeding inference, and the connectors are drawn lines with
+   elbows.  Fixed 1180 x 450 px canvas (the slide is a fixed 1280 x 800
+   coordinate system).  Two halves light the elements tagged on-1 / on-2 off
+   the .qstep markers, exactly as the template version did.
+   --------------------------------------------------------------------------- */
+.reveal .slides section .chart {
+	position: relative; width: 1180px; height: 490px; margin: 0.5em auto 0; text-align: center;
+}
+.reveal .slides section .chart .wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+.reveal .slides section .chart .wires .w {
+	fill: none; stroke: var(--fg-muted); stroke-width: 1.8; opacity: 0.75;
+	transition: opacity 0.4s ease, stroke 0.4s ease, fill 0.4s ease;
+}
+/* the heads: triangles added by pipeline.js, filled in the wire's colour */
+.reveal .slides section .chart .wires .w.hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section .chart .wires .w.join { stroke: var(--accent); opacity: 0.9; }
+.reveal .slides section .chart .wires .w.join.hd { fill: var(--accent); }
+
+.reveal .slides section .chart .el { position: absolute; margin: 0; box-sizing: border-box; transition: opacity 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+/* data products: a picture with its name under it */
+.reveal .slides section .chart .prod img {
+	display: block; margin: 0; border: 0; box-shadow: none; max-width: none; max-height: none;
+	width: 100%; object-fit: cover; border-radius: 4px; box-sizing: border-box;
+	transition: box-shadow 0.4s ease;
+}
+.reveal .slides section .chart .prod figcaption { margin-top: 0.3em; line-height: 1.2; }
+.reveal .slides section .chart .prod figcaption b {
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 18.5px; color: var(--fg);
+	transition: color 0.4s ease;
+}
+.reveal .slides section .chart .prod figcaption span,
+.reveal .slides section .chart .proc span {
+	display: block; font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking); font-size: 18.5px; line-height: 1.3; color: var(--fg-muted);
+}
+/* processes: small tinted boxes sitting on the arrows, like the coloured boxes in the DES figure */
+.reveal .slides section .chart .proc {
+	display: flex; flex-direction: column; justify-content: center; align-items: center;
+	padding: 0.25em 0.5em; border-radius: 10px;
+	background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--edge));
+}
+.reveal .slides section .chart .proc b {
+	display: block; font-family: var(--r-heading-font); font-weight: 600; font-size: 18.5px; line-height: 1.15; color: var(--fg);
+	transition: color 0.4s ease;
+}
+.reveal .slides section .chart .proc.dashed {
+	border-style: dashed; background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+}
+
+/* the photographic products carry their name inside the picture, on a small
+   translucent paper-coloured tag, so the picture is the whole element */
+.reveal .slides section .chart .prod.inimg figcaption {
+	position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+	margin: 0; text-align: center; white-space: nowrap;
+	padding: 4px 11px 5px; border-radius: 5px;
+	background: color-mix(in srgb, var(--bg) 40%, transparent);
+	backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+}
+.reveal .slides section .chart .prod.inimg figcaption b { font-size: 18.5px; }
+.reveal .slides section .chart .prod.inimg figcaption span { font-size: 18.5px; }
+
+/* --- placement ---------------------------------------------------------
+   The data row runs left to right across the top with a slight stagger
+   (catalogue high, shear map low, summaries high) and two small elbows, then
+   drops at the right into inference and the posterior.  The model branch sits
+   lower and larger, bottom-left, and rises into inference with one elbow. */
+.reveal .slides section .chart .cat   { left: 10px;   top: 20px;  width: 160px; }
+.reveal .slides section .chart .cat img   { height: 160px; }
+.reveal .slides section .chart .shear { left: 215px;  top: 70px;  width: 130px; }
+.reveal .slides section .chart .shear img { height: 130px; }
+.reveal .slides section .chart .mm    { left: 375px;  top: 109px; width: 140px; height: 52px; }
+.reveal .slides section .chart .kmap  { left: 575px;  top: 10px;  width: 200px; }
+.reveal .slides section .chart .kmap img  { height: 200px; }
+.reveal .slides section .chart .comp  { left: 815px;  top: 84px;  width: 140px; height: 52px; }
+.reveal .slides section .chart .summ  { left: 1010px; top: 54px;  width: 150px; }
+.reveal .slides section .chart .summ img  { height: 112px; object-fit: contain; background: var(--surface); border: 1px solid var(--edge); }
+.reveal .slides section .chart .inf   { left: 1015px; top: 230px; width: 140px; height: 52px; }
+.reveal .slides section .chart .post  { left: 1015px; top: 320px; width: 140px; }
+.reveal .slides section .chart .post img  { height: 140px; object-fit: contain; }
+.reveal .slides section .chart .prior { left: 0;      top: 300px; width: 130px; height: 52px; }
+.reveal .slides section .chart .sims  { left: 200px;  top: 262px; width: 210px; }
+.reveal .slides section .chart .sims img  { height: 130px; }
+.reveal .slides section .chart .syst  { left: 465px;  top: 300px; width: 150px; height: 52px; }
+
+/* --- the two halves ------------------------------------------------------ */
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .el:not(.on-1),
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .el:not(.on-2),
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w:not(.on-1),
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w:not(.on-2) { opacity: 0.28; }
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w.on-2 {
+	stroke: var(--accent); opacity: 1;
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .wires .w.hd.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .wires .w.hd.on-2 { fill: var(--accent); stroke: none; }
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .prod.on-1 img,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .prod.on-2 img {
+	box-shadow: 0 0 0 3px var(--accent), 0 0 0 8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .proc.on-1,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .proc.on-2 {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.reveal .slides section .qstep.s1.current-fragment ~ .chart-slot .on-1 b,
+.reveal .slides section .qstep.s2.current-fragment ~ .chart-slot .on-2 b { color: var(--accent); }
+
+/* --- the chain returns (Parts 3 and 4): one set lit on a .pipe-focus click ---- */
+.reveal .slides section .chart-slot { display: block; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .el:not(.is-lit),
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w:not(.is-lit) { opacity: 0.28; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w.is-lit {
+	stroke: var(--accent); opacity: 1;
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .wires .w.hd.is-lit { fill: var(--accent); stroke: none; }
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .prod.is-lit img {
+	box-shadow: 0 0 0 3px var(--accent), 0 0 0 8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .proc.is-lit {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.reveal .slides section .pipe-focus.visible ~ .chart-slot .is-lit b { color: var(--accent); }
+
+/* ---------------------------------------------------------------------------
+   THE CLOSING SLIDE (2026-09-08).  The conclusions over the Euclid deep field,
+   full bleed and dimmed to 60 % (data-background-opacity on the section).  It is a dark slide, so the tokens already give light text; the
+   four answers sit in translucent dark cards (the theme's background at two
+   thirds, blurred) with a faint edge, and the title gets the same glass behind
+   it so it reads over the bright peaks.  No hex here: everything is mixed from
+   the tokens, so a theme change follows through.
+   --------------------------------------------------------------------------- */
+.reveal .slides section.closing .slide-title {
+	display: block; width: fit-content; margin-right: auto;
+	padding: 0.18em 0.7em 0.22em 0.55em; border-radius: 8px;
+	background: color-mix(in srgb, var(--bg) 62%, transparent);
+	backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.reveal .slides section.closing .qlist { margin-top: 0.55em; display: grid; row-gap: 0.4em; }
+.reveal .slides section.closing .qlist > li,
+.reveal .slides section.closing .qlist > li:last-child {
+	border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); border-radius: 10px;
+	padding: 0.55em 0.9em 0.6em 0.7em;
+	background: color-mix(in srgb, var(--bg) 66%, transparent);
+	backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.reveal .slides section.closing .qlist > li.done .qtext { color: color-mix(in srgb, var(--fg) 86%, transparent); }
+.reveal .slides section.closing .qlist .qans { color: var(--fg); }
+.reveal .slides section.closing .qlist .qtext { font-size: 0.93em; }
+
+/* ============================================================================
+   ITALICS — 2026-09-10, after the CosmoStat rehearsal.  Two comments in the room
+   were "too much italic", and the audit agreed: 158 of 574 text elements on the
+   main line rendered slanted, 28 %.
+
+   1. The theme's label voice is small ITALIC serif (`--label-style`), which put
+      every caption, kicker, section marker, tag and sub-label on a slant — and
+      those are also the smallest things on the slide, so the two faults
+      compounded.  talks.css itself documents this token as the deck-local
+      escape hatch.  Overridden here, not in the theme: other decks keep it.
+   2. The accent phrases in slide titles are `<em class="alert">`, so they were
+      italic because of the TAG, not because of a rule.  Colour and weight carry
+      the accent perfectly well without the slant.
+
+   Plain `<em>` and `<i>` are untouched — those are real emphasis in running
+   prose, and there are 18 of them.
+   ============================================================================ */
+:root { --label-style: normal; }
+/* .kicker (0.5em) and .slide-title .sec (0.6em) are set in talks.css; both landed
+   under the floor, so they are raised here rather than in the shared theme. */
+.reveal .slides section .kicker { font-size: 0.875em; }
+.reveal .slides section .slide-title .sec { font-size: 0.833em; }
+
+/* The last few sat BELOW the floor only because their em multiplied against an
+   already-shrunk parent (a .label inside a .callout, a .mtag inside .mcard p).
+   em cannot express "no smaller than" through nesting, so these are stated in the
+   canvas's own px — reveal scales the whole stage, so 17px here is 17px there. */
+.reveal .slides section .callout .label,
+.reveal .slides section .takeaway .label { font-size: 20px; }
+.reveal .slides section .block-title { font-size: 21px; }
+.reveal .slides section .mcard .mtag,
+.reveal .slides section .mmname .mtag { font-size: 21px; }
+.reveal .slides section figcaption { font-size: 20px; }
+.reveal .slides section .alert { font-style: normal; }
+
+/* --------------------------------------------------------------------------
+   PLUG-AND-PLAY, merged 2026-09-10 and re-laid-out the same evening.
+   The stage carries the figure's own aspect ratio, so both frames fill it
+   exactly and the pocket's percentage coordinates mean the same thing at any
+   size.  reveal's .r-stack was doing neither: it left the image well short of
+   the width it was given and off-centre inside it.
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   The stage is a fixed 600px box in SLIDE coordinates, and the figure and the
+   text are both placed inside it absolutely.  Everything below is therefore in
+   one frame of reference instead of percentages-of-a-figure-of-a-percentage,
+   which is what made the earlier versions so fiddly to nudge.
+
+   The figure is 70 % wide and sits on the stage's BOTTOM-RIGHT.  Dropping it is
+   what buys the text its room: the strip above it is free at any x, and the
+   figure's own void (36.9 % of its width, 27 % of its height) continues below
+   that strip on the left.  The block gets the union - 622px wide, 247px tall -
+   against 577 x 160 when the figure was flush with the title.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.pnpcombo .pnp-stage {
+	position: relative; width: 100%; height: 600px; margin: 0.2em auto 0;
+}
+.reveal .slides section.pnpcombo .pnp-frame {
+	/* Optically centred: the crop pads the ink by 16px on the left and 15px on the
+	   right, so centring the ELEMENT centres the leftmost-to-rightmost non-white
+	   span to within a pixel.  Safe against the block because the figure's top 20 %
+	   is blank out to 75 % of its width - only the Ground-truth panel lives up there. */
+	position: absolute; left: 0; right: 0; margin: 0 auto; bottom: 0; width: 66%; height: auto;
+	border: 0; box-shadow: none; background: transparent;
+	max-width: none; max-height: none;
+}
+.reveal .slides section.pnpcombo .pnp-pocket {
+	/* left: 3.5% puts the text on the TITLE's text edge (20px margin + 4px rule +
+	   18px padding = 42px), not on the slide margin. */
+	position: absolute; left: 3.5%; top: 0; width: 61.5%; margin: 0; text-align: left;
+}
+.reveal .slides section.pnpcombo .pnp-text { padding: 0; }
+/* a descending hierarchy in the block: lead line, then the equations, then the
+   consequences as a list - the list was inheriting the section's 24px, which made
+   it the LARGEST thing in the box. */
+.reveal .slides section.pnpcombo .pnp-pocket p { margin: 0.22em 0; font-size: 0.9em; line-height: 1.3; }
+.reveal .slides section.pnpcombo .pnp-pocket ul {
+	margin: 0.4em 0 0.1em; padding-left: 1.15em; font-size: 0.86em; line-height: 1.3;
+}
+.reveal .slides section.pnpcombo .pnp-pocket li { margin: 0.12em 0; }
+.reveal .slides section.pnpcombo .pnp-eqs {
+	display: flex; align-items: center; justify-content: center; gap: 0.8em; margin: 0.35em 0 0.3em;
+}
+.reveal .slides section.pnpcombo .pnp-eqs .katex { font-size: 0.85em; }
+.reveal .slides section.pnpcombo .pnp-eqs .arw { color: var(--accent); font-size: 1.05em; line-height: 1; }
+
+/* --------------------------------------------------------------------------
+   A2.2 — the mass-mapping scorecard, migrated 2026-09-11.  This was the last
+   main-line slide still in LAM style: `<table border="1">` with inline hex on
+   almost every cell (#f2f2f2 header, #999999/#f5f5f5 stood-down rows,
+   #e6f3ff highlight) and a `<br>` for spacing.  CLAUDE.md is explicit that a
+   stylesheet cannot reach `style="color:#…"`, so none of it followed the
+   theme; the same lift was done for `.ptable` on frame 3.  Colours are tokens
+   now, so the table self-themes and the slide sits on the deck's warm paper
+   like every other light slide.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.dlslide .lede {
+	text-align: left; font-size: 0.82em; margin: 0.25em 0 0;
+}
+.reveal .slides section.dlslide .lede.however { margin-top: 0.45em; }
+
+.reveal .slides section table.dltable {
+	width: 100%; border-collapse: collapse; table-layout: fixed;
+	font-size: 0.75em; line-height: 1.25; margin: 0.55em 0 0;   /* 18 px: the type floor */
+}
+.reveal .slides section table.dltable th {
+	color: var(--accent); font-family: var(--label);
+	font-style: var(--label-style); font-weight: 600;
+	text-align: center; padding: 0.35em 0.3em;
+	border-bottom: 2px solid var(--accent);
+}
+.reveal .slides section table.dltable th:nth-child(1) { text-align: left; width: 20%; }
+.reveal .slides section table.dltable th:nth-child(2) { text-align: left; width: 28%; }
+.reveal .slides section table.dltable td {
+	padding: 0.3em 0.3em; text-align: center;
+	border-bottom: 1px solid var(--hair);
+}
+.reveal .slides section table.dltable td:nth-child(1) { text-align: left; }
+.reveal .slides section table.dltable td:nth-child(2) {
+	text-align: left; color: var(--fg-muted); font-size: 0.95em;   /* 17.1 px */
+}
+/* the rule where the labels stop and the scorecard starts */
+.reveal .slides section table.dltable th:nth-child(2),
+.reveal .slides section table.dltable td:nth-child(2) {
+	border-right: 1px solid var(--edge);
+}
+/* Part 1's methods, stood down: they are context, not candidates.  The LAM
+   original shaded these two rows as well as greying the text (#f5f5f5 against a
+   #ffffff slide, ~10/255 darker); 4 % of --fg over the paper is the same step. */
+.reveal .slides section table.dltable tr.stood td {
+	color: var(--fg-muted);
+	background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+.reveal .slides section table.dltable tr.stood .yes { color: var(--fg-muted); }
+/* One flat accent fill for the target row.  NOT called `hl`: talks.css:238 gives
+   `.hl` a highlighter-pen gradient (transparent to 60%, then 26% accent), which
+   on a table row paints a band across the bottom 40% of it.  `.ptable tr.hl` on
+   the backup slides has the same latent collision. */
+.reveal .slides section table.dltable tr.want td {
+	background: color-mix(in srgb, var(--accent) 15%, transparent);
+	font-weight: 600; border-bottom: none; color: var(--fg);
+}
+.reveal .slides section table.dltable .yes { color: var(--accent); font-weight: 600; }
+.reveal .slides section table.dltable .no,
+.reveal .slides section table.dltable .part { color: var(--fg-muted); }
+/* the asterisk on `flexible` — it had no footnote at all before */
+/* --------------------------------------------------------------------------
+   A2.2 visual pass, 2026-09-11. The scorecard IS the content of this slide --
+   the argument is "scan the columns, no row is all ticks" -- but every element
+   rendered at one weight, so nothing led. Three changes: the method name is the
+   row's label and the type is its gloss, not a second label of equal weight;
+   the marks are the data and are sized like it; and the target row is separated
+   by an accent rule so it reads as the specification rather than a sixth method.
+
+   These are appended LAST on purpose -- see REVEAL-GOTCHAS §4b. Three rules
+   above already set `.dltable` font-size and `td:nth-child(2)`; edit HERE.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.dlslide .lede { font-size: 0.9em; margin: 0.2em 0 0; text-align: center; }
+.reveal .slides section.dlslide .lede.however { margin-top: 0.35em; }
+/* 84%, left-aligned: at full width the four score columns were ~156 px apart for a single
+   glyph each, so a row read as four isolated marks rather than as a pattern. Left-aligned
+   rather than centred so the table's left edge shares x with the lede and the footnote. */
+.reveal .slides section table.dltable {
+	font-size: 0.88em; margin: 0.9em auto 0; width: 90%;
+}
+.reveal .slides section table.dltable th:nth-child(1) { width: 24%; }
+.reveal .slides section table.dltable th:nth-child(2) { width: 32%; }
+.reveal .slides section table.dltable th { font-size: 0.92em; padding: 0.5em 0.3em; }
+.reveal .slides section table.dltable td { padding: 0.42em 0.3em; }
+.reveal .slides section table.dltable td:nth-child(1) { font-weight: 600; }
+/* 0.88em, not 0.82: 0.82 of a 0.82em table lands at 16 px, under the type floor */
+.reveal .slides section table.dltable td:nth-child(2) { font-size: 0.88em; }
+.reveal .slides section table.dltable .yes,
+.reveal .slides section table.dltable .no,
+.reveal .slides section table.dltable .part { font-size: 1.3em; }
+/* air under the last real method, then a rule: the target row is not a sixth entry */
+.reveal .slides section table.dltable tbody tr:nth-child(5) td { padding-bottom: 1.1em; }
+.reveal .slides section table.dltable tr.want td { border-top: 2px solid var(--accent); }
+
+.reveal .slides section .dlnote {
+	font-size: 0.833em; color: var(--fg-muted); margin: 0.55em 0 0; text-align: left;
+}
+/* the footnote hangs off the table, so it is centred with it rather than with the slide */
+.reveal .slides section.dlslide .dlnote { width: 90%; margin-left: auto; margin-right: auto; }
+
+
+/* --------------------------------------------------------------------------
+   A2.3 type lift for a small projector, 2026-09-14, wave 2.  The 20 px floor
+   was being read as a target: 23 main frames sat exactly on it while carrying
+   80-550 px of unused height, so the shared components (.points, .pull,
+   .kicker, .block-title, .mtag) were raised at their own declarations above.
+   Raised there rather than here on purpose, so every per-slide rule that had
+   deliberately set a component LARGER still wins -- overriding with
+   !important flattened frame 6's `ESA mission` kicker from 31 px to 21.
+
+   Two exceptions, appended here because they have to out-specify the shared
+   rules -- see REVEAL-GOTCHAS S4b:
+   -------------------------------------------------------------------------- */
+/* a .kicker inside a <figure> is a caption, not an eyebrow: hold it at the
+   floor.  It is also what was growing frames 20 and 106, both already full. */
+.reveal .slides section figure .kicker { font-size: 0.833em; }
+
+/* figcaption stays at 20 deck-wide -- lifting it pushed six dense backup
+   frames past the canvas -- so it is lifted only where the slide has room. */
+.reveal .slides section.hosgain .hg-fig figcaption,
+.reveal .slides section.flowslide figcaption,
+.reveal .slides section .ip-panel figcaption,
+.reveal .slides section.twopt figcaption,
+.reveal .slides section .pipeflow.big figcaption { font-size: 21px; }
+
+
+/* ============================================================================
+   PIML_FORTH_2026 overrides (2026-09-14).  Appended last so they win (see
+   docs/REVEAL-GOTCHAS.md §4b).  Everything here is deck-local.
+   ============================================================================ */
+/* the chain's process boxes carry a second, translated line for this room
+   (inverse problem / feature extraction / likelihood-free), so the two on the
+   data row grow; their centres stay on the wires (y = 135 and y = 110). */
+.reveal .slides section .chart .mm   { left: 365px; top: 102px; width: 160px; height: 66px; }
+.reveal .slides section .chart .comp { left: 800px; top: 77px;  width: 170px; height: 66px; }
+.reveal .slides section .chart .proc span { font-size: 17px; white-space: nowrap; }
+/* the regulariser slide has its row of priors back: tighten the vertical rhythm
+   so the source line is not pushed off the canvas. */
+.reveal .slides section.mmopt .slide-title.tight { margin-bottom: 0.6em; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 1.3em; }
+.reveal .slides section.mmopt .points.mmgloss { margin-top: 0.8em; }
+.reveal .slides section.mmopt .kicker.mmkick { margin: 0.9em 0 0.3em; }
+/* the plug-and-play lineage sits top-right, in the empty space above the
+   ground-truth panel, not on the figure's bottom labels. */
+.reveal .slides section.pnpcombo .srcref {
+	top: 3.1em; bottom: auto; right: 0.4em; max-width: 34%;
+	text-align: right; line-height: 1.3; font-size: 0.72em;
+}

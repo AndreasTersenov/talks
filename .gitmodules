@@ -49,3 +49,6 @@
 [submodule "PhD_Defense_2026/reveal.js"]
 	path = PhD_Defense_2026/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "PIML_FORTH_2026/reveal.js"]
+	path = PIML_FORTH_2026/reveal.js
+	url = https://github.com/EiffL/reveal.js.git

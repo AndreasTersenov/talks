@@ -1,0 +1,1165 @@
+/* ===========================================================================
+   new_slides.css — components for the slides proposed in STRUCTURE.md
+   Token-driven (light + dark). Method colours are the locked Wong pair from
+   custom.css: --cnn #0072B2 (learned), --l1 #D55E00 (analytical).
+   =========================================================================== */
+
+/* ---------- shared: a small mono eyebrow above a component ---------- */
+.reveal .slides section .axis-note {
+  font-family: var(--label);
+  font-size: 0.833em;
+  text-align: left;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  margin: 0 0 0.5em;
+}
+
+/* =====================================================================
+   1. QUESTION SLIDE  (.qlist)
+   Three questions; each can carry an answer that appears later.
+   ===================================================================== */
+.reveal .slides section .qlist { list-style: none; margin: 0.3em 0 0; padding: 0; }
+
+.reveal .slides section .qlist > li {
+  display: grid;
+  grid-template-columns: 2.4em 1fr;
+  column-gap: 0.7em;
+  align-items: baseline;
+  padding: 0.8em 0 0.8em;
+  border-top: 1px solid var(--hair);
+  margin: 0;
+}
+.reveal .slides section .qlist > li:last-child { border-bottom: 1px solid var(--hair); }
+
+.reveal .slides section .qlist .qn {
+  font-family: var(--label);
+  font-size: 0.833em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.reveal .slides section .qlist .qtext {
+  font-size: 0.98em;
+  line-height: 1.28;
+  color: var(--fg);
+}
+.reveal .slides section .qlist .qans {
+  grid-column: 2;
+  font-size: 0.92em;
+  line-height: 1.32;
+  color: var(--fg);
+  font-weight: 500;
+  margin-top: 0.22em;
+  display: flex;
+  gap: 0.5em;
+  align-items: baseline;
+}
+.reveal .slides section .qlist .qans .tick { font-size: 1.1em; line-height: 1; color: var(--accent); font-weight: 700; }
+.reveal .slides section .qlist .qans b { color: var(--accent); font-weight: 700; }
+
+/* a question that has been answered recedes; its answer stays lit */
+.reveal .slides section .qlist > li.done .qtext { color: var(--fg-muted); }
+
+/* =====================================================================
+   2. THE LADDER  (.ladder)
+   Four rungs, labelled by WHAT THE SUMMARY READS. Used twice: standard
+   frame (nearly flat at the top) and nulled frame (steep).
+   ===================================================================== */
+.reveal .slides section .ladder { margin: 0.2em 0 0; }
+
+.reveal .slides section .ladder .rung {
+  display: grid;
+  grid-template-columns: 12.5em 1fr 4.6em;
+  column-gap: 0.9em;
+  align-items: center;
+  padding: 0.30em 0;
+}
+
+.reveal .slides section .ladder .reads {
+  text-align: right;
+  font-size: 0.833em;
+  line-height: 1.18;
+  color: var(--fg);
+}
+.reveal .slides section .ladder .reads .sub {
+  display: block;
+  font-family: var(--label);
+  font-size: 0.78em;
+  color: var(--fg-muted);
+  margin-top: 0.15em;
+}
+
+.reveal .slides section .ladder .track {
+  position: relative;
+  height: 2.05em;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+}
+.reveal .slides section .ladder .bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 2px 0 0 2px;
+  background: var(--l1);
+  /* the learned rung's bar carries a 2-3px border and runs to width:100%,
+     so its border has to sit inside the track rather than overhang it */
+  box-sizing: border-box;
+}
+.reveal .slides section .ladder .rung.learned .bar {
+  background: repeating-linear-gradient(-45deg,
+    var(--cnn) 0 7px, transparent 7px 13px);
+  border: 2px solid var(--cnn);
+  border-right-width: 3px;
+}
+
+/* grayscale-safe second channel: the learned rung is outlined, the analytical solid */
+.reveal .slides section .ladder .rung.learned .track { border-color: var(--cnn); border-width: 2px; }
+
+.reveal .slides section .ladder .val {
+  font-family: var(--mono);
+  font-size: 0.855em;
+  font-weight: 600;
+  text-align: left;
+  color: var(--l1);
+}
+.reveal .slides section .ladder .rung.learned .val { color: var(--cnn); }
+
+
+/* =====================================================================
+   3. ANALYTICAL vs LEARNED LEDGER  (.ledger)
+   ===================================================================== */
+.reveal .slides section .tie-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 0.42em 0.9em;
+  margin: 0 auto 0.75em;
+  max-width: 88%;
+}
+.reveal .slides section .tie-strip .lbl {
+  font-family: var(--label);
+  font-size: 0.833em;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+}
+.reveal .slides section .tie-strip .eq { font-size: 0.78em; color: var(--fg); }
+.reveal .slides section .tie-strip .eq b.a { color: var(--l1); }
+.reveal .slides section .tie-strip .eq b.b { color: var(--cnn); }
+
+.reveal .slides section .ledger { display: flex; gap: 1.1em; align-items: stretch; }
+.reveal .slides section .ledger .col {
+  flex: 1 1 0;
+  border: 1px solid var(--edge);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 0.6em 0.85em 0.7em;
+}
+.reveal .slides section .ledger .col.ana { border-top: 3px solid var(--l1); }
+.reveal .slides section .ledger .col.lrn { border-top: 3px solid var(--cnn); }
+.reveal .slides section .ledger .col h4 {
+  font-family: var(--label);
+  font-size: 0.833em;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+}
+.reveal .slides section .ledger .col.ana h4 { color: var(--l1); }
+.reveal .slides section .ledger .col.lrn h4 { color: var(--cnn); }
+.reveal .slides section .ledger .col ul { list-style: none; margin: 0; padding: 0; }
+.reveal .slides section .ledger .col li {
+  font-size: 0.833em;
+  line-height: 1.3;
+  margin: 0 0 0.42em;
+  padding-left: 1.05em;
+  position: relative;
+  color: var(--fg);
+}
+.reveal .slides section .ledger .col li::before {
+  position: absolute; left: 0; top: 0;
+  font-family: var(--label);
+  font-weight: 600;
+}
+.reveal .slides section .ledger .col.ana li::before { content: "+"; color: var(--l1); }
+.reveal .slides section .ledger .col.lrn li::before { content: "\2212"; color: var(--cnn); }
+
+/* =====================================================================
+   4. THE PER-CHANNEL vs CHANNEL-MIXING SCHEMATIC  (.mixfig)
+   ===================================================================== */
+.reveal .slides section .mixfig { display: flex; gap: 2.2em; justify-content: center; align-items: flex-start; }
+.reveal .slides section .mixfig .side { flex: 1 1 0; text-align: center; }
+.reveal .slides section .mixfig .side h4 {
+  font-family: var(--label);
+  font-size: 0.833em;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.55em;
+  font-weight: 600;
+}
+.reveal .slides section .mixfig .side.ana h4 { color: var(--l1); }
+.reveal .slides section .mixfig .side.lrn h4 { color: var(--cnn); }
+.reveal .slides section .mixfig .verdict {
+  font-size: 0.833em;
+  line-height: 1.3;
+  color: var(--fg);
+  margin-top: 0.5em;
+}
+.reveal .slides section .mixfig .verdict b { color: var(--accent); }
+
+/* .withfig: one real figure flanked by the two reading-mode captions */
+.reveal .slides section .mixfig.withfig { align-items: center; gap: 1.6em; }
+.reveal .slides section .mixfig.withfig .side { flex: 0 1 22%; }
+.reveal .slides section .mixfig.withfig .fig { flex: 0 0 auto; margin: 0; }
+.reveal .slides section .mixfig.withfig .verdict { margin-top: 0; }
+
+/* =====================================================================
+   5. SVG CHART CHROME (shared by the ratio chart)
+   ===================================================================== */
+.reveal .slides section svg.chart { display: block; margin: 0 auto; }
+.reveal .slides section svg.chart .ax      { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.chart .grid    { stroke: var(--hair); stroke-width: 1; stroke-dasharray: 3 4; }
+.reveal .slides section svg.chart .tick    { fill: var(--fg-muted); font-family: var(--mono); font-size: 20px; }
+.reveal .slides section svg.chart .axlabel { fill: var(--fg); font-family: var(--label); font-size: 20px; letter-spacing: 0.06em; }
+.reveal .slides section svg.chart .refline { stroke: var(--fg-muted); stroke-width: 2; stroke-dasharray: 6 5; }
+.reveal .slides section svg.chart .reftext { fill: var(--fg-muted); font-family: var(--label); font-size: 20px; }
+.reveal .slides section svg.chart .ser-l1   { stroke: var(--l1);  stroke-width: 4; fill: none; }
+.reveal .slides section svg.chart .ser-pk   { stroke: var(--fg-muted); stroke-width: 3; fill: none; stroke-dasharray: 8 5; }
+.reveal .slides section svg.chart .dot-l1   { fill: var(--l1); }
+.reveal .slides section svg.chart .dot-pk   { fill: var(--fg-muted); }
+.reveal .slides section svg.chart .val-l1   { fill: var(--l1); font-family: var(--mono); font-size: 20px; font-weight: 600; }
+.reveal .slides section svg.chart .val-pk   { fill: var(--fg-muted); font-family: var(--mono); font-size: 20px; }
+
+/* ladder: the ceiling note, right-aligned under the learned rung */
+.reveal .slides section .ladder .ceilnote {
+  font-family: var(--label);
+  font-size: 0.833em;
+  color: var(--cnn);
+  text-align: right;
+  padding-right: 5.6em;
+  margin: 0.15em 0 0;
+  letter-spacing: 0.05em;
+}
+
+/* =====================================================================
+   6. JOINT-DISTRIBUTION PANELS (S8)
+   ===================================================================== */
+.reveal .slides section svg.jd .frame { fill: var(--surface); stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.jd .jdlab { fill: var(--fg-muted); font-family: var(--label); font-size: 20px; }
+.reveal .slides section .mixfig .verdict b { color: var(--accent); }
+.reveal .slides section svg.jd .mb.l1  { fill: var(--l1);  }
+.reveal .slides section svg.jd .mb.cnn { fill: var(--l1);  }
+.reveal .slides section svg.jd .pt     { fill: var(--cnn); opacity: 0.72; }
+
+/* =====================================================================
+   7. THE TWO OPEN QUESTIONS  (S2)
+   ===================================================================== */
+.reveal .slides section .obstacles { display: flex; gap: 1.3em; align-items: stretch; margin-top: 0.35em; }
+.reveal .slides section .obstacles .ob {
+  flex: 1 1 0;
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--accent);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 0.65em 0.9em 0.8em;
+  display: flex;
+  flex-direction: column;
+}
+.reveal .slides section .obstacles .ob h4 {
+  font-family: var(--label);
+  font-size: 0.833em;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 0.55em;
+  font-weight: 600;
+}
+.reveal .slides section .obstacles .ob .vis { text-align: center; margin: 0 0 0.6em; }
+.reveal .slides section .obstacles .ob .vis video,
+.reveal .slides section .obstacles .ob .vis img {
+  display: block; margin: 0 auto; border-radius: 6px; max-height: 180px; width: auto;
+}
+.reveal .slides section .obstacles .ob p {
+  font-size: 0.833em;
+  line-height: 1.32;
+  color: var(--fg);
+  margin: 0;
+  text-align: left;
+}
+.reveal .slides section .obstacles .ob p + p { margin-top: 0.45em; }
+.reveal .slides section .obstacles .ob p.dim { color: var(--fg-muted); }
+
+/* the "which summary?" pipeline glyph */
+.reveal .slides section svg.pipe .box   { fill: var(--surface); stroke: var(--edge); stroke-width: 2; }
+.reveal .slides section svg.pipe .qbox  { fill: var(--surface); stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 5; }
+.reveal .slides section svg.pipe .qmark { fill: var(--accent); font-family: var(--r-heading-font); font-size: 46px; font-weight: 600; }
+.reveal .slides section svg.pipe .arrow { stroke: var(--fg-muted); stroke-width: 2.5; fill: none; }
+.reveal .slides section svg.pipe .lab   { fill: var(--fg-muted); font-family: var(--label); font-size: 20px; }
+.reveal .slides section svg.pipe .web   { stroke: var(--fg-muted); stroke-width: 1.2; fill: none; opacity: 0.8; }
+.reveal .slides section svg.pipe .ell   { stroke: var(--fg-muted); stroke-width: 2; fill: none; }
+
+/* the pipeline glyph, laid out in HTML so the map can be a real thumbnail */
+.reveal .slides section .pipeflow { display: flex; align-items: center; justify-content: center; gap: 0.5em; }
+.reveal .slides section .pipeflow figure { margin: 0; text-align: center; }
+.reveal .slides section .pipeflow img {
+  display: block; width: 92px; height: 92px; object-fit: cover;
+  border-radius: 5px; border: 1px solid var(--edge); margin: 0 auto;
+}
+.reveal .slides section .pipeflow .qbox {
+  width: 92px; height: 92px; border-radius: 5px;
+  border: 3px dashed var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--r-heading-font); font-size: 2.0em; font-weight: 600; color: var(--accent);
+  background: var(--surface);
+}
+.reveal .slides section .pipeflow figcaption {
+  font-family: var(--label); font-size: 0.833em; color: var(--fg-muted); margin-top: 0.35em;
+}
+.reveal .slides section .pipeflow .arw { color: var(--fg-muted); font-size: 1.1em; line-height: 1; padding-bottom: 1.1em; }
+
+/* =====================================================================
+   8. THE SCALE AXIS — where the information and the systematic both live
+   ===================================================================== */
+.reveal .slides section svg.scales .frameline { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section svg.scales .band      { fill: var(--accent); opacity: 0.10; }
+.reveal .slides section svg.scales .cut       { fill: url(#hatch); stroke: var(--fg-muted); stroke-width: 2; }
+.reveal .slides section svg.scales .info      { stroke: var(--accent);    stroke-width: 4; fill: none; }
+.reveal .slides section svg.scales .feed      { stroke: var(--fg-muted);  stroke-width: 4; fill: none; stroke-dasharray: 10 6; }
+.reveal .slides section svg.scales .infofill  { fill: var(--accent);   opacity: 0.13; }
+.reveal .slides section svg.scales .feedfill  { fill: var(--fg-muted); opacity: 0.13; }
+.reveal .slides section svg.scales .lab       { fill: var(--fg); font-family: var(--label); font-size: 20px; }
+.reveal .slides section svg.scales .lab.acc   { fill: var(--accent); font-weight: 600; }
+.reveal .slides section svg.scales .lab.mut   { fill: var(--fg-muted); }
+.reveal .slides section svg.scales .axlab     { fill: var(--fg-muted); font-family: var(--label); font-size: 20px; letter-spacing: 0.04em; }
+.reveal .slides section svg.scales .bandlab   { fill: var(--accent); font-family: var(--label); font-size: 20px; font-weight: 600; letter-spacing: 0.06em; }
+
+/* lead line above a component */
+.reveal .slides section .lead-line {
+  font-size: 0.78em;
+  line-height: 1.34;
+  color: var(--fg);
+  max-width: 92%;
+  margin: 0.2em auto 0.5em;
+  text-align: center;
+}
+.reveal .slides section .lead-line b { color: var(--accent); }
+
+/* the act-2 opener: pipeline glyph at full size */
+.reveal .slides section .pipeflow.big img,
+.reveal .slides section .pipeflow.big .qbox { width: 200px; height: 200px; }
+.reveal .slides section .pipeflow.big .qbox { font-size: 3.8em; }
+.reveal .slides section .pipeflow.big { gap: 1.1em; }
+.reveal .slides section .pipeflow.big figcaption { font-size: 0.875em; margin-top: 0.5em; }
+.reveal .slides section .pipeflow.big .arw { font-size: 1.8em; padding-bottom: 1.4em; }
+
+/* the S2 question box: keep it emphatic but not dominant */
+.reveal .slides section .callout.q2 { font-size: 0.88em; }
+
+/* hand-drawn wobble, so nobody reads the schematic as a measurement */
+.reveal .slides section svg.scales .sketch { filter: url(#roughen); }
+.reveal .slides section svg.scales .sketchline { filter: url(#roughen-line); }
+.reveal .slides section svg.scales .schematic-note {
+  fill: var(--fg-muted); font-family: var(--label); font-size: 20px; font-style: italic;
+}
+
+/* the act-1 core questions */
+.reveal .slides section .coreq {
+  display: flex; flex-direction: column; gap: 0.5em;
+  margin: 0.6em auto 0; max-width: 94%;
+}
+.reveal .slides section .coreq .qcard {
+  position: relative;
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--accent);
+  border-radius: 5px;
+  background: var(--surface);
+  padding: 0.55em 1em 0.6em;
+  text-align: left;
+}
+.reveal .slides section .coreq .qtab {
+  display: block;
+  font-family: var(--label);
+  font-size: 0.833em;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+.reveal .slides section .coreq .qcard p {
+  margin: 0;
+  font-size: 0.86em;
+  line-height: 1.32;
+  color: var(--fg);
+}
+.reveal .slides section .coreq li .n {
+  font-family: var(--label); font-weight: 600; color: var(--accent);
+}
+
+/* handwritten wobble for text — gentler than the one used on the strokes */
+.reveal .slides section svg.scales text { filter: url(#roughen-text); }
+
+/* ===========================================================================
+   HOUSE TYPE FLOOR
+   Nothing on a content slide sits below 0.62em (~26px at the 1200x720 base,
+   ~42px on a 1920 projector). If something will not fit at that size, the
+   slide has too much on it - cut content, do not shrink type.
+   =========================================================================== */
+
+/* breathing room between the assertion headline and whatever follows it */
+.reveal .slides section h3.slide-title,
+.reveal .slides section .slide-title.tight { margin-bottom: 0.75em; }
+
+/* the lead line under a title is body text, not a caption */
+.reveal .slides section .lead-line { font-size: 0.875em; line-height: 1.38; }
+
+/* =====================================================================
+   9. COMPACT LADDER + MARGINALS  (the headline slide)
+   The ladder is a supporting graphic, not the slide. It shares the row
+   with the marginal uncertainties, which carry the "tie on every axis"
+   claim that FoM3 alone cannot.
+   ===================================================================== */
+.reveal .slides section .twoup { display: flex; gap: 1.5em; align-items: flex-start; }
+.reveal .slides section .twoup .left  { flex: 1 1 56%; }
+.reveal .slides section .twoup .right { flex: 1 1 44%; }
+
+.reveal .slides section .ladder.compact .rung { padding: 0.16em 0; grid-template-columns: 10.5em 1fr 3.9em; column-gap: 0.6em; }
+.reveal .slides section .ladder.compact .track { height: 1.5em; }
+.reveal .slides section .ladder.compact .reads { font-size: 0.833em; }
+.reveal .slides section .ladder.compact .val   { font-size: 0.833em; }
+
+/* marginal-uncertainty comparison */
+.reveal .slides section .marg { border: 1px solid var(--edge); border-radius: 5px; background: var(--surface); padding: 0.6em 0.9em 0.7em; }
+.reveal .slides section .marg .mhead {
+  display: grid; grid-template-columns: 4.6em 1fr 1fr; column-gap: 0.3em;
+  font-family: var(--label); font-size: 0.833em; color: var(--fg-muted);
+  padding-bottom: 0.3em; border-bottom: 1px solid var(--hair); margin-bottom: 0.35em;
+}
+.reveal .slides section .marg .mhead .a { color: var(--l1);  font-weight: 600; text-align: right; }
+.reveal .slides section .marg .mhead .b { color: var(--cnn); font-weight: 600; text-align: right; }
+.reveal .slides section .marg .mrow {
+  display: grid; grid-template-columns: 4.6em 1fr 1fr; column-gap: 0.3em;
+  align-items: baseline; padding: 0.2em 0;
+}
+.reveal .slides section .marg .mrow .p { font-size: 0.833em; color: var(--fg); }
+.reveal .slides section .marg .mrow .v {
+  font-family: var(--mono); font-size: 0.833em; text-align: right; color: var(--fg);
+}
+.reveal .slides section .marg .mnote {
+  font-size: 0.833em; color: var(--fg-muted);
+  margin: 0.6em 0 0; line-height: 1.38; text-align: left;
+}
+
+/* the ledger wants height, not width */
+.reveal .slides section .ledger .col { padding: 1.05em 1.2em 1.2em; }
+.reveal .slides section .ledger .col li { margin: 0 0 0.6em; padding-left: 1.15em; }
+.reveal .slides section .tie-strip { padding: 0.6em 1.1em; margin-bottom: 1em; }
+.reveal .slides section .tie-strip .eq { font-size: 0.92em; }
+
+/* a single short line under a visual: the one text element a content slide gets */
+.reveal .slides section .oneline {
+  font-size: 0.86em; line-height: 1.36; color: var(--fg);
+  max-width: 94%; margin: 0.9em auto 0; text-align: left;
+  border-left: 4px solid var(--accent);
+  padding: 0.15em 0 0.15em 0.8em;
+}
+.reveal .slides section .oneline b { color: var(--accent); font-weight: 600; }
+.reveal .slides section .oneline .a { color: var(--l1); font-weight: 600; }
+.reveal .slides section .oneline .b { color: var(--cnn); font-weight: 600; }
+
+/* ledger items become phrases, not sentences */
+.reveal .slides section .ledger .col li { font-size: 0.84em; margin: 0 0 0.7em; line-height: 1.3; }
+
+/* figures fill the frame */
+.reveal .slides section .mixfig svg.jd { width: 330px; height: 354px; }
+
+/* =====================================================================
+   THE WAVELET-STATISTICS SLIDE  (.statpair, .l1formula)
+   Two one-point statistics side by side under the starlet row.
+   ===================================================================== */
+/* The pair sits one level below the starlet row, so it gets a clear break above
+   it and its two items are sized to their content -- NOT flex:1, which would give
+   each half the slide and push a narrow figure out to the margin. */
+.reveal .slides section .statpair {
+  display: flex; justify-content: center; align-items: stretch;
+  gap: 2.2em; margin: 1.2em auto 0;
+}
+.reveal .slides section .statpair .col {
+  flex: 0 0 auto; width: 33%;
+  display: flex; flex-direction: column; align-items: center;
+  /* each statistic is its own object, boxed so it reads as separate from the
+     starlet row above and from its neighbour */
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 0.7em 0.9em 0.85em;
+}
+.reveal .slides section .statpair .kicker { margin-bottom: 0.55em; text-align: center; width: 100%; }
+/* The map and the formula box must be the same height, or the two captions
+   sit on different lines. An inline <img> also carries baseline descender
+   space below it, which is where the extra ~40px came from. */
+.reveal .slides section .statpair .col img { display: block; height: 200px; width: auto; margin: 0; }
+.reveal .slides section .statpair .cap {
+  font-family: var(--r-main-font);
+  font-size: 0.833em; line-height: 1.35; color: var(--fg);
+  max-width: 100%; margin: 0.5em auto 0; text-align: center;
+}
+/* the l1 definition, sized to sit at the same optical weight as the peak map */
+.reveal .slides section .l1formula {
+  display: flex; align-items: center; justify-content: center;
+  height: 200px; margin: 0; font-size: 1.02em;
+}
+/* KaTeX display math carries its own vertical margin, which would make this box
+   taller than the peak map next to it and knock the two captions out of line. */
+.reveal .slides section .l1formula .katex-display { margin: 0; }
+/* one plain-language line under the formula: what the set S_{j,i} actually is.
+   It lives inside the fixed 200px formula box, so it costs no column height. */
+/* 0.75em, not the 0.833em floor: this is a gloss on the symbols in the display
+   equation above it, so it reads a step below the statement it explains.
+   NOTE custom.css also has a .defline rule — margins only, and this file loads
+   after it, so this is the one that sets the size. See REVEAL-GOTCHAS 4b. */
+.reveal .slides section .defline {
+  font-size: 0.75em; line-height: 1.4; color: var(--fg-muted);
+  text-align: center; margin: 0.9em 0 0;
+  /* two lines either way at this width; balance stops the second being an
+     orphaned "in bin i" */
+  text-wrap: balance;
+}
+
+/* A .cap that carries a sentence rather than a label wants the body face;
+   the deck's default .cap is mono, which reads as a code block in prose. */
+.reveal .slides section .cap.prose {
+  font-family: var(--r-main-font);
+  font-size: 0.833em; line-height: 1.4; color: var(--fg);
+}
+
+/* Wide, short figures (the lensing-efficiency kernels) stack better than they
+   sit side by side: vertical gives each one the full column width. */
+.reveal .slides section .figstack { display: flex; flex-direction: column; align-items: center; gap: 0.1em; }
+.reveal .slides section .figstack .fig { margin: 0; }
+.reveal .slides section .figstack img { width: 100%; max-width: 370px; height: auto; max-height: none; }
+.reveal .slides section .figstack .arrow { font-size: 1.7em; line-height: 1; color: var(--accent); margin: 0.05em 0; }
+.reveal .slides section .figstack figcaption { margin-top: 0.15em; }
+
+/* A figure that replaces another inside an .r-stack rather than overlaying it:
+   opaque backing so the frames underneath are covered, with a little bleed
+   because the two renders are not exactly the same width. */
+.reveal .slides section .swapcover { background: #ffffff; padding: 18px 26px; }
+
+/* a provenance footnote: the configuration a result was measured at */
+.reveal .slides section .footnote {
+  font-family: var(--label); font-size: 0.833em; color: var(--fg-muted);
+  margin: 0.7em auto 0; text-align: center; max-width: 92%;
+}
+.reveal .slides section .footnote b { color: var(--fg-muted); font-weight: 600; }
+
+/* A .srcref is absolutely positioned at the section's bottom-right; a .footnote
+   is the last element in the flow, so a slide carrying both lands them on the
+   same baseline and the credit reads as the tail of the footnote. Reserve the
+   credit's column. Frame 48 cleared it by luck while the footnote was 17px; at
+   20px the two ran together with 12px between them. */
+.reveal .slides section:has(> .srcref) .footnote {
+  max-width: none; margin-left: 0; margin-right: 10em;
+}
+
+/* slide 14: the stacked kernel pair is supporting evidence, so it yields
+   width and height to the posterior it is setting up */
+.reveal .slides section .figstack .fig img { max-height: 132px; width: auto; }
+
+/* the two scale cuts, side by side and short */
+.reveal .slides section .cutpair {
+  display: flex; gap: 2.4em; justify-content: center; align-items: baseline;
+  margin: 0.8em auto 0; max-width: 94%;
+}
+.reveal .slides section .cutpair .ci {
+  display: flex; align-items: baseline; gap: 0.55em;
+  font-size: 0.833em; color: var(--fg);
+}
+.reveal .slides section .cutpair .w  { font-weight: 600; color: var(--accent); }
+.reveal .slides section .cutpair .ar { color: var(--fg-muted); }
+.reveal .slides section .cutpair .t  { color: var(--fg-muted); }
+
+/* =====================================================================
+   TWO ROUTES TO THE INTER-BIN INFORMATION  (.routes)
+   Slide 12, act 2. The slide's job is the CONSTRUCTION, not the score:
+   route 1 manufactures a channel (kappa_i * kappa_j), route 2 rewrites the
+   statistic (the coefficient plane of a bin pair). Every number stays on
+   slide 13, which is the payoff - see STRUCTURE.md 5.
+   ===================================================================== */
+.reveal .slides section .routes {
+  display: flex; gap: 1.5em; align-items: stretch; margin-top: 0.1em;
+}
+.reveal .slides section .routes .route {
+  flex: 1 1 0; display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section .routes .route > .kicker { text-align: center; margin-bottom: 0.5em; }
+.reveal .slides section .routes .route .body {
+  flex: 1 1 auto; display: flex; align-items: center; justify-content: center;
+}
+/* both captions reserve the same height, so the route-2 reveal cannot
+   reflow the column underneath it (the slide-15 lesson) */
+.reveal .slides section .routes .route .rcap {
+  font-family: var(--label); font-size: 0.833em; line-height: 1.42;
+  color: var(--fg-muted); text-align: center;
+  margin: 0.55em 0 0; max-width: 97%;
+}
+.reveal .slides section .routes .route .rcap b { color: var(--accent); font-weight: 500; }
+
+/* -- route 1: the cross-map construction ----------------------------- */
+.reveal .slides section .xmap { display: flex; align-items: center; gap: 0.5em; }
+.reveal .slides section .xmap .pair { display: flex; flex-direction: column; align-items: center; gap: 0.1em; }
+.reveal .slides section .xmap figure { margin: 0; text-align: center; }
+.reveal .slides section .xmap img { display: block; width: 118px; height: auto; border: 1px solid var(--edge); }
+.reveal .slides section .xmap .out img { width: 164px; }
+.reveal .slides section .xmap figcaption {
+  font-family: var(--label); font-size: 0.833em; color: var(--fg);
+  margin-top: 0.16em; line-height: 1.2;
+}
+.reveal .slides section .xmap .op { font-size: 0.9em; color: var(--accent); font-weight: 600; line-height: 1; }
+
+/* -- route 2: the coefficient plane, axis labels re-set in HTML ------- */
+.reveal .slides section .plane {
+  display: grid; grid-template-columns: auto auto; gap: 0.25em 0.4em;
+  align-items: center; justify-items: center;
+}
+.reveal .slides section .plane .ylab,
+.reveal .slides section .plane .xlab {
+  font-family: var(--label); font-size: 0.833em; color: var(--fg); letter-spacing: 0.06em;
+}
+.reveal .slides section .plane .ylab { grid-column: 1; grid-row: 1; writing-mode: vertical-rl; transform: rotate(180deg); }
+.reveal .slides section .plane .xlab { grid-column: 2; grid-row: 2; }
+/* the overlay below is positioned in per-cent of this box, so the box must NOT
+   be left to auto-sizing (grid blockification + reveal's default img margin
+   made it 30px taller and wider than the image). Pin the width and lock the
+   aspect ratio to the asset's, and the image fills it exactly. */
+.reveal .slides section .plane .planefig {
+  grid-column: 2; grid-row: 1; position: relative; display: block;
+  width: 344px; aspect-ratio: 820 / 849; line-height: 0;
+}
+/* reveal's own sheet caps every slide image at max-width/max-height 95%, which
+   would render the image at 95% of the box the overlay is measured against */
+.reveal .slides section .plane .planefig img {
+  display: block; width: 100%; height: 100%; margin: 0;
+  max-width: none; max-height: none;
+}
+/* geometry measured off p2_l1_joint_cellmap_tight.png (820x849): the 2-D
+   panel sits at 0.85%/22.5% and is 76.6% x 76.8% of the image box */
+.reveal .slides section .plane .mask {
+  position: absolute; left: 0.85%; top: 22.5%; width: 76.6%; height: 76.8%;
+  box-sizing: border-box;   /* the 1.1em side padding is inside the panel, not added to it */
+  background: var(--surface); border: 1px dashed var(--edge);
+  display: flex; align-items: center; justify-content: center; padding: 0 1.1em;
+}
+.reveal .slides section .plane .mask span {
+  font-family: var(--label); font-size: 0.833em; line-height: 1.5;
+  color: var(--fg-muted); text-align: center;
+}
+
+/* the joint l1-norm's definition, under the column it belongs to. It does NOT
+   go on top of the cell map: at a size that fits inside the 242px panel the type
+   falls well under the house floor, and the plate would land on the diagonal
+   ridge, which is the one feature the slide exists to show. */
+.reveal .slides section .jointdef { font-size: 0.76em; margin-top: 0.5em; }
+.reveal .slides section .jointdef .katex-display { margin: 0; }
+
+/* a citation tag in the bottom-right of a results slide. Exempt from the type
+   floor: it is provenance, not content, and the full references are on the
+   conclusions slide where people photograph them. */
+.reveal .slides section .srcref {
+  position: absolute; right: 0; bottom: 0;
+  font-family: var(--label); font-size: 0.833em; letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+.reveal .slides section .refs {
+  font-family: var(--label); font-size: 0.833em; line-height: 1.5;
+  color: var(--fg-muted); text-align: left; margin: 1.1em 0 0;
+  padding-left: 0.8em; border-left: 1px solid var(--hair);
+}
+.reveal .slides section .refs em { font-style: italic; }
+/* paper titles carry the full ink; the author lines stay muted under them */
+.reveal .slides section .refs b { color: var(--fg); font-weight: 600; }
+
+
+/* ---------------------------------------------------------------------------
+   The label voice, applied — this deck's own components (custom.css +
+   new_slides.css).  new_slides.css is the last stylesheet of the three, so
+   the rule sits here to reach selectors defined in both.
+   Grouped so the label voice lives in three tokens rather than in fifty rules.
+   It has to come last: each rule above declares its own letter-spacing after
+   its font-family, so only a later rule of equal specificity can retrack it.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .cap,
+.reveal .slides section .legend,
+.reveal .slides section .skeptic .who .role,
+.reveal .slides section .checklist li .mk,
+.reveal .slides section .checklist li .tag,
+.reveal .slides section .svgfig text,
+.reveal .slides section .pan h4,
+.reveal .slides section .tomo-credit,
+.reveal .slides section .veil-card .cap,
+.reveal .slides section .figgrid figcaption,
+.reveal .slides section table.ptable th,
+.reveal .slides section .conecap,
+.reveal .slides section .bare figcaption,
+.reveal .slides section .note .lab,
+.reveal .slides section .chainfig .step .n,
+.reveal .slides section .actdiv .actref,
+.reveal .slides section .fixedchain .fsub,
+.reveal .slides section .mcard .mtag,
+.reveal .slides section .mcard .has::before,
+.reveal .slides section .mcard .lacks::before,
+.reveal .slides section.probes .src,
+.reveal .slides section .credit-line,
+.reveal .slides section .axis-note,
+.reveal .slides section .qlist .qn,
+.reveal .slides section .ladder .reads .sub,
+.reveal .slides section .tie-strip .lbl,
+.reveal .slides section .ledger .col h4,
+.reveal .slides section .ledger .col li::before,
+.reveal .slides section .mixfig .side h4,
+.reveal .slides section svg.chart .axlabel,
+.reveal .slides section svg.chart .reftext,
+.reveal .slides section .ladder .ceilnote,
+.reveal .slides section svg.jd .jdlab,
+.reveal .slides section .obstacles .ob h4,
+.reveal .slides section svg.pipe .lab,
+.reveal .slides section .pipeflow figcaption,
+.reveal .slides section svg.scales .lab,
+.reveal .slides section svg.scales .axlab,
+.reveal .slides section svg.scales .bandlab,
+.reveal .slides section svg.scales .schematic-note,
+.reveal .slides section .coreq .qtab,
+.reveal .slides section .coreq li .n,
+.reveal .slides section .marg .mhead,
+.reveal .slides section .footnote,
+.reveal .slides section .routes .route .rcap,
+.reveal .slides section .xmap figcaption,
+.reveal .slides section .plane .ylab,
+.reveal .slides section .plane .xlab,
+.reveal .slides section .plane .mask span,
+.reveal .slides section .srcref,
+.reveal .slides section .refs {
+	font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: inpainting / iKS (added 2026-09-13). Two columns under a lead line,
+   and the whole thing has to clear 720. The figure is a 2:1 pair, so capping
+   its height is what buys the room; the blocks only need their padding back.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.inpaint .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.inpaint .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.inpaint .container {
+	align-items: flex-start;
+	gap: 0 1.2em;
+	margin-top: 0.4em;
+}
+.reveal .slides section.inpaint .col { display: flex; flex-direction: column; gap: 0.55em; }
+/* the figure is what makes inpainting obvious at a glance, so its column takes
+   the wider share; the left column is text and wraps happily at the narrower one */
+.reveal .slides section.inpaint .col:last-child { flex: 1.1; }
+.reveal .slides section.inpaint .block { margin: 0; }
+.reveal .slides section.inpaint .block-title { padding: 7px 14px 4px; }
+.reveal .slides section.inpaint .block-content { padding: 7px 14px 9px; }
+.reveal .slides section.inpaint .block-content p { margin: 0 0 0.45em; }
+.reveal .slides section.inpaint .block-content p:last-child { margin-bottom: 0; }
+
+/* the two equations set their own breathing room; KaTeX display math carries a
+   1em margin of its own, which is too much inside a padded block */
+.reveal .slides section.inpaint .inpeq { margin: 0.25em 0 0; }
+.reveal .slides section.inpaint .inpeq .katex-display { margin: 0.2em 0; }
+.reveal .slides section.inpaint .inpeq .katex { font-size: 0.92em; }
+
+.reveal .slides section.inpaint .inpfig {
+	display: block; margin: 0 auto; width: 100%; height: auto;
+	max-height: 210px; max-width: 100%; object-fit: contain;
+}
+.reveal .slides section.inpaint .inpfig { max-height: 300px; }
+
+/* the credit sits inside the right column rather than in the section's absolute
+   bottom-right corner, where it collided with both the footnote's first line and
+   the nav arrows. Static here, so the footnote gets the full width back. */
+.reveal .slides section.inpaint .srcref {
+	position: static; text-align: right; margin: 0.15em 0.1em 0;
+}
+/* the nav arrows live in the bottom-right corner and are drawn over the slide,
+   so a full-width footnote runs under them. Reserve their column. */
+.reveal .slides section.inpaint .footnote {
+	margin: 0.5em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the PnPMass denoiser, and the transformer it is built from
+   (added 2026-09-13). Same spacing discipline as .inpaint above — the blocks
+   only need their padding back, and the figures are capped so the columns
+   clear 720.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.dnoise .slide-title,
+.reveal .slides section.attn .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.dnoise .lead-line { margin: 0.3em auto 0; }
+
+.reveal .slides section.dnoise .container,
+.reveal .slides section.attn .container {
+	align-items: flex-start;
+	gap: 0 1.2em;
+	margin-top: 0.4em;
+}
+.reveal .slides section.dnoise .col,
+.reveal .slides section.attn .col { display: flex; flex-direction: column; gap: 0.55em; }
+.reveal .slides section.dnoise .block,
+.reveal .slides section.attn .block { margin: 0; }
+.reveal .slides section.dnoise .block-title,
+.reveal .slides section.attn .block-title { padding: 7px 14px 4px; }
+.reveal .slides section.dnoise .block-content,
+.reveal .slides section.attn .block-content { padding: 7px 14px 9px; }
+.reveal .slides section.dnoise .block-content p,
+.reveal .slides section.attn .block-content p { margin: 0 0 0.45em; }
+.reveal .slides section.dnoise .block-content p:last-child,
+.reveal .slides section.attn .block-content p:last-child { margin-bottom: 0; }
+
+.reveal .slides section.dnoise .dneq { margin: 0.25em 0; }
+.reveal .slides section.dnoise .dneq .katex-display { margin: 0.2em 0; }
+.reveal .slides section.dnoise .dneq .katex { font-size: 0.88em; }
+
+.reveal .slides section.dnoise .dnfig {
+	display: block; margin: 0 auto; width: 100%; height: auto;
+	max-height: 300px; max-width: 100%; object-fit: contain;
+}
+/* the attention figure is the slide — it carries both panels and the equations,
+   so it takes the wider column and as much height as the text allows */
+.reveal .slides section.attn .col:first-child { flex: 1.25; }
+.reveal .slides section.attn .atfig {
+	display: block; margin: 0 auto; width: 100%; height: auto;
+	max-height: 560px; max-width: 100%; object-fit: contain;
+}
+
+.reveal .slides section.dnoise .srcref,
+.reveal .slides section.attn .srcref { font-size: 0.7em; }
+
+/* both credits come out of the absolute bottom-right corner: there they land on
+   the footnote's first line, and on the nav arrows. Static, right-aligned, in
+   the flow above the footnote. */
+.reveal .slides section.dnoise .srcref,
+.reveal .slides section.attn .srcref {
+	position: static; text-align: right; margin: 0.2em 5.5em 0 0;
+}
+.reveal .slides section.dnoise .footnote {
+	margin: 0.15em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: conformal calibration (added 2026-09-13). The schematic is a wide
+   3.8:1 band across the full width, with the guarantee and the caveat under it.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.cqr .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.cqr .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.cqr .cqrfig {
+	display: block; margin: 0.4em auto 0; width: 100%; height: auto;
+	max-height: 240px; max-width: 100%; object-fit: contain;
+}
+.reveal .slides section.cqr .container { align-items: flex-start; gap: 0 1.2em; margin-top: 0.5em; }
+.reveal .slides section.cqr .col { display: flex; flex-direction: column; }
+.reveal .slides section.cqr .block { margin: 0; }
+.reveal .slides section.cqr .block-title { padding: 7px 14px 4px; }
+.reveal .slides section.cqr .block-content { padding: 7px 14px 9px; }
+.reveal .slides section.cqr .block-content p { margin: 0 0 0.45em; }
+.reveal .slides section.cqr .block-content p:last-child { margin-bottom: 0; }
+.reveal .slides section.cqr .cqeq { margin: 0.1em 0 0.5em; }
+.reveal .slides section.cqr .cqeq .katex-display { margin: 0.15em 0; }
+.reveal .slides section.cqr .cqeq .katex { font-size: 0.9em; }
+.reveal .slides section.cqr .srcref {
+	position: static; text-align: right; margin: 0.2em 5.5em 0 0; font-size: 0.7em;
+}
+.reveal .slides section.cqr .footnote {
+	margin: 0.45em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the filtering / l1 explainer cards (added 2026-09-13), built from the
+   PhD_Day_2025 originals and, after 2026-09-13, written in their author's form:
+   a bordered block, bold label, colon, arrow to the consequence.  Five of the six
+   are one block of bullets; only the filter card is two columns.  No figures, so
+   the whole budget is type, and the .points size inside a .block is the lever.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.filt .slide-title,
+.reveal .slides section.dasym .slide-title,
+.reveal .slides section.l1l2 .slide-title,
+.reveal .slides section.pdfl1 .slide-title,
+.reveal .slides section.fbias .slide-title,
+.reveal .slides section.lrnfilt .slide-title { margin-bottom: 0.15em; }
+
+/* the one two-column card */
+.reveal .slides section.filt .container {
+	align-items: stretch; gap: 0 1.2em; margin-top: 0.6em;
+}
+.reveal .slides section.filt .col { display: flex; flex-direction: column; }
+
+/* the single-block cards: one wide bordered block holding the list */
+.reveal .slides section.l1l2 .l1l2block,
+.reveal .slides section.pdfl1 .pdfblock,
+.reveal .slides section.fbias .fbiasblock,
+.reveal .slides section.lrnfilt .lrnblock { max-width: 92%; margin: 0.6em auto 0; }
+
+.reveal .slides section.filt .block,
+.reveal .slides section.l1l2 .block,
+.reveal .slides section.pdfl1 .block,
+.reveal .slides section.fbias .block,
+.reveal .slides section.lrnfilt .block { margin: 0; height: 100%; }
+.reveal .slides section.filt .block-title,
+.reveal .slides section.l1l2 .block-title,
+.reveal .slides section.pdfl1 .block-title,
+.reveal .slides section.fbias .block-title,
+.reveal .slides section.lrnfilt .block-title { padding: 7px 16px 4px; }
+.reveal .slides section.filt .block-content,
+.reveal .slides section.l1l2 .block-content,
+.reveal .slides section.pdfl1 .block-content,
+.reveal .slides section.fbias .block-content,
+.reveal .slides section.lrnfilt .block-content { padding: 8px 16px 12px; }
+
+/* bullets inside a bordered block: the block carries the indent, so the list
+   gives back its own top margin */
+.reveal .slides section.filt .block-content .points {
+	font-size: 0.95em; line-height: 1.44; margin: 0.2em 0 0;
+}
+.reveal .slides section.l1l2 .block-content .points,
+.reveal .slides section.pdfl1 .block-content .points,
+.reveal .slides section.fbias .block-content .points {
+	font-size: 1.02em; line-height: 1.48; margin: 0.2em 0 0;
+}
+.reveal .slides section.lrnfilt .block-content .points {
+	font-size: 0.95em; line-height: 1.42; margin: 0.2em 0 0;
+}
+.reveal .slides section.filt .block-content .points li,
+.reveal .slides section.l1l2 .block-content .points li,
+.reveal .slides section.pdfl1 .block-content .points li,
+.reveal .slides section.fbias .block-content .points li,
+.reveal .slides section.lrnfilt .block-content .points li { margin: 0.5em 0 0; }
+.reveal .slides section.filt .block-content .points li:first-child,
+.reveal .slides section.l1l2 .block-content .points li:first-child,
+.reveal .slides section.pdfl1 .block-content .points li:first-child,
+.reveal .slides section.fbias .block-content .points li:first-child,
+.reveal .slides section.lrnfilt .block-content .points li:first-child { margin-top: 0; }
+
+/* the reference list sets its sub-items on their own lines, as the original did */
+.reveal .slides section.lrnfilt .block-content .points li { margin-top: 0.7em; }
+
+/* the density-contrast definition sits on its own line above the bullets */
+.reveal .slides section.dasym .dseq { margin: 0.5em 0 0; }
+.reveal .slides section.dasym .dseq .katex-display { margin: 0.2em 0; }
+.reveal .slides section.dasym .dseq .katex { font-size: 0.9em; }
+.reveal .slides section.dasym .points.dspoints {
+	max-width: 90%; margin: 0.9em auto 0; font-size: 1.05em; line-height: 1.5;
+}
+.reveal .slides section.dasym .points.dspoints li { margin: 0.55em 0 0; }
+
+/* a journal reference at the tail of a bullet, in the label voice */
+.reveal .slides section.lrnfilt .cite {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	color: var(--fg-muted); white-space: nowrap;
+}
+
+/* the closing accent line, the original's cyan arrow */
+.reveal .slides section.l1l2 .oneline { max-width: 92%; margin: 0.7em auto 0; font-size: 0.95em; }
+
+/* the nav arrows are drawn over the bottom-right corner, so a full-width
+   footnote runs under them. Reserve their column and read the line left. */
+.reveal .slides section.filt .footnote,
+.reveal .slides section.l1l2 .footnote,
+.reveal .slides section.pdfl1 .footnote,
+.reveal .slides section.fbias .footnote {
+	margin: 0.6em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the angular-to-physical scale reference card (added 2026-09-13,
+   simplified the same day).  One centred table, nothing else on the slide, so
+   it can be sized for reading at the back rather than squeezed beside a column.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.mpc .slide-title { margin-bottom: 0.15em; }
+
+.reveal .slides section.mpc table.mpctable {
+	width: 74%; margin: 0.8em auto 0; font-size: 0.95em;
+}
+.reveal .slides section.mpc table.mpctable th:nth-child(1) { width: 31%; }
+.reveal .slides section.mpc table.mpctable th:nth-child(2),
+.reveal .slides section.mpc table.mpctable th:nth-child(3),
+.reveal .slides section.mpc table.mpctable th:nth-child(4) { width: 23%; }
+/* .ptable's header fill is a dark bar (--surface-2 is undefined, so the #26272c
+   fallback wins).  That suits the dark deck the other table sits on; here it is
+   a black band across a paper-coloured card.  Tint it with the accent instead. */
+.reveal .slides section.mpc table.mpctable th {
+	background: color-mix(in srgb, var(--accent) 10%, transparent);
+	border-bottom: 1px solid var(--accent);
+	padding: 0.3em 0.6em;
+}
+.reveal .slides section.mpc table.mpctable td { padding: 0.2em 0.6em; }
+/* the numbers are a column to compare down, so they take the mono face and the
+   labels do not */
+.reveal .slides section.mpc table.mpctable td:not(:first-child) {
+	font-family: var(--mono, ui-monospace, monospace); text-align: right;
+}
+/* KaTeX offers a line break after a relation symbol, so "z = 0.1" splits across
+   two lines in a fixed-layout column. Hold each header on one line. */
+.reveal .slides section.mpc table.mpctable th:not(:first-child) {
+	text-align: right; white-space: nowrap;
+}
+/* the second header row starts the structures half: it needs air above it */
+.reveal .slides section.mpc table.mpctable tr.sep th {
+	border-top: 14px solid transparent; background-clip: padding-box;
+}
+/* the unit is declared once, in a band above the column heads, so the two rows
+   have to read as one header: no rule between them, and the unit centred over
+   the columns it governs */
+.reveal .slides section.mpc table.mpctable tr.unit th {
+	border-bottom: 0; padding-bottom: 0; text-align: center; font-size: 0.95em;
+}
+.reveal .slides section.mpc table.mpctable tr.sep th:empty { border-bottom-color: var(--accent); }
+
+.reveal .slides section.mpc .footnote {
+	/* sits under the table rather than across the slide, so the card reads as
+	   one centred block instead of a table with a stray line beneath it */
+	margin: 0.9em auto 0; max-width: 72%; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the TARP / SBC explainer (added 2026-09-14). Two columns, one test
+   each, in the same form as the filtering cards.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.calib .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.calib .lead-line { margin: 0.3em auto 0.1em; }
+.reveal .slides section.calib .container {
+	align-items: stretch; gap: 0 1.2em; margin-top: 0.5em;
+}
+.reveal .slides section.calib .col { display: flex; flex-direction: column; }
+.reveal .slides section.calib .block { margin: 0; height: 100%; }
+.reveal .slides section.calib .block-title { padding: 7px 16px 4px; }
+.reveal .slides section.calib .block-content { padding: 8px 16px 12px; }
+.reveal .slides section.calib .block-content .points {
+	font-size: 0.9em; line-height: 1.42; margin: 0.2em 0 0;
+}
+.reveal .slides section.calib .block-content .points li { margin: 0.5em 0 0; }
+.reveal .slides section.calib .block-content .points li:first-child { margin-top: 0; }
+.reveal .slides section.calib .cite {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+	color: var(--fg-muted); white-space: nowrap;
+}
+.reveal .slides section.calib .footnote {
+	margin: 0.6em 5.5em 0 0; max-width: none; text-align: left;
+}
+/* a citation on its own line at the foot of a block: no dash, no indent */
+.reveal .slides section.calib .points li.src {
+	padding-left: 0; margin-top: 0.6em;
+}
+.reveal .slides section.calib .points li.src::before { content: none; }
+
+/* ----------------------------------------------------------------------------
+   Backup: the cosmological-parameter reference card (added 2026-09-14).
+   Three columns: symbol, plain gloss, how much lensing constrains it.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.params .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.params .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.params table.ptbl {
+	width: 88%; margin: 0.7em auto 0; font-size: 0.92em;
+}
+.reveal .slides section.params table.ptbl th:nth-child(1) { width: 14%; }
+.reveal .slides section.params table.ptbl th:nth-child(2) { width: 62%; }
+.reveal .slides section.params table.ptbl th:nth-child(3) { width: 24%; }
+.reveal .slides section.params table.ptbl th {
+	background: color-mix(in srgb, var(--accent) 10%, transparent);
+	border-bottom: 1px solid var(--accent);
+	padding: 0.3em 0.7em;
+}
+.reveal .slides section.params table.ptbl td { padding: 0.24em 0.7em; }
+/* the verdict column is the one to scan down, so it takes the label voice */
+.reveal .slides section.params table.ptbl td:nth-child(3),
+.reveal .slides section.params table.ptbl th:nth-child(3) { text-align: right; }
+.reveal .slides section.params table.ptbl td:nth-child(3) {
+	font-family: var(--label); font-style: var(--label-style);
+	letter-spacing: var(--label-tracking);
+}
+/* three consecutive tinted rows read as one slab, so the rows lensing actually
+   constrains are marked in the verdict column alone */
+.reveal .slides section.params table.ptbl tr.key td:nth-child(3) { color: var(--accent); font-weight: 600; }
+.reveal .slides section.params table.ptbl tr.key td:first-child { font-weight: 600; }
+.reveal .slides section.params .footnote {
+	margin: 0.7em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the systematics-beyond-baryons card (added 2026-09-14). Same three-
+   column shape as the parameter card: name, what it is, where it stands.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.systs .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.systs .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.systs table.systbl {
+	width: 92%; margin: 0.7em auto 0; font-size: 0.86em;
+}
+.reveal .slides section.systs table.systbl th:nth-child(1) { width: 22%; }
+.reveal .slides section.systs table.systbl th:nth-child(2) { width: 50%; }
+.reveal .slides section.systs table.systbl th:nth-child(3) { width: 28%; }
+.reveal .slides section.systs table.systbl th {
+	background: color-mix(in srgb, var(--accent) 10%, transparent);
+	border-bottom: 1px solid var(--accent);
+	padding: 0.3em 0.7em;
+}
+.reveal .slides section.systs table.systbl td { padding: 0.3em 0.7em; vertical-align: top; }
+.reveal .slides section.systs table.systbl td:first-child { font-weight: 600; }
+/* the two rows this thesis actually works on are marked in the last column */
+.reveal .slides section.systs table.systbl tr.key td:last-child { color: var(--accent); font-weight: 600; }
+.reveal .slides section.systs .footnote {
+	margin: 0.7em 5.5em 0 0; max-width: none; text-align: left;
+}
+
+/* ----------------------------------------------------------------------------
+   Backup: the outlook card (added 2026-09-14). Two columns, near term and
+   further out, in the same block form as the other explainer cards.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.outlook .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.outlook .lead-line { margin: 0.3em auto 0.1em; }
+.reveal .slides section.outlook .container {
+	align-items: stretch; gap: 0 1.2em; margin-top: 0.5em;
+}
+.reveal .slides section.outlook .col { display: flex; flex-direction: column; }
+.reveal .slides section.outlook .block { margin: 0; height: 100%; }
+.reveal .slides section.outlook .block-title { padding: 7px 16px 4px; }
+.reveal .slides section.outlook .block-content { padding: 8px 16px 12px; }
+.reveal .slides section.outlook .block-content .points {
+	font-size: 0.88em; line-height: 1.42; margin: 0.2em 0 0;
+}
+.reveal .slides section.outlook .block-content .points li { margin: 0.55em 0 0; }
+.reveal .slides section.outlook .block-content .points li:first-child { margin-top: 0; }
+.reveal .slides section.outlook .footnote {
+	margin: 0.6em 5.5em 0 0; max-width: none; text-align: left;
+}
+/* custom.css sets .points li b to --fg, which beats .alert on specificity, so the
+   one item the thesis calls the most direct continuation was not reading as one */
+.reveal .slides section.outlook .points li b.alert { color: var(--accent); }
+
+/* ----------------------------------------------------------------------------
+   Backup: Born / Limber / ray tracing (added 2026-09-14). Three rows, same
+   three-column shape as the parameter and systematics cards.
+   ------------------------------------------------------------------------- */
+.reveal .slides section.born .slide-title { margin-bottom: 0.15em; }
+.reveal .slides section.born .lead-line { margin: 0.3em auto 0; }
+.reveal .slides section.born table.borntbl {
+	width: 92%; margin: 0.8em auto 0; font-size: 0.9em;
+}
+.reveal .slides section.born table.borntbl th:nth-child(1) { width: 16%; }
+.reveal .slides section.born table.borntbl th:nth-child(2) { width: 44%; }
+.reveal .slides section.born table.borntbl th:nth-child(3) { width: 40%; }
+.reveal .slides section.born table.borntbl th {
+	background: color-mix(in srgb, var(--accent) 10%, transparent);
+	border-bottom: 1px solid var(--accent);
+	padding: 0.3em 0.7em;
+}
+.reveal .slides section.born table.borntbl td { padding: 0.4em 0.7em; vertical-align: top; }
+.reveal .slides section.born table.borntbl td:first-child { font-weight: 600; }
+.reveal .slides section.born table.borntbl tr.key td:first-child { color: var(--accent); }
+.reveal .slides section.born .mono { font-family: var(--mono, ui-monospace, monospace); font-size: 0.92em; }
+.reveal .slides section.born .footnote {
+	margin: 0.8em 5.5em 0 0; max-width: none; text-align: left;
+}
