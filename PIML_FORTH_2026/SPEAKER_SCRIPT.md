@@ -343,17 +343,22 @@ it; what happens when the simulator's physics is wrong is a separate study, in t
 
 ---
 
-## A2.4 — the learned encoder · frame 24 · 1:06
+## A2.4 — the learned encoder · frame 24 · 1:37
 
 Beating second-order statistics is easy. The real question is how close to **all** of the
 information in the map a feature vector gets. And since the inference is already a network, why not
 learn the compression too? There are reasons to be careful: training data, interpretability,
-generalisation. But the principled way to do it is this. [CLICK] An encoder maps each map to a
-ten-dimensional summary, and a flow maps the summary to a posterior. [CLICK] The two are trained
-together to maximise the mutual information between summary and parameters. **▲** So this network
-is not just another feature: it is an estimate of the ceiling, the most any summary of these maps
-can carry. And the comparison is matched: same simulated maps, same flow, the same calibration
-tests on every posterior. Only the feature vector differs.
+generalisation. But the principled way to do it is variational mutual-information maximisation.
+[CLICK] A convolutional encoder, a ResNet-18, maps each four-channel map to a ten-dimensional
+summary, and a conditional normalising flow, RealNVP, maps the summary to a posterior. [CLICK] The
+two are trained jointly on the expected log posterior under the flow. That objective is a
+variational lower bound on the mutual information between summary and parameters, up to the
+entropy of the prior, and it is tight when the flow matches the posterior; so maximising it over
+the encoder maximises the information the summary carries, and at the optimum the summary is a
+sufficient statistic. **▲** So this network is not just another feature: it is an estimate of the
+ceiling, the most any summary of these maps can carry. And the comparison is matched: same
+simulated maps, same flow, the same calibration tests on every posterior. Only the feature vector
+differs.
 
 ---
 

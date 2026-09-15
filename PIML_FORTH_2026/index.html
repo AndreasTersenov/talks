@@ -1174,11 +1174,11 @@
 				</section>
 
 				<section class="ns-slide" data-theme="light" data-ns-explainer data-ns-kind="vmim">
-					<h3 class="ns-title">A learned encoder trained to be <span class="hl-vmim">information-optimal</span></h3>
+					<h3 class="ns-title">A learned encoder, trained jointly with the flow to <span class="hl-vmim">maximise the mutual information</span> \(I(t;\theta)\)</h3>
 					<div class="ns-pipe">
 						<div class="ns-box">
 							<div class="role">simulator</div>
-							<div class="math">\(\theta\sim\) prior</div>
+							<div class="math">\(\theta\sim p(\theta)\)</div>
 						</div>
 						<span class="ns-arrow">&rarr;</span>
 						<div class="ns-box ns-box--map"><img class="ns-map" src="../assets/figures/maps/kappa_patch.png"
@@ -1193,7 +1193,7 @@
 						<span class="ns-arrow">&rarr;</span>
 						<div class="ns-box">
 							<div class="role">summary</div>
-							<div class="math">\(t\)</div>
+							<div class="math">\(t\in\mathbb{R}^{10}\)</div>
 						</div>
 						<span class="ns-arrow">&rarr;</span>
 						<div class="ns-box ns-box--flow">
@@ -1206,8 +1206,7 @@
 							<div class="math">\(p(\theta\mid t)\)</div>
 						</div>
 					</div>
-					<div class="ns-objective ns-objective--vmim">\[\max_{\phi,\psi}\;
-						I(t;\theta)\;=\;\max_{\phi,\psi}\;\mathbb{E}\,\log q_\psi\!\big(\theta\mid f_\phi(x)\big)\]
+					<div class="ns-objective ns-objective--vmim">\[\max_{\phi,\psi}\;\mathbb{E}_{p(\theta,x)}\!\left[\log q_\psi\big(\theta\mid f_\phi(x)\big)\right]\;\le\; I(t;\theta) - H(\theta)\]
 					</div>
 					<div class="ns-lower">
 						<div class="ns-caption" aria-live="polite"></div>
@@ -1223,9 +1222,9 @@
 						<p><strong>the learned encoder</strong></p>
 						<ul>
 							<li>beating second order is easy; how close to all of it?</li>
-							<li>why not learn the compression: careful (data, interpretability, generalisation), but the principled way:</li>
-							<li><strong>»</strong> encoder → 10-d summary; flow → posterior</li>
-							<li><strong>»</strong> trained together to maximise mutual information = expected log posterior</li>
+							<li>why not learn the compression: careful (data, interpretability, generalisation), but the principled way is VMIM:</li>
+							<li><strong>»</strong> ResNet-18 encoder → t ∈ R¹⁰; conditional RealNVP flow q_ψ(θ | t) → posterior</li>
+							<li><strong>»</strong> trained jointly on the expected log posterior under the flow = a variational lower bound on I(t;θ) − H(θ) (Barber–Agakov), tight when q_ψ = p(θ | t); at the optimum t is sufficient: p(θ | x) = p(θ | t)</li>
 							<li>▲ an estimate of the ceiling, not just another feature; the benchmark</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:

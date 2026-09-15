@@ -218,21 +218,15 @@
   ctrlProto(VmimEngine.prototype);
   VmimEngine.prototype.COPY = {
     1: "<ul class='ns-bul'>" +
-      "<li>A network compresses the map to a <b>summary</b> \\(t=f_\\phi(x)\\)</li>" +
-      "<li>\\(t\\) is just a code; a flow \\(q_\\psi(\\theta\\mid t)\\) turns it into a posterior</li>" +
-      "<li>Both are trained <b>together</b>, rewarded whenever the flow puts high probability on the <b>true</b> \\(\\theta\\)</li>" +
+      "<li>A CNN \\(f_\\phi\\), a ResNet-18, compresses the four-channel map to a <b>summary</b> \\(t=f_\\phi(x)\\in\\mathbb{R}^{10}\\)</li>" +
+      "<li>A conditional normalising flow \\(q_\\psi(\\theta\\mid t)\\), a RealNVP, models the posterior from the summary</li>" +
+      "<li>Both are trained <b>jointly</b> on the expected log posterior under the flow</li>" +
       "</ul>",
     2: "<ul class='ns-bul'>" +
-      "<li>So the network learns to keep <b>whatever helps</b> the flow do that</li>" +
-      "<li>\\(q_\\psi\\) is pulled onto the true \\(p(\\theta\\mid x)\\) </li>" +
-      //  "<li>That is what \"maximise the information \\(I(t;\\theta)\\)\" means in practice</li>" +
+      "<li>A <b>variational lower bound</b> on \\(I(t;\\theta)-H(\\theta)\\) (Barber &amp; Agakov 2003): tight when \\(q_\\psi = p(\\theta\\mid t)\\), so maximising it over \\(\\phi\\) maximises \\(I(t;\\theta)\\)</li>" +
       "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
+      "<li>The <b>ceiling</b> the hand-crafted features are measured against (VMIM, Jeffrey, Alsing &amp; Lanusse 2021)</li>" +
       "</ul>",
-    // 3: "<ul class='ns-bul'>" +
-    //      "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
-    //  "<li>This is the <b>ceiling</b> our comparison is measured against</li>" +
-    //  "<li>Not another statistic &mdash; an estimate of what is extractable</li>" +
-    // "</ul>"
   };
   VmimEngine.prototype._stateForAct = function (a) {
     return { qbend: a >= 2 ? 1 : 0, suff: a >= 3 ? 1 : 0 };
