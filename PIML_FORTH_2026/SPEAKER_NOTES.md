@@ -87,13 +87,13 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - **»** ▲ miss rate between α − 1/(n+1) and α, any network, any distribution; 1024 maps, α ≈ 4.55 %
 - limit: marginal, weakest at the peaks (open question at the end)
 
-**15 · accurate, smallest calibrated bars** ← two clicks: trained once, the maps
-- axes: across error, up bar size, lower-left better; circles the networks' own bars before, diamonds after the conformal step of frame 14: every diamond on the target rate
+**15 · accurate, smallest calibrated bars**
+- axes: across error, up bar size, lower-left better; colour miscoverage: circles above target before, diamonds on it after
 - not who covers (everyone) but who covers with the tightest bars
-- ▲ plug-and-play within 1 % of the end-to-end network (U-Net trained for this mask and noise), residual variant within 0.5 %; smallest calibrated bars, all 512 maps
-- **»** ▲ end to end retrained per footprint/noise; plug-and-play trained once
+- ▲ within 1 % of DeepMass (U-Net trained end to end for this mask and noise); smallest calibrated bars, all 512 test maps
+- **»** uncertainty rises where the structure is
+- **»** ▲ DeepMass retrained per footprint/noise; PnPMass trained once
 - two limits: marginal not conditional (weakest at peaks); single cosmology
-- **»** the map and its bar: uncertainty rises where the structure is
 
 **16 · six correlated channels** ← one click: the measurements
 - paper in preparation with Hubert Leterme; slice the sources by distance, one map per slice, six channels

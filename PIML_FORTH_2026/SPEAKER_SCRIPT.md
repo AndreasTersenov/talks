@@ -223,22 +223,20 @@ holds whether or not the network is well specified.
 
 ---
 
-## A1.9 — accurate, with the smallest calibrated error bars · frame 15 · 1:30
+## A1.9 — accurate, with the smallest calibrated error bars · frame 15 · 1:16
 
-The whole result in one chart. Across, reconstruction error; up, the size of the calibrated error
-bar; lower left is better. The circles are the networks' own bars before the conformal step of the
-last slide, the diamonds after it: every diamond sits on the target rate. So the comparison is not
-who covers, everyone covers, that is the guarantee doing its job. It is who reaches the target with
-the tightest bars.
+The whole result in one plot. Across, reconstruction error; up, the size of the calibrated error
+bar; lower left is better. Colour is the miscoverage rate: before calibration the circles sit above
+the target, after calibration every diamond is on it. So the comparison is not who covers, everyone
+covers, that is the guarantee doing its job. It is who covers with the tightest bars.
 
-**▲** On accuracy, plug-and-play is within one per cent of the end-to-end network, the U-Net
-trained for this exact mask and noise level, and the residual variant within half a per cent. On
-uncertainty both have the smallest calibrated error bars of every method tested, on all five
-hundred and twelve test maps. [CLICK] **▲** And the end-to-end network has to be retrained
-whenever the footprint or the noise changes; plug-and-play is trained once. Two honest limits: the
-guarantee is marginal, not conditional, and weakest at the peaks; and this is a single cosmology.
-[CLICK] Here is one field, the map and its error bar: the uncertainty rises where the structure
-is.
+**▲** On accuracy, PnPMass is within one per cent of DeepMass, a U-Net trained end to end for this
+exact mask and noise level. On uncertainty it has the smallest calibrated error bars of every
+method tested, on all five hundred and twelve test maps. [CLICK] The uncertainty rises where the
+structure is. [CLICK] **▲** And DeepMass has to be retrained whenever the footprint or the noise
+changes; PnPMass is trained once. Two honest limits: the guarantee is marginal, not conditional,
+and weakest at the peaks; and this is a single cosmology.
+
 ---
 
 ## A1.10 — six correlated channels · frame 16 · 1:00
@@ -247,10 +245,10 @@ One more step, from the paper in preparation with Hubert Leterme. Slice the sour
 distance and you get one map per slice: six channels. Here are the six maps of one field,
 reconstructed the way I will show in two slides. The same structures appear in every channel,
 stronger with distance, because each slice is lensed by all the matter in front of it; the
-channels are strongly correlated. [CLICK] And here is what we measure. Each channel gets a sixth
-of the galaxies, so the noise per channel is far worse than in the single-map problem, and many
-pixels have no galaxy at all. **▲** Six ill-posed problems, each worse than the one we just
-solved, that share their answer.
+channels are strongly correlated. [CLICK] And here
+is what we measure. Each channel gets a sixth of the galaxies, so the noise per channel is far
+worse than in the single-map problem, and many pixels have no galaxy at all. **▲** Six ill-posed
+problems, each worse than the one we just solved, that share their answer.
 
 ---
 
