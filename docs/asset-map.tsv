@@ -274,3 +274,5 @@ tomo_pnp/joint_nulled_6.png	maps	joint reconstruction after the BNT nulling, cha
 tomo_pnp_nrmse_per_channel.svg	statistics	draft Fig. 4b, PnP error per redshift bin (Leterme, Tersenov & Starck, in prep.)
 tomo_denoise_nrmse_per_channel.svg	statistics	draft Fig. 4a, denoising error per redshift bin at sigma 0.2
 tomo_pnp_nrmse_per_iteration.png	statistics	draft Fig. 5, PnPMass3D error per iteration
+PnP_11_talk.png	maps	PnP_11 with the in-figure bullets painted out and the empty top cropped, for the PIML residuals frame
+PnP_14_talk.png	maps	PnP_14, same treatment

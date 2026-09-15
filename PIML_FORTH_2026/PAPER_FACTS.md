@@ -13,6 +13,8 @@ and Part 2 are **not the same quantity** (defense ledger §0).
 | frame 12, A1.5 | inpainting the mask changes nothing | ratio 0.996 | §2, iKS null result |
 | frame 14, A1.7 | denoiser size, iterations | SUNet, **7.2 M** parameters; **8** iterations; step size in (0, 0.176) | §3 |
 | frame 16, A1.9 | PnPMass accuracy against DeepMass | RMSE ratio **1.013**, "within about 1 %" | §3 |
+| frame 11, A1.7b | the residual variant against DeepMass | RMSE ratio **1.006**, "within half a per cent"; beats the map variant by 6.04–6.88 × 10⁻³ at 95 % | §3 |
+| frame 11, A1.7b | iterations | budget **8**; at τ = 0.176 the residual variant is flat from iteration 2, the map variant settles by 3 | §3, the paper's per-iteration figure (`PnP_iterations1.png`) |
 | frame 16, A1.9 | smallest calibrated error bars | on all **512** test maps | §3 |
 | frame 16, A1.9 | target error rate | α ≈ **4.55 %**, from 1 024 calibration maps | §3 |
 | frame 23, A2.6 | the learned encoder ahead of the per-channel ℓ1 | **36 %** (3326 / 2448) | §5 |
@@ -53,3 +55,14 @@ which is what makes "worse than the zero map" a literal reading of 1.48. The len
 curves on frame 19 are computed in the build script from the draft's cosmology (H0 = 67.74,
 Ωm = 0.3089) with one source distance per slice, at the slice's mid-distance; they are a schematic
 of Fig. 1, not Fig. 1.
+
+**Frame 16, the nulling** (added with the refocus of 2026-09-15): the transform is the one the
+draft uses, Barthelemy et al. 2022's version for binned sources of Bernardeau, Nishimichi & Taruya
+2014, a lower-triangular matrix with three non-zero entries per row whose weights depend only on
+the (harmonic-mean) distances of the slices (draft Sect. 2.2). The curves are the same schematic as
+frame 18's middle panel, at full width.
+
+The frame numbers in the table above are as of the tomographic build; after the refocus of the
+same day (Euclid and the 2025 pair hidden, the residual variant and the nulling in) they read:
+frames 12 → 8 (spoken only), 14 → 10, 16 → 14, 23 → 24, 26 → 26, 22 → 23, and the tomographic
+block 17–19 → 15, 17, 18.

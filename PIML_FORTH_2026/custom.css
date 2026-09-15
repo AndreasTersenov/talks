@@ -3327,3 +3327,40 @@
 .reveal .slides section.tomo3 .pop-row figcaption { margin-top: 0.25em; text-align: center; }
 .reveal .slides section.tomo3 .pop-cap { margin: 0.7em 0 0; font-size: 0.86em; line-height: 1.4; color: var(--fg); text-align: left; }
 .reveal .slides section.tomo3 .pop-cap b { color: var(--accent); }
+
+/* PnPMass on residuals, in the main line (2026-09-15): the paper's build figure
+   at left, its per-iteration figure at right on the second click. White slide,
+   like plug-and-play, because the figures ship a white ground. */
+.reveal .slides section.resid .rescols { align-items: center; margin-top: 0.3em; }
+.reveal .slides section.resid .resflip { flex: 0 0 63%; }
+.reveal .slides section.resid .resflip .r-stack img { width: 100%; max-width: 100%; margin: 0; border: 0; box-shadow: none; background: #ffffff; }
+.reveal .slides section.resid .resiter { flex: 0 0 35%; }
+.reveal .slides section.resid .resiter figure { margin: 0; }
+.reveal .slides section.resid .resiter img { width: 100%; max-width: 100%; margin: 0; border: 0; box-shadow: none; background: #ffffff; }
+.reveal .slides section.resid .resiter figcaption { margin-top: 0.3em; text-align: left; line-height: 1.35; }
+.reveal .slides section.resid .resnum { margin: 0.6em 0 0; font-size: 0.86em; line-height: 1.35; text-align: left; color: var(--fg); }
+.reveal .slides section.resid .srcref { font-size: 0.7em; position: static; display: block; width: 88%; margin: 0.4em auto 0; text-align: right; }
+
+/* the nulling, drawn (2026-09-15): the lens-efficiency curves at full width,
+   nested then local, and the triangular matrix beside them. */
+.reveal .slides section.tomon svg.nul { width: 94%; height: auto; display: block; margin: 0.2em auto 0; overflow: visible; }
+.reveal .slides section.tomon svg text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.tomon svg text.t { font-family: var(--r-heading-font); font-weight: 600; font-size: 30px; }
+.reveal .slides section.tomon svg text.l { font-size: 24px; fill: var(--cap); }
+.reveal .slides section.tomon svg text.la { font-size: 24px; fill: var(--accent); font-weight: 600; }
+.reveal .slides section.tomon svg text.lbl { font-size: 24px; fill: var(--cap); }
+.reveal .slides section.tomon svg text.tk { font-family: var(--mono); font-size: 20px; fill: var(--fg-muted); }
+.reveal .slides section.tomon svg .axis { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.tomon svg .band { fill: color-mix(in srgb, var(--fg) 5%, transparent); stroke: none; }
+.reveal .slides section.tomon svg polyline { fill: none; stroke-width: 3; stroke-linejoin: round; }
+.reveal .slides section.tomon svg polyline.c1 { stroke: color-mix(in srgb, var(--accent) 0%, var(--fg-muted)); }
+.reveal .slides section.tomon svg polyline.c2 { stroke: color-mix(in srgb, var(--accent) 20%, var(--fg-muted)); }
+.reveal .slides section.tomon svg polyline.c3 { stroke: color-mix(in srgb, var(--accent) 40%, var(--fg-muted)); }
+.reveal .slides section.tomon svg polyline.c4 { stroke: color-mix(in srgb, var(--accent) 60%, var(--fg-muted)); }
+.reveal .slides section.tomon svg polyline.c5 { stroke: color-mix(in srgb, var(--accent) 80%, var(--fg-muted)); }
+.reveal .slides section.tomon svg polyline.c6 { stroke: var(--accent); }
+.reveal .slides section.tomon svg .d { fill: var(--accent); stroke: none; }
+.reveal .slides section.tomon svg .w { fill: color-mix(in srgb, var(--accent) 35%, var(--surface)); stroke: var(--accent); stroke-width: 1.2; }
+.reveal .slides section.tomon svg .z { fill: none; stroke: var(--edge); stroke-width: 1; }
+.reveal .slides section.tomon .gloss { width: 92%; margin: 0.45em auto 0; text-align: center; font-size: 0.82em; line-height: 1.35; color: var(--fg); }
+.reveal .slides section.tomon .srcref { font-size: 0.7em; position: static; display: block; width: 94%; margin: 0.3em auto 0; text-align: right; }
