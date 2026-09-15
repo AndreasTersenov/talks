@@ -76,34 +76,32 @@ no longer the statistics; it is what we can do with them. Extracting it is an al
 
 ---
 
-## A0.5 — the chain · frame 5 · 1:10
+## A0.5 — the chain · frame 5 · 0:56
 
-The pipeline, reduced to the steps that matter; it is the map of the talk. Galaxy shapes go in.
-From the shapes we make the mass map: a **linear inverse problem**, with a mask and a noise
-covariance. From the map we extract a feature vector, because a hundred thousand correlated pixels
-cannot be compared with theory directly. From the features we infer a handful of parameters of
-the physical model, with a simulator standing in for the likelihood.
+The pipeline, reduced to the steps that matter. Galaxy shapes go in. From the shapes we make the
+mass map: a **linear inverse problem**. From the map we extract a feature vector, because a hundred
+thousand correlated pixels cannot be compared with theory directly. From the features we infer a
+handful of parameters of the physical model, with a simulator standing in for the likelihood.
 
-[CLICK] **▲** The first half of the talk is the inverse problem: what the prior does to the science,
-and what a learned prior buys.
+[CLICK] **▲** The first half of the talk is the inverse problem, and what a learned prior buys.
 
-[CLICK] **▲** The second half is the feature extractor and the inference: what has to be learned at
-all, and how we check it.
+[CLICK] **▲** The second half is the feature extractor: what has to be learned at all.
 
 Every one of these steps can bias the answer or distort the error bars without anything downstream
 noticing.
 
 ---
 
-## A0.6 — the two questions · frame 6 · 0:54
+## A0.6 — the map, and the two questions · frame 6 · 1:03
 
-Two questions, one for each half. I will read them; they are the only words on the slide.
-**Question one**, the inverse problem: keep the operator, the mask and the noise in the data term
-and learn only the prior. Is the reconstruction as accurate as a network trained end to end, does
-it work for any configuration without retraining, can its error bars be certified? **Question
-two**, the features: does a learned encoder extract more about the parameters than a hand-crafted
-feature vector, and if so, why? And in each case, how do we know. **▲** The learned part is
-benchmarked, calibrated and tested before it is trusted.
+The same chain as a grid, and I will read it because it is the map of the talk. Three steps
+across; three rows down: what the physics supplies, what is learned, how we know. The physics
+supplies the forward operator, the mask and the noise; a wavelet transform; a simulator. The middle
+row carries the two questions. **Question one**: learn only the prior. Is the reconstruction as
+accurate as a network trained end to end, does it work for any configuration, can its error bars be
+certified? **Question two**: a learned encoder, or nothing? Does it extract more than hand-crafted
+features, and why? The third column is the tool, a flow, and Justine covers it at two. **▲** The
+bottom row is the thread: benchmarked, calibrated, tested.
 
 ---
 ---
@@ -183,38 +181,41 @@ posterior it gives, not by its RMSE.
 
 ---
 
-## A1.6 — what about deep learning · frame 13 · 0:41
+## A1.6 — four ways to put a network in an inverse problem · frame 13 · 1:16
 
-So the reconstruction matters, and the obvious place to look for a better prior is deep learning.
-People have, and it works. But a survey the size of Euclid needs four things at once: accurate;
-flexible, the same trained model when the noise level or the mask changes; fast; and fast
-uncertainty quantification. The end-to-end networks are accurate and fast, and every one of them
-has to be retrained for each new mask or noise level. **▲** Nothing on this table has all four.
+So the prior matters, and a learned prior is the obvious next step. There are four ways to put a
+network in a linear inverse problem, and this room knows all four. End to end: data in, image out,
+the physics only in the training pairs; a new mask or noise level means retraining. Unrolled: the
+iteration becomes the architecture, trained through, and transfers as far as the training covered.
+Plug-and-play: the iteration stays fixed and the network is the prior only, learned independently
+of the operator; nothing to retrain. Posterior sampling with a learned prior, the score-based mass
+mapping from François's group: the full posterior, at many passes per sample. **▲** For a survey
+the axis that matters is the third row: is the prior learned independently of the operator? Then
+any mask and any noise level cost nothing. Plug-and-play gives accurate, any configuration and
+fast; the error bars are what we add.
 
 ---
 
-## A1.7 — plug-and-play · frame 14 · 1:37
+## A1.7 — plug-and-play · frame 14 · 1:23
 
-Our answer is plug-and-play, which most of this room knows from imaging: Venkatakrishnan, Bouman
-and Wohlberg, and the decade since. Start from the forward–backward iteration of the previous
-slide: a gradient step on the data term, then a proximal step that enforces the prior.
-Plug-and-play replaces the proximal operator by a **denoiser** trained on simulated maps, and the
-iteration converges to a fixed point under the usual non-expansiveness conditions. The denoiser has
-learned a far richer model of what a mass map looks like than we can write down.
+Here is the plug-and-play iteration. A gradient step on the data term, towards the measured shear;
+then the step that used to be a proximal operator enforcing a hand-crafted prior is a **denoiser**
+trained on simulated maps. The iteration converges to a fixed point under the usual
+non-expansiveness conditions, and the denoiser has learned a far richer model of a mass map than we
+can write down.
 
-**▲** And it is flexible because of where the physics sits. The denoiser, a Swin transformer with
-seven million parameters, is trained once, on white Gaussian noise over a range of levels, and
-never sees the operator, the mask or the noise covariance. Those enter only in the gradient step,
-at inference. Plug-and-play rather than unrolling: nothing is trained through the iteration, and
-one network serves every configuration.
+**▲** It is flexible because of where the physics sits. The denoiser, a Swin transformer with seven
+million parameters, is trained once, on white Gaussian noise over a range of levels, and never sees
+the operator, the mask or the noise covariance. Those enter only in the gradient step, at
+inference. Nothing is trained through the iteration, so one network serves every configuration.
 
 Here it is running: shear in, the map initialised at zero, the **forward step** giving a noisy map,
 the **backward step**, the denoiser, pulling it onto realistic maps. [CLICK] The output is fed
 back; eight iterations later it has converged.
 
 > Room cue: if François showed score-based mass mapping this morning (Remy et al. 2023), one
-> sentence here: *the nearest relative is the score-based sampler you saw this morning; this is the
-> same learned prior used as a fixed-point reconstruction, with the uncertainty handled next.*
+> sentence here: *the same learned prior as the sampler you saw this morning, used as a fixed-point
+> reconstruction, with the uncertainty handled next.*
 
 ---
 
@@ -259,14 +260,15 @@ is whether that step needs a network.
 
 ---
 
-## A2.1 — same power spectrum · frame 18 · 0:40
+## A2.1 — same power spectrum · frame 18 · 0:50
 
 The standard feature vector in this field is second order: the two-point function, the Fourier
 amplitudes. **▲** For a Gaussian random field it is complete. But the late-time matter field is not
 Gaussian: gravity collapses it into haloes and filaments around voids. Here are two fields with the
-same power spectrum, and a two-point analysis cannot tell them apart. The missing information is in
-the Fourier phases. To reach it we need statistics beyond second order: peak counts, wavelet
-statistics, Minkowski functionals.
+same power spectrum, and a two-point analysis cannot tell them apart. [CLICK] You know this
+picture: keep only the phases and the web is still there; keep only the amplitudes and nothing is.
+The information is in the phases. To reach it we need statistics beyond second order: peak counts,
+wavelet statistics, Minkowski functionals.
 
 ---
 
@@ -297,30 +299,21 @@ it; what happens when the simulator's physics is wrong is a separate study, in t
 
 ---
 
-## A2.4 — the learned encoder · frame 21 · 1:02
+## A2.4 — the learned encoder · frame 21 · 1:06
 
 Beating second-order statistics is easy. The real question is how close to **all** of the
 information in the map a feature vector gets. And since the inference is already a network, why not
 learn the compression too? There are reasons to be careful: training data, interpretability,
 generalisation. But the principled way to do it is this. [CLICK] An encoder maps each map to a
 ten-dimensional summary, and a flow maps the summary to a posterior. [CLICK] The two are trained
-together to maximise the mutual information between summary and parameters, which is the same as
-maximising the expected log posterior. **▲** So this network is not just another feature: it is an
-estimate of the ceiling, the most any summary of these maps can carry. That is the benchmark.
+together to maximise the mutual information between summary and parameters. **▲** So this network
+is not just another feature: it is an estimate of the ceiling, the most any summary of these maps
+can carry. And the comparison is matched: same simulated maps, same flow, the same calibration
+tests on every posterior. Only the feature vector differs.
 
 ---
 
-## A2.5 — the setup · frame 22 · 0:34
-
-Most of the work in the paper is in this figure. Both feature vectors are computed on the same
-simulated maps, four distance slices per patch; both go through the same flow, tuned separately for
-each; every posterior passes the same calibration tests. Three hundred thousand patches from nine
-hundred cosmologies, and the encoder architecture, summary dimension and flow family were each
-swept. Only the feature vector differs.
-
----
-
-## A2.6 — the gap · frame 23 · 0:25
+## A2.6 — the gap · frame 22 · 0:25
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
@@ -329,7 +322,7 @@ does not see.
 
 ---
 
-## A2.7 — the channels are correlated · frame 24 · 0:53
+## A2.7 — the channels are correlated · frame 23 · 0:53
 
 The maps are a multi-channel image. The galaxies are sliced by distance. [CLICK] Take the most
 distant slice. [CLICK] Its light is lensed by all the matter in front of it, [CLICK] which gives its
@@ -341,7 +334,7 @@ sees only the marginals. The encoder's first convolutional layer mixes all four 
 
 ---
 
-## A2.8 — two routes · frame 25 · 1:05
+## A2.8 — two routes · frame 24 · 1:05
 
 Two ways to give a hand-crafted feature the same access. **Route one**, change the input: for every
 pair of channels, multiply the two maps pixel by pixel. The product is strong only where both have
@@ -354,7 +347,7 @@ the redshift information. We call it the joint ℓ1-norm, and it needs no extra 
 
 ---
 
-## A2.9 — the answer · frame 26 · 0:52
+## A2.9 — the answer · frame 25 · 0:52
 
 Same maps, same flow, four feature vectors. The per-channel ℓ1-norm. [CLICK] Plus the product
 channels. [CLICK] The joint ℓ1-norm. [CLICK] And the learned encoder, which lands on top of the
@@ -366,6 +359,19 @@ accessible. With no training, an inspectable data vector, and nothing to retrain
 changes.
 
 ---
+---
+
+## O — three open questions · frame 26 · 0:59
+
+Before the conclusions, three things I would take from this room. Coverage where it matters: the
+conformal guarantee is marginal, and the misses concentrate at the peaks, where the information is.
+Conditional coverage at map level, at a cost a survey can pay? Certificates for large denoisers:
+plug-and-play converges if the denoiser is non-expansive, and regularising the Jacobian of a
+seven-million-parameter transformer is too costly, so we verify convergence empirically. Is there a
+cheaper certificate? And learned features under a wrong simulator: the encoder's ceiling is a
+ceiling for the simulator. When the physics is missing, which feature degrades gracefully, and can
+we tell without the truth? If any of these is your problem, find me at lunch.
+
 ---
 
 ## C — conclusions · frame 27 · 0:54
@@ -386,8 +392,8 @@ it. Thank you.
 
 Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each with what it buys:
 
-1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 26, so the gap
-   can be said there. Frame 23 stays in the file, skipped. −0:30
+1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 25, so the gap
+   can be said there. Frame 22 stays in the file, skipped. −0:30
 2. **A1.6's table folded into A1.7's opening sentence**: *nothing existing was accurate, flexible,
    fast and came with error bars at once*. −0:40
 3. **A0.4 Euclid folded into A0.3's close**: one sentence, *and Euclid is measuring billions of
@@ -399,7 +405,8 @@ Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each
 fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A2.4's definition of the
 ceiling, A2.9's *a tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 16), expect 13:30 on the clock. Behind → cuts 1 and 4.
+**Planned exit**: end of Part 1 (frame 16), expect 13:45 on the clock. Behind → cuts 1 and 4; the open
+questions (frame 26) can go to one spoken sentence, −0:40.
 
 ---
 

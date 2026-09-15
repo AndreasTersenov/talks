@@ -30,10 +30,12 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - **»** ▲ second half: features + inference; what must be learned, how we check it
 - every step can bias or distort without anything downstream noticing
 
-**6 · the two questions** ← read them, the only words on the slide
-- **Q1** operator, mask, noise in the data term; learn only the prior: accurate? any configuration? certifiable bars?
-- **Q2** learned encoder vs hand-crafted features: who extracts more, and why?
-- ▲ how we know: benchmarked, calibrated, tested. Return here at the end
+**6 · the map, and the two questions** ← read it, it is the map
+- three steps across, three rows down: physics supplies / what is learned / how we know
+- **Q1** learn only the prior: as accurate as end-to-end, any configuration, certifiable bars?
+- **Q2** a learned encoder, or nothing? more than hand-crafted features, and why?
+- column 3 is the tool: a flow, calibration-tested; Justine at 14:00
+- ▲ bottom row is the thread; bottom line is the talk
 
 ## Part 1
 
@@ -67,10 +69,12 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - stems: **open** = map error, 4 % better; **filled** = constraining power (inverse 1σ volume), ×2.6, ▲ 157 %
 - ▲ not the same objective: choose the reconstruction by the posterior it gives
 
-**13 · what about deep learning**
-- people have, it works; four needs at once: accurate, flexible (same model for any noise/mask), fast, fast UQ
-- end-to-end networks: accurate, fast, retrained per mask and noise level
-- ▲ nothing has all four
+**13 · four ways to put a network in an inverse problem**
+- end to end: physics in the training pairs only; one pass; retrain per mask/noise (DeepMass, MMGAN)
+- unrolled: iteration = architecture, trained through; operator in the layers; transfers as far as training covered
+- plug-and-play: fixed iteration, network = prior only, learned independently of the operator; a few passes; nothing to retrain
+- posterior sampling: learned prior in a sampler (score-based, Remy 2023, François's group); full posterior, many passes
+- ▲ the axis for a survey: prior independent of the operator? PnP gives accurate + any configuration + fast; the error bars are what we add
 
 **14 · plug-and-play** ← room cue: Lanusse's keynote
 - Venkatakrishnan, Bouman & Wohlberg 2013 and the decade since
@@ -102,7 +106,8 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 **18 · same power spectrum**
 - standard feature vector is second order: two-point function, Fourier amplitudes; ▲ complete for a Gaussian field
 - late-time field not Gaussian: haloes, filaments, voids; two fields, same spectrum
-- the information is in the phases → statistics beyond second order: peaks, wavelets, Minkowski
+- **»** phases only: the web is still there; amplitudes only: nothing. The information is in the phases
+- → statistics beyond second order: peaks, wavelets, Minkowski
 
 **19 · the two hand-crafted features** ← room cue: the wavelet talk before
 - same isotropic undecimated wavelet transform: band-pass images + coarse residual
@@ -121,30 +126,32 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - **»** encoder → 10-d summary; flow → posterior
 - **»** trained together to maximise mutual information = expected log posterior
 - ▲ an estimate of the ceiling, not just another feature; the benchmark
+- matched comparison: same maps, same flow, same calibration tests; only the feature vector differs (3 × 10⁵ patches, 899 cosmologies)
 
-**22 · the setup**
-- same simulated maps (four distance slices per patch), same flow tuned per feature, same calibration tests
-- 3 × 10⁵ patches, 899 cosmologies; architecture, dimension, flow family swept
-- only the feature vector differs
-
-**23 · the gap**
+**22 · the gap**
 - **»** the encoder wins by 36 % in constraining power
 - not symmetric: something about the maps the ℓ1-norm does not yet see
 
-**24 · the channels are correlated** ← eight clicks
+**23 · the channels are correlated** ← eight clicks
 - galaxies sliced by distance **»** distant slice **»** lensed by all matter in front **»** its map **»** nearer slice **»** shorter column **»** another map **»** **»** channels not independent
 - how the signal changes channel to channel = where the matter sits = how structure grew
 - ▲ a per-channel statistic sees only the marginals; the encoder's first layer mixes all four
 
-**25 · two routes**
+**24 · two routes**
 - route one, change the input: product of each channel pair, strong where both have structure; same ℓ1-norm
 - **»** route two, change the statistic: per-channel ℓ1 = the two marginals on the axes
 - **»** grid on the plane, ℓ1 weight per cell: joint 2-D histogram; diagonal both strong, off-diagonal one strong; that is the redshift information; no extra maps
 
-**26 · the answer**
+**25 · the answer**
 - per-channel ℓ1 **»** + product channels **»** joint ℓ1 **»** the encoder lands on top of it
 - ▲ a tie, not a win: encoder coverage slightly conservative
 - ▲ sufficiency: the joint ℓ1-norm carries essentially all the accessible information, no training, inspectable, nothing to retrain
+
+**26 · three open questions** ← the hand-off into Q&A
+- coverage where it matters: marginal guarantee, misses at the peaks; conditional coverage at map level, at survey cost?
+- certificates for large denoisers: non-expansiveness of a 7 M transformer; Jacobian regularisation too costly; verified empirically; cheaper?
+- learned features under a wrong simulator: the ceiling is the simulator's; baryons (backup): hand-crafted features fixed by dropping one band, the encoder has no band to drop; can we tell without the truth?
+- if any of these is your problem, find me at lunch
 
 ## Close
 

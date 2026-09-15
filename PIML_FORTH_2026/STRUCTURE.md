@@ -73,7 +73,7 @@ is in the Fourier phases.
 
 ---
 
-## Running order — 27 frames
+## Running order — 27 frames (revised 2026-09-15: the room's own map, taxonomy and demo)
 
 `src` = the frame in `../PhD_Defense_2026/` (as numbered on 2026-09-14) the slide was lifted from.
 
@@ -86,19 +86,19 @@ is in the Fourier phases.
 | 3 | We measure a noisy, masked distortion field. The image we want is the projected mass | 9, retitled, block titles tagged |
 | 4 | Euclid: mapping the dark Universe (billions of galaxies, a third of the sky, an algorithms problem) | 6 |
 | 5 | The analysis chain from galaxy shapes to parameters (two halves; process boxes sub-labelled *inverse problem / feature extraction / likelihood-free*) | 7, cards reworded |
-| 6 | Two questions, one for each half of the chain | **new** |
+| 6 | Where the physics sits and where the learning goes, step by step (a 3×3 grid: the physics supplies / what is learned / how we know; Q1 and Q2 on the learned cells) | **new** |
 
 ### Part 1 — making the map · frames 7–16 · one vertical column
 
 | # | on screen | src |
 |---|---|---|
-| 7 | Part 1 card: both papers, pipeline lit at maps | 8 + 21, merged |
+| 7 | Part 1 card, *Learning the prior*: both papers, pipeline lit at maps | 8 + 21, merged |
 | 8 | In practice, mass mapping is an ill-posed inverse problem | 12 |
 | 9 | Kaiser–Squires inversion is exact for complete, noiseless data, but amplifies the noise | 13 |
 | 10 | Every mass-mapping method minimises a data term plus a regulariser that encodes the prior (card row restored: no prior / ℓ2 / ℓ1 / both / learned) | 14 |
 | 11 | The simulations, statistic and likelihood are fixed, and only the mass-mapping method varies | 17 |
 | 12 | The sparse solver reconstructs the map 4 % better, and constrains the parameters 157 % better | 19, retitled |
-| 13 | What about deep learning for mass mapping? (four requirements, nothing has all four) | 22 |
+| 13 | Four ways to put a network in a linear inverse problem: end to end, unrolled, plug-and-play, posterior sampling (where the physics sits, prior independent of the operator, cost per map, retraining) | **new**, replaces 22 |
 | 14 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
 | 15 | Pixel-wise uncertainties from a second network, calibrated with conformal prediction | backup `uq`, promoted |
 | 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
@@ -107,21 +107,27 @@ is in the Fourier phases.
 
 | # | on screen | src |
 |---|---|---|
-| 17 | Part 2 card, pipeline lit at summaries | 37 |
-| 18 | Two very different fields can have the same power spectrum (the missing information is in the phases) | 28 |
+| 17 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
+| 18 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
 | 19 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
 | 20 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
 | 21 | A learned encoder trained to be information-optimal | 39 |
-| 22 | Both feature vectors go through the same flow on the same maps, and both posteriors are calibrated | 40 |
-| 23 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
-| 24 | The channels are correlated: each distance slice sees the matter in front of it | 42 |
-| 25 | The cross-channel information can be reached through product channels or through a joint 2-D histogram | 43 |
-| 26 | Reading the channels jointly, the hand-crafted ℓ1-norm matches the information-optimal encoder | 44 |
+| 22 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
+| 23 | The channels are correlated: each distance slice sees the matter in front of it | 42 |
+| 24 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
+| 25 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
 
-### Close · frame 27
+*Same maps, same flow, both calibrated* (defense 40) left the main line on 2026-09-15 for backup
+column 3; its sentence is spoken at the end of frame 21.
 
-Conclusions: the two questions answered, and the line that joins them. Ends here, stays up through
-questions. No "thank you" slide.
+### Close · frames 26–27
+
+| # | on screen | src |
+|---|---|---|
+| 26 | Three open questions I would take from this room: conditional coverage at the peaks, certificates for large denoisers, learned features under a wrong simulator | **new**, the workshop hand-off into Q&A |
+| 27 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
+
+Ends on the conclusions, which stay up through questions. No "thank you" slide.
 
 ### Out of the main line, deliberately
 
