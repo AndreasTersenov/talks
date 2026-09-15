@@ -1433,7 +1433,9 @@
 
 			<!-- ==========  CLOSE  ========== -->
 
-			<section class="chainslide thesismap openq" data-theme="light">
+			<!-- HIDDEN 2026-09-15 (Andreas): no open-questions frame, the talk goes straight from the
+			     answer to the conclusions. Kept in place; the answers live in the script's Q&A. -->
+			<section class="chainslide thesismap openq" data-theme="light" data-visibility="hidden">
 				<h3 class="slide-title tight">Three open questions, on the steps where they live</h3>
 				<span class="qstep s1 fragment" data-fragment-index="1"></span>
 				<span class="qstep s2 fragment" data-fragment-index="2"></span>
@@ -1476,25 +1478,24 @@
 				<ul class="qlist qlist-close">
 					<li class="done">
 						<span class="qn">Q1</span>
-						<span class="qtext">Learn only the prior and keep the physics in the data term: as accurate, configuration&#8209;free, and certifiable?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Yes.</b> PnPMass is within <b>1&nbsp;%</b> of the networks trained end to end for one configuration, has the <b>smallest calibrated error bars</b> of any method, is trained <b>once</b> for any mask and noise level, and carries over to <b>six correlated channels</b> with one denoiser.</span></span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Learn the prior, keep the physics.</b> Plug&#8209;and&#8209;play with a learned denoiser is as accurate as the end&#8209;to&#8209;end networks, its error bars are calibrated, and it is trained once, for any mask, noise level, or number of channels.</span></span>
 					</li>
 					<li class="done">
 						<span class="qn">Q2</span>
-						<span class="qtext">Does a learned encoder extract more from the maps than hand&#8209;crafted features?</span>
-						<span class="qans"><span class="tick">&#10003;</span><span><b>Only while it reads the channels jointly.</b> Give the hand&#8209;crafted &#8467;1&#8209;norm the same access and it <b>matches the information&#8209;optimal encoder</b>, with no training.</span></span>
+						<span class="qans"><span class="tick">&#10003;</span><span><b>Hand&#8209;crafted features can match a learned encoder.</b> Read the channels jointly, and the wavelet &#8467;1&#8209;norm ties the information&#8209;optimal encoder, with no training.</span></span>
 					</li>
 					<li class="join">
 						<span class="qn">so</span>
-						<span class="qtext"><b>Learn only what the physics cannot supply</b>, benchmark it against the best hand&#8209;crafted alternative, and calibrate it before trusting it.</span>
+						<span class="qtext"><b>Learn only what the physics cannot supply</b>, benchmark it, and calibrate it before you trust it.</span>
 					</li>
 				</ul>
 				<aside class="notes">
 					<p><strong>conclusions &mdash; <em>stays up through questions</em></strong></p>
 					<ul>
-						<li>Q1 ▲ yes: within 1 % of the end-to-end networks, smallest calibrated bars, trained once for any mask and noise; six correlated channels with one denoiser</li>
-						<li>Q2 ▲ only while it reads the channels jointly; give the ℓ1-norm the same access and it matches the optimal encoder, no training</li>
-						<li>▲ learn only what the physics cannot supply, benchmark it, calibrate it before trusting it</li>
+						<li>two things to take away</li>
+						<li>Q1 ▲ learn the prior, keep the physics: as accurate as end to end, calibrated bars, trained once for any mask, noise, number of channels</li>
+						<li>Q2 ▲ hand-crafted can match learned: channels read jointly, the ℓ1-norm ties the optimal encoder, no training</li>
+						<li>▲ learn only what the physics cannot supply, benchmark it, calibrate it before you trust it. thank you</li>
 					</ul>
 					<!-- PARKED 2026-09-13, the note this replaced:
 					     thesis followed the chain from shapes to parameters: focusing on making the map, extracting information, SBI

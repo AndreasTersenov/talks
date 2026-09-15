@@ -73,7 +73,7 @@ is in the Fourier phases.
 
 ---
 
-## Running order — 29 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain; the tomographic block added; refocused: Euclid and the 2025 experiment out, the residual variant and the nulling in)
+## Running order — 28 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain; the tomographic block added; refocused: Euclid and the 2025 experiment out, the residual variant and the nulling in)
 
 `src` = the frame in `../PhD_Defense_2026/` (as numbered on 2026-09-14) the slide was lifted from.
 
@@ -125,18 +125,19 @@ Justine Zeghal's figure) is hidden in place on Andreas's call: frame 16 now show
 of one field, and frame 25 names the gap outright: the ℓ1-norm is per channel and never sees the
 cross-bin structure shown on frame 16.
 
-### Close · frames 28–29
+### Close · frame 28
 
 | # | on screen | src |
 |---|---|---|
-| 28 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
-| 29 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
+| 28 | Conclusions: three claims, one line each (the prior learned and the physics kept; hand-crafted can match learned; learn only what the physics cannot supply), no restated questions (2026-09-15, Andreas: the earlier version was too verbose) | 51, rewritten twice |
 
 Ends on the conclusions, which stay up through questions. No "thank you" slide.
 
 ### Out of the main line, deliberately
 
 - The cosmological frame (defense 2–4): this room needs the observable and the survey.
+- **The open-questions frame** (the chain with three cards): hidden in place on 2026-09-15, Andreas's
+  call, no spoken trace; the three answers stay in the script's Q&A.
 - **Euclid (defense 6) and the 2025 experiment pair (defense 17, 19)**: hidden in place on
   2026-09-15, Andreas's call, to keep the talk on the method. Each survives as one spoken
   sentence, on frames 3 and 9.
@@ -173,7 +174,7 @@ python3 tools/measure-script.py PIML_FORTH_2026 --wpm 121
 
 **Planned exit**: end of Part 1 (frame 19), expect 17:00. Behind → take cuts 1 and 4 live.
 
-## Backup — four columns after the divider (frame 31)
+## Backup — four columns after the divider (frame 30)
 
 | column | holds |
 |---|---|

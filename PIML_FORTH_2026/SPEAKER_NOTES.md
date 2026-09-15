@@ -163,15 +163,10 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - ▲ a tie, not a win: encoder coverage slightly conservative
 - ▲ sufficiency: the joint ℓ1-norm carries essentially all the accessible information, no training, inspectable, nothing to retrain
 
-**28 · three open questions, on the chain** ← three clicks
-- **»** the map: marginal guarantee, misses at the peaks; conditional coverage at map level, at survey cost?
-- **»** mass mapping: non-expansiveness of a 7 M transformer verified empirically; a cheaper certificate?
-- **»** systematics → features: the ceiling is the simulator's; baryons (backup) fixed by one band, the encoder has no band; can we tell without the truth?
-- find me at lunch
-
 ## Close
 
-**29 · conclusions** ← stays up through questions
-- Q1 ▲ yes: within 1 % of the end-to-end networks, smallest calibrated bars, trained once for any mask and noise; six correlated channels with one denoiser
-- Q2 ▲ only while it reads the channels jointly; give the ℓ1-norm the same access and it matches the optimal encoder, no training
-- ▲ learn only what the physics cannot supply, benchmark it, calibrate it before trusting it
+**28 · conclusions** ← stays up through questions
+- two things to take away
+- Q1 ▲ learn the prior, keep the physics: as accurate as end to end, calibrated bars, trained once for any mask, noise, number of channels
+- Q2 ▲ hand-crafted can match learned: channels read jointly, the ℓ1-norm ties the optimal encoder, no training
+- ▲ learn only what the physics cannot supply, benchmark it, calibrate it before you trust it. thank you

@@ -401,29 +401,15 @@ changes.
 ---
 ---
 
-## O — three open questions, on the chain · frame 28 · 0:55
+## C — conclusions · frame 28 · 0:48
 
-Before the conclusions, three open questions, on the steps where they live. [CLICK] The map:
-the conformal guarantee is marginal, and the misses sit at the peaks, where the information is.
-Conditional coverage at map level, at a cost a survey can pay? [CLICK] The reconstruction:
-plug-and-play converges if the denoiser is non-expansive, and for seven million parameters we
-verify that empirically. Is there a cheaper certificate than a Jacobian bound? [CLICK] The
-features, and what feeds them: the encoder's ceiling is a ceiling for the simulator. When the
-physics is missing, which feature degrades gracefully, and can we tell without the truth? If any of
-these is your problem, find me at lunch.
-
----
-
-## C — conclusions · frame 29 · 0:54
-
-So. Question one: learn only the prior, keep the physics in the data term. **▲** Yes. Within one
-per cent of the networks trained end to end for a single configuration, the smallest calibrated
-error bars of any method, trained once for any mask and any noise level. Question two: does a
-learned encoder extract more than hand-crafted features? **▲** Only while it reads the channels
-jointly. Give the hand-crafted ℓ1-norm the same access and it matches the information-optimal
-encoder, with no training. **▲** The line that joins them: learn only what the physics cannot
-supply, benchmark it against the best hand-crafted alternative, and calibrate it before you trust
-it. Thank you.
+So, two things to take away. Learn the prior and keep the physics: a plug-and-play reconstruction
+with a learned denoiser is as accurate as the networks trained end to end for one configuration,
+its error bars are calibrated, and it is trained once, for any mask, any noise level, and for six
+correlated channels at once. And hand-crafted features can match a learned encoder: read the
+channels jointly, and the wavelet ℓ1-norm ties the information-optimal encoder, with no training.
+**▲** Learn only what the physics cannot supply, benchmark it, and calibrate it before you trust it.
+Thank you.
 
 ---
 ---
@@ -446,8 +432,7 @@ Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each
 A1.12's *worse than the zero map* if the block is in, A2.4's definition of the ceiling, A2.9's *a
 tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 19), expect 17:00 on the clock. Behind → cuts 1 and 4; the open
-questions (frame 28) can go to one spoken sentence, −0:40.
+**Planned exit**: end of Part 1 (frame 19), expect 17:00 on the clock. Behind → cuts 1 and 4.
 
 **The tomographic block (A1.10–A1.12, added 2026-09-15) costs about 4:15 with the nulling frame.**
 If it has to go, it goes as a block: A1.9 closes with *and the same loop, with one six-channel
@@ -456,7 +441,8 @@ frames 16–19 are skipped, −4:00.
 
 **Refocused 2026-09-15 (Andreas)**: the Euclid frame and the 2025 experiment pair (defense 6, 17,
 19) are hidden in place; each survives as one sentence, in A0.3 and A1.3. The residual variant and
-the nulling came in.
+the nulling came in. Later that evening the open-questions frame went the same way, hidden in place
+with no spoken trace (Andreas: no open stuff); its three answers stay in the Q&A below.
 
 ---
 

@@ -3375,3 +3375,9 @@
 .reveal .slides section .statpair.l1pair .r-stack.statswap { height: 25vh; }
 .reveal .slides section .statpair.l1pair .r-stack.statswap > img,
 .reveal .slides section .statpair.l1pair .col .statswap img { max-height: 25vh; }
+
+/* the conclusions, cut to three claims (2026-09-15): with the restated questions gone the three
+   cards can take body size and a little more air between them */
+.reveal .slides section.closing .qlist { row-gap: 0.55em; }
+.reveal .slides section.closing .qlist .qans,
+.reveal .slides section.closing .qlist .qtext { font-size: 1em; }
