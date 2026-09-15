@@ -12,7 +12,8 @@ added on 2026-09-15; their maps live in `../assets/figures/maps/tomo_pnp/`.
 | file | what it is |
 |---|---|
 | `STRUCTURE.md` | the room, the three questions, the ABT, the running order, the cut ladder, backup index |
-| `SPEAKER_SCRIPT.md` | the words, with `[CLICK]` cues, the glossary at its head, the Q&A |
+| `SPEAKER_SCRIPT.md` | the words, in the defense script's format: `[CLICK]` cues, the cut ladder, the Q&A, the register notes and glossary at its end |
+| `PNPMASS_EXPLAINED.md` | PnPMass and PnPMass3D explained plainly, for the speaker: the loop, the choice of B, the error bars, the tomographic version, the draft's caveats |
 | `SPEAKER_NOTES.md` | the cue cards pushed into the slides' speaker notes (`tools/sync-notes.py`) |
 | `PAPER_FACTS.md` | the numbers used, pointing at the defense ledger as the authority |
 

@@ -62,7 +62,7 @@ own machinery in a cosmology pipeline. That they read the PnPMass and joint-ℓ1
 
 *"We are not talking to cosmologists anymore"* (Andreas, 2026-09-14). The rule for every slide and
 every beat: **name the object in the room's vocabulary first, then attach the cosmology word
-once.** The glossary the script is written in is at the head of `SPEAKER_SCRIPT.md`. The physics
+once.** The glossary the script is written in is at the end of `SPEAKER_SCRIPT.md`, under the register notes. The physics
 that stays: one picture of lensing, one sentence on what the map is, one on the survey. Nothing
 about ΛCDM, tensions, or probes.
 
