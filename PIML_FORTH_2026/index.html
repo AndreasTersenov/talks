@@ -197,6 +197,30 @@
 				</aside>
 			</section>
 
+			<section class="kgrel" data-theme="light">
+				<h3 class="slide-title tight">Shear and convergence are both second derivatives of the <em class="alert">lensing potential</em></h3>
+
+				<figure class="kgfig">
+					<img src="../assets/diagrams/Relation_btw_kappa_and_gamma_light.png"
+						alt="a shear map and a mass map, each linked to the lensing potential in the middle by a pair of second-derivative relations">
+				</figure>
+
+				<ul class="points dots kgpoints">
+					<li>from convergence to shear: $\gamma_i = \hat{P}_i\,\kappa$, in Fourier space $\hat{P}_1(\mathbf{k}) = (k_1^2 - k_2^2)/k^2$, $\hat{P}_2(\mathbf{k}) = 2k_1k_2/k^2$</li>
+					<li>from shear to convergence: $\kappa = \hat{P}_1\gamma_1 + \hat{P}_2\gamma_2$, since $\hat{P}_1^2 + \hat{P}_2^2 = 1$</li>
+					<li><b>linear</b> and <b>exact</b> for a complete, noiseless field; $\gamma = \mathbf{P}\kappa$ from here on</li>
+				</ul>
+
+				<aside class="notes">
+					<p><strong>one potential, one operator</strong></p>
+					<ul>
+						<li>both are second derivatives of the <strong>lensing potential</strong>, a projection of the gravitational potential along the line of sight</li>
+						<li>in Fourier space one linear operator P with two components; the two kernels are unit-modulus, so it inverts in one line: κ = P₁γ₁ + P₂γ₂ (Kaiser–Squires)</li>
+						<li>▲ linear and exact on a complete noiseless field; this P is the operator in every equation after this</li>
+					</ul>
+				</aside>
+			</section>
+
 			<section data-background-color="#000" data-visibility="hidden">
 				<h3 class="slide-title tight">Euclid: Mapping the Dark Universe</h3>
 				<div class="block lecture">
@@ -738,12 +762,12 @@
 										f(\kappa^n) \right)$</span>
 									<span class="arw" aria-hidden="true">&rarr;</span>
 									<span>$\kappa^{n+1} = F_{\Theta}\left( \kappa^n - \tau \mathbf{B} \left(
-										\mathbf{A}\kappa^n - \gamma \right) \right)$</span>
+										\mathbf{P}\kappa^n - \gamma \right) \right)$</span>
 								</div>
 								<ul>
 									<li>The series <b class="alert">converges</b> to a <b class="alert">fixed point</b>
 										$\hat{\kappa}$</li>
-									<li>choosing $\mathbf{B} = \mathbf{A}^T \Sigma^{-1}$ makes the method
+									<li>choosing $\mathbf{B} = \mathbf{P}^T \Sigma^{-1}$ makes the method
 										<b>independent of the noise covariance and the mask</b>
 									</li>
 								</ul>
@@ -945,7 +969,7 @@
 					<h3 class="slide-title tight"><span class="sec">&sect;1</span> One <b class="alert">multichannel denoiser</b> in the same loop: the physics stays per channel, the correlation lives in the prior</h3>
 					<svg class="joint" viewBox="0 0 1180 372" role="img" aria-label="left, the per-channel way: one plug-and-play loop per channel, six copies, nothing shared; right, the joint way: the six measurements stacked into one image, a block-diagonal data step, one denoiser with six channels in and six out, and one loop"><text class="t" x="285" y="30" text-anchor="middle">per channel: six loops, six denoisers</text><rect class="ghost" x="50" y="100" width="530" height="176" rx="10"/><rect class="ghost" x="40" y="110" width="530" height="176" rx="10"/><rect class="ghost" x="30" y="120" width="530" height="176" rx="10"/><image href="../assets/figures/maps/tomo_pnp/meas_3.png" x="50" y="150" width="70" height="70" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="50" y="150" width="70" height="70" rx="4"/><text class="l" x="85" y="244" text-anchor="middle">channel k</text><path class="arw" d="M122.0 185.0 L138.0 185.0"/><path class="hd" d="M148.0 185.0 L138.0 190.5 L138.0 179.5 Z"/><rect class="phys" x="150" y="155" width="130" height="60" rx="10"/><text class="b" x="215" y="193" text-anchor="middle">data step</text><path class="arw" d="M282.0 185.0 L298.0 185.0"/><path class="hd" d="M308.0 185.0 L298.0 190.5 L298.0 179.5 Z"/><rect class="net" x="310" y="155" width="130" height="60" rx="12"/><text class="b" x="375" y="193" text-anchor="middle">denoiser k</text><path class="arw" d="M442.0 185.0 L458.0 185.0"/><path class="hd" d="M468.0 185.0 L458.0 190.5 L458.0 179.5 Z"/><image href="../assets/figures/maps/tomo_pnp/perchannel_3.png" x="470" y="150" width="70" height="70" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="470" y="150" width="70" height="70" rx="4"/><text class="l" x="505" y="244" text-anchor="middle">map k</text><path class="arw" d="M505 222 L505 268 L215 268 L215 225"/><path class="hd" d="M215 215 L209.5 225 L220.5 225 Z"/><text class="l" x="360" y="262" text-anchor="middle">iterate</text><text class="cap" x="285" y="348" text-anchor="middle">&#215; 6, nothing shared</text><g class="fragment fade-in" data-fragment-index="1"><line class="div" x1="590" y1="12" x2="590" y2="360"/><text class="t" x="895" y="30" text-anchor="middle">joint: one loop, one denoiser, six channels</text><image href="../assets/figures/maps/tomo_pnp/meas_6.png" x="643" y="128" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="643" y="128" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/meas_5.png" x="638" y="133" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="638" y="133" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/meas_4.png" x="633" y="138" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="633" y="138" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/meas_3.png" x="628" y="143" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="628" y="143" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/meas_2.png" x="623" y="148" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="623" y="148" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/meas_1.png" x="618" y="153" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="618" y="153" width="64" height="64" rx="4"/><text class="l" x="660" y="244" text-anchor="middle">six channels</text><path class="arw" d="M709.0 185.0 L721.0 185.0"/><path class="hd" d="M731.0 185.0 L721.0 190.5 L721.0 179.5 Z"/><rect class="phys" x="733" y="143" width="150" height="84" rx="10"/><text class="b" x="808" y="176" text-anchor="middle">data step</text><text class="l" x="808" y="208" text-anchor="middle">per channel</text><path class="arw" d="M885.0 185.0 L897.0 185.0"/><path class="hd" d="M907.0 185.0 L897.0 190.5 L897.0 179.5 Z"/><rect class="net" x="909" y="143" width="150" height="84" rx="12"/><text class="b" x="984" y="176" text-anchor="middle">denoiser</text><text class="l" x="984" y="208" text-anchor="middle">6 in, 6 out</text><path class="arw" d="M1061.0 185.0 L1073.0 185.0"/><path class="hd" d="M1083.0 185.0 L1073.0 190.5 L1073.0 179.5 Z"/><image href="../assets/figures/maps/tomo_pnp/joint_6.png" x="1110" y="128" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1110" y="128" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/joint_5.png" x="1105" y="133" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1105" y="133" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/joint_4.png" x="1100" y="138" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1100" y="138" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/joint_3.png" x="1095" y="143" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1095" y="143" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/joint_2.png" x="1090" y="148" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1090" y="148" width="64" height="64" rx="4"/><image href="../assets/figures/maps/tomo_pnp/joint_1.png" x="1085" y="153" width="64" height="64" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="1085" y="153" width="64" height="64" rx="4"/><text class="l" x="1127" y="244" text-anchor="middle">six maps</text><path class="arw" d="M1117 220 L1117 268 L808 268 L808 237"/><path class="hd" d="M808 227 L802.5 237 L813.5 237 Z"/><text class="l" x="965" y="262" text-anchor="middle">iterate</text><text class="cap" x="895" y="348" text-anchor="middle">one problem, one prior over the six channels</text></g></svg>
 					<div class="jointeq fragment fade-in" data-fragment-index="2">
-						<p class="eq">$$\kappa^{n+1} = F_{\Theta}\!\left(\kappa^{n} - \tau\,\mathbf{B}\,(\mathbf{A}\kappa^{n} - \gamma)\right),\qquad \mathbf{A} = \mathrm{diag}(\mathbf{A}_0,\dots,\mathbf{A}_0),\qquad F_{\Theta} : \mathbb{R}^{6N^2} \to \mathbb{R}^{6N^2}$$</p>
+						<p class="eq">$$\kappa^{n+1} = F_{\Theta}\!\left(\kappa^{n} - \tau\,\mathbf{B}\,(\mathbf{P}\kappa^{n} - \gamma)\right),\qquad \mathbf{P} = \mathrm{diag}(\mathbf{P}_0,\dots,\mathbf{P}_0),\qquad F_{\Theta} : \mathbb{R}^{6N^2} \to \mathbb{R}^{6N^2}$$</p>
 						<p class="gloss">the same iteration: the operator, the masks and the noise levels enter only in the data step. New is the <b>prior over the six channels together</b>, and the theory follows it: convergence with masked data, and an error bound that fixes the step size.</p>
 					</div>
 					<aside class="notes">
@@ -1875,7 +1899,7 @@
 								<div class="block-title">Why the mask and the covariance drop out</div>
 								<div class="block-content">
 									<p>The forward step may use any linear operator. PnPMass takes
-										<b class="alert">$\mathbf{B} = \mathbf{A}^{\!\top}\Sigma^{-1/2}$</b>, which
+										<b class="alert">$\mathbf{B} = \mathbf{P}^{\!\top}\Sigma^{-1/2}$</b>, which
 										<b>whitens</b> the residual before adding it back. The denoiser then sees
 										&kappa; plus white noise of width $\tau$, whatever mask and galaxy density went
 										into $\Sigma$. A MAP step would use $\Sigma^{-1}$, and the noise would arrive
@@ -1980,8 +2004,8 @@
 							<div class="block">
 								<div class="block-title">Convergence, relaxed for masks</div>
 								<div class="block-content">
-									<p>On the space of zero-mean maps (a centring layer at the output): the denoiser non-expansive with constant $L_\tau \le 1$, the data-step operator $\tilde{\mathbf{B}}\tilde{\mathbf{M}}\tilde{\mathbf{A}}$ symmetric positive semidefinite, and</p>
-									<p class="cqeq">$$0 < \tau L_\tau < 2\,\|\tilde{\mathbf{B}}\tilde{\mathbf{M}}\tilde{\mathbf{A}}\|^{-1}$$</p>
+									<p>On the space of zero-mean maps (a centring layer at the output): the denoiser non-expansive with constant $L_\tau \le 1$, the data-step operator $\tilde{\mathbf{B}}\tilde{\mathbf{M}}\tilde{\mathbf{P}}$ symmetric positive semidefinite, and</p>
+									<p class="cqeq">$$0 < \tau L_\tau < 2\,\|\tilde{\mathbf{B}}\tilde{\mathbf{M}}\tilde{\mathbf{P}}\|^{-1}$$</p>
 									<p>give linear convergence to a unique fixed point at rate $L_\tau\rho_\tau$, with $\rho_\tau = \max(|1-\tau\lambda_{\min}|,\,|1-\tau\lambda_{\max}|)$. Masked pixels stay in: $\lambda_{\min} = 0$ here.</p>
 								</div>
 							</div>

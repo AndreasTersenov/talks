@@ -66,3 +66,7 @@ The frame numbers in the table above are as of the tomographic build; after the 
 same day (Euclid and the 2025 pair hidden, the residual variant and the nulling in) they read:
 frames 12 → 8 (spoken only), 14 → 10, 16 → 14, 23 → 24, 26 → 26, 22 → 23, and the tomographic
 block 17–19 → 15, 17, 18.
+
+With the operator slide lifted in after frame 3 (2026-09-15), every main-line frame from 4 on is
+one higher again; `tools/list-frames.py PIML_FORTH_2026` is the authority. The Fourier kernels on
+that slide, P̂₁ = (k₁² − k₂²)/k² and P̂₂ = 2k₁k₂/k², are Kaiser & Squires 1993.
