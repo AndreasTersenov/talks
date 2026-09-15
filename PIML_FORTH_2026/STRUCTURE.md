@@ -100,7 +100,7 @@ is in the Fourier phases.
 | 12 | Four ways to put a network in a linear inverse problem, **drawn**: four block diagrams in one vocabulary (grey physics step, blue network, dashed box around what is trained together, a loop where there is one) | **new**, replaces 22 |
 | 13 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
 | 14 | A second network predicts the error, pixel by pixel, from the same simulated pairs: the drawn strip (data → denoiser loop → the map; data → variance network → the σ map), and the objective under it | backup `uq`, **redrawn** |
-| 15 | Conformal calibration makes the error bar honest: the three-panel schematic at talk size, then the guarantee inequality on one click | **new**, split from 14 |
+| 15 | Conformal calibration makes the error bar honest: the three steps drawn as one SVG in the deck's vocabulary, arriving one click at a time (the interval, the sorted scores with the quantile, the widened intervals with the old bar as a dark core), then the guarantee inequality | **new**, split from 14 |
 | 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
 
 ### Part 2 — learning the features, or not · frames 17–25 · one vertical column

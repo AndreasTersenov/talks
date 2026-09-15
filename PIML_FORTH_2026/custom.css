@@ -3086,3 +3086,24 @@
 .reveal .slides section.uq3 .guarantee .cqeq .katex { font-size: 1.15em; }
 .reveal .slides section.uq3 .guarantee .gloss { margin: 0.3em 0 0; font-size: 0.86em; text-align: center; color: var(--fg); }
 .reveal .slides section.uq3 .srcref { font-size: 0.7em; position: static; display: block; width: 88%; margin: 0.55em auto 0; text-align: right; }
+
+/* the calibration schematic, drawn (frame 15): three panels as one SVG, two of
+   them fragments; the deck's own type and tokens. */
+.reveal .slides section.uq3 .calib { width: 96%; margin: 0.4em auto 0; }
+.reveal .slides section.uq3 svg.cqr { width: 100%; height: auto; display: block; overflow: visible; }
+.reveal .slides section.uq3 .cqr text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.uq3 .cqr text.t { font-family: var(--r-heading-font); font-weight: 600; font-size: 24px; }
+.reveal .slides section.uq3 .cqr text.cap { font-family: var(--label); font-style: var(--label-style); font-size: 20px; fill: var(--fg-muted); }
+.reveal .slides section.uq3 .cqr text.tag { font-family: var(--label); font-style: var(--label-style); font-size: 18px; fill: var(--fg-muted); }
+.reveal .slides section.uq3 .cqr text.tk { font-family: var(--mono); font-size: 17px; fill: var(--fg-muted); }
+.reveal .slides section.uq3 .cqr text.lbl { font-family: var(--label); font-size: 18px; fill: var(--fg-muted); }
+.reveal .slides section.uq3 .cqr text.qq { font-family: var(--r-heading-font); font-style: italic; font-size: 26px; fill: var(--accent); }
+.reveal .slides section.uq3 .cqr .axis { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.uq3 .cqr .zero { stroke: var(--edge); stroke-width: 1.2; stroke-dasharray: 3 4; }
+.reveal .slides section.uq3 .cqr .iv { stroke: color-mix(in srgb, var(--accent) 38%, var(--bg)); stroke-width: 10; stroke-linecap: round; }
+.reveal .slides section.uq3 .cqr .core { stroke: color-mix(in srgb, var(--accent) 78%, var(--bg)); stroke-width: 5; stroke-linecap: round; }
+.reveal .slides section.uq3 .cqr .hit { fill: var(--fg-muted); }
+.reveal .slides section.uq3 .cqr .miss { stroke: var(--fg); stroke-width: 3.2; fill: none; stroke-linecap: round; }
+.reveal .slides section.uq3 .cqr .sc { fill: var(--fg); }
+.reveal .slides section.uq3 .cqr .q { stroke: var(--accent); stroke-width: 2.4; stroke-dasharray: 8 6; }
+.reveal .slides section.uq3 .guarantee { margin-top: 0.45em; }

@@ -220,16 +220,17 @@ learned prior that picked one of them. **▲** But a network's own variance carr
 
 ---
 
-## A1.8b — conformal calibration · frame 15 · 1:01
+## A1.8b — conformal calibration · frame 15 · 1:09
 
 So we calibrate it on held-out maps where the truth is known, and the procedure is three steps you
-can see. Draw the network's interval at a pixel across the held-out set: seven of fourteen truths
-land outside, more than the rate we asked for. Score each one by how far outside it fell, negative
-if it was inside, and take the quantile. Widen every interval by that much: three of fourteen, the
-rate you asked for. [CLICK] **▲** That is conformalised quantile regression, and this is the
-guarantee: the miss rate sits between alpha minus one over n plus one and alpha, for any network
-and any distribution, with n held-out maps. Distribution-free, finite-sample. It holds whether or
-not the network is well specified.
+can watch. Take one pixel across fourteen held-out maps and draw the network's interval at each:
+seven of fourteen truths land outside, more than the rate we asked for. [CLICK] Score each truth
+by how far outside it fell, negative if it was inside, sort them, and take the quantile. [CLICK]
+Widen every interval by that much; the old bar is the dark core inside the new one. Three of
+fourteen outside: the rate you asked for. [CLICK] **▲** That is conformalised quantile regression,
+and this is the guarantee: the miss rate sits between alpha minus one over n plus one and alpha,
+for any network and any distribution, with n held-out maps. Distribution-free, finite-sample. It
+holds whether or not the network is well specified.
 
 ---
 

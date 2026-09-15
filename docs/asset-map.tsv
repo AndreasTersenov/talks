@@ -235,4 +235,3 @@ p2_crossmap_build/prod12.png	maps	crop of p2_methods_flatsky_inputs, product cro
 p2_l1_joint_cellmap_tight.png	statistics	p2_l1_joint_cellmap cropped to the panel block (tick labels and axis titles dropped, re-set in HTML)
 pnpmass_kappa_panel.png	figures/maps	-
 pnpmass_sigma_panel.png	figures/maps	-
-cqr_schematic_talk.png	diagrams	-

@@ -84,9 +84,10 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - spread from noise + mask (the fan) and the learned prior that picked one map
 - ▲ a network's variance has no guarantee → next
 
-**15 · conformal calibration** ← one click: the guarantee
-- held-out maps, truth known: draw the interval, 7 of 14 outside
-- score by how far outside (negative inside), take the quantile q; widen every interval by q: 3 of 14, the rate asked for
+**15 · conformal calibration** ← three clicks: scores, widened intervals, the guarantee
+- one pixel across 14 held-out maps: the network's interval, 7 of 14 truths outside
+- **»** score by how far outside (negative inside), sort, take the quantile q
+- **»** widen every interval by q; the old bar is the dark core; 3 of 14 outside, the rate asked for
 - **»** ▲ miss rate between α − 1/(n+1) and α, any network, any distribution; 1024 maps, α ≈ 4.55 %
 - limit: marginal, weakest at the peaks (open question at the end)
 
