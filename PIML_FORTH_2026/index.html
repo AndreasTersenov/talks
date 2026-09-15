@@ -263,14 +263,14 @@
 				<div class="qbay">
 					<div class="qslot k1 coreq">
 						<div class="qcard">
-							<span class="qtab">the first half: making the map</span>
+							<span class="qtab">the first half: learning the prior</span>
 							<p>An <b class="alert">ill-posed linear inverse problem</b>, where the prior is the choice.</p>
 						</div>
 					</div>
 
 					<div class="qslot k2 coreq">
 						<div class="qcard">
-							<span class="qtab">the second half: reading the map</span>
+							<span class="qtab">the second half: learning the features, or not</span>
 							<p>A <b class="alert">feature extractor</b> and an <b class="alert">inference step</b>, where we ask what has to be learned at all.</p>
 						</div>
 					</div>
@@ -295,33 +295,39 @@
 				</aside>
 			</section>
 
-			<section class="questions" data-theme="light">
-				<h3 class="slide-title tight">Two questions, one for each half of the chain</h3>
-				<div class="coreq">
-					<div class="qcard">
-						<span class="qtab">question 1: the inverse problem</span>
-						<p>Keep the forward operator, the mask and the noise in the data term and <b class="alert">learn only the prior</b>. Is the reconstruction as accurate as a network trained end to end, does it work for any configuration without retraining, and can its error bars be certified?</p>
-					</div>
-					<div class="qcard">
-						<span class="qtab">question 2: the features</span>
-						<p>Before inference the map is compressed to a feature vector. Does a <b class="alert">learned encoder</b> extract more information about the parameters than a <b class="alert">hand-crafted</b> one, and if so, why?</p>
-					</div>
+			<section class="pmap" data-theme="light">
+				<h3 class="slide-title tight">Where the physics sits and where the learning goes, step by step</h3>
+				<div class="grid">
+					<div></div>
+					<div class="hd">the inverse problem<span>shapes &rarr; mass map</span></div>
+					<div class="hd">the features<span>map &rarr; feature vector</span></div>
+					<div class="hd">the inference<span>features &rarr; parameters</span></div>
+
+					<div class="rl">the physics supplies</div>
+					<div class="cell">the forward operator, the mask and the noise covariance, in the data term</div>
+					<div class="cell">a wavelet transform; peak counts and the &#8467;1-norm on its bands</div>
+					<div class="cell">the simulator, and the prior over the parameters</div>
+
+					<div class="rl">what is learned</div>
+					<div class="cell learned"><span class="q">question 1</span>only the <b>prior</b>: a denoiser, trained once. As accurate as end&#8209;to&#8209;end, any configuration, certifiable error bars?</div>
+					<div class="cell learned"><span class="q">question 2</span>an <b>encoder</b>, or nothing? Does it extract more about the parameters than the hand&#8209;crafted features, and why?</div>
+					<div class="cell learned dim">the <b>posterior</b>: a conditional flow, trained on simulator samples</div>
+
+					<div class="rl">how we know</div>
+					<div class="cell">benchmarked against networks trained end to end; error bars conformally calibrated</div>
+					<div class="cell">benchmarked against an information&#8209;optimal encoder, same maps, same flow</div>
+					<div class="cell dim">calibration&#8209;tested on thousands of simulated cases</div>
 				</div>
-				<p class="lead-line">And in each case, how do we know? The learned part is <b>benchmarked</b>, <b>calibrated</b> and <b>tested</b> before it is trusted.</p>
+				<p class="lead-line">Learn only what the physics cannot supply, and check the learned part before trusting it.</p>
 				<aside class="notes">
-					<p><strong>the two questions &mdash; <em>read them, the only words on the slide</em></strong></p>
+					<p><strong>the map, and the two questions</strong></p>
 					<ul>
-						<li><strong>Q1</strong> operator, mask, noise in the data term; learn only the prior: accurate? any configuration? certifiable bars?</li>
-						<li><strong>Q2</strong> learned encoder vs hand-crafted features: who extracts more, and why?</li>
-						<li>▲ how we know: benchmarked, calibrated, tested. Return here at the end</li>
+						<li>three steps across, three rows down: what the physics supplies, what is learned, how we know</li>
+						<li><strong>Q1</strong> (column 1): learn only the prior; as accurate as end-to-end, any configuration, certifiable bars?</li>
+						<li><strong>Q2</strong> (column 2): a learned encoder, or nothing? more than hand-crafted features, and why?</li>
+						<li>column 3 is the tool, not the subject: a flow, calibration-tested; Justine at 14:00</li>
+						<li>▲ the bottom line is the talk; we return to this grid at the end</li>
 					</ul>
-					<!-- PARKED 2026-09-13, the note this replaced:
-					     the two questions
-					      read them; this is one of the two slides with words on it
-					      Q1: physics in the operator, learning in the prior; accurate, configuration-free, certifiable?
-					      Q2: learned encoder vs hand-crafted features; who extracts more, and why?
-					      and how we know: benchmarked, calibrated, tested. We return to this slide at the end
-					-->
 				</aside>
 			</section>
 
@@ -331,7 +337,7 @@
 			<section>
 				<section class="actopen" data-background="#000">
 					<h2> Part 1 </h2>
-					<h3> Making the map: an ill-posed inverse problem, and what a learned prior buys </h3>
+					<h3> Learning the prior: an ill&#8209;posed inverse problem, and what a learned prior buys </h3>
 					<br>
 					Tersenov, Baumont, Starck &amp; Kilbinger 2025, A&amp;A 698, A25
 					<br>
@@ -719,90 +725,57 @@
 					</aside>
 				</section>
 
-				<section data-theme="light" class="dlslide">
-					<h3 class="slide-title">What about Deep Learning for Mass Mapping?</h3>
-
-					<p class="lede">Yes, people have tried it (with various approaches) &hellip; and it works!</p>
-					<p class="lede however">However&hellip;</p>
-
-					<table class="dltable">
-						<thead>
-							<tr>
-								<th>mass mapping method</th>
-								<th>type</th>
-								<th>accurate</th>
-								<th>flexible</th>
-								<th>fast rec.</th>
-								<th>fast UQ</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="stood">
-								<td>Iterative Wiener</td>
-								<td>model-driven, Gaussian prior</td>
-								<td class="no">&#10007;</td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-								<td class="no">&#10007;</td>
-							</tr>
-							<tr class="stood">
-								<td>MCALens</td>
-								<td>model-driven, Gaussian + sparse</td>
-								<td class="part">&#8776;</td>
-								<td class="yes">&#10003;</td>
-								<td class="no">&#10007;</td>
-								<td class="no">&#10007;</td>
-							</tr>
-							<tr>
-								<td>DeepMass</td>
-								<td>data-driven, U-Net</td>
-								<td class="yes">&#10003;</td>
-								<td class="no">&#10007;<sup>*</sup></td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-							</tr>
-							<tr>
-								<td>DeepPosterior</td>
-								<td>data-driven, U-Net + MCMC</td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-								<td class="no">&#10007;</td>
-								<td class="no">&#10007;</td>
-							</tr>
-							<tr>
-								<td>MMGAN</td>
-								<td>data-driven, GAN</td>
-								<td class="yes">&#10003;</td>
-								<td class="no">&#10007;<sup>*</sup></td>
-								<td class="part">&#8776;</td>
-								<td class="part">&#8776;</td>
-							</tr>
-							<tr class="want">
-								<td>what we&rsquo;d like</td>
-								<td>data-driven</td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-								<td class="yes">&#10003;</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p class="dlnote"><sup>*</sup> must be retrained when the noise level or the mask changes</p>
+				<section class="ways" data-theme="light">
+					<h3 class="slide-title tight">Four ways to put a network in a linear inverse problem</h3>
+					<div class="row">
+						<div class="way">
+							<h4>end to end</h4>
+							<p class="sch">data &rarr; network &rarr; image</p>
+							<span class="k">the physics</span><span class="v">in the training pairs only</span>
+							<span class="k">prior learned independently of the operator</span><span class="v">no</span>
+							<span class="k">cost per map</span><span class="v">one pass</span>
+							<span class="k">new mask or noise level</span><span class="v"><b>retrain</b></span>
+							<p class="ex">DeepMass, MMGAN</p>
+						</div>
+						<div class="way">
+							<h4>unrolled</h4>
+							<p class="sch">K iterations as the architecture, trained through</p>
+							<span class="k">the physics</span><span class="v">in the data&#8209;consistency layers</span>
+							<span class="k">prior learned independently of the operator</span><span class="v">no</span>
+							<span class="k">cost per map</span><span class="v">K passes</span>
+							<span class="k">new mask or noise level</span><span class="v">as far as training covered it</span>
+							<p class="ex">MRI and CT reconstruction</p>
+						</div>
+						<div class="way pick">
+							<h4>plug&#8209;and&#8209;play</h4>
+							<p class="sch">a fixed iteration; the network is the prior only</p>
+							<span class="k">the physics</span><span class="v">in the data term, at inference</span>
+							<span class="k">prior learned independently of the operator</span><span class="v"><b>yes</b>, a denoiser</span>
+							<span class="k">cost per map</span><span class="v">a few passes (eight here)</span>
+							<span class="k">new mask or noise level</span><span class="v"><b>nothing to retrain</b></span>
+							<p class="ex">PnPMass, this talk</p>
+						</div>
+						<div class="way">
+							<h4>posterior sampling</h4>
+							<p class="sch">a learned prior inside a sampler</p>
+							<span class="k">the physics</span><span class="v">in the likelihood, at sampling</span>
+							<span class="k">prior learned independently of the operator</span><span class="v"><b>yes</b>, a score model</span>
+							<span class="k">cost per map</span><span class="v">many passes per sample</span>
+							<span class="k">new mask or noise level</span><span class="v">nothing to retrain</span>
+							<p class="ex">score&#8209;based mass mapping, Remy et al. 2023</p>
+						</div>
+					</div>
+					<p class="lead-line need">A survey needs all of: accurate, <b>any configuration without retraining</b>, fast, and <b>error bars</b>. Plug&#8209;and&#8209;play gives the first three; the error bars come next.</p>
 					<aside class="notes">
-						<p><strong>what about deep learning</strong></p>
+						<p><strong>four ways</strong></p>
 						<ul>
-							<li>people have, it works; four needs at once: accurate, flexible (same model for any noise/mask), fast, fast UQ</li>
-							<li>end-to-end networks: accurate, fast, retrained per mask and noise level</li>
-							<li>▲ nothing has all four</li>
+							<li>the axis that matters for a survey: is the prior learned <strong>independently of the operator</strong>? then a new mask or noise level costs nothing</li>
+							<li>end to end: physics only in the training pairs; one pass; retrain per configuration (DeepMass, MMGAN)</li>
+							<li>unrolled: the iteration is the architecture, trained through; transfers only as far as training covered</li>
+							<li>plug-and-play: fixed iteration, network = prior only; eight passes; nothing to retrain</li>
+							<li>posterior sampling with a learned prior (score-based, Remy 2023; François this morning): full posterior, many passes per sample</li>
+							<li>▲ a survey needs accurate + any configuration + fast + error bars; PnP gives three, the bars come next</li>
 						</ul>
-						<!-- PARKED 2026-09-13, the note this replaced:
-						     what we want
-						      obvious place to look is deep learning — tried, and it works
-						      four things: accurate · flexible (same model when noise or mask
-						      changes) · fast · fast uncertainty quantification
-						      none of the existing methods have all four
-						-->
 					</aside>
 				</section>
 
@@ -1023,7 +996,7 @@
 			<section>
 				<section class="actopen" data-background="#000">
 					<h2> Part 2 </h2>
-					<h3> Reading the map: hand-crafted features against a learned encoder </h3>
+					<h3> Learning the features, or not: hand&#8209;crafted features against a learned encoder </h3>
 					<br>
 					Tersenov, Starck &amp; Kilbinger, submitted to A&amp;A
 					<div class="pipeline-slot" data-variant="compact" data-active="summaries"></div>
@@ -1044,15 +1017,20 @@
 					<h3 class="slide-title tight">Two very different fields can have the <em class="alert">same power
 							spectrum</em>
 					</h3>
-					<img class="plain figfill" src="../assets/diagrams/pk_lss_light.png"
-						alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
+					<div class="r-stack pkswap">
+						<img class="plain figfill fragment fade-out" data-fragment-index="0" src="../assets/diagrams/pk_lss_light.png"
+							alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
+						<img class="plain figfill fragment fade-in" data-fragment-index="0" src="../assets/diagrams/2pt-phase-amp_light.png"
+							alt="the same large-scale-structure map, then rebuilt from its Fourier phases only, and from its Fourier amplitudes only: the phases keep the filaments and haloes, the amplitudes keep nothing recognisable">
+					</div>
 					<p class="lead-line">The missing information is in the <b>Fourier phases</b>. To reach it we need <b class="alert">statistics beyond second order</b>: peak counts, wavelet statistics, the &#8467;<sub>1</sub>&#8209;norm, Minkowski functionals.</p>
 					<aside class="notes">
 						<p><strong>same power spectrum</strong></p>
 						<ul>
 							<li>standard feature vector is second order: two-point function, Fourier amplitudes; ▲ complete for a Gaussian field</li>
 							<li>late-time field not Gaussian: haloes, filaments, voids; two fields, same spectrum</li>
-							<li>the information is in the phases → statistics beyond second order: peaks, wavelets, Minkowski</li>
+							<li><strong>»</strong> keep only the phases: the web is still there. Keep only the amplitudes: nothing. The information is in the phases</li>
+							<li>→ statistics beyond second order: peaks, wavelets, Minkowski</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     same power spectrum
@@ -1246,29 +1224,6 @@
 						      btw summary & parameters ≡ maximising the expected log posterior
 						      so in theory it estimates the most information any summary of these maps can carry
 						      → compare our analytical HOS against that
-						-->
-					</aside>
-				</section>
-
-				<section data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">§2</span> Same maps, same flow, both calibrated: only the <em class="alert">feature vector</em> differs</h3>
-					<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline.png"
-							style="max-height:380px;"
-							alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior">
-					</div>
-					<!-- TRIM-FOLD: p2_methods_flatsky_inputs (the auto + cross channels) / p2_methods_l1_vs_cosmology -->
-					<aside class="notes">
-						<p><strong>the setup</strong></p>
-						<ul>
-							<li>same simulated maps (four distance slices per patch), same flow tuned per feature, same calibration tests</li>
-							<li>3 × 10⁵ patches, 899 cosmologies; architecture, dimension, flow family swept</li>
-							<li>only the feature vector differs</li>
-						</ul>
-						<!-- PARKED 2026-09-13, the note this replaced:
-						     the setup
-						      most of work in paper went into creating the components here — designing the whole SBI pipeline, maps to parameters, + designing both the analytical statistics (for which developed gpu software to run them on scale) and the neural compressor (many
-						      architectures, and setups -> at the end ResNet18 CNN)
-						      the two approaches share everything apart from the summary
 						-->
 					</aside>
 				</section>
@@ -1478,6 +1433,32 @@
 			</section>
 
 			<!-- ==========  CLOSE  ========== -->
+
+			<section class="openq" data-theme="light">
+				<h3 class="slide-title tight">Three open questions I would take from this room</h3>
+				<div class="coreq three">
+					<div class="qcard">
+						<span class="qtab">coverage where it matters</span>
+						<p>The conformal guarantee is <b>marginal</b>: on average over pixels. The misses concentrate at the <b class="alert">peaks</b>, which is where the information is. Conditional coverage at map level, at a cost a survey can pay?</p>
+					</div>
+					<div class="qcard">
+						<span class="qtab">certificates for large denoisers</span>
+						<p>Plug&#8209;and&#8209;play converges if the denoiser is <b>non&#8209;expansive</b>. Regularising the Jacobian of a seven&#8209;million&#8209;parameter transformer is costly, so we verify convergence empirically. Cheaper <b class="alert">certificates</b>?</p>
+					</div>
+					<div class="qcard">
+						<span class="qtab">learned features under a wrong simulator</span>
+						<p>The encoder's ceiling is a ceiling <b>for the simulator</b>. When the physics is missing (baryons, in the backup), which feature degrades gracefully, and can we <b class="alert">tell without the truth</b>?</p>
+					</div>
+				</div>
+				<aside class="notes">
+					<p><strong>open questions</strong></p>
+					<ul>
+						<li>coverage: marginal, misses at the peaks; conditional conformal at map level, at survey cost?</li>
+						<li>certificates: non-expansiveness of a 7 M transformer; Jacobian regularisation too costly; verified empirically; cheaper guarantees?</li>
+						<li>misspecification: the ceiling is the simulator's; baryons biased the hand-crafted features 3.6σ at Euclid area, fixed by dropping one band; the encoder has no band to drop; can we detect it without the truth?</li>
+					</ul>
+				</aside>
+			</section>
 
 			<section class="closing" data-background-image="../assets/backgrounds/Background-Euclid.jpeg"
 				data-background-opacity="0.4" data-background-size="cover" data-background-position="center">
@@ -2536,6 +2517,29 @@
 						<!-- PARKED 2026-09-13, the prose note this replaced:
 						     Reach for this if someone doubts the tie is robust, or asks about FoM3 as a
 						      summary. The overlap of the three violins is the point.
+						-->
+					</aside>
+				</section>
+
+				<section data-theme="light">
+					<h3 class="slide-title tight"><span class="sec">§2</span> Same maps, same flow, both calibrated: only the <em class="alert">feature vector</em> differs</h3>
+					<div class="fig"><img class="plain" src="../assets/diagrams/p2_pipeline.png"
+							style="max-height:380px;"
+							alt="kappa maps to either l1-norm or CNN-VMIM, into the same flow density estimator, to a calibration-gated posterior">
+					</div>
+					<!-- TRIM-FOLD: p2_methods_flatsky_inputs (the auto + cross channels) / p2_methods_l1_vs_cosmology -->
+					<aside class="notes">
+						<p><strong>the setup</strong></p>
+						<ul>
+							<li>same simulated maps (four distance slices per patch), same flow tuned per feature, same calibration tests</li>
+							<li>3 × 10⁵ patches, 899 cosmologies; architecture, dimension, flow family swept</li>
+							<li>only the feature vector differs</li>
+						</ul>
+						<!-- PARKED 2026-09-13, the note this replaced:
+						     the setup
+						      most of work in paper went into creating the components here — designing the whole SBI pipeline, maps to parameters, + designing both the analytical statistics (for which developed gpu software to run them on scale) and the neural compressor (many
+						      architectures, and setups -> at the end ResNet18 CNN)
+						      the two approaches share everything apart from the summary
 						-->
 					</aside>
 				</section>
