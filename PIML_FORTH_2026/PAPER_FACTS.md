@@ -8,18 +8,18 @@ and Part 2 are **not the same quantity** (defense ledger §0).
 
 | where | what is said | value | source |
 |---|---|---|---|
-| frame 12, A1.5 | the sparse solver's map error against the linear inverse | ratio **0.959**, "4 % better" | §2, RMSE table |
-| frame 12, A1.5 | its constraining power against the linear inverse | ratio **2.57**, "157 %" | §2, 4-parameter FoM, wavelet peak counts |
-| frame 12, A1.5 | inpainting the mask changes nothing | ratio 0.996 | §2, iKS null result |
-| frame 14, A1.7 | denoiser size, iterations | SUNet, **7.2 M** parameters; **8** iterations; step size in (0, 0.176) | §3 |
-| frame 16, A1.9 | PnPMass accuracy against DeepMass | RMSE ratio **1.013**, "within about 1 %" | §3 |
-| frame 11, A1.7b | the residual variant against DeepMass | RMSE ratio **1.006**, "within half a per cent"; beats the map variant by 6.04–6.88 × 10⁻³ at 95 % | §3 |
-| frame 11, A1.7b (spoken) | iterations | budget **8**; at τ = 0.176 the residual variant is flat from iteration 2, the map variant settles by 3 | §3, the paper's per-iteration figure (`PnP_iterations1.png`, not shown) |
-| frame 16, A1.9 | smallest calibrated error bars | on all **512** test maps | §3 |
-| frame 16, A1.9 | target error rate | α ≈ **4.55 %**, from 1 024 calibration maps | §3 |
-| frame 23, A2.6 | the learned encoder ahead of the per-channel ℓ1 | **36 %** (3326 / 2448) | §5 |
-| frame 26, A2.9 | the tie | joint ℓ1 **3371 ± 96** against CNN **3326 ± 30**, ratio 1.01 ± 0.03, said as "a tie" | §5 |
-| frame 22, A2.5 | training set | **3.2 × 10⁵** patches, **899** cosmologies, d = 10, RealNVP | §5 |
+| frame 9, A1.3 (spoken) | the sparse solver's map error against the linear inverse | ratio **0.959**, "4 % better" | §2, RMSE table |
+| frame 9, A1.3 (spoken) | its constraining power against the linear inverse | ratio **2.57**, "157 %" | §2, 4-parameter FoM, wavelet peak counts |
+| frame 9, A1.3 (spoken) | inpainting the mask changes nothing | ratio 0.996 | §2, iKS null result |
+| frame 11, A1.7 | denoiser size, iterations | SUNet, **7.2 M** parameters; **8** iterations; step size in (0, 0.176) | §3 |
+| frame 15, A1.9 | PnPMass accuracy against DeepMass | RMSE ratio **1.013**, "within about 1 %" | §3 |
+| frame 12, A1.7b | the residual variant against DeepMass | RMSE ratio **1.006**, "within half a per cent"; beats the map variant by 6.04–6.88 × 10⁻³ at 95 % | §3 |
+| frame 12, A1.7b (spoken) | iterations | budget **8**; at τ = 0.176 the residual variant is flat from iteration 2, the map variant settles by 3 | §3, the paper's per-iteration figure (`PnP_iterations1.png`, not shown) |
+| frame 15, A1.9 | smallest calibrated error bars | on all **512** test maps | §3 |
+| frame 15, A1.9 | target error rate | α ≈ **4.55 %**, from 1 024 calibration maps | §3 |
+| frame 25, A2.6 | the learned encoder ahead of the per-channel ℓ1 | **36 %** (3326 / 2448) | §5 |
+| frame 27, A2.9 | the tie | joint ℓ1 **3371 ± 96** against CNN **3326 ± 30**, ratio 1.01 ± 0.03, said as "a tie" | §5 |
+| frame 24, A2.4 | training set | **3.2 × 10⁵** patches, **899** cosmologies, d = 10, RealNVP | §5 |
 | Q&A 5 | the architecture ladder | RealNVP +36 %, resnet-18 +6 % | script, defense Q&A tier 2 |
 | Q&A 6 | the baryon result (backup only) | bias 2.2σ (PS) / 3.6σ (HOS) at 14 000 deg²; ℓ1 **×1.8** on safe scales, ±0.6 | §4 |
 

@@ -316,16 +316,16 @@ wavelet statistics, Minkowski functionals.
 
 ---
 
-## A2.2 — the two hand-crafted features · frame 22 · 1:01
+## A2.2 — the hand-crafted feature · frame 22 · 0:58
 
 You have just seen a starlet in the previous talk, so I can be brief. Ours is the same isotropic
 undecimated wavelet transform: the map becomes a sum of band-pass images, each carrying structure of
-a characteristic size, plus a coarse residual. Two hand-crafted features live on those bands.
-[CLICK] **Peak counts**: find the local maxima and histogram their amplitudes, scale by scale. Peaks
-are haloes, and how many there are depends strongly on the parameters. [CLICK] Counting maxima
-throws away the voids, the filaments, everything else. So the **ℓ1-norm** sums the absolute values
-of all the coefficients in each band, binned by amplitude: a weighted multiscale histogram that uses
-every pixel. Think of it as the one-point distribution of the field in the wavelet domain.
+a characteristic size, plus a coarse residual. The hand-crafted feature lives on those bands.
+[CLICK] The **ℓ1-norm**: in each band, bin the coefficients by amplitude and sum their absolute
+values, bin by bin. Every pixel contributes: the peaks, the voids, the filaments between them.
+[CLICK] Plotted against the amplitude it looks like this. One curve per scale, two lobes, a weighted
+histogram of the field in the wavelet domain. That is the whole feature vector: no training, and
+every entry has a name.
 
 ---
 
@@ -362,15 +362,15 @@ differs.
 
 ---
 
-## A2.6 — the gap · frame 25 · 0:48
+## A2.6 — the gap · frame 25 · 0:52
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
-comparison is not symmetric. These maps are a multi-channel image: the galaxies are sliced by
-distance, each slice is lensed by all the matter in front of it, so the channels are not
-independent, and how the signal changes from channel to channel is where much of the information
-sits. **▲** A per-channel statistic sees only the marginals; the encoder's first layer mixes all
-four channels.
+comparison is not symmetric. The ℓ1-norm is computed channel by channel, and you saw in Part 1 what
+that leaves out: the channels are correlated, each slice is lensed by the matter in front of it, and
+much of the information is in how the signal changes from one channel to the next. **▲** A
+per-channel statistic never sees that cross-bin structure; it sees only the marginals. The encoder's
+first layer mixes all four channels.
 
 ---
 

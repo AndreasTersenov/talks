@@ -3367,3 +3367,11 @@
 /* the z ranges typeset (Andreas, 2026-09-15) */
 .reveal .slides section.tomo1 svg text.zr, .reveal .slides section.tomob2 svg text.zr { font-size: 22px; fill: var(--cap); }
 .reveal .slides section.tomo1 svg text.zr tspan.it, .reveal .slides section.tomob2 svg text.zr tspan.it { font-style: italic; }
+
+/* frame 22 with the peaks gone (2026-09-15): the ℓ1 formula and its data vector side by
+   side. The schematic gets the room the peak map used to take; both boxes stay the same
+   height so the two captions sit on one line. */
+.reveal .slides section .statpair.l1pair .col { width: 37%; }
+.reveal .slides section .statpair.l1pair .r-stack.statswap { height: 25vh; }
+.reveal .slides section .statpair.l1pair .r-stack.statswap > img,
+.reveal .slides section .statpair.l1pair .col .statswap img { max-height: 25vh; }

@@ -112,7 +112,7 @@ is in the Fourier phases.
 |---|---|---|
 | 20 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
 | 21 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
-| 22 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
+| 22 | The ℓ1-norm is a one-point statistic of the wavelet coefficients, per scale and amplitude bin: the formula, then on a click the schematic data vector, one curve per scale (the peaks column dropped and the shape figure hidden for the defense restored, 2026-09-15, Andreas: the ℓ1 alone) | 31 |
 | 23 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
 | 24 | A learned encoder, trained jointly with the flow to maximise the mutual information I(t; θ): the objective written as the variational bound it is, the boxes naming ResNet-18, d = 10 and RealNVP, the explainer's captions in the same terms (2026-09-15, Andreas: this room can take it) | 39, reworded |
 | 25 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
@@ -122,7 +122,8 @@ is in the Fourier phases.
 *Same maps, same flow, both calibrated* (defense 40) left the main line on 2026-09-15 for backup
 column 3; its sentence is spoken at the end of frame 24. The tomography flipbook (defense 42,
 Justine Zeghal's figure) is hidden in place on Andreas's call: frame 16 now shows the six channels
-of one field, and one sentence on frame 25 recalls that they are not independent.
+of one field, and frame 25 names the gap outright: the ℓ1-norm is per channel and never sees the
+cross-bin structure shown on frame 16.
 
 ### Close · frames 28–29
 

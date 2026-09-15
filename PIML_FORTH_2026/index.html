@@ -1062,7 +1062,7 @@
 				</section>
 
 				<section data-theme="light" data-background-color="#ffffff">
-					<h3 class="slide-title tight"><b class="alert">Peak counts</b> and the <b class="alert">$\ell_1$-norm</b> are one-point statistics of the wavelet coefficients, scale by scale</h3>
+					<h3 class="slide-title tight">The <b class="alert">$\ell_1$-norm</b> is a one-point statistic of the wavelet coefficients, per scale and amplitude bin</h3>
 
 					<figure class="fig" style="margin:0.1em 0 0;">
 						<img class="plain" src="../assets/diagrams/starlet_row_decomposition.png"
@@ -1071,22 +1071,8 @@
 						<figcaption>the <b>starlet transform</b>: one map as a sum of band&#8209;pass images, one per angular scale</figcaption>
 					</figure>
 
-					<div class="statpair">
+					<div class="statpair l1pair">
 						<div class="col fragment fade-in" data-fragment-index="0">
-							<div class="kicker">wavelet peak counts</div>
-							<div class="r-stack statswap">
-								<img class="plain" src="../assets/figures/maps/kappa_peaks_circled.png"
-									alt="a smoothed convergence map with its peaks circled">
-								<!-- HIDDEN 2026-09-11, kept for a future talk. Showing the statistic's own shape
-								     means explaining its axes, and there is no time for that. The first view stays.
-								<img class="plain fragment fade-in" data-fragment-index="1"
-									src="../assets/diagrams/hos_peaks_shape.png"
-									alt="schematic peak counts against signal-to-noise, one curve per starlet scale">
-								-->
-							</div>
-							<p class="cap">local maxima of $\kappa$, counted per $\kappa$ bin: a subset of the field</p>
-							</div>
-						<div class="col fragment fade-in" data-fragment-index="2">
 							<div class="kicker">starlet &#8467;1-norm</div>
 							<div class="r-stack statswap">
 								<div class="l1formula">
@@ -1096,22 +1082,27 @@
 										\;=\; \lVert \mathcal{S}_{j,i} \rVert_1$$
 									</div>
 								</div>
-								<!-- HIDDEN 2026-09-11, kept for a future talk — same reason as the peaks plot above.
-								<img class="plain fragment fade-in" data-fragment-index="3"
-									src="../assets/diagrams/hos_l1_shape.png"
-									alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale">
-								-->
 							</div>
-							<p class="cap">sum of <b>absolute coefficients</b> per band and $\kappa$ bin: every pixel counts</p>
+							<p class="cap">sum of <b>absolute coefficients</b> per band $j$ and amplitude bin $i$: every pixel counts</p>
+						</div>
+						<div class="col fragment fade-in" data-fragment-index="1">
+							<div class="kicker">the feature vector</div>
+							<div class="r-stack statswap">
+								<!-- restored 2026-09-15: hidden for the defense on 2026-09-11, back now that the peaks
+								     column is gone and the l1-norm has the frame to itself -->
+								<img class="plain" src="../assets/diagrams/hos_l1_shape.png"
+									alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale">
+							</div>
+							<p class="cap">one curve per scale, binned by amplitude: a <b>weighted histogram</b> of the field in the wavelet domain</p>
 						</div>
 					</div>
 
 					<aside class="notes">
-						<p><strong>the two hand-crafted features &mdash; <em>room cue: the wavelet talk before</em></strong></p>
+						<p><strong>the hand-crafted feature &mdash; <em>room cue: the wavelet talk before</em></strong></p>
 						<ul>
 							<li>same isotropic undecimated wavelet transform: band-pass images + coarse residual</li>
-							<li><strong>»</strong> peak counts: local maxima histogrammed per scale; peaks are haloes</li>
-							<li><strong>»</strong> maxima throw away voids and filaments → ℓ1-norm: sum of |coefficients| per band, binned by amplitude; every pixel; one-point distribution in the wavelet domain</li>
+							<li><strong>»</strong> ℓ1-norm: per band, bin the coefficients by amplitude, sum |coefficients| per bin; every pixel: peaks, voids, filaments</li>
+							<li><strong>»</strong> the data vector: one curve per scale, two lobes; a weighted histogram in the wavelet domain; no training, every entry has a name</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     the two statistics
@@ -1263,10 +1254,7 @@
 								<span class="label">the gap</span>
 								<ul>
 									<li>The learned encoder is <b class="alert">36 % ahead</b> in constraining power</li>
-									<li>But the comparison is <b>not symmetric</b>: something important about the maps
-										is
-										not taken
-										into account</li>
+									<li>But the comparison is <b>not symmetric</b>: the &#8467;1-norm is computed channel by channel, and never sees the correlations between the maps, the cross&#8209;bin structure</li>
 								</ul>
 							</div>
 						</div>
@@ -1276,7 +1264,8 @@
 						<p><strong>the gap</strong></p>
 						<ul>
 							<li><strong>»</strong> the encoder wins by 36 % in constraining power</li>
-							<li>not symmetric: something about the maps the ℓ1-norm does not yet see</li>
+							<li>not symmetric: the ℓ1-norm is per channel; the cross-bin correlations of Part 1 (each slice lensed by the matter in front) never enter it</li>
+							<li>▲ a per-channel statistic sees only the marginals; the encoder's first layer mixes all four</li>
 						</ul>
 						<!-- PARKED 2026-09-13, the note this replaced:
 						     the gap

@@ -129,10 +129,10 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - **»** phases only: the web is still there; amplitudes only: nothing. The information is in the phases
 - → statistics beyond second order: peaks, wavelets, Minkowski
 
-**22 · the two hand-crafted features** ← room cue: the wavelet talk before
+**22 · the hand-crafted feature** ← room cue: the wavelet talk before
 - same isotropic undecimated wavelet transform: band-pass images + coarse residual
-- **»** peak counts: local maxima histogrammed per scale; peaks are haloes
-- **»** maxima throw away voids and filaments → ℓ1-norm: sum of |coefficients| per band, binned by amplitude; every pixel; one-point distribution in the wavelet domain
+- **»** ℓ1-norm: per band, bin the coefficients by amplitude, sum |coefficients| per bin; every pixel: peaks, voids, filaments
+- **»** the data vector: one curve per scale, two lobes; a weighted histogram in the wavelet domain; no training, every entry has a name
 
 **23 · likelihood-free inference** ← room cue: hand off to Zeghal at 14:00
 - no analytic likelihood; a simulator: draw θ, run, keep pairs
@@ -150,7 +150,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 **25 · the gap**
 - **»** the encoder wins by 36 % in constraining power
-- not symmetric: the maps are a multi-channel image; slices by distance, each lensed by the matter in front → channels not independent; the change from channel to channel is the information
+- not symmetric: the ℓ1-norm is per channel; the cross-bin correlations of Part 1 (each slice lensed by the matter in front) never enter it
 - ▲ a per-channel statistic sees only the marginals; the encoder's first layer mixes all four
 
 **26 · two routes**
