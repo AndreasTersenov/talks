@@ -3246,3 +3246,63 @@
 
 /* slide 12: hairline dividers between the four ways (2026-09-15) */
 .reveal .slides section.ways .ways4 .div { stroke: var(--edge); stroke-width: 1.5; }
+
+/* ============================================================================
+   The tomographic block (2026-09-15): three drawn frames after the PnPMass
+   result (the channels, one denoiser for six, the result) and three backup
+   frames. Same vocabulary as the four ways and the calibration schematic:
+   grey physics step, blue network, sans labels in --cap, mono for the ticks.
+   Type sizes are set for the 0.94 viewBox scale: 22 px here is 20.7 on the
+   canvas, the floor.
+   ============================================================================ */
+.reveal .slides section.tomo1 svg.chan,
+.reveal .slides section.tomo2 svg.joint,
+.reveal .slides section.tomo3 svg.tres,
+.reveal .slides section.tomob2 svg.nulled { width: 94%; height: auto; display: block; margin: 0.2em auto 0; overflow: visible; }
+.reveal .slides section.tomo1 svg text, .reveal .slides section.tomo2 svg text,
+.reveal .slides section.tomo3 svg text, .reveal .slides section.tomob2 svg text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.tomo1 svg text.t, .reveal .slides section.tomo2 svg text.t, .reveal .slides section.tomo3 svg text.t { font-family: var(--r-heading-font); font-weight: 600; font-size: 29px; }
+.reveal .slides section.tomo1 svg text.k, .reveal .slides section.tomo2 svg text.k, .reveal .slides section.tomo3 svg text.k, .reveal .slides section.tomob2 svg text.k { font-size: 26px; font-weight: 600; }
+.reveal .slides section.tomo1 svg text.b, .reveal .slides section.tomo2 svg text.b, .reveal .slides section.tomo3 svg text.b { font-size: 26px; }
+.reveal .slides section.tomo1 svg text.l, .reveal .slides section.tomo2 svg text.l, .reveal .slides section.tomo3 svg text.l, .reveal .slides section.tomob2 svg text.l { font-size: 24px; fill: var(--cap); }
+.reveal .slides section.tomo1 svg text.cap, .reveal .slides section.tomo2 svg text.cap, .reveal .slides section.tomo3 svg text.cap { font-size: 26px; fill: var(--cap); }
+.reveal .slides section.tomo1 svg text.cap tspan.k { fill: var(--fg); font-weight: 600; }
+.reveal .slides section.tomo3 svg text.lbl { font-size: 22px; fill: var(--cap); }
+.reveal .slides section.tomo3 svg text.tk { font-family: var(--mono); font-size: 23px; fill: var(--fg-muted); }
+.reveal .slides section.tomo3 svg text.lj-t { font-size: 24px; font-weight: 600; fill: var(--accent); }
+.reveal .slides section.tomo3 svg text.lp-t { font-size: 24px; font-weight: 600; fill: var(--fg-muted); }
+.reveal .slides section.tomo1 svg .frame, .reveal .slides section.tomo2 svg .frame, .reveal .slides section.tomo3 svg .frame, .reveal .slides section.tomob2 svg .frame { fill: none; stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.tomo2 svg .phys { fill: var(--surface); stroke: var(--fg-muted); stroke-width: 2.2; }
+.reveal .slides section.tomo2 svg .net { fill: color-mix(in srgb, var(--accent) 18%, var(--surface)); stroke: var(--accent); stroke-width: 2.4; }
+.reveal .slides section.tomo2 svg .ghost { fill: var(--bg); stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.tomo2 svg .arw, .reveal .slides section.tomo3 svg .arw { fill: none; stroke: var(--fg-muted); stroke-width: 2.5; }
+.reveal .slides section.tomo2 svg .hd, .reveal .slides section.tomo3 svg .hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.tomo2 svg .div { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.tomo3 svg .axis { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.tomo3 svg .zero { stroke: var(--fg-muted); stroke-width: 1.6; stroke-dasharray: 4 5; }
+.reveal .slides section.tomo3 svg .lj { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; }
+.reveal .slides section.tomo3 svg .lp { fill: none; stroke: var(--fg-muted); stroke-width: 3.5; stroke-linejoin: round; }
+.reveal .slides section.tomo3 svg .mj { fill: var(--accent); }
+.reveal .slides section.tomo3 svg .mp { fill: var(--fg-muted); }
+.reveal .slides section.tomo3 svg .esc { fill: none; stroke: var(--fg-muted); stroke-width: 3.5; stroke-dasharray: 6 5; }
+.reveal .slides section.tomo3 svg .hdp { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.tomo3 svg .band { fill: color-mix(in srgb, var(--fg) 5%, transparent); stroke: none; }
+.reveal .slides section.tomo3 svg polyline.c1 { fill: none; stroke-width: 2.6; stroke: color-mix(in srgb, var(--accent) 0%, var(--fg-muted)); }
+.reveal .slides section.tomo3 svg polyline.c2 { fill: none; stroke-width: 2.6; stroke: color-mix(in srgb, var(--accent) 20%, var(--fg-muted)); }
+.reveal .slides section.tomo3 svg polyline.c3 { fill: none; stroke-width: 2.6; stroke: color-mix(in srgb, var(--accent) 40%, var(--fg-muted)); }
+.reveal .slides section.tomo3 svg polyline.c4 { fill: none; stroke-width: 2.6; stroke: color-mix(in srgb, var(--accent) 60%, var(--fg-muted)); }
+.reveal .slides section.tomo3 svg polyline.c5 { fill: none; stroke-width: 2.6; stroke: color-mix(in srgb, var(--accent) 80%, var(--fg-muted)); }
+.reveal .slides section.tomo3 svg polyline.c6 { fill: none; stroke-width: 2.6; stroke: var(--accent); }
+.reveal .slides section.tomo2 .jointeq { width: 92%; margin: 0.35em auto 0; }
+.reveal .slides section.tomo2 .jointeq .eq { margin: 0; text-align: center; }
+.reveal .slides section.tomo2 .jointeq .eq .katex { font-size: 1.0em; }
+.reveal .slides section.tomo2 .jointeq .gloss { margin: 0.3em 0 0; text-align: center; font-size: 0.82em; line-height: 1.35; color: var(--fg); }
+.reveal .slides section.tomo3 .srcref, .reveal .slides section.tomob .srcref { font-size: 0.7em; position: static; display: block; width: 94%; margin: 0.3em auto 0; text-align: right; }
+.reveal .slides section.tomob .tbcols .block { margin-top: 0.3em; }
+.reveal .slides section.tomob .tbcols .block-content p { font-size: 0.72em; line-height: 1.35; margin: 0.3em 0; }
+.reveal .slides section.tomob .tbcols .cqeq { margin: 0.2em 0; }
+.reveal .slides section.tomob .tbcols .cqeq .katex { font-size: 1.0em; }
+.reveal .slides section.tomob figure.tbiter { margin: 0.4em auto 0; }
+.reveal .slides section.tomob figure.tbiter img { max-height: 190px; width: auto; max-width: 100%; margin: 0; }
+.reveal .slides section.tomob .tbfigs figure img { width: 100%; max-height: 380px; margin: 0; }
+.reveal .slides section.tomob .lead-line { font-size: 0.8em; margin-top: 0.4em; }

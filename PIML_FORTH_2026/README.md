@@ -6,6 +6,8 @@ Built on 2026-09-14 from `../PhD_Defense_2026/` (the deck as delivered that day,
 `defense-2026-09-14`): the chrome, the components and 24 of its frames, re-argued for a room of
 signal-processing, ML, Earth-observation and medical-imaging people. Per
 `../docs/TALK-GUIDELINES.md` §2.7, the chrome is inherited and the argument re-derived.
+Three frames on the tomographic PnPMass (Leterme, Tersenov & Starck, in preparation) were
+added on 2026-09-15; their maps live in `../assets/figures/maps/tomo_pnp/`.
 
 | file | what it is |
 |---|---|

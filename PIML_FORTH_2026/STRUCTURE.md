@@ -73,7 +73,7 @@ is in the Fourier phases.
 
 ---
 
-## Running order — 26 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain)
+## Running order — 29 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain; the tomographic block added)
 
 `src` = the frame in `../PhD_Defense_2026/` (as numbered on 2026-09-14) the slide was lifted from.
 
@@ -87,11 +87,11 @@ is in the Fourier phases.
 | 4 | Euclid: mapping the dark Universe (billions of galaxies, a third of the sky, an algorithms problem) | 6 |
 | 5 | The analysis chain from galaxy shapes to parameters, and where the learning goes: the two questions arrive as the two click-cards under the flowchart (process boxes sub-labelled *inverse problem / feature extraction / likelihood-free*) | 7, cards rewritten |
 
-### Part 1 — learning the prior · frames 6–16 · one vertical column
+### Part 1 — learning the prior · frames 6–19 · one vertical column
 
 | # | on screen | src |
 |---|---|---|
-| 6 | Part 1 card, *Learning the prior*: both papers, pipeline lit at maps | 8 + 21, merged |
+| 6 | Part 1 card, *Learning the prior*: three papers, pipeline lit at maps | 8 + 21, merged |
 | 7 | In practice, mass mapping is an ill-posed inverse problem | 12 |
 | 8 | Kaiser–Squires inversion is exact for complete, noiseless data, but amplifies the noise | 13 |
 | 9 | Every mass-mapping method minimises a data term plus a regulariser that encodes the prior (card row restored: no prior / ℓ2 / ℓ1 / both / learned) | 14 |
@@ -102,31 +102,34 @@ is in the Fourier phases.
 | 14 | A second network predicts the error, pixel by pixel, from the same simulated pairs: the drawn strip (data → denoiser loop → the map; data → variance network → the σ map), and the objective under it | backup `uq`, **redrawn** |
 | 15 | Conformal calibration makes the error bar honest: the three steps drawn as one SVG in the deck's vocabulary, arriving one click at a time (the interval, the sorted scores with the quantile, the widened intervals with the old bar as a dark core), then the guarantee inequality | **new**, split from 14 |
 | 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
+| 17 | Slice the sources by distance: six correlated channels, each measured with a sixth of the galaxies, **drawn**: the six images we want for one field, then on a click the six measurements | **new** (Leterme, Tersenov & Starck, in preparation) |
+| 18 | One multichannel denoiser in the same loop, **drawn**: the per-channel way (six loops, nothing shared) against the joint way (one six-channel image, a block-diagonal data step, one denoiser six in six out), then the iteration with A block-diagonal | **new** |
+| 19 | Joint reconstruction wins in every channel, and it is the only one that survives the foreground nulling, **drawn**: error per channel before, the lens-efficiency curves nested then local (the re-mixing), error after with the per-channel line leaving the chart above the zero map; then four maps of the nearest channel | **new** (values parsed from the draft's Fig. 4b) |
 
-### Part 2 — learning the features, or not · frames 17–24 · one vertical column
+### Part 2 — learning the features, or not · frames 20–27 · one vertical column
 
 | # | on screen | src |
 |---|---|---|
-| 17 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
-| 18 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
-| 19 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
-| 20 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
-| 21 | A learned encoder trained to be information-optimal | 39 |
-| 22 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
-| 23 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
-| 24 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
+| 20 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
+| 21 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
+| 22 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
+| 23 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
+| 24 | A learned encoder trained to be information-optimal | 39 |
+| 25 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
+| 26 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
+| 27 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
 
 *Same maps, same flow, both calibrated* (defense 40) left the main line on 2026-09-15 for backup
-column 3; its sentence is spoken at the end of frame 21. The tomography flipbook (defense 42,
-Justine Zeghal's figure) is hidden in place on Andreas's call: one sentence on frame 22 says the
-channels are distance slices that are not independent.
+column 3; its sentence is spoken at the end of frame 24. The tomography flipbook (defense 42,
+Justine Zeghal's figure) is hidden in place on Andreas's call: frame 17 now shows the six channels
+of one field, and one sentence on frame 25 recalls that they are not independent.
 
-### Close · frames 25–26
+### Close · frames 28–29
 
 | # | on screen | src |
 |---|---|---|
-| 25 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
-| 26 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
+| 28 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
+| 29 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
 
 Ends on the conclusions, which stay up through questions. No "thank you" slide.
 
@@ -137,13 +140,15 @@ Ends on the conclusions, which stay up through questions. No "thank you" slide.
 - The wavelet primer, Bayes, generative modelling, flows (30, 33–35): backup column 3. The room
   has just sat through a wavelet talk and Zeghal covers SBI at 14:00.
 - **Baryons, all of Part 4**: backup column 4. Andreas's call (2026-09-14): not really the
-  workshop's subject. It survives as one spoken sentence on frame 20 and as the answer to
+  workshop's subject. It survives as one spoken sentence on frame 23 and as the answer to
   "your calibration tests only certify against the simulator".
 
 ## Budget
 
 Estimated from the defense's measured beats, trimmed: Act 0 ≈ 4:30, Part 1 ≈ 9:00, Part 2 ≈ 7:50,
-close ≈ 1:15 → **≈ 22:35**. The script is measured, not estimated:
+close ≈ 1:15 → **≈ 22:35**; the tomographic block (frames 17–19, 2026-09-15) adds about 3:25 on
+top of a script that already measured 23:23, so the cut ladder below is no longer optional. The
+script is measured, not estimated:
 
 ```
 python3 tools/measure-script.py PIML_FORTH_2026 --wpm 121
@@ -151,23 +156,25 @@ python3 tools/measure-script.py PIML_FORTH_2026 --wpm 121
 
 ### Cut ladder, in order
 
-1. frame 23 folded into 26's four-arm build (the auto-only arm is its first frame): −0:30
-2. frame 13's table folded into 14's opening sentence: −0:40
+1. frame 25 folded into 27's four-arm build (the auto-only arm is its first frame): −0:30
+2. frame 12, the four ways, to one sentence at the top of 13: −1:00
 3. frame 4 Euclid folded into 3's close: −0:35
-4. frame 24's flipbook to three frames: −0:20
-5. frame 15 back to backup, its two sentences kept on 16: −1:00
+4. frame 24's *why not learn the compression* to one sentence: −0:20
+5. frame 15 back to backup, its guarantee sentence kept on 16: −0:55
+6. the tomographic block as a whole (frames 17–19), one sentence at the end of 16: −3:10
 
-**Never cut**: 8 (the inverse problem); 12's *four per cent against 157*; 14; 16's *smallest
-calibrated bars, trained once*; 21's definition of optimal; 26's *a tie, not a win*.
+**Never cut**: 7 (the inverse problem); 11's *four per cent against 157*; 13; 16's *smallest
+calibrated bars, trained once*; 19's *worse than the zero map* if the block is in; 24's definition
+of optimal; 27's *a tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 16), expect 13:30. Behind → take cuts 1 and 4 live.
+**Planned exit**: end of Part 1 (frame 19), expect 16:30. Behind → take cuts 1 and 4 live.
 
-## Backup — four columns after the divider (frame 28)
+## Backup — four columns after the divider (frame 31)
 
 | column | holds |
 |---|---|
 | mass mapping methods | MCALens, the three maps, the scale ladder, the Bayesian view, sparse recovery |
-| PnPMass | the denoiser card, the residual variant, the CQR card |
+| PnPMass | the denoiser card, the residual variant, the CQR card; the tomographic extension: the theory card (convergence with masks, the error bound, the step size), the maps after the nulling, the draft's two figures |
 | statistics and inference | wavelets, the phases, classical inference, generative modelling, flows, the TARP/SBC results and explainer, the +24 % cross-bin ablation, the tie per mock |
 | baryons, nulling and systematics | the whole of the defense's Part 4, the nulling pair, the systematics card, the outlook |
 
@@ -176,11 +183,11 @@ calibrated bars, trained once*; 21's definition of optimal; 26's *a tie, not a w
 ## Room cues (spoken, in the script)
 
 - **Lanusse, 10:00**: hybrid physical/ML modelling; his group's score-based mass mapping (Remy+
-  2023) is PnPMass's nearest relative. Cue on frame 14, filled in after hearing the keynote. The
+  2023) is PnPMass's nearest relative. Cue on frame 13, filled in after hearing the keynote. The
   contrast to have ready: posterior sampling with a score model against a fixed-point
   reconstruction with a finite-sample conformal guarantee.
-- **Pérez Roncero, 11:30**, wavelet denoising: frame 19 opens with *you have just seen a starlet*.
-- **Zeghal, 14:00**, SBI keynote: frame 20 is one slide with a hand-off.
+- **Pérez Roncero, 11:30**, wavelet denoising: frame 22 opens with *you have just seen a starlet*.
+- **Zeghal, 14:00**, SBI keynote: frame 23 is one slide with a hand-off.
 - **Starck and Tsakalides** organise it and sat on the committee this morning.
 
 ## Dreaded questions (answers in `SPEAKER_SCRIPT.md`)
@@ -192,3 +199,7 @@ calibrated bars, trained once*; 21's definition of optimal; 26's *a tie, not a w
 5. Is the CNN under-trained?
 6. Your calibration tests certify against the simulator. What if the simulator is wrong?
 7. Does the tie generalise to a richer field?
+8. Why the starlet, and why ℓ1 rather than ℓ2?
+9. Why not null the foreground on the measurements first?
+10. Twenty-four iterations now, against eight before?
+11. Could the joint denoiser invent foreground structure from the background channels?

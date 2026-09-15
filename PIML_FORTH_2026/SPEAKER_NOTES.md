@@ -34,7 +34,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 ## Part 1
 
 **6 · Part 1 card**
-- making the map; two papers: does the prior matter (2025), a learned prior with certified bars (2026, led by Hubert Leterme)
+- making the map; three papers: does the prior matter (2025), a learned prior with certified bars (2026, led by Hubert Leterme), the same loop on six correlated channels (in preparation)
 
 **7 · the inverse problem**
 - one line: linear operator, mask, noise. Relation exact, data not
@@ -99,29 +99,47 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - **»** ▲ DeepMass retrained per footprint/noise; PnPMass trained once
 - two limits: marginal not conditional (weakest at peaks); single cosmology
 
+**17 · six correlated channels** ← one click: the measurements
+- paper in preparation with Hubert Leterme; slice the sources by distance, one map per slice, six channels
+- the images we want, one field: same structure in every channel, stronger with distance; each slice lensed by all the matter in front → correlated
+- **»** the measurements: a sixth of the galaxies each, many pixels with none
+- ▲ six ill-posed problems, each worse than the one just solved, that share their answer
+
+**18 · one denoiser, six channels** ← two clicks: the joint loop, the equation
+- the obvious way: six loops, six denoisers, nothing shared
+- **»** one six-channel image; data step block-diagonal (own mask and noise per channel); one denoiser, 6 in 6 out, trained on six-channel simulations → correlation in the prior
+- **»** ▲ nothing else moves: operator, masks, noise only in the data step
+- theory follows: convergence with masked data; error bound → step size 2/λmax justified (backup)
+
+**19 · the tomographic result** ← three clicks: the re-mixing, after, the maps
+- before: joint lower in every channel, 0.89 against 0.95
+- **»** why the channels: k sees everything in front → invertible triangular re-mixing nulls the foreground, three at a time (BNT); differences of noisy maps
+- **»** ▲ after: per channel worse than the zero map from channel 3, 1.48 on average, invented structure; joint never crosses one; far channels recovered barely
+- **»** the map, channel 1: per channel sees nothing, joint reads the peak from the other five, it is in the truth
+
 ## Part 2
 
-**17 · Part 2 card**
+**20 · Part 2 card**
 - the map must become a feature vector before inference; does that step need a network?
 
-**18 · same power spectrum**
+**21 · same power spectrum**
 - standard feature vector is second order: two-point function, Fourier amplitudes; ▲ complete for a Gaussian field
 - late-time field not Gaussian: haloes, filaments, voids; two fields, same spectrum
 - **»** phases only: the web is still there; amplitudes only: nothing. The information is in the phases
 - → statistics beyond second order: peaks, wavelets, Minkowski
 
-**19 · the two hand-crafted features** ← room cue: the wavelet talk before
+**22 · the two hand-crafted features** ← room cue: the wavelet talk before
 - same isotropic undecimated wavelet transform: band-pass images + coarse residual
 - **»** peak counts: local maxima histogrammed per scale; peaks are haloes
 - **»** maxima throw away voids and filaments → ℓ1-norm: sum of |coefficients| per band, binned by amplitude; every pixel; one-point distribution in the wavelet domain
 
-**20 · likelihood-free inference** ← room cue: hand off to Zeghal at 14:00
+**23 · likelihood-free inference** ← room cue: hand off to Zeghal at 14:00
 - no analytic likelihood; a simulator: draw θ, run, keep pairs
 - **»** pairs train a conditional flow = the posterior; hand it the observation
 - ▲ every posterior calibration-tested: says 68 %, right 68 % of the time
 - certifies against the simulator that trained it; wrong physics in the simulator = separate study, backup
 
-**21 · the learned encoder**
+**24 · the learned encoder**
 - beating second order is easy; how close to all of it?
 - why not learn the compression: careful (data, interpretability, generalisation), but the principled way:
 - **»** encoder → 10-d summary; flow → posterior
@@ -129,22 +147,22 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - ▲ an estimate of the ceiling, not just another feature; the benchmark
 - matched comparison: same maps, same flow, same calibration tests; only the feature vector differs (3 × 10⁵ patches, 899 cosmologies)
 
-**22 · the gap**
+**25 · the gap**
 - **»** the encoder wins by 36 % in constraining power
 - not symmetric: the maps are a multi-channel image; slices by distance, each lensed by the matter in front → channels not independent; the change from channel to channel is the information
 - ▲ a per-channel statistic sees only the marginals; the encoder's first layer mixes all four
 
-**23 · two routes**
+**26 · two routes**
 - route one, change the input: product of each channel pair, strong where both have structure; same ℓ1-norm
 - **»** route two, change the statistic: per-channel ℓ1 = the two marginals on the axes
 - **»** grid on the plane, ℓ1 weight per cell: joint 2-D histogram; diagonal both strong, off-diagonal one strong; that is the redshift information; no extra maps
 
-**24 · the answer**
+**27 · the answer**
 - per-channel ℓ1 **»** + product channels **»** joint ℓ1 **»** the encoder lands on top of it
 - ▲ a tie, not a win: encoder coverage slightly conservative
 - ▲ sufficiency: the joint ℓ1-norm carries essentially all the accessible information, no training, inspectable, nothing to retrain
 
-**25 · three open questions, on the chain** ← three clicks
+**28 · three open questions, on the chain** ← three clicks
 - **»** the map: marginal guarantee, misses at the peaks; conditional coverage at map level, at survey cost?
 - **»** mass mapping: non-expansiveness of a 7 M transformer verified empirically; a cheaper certificate?
 - **»** systematics → features: the ceiling is the simulator's; baryons (backup) fixed by one band, the encoder has no band; can we tell without the truth?
@@ -152,7 +170,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 ## Close
 
-**26 · conclusions** ← stays up through questions
-- Q1 ▲ yes: within 1 % of the end-to-end networks, smallest calibrated bars, trained once for any mask and noise
+**29 · conclusions** ← stays up through questions
+- Q1 ▲ yes: within 1 % of the end-to-end networks, smallest calibrated bars, trained once for any mask and noise; six correlated channels with one denoiser
 - Q2 ▲ only while it reads the channels jointly; give the ℓ1-norm the same access and it matches the optimal encoder, no training
 - ▲ learn only what the physics cannot supply, benchmark it, calibrate it before trusting it

@@ -95,7 +95,7 @@ benchmarked, calibrated, tested.
 
 ---
 
-# Part 1 — learning the prior · frames 6–16
+# Part 1 — learning the prior · frames 6–19
 
 ---
 
@@ -248,21 +248,61 @@ structure is. [CLICK] **▲** And DeepMass has to be retrained whenever the foot
 changes; PnPMass is trained once. Two honest limits: the guarantee is marginal, not conditional,
 and weakest at the peaks; and this is a single cosmology.
 
+## A1.10 — six correlated channels · frame 17 · 0:57
+
+One more step, from the paper in preparation with Hubert Leterme. Slice the source galaxies by
+distance and you get one map per slice: six channels. Here are the six images we want, for one
+field. The same structure appears in every channel, stronger with distance, because each slice
+is lensed by all the matter in front of it; the channels are strongly correlated. [CLICK] And here
+is what we measure. Each channel gets a sixth of the galaxies, so the noise per channel is far
+worse than in the single-map problem, and many pixels have no galaxy at all. **▲** Six ill-posed
+problems, each worse than the one we just solved, that share their answer.
+
+---
+
+## A1.11 — one denoiser, six channels · frame 18 · 1:04
+
+The obvious way is to run the loop six times, one denoiser per channel, and ignore that they share
+the answer. [CLICK] The alternative changes one thing. The measurements are stacked into one
+six-channel image; the data step is block-diagonal, each channel still with its own mask and its
+own noise; and the denoiser is one network with six channels in and six out, trained on
+six-channel simulations, so the correlation across channels lives in the prior. [CLICK] **▲**
+Nothing else moves: the operator, the masks and the noise levels still enter only in the data
+step. The theory follows: convergence with masked data, and an error bound that ties the loop's
+error to the denoiser's own error and, as a by-product, justifies the step size we had been
+choosing by hand.
+
+---
+
+## A1.12 — the tomographic result · frame 19 · 1:23
+
+Before any re-mixing, the joint reconstruction has a lower error in every channel; over the test
+set, zero point eight nine against zero point nine five, relative to the zero map. [CLICK] Now the
+reason we want the channels at all. Channel k sees everything in front of it, so to study the
+matter at one distance you re-mix the channels with an invertible triangular transform that nulls
+the foreground, three channels at a time. It is a difference of noisy maps, so errors add up.
+[CLICK] **▲** After the nulling, the per-channel reconstruction is worse than the zero map from
+the third channel on, one point four eight on average: it has invented structure. The joint
+reconstruction never crosses one. The honest limit: in the far channels it sits close to one, so
+they are recovered, barely. [CLICK] And in the map, the nearest channel of one field: the
+per-channel reconstruction sees nothing, the joint one reads the peak from the other five
+channels, and it is there in the truth.
+
 ---
 ---
 
-# Part 2 — learning the features, or not · frames 17–24
+# Part 2 — learning the features, or not · frames 20–27
 
 ---
 
-## A2.0 — the Part 2 card · frame 17 · 0:12
+## A2.0 — the Part 2 card · frame 20 · 0:12
 
 Part 2, reading the map. The map has to become a feature vector before inference, and the question
 is whether that step needs a network.
 
 ---
 
-## A2.1 — same power spectrum · frame 18 · 0:50
+## A2.1 — same power spectrum · frame 21 · 0:50
 
 The standard feature vector in this field is second order: the two-point function, the Fourier
 amplitudes. **▲** For a Gaussian random field it is complete. But the late-time matter field is not
@@ -274,7 +314,7 @@ wavelet statistics, Minkowski functionals.
 
 ---
 
-## A2.2 — the two hand-crafted features · frame 19 · 1:01
+## A2.2 — the two hand-crafted features · frame 22 · 1:01
 
 You have just seen a starlet in the previous talk, so I can be brief. Ours is the same isotropic
 undecimated wavelet transform: the map becomes a sum of band-pass images, each carrying structure of
@@ -287,7 +327,7 @@ every pixel. Think of it as the one-point distribution of the field in the wavel
 
 ---
 
-## A2.3 — likelihood-free inference · frame 20 · 1:01
+## A2.3 — likelihood-free inference · frame 23 · 1:01
 
 For these features there is no analytic likelihood. What we have is a simulator. So draw
 parameters from the prior, run it, keep the pairs. [CLICK] Those pairs train a conditional
@@ -301,7 +341,7 @@ it; what happens when the simulator's physics is wrong is a separate study, in t
 
 ---
 
-## A2.4 — the learned encoder · frame 21 · 1:06
+## A2.4 — the learned encoder · frame 24 · 1:06
 
 Beating second-order statistics is easy. The real question is how close to **all** of the
 information in the map a feature vector gets. And since the inference is already a network, why not
@@ -315,7 +355,7 @@ tests on every posterior. Only the feature vector differs.
 
 ---
 
-## A2.6 — the gap · frame 22 · 0:48
+## A2.6 — the gap · frame 25 · 0:48
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
@@ -327,7 +367,7 @@ four channels.
 
 ---
 
-## A2.8 — two routes · frame 23 · 1:05
+## A2.8 — two routes · frame 26 · 1:05
 
 Two ways to give a hand-crafted feature the same access. **Route one**, change the input: for every
 pair of channels, multiply the two maps pixel by pixel. The product is strong only where both have
@@ -340,7 +380,7 @@ the redshift information. We call it the joint ℓ1-norm, and it needs no extra 
 
 ---
 
-## A2.9 — the answer · frame 24 · 0:52
+## A2.9 — the answer · frame 27 · 0:52
 
 Same maps, same flow, four feature vectors. The per-channel ℓ1-norm. [CLICK] Plus the product
 channels. [CLICK] The joint ℓ1-norm. [CLICK] And the learned encoder, which lands on top of the
@@ -354,7 +394,7 @@ changes.
 ---
 ---
 
-## O — three open questions, on the chain · frame 25 · 0:55
+## O — three open questions, on the chain · frame 28 · 0:55
 
 Before the conclusions, three open questions, on the steps where they live. [CLICK] The map:
 the conformal guarantee is marginal, and the misses sit at the peaks, where the information is.
@@ -367,7 +407,7 @@ these is your problem, find me at lunch.
 
 ---
 
-## C — conclusions · frame 26 · 0:54
+## C — conclusions · frame 29 · 0:54
 
 So. Question one: learn only the prior, keep the physics in the data term. **▲** Yes. Within one
 per cent of the networks trained end to end for a single configuration, the smallest calibrated
@@ -385,21 +425,26 @@ it. Thank you.
 
 Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each with what it buys:
 
-1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 24, so the gap
-   can be said there. Frame 22 stays in the file, skipped. −0:30
-2. **A1.6's table folded into A1.7's opening sentence**: *nothing existing was accurate, flexible,
-   fast and came with error bars at once*. −0:40
+1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 27, so the gap
+   can be said there. Frame 25 stays in the file, skipped. −0:30
+2. **A1.6, the four ways, to one sentence at the top of A1.7**: *end to end, unrolled, plug-and-play,
+   posterior sampling; this is the third*. The drawing stays in the file, skipped. −1:00
 3. **A0.4 Euclid folded into A0.3's close**: one sentence, *and Euclid is measuring billions of
    them now*. −0:35
 4. **A2.4's *why not learn the compression* to one sentence**: −0:20
 5. **A1.8b back to backup**, its guarantee sentence kept in A1.9. −0:55
 
 **Never cut**: A1.1 (the inverse problem), A1.5's *four per cent against a hundred and
-fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A2.4's definition of the
-ceiling, A2.9's *a tie, not a win*.
+fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A1.12's *worse than the zero
+map* if the block is in, A2.4's definition of the ceiling, A2.9's *a tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 16), expect 14:00 on the clock. Behind → cuts 1 and 4; the open
-questions (frame 25) can go to one spoken sentence, −0:40.
+**Planned exit**: end of Part 1 (frame 19), expect 16:30 on the clock. Behind → cuts 1 and 4; the open
+questions (frame 28) can go to one spoken sentence, −0:40.
+
+**The tomographic block (A1.10–A1.12, added 2026-09-15) costs about 3:25.** If it has to go, it
+goes as a block: A1.9 closes with *and the same loop, with one six-channel denoiser, carries the
+correlated channels of a tomographic analysis; paper in preparation*, and frames 17–19 are
+skipped, −3:10.
 
 ---
 
@@ -472,6 +517,23 @@ depend on where a structure sits on the grid. Summing absolute values keeps the 
 voids, which a count of maxima discards, and binning by amplitude is what makes it more than a band
 power. The backup column three has the cards.
 
+**9. "Why not null the foreground on the measurements first, and reconstruct in the nulled space?"**
+The re-mixing is linear and invertible, so it is the same problem in another basis; the data step
+would carry the re-mixed operator. What changes is the prior: the denoiser would be trained on
+nulled maps, which are lower in signal-to-noise and closer to Gaussian. We have not tested it; the
+joint reconstruction in the natural basis, nulled afterwards, is the comparison the paper makes.
+
+**10. "Twenty-four iterations now, against eight before?"**
+The step size is larger in the tomographic problem, so the contraction rate is closer to one; the
+convergence proposition says exactly that. It is the price of the lower signal-to-noise per
+channel, and the error curve is flat by about fifteen iterations.
+
+**11. "Could the joint denoiser be inventing foreground structure from the background channels?"**
+That is what the nulling tests. The nulled channels contain only local matter; a reconstruction
+that leaks foreground shows up there as invented structure, which is what the per-channel maps do
+and the joint maps do not. The honest limit is the other way: in the far channels the joint
+reconstruction stays close to the zero map, so they are recovered, barely.
+
 ---
 
 # Numbers used, and where they are ledgered
@@ -482,4 +544,8 @@ PnPMass within about one per cent of DeepMass; 512 test maps; 7.2 M parameters; 
 target error rate 4.55 per cent. Part 2: the learned encoder 36 per cent ahead of the per-channel
 ℓ1; joint ℓ1 3371 ± 96 against the encoder's 3326 ± 30, quoted as a tie; 3.2 × 10⁵ patches from 899
 cosmologies; RealNVP +36 per cent, resnet-18 +6 per cent. Deliberately not said: absolute figures of
-merit, and the ×2.57⁴ inverse-volume conversion.
+merit, and the ×2.57⁴ inverse-volume conversion. The tomographic block (in preparation, draft of
+September 2026): errors relative to the zero map, over all channels, joint 0.89 against per-channel
+0.95 before the nulling, 0.94 against 1.48 after; step size 0.261 = 2/λmax with λmax 7.66;
+24 iterations; the draft's introduction quotes a 20 % gain that its table does not reproduce, so
+it is not said.

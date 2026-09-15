@@ -24,3 +24,32 @@ and Part 2 are **not the same quantity** (defense ledger §0).
 **Deliberately not said**: the absolute figures of merit of Part 1 (758 / 755 / 1947); the
 inverse-volume conversion ×2.57⁴; the PnPMass timing table (the claim is *trained once*, not *fast
 per map*).
+
+## The tomographic block (frames 17–19, added 2026-09-15)
+
+**Source**: the draft `main.tex` of *Plug-and-play mass mapping with joint reconstruction across
+several redshift bins* (Leterme, Tersenov & Starck, in preparation, September 2026), read on
+2026-09-15. A draft: the test set is 32 crops with a to-do to make it 512, and the introduction
+quotes a "20 %" RMSE gain (marked red) that the results table does not reproduce. **The table and
+Fig. 4 are the authority; the 20 % is not said.**
+
+| where | what is said | value | source |
+|---|---|---|---|
+| frame 17, A1.10 | six distance slices | edges z = 0, 0.57, 0.80, 1.05, 1.36, 1.79, 2.60 (Euclid bins, pairs merged) | Sect. 4.1, Fig. 2 |
+| frame 17, A1.10 | a sixth of the galaxies, many empty pixels | 32 gal/arcmin² over all bins (COSMOS bright); at 0.29′ pixels "the number of missing pixels … is very large" | Sect. 2.3, 4.2 |
+| frame 18, A1.11 | the denoiser | SUNet, 6 in / 6 out, noise-level channel, per-channel centring, **7.3 M** parameters | Sect. 4.5 |
+| frame 18, A1.11 | step size fixed by the bound | τ = 2/λmax = **0.261**, λmax = 7.66; **24** iterations | Sect. 3.4, 4.4, eq. (stepsize) |
+| frame 19, A1.12 | error over all channels, before the nulling | joint **0.891**, per channel **0.953** (NRMSE ×10⁻¹: 8.91 / 9.53) | Table 1, PnP row |
+| frame 19, A1.12 | after the nulling | joint **0.944**, per channel **1.479** | Table 1, PnP row |
+| frame 19 drawing | per-channel values, before, joint | 0.896, 0.864, 0.864, 0.875, 0.888, 0.910 | Fig. 4b, parsed from the SVG |
+| frame 19 drawing | before, per channel | 0.995, 0.969, 0.955, 0.944, 0.957, 0.952 | Fig. 4b |
+| frame 19 drawing | after, joint | 0.896, 0.887, 0.949, 0.983, 0.994, 0.999 | Fig. 4b |
+| frame 19 drawing | after, per channel | 0.995, 0.984, 1.098, then above the axis (1.2) | Fig. 4b |
+| backup | denoising alone at σ = 0.2 | joint 0.729 / per channel 0.818 before; 0.862 / 2.297 after | Table 1 |
+| backup | the bound | E‖κ̂ − κ‖² ≤ (1 − L_τ ρ_τ)⁻² E‖F_Θ(κ + n_τ) − κ‖² | Proposition 2 |
+
+"Relative to the zero map": the NRMSE is normalised so that predicting zero scores exactly one,
+which is what makes "worse than the zero map" a literal reading of 1.48. The lens-efficiency
+curves on frame 19 are computed in the build script from the draft's cosmology (H0 = 67.74,
+Ωm = 0.3089) with one source distance per slice, at the slice's mid-distance; they are a schematic
+of Fig. 1, not Fig. 1.
