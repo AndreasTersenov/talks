@@ -70,3 +70,13 @@ block 17–19 → 15, 17, 18.
 With the operator slide lifted in after frame 3 (2026-09-15), every main-line frame from 4 on is
 one higher again; `tools/list-frames.py PIML_FORTH_2026` is the authority. The Fourier kernels on
 that slide, P̂₁ = (k₁² − k₂²)/k² and P̂₂ = 2k₁k₂/k², are Kaiser & Squires 1993.
+
+**The `target_zbin_k` exports are the nulled truths, not the plain ones** (found 2026-09-15,
+Andreas's hunch, checked on the rasters): inverting the viridis colours, the joint reconstructions
+of neighbouring channels correlate at 0.98 or better, the targets at 0.3 to 0.4 beyond channel 2;
+the target of channel k correlates with the plain joint reconstruction of channel k at 0.86 (k = 1),
+0.56 (k = 2) and at most 0.05 from k = 3 on, blurred or not. That is a nulled truth: channel 1
+untouched, channel 2 a difference, channels 3 to 6 emptied. Frame 16 therefore shows the **joint
+reconstruction** in its top row, captioned "the maps, per slice", not the truth; the channel-1 map
+on frame 19's card is unaffected (the nulling leaves channel 1 as it is). To confirm with Hubert
+Leterme, and to replace with the plain truths if he exports them.

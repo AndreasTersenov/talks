@@ -97,7 +97,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 **16 · six correlated channels** ← one click: the measurements
 - paper in preparation with Hubert Leterme; slice the sources by distance, one map per slice, six channels
-- the images we want, one field: the same structures in every channel; each slice lensed by all the matter in front → correlated
+- the six maps of one field, our joint reconstruction shown as maps (the exported truths were the nulled ones): same structures in every channel, stronger with distance; each slice lensed by all the matter in front → correlated
 - **»** the measurements: a sixth of the galaxies each, many pixels with none
 - ▲ six ill-posed problems, each worse than the one just solved, that share their answer
 
