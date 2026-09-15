@@ -114,7 +114,7 @@ is in the Fourier phases.
 | 21 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
 | 22 | The ℓ1-norm is a one-point statistic of the wavelet coefficients, per scale and amplitude bin: the formula, then on a click the schematic data vector, one curve per scale (the peaks column dropped and the shape figure hidden for the defense restored, 2026-09-15, Andreas: the ℓ1 alone) | 31 |
 | 23 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
-| 24 | A learned encoder, trained jointly with the flow to maximise the mutual information I(t; θ): the objective written as the variational bound it is, the boxes naming ResNet-18, d = 10 and RealNVP, the explainer's captions in the same terms (2026-09-15, Andreas: this room can take it) | 39, reworded |
+| 24 | A learned encoder, trained jointly with the flow to maximise the mutual information I(t; θ): the objective written as the variational bound it is, the captions naming d = 10 and RealNVP (the ResNet-18 name dropped 2026-09-15, said only if asked), the explainer's captions in the same terms (2026-09-15, Andreas: this room can take it) | 39, reworded |
 | 25 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
 | 26 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
 | 27 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |

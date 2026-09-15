@@ -218,7 +218,7 @@
   ctrlProto(VmimEngine.prototype);
   VmimEngine.prototype.COPY = {
     1: "<ul class='ns-bul'>" +
-      "<li>A CNN \\(f_\\phi\\), a ResNet-18, compresses the four-channel map to a <b>summary</b> \\(t=f_\\phi(x)\\in\\mathbb{R}^{10}\\)</li>" +
+      "<li>A CNN \\(f_\\phi\\) compresses the four-channel map to a <b>summary</b> \\(t=f_\\phi(x)\\in\\mathbb{R}^{10}\\)</li>" +
       "<li>A conditional normalising flow \\(q_\\psi(\\theta\\mid t)\\), a RealNVP, models the posterior from the summary</li>" +
       "<li>Both are trained <b>jointly</b> on the expected log posterior under the flow</li>" +
       "</ul>",

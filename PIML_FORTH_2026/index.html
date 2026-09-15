@@ -1039,7 +1039,7 @@
 					<div class="r-stack pkswap">
 						<img class="plain figfill fragment fade-out" data-fragment-index="0" src="../assets/diagrams/pk_lss_light.png"
 							alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
-						<img class="plain figfill fragment fade-in" data-fragment-index="0" src="../assets/diagrams/2pt-phase-amp_light.png"
+						<img class="plain figfill fragment fade-in" data-fragment-index="0" src="../assets/diagrams/2pt-phase-amp_square_light.png"
 							alt="the same large-scale-structure map, then rebuilt from its Fourier phases only, and from its Fourier amplitudes only: the phases keep the filaments and haloes, the amplitudes keep nothing recognisable">
 					</div>
 					<p class="lead-line">The missing information is in the <b>Fourier phases</b>. To reach it we need <b class="alert">statistics beyond second order</b>: peak counts, wavelet statistics, the &#8467;<sub>1</sub>&#8209;norm, Minkowski functionals.</p>
@@ -1093,7 +1093,7 @@
 								<img class="plain" src="../assets/diagrams/hos_l1_shape_talk.png"
 									alt="schematic l1-norm per signal-to-noise bin, one curve per starlet scale">
 							</div>
-							<p class="cap">one curve per scale, binned by amplitude: a <b>weighted histogram</b> of the field in the wavelet domain</p>
+							<p class="cap">one curve per scale, binned by amplitude (<b>weighted histogram</b> of the field in the wavelet domain)</p>
 						</div>
 					</div>
 
@@ -1214,7 +1214,7 @@
 						<ul>
 							<li>beating second order is easy; how close to all of it?</li>
 							<li>why not learn the compression: careful (data, interpretability, generalisation), but the principled way is VMIM:</li>
-							<li><strong>»</strong> ResNet-18 encoder → t ∈ R¹⁰; conditional RealNVP flow q_ψ(θ | t) → posterior</li>
+							<li><strong>»</strong> CNN encoder → t ∈ R¹⁰; conditional RealNVP flow q_ψ(θ | t) → posterior</li>
 							<li><strong>»</strong> trained jointly on the expected log posterior under the flow = a variational lower bound on I(t;θ) − H(θ) (Barber–Agakov), tight when q_ψ = p(θ | t); at the optimum t is sufficient: p(θ | x) = p(θ | t)</li>
 							<li>▲ an estimate of the ceiling, not just another feature; the benchmark</li>
 						</ul>
@@ -1245,7 +1245,7 @@
 										style="max-height:530px;"
 										alt="the CNN posterior added: tighter, with a figure of merit of 3326 against the l1-norm's 2448">
 								</div>
-								<figcaption>same maps, same flow, both calibrated; only the summary differs
+								<figcaption>same maps, same flow, both calibrated
 								</figcaption>
 							</figure>
 						</div>
@@ -1254,7 +1254,7 @@
 								<span class="label">the gap</span>
 								<ul>
 									<li>The learned encoder is <b class="alert">36 % ahead</b> in constraining power</li>
-									<li>But the comparison is <b>not symmetric</b>: the &#8467;1-norm is computed channel by channel, and never sees the correlations between the maps, the cross&#8209;bin structure</li>
+									<li>But the the &#8467;1-norm is computed channel by channel &rarr; never sees the correlations between the maps</li>
 								</ul>
 							</div>
 						</div>
@@ -2160,7 +2160,7 @@
 				<section class="teach" data-theme="light">
 					<h3 class="slide-title tight">The non-Gaussian information is in the <em class="alert">phases</em>
 					</h3>
-					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light.png"
+					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_square_light.png"
 						alt="the original density field, the same field keeping only the phases, and keeping only the amplitudes">
 					<ul class="points tp-points">
 						<li>the power spectrum keeps only the <b>Fourier amplitudes</b></li>

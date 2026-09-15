@@ -81,4 +81,4 @@ reconstruction** in its top row, captioned "the maps, per slice", not the truth;
 on frame 19's card is unaffected (the nulling leaves channel 1 as it is). To confirm with Hubert
 Leterme, and to replace with the plain truths if he exports them.
 
-**Frame 24, reworded 2026-09-15.** ResNet-18 encoder, d = 10, RealNVP flow, four channels: defense ledger §5 and its Q&A tier 2 (the architecture ladder). The objective as written, E log q_ψ(θ | f_φ(x)) ≤ I(t; θ) − H(θ), is the Barber & Agakov 2003 bound that VMIM (Jeffrey, Alsing & Lanusse 2021) maximises.
+**Frame 24, reworded 2026-09-15.** ResNet-18 encoder (the name is not on the slide or in the beat since later that day, Andreas: too specific, said if asked; Q&A 5 has it), d = 10, RealNVP flow, four channels: defense ledger §5 and its Q&A tier 2 (the architecture ladder). The objective as written, E log q_ψ(θ | f_φ(x)) ≤ I(t; θ) − H(θ), is the Barber & Agakov 2003 bound that VMIM (Jeffrey, Alsing & Lanusse 2021) maximises.

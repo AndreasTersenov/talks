@@ -143,7 +143,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 **24 · the learned encoder**
 - beating second order is easy; how close to all of it?
 - why not learn the compression: careful (data, interpretability, generalisation), but the principled way is VMIM:
-- **»** ResNet-18 encoder → t ∈ R¹⁰; conditional RealNVP flow q_ψ(θ | t) → posterior
+- **»** CNN encoder → t ∈ R¹⁰; conditional RealNVP flow q_ψ(θ | t) → posterior
 - **»** trained jointly on the expected log posterior under the flow = variational lower bound on I(t;θ) − H(θ) (Barber–Agakov), tight when q_ψ = p(θ | t); at the optimum t sufficient
 - ▲ an estimate of the ceiling, not just another feature; the benchmark
 - matched comparison: same maps, same flow, same calibration tests; only the feature vector differs (3 × 10⁵ patches, 899 cosmologies)

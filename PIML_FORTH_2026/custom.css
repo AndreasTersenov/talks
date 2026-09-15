@@ -3381,3 +3381,7 @@
 .reveal .slides section.closing .qlist { row-gap: 0.55em; }
 .reveal .slides section.closing .qlist .qans,
 .reveal .slides section.closing .qlist .qtext { font-size: 1em; }
+
+/* frame 21 (2026-09-15): the two figures of the swap share one height, so the lead line does not
+   move on the click; the phase/amplitude figure was rebuilt with square panels and is narrower */
+.reveal .slides section .r-stack.pkswap img.figfill { width: auto; max-width: 92%; height: 345px; }
