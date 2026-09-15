@@ -29,8 +29,16 @@ Run with a python that has numpy and matplotlib:
     /usr/local/bin/python3 tools/make-hos-shapes.py
 
 Writes assets/diagrams/hos_peaks_shape.png and assets/diagrams/hos_l1_shape.png.
+
+    /usr/local/bin/python3 tools/make-hos-shapes.py --talk
+
+writes only assets/diagrams/hos_l1_shape_talk.png: the same l1 curves at the
+typography a third-of-a-slide figure needs (PIML_FORTH_2026 frame 22, where the
+figure is 200 px tall and the paper-sized ticks were unreadable). The legend is
+replaced by two labels on the curves themselves.
 """
 import math
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -78,6 +86,39 @@ def style(ax, xlabel, ylabel):
     ax.text(0.995, 1.02, "schematic", transform=ax.transAxes, ha="right",
             va="bottom", color=MUTED, fontsize=10, style="italic")
 
+
+TALK = "--talk" in sys.argv
+
+if TALK:
+    nu = np.linspace(-6.0, 6.0, 1200)
+    SIG = [1.05, 1.15, 1.28, 1.45, 1.75]
+    curves = [np.abs(nu) * skewnorm(nu, 0.05, SIG[j], 0.18) for j in range(NS)]
+    top = max(c.max() for c in curves)
+    figT, axT = plt.subplots(figsize=(5.6, 3.4))
+    for j, y in enumerate(curves):
+        axT.plot(nu, y / top, color=SCALE_COLS[j], lw=3.0)
+    axT.set_xlim(-6, 6)
+    axT.set_ylim(0, 1.16)
+    axT.set_yticks([])
+    axT.set_xticks([-6, -3, 0, 3, 6])
+    axT.set_facecolor("none")
+    axT.set_xlabel("S/N", color=MUTED, fontsize=22, labelpad=4)
+    axT.set_ylabel(r"$\ell_1$ per bin", color=MUTED, fontsize=22, labelpad=6)
+    axT.tick_params(colors=MUTED, labelsize=20, length=4)
+    for sp in ("top", "right"):
+        axT.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"):
+        axT.spines[sp].set_color(EDGE)
+    # two labels on the curves instead of a five-row legend: the fine scale is
+    # the tall narrow one, the coarse scale the broad low one
+    axT.text(0.55, 1.06, "scale 1", color=SCALE_COLS[0], fontsize=20, ha="right", va="bottom")
+    axT.text(3.55, 0.6, "scale 5", color=SCALE_COLS[4], fontsize=20, ha="left", va="bottom")
+    axT.text(0.995, 1.0, "schematic", transform=axT.transAxes, ha="right",
+             va="bottom", color=MUTED, fontsize=15, style="italic")
+    figT.subplots_adjust(left=0.085, right=0.985, top=0.93, bottom=0.2)
+    figT.savefig("assets/diagrams/hos_l1_shape_talk.png", dpi=200, transparent=True)
+    print("wrote assets/diagrams/hos_l1_shape_talk.png")
+    sys.exit(0)
 
 # ------------------------------- peak counts --------------------------------
 # Modelled in LOG space, which is where the measured curves are read. Three
