@@ -3243,3 +3243,6 @@
 .reveal .slides section.ways .ways4 text.l, .reveal .slides section.ways .ways4 text.la { font-size: 24px; }
 .reveal .slides section.ways .ways4 text.b { font-size: 25px; }
 .reveal .slides section.ways .ways4 text.k { font-size: 27px; }
+
+/* slide 12: hairline dividers between the four ways (2026-09-15) */
+.reveal .slides section.ways .ways4 .div { stroke: var(--edge); stroke-width: 1.5; }
