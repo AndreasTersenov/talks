@@ -14,7 +14,7 @@ and Part 2 are **not the same quantity** (defense ledger §0).
 | frame 14, A1.7 | denoiser size, iterations | SUNet, **7.2 M** parameters; **8** iterations; step size in (0, 0.176) | §3 |
 | frame 16, A1.9 | PnPMass accuracy against DeepMass | RMSE ratio **1.013**, "within about 1 %" | §3 |
 | frame 11, A1.7b | the residual variant against DeepMass | RMSE ratio **1.006**, "within half a per cent"; beats the map variant by 6.04–6.88 × 10⁻³ at 95 % | §3 |
-| frame 11, A1.7b | iterations | budget **8**; at τ = 0.176 the residual variant is flat from iteration 2, the map variant settles by 3 | §3, the paper's per-iteration figure (`PnP_iterations1.png`) |
+| frame 11, A1.7b (spoken) | iterations | budget **8**; at τ = 0.176 the residual variant is flat from iteration 2, the map variant settles by 3 | §3, the paper's per-iteration figure (`PnP_iterations1.png`, not shown) |
 | frame 16, A1.9 | smallest calibrated error bars | on all **512** test maps | §3 |
 | frame 16, A1.9 | target error rate | α ≈ **4.55 %**, from 1 024 calibration maps | §3 |
 | frame 23, A2.6 | the learned encoder ahead of the per-channel ℓ1 | **36 %** (3326 / 2448) | §5 |

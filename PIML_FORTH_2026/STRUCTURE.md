@@ -96,7 +96,7 @@ is in the Fourier phases.
 | 8 | Every mass-mapping method minimises a data term plus a regulariser that encodes the prior (card row restored: no prior / ℓ2 / ℓ1 / both / learned; the 2025 result in one spoken sentence) | 14 |
 | 9 | Four ways to put a network in a linear inverse problem, **drawn**: four block diagrams in one vocabulary (grey physics step, blue network, dashed box around what is trained together, a loop where there is one) | **new**, replaces 22 |
 | 10 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
-| 11 | A variant with more physics in: a Wiener filter takes the Gaussian part, the loop runs on the residual: the paper's build figure (two states), then its per-iteration figure with the 0.5 % line | backup residuals, **promoted** |
+| 11 | A variant with more physics in: a Wiener filter takes the Gaussian part, the loop runs on the residual: the paper's build figure (two states), then the 0.5 % line | backup residuals, **promoted** |
 | 12 | A second network predicts the error, pixel by pixel, from the same simulated pairs: the drawn strip (data → denoiser loop → the map; data → variance network → the σ map), and the objective under it | backup `uq`, **redrawn** |
 | 13 | Conformal calibration makes the error bar honest: the three steps drawn as one SVG in the deck's vocabulary, arriving one click at a time (the interval, the sorted scores with the quantile, the widened intervals with the old bar as a dark core), then the guarantee inequality | **new**, split from 14 |
 | 14 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |

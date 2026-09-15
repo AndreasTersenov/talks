@@ -176,15 +176,14 @@ back; eight iterations later it has converged.
 
 ---
 
-## A1.7b — PnPMass on residuals · frame 11 · 0:59
+## A1.7b — PnPMass on residuals · frame 11 · 0:42
 
 A variant that puts more physics in. The map is a Gaussian component plus a non-Gaussian one, and
 the Gaussian part has a closed-form optimum, the Wiener filter, so let it do that part. [CLICK]
 Subtract its prediction from the data and run the loop on the residual, with a denoiser trained on
-non-Gaussian residuals only; then add the two back. **▲** That variant is within half a per cent
-of the network trained end to end for this configuration. [CLICK] And it is cheap: at the largest
-admissible step size it is flat from the second iteration, where the map variant settles by the
-third and smaller steps drift. Eight iterations is the budget, and most of them are spare.
+non-Gaussian residuals only; then add the two back. [CLICK] **▲** That variant is within half a
+per cent of the network trained end to end for this configuration, and it has converged after two
+iterations.
 
 ---
 
@@ -228,12 +227,12 @@ structure is. [CLICK] **▲** And DeepMass has to be retrained whenever the foot
 changes; PnPMass is trained once. Two honest limits: the guarantee is marginal, not conditional,
 and weakest at the peaks; and this is a single cosmology.
 
-## A1.10 — six correlated channels · frame 15 · 0:57
+## A1.10 — six correlated channels · frame 15 · 0:55
 
 One more step, from the paper in preparation with Hubert Leterme. Slice the source galaxies by
 distance and you get one map per slice: six channels. Here are the six images we want, for one
-field. The same structure appears in every channel, stronger with distance, because each slice
-is lensed by all the matter in front of it; the channels are strongly correlated. [CLICK] And here
+field. The same structures appear in every channel, because each slice is lensed by all the
+matter in front of it; the channels are strongly correlated. [CLICK] And here
 is what we measure. Each channel gets a sixth of the galaxies, so the noise per channel is far
 worse than in the single-map problem, and many pixels have no galaxy at all. **▲** Six ill-posed
 problems, each worse than the one we just solved, that share their answer.

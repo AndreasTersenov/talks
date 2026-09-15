@@ -3331,14 +3331,13 @@
 /* PnPMass on residuals, in the main line (2026-09-15): the paper's build figure
    at left, its per-iteration figure at right on the second click. White slide,
    like plug-and-play, because the figures ship a white ground. */
-.reveal .slides section.resid .rescols { align-items: center; margin-top: 0.3em; }
-.reveal .slides section.resid .resflip { flex: 0 0 63%; }
+.reveal .slides section.resid .resflip { width: 78%; margin: 0.3em auto 0; }
 .reveal .slides section.resid .resflip .r-stack img { width: 100%; max-width: 100%; margin: 0; border: 0; box-shadow: none; background: #ffffff; }
 .reveal .slides section.resid .resiter { flex: 0 0 35%; }
 .reveal .slides section.resid .resiter figure { margin: 0; }
 .reveal .slides section.resid .resiter img { width: 100%; max-width: 100%; margin: 0; border: 0; box-shadow: none; background: #ffffff; }
 .reveal .slides section.resid .resiter figcaption { margin-top: 0.3em; text-align: left; line-height: 1.35; }
-.reveal .slides section.resid .resnum { margin: 0.6em 0 0; font-size: 0.86em; line-height: 1.35; text-align: left; color: var(--fg); }
+.reveal .slides section.resid .resnum { margin: 0.5em auto 0; font-size: 0.9em; line-height: 1.35; text-align: center; color: var(--fg); }
 .reveal .slides section.resid .srcref { font-size: 0.7em; position: static; display: block; width: 88%; margin: 0.4em auto 0; text-align: right; }
 
 /* the nulling, drawn (2026-09-15): the lens-efficiency curves at full width,
@@ -3364,3 +3363,7 @@
 .reveal .slides section.tomon svg .z { fill: none; stroke: var(--edge); stroke-width: 1; }
 .reveal .slides section.tomon .gloss { width: 92%; margin: 0.45em auto 0; text-align: center; font-size: 0.82em; line-height: 1.35; color: var(--fg); }
 .reveal .slides section.tomon .srcref { font-size: 0.7em; position: static; display: block; width: 94%; margin: 0.3em auto 0; text-align: right; }
+
+/* the z ranges typeset (Andreas, 2026-09-15) */
+.reveal .slides section.tomo1 svg text.zr, .reveal .slides section.tomob2 svg text.zr { font-size: 22px; fill: var(--cap); }
+.reveal .slides section.tomo1 svg text.zr tspan.it, .reveal .slides section.tomob2 svg text.zr tspan.it { font-style: italic; }

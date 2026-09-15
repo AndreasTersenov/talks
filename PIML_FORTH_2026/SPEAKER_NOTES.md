@@ -65,11 +65,10 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - PnP, not unrolling: nothing trained through the iteration; one network, every configuration
 - walk the figure: shear in, zero init, forward (noisy), backward (denoiser) **»** fed back, eight iterations
 
-**11 · PnPMass on residuals** ← two clicks: the residual loop, the iterations
+**11 · PnPMass on residuals** ← two clicks: the residual loop, the number
 - more physics in: Gaussian + non-Gaussian; the Gaussian part has a closed form, the Wiener filter
 - **»** subtract its prediction; loop on the residual with a denoiser trained on non-Gaussian residuals; add back
-- ▲ within 0.5 % of the end-to-end network (map variant 1 %)
-- **»** at the largest step, flat from iteration 2; map variant settles by 3; smaller steps drift; eight is the budget
+- **»** ▲ within 0.5 % of the end-to-end network (map variant 1 %); converged after two iterations
 
 **12 · the second network, and its objective**
 - the data fans out: denoiser in the loop → the map; variance network → the error map; same simulated pairs
@@ -94,7 +93,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 **15 · six correlated channels** ← one click: the measurements
 - paper in preparation with Hubert Leterme; slice the sources by distance, one map per slice, six channels
-- the images we want, one field: same structure in every channel, stronger with distance; each slice lensed by all the matter in front → correlated
+- the images we want, one field: the same structures in every channel; each slice lensed by all the matter in front → correlated
 - **»** the measurements: a sixth of the galaxies each, many pixels with none
 - ▲ six ill-posed problems, each worse than the one just solved, that share their answer
 
