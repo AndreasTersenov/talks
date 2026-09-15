@@ -2961,8 +2961,8 @@
 /* the chain's process boxes carry a second, translated line for this room
    (inverse problem / feature extraction / likelihood-free), so the two on the
    data row grow; their centres stay on the wires (y = 135 and y = 110). */
-.reveal .slides section .chart .mm   { left: 365px; top: 102px; width: 160px; height: 66px; }
-.reveal .slides section .chart .comp { left: 800px; top: 77px;  width: 170px; height: 66px; }
+.reveal .slides section .chart .mm   { left: 352px; top: 102px; width: 186px; height: 66px; }
+.reveal .slides section .chart .comp { left: 786px; top: 77px;  width: 198px; height: 66px; }
 .reveal .slides section .chart .proc span { font-size: 17px; white-space: nowrap; }
 /* the regulariser slide has its row of priors back: tighten the vertical rhythm
    so the source line is not pushed off the canvas. */
@@ -3107,3 +3107,118 @@
 .reveal .slides section.uq3 .cqr .sc { fill: var(--fg); }
 .reveal .slides section.uq3 .cqr .q { stroke: var(--accent); stroke-width: 2.4; stroke-dasharray: 8 6; }
 .reveal .slides section.uq3 .guarantee { margin-top: 0.45em; }
+
+/* bigger type in the drawings (Andreas, 2026-09-15): the SVGs render at about
+   0.9 of their viewBox, so 23 px here is 20 px on the canvas, the floor for
+   anything read. The chain's process boxes come up with them. */
+.reveal .slides section.ways .ways4 text.t { font-size: 31px; }
+.reveal .slides section.ways .ways4 text.l, .reveal .slides section.ways .ways4 text.la { font-size: 27px; }
+.reveal .slides section.ways .ways4 text.b { font-size: 28px; }
+.reveal .slides section.ways .ways4 text.k { font-size: 29px; }
+.reveal .slides section.uq2 .uqstrip text.l, .reveal .slides section.uq2 .uqstrip text.la { font-size: 27px; }
+.reveal .slides section.uq2 .uqstrip text.b { font-size: 28px; }
+.reveal .slides section.uq2 .uqstrip text.k { font-size: 30px; }
+.reveal .slides section.uq3 .cqr text.t { font-size: 29px; }
+.reveal .slides section.uq3 .cqr text.cap { font-size: 27px; }
+.reveal .slides section.uq3 .cqr text.tag { font-size: 26px; }
+.reveal .slides section.uq3 .cqr text.tk { font-size: 27px; }
+.reveal .slides section.uq3 .cqr text.lbl { font-size: 27px; }
+.reveal .slides section.uq3 .cqr text.qq { font-size: 30px; }
+.reveal .slides section .chart .proc span { font-size: 19px; }
+.reveal .slides section .chart .proc b { font-size: 20px; }
+
+/* the 20-24 px band (Andreas, 2026-09-15: "too small in many parts"). The
+   deck's label voice, bullets under figures, captions and the chain's names all
+   sat at 0.66em = 23.7 px on the 1200x720 canvas. Lifted to 26 px, in px so
+   nesting cannot shrink it again, with !important because several of these are
+   set by more specific per-slide rules above (REVEAL-GOTCHAS §4b). */
+.reveal .slides section .points li,
+.reveal .slides section figcaption,
+.reveal .slides section .pipeline .sname,
+.reveal .slides section .pipeline .ssub,
+.reveal .slides section .ppipe .pname,
+.reveal .slides section .ppipe .psub,
+.reveal .slides section .ppipe .fixnote,
+.reveal .slides section .choices .cn,
+.reveal .slides section .choices .ca,
+.reveal .slides section .rcap,
+.reveal .slides section .ip-fancap,
+.reveal .slides section .sbi-lede,
+.reveal .slides section .ns-box .role,
+.reveal .slides section .ns-plot-title,
+.reveal .slides section .qlist .qn,
+.reveal .slides section .kicker,
+.reveal .slides section .mmkey .mmwhat,
+.reveal .slides section .pr-points li,
+.reveal .slides section .block .block-content li,
+.reveal .slides section .statpair p.cap,
+.reveal .slides section .statpair p.defline,
+.reveal .slides section .callout .label,
+.reveal .slides section .takeaway .label { font-size: 26px !important; }
+.reveal .slides section .chart .proc span,
+.reveal .slides section .chart .prod figcaption span { font-size: 19px !important; white-space: nowrap; }
+.reveal .slides section .chart .proc b,
+.reveal .slides section .chart .prod figcaption b { font-size: 21px !important; white-space: nowrap; }
+/* the exceptions to the 26 px lift: figure captions and the labels that sit on
+   or under a figure stay at 23-24 px, above the floor, so they do not run into
+   the art or off the canvas. */
+.reveal .slides section figcaption,
+.reveal .slides section .ip-fancap,
+.reveal .slides section .rcap { font-size: 23px !important; }
+.reveal .slides section .statpair p.cap { font-size: 24px !important; }
+.reveal .slides section .statpair p.defline { font-size: 22px !important; }
+.reveal .slides section .pr-points li { font-size: 24px !important; }
+.reveal .slides section .statpair .col .statswap img { max-height: 200px; width: auto; }
+.reveal .slides section.ways .ways4 text.b { font-size: 26px; }
+.reveal .slides section.ways .ways4 text.t { font-size: 30px; }
+.reveal .slides section.uq3 .cqr text.tag { font-size: 24px; }
+.reveal .slides section.mmopt .choices.mmchoices .cn,
+.reveal .slides section.mmopt .choices.mmchoices .ca { font-size: 24px !important; }
+.reveal .slides section.mmopt .mmeq .katex { font-size: 1.2em; }
+.reveal .slides section.mmopt .block.eqblock { padding-top: 0.2em; padding-bottom: 0.2em; }
+
+/* ============================================================================
+   The caption voice, sans (Andreas, 2026-09-15: the grey serif captions read as
+   Times). Everything that captions, sub-labels or annotates a figure is set in
+   the body sans, upright, untracked, in ink darker than --fg-muted. The accent
+   kickers, question tabs and section markers keep the serif: they read as the
+   deck's design, not as Times. Sources and credits go sans too but stay muted.
+   ============================================================================ */
+:root { --cap: color-mix(in srgb, var(--fg) 82%, var(--bg)); }
+.reveal .slides section figcaption,
+.reveal .slides section figcaption span,
+.reveal .slides section .statpair p.cap,
+.reveal .slides section .statpair p.defline,
+.reveal .slides section .rcap,
+.reveal .slides section .ip-fancap,
+.reveal .slides section .pipeline .ssub,
+.reveal .slides section .ppipe .psub,
+.reveal .slides section .ppipe .fixnote,
+.reveal .slides section .chart .proc span,
+.reveal .slides section .chart .prod figcaption span,
+.reveal .slides section .mmkey .mmwhat,
+.reveal .slides section .pr-side figcaption,
+.reveal .slides section .footnote,
+.reveal .slides section .cap {
+	font-family: var(--r-main-font) !important; font-style: normal !important;
+	letter-spacing: 0 !important; color: var(--cap);
+}
+.reveal .slides section figcaption b, .reveal .slides section .cap b { color: var(--fg); }
+.reveal .slides section .pr-side .kicker { font-family: var(--r-main-font) !important; font-style: normal !important; letter-spacing: 0 !important; color: var(--cap); }
+.reveal .slides section .srcref,
+.reveal .slides section .mmsrc,
+.reveal .slides section .credit-line,
+.reveal .slides section .tomo-credit {
+	font-family: var(--r-main-font) !important; font-style: normal !important; letter-spacing: 0 !important;
+}
+/* inside the drawings: labels sans and darker; the small accent kickers sans too */
+.reveal .slides section.ways .ways4 text.l,
+.reveal .slides section.uq2 .uqstrip text.l,
+.reveal .slides section.uq3 .cqr text.cap,
+.reveal .slides section.uq3 .cqr text.lbl,
+.reveal .slides section.uq3 .cqr text.tag {
+	font-family: var(--r-main-font); font-style: normal; letter-spacing: 0; fill: var(--cap);
+}
+.reveal .slides section.ways .ways4 text.la,
+.reveal .slides section.uq2 .uqstrip text.la { font-family: var(--r-main-font); font-style: normal; letter-spacing: 0; }
+.reveal .slides section.uq3 .cqr text.tag { fill: var(--fg-muted); }
