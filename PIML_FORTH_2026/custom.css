@@ -3367,3 +3367,35 @@
 /* the z ranges typeset (Andreas, 2026-09-15) */
 .reveal .slides section.tomo1 svg text.zr, .reveal .slides section.tomob2 svg text.zr { font-size: 22px; fill: var(--cap); }
 .reveal .slides section.tomo1 svg text.zr tspan.it, .reveal .slides section.tomob2 svg text.zr tspan.it { font-style: italic; }
+
+/* frame 15 redrawn (2026-09-15): the summary chart as an inline SVG, the
+   sigma maps as a card on the first click, the trained-once line on the second. */
+.reveal .slides section.pnpres2 { position: relative; }
+.reveal .slides section.pnpres2 svg.pres { width: 94%; height: auto; display: block; margin: 0.25em auto 0; overflow: visible; }
+.reveal .slides section.pnpres2 svg text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.pnpres2 svg text.t { font-family: var(--r-heading-font); font-weight: 600; font-size: 28px; }
+.reveal .slides section.pnpres2 svg text.l { font-size: 24px; fill: var(--fg); }
+.reveal .slides section.pnpres2 svg text.cap { font-size: 23px; fill: var(--cap); }
+.reveal .slides section.pnpres2 svg text.lbl { font-size: 23px; fill: var(--cap); }
+.reveal .slides section.pnpres2 svg text.tk { font-family: var(--mono); font-size: 22px; fill: var(--fg-muted); }
+.reveal .slides section.pnpres2 svg text.nm { font-size: 24px; font-weight: 600; fill: var(--fg); }
+.reveal .slides section.pnpres2 svg text.nm.acc { fill: var(--accent); }
+.reveal .slides section.pnpres2 svg text.nm tspan.pn { font-weight: 400; fill: var(--fg-muted); }
+.reveal .slides section.pnpres2 svg .axis { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.pnpres2 svg .tick { stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.pnpres2 svg .seg { stroke: var(--fg-muted); stroke-width: 2.2; }
+.reveal .slides section.pnpres2 svg .before { fill: var(--bg); stroke: var(--fg-muted); stroke-width: 2.4; }
+.reveal .slides section.pnpres2 svg .after { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.pnpres2 svg .after.acc { fill: var(--accent); }
+.reveal .slides section.pnpres2 svg .arw { fill: none; stroke: var(--fg-muted); stroke-width: 2.2; }
+.reveal .slides section.pnpres2 svg .hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.pnpres2 .pull { width: 92%; margin: 0.45em auto 0; font-size: 0.9em; border-top: 1px solid var(--hair); padding-top: 0.45em; }
+.reveal .slides section.pnpres2 .popover {
+	position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%);
+	z-index: 30; width: 58%; padding: 0.8em 1.2em 0.9em;
+	background: var(--surface); border: 1px solid var(--edge); border-radius: 10px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+}
+.reveal .slides section.pnpres2 .popover .pop-kicker { display: block; margin: 0 0 0.4em; text-align: left; }
+.reveal .slides section.pnpres2 .popover img { display: block; width: 100%; max-width: 100%; height: auto; margin: 0; border: 0; box-shadow: none; background: transparent; }
+.reveal .slides section.pnpres2 .pop-cap { margin: 0.6em 0 0; font-size: 0.86em; line-height: 1.4; color: var(--fg); text-align: left; }

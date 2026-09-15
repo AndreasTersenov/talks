@@ -80,3 +80,9 @@ untouched, channel 2 a difference, channels 3 to 6 emptied. Frame 16 therefore s
 reconstruction** in its top row, captioned "the maps, per slice", not the truth; the channel-1 map
 on frame 19's card is unaffected (the nulling leaves channel 1 as it is). To confirm with Hubert
 Leterme, and to replace with the plain truths if he exports them.
+
+**Frame 15, redrawn 2026-09-15.** The chart is an SVG copy of `pnpmass_uq_summary.png`: the
+reconstruction errors are the ledger's (0.853, 0.858, 0.864, 0.874, 0.886, ×10⁻¹ dropped), the
+calibrated bar sizes are read off the figure (DeepMass 3.20 → 3.135, PnPMass residual 3.025 →
+3.10, PnPMass 2.975 → 3.003, MCALens 3.24, Wiener 3.25, relative units as on the figure's axis).
+The figure's colour bar (miscoverage, all diamonds at 4.55 %) is said in words on the reading key.

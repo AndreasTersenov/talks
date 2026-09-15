@@ -875,64 +875,25 @@
 					</aside>
 				</section>
 
-				<section class="pnpres" data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">&sect;1</span> PnPMass is as accurate as the
-						fine&#8209;tuned networks, with the <b class="alert">smallest calibrated error bars</b></h3>
-
-					<div class="pr-grid">
-						<figure class="pr-main">
-							<img src="../assets/figures/statistics/pnpmass_uq_summary.png"
-								alt="mean calibrated interval length against reconstruction error for Wiener, MCALens, DeepMass and both PnPMass variants">
-							<figcaption>512 test maps, &kappa;TNG. Circles before calibration, diamonds after.
-							</figcaption>
-						</figure>
-
-						<div class="pr-side">
-							<ul class="pr-points">
-								<li>lower left is better; after calibration, all methods reach the <b>target
-										coverage</b>
-								</li>
-								<li>accuracy comparable to the SOTA deep&#8209;learning methods</li>
-								<li>smallest calibrated intervals of all methods</li>
-								<li>PnPMass is indep. of mask and noise covariance</li>
-							</ul>
-
-							<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
-								<img src="../assets/figures/maps/pnpmass_kappa_sigma.png"
-									alt="a PnPMass convergence map beside its per-pixel calibrated uncertainty, on the same field">
-								<figcaption>the map, and its calibrated &sigma;</figcaption>
-							</figure>
-						</div>
+				<section class="pnpres2" data-theme="light">
+					<h3 class="slide-title tight"><span class="sec">&sect;1</span> Plug&#8209;and&#8209;play is within 1 % of the end&#8209;to&#8209;end network, with the <b class="alert">smallest calibrated error bars</b></h3>
+					<svg class="pres" viewBox="0 0 1180 400" role="img" aria-label="calibrated error-bar size against reconstruction error for five methods: the end-to-end network is the most accurate, plug-and-play within one per cent of it and its residual variant within half a per cent, and both plug-and-play variants have the smallest calibrated bars; the sparse solver and the l2 prior sit to the right and above. Circles are the bars before the conformal step, diamonds after"><line class="axis" x1="130" y1="40" x2="130" y2="330"/><line class="axis" x1="130" y1="330" x2="760" y2="330"/><text class="tk" x="159" y="358" text-anchor="middle">0.85</text><line class="tick" x1="158.6" y1="330" x2="158.6" y2="336"/><text class="tk" x="302" y="358" text-anchor="middle">0.86</text><line class="tick" x1="301.8" y1="330" x2="301.8" y2="336"/><text class="tk" x="445" y="358" text-anchor="middle">0.87</text><line class="tick" x1="445.0" y1="330" x2="445.0" y2="336"/><text class="tk" x="588" y="358" text-anchor="middle">0.88</text><line class="tick" x1="588.2" y1="330" x2="588.2" y2="336"/><text class="tk" x="731" y="358" text-anchor="middle">0.89</text><line class="tick" x1="731.4" y1="330" x2="731.4" y2="336"/><text class="tk" x="118" y="283" text-anchor="end">3.0</text><line class="tick" x1="124" y1="275.1" x2="130" y2="275.1"/><text class="tk" x="118" y="205" text-anchor="end">3.1</text><line class="tick" x1="124" y1="196.8" x2="130" y2="196.8"/><text class="tk" x="118" y="126" text-anchor="end">3.2</text><line class="tick" x1="124" y1="118.4" x2="130" y2="118.4"/><text class="tk" x="118" y="48" text-anchor="end">3.3</text><line class="tick" x1="124" y1="40.0" x2="130" y2="40.0"/><text class="lbl" x="445" y="388" text-anchor="middle">reconstruction error, relative</text><text class="lbl" transform="translate(52 185) rotate(-90)" text-anchor="middle">calibrated error&#8209;bar size, relative</text><path class="arw" d="M352 83 L209 48"/><path class="hd" d="M194 44 L237 45 L213 59 Z"/><text class="lbl" x="268" y="52" text-anchor="middle">better</text><line class="seg" x1="201.6" y1="118.4" x2="201.6" y2="169.3"/><circle class="before" cx="201.6" cy="118.4" r="7"/><path class="after " d="M201.6 159.3 l10 10 l-10 10 l-10 -10 Z"/><text class="nm" x="218" y="147" text-anchor="start">end to end <tspan class="pn">(DeepMass)</tspan></text><line class="seg" x1="273.2" y1="255.5" x2="273.2" y2="196.8"/><circle class="before" cx="273.2" cy="255.5" r="7"/><path class="after acc" d="M273.2 186.8 l10 10 l-10 10 l-10 -10 Z"/><text class="nm acc" x="289" y="183" text-anchor="start">plug&#8209;and&#8209;play, residual</text><line class="seg" x1="359.1" y1="294.7" x2="359.1" y2="272.8"/><circle class="before" cx="359.1" cy="294.7" r="7"/><path class="after acc" d="M359.1 262.8 l10 10 l-10 10 l-10 -10 Z"/><text class="nm acc" x="375" y="281" text-anchor="start">plug&#8209;and&#8209;play <tspan class="pn">(PnPMass)</tspan></text><path class="after " d="M502.3 77.0 l10 10 l-10 10 l-10 -10 Z"/><text class="nm" x="502" y="121" text-anchor="middle">sparse solver <tspan class="pn">(MCALens)</tspan></text><path class="after " d="M674.1 69.2 l10 10 l-10 10 l-10 -10 Z"/><text class="nm" x="686" y="61" text-anchor="end">&#8467;2 prior <tspan class="pn">(Wiener)</tspan></text><text class="t" x="810" y="62" text-anchor="start">how to read it</text><circle class="before" cx="820" cy="98" r="7"/><text class="l" x="840" y="105" text-anchor="start">the network&#8217;s own bar, before</text><path class="after" d="M820 128 l10 10 l-10 10 l-10 -10 Z"/><text class="l" x="840" y="145" text-anchor="start">after the conformal step</text><text class="l" x="810" y="190" text-anchor="start">every diamond sits at the target rate,</text><text class="l" x="810" y="218" text-anchor="start">4.55 %; every circle was above it</text><text class="l" x="810" y="262" text-anchor="start">so the question is who reaches the</text><text class="l" x="810" y="290" text-anchor="start">target with the tightest bars</text><text class="cap" x="810" y="334" text-anchor="start">512 test maps, &#954;TNG, one cosmology</text><text class="cap" x="810" y="362" text-anchor="start">trained once, on white noise: PnPMass</text><text class="cap" x="810" y="390" text-anchor="start">never saw this mask or noise level</text></svg>
+					<p class="pull fragment fade-in" data-fragment-index="1">The end&#8209;to&#8209;end network is retrained per configuration; plug&#8209;and&#8209;play is trained <b>once</b>, for <b class="alert">any mask and noise level</b>.</p>
+					<div class="popover fragment fade-in" data-fragment-index="2">
+						<p class="kicker pop-kicker">one field: the map, and its calibrated error bar</p>
+						<img src="../assets/figures/maps/pnpmass_kappa_sigma.png" alt="a plug-and-play convergence map beside its per-pixel calibrated uncertainty on the same field: the uncertainty rises where the structure is">
+						<p class="pop-cap">The error bar <b>rises where the structure is</b>. Its size is honest by construction; its shape is what the second network learned.</p>
 					</div>
-
-					<p class="pull fragment fade-in" data-fragment-index="2">DeepMass and MMGAN are retrained per configuration; PnPMass is trained <b>once</b>, for <b class="alert">any mask and noise level</b>.</p>
-
 					<aside class="notes">
-						<p><strong>accurate, smallest calibrated bars</strong></p>
+						<p><strong>accurate, smallest calibrated bars</strong> &mdash; <em>two clicks: the trained-once line, the maps</em></p>
 						<ul>
-							<li>axes: across error, up bar size, lower-left better; colour miscoverage: circles above target before, diamonds on it after</li>
+							<li>axes: across error, up bar size, lower-left better; circles the networks&#x27; own bars before, diamonds after the conformal step of the slide before: every diamond on the target rate</li>
 							<li>not who covers (everyone) but who covers with the tightest bars</li>
-							<li>▲ within 1 % of DeepMass (U-Net trained end to end for this mask and noise); smallest calibrated bars, all 512 test maps</li>
-							<li><strong>»</strong> uncertainty rises where the structure is</li>
-							<li><strong>»</strong> ▲ DeepMass retrained per footprint/noise; PnPMass trained once</li>
+							<li>▲ plug-and-play within 1 % of the end-to-end network (a U-Net trained for this mask and noise); the residual variant within 0.5 %; smallest calibrated bars, all 512 maps</li>
+							<li><strong>»</strong> ▲ end to end retrained per footprint/noise; plug-and-play trained once</li>
 							<li>two limits: marginal not conditional (weakest at peaks); single cosmology</li>
+							<li><strong>»</strong> the map and its bar: uncertainty rises where the structure is</li>
 						</ul>
-						<!-- PARKED 2026-09-13, the note this replaced:
-						     accurate, calibrated
-						      accurate maps and error bars, perfectly calibrated, with
-						      mathematical guarantees
-						      via moment networks + conformalized quantile
-						      regression
-						      axes: x = reconstruction error, y = size of calibrated bars → lower left is
-						      better
-						      colour = miscoverage: circles above target before, every diamond on it after. Not
-						      who covers — everyone covers, that is the guarantee — but who covers with the
-						      tightest bars
-						      ▲ accuracy within ~1 % of DeepMass, trained for that
-						      exact mask and noise; smallest calibrated bars of all
-						      » DeepMass needs retraining per mask/noise → not applicable to a real
-						      survey; PnPMass trained once, any field
-						-->
 					</aside>
 				</section>
 
