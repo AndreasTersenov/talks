@@ -3222,3 +3222,24 @@
 .reveal .slides section.ways .ways4 text.la,
 .reveal .slides section.uq2 .uqstrip text.la { font-family: var(--r-main-font); font-style: normal; letter-spacing: 0; }
 .reveal .slides section.uq3 .cqr text.tag { fill: var(--fg-muted); }
+
+/* tighter rhythm on the two slides whose last line barely fit (2026-09-15) */
+.reveal .slides section.pnpres .pr-grid { margin-top: 0.45em; }
+.reveal .slides section.pnpres .pr-points li { margin-top: 0.3em; }
+.reveal .slides section.pnpres .pr-sigma { margin-top: 0.35em; }
+.reveal .slides section.pnpres .pr-sigma img { max-height: 190px; width: auto; max-width: 100%; }
+.reveal .slides section.pnpres .pull { margin-top: 0.55em; }
+.reveal .slides section .statpair .r-stack.statswap { height: 19vh; }
+.reveal .slides section .statpair .r-stack.statswap > img,
+.reveal .slides section .statpair .col .statswap img { max-height: 19vh; }
+.reveal .slides section .statpair { margin-top: 0.3em; }
+/* the four ways, thinned: no legend row, two footer lines, more air */
+.reveal .slides section.ways svg.ways4 { width: 94%; }
+.reveal .slides section.ways .lead-line.need { margin-top: 0.5em; }
+
+/* slide 12 labels back inside their panels (2026-09-15): 300 px columns cannot
+   hold 27 px labels; 24 px still renders above the floor after the viewBox scale. */
+.reveal .slides section.ways .ways4 text.t { font-size: 28px; }
+.reveal .slides section.ways .ways4 text.l, .reveal .slides section.ways .ways4 text.la { font-size: 24px; }
+.reveal .slides section.ways .ways4 text.b { font-size: 25px; }
+.reveal .slides section.ways .ways4 text.k { font-size: 27px; }

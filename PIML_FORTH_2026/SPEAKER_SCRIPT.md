@@ -251,7 +251,7 @@ and weakest at the peaks; and this is a single cosmology.
 ---
 ---
 
-# Part 2 — learning the features, or not · frames 17–25
+# Part 2 — learning the features, or not · frames 17–24
 
 ---
 
@@ -315,28 +315,19 @@ tests on every posterior. Only the feature vector differs.
 
 ---
 
-## A2.6 — the gap · frame 22 · 0:25
+## A2.6 — the gap · frame 22 · 0:48
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
-comparison is not symmetric: there is something about these maps that the ℓ1-norm, as used so far,
-does not see.
+comparison is not symmetric. These maps are a multi-channel image: the galaxies are sliced by
+distance, each slice is lensed by all the matter in front of it, so the channels are not
+independent, and how the signal changes from channel to channel is where much of the information
+sits. **▲** A per-channel statistic sees only the marginals; the encoder's first layer mixes all
+four channels.
 
 ---
 
-## A2.7 — the channels are correlated · frame 23 · 0:53
-
-The maps are a multi-channel image. The galaxies are sliced by distance. [CLICK] Take the most
-distant slice. [CLICK] Its light is lensed by all the matter in front of it, [CLICK] which gives its
-map. [CLICK] A nearer slice [CLICK] is lensed by a shorter column, [CLICK] and gives another map.
-[CLICK] [CLICK] So the channels are not independent: the same structure appears in several of them,
-and how the signal changes from channel to channel says where the matter sits along the line of
-sight, and so how structure grew. That is much of the information. **▲** A per-channel statistic
-sees only the marginals. The encoder's first convolutional layer mixes all four channels.
-
----
-
-## A2.8 — two routes · frame 24 · 1:05
+## A2.8 — two routes · frame 23 · 1:05
 
 Two ways to give a hand-crafted feature the same access. **Route one**, change the input: for every
 pair of channels, multiply the two maps pixel by pixel. The product is strong only where both have
@@ -349,7 +340,7 @@ the redshift information. We call it the joint ℓ1-norm, and it needs no extra 
 
 ---
 
-## A2.9 — the answer · frame 25 · 0:52
+## A2.9 — the answer · frame 24 · 0:52
 
 Same maps, same flow, four feature vectors. The per-channel ℓ1-norm. [CLICK] Plus the product
 channels. [CLICK] The joint ℓ1-norm. [CLICK] And the learned encoder, which lands on top of the
@@ -363,7 +354,7 @@ changes.
 ---
 ---
 
-## O — three open questions, on the chain · frame 26 · 0:55
+## O — three open questions, on the chain · frame 25 · 0:55
 
 Before the conclusions, three open questions, on the steps where they live. [CLICK] The map:
 the conformal guarantee is marginal, and the misses sit at the peaks, where the information is.
@@ -376,7 +367,7 @@ these is your problem, find me at lunch.
 
 ---
 
-## C — conclusions · frame 27 · 0:54
+## C — conclusions · frame 26 · 0:54
 
 So. Question one: learn only the prior, keep the physics in the data term. **▲** Yes. Within one
 per cent of the networks trained end to end for a single configuration, the smallest calibrated
@@ -394,13 +385,13 @@ it. Thank you.
 
 Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each with what it buys:
 
-1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 25, so the gap
+1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 24, so the gap
    can be said there. Frame 22 stays in the file, skipped. −0:30
 2. **A1.6's table folded into A1.7's opening sentence**: *nothing existing was accurate, flexible,
    fast and came with error bars at once*. −0:40
 3. **A0.4 Euclid folded into A0.3's close**: one sentence, *and Euclid is measuring billions of
    them now*. −0:35
-4. **A2.7's flipbook to three clicks**: distant slice, nearer slice, one map per channel. −0:20
+4. **A2.4's *why not learn the compression* to one sentence**: −0:20
 5. **A1.8b back to backup**, its guarantee sentence kept in A1.9. −0:55
 
 **Never cut**: A1.1 (the inverse problem), A1.5's *four per cent against a hundred and
@@ -408,7 +399,7 @@ fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A2.4's defi
 ceiling, A2.9's *a tie, not a win*.
 
 **Planned exit**: end of Part 1 (frame 16), expect 14:00 on the clock. Behind → cuts 1 and 4; the open
-questions (frame 26) can go to one spoken sentence, −0:40.
+questions (frame 25) can go to one spoken sentence, −0:40.
 
 ---
 

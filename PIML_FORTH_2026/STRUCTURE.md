@@ -73,7 +73,7 @@ is in the Fourier phases.
 
 ---
 
-## Running order — 27 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain)
+## Running order — 26 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain)
 
 `src` = the frame in `../PhD_Defense_2026/` (as numbered on 2026-09-14) the slide was lifted from.
 
@@ -103,7 +103,7 @@ is in the Fourier phases.
 | 15 | Conformal calibration makes the error bar honest: the three steps drawn as one SVG in the deck's vocabulary, arriving one click at a time (the interval, the sorted scores with the quantile, the widened intervals with the old bar as a dark core), then the guarantee inequality | **new**, split from 14 |
 | 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
 
-### Part 2 — learning the features, or not · frames 17–25 · one vertical column
+### Part 2 — learning the features, or not · frames 17–24 · one vertical column
 
 | # | on screen | src |
 |---|---|---|
@@ -113,19 +113,20 @@ is in the Fourier phases.
 | 20 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
 | 21 | A learned encoder trained to be information-optimal | 39 |
 | 22 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
-| 23 | The channels are correlated: each distance slice sees the matter in front of it | 42 |
-| 24 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
-| 25 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
+| 23 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
+| 24 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
 
 *Same maps, same flow, both calibrated* (defense 40) left the main line on 2026-09-15 for backup
-column 3; its sentence is spoken at the end of frame 21.
+column 3; its sentence is spoken at the end of frame 21. The tomography flipbook (defense 42,
+Justine Zeghal's figure) is hidden in place on Andreas's call: one sentence on frame 22 says the
+channels are distance slices that are not independent.
 
-### Close · frames 26–27
+### Close · frames 25–26
 
 | # | on screen | src |
 |---|---|---|
-| 26 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
-| 27 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
+| 25 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
+| 26 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
 
 Ends on the conclusions, which stay up through questions. No "thank you" slide.
 

@@ -131,24 +131,20 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 **22 · the gap**
 - **»** the encoder wins by 36 % in constraining power
-- not symmetric: something about the maps the ℓ1-norm does not yet see
-
-**23 · the channels are correlated** ← eight clicks
-- galaxies sliced by distance **»** distant slice **»** lensed by all matter in front **»** its map **»** nearer slice **»** shorter column **»** another map **»** **»** channels not independent
-- how the signal changes channel to channel = where the matter sits = how structure grew
+- not symmetric: the maps are a multi-channel image; slices by distance, each lensed by the matter in front → channels not independent; the change from channel to channel is the information
 - ▲ a per-channel statistic sees only the marginals; the encoder's first layer mixes all four
 
-**24 · two routes**
+**23 · two routes**
 - route one, change the input: product of each channel pair, strong where both have structure; same ℓ1-norm
 - **»** route two, change the statistic: per-channel ℓ1 = the two marginals on the axes
 - **»** grid on the plane, ℓ1 weight per cell: joint 2-D histogram; diagonal both strong, off-diagonal one strong; that is the redshift information; no extra maps
 
-**25 · the answer**
+**24 · the answer**
 - per-channel ℓ1 **»** + product channels **»** joint ℓ1 **»** the encoder lands on top of it
 - ▲ a tie, not a win: encoder coverage slightly conservative
 - ▲ sufficiency: the joint ℓ1-norm carries essentially all the accessible information, no training, inspectable, nothing to retrain
 
-**26 · three open questions, on the chain** ← three clicks
+**25 · three open questions, on the chain** ← three clicks
 - **»** the map: marginal guarantee, misses at the peaks; conditional coverage at map level, at survey cost?
 - **»** mass mapping: non-expansiveness of a 7 M transformer verified empirically; a cheaper certificate?
 - **»** systematics → features: the ceiling is the simulator's; baryons (backup) fixed by one band, the encoder has no band; can we tell without the truth?
@@ -156,7 +152,7 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 
 ## Close
 
-**27 · conclusions** ← stays up through questions
+**26 · conclusions** ← stays up through questions
 - Q1 ▲ yes: within 1 % of the end-to-end networks, smallest calibrated bars, trained once for any mask and noise
 - Q2 ▲ only while it reads the channels jointly; give the ℓ1-norm the same access and it matches the optimal encoder, no training
 - ▲ learn only what the physics cannot supply, benchmark it, calibrate it before trusting it
