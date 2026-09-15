@@ -104,7 +104,7 @@ is in the Fourier phases.
 | 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
 | 17 | Slice the sources by distance: six correlated channels, each measured with a sixth of the galaxies, **drawn**: the six images we want for one field, then on a click the six measurements | **new** (Leterme, Tersenov & Starck, in preparation) |
 | 18 | One multichannel denoiser in the same loop, **drawn**: the per-channel way (six loops, nothing shared) against the joint way (one six-channel image, a block-diagonal data step, one denoiser six in six out), then the iteration with A block-diagonal | **new** |
-| 19 | Joint reconstruction wins in every channel, and it is the only one that survives the foreground nulling, **drawn**: error per channel before, the lens-efficiency curves nested then local (the re-mixing), error after with the per-channel line leaving the chart above the zero map; then four maps of the nearest channel | **new** (values parsed from the draft's Fig. 4b) |
+| 19 | Joint reconstruction wins in every channel, and it is the only one that survives the foreground nulling, **drawn**: error per channel before, the lens-efficiency curves nested then local (the re-mixing), error after with the per-channel line leaving the chart above the zero map; then, as a card over the chart, four maps of the nearest channel | **new** (values parsed from the draft's Fig. 4b) |
 
 ### Part 2 — learning the features, or not · frames 20–27 · one vertical column
 
