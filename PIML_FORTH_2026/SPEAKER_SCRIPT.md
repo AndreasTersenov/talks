@@ -208,16 +208,20 @@ back; eight iterations later it has converged.
 
 ---
 
-## A1.8 — the error bar · frame 14 · 1:00
+## A1.8 — the error bar, drawn · frame 14 · 1:26
 
-The map is half the result; the other half is the error bar. A second network, trained on the same
-simulated pairs, predicts the squared residual of the reconstruction; the minimiser of that loss is
-the posterior variance, pixel by pixel, in one forward pass. The spread comes from two places: the
-noise and the mask, the fan of maps from the first slide, and the learned prior that picked one of
-them. **▲** But a network's own variance carries no guarantee, so we calibrate it with
-conformalised quantile regression on a held-out set: distribution-free, finite-sample, and it does
-not require the network to be right. [CLICK] **▲** The result is a stated coverage level that holds
-whether or not the model is well specified.
+The map is half the result; the other half is the error bar. The data fans out to two networks.
+The denoiser, in the loop, gives the map. A second network, trained on the same simulated pairs,
+predicts the squared residual of the reconstruction, and the minimiser of that loss is the
+posterior variance, pixel by pixel: one forward pass, no sampling. The spread it has to cover comes
+from two places: the noise and the mask, the fan of maps from the first slide, and the learned
+prior that picked one of them. **▲** But a network's own variance carries no guarantee.
+
+[CLICK] So we calibrate it on held-out maps where the truth is known. Draw the network's interval:
+seven of fourteen truths land outside. Score each one by how far outside it fell, take the
+quantile, and widen every interval by that much: three of fourteen, the rate you asked for.
+**▲** That is conformalised quantile regression, and the guarantee is distribution-free and
+finite-sample: it holds whether or not the network is well specified.
 
 ---
 

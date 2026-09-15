@@ -781,75 +781,26 @@
 					</aside>
 				</section>
 
-				<section class="uq" data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">&sect;1</span> Pixel-wise uncertainties from a <b
-							class="alert">second network</b>, calibrated with conformal prediction</h3>
-
-					<!-- the chain as a ruled track, not four cards: the two stops we add for the
-					     uncertainty sit on the accented half of the line. -->
-					<div class="rail">
-						<div class="rstop"><span class="n">shear $\gamma$</span><span class="d"></span><span
-								class="s">the
-								data</span></div>
-						<div class="rstop"><span class="n">$\hat\kappa = F_{\Theta}(\gamma)$</span><span
-								class="d"></span><span class="s">the PnPMass map</span></div>
-						<div class="rstop on"><span class="n">$\hat\sigma^{2} = G_{\Omega}(\gamma)$</span><span
-								class="d"></span><span class="s">a second network</span><span class="tnote">this
-								work</span></div>
-						<div class="rstop on"><span class="n">calibrated interval</span><span class="d"></span><span
-								class="s">CQR, held&#8209;out set</span></div>
-					</div>
-
-					<p class="uqwhy">
-						<span class="kicker">where the spread comes from</span>
-						The posterior spread comes from the noise and the mask (<b>Part&nbsp;1</b>), and from the
-						<b>learned prior</b> that selects one map. The predicted variance has to account for both.
+				<section class="uq2" data-theme="light">
+					<h3 class="slide-title tight"><span class="sec">&sect;1</span> A <b class="alert">second network</b> predicts the error; conformal calibration makes it honest</h3>
+					<svg class="uqstrip" viewBox="0 0 1180 270" role="img" aria-label="the data fans out to two networks: the denoiser in the plug-and-play loop gives the map, a second variance network gives the predicted error, pixel by pixel; the two are trained on the same simulated pairs"><image href="../assets/figures/maps/shear_field_thumb.png" x="60" y="85" width="100" height="100" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="60" y="85" width="100" height="100" rx="4"/><text class="l" x="110" y="210" text-anchor="middle">data</text><path class="arw" d="M160 118 L288.6 72.3"/><path class="hd" d="M298 69 L286.7 67.2 L290.4 77.5 Z"/><path class="arw" d="M160 152 L288.6 197.7"/><path class="hd" d="M298 201 L290.4 192.5 L286.7 202.8 Z"/><rect class="net" x="300" y="40" width="300" height="58" rx="12"/><text class="b" x="450" y="76" text-anchor="middle">denoiser, in the loop, &#215;8</text><rect class="net" x="300" y="172" width="300" height="58" rx="12"/><text class="b" x="450" y="208" text-anchor="middle">variance network</text><rect class="train" x="290" y="28" width="320" height="214" rx="14"/><text class="la" x="450" y="20" text-anchor="middle">trained on the same simulated pairs</text><path class="arw" d="M600 69 L668.0 69.0"/><path class="hd" d="M678 69 L668.0 63.5 L668.0 74.5 Z"/><path class="arw" d="M600 201 L668.0 201.0"/><path class="hd" d="M678 201 L668.0 195.5 L668.0 206.5 Z"/><image href="../assets/figures/maps/pnpmass_kappa_panel.png" x="680" y="9" width="150" height="120" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="680" y="9" width="150" height="120" rx="4"/><image href="../assets/figures/maps/pnpmass_sigma_panel.png" x="680" y="141" width="150" height="120" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="680" y="141" width="150" height="120" rx="4"/><text class="k" x="848" y="62" text-anchor="start">the map, &#954;&#770;</text><text class="l" x="848" y="88" text-anchor="start">one forward pass</text><text class="k" x="848" y="194" text-anchor="start">its predicted error, &#963;&#770;</text><text class="l" x="848" y="220" text-anchor="start">one forward pass, no sampling</text></svg>
+					<figure class="calib fragment fade-in" data-fragment-index="1">
+						<span class="kicker">then, on held&#8209;out maps where the truth is known:</span>
+						<img class="plain" src="../assets/diagrams/cqr_schematic_talk.png"
+							alt="three panels: the network's interval on fourteen held-out pixels, seven truths outside; the conformity scores sorted with the quantile q marked; every interval widened by q, three of fourteen outside, the rate asked for">
+					</figure>
+					<p class="pull fragment fade-in" data-fragment-index="1">
+						A <b class="alert">coverage guarantee that holds</b> whether or not the network is well specified: distribution&#8209;free, finite&#8209;sample.
 					</p>
-
-					<div class="uqbody">
-						<div class="uqmain">
-							<p class="kicker">first: predict the error</p>
-							<p>Train $G_{\Omega}$ on the <b>squared residual</b> of the reconstruction,</p>
-							<p class="uqloss">$$\min_{\Omega}\ \mathbb{E}\left[\left\| G_{\Omega}(\gamma) - \big(\kappa
-								-
-								F_{\Theta}(\gamma)\big)^{2} \right\|_2^{2}\right]$$</p>
-							<p>whose minimiser <b>is</b> the posterior variance, pixel by pixel. One forward pass,
-								no sampling.</p>
-						</div>
-						<div class="uqaside">
-							<p class="kicker">then: calibrate it</p>
-							<p>The variance predicted by a network is <b>not</b> calibrated.</p>
-							<p><b>Conformal quantile regression</b> rescales it pixel by pixel on a held&#8209;out
-								calibration set, so that the intervals reach the target coverage.</p>
-						</div>
-					</div>
-
-					<p class="pull fragment fade-in">
-						The result is a <b class="alert">coverage guarantee that holds</b> whether or not the network is
-						well specified.
-					</p>
-
 					<aside class="notes">
-						<p><strong>the error bar</strong></p>
+						<p><strong>the error bar</strong> &mdash; <em>one click: the calibration row</em></p>
 						<ul>
-							<li>second network on the same pairs predicts the squared residual → posterior variance per pixel, one pass</li>
-							<li>spread from: noise + mask (the fan), and the learned prior that picked one map</li>
-							<li>▲ a network&#x27;s variance has no guarantee → CQR on a held-out set: distribution-free, finite-sample, network need not be right</li>
-							<li><strong>»</strong> ▲ a stated coverage level that holds whether or not the model is well specified</li>
+							<li>the data fans out: the denoiser in the loop gives the map; a second network gives the squared residual, whose minimiser is the posterior variance, pixel by pixel; one pass each, no sampling</li>
+							<li>spread from: noise + mask (the fan of maps), and the learned prior that picked one</li>
+							<li>▲ a network's variance has no guarantee</li>
+							<li><strong>»</strong> on held-out maps: draw the interval, count the misses (7 of 14); score each by how far outside; take the quantile; widen every interval by it; now 3 of 14, the rate you asked for</li>
+							<li>▲ distribution-free, finite-sample; holds whether or not the network is right</li>
 						</ul>
-						<!-- PARKED 2026-09-13, the note this replaced:
-						     the chain &mdash; shear in, the denoiser gives the map, a second
-						      network trained on the same simulated pairs gives the error
-						      &raquo; where the spread comes from &mdash; noise and mask leave a
-						      whole family of maps consistent with the data &mdash; the fan from Part 1 &mdash; and
-						      the learned prior picks one of them. Both have to be covered
-						      how &mdash; trained on the squared residual of the reconstruction. The
-						      minimiser of that loss is the posterior variance. One forward pass, no sampling
-						      &raquo; then calibrate &mdash; a network's own variance is
-						      overconfident. CQR, a held-out set, a per-pixel rescaling
-						      &raquo; &#9650; the shift &mdash; not &ldquo;the network says plus or
-						      minus sigma&rdquo;, but a stated coverage level that holds anyway
-						-->
 					</aside>
 				</section>
 

@@ -78,11 +78,12 @@ Pushed into the slides' `<aside class="notes">` by `python3 tools/sync-notes.py 
 - PnP, not unrolling: nothing trained through the iteration; one network, every configuration
 - walk the figure: shear in, zero init, forward (noisy), backward (denoiser) **»** fed back, eight iterations
 
-**14 · the error bar**
-- second network on the same pairs predicts the squared residual → posterior variance per pixel, one pass
-- spread from: noise + mask (the fan), and the learned prior that picked one map
-- ▲ a network's variance has no guarantee → CQR on a held-out set: distribution-free, finite-sample, network need not be right
-- **»** ▲ a stated coverage level that holds whether or not the model is well specified
+**14 · the error bar, drawn** ← one click: the calibration row
+- the data fans out: denoiser in the loop → the map; variance network → the predicted error; squared residual, minimiser = posterior variance; one pass each
+- spread from noise + mask (the fan) and the learned prior that picked one map
+- ▲ a network's variance has no guarantee
+- **»** held-out maps: draw the interval (7 of 14 outside), score, quantile, widen by q (3 of 14, the rate asked for)
+- ▲ distribution-free, finite-sample; holds whether or not the network is right
 
 **15 · accurate, smallest calibrated bars**
 - axes: across error, up bar size, lower-left better; colour miscoverage: circles above target before, diamonds on it after

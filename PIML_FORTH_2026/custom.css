@@ -3052,3 +3052,21 @@
 .reveal .slides section.ways .ways4 text.k { font-size: 21px; font-weight: 600; }
 .reveal .slides section.ways .ways4 text.k.acc { fill: var(--accent); }
 .reveal .slides section.ways .lead-line.need { margin-top: 0.45em; }
+
+/* the error-bar strip (frame 14): the data fans out to two networks, drawn in
+   the same vocabulary as the four-ways slide; then the calibration schematic. */
+.reveal .slides section.uq2 svg.uqstrip { width: 86%; height: auto; display: block; margin: 0.15em auto 0; overflow: visible; }
+.reveal .slides section.uq2 .uqstrip .net { fill: color-mix(in srgb, var(--accent) 18%, var(--surface)); stroke: var(--accent); stroke-width: 2.4; }
+.reveal .slides section.uq2 .uqstrip .train { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 5; }
+.reveal .slides section.uq2 .uqstrip .arw { fill: none; stroke: var(--fg-muted); stroke-width: 2.5; }
+.reveal .slides section.uq2 .uqstrip .hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.uq2 .uqstrip .frame { fill: none; stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.uq2 .uqstrip text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.uq2 .uqstrip text.l { font-family: var(--label); font-style: var(--label-style); font-size: 19px; fill: var(--fg-muted); }
+.reveal .slides section.uq2 .uqstrip text.la { font-family: var(--label); font-size: 19px; fill: var(--accent); }
+.reveal .slides section.uq2 .uqstrip text.b { font-size: 21px; }
+.reveal .slides section.uq2 .uqstrip text.k { font-size: 22px; font-weight: 600; }
+.reveal .slides section.uq2 figure.calib { width: 88%; margin: 0.35em auto 0; text-align: left; }
+.reveal .slides section.uq2 figure.calib .kicker { display: block; margin: 0 0 0.05em 0.6em; }
+.reveal .slides section.uq2 figure.calib img { display: block; width: 100%; max-width: 100%; max-height: none; margin: 0; }
+.reveal .slides section.uq2 .pull { margin: 0.25em auto 0; font-size: 0.9em; }

@@ -99,7 +99,7 @@ is in the Fourier phases.
 | 11 | The sparse solver reconstructs the map 4 % better, and constrains the parameters 157 % better | 19, retitled |
 | 12 | Four ways to put a network in a linear inverse problem, **drawn**: four block diagrams in one vocabulary (grey physics step, blue network, dashed box around what is trained together, a loop where there is one) | **new**, replaces 22 |
 | 13 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
-| 14 | Pixel-wise uncertainties from a second network, calibrated with conformal prediction | backup `uq`, promoted |
+| 14 | A second network predicts the error; conformal calibration makes it honest: a drawn strip (data → denoiser loop → the map; data → variance network → the σ map; dashed box around both networks), then one click brings the three-panel calibration schematic at talk size | backup `uq`, **redrawn** |
 | 15 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
 
 ### Part 2 — learning the features, or not · frames 16–24 · one vertical column
