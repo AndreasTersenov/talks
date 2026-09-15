@@ -76,48 +76,37 @@ no longer the statistics; it is what we can do with them. Extracting it is an al
 
 ---
 
-## A0.5 — the chain · frame 5 · 0:56
+## A0.5 — the chain, and the two questions · frame 5 · 1:23
 
-The pipeline, reduced to the steps that matter. Galaxy shapes go in. From the shapes we make the
-mass map: a **linear inverse problem**. From the map we extract a feature vector, because a hundred
-thousand correlated pixels cannot be compared with theory directly. From the features we infer a
-handful of parameters of the physical model, with a simulator standing in for the likelihood.
+The pipeline, reduced to the steps that matter; it is the map of the talk. Galaxy shapes go in.
+From the shapes we make the mass map: a **linear inverse problem**. From the map we extract a
+feature vector, because a hundred thousand correlated pixels cannot be compared with theory
+directly. From the features we infer a handful of parameters of the physical model, with a
+simulator standing in for the likelihood. Every step can bias the answer or distort the error bars
+without anything downstream noticing, and every step now has a place where a network could go.
 
-[CLICK] **▲** The first half of the talk is the inverse problem, and what a learned prior buys.
+[CLICK] **▲** Question one, the first half: in the inverse problem, learn only the prior. Is the
+reconstruction as accurate as a network trained end to end, does it work for any configuration,
+can its error bars be certified?
 
-[CLICK] **▲** The second half is the feature extractor: what has to be learned at all.
-
-Every one of these steps can bias the answer or distort the error bars without anything downstream
-noticing.
-
----
-
-## A0.6 — the map, and the two questions · frame 6 · 1:03
-
-The same chain as a grid, and I will read it because it is the map of the talk. Three steps
-across; three rows down: what the physics supplies, what is learned, how we know. The physics
-supplies the forward operator, the mask and the noise; a wavelet transform; a simulator. The middle
-row carries the two questions. **Question one**: learn only the prior. Is the reconstruction as
-accurate as a network trained end to end, does it work for any configuration, can its error bars be
-certified? **Question two**: a learned encoder, or nothing? Does it extract more than hand-crafted
-features, and why? The third column is the tool, a flow, and Justine covers it at two. **▲** The
-bottom row is the thread: benchmarked, calibrated, tested.
-
----
----
-
-# Part 1 — making the map · frames 7–16
+[CLICK] **▲** Question two, the second half: the features. A learned encoder, or hand-crafted
+features? Who extracts more about the parameters, and why? And in each case, how we know:
+benchmarked, calibrated, tested.
 
 ---
 
-## A1.0 — the Part 1 card · frame 7 · 0:16
+# Part 1 — learning the prior · frames 6–15
+
+---
+
+## A1.0 — the Part 1 card · frame 6 · 0:16
 
 Part 1, making the map. Two papers: one on what the choice of prior does to the science, and one,
 led by Hubert Leterme, on a learned prior with certified error bars.
 
 ---
 
-## A1.1 — the inverse problem · frame 8 · 0:49
+## A1.1 — the inverse problem · frame 7 · 0:49
 
 The forward model is one line: a known linear operator, a mask, additive noise. The relation is
 exact; the data are not. The noise is much larger than the signal, and the direct inversion
@@ -129,7 +118,7 @@ distinguishes the methods.
 
 ---
 
-## A1.2 — the direct linear inverse · frame 9 · 0:47
+## A1.2 — the direct linear inverse · frame 8 · 0:47
 
 The standard method for thirty years is the direct linear inverse, Kaiser–Squires: apply the
 inverse operator in Fourier space. One FFT, no regulariser, no free parameters. [CLICK] Same field,
@@ -140,7 +129,7 @@ kernel, which tames the noise at the cost of the small scales.
 
 ---
 
-## A1.3 — data term plus regulariser · frame 10 · 1:01
+## A1.3 — data term plus regulariser · frame 9 · 1:01
 
 Every method after that is a regularised least-squares problem you will recognise: a data-fidelity
 term, the residual against the measured shear weighted by the noise covariance, plus a regulariser
@@ -153,7 +142,7 @@ deep learning stops assuming and learns the regulariser from simulations.
 
 ---
 
-## A1.4 — the experiment · frame 11 · 0:36
+## A1.4 — the experiment · frame 10 · 0:36
 
 First, does the prior matter for the science? Until this paper, reconstructions were compared on
 map quality: mean-square error against the truth, in simulations. But the map is not the product;
@@ -163,7 +152,7 @@ inverse, the linear inverse with the mask inpainted, and the sparse solver.
 
 ---
 
-## A1.5 — four per cent against a hundred and fifty-seven · frame 12 · 1:10
+## A1.5 — four per cent against a hundred and fifty-seven · frame 11 · 1:10
 
 This is the first posterior in the talk, so one sentence on reading it. Each panel is the
 posterior over a pair of the model's parameters: matter density, expansion rate, dark-energy
@@ -181,22 +170,22 @@ posterior it gives, not by its RMSE.
 
 ---
 
-## A1.6 — four ways to put a network in an inverse problem · frame 13 · 1:16
+## A1.6 — four ways to put a network in an inverse problem · frame 12 · 1:22
 
 So the prior matters, and a learned prior is the obvious next step. There are four ways to put a
-network in a linear inverse problem, and this room knows all four. End to end: data in, image out,
-the physics only in the training pairs; a new mask or noise level means retraining. Unrolled: the
-iteration becomes the architecture, trained through, and transfers as far as the training covered.
-Plug-and-play: the iteration stays fixed and the network is the prior only, learned independently
-of the operator; nothing to retrain. Posterior sampling with a learned prior, the score-based mass
-mapping from François's group: the full posterior, at many passes per sample. **▲** For a survey
-the axis that matters is the third row: is the prior learned independently of the operator? Then
-any mask and any noise level cost nothing. Plug-and-play gives accurate, any configuration and
-fast; the error bars are what we add.
+network in a linear inverse problem, and this room knows all four. Grey is a physics step, blue is
+a network, and the dashed box is what gets trained together. End to end: data in, image out, the
+physics only in the training pairs; a new mask or noise level means retraining. Unrolled: physics
+steps and networks on one rail, trained through together; it transfers as far as the training
+covered. Plug-and-play: a fixed loop, a data step and a denoiser, and the dashed box is around the
+denoiser alone, trained once, on its own. Posterior sampling puts the same learned prior inside a
+sampler: the full posterior, at thousands of passes. **▲** The two on the right survive a new
+mask or noise level because the prior never saw the operator. Plug-and-play is the cheap one:
+eight passes. The error bars are what we add.
 
 ---
 
-## A1.7 — plug-and-play · frame 14 · 1:23
+## A1.7 — plug-and-play · frame 13 · 1:23
 
 Here is the plug-and-play iteration. A gradient step on the data term, towards the measured shear;
 then the step that used to be a proximal operator enforcing a hand-crafted prior is a **denoiser**
@@ -219,7 +208,7 @@ back; eight iterations later it has converged.
 
 ---
 
-## A1.8 — the error bar · frame 15 · 1:00
+## A1.8 — the error bar · frame 14 · 1:00
 
 The map is half the result; the other half is the error bar. A second network, trained on the same
 simulated pairs, predicts the squared residual of the reconstruction; the minimiser of that loss is
@@ -232,7 +221,7 @@ whether or not the model is well specified.
 
 ---
 
-## A1.9 — accurate, with the smallest calibrated error bars · frame 16 · 1:16
+## A1.9 — accurate, with the smallest calibrated error bars · frame 15 · 1:16
 
 The whole result in one plot. Across, reconstruction error; up, the size of the calibrated error
 bar; lower left is better. Colour is the miscoverage rate: before calibration the circles sit above
@@ -249,18 +238,18 @@ and weakest at the peaks; and this is a single cosmology.
 ---
 ---
 
-# Part 2 — reading the map · frames 17–26
+# Part 2 — learning the features, or not · frames 16–24
 
 ---
 
-## A2.0 — the Part 2 card · frame 17 · 0:12
+## A2.0 — the Part 2 card · frame 16 · 0:12
 
 Part 2, reading the map. The map has to become a feature vector before inference, and the question
 is whether that step needs a network.
 
 ---
 
-## A2.1 — same power spectrum · frame 18 · 0:50
+## A2.1 — same power spectrum · frame 17 · 0:50
 
 The standard feature vector in this field is second order: the two-point function, the Fourier
 amplitudes. **▲** For a Gaussian random field it is complete. But the late-time matter field is not
@@ -272,7 +261,7 @@ wavelet statistics, Minkowski functionals.
 
 ---
 
-## A2.2 — the two hand-crafted features · frame 19 · 1:01
+## A2.2 — the two hand-crafted features · frame 18 · 1:01
 
 You have just seen a starlet in the previous talk, so I can be brief. Ours is the same isotropic
 undecimated wavelet transform: the map becomes a sum of band-pass images, each carrying structure of
@@ -285,7 +274,7 @@ every pixel. Think of it as the one-point distribution of the field in the wavel
 
 ---
 
-## A2.3 — likelihood-free inference · frame 20 · 1:01
+## A2.3 — likelihood-free inference · frame 19 · 1:01
 
 For these features there is no analytic likelihood. What we have is a simulator. So draw
 parameters from the prior, run it, keep the pairs. [CLICK] Those pairs train a conditional
@@ -299,7 +288,7 @@ it; what happens when the simulator's physics is wrong is a separate study, in t
 
 ---
 
-## A2.4 — the learned encoder · frame 21 · 1:06
+## A2.4 — the learned encoder · frame 20 · 1:06
 
 Beating second-order statistics is easy. The real question is how close to **all** of the
 information in the map a feature vector gets. And since the inference is already a network, why not
@@ -313,7 +302,7 @@ tests on every posterior. Only the feature vector differs.
 
 ---
 
-## A2.6 — the gap · frame 22 · 0:25
+## A2.6 — the gap · frame 21 · 0:25
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
@@ -322,7 +311,7 @@ does not see.
 
 ---
 
-## A2.7 — the channels are correlated · frame 23 · 0:53
+## A2.7 — the channels are correlated · frame 22 · 0:53
 
 The maps are a multi-channel image. The galaxies are sliced by distance. [CLICK] Take the most
 distant slice. [CLICK] Its light is lensed by all the matter in front of it, [CLICK] which gives its
@@ -334,7 +323,7 @@ sees only the marginals. The encoder's first convolutional layer mixes all four 
 
 ---
 
-## A2.8 — two routes · frame 24 · 1:05
+## A2.8 — two routes · frame 23 · 1:05
 
 Two ways to give a hand-crafted feature the same access. **Route one**, change the input: for every
 pair of channels, multiply the two maps pixel by pixel. The product is strong only where both have
@@ -347,7 +336,7 @@ the redshift information. We call it the joint ℓ1-norm, and it needs no extra 
 
 ---
 
-## A2.9 — the answer · frame 25 · 0:52
+## A2.9 — the answer · frame 24 · 0:52
 
 Same maps, same flow, four feature vectors. The per-channel ℓ1-norm. [CLICK] Plus the product
 channels. [CLICK] The joint ℓ1-norm. [CLICK] And the learned encoder, which lands on top of the
@@ -361,20 +350,20 @@ changes.
 ---
 ---
 
-## O — three open questions · frame 26 · 0:59
+## O — three open questions, on the chain · frame 25 · 0:55
 
-Before the conclusions, three things I would take from this room. Coverage where it matters: the
-conformal guarantee is marginal, and the misses concentrate at the peaks, where the information is.
-Conditional coverage at map level, at a cost a survey can pay? Certificates for large denoisers:
-plug-and-play converges if the denoiser is non-expansive, and regularising the Jacobian of a
-seven-million-parameter transformer is too costly, so we verify convergence empirically. Is there a
-cheaper certificate? And learned features under a wrong simulator: the encoder's ceiling is a
-ceiling for the simulator. When the physics is missing, which feature degrades gracefully, and can
-we tell without the truth? If any of these is your problem, find me at lunch.
+Before the conclusions, three open questions, on the steps where they live. [CLICK] The map:
+the conformal guarantee is marginal, and the misses sit at the peaks, where the information is.
+Conditional coverage at map level, at a cost a survey can pay? [CLICK] The reconstruction:
+plug-and-play converges if the denoiser is non-expansive, and for seven million parameters we
+verify that empirically. Is there a cheaper certificate than a Jacobian bound? [CLICK] The
+features, and what feeds them: the encoder's ceiling is a ceiling for the simulator. When the
+physics is missing, which feature degrades gracefully, and can we tell without the truth? If any of
+these is your problem, find me at lunch.
 
 ---
 
-## C — conclusions · frame 27 · 0:54
+## C — conclusions · frame 26 · 0:54
 
 So. Question one: learn only the prior, keep the physics in the data term. **▲** Yes. Within one
 per cent of the networks trained end to end for a single configuration, the smallest calibrated
@@ -392,8 +381,8 @@ it. Thank you.
 
 Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each with what it buys:
 
-1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 25, so the gap
-   can be said there. Frame 22 stays in the file, skipped. −0:30
+1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 24, so the gap
+   can be said there. Frame 21 stays in the file, skipped. −0:30
 2. **A1.6's table folded into A1.7's opening sentence**: *nothing existing was accurate, flexible,
    fast and came with error bars at once*. −0:40
 3. **A0.4 Euclid folded into A0.3's close**: one sentence, *and Euclid is measuring billions of
@@ -405,8 +394,8 @@ Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each
 fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A2.4's definition of the
 ceiling, A2.9's *a tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 16), expect 13:45 on the clock. Behind → cuts 1 and 4; the open
-questions (frame 26) can go to one spoken sentence, −0:40.
+**Planned exit**: end of Part 1 (frame 15), expect 13:30 on the clock. Behind → cuts 1 and 4; the open
+questions (frame 25) can go to one spoken sentence, −0:40.
 
 ---
 

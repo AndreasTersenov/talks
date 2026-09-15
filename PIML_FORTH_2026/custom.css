@@ -3020,3 +3020,35 @@
 /* three open questions (frame 26): the two-card grid, three across */
 .reveal .slides section.openq .coreq.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.6em; }
 .reveal .slides section.openq .coreq .qcard p { font-size: 0.8em; line-height: 1.36; }
+
+/* a third click-step on the chart, for the open-questions return (frame 25) */
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .el:not(.on-3),
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .wires .w:not(.on-3) { opacity: 0.28; }
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .wires .w.on-3 { stroke: var(--accent); opacity: 1; }
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .wires .w.hd.on-3 { fill: var(--accent); stroke: none; }
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .prod.on-3 img {
+	box-shadow: 0 0 0 3px var(--accent), 0 0 0 8px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .proc.on-3 {
+	border-color: var(--accent); background: var(--surface);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.reveal .slides section .qstep.s3.current-fragment ~ .chart-slot .on-3 b { color: var(--accent); }
+
+/* four ways, drawn (frame 12): one cartoon vocabulary in SVG, themed by class */
+.reveal .slides section.ways svg.ways4 { width: 96%; height: auto; display: block; margin: 0.25em auto 0; overflow: visible; }
+.reveal .slides section.ways .ways4 .phys { fill: var(--surface); stroke: var(--fg-muted); stroke-width: 2.2; }
+.reveal .slides section.ways .ways4 .net { fill: color-mix(in srgb, var(--accent) 18%, var(--surface)); stroke: var(--accent); stroke-width: 2.4; }
+.reveal .slides section.ways .ways4 .train { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 5; }
+.reveal .slides section.ways .ways4 .arw { fill: none; stroke: var(--fg-muted); stroke-width: 2.5; }
+.reveal .slides section.ways .ways4 .hd { fill: var(--fg-muted); stroke: none; }
+.reveal .slides section.ways .ways4 .frame { fill: none; stroke: var(--edge); stroke-width: 1.5; }
+.reveal .slides section.ways .ways4 .pick { fill: color-mix(in srgb, var(--accent) 6%, transparent); stroke: color-mix(in srgb, var(--accent) 40%, transparent); stroke-width: 1.5; }
+.reveal .slides section.ways .ways4 text { font-family: var(--r-main-font); fill: var(--fg); }
+.reveal .slides section.ways .ways4 text.t { font-family: var(--r-heading-font); font-weight: 600; font-size: 26px; }
+.reveal .slides section.ways .ways4 text.l { font-family: var(--label); font-style: var(--label-style); font-size: 19px; fill: var(--fg-muted); }
+.reveal .slides section.ways .ways4 text.la { font-family: var(--label); font-size: 19px; fill: var(--accent); }
+.reveal .slides section.ways .ways4 text.b { font-size: 20px; }
+.reveal .slides section.ways .ways4 text.k { font-size: 21px; font-weight: 600; }
+.reveal .slides section.ways .ways4 text.k.acc { fill: var(--accent); }
+.reveal .slides section.ways .lead-line.need { margin-top: 0.45em; }

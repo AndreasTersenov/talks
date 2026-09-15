@@ -73,11 +73,11 @@ is in the Fourier phases.
 
 ---
 
-## Running order — 27 frames (revised 2026-09-15: the room's own map, taxonomy and demo)
+## Running order — 27 frames (revised 2026-09-15: the questions on the chain, the taxonomy drawn, the phase demo, the open questions on the chain)
 
 `src` = the frame in `../PhD_Defense_2026/` (as numbered on 2026-09-14) the slide was lifted from.
 
-### Act 0 — the problem · frames 1–6
+### Act 0 — the problem · frames 1–5
 
 | # | on screen | src |
 |---|---|---|
@@ -85,47 +85,46 @@ is in the Fourier phases.
 | 2 | Foreground mass deflects the light of background galaxies and distorts their images | 5 |
 | 3 | We measure a noisy, masked distortion field. The image we want is the projected mass | 9, retitled, block titles tagged |
 | 4 | Euclid: mapping the dark Universe (billions of galaxies, a third of the sky, an algorithms problem) | 6 |
-| 5 | The analysis chain from galaxy shapes to parameters (two halves; process boxes sub-labelled *inverse problem / feature extraction / likelihood-free*) | 7, cards reworded |
-| 6 | Where the physics sits and where the learning goes, step by step (a 3×3 grid: the physics supplies / what is learned / how we know; Q1 and Q2 on the learned cells) | **new** |
+| 5 | The analysis chain from galaxy shapes to parameters, and where the learning goes: the two questions arrive as the two click-cards under the flowchart (process boxes sub-labelled *inverse problem / feature extraction / likelihood-free*) | 7, cards rewritten |
 
-### Part 1 — making the map · frames 7–16 · one vertical column
-
-| # | on screen | src |
-|---|---|---|
-| 7 | Part 1 card, *Learning the prior*: both papers, pipeline lit at maps | 8 + 21, merged |
-| 8 | In practice, mass mapping is an ill-posed inverse problem | 12 |
-| 9 | Kaiser–Squires inversion is exact for complete, noiseless data, but amplifies the noise | 13 |
-| 10 | Every mass-mapping method minimises a data term plus a regulariser that encodes the prior (card row restored: no prior / ℓ2 / ℓ1 / both / learned) | 14 |
-| 11 | The simulations, statistic and likelihood are fixed, and only the mass-mapping method varies | 17 |
-| 12 | The sparse solver reconstructs the map 4 % better, and constrains the parameters 157 % better | 19, retitled |
-| 13 | Four ways to put a network in a linear inverse problem: end to end, unrolled, plug-and-play, posterior sampling (where the physics sits, prior independent of the operator, cost per map, retraining) | **new**, replaces 22 |
-| 14 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
-| 15 | Pixel-wise uncertainties from a second network, calibrated with conformal prediction | backup `uq`, promoted |
-| 16 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
-
-### Part 2 — reading the map · frames 17–26 · one vertical column
+### Part 1 — learning the prior · frames 6–15 · one vertical column
 
 | # | on screen | src |
 |---|---|---|
-| 17 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
-| 18 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
-| 19 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
-| 20 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
-| 21 | A learned encoder trained to be information-optimal | 39 |
-| 22 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
-| 23 | The channels are correlated: each distance slice sees the matter in front of it | 42 |
-| 24 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
-| 25 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
+| 6 | Part 1 card, *Learning the prior*: both papers, pipeline lit at maps | 8 + 21, merged |
+| 7 | In practice, mass mapping is an ill-posed inverse problem | 12 |
+| 8 | Kaiser–Squires inversion is exact for complete, noiseless data, but amplifies the noise | 13 |
+| 9 | Every mass-mapping method minimises a data term plus a regulariser that encodes the prior (card row restored: no prior / ℓ2 / ℓ1 / both / learned) | 14 |
+| 10 | The simulations, statistic and likelihood are fixed, and only the mass-mapping method varies | 17 |
+| 11 | The sparse solver reconstructs the map 4 % better, and constrains the parameters 157 % better | 19, retitled |
+| 12 | Four ways to put a network in a linear inverse problem, **drawn**: four block diagrams in one vocabulary (grey physics step, blue network, dashed box around what is trained together, a loop where there is one) | **new**, replaces 22 |
+| 13 | Plug-and-play: a learned denoiser replaces the proximal step (+ lineage source line) | 23 |
+| 14 | Pixel-wise uncertainties from a second network, calibrated with conformal prediction | backup `uq`, promoted |
+| 15 | PnPMass is as accurate as the fine-tuned networks, with the smallest calibrated error bars | 24 |
+
+### Part 2 — learning the features, or not · frames 16–24 · one vertical column
+
+| # | on screen | src |
+|---|---|---|
+| 16 | Part 2 card, *Learning the features, or not*, pipeline lit at summaries | 37 |
+| 17 | Two very different fields can have the same power spectrum; one click swaps to the phase-only / amplitude-only demo | 28 + `2pt-phase-amp_light.png` |
+| 18 | Peak counts and the ℓ1-norm are one-point statistics of the wavelet coefficients, scale by scale | 31 |
+| 19 | Likelihood-free inference: the posterior is learned from simulator samples, and calibration-tested | 36 |
+| 20 | A learned encoder trained to be information-optimal | 39 |
+| 21 | The learned encoder is 36 % ahead of the hand-crafted features | 41 |
+| 22 | The channels are correlated: each distance slice sees the matter in front of it | 42 |
+| 23 | Two routes to the cross-channel information: product channels, or a joint 2-D histogram | 43 |
+| 24 | Read the channels jointly, and the hand-crafted ℓ1-norm matches the optimal encoder | 44 |
 
 *Same maps, same flow, both calibrated* (defense 40) left the main line on 2026-09-15 for backup
-column 3; its sentence is spoken at the end of frame 21.
+column 3; its sentence is spoken at the end of frame 20.
 
-### Close · frames 26–27
+### Close · frames 25–26
 
 | # | on screen | src |
 |---|---|---|
-| 26 | Three open questions I would take from this room: conditional coverage at the peaks, certificates for large denoisers, learned features under a wrong simulator | **new**, the workshop hand-off into Q&A |
-| 27 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
+| 25 | Three open questions, on the steps where they live: the chain flowchart again, three clicks lighting the map, the reconstruction, and systematics-into-features, one card each | **new**, the workshop hand-off into Q&A |
+| 26 | Conclusions: the two questions answered, and the line that joins them | 51, rewritten |
 
 Ends on the conclusions, which stay up through questions. No "thank you" slide.
 

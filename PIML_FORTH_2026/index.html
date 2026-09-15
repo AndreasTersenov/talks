@@ -244,7 +244,7 @@
 			</section>
 
 			<section class="chainslide thesismap" data-theme="light">
-				<h3 class="slide-title tight">The analysis chain from galaxy shapes to parameters</h3>
+				<h3 class="slide-title tight">The analysis chain from galaxy shapes to parameters, and where the learning goes</h3>
 
 				<!-- zero-size step markers, one per half of the talk. They change no layout. -->
 				<span class="qstep s1 fragment" data-fragment-index="1"></span>
@@ -263,15 +263,15 @@
 				<div class="qbay">
 					<div class="qslot k1 coreq">
 						<div class="qcard">
-							<span class="qtab">the first half: learning the prior</span>
-							<p>An <b class="alert">ill-posed linear inverse problem</b>, where the prior is the choice.</p>
+							<span class="qtab">question 1, the first half: the inverse problem</span>
+							<p>Learn only the <b class="alert">prior</b>. As accurate as end to end, any configuration, certified error bars?</p>
 						</div>
 					</div>
 
 					<div class="qslot k2 coreq">
 						<div class="qcard">
-							<span class="qtab">the second half: learning the features, or not</span>
-							<p>A <b class="alert">feature extractor</b> and an <b class="alert">inference step</b>, where we ask what has to be learned at all.</p>
+							<span class="qtab">question 2, the second half: the features</span>
+							<p>A learned <b class="alert">encoder</b>, or hand&#8209;crafted features? Who extracts more about the parameters, and why?</p>
 						</div>
 					</div>
 				</div>
@@ -294,43 +294,6 @@
 					-->
 				</aside>
 			</section>
-
-			<section class="pmap" data-theme="light">
-				<h3 class="slide-title tight">Where the physics sits and where the learning goes, step by step</h3>
-				<div class="grid">
-					<div></div>
-					<div class="hd">the inverse problem<span>shapes &rarr; mass map</span></div>
-					<div class="hd">the features<span>map &rarr; feature vector</span></div>
-					<div class="hd">the inference<span>features &rarr; parameters</span></div>
-
-					<div class="rl">the physics supplies</div>
-					<div class="cell">the forward operator, the mask and the noise covariance, in the data term</div>
-					<div class="cell">a wavelet transform; peak counts and the &#8467;1-norm on its bands</div>
-					<div class="cell">the simulator, and the prior over the parameters</div>
-
-					<div class="rl">what is learned</div>
-					<div class="cell learned"><span class="q">question 1</span>only the <b>prior</b>: a denoiser, trained once. As accurate as end&#8209;to&#8209;end, any configuration, certifiable error bars?</div>
-					<div class="cell learned"><span class="q">question 2</span>an <b>encoder</b>, or nothing? Does it extract more about the parameters than the hand&#8209;crafted features, and why?</div>
-					<div class="cell learned dim">the <b>posterior</b>: a conditional flow, trained on simulator samples</div>
-
-					<div class="rl">how we know</div>
-					<div class="cell">benchmarked against networks trained end to end; error bars conformally calibrated</div>
-					<div class="cell">benchmarked against an information&#8209;optimal encoder, same maps, same flow</div>
-					<div class="cell dim">calibration&#8209;tested on thousands of simulated cases</div>
-				</div>
-				<p class="lead-line">Learn only what the physics cannot supply, and check the learned part before trusting it.</p>
-				<aside class="notes">
-					<p><strong>the map, and the two questions</strong></p>
-					<ul>
-						<li>three steps across, three rows down: what the physics supplies, what is learned, how we know</li>
-						<li><strong>Q1</strong> (column 1): learn only the prior; as accurate as end-to-end, any configuration, certifiable bars?</li>
-						<li><strong>Q2</strong> (column 2): a learned encoder, or nothing? more than hand-crafted features, and why?</li>
-						<li>column 3 is the tool, not the subject: a flow, calibration-tested; Justine at 14:00</li>
-						<li>▲ the bottom line is the talk; we return to this grid at the end</li>
-					</ul>
-				</aside>
-			</section>
-
 
 			<!-- ==========  PART 1, making the map: one vertical column, advance with SPACE  ========== -->
 
@@ -727,54 +690,22 @@
 
 				<section class="ways" data-theme="light">
 					<h3 class="slide-title tight">Four ways to put a network in a linear inverse problem</h3>
-					<div class="row">
-						<div class="way">
-							<h4>end to end</h4>
-							<p class="sch">data &rarr; network &rarr; image</p>
-							<span class="k">the physics</span><span class="v">in the training pairs only</span>
-							<span class="k">prior learned independently of the operator</span><span class="v">no</span>
-							<span class="k">cost per map</span><span class="v">one pass</span>
-							<span class="k">new mask or noise level</span><span class="v"><b>retrain</b></span>
-							<p class="ex">DeepMass, MMGAN</p>
-						</div>
-						<div class="way">
-							<h4>unrolled</h4>
-							<p class="sch">K iterations as the architecture, trained through</p>
-							<span class="k">the physics</span><span class="v">in the data&#8209;consistency layers</span>
-							<span class="k">prior learned independently of the operator</span><span class="v">no</span>
-							<span class="k">cost per map</span><span class="v">K passes</span>
-							<span class="k">new mask or noise level</span><span class="v">as far as training covered it</span>
-							<p class="ex">MRI and CT reconstruction</p>
-						</div>
-						<div class="way pick">
-							<h4>plug&#8209;and&#8209;play</h4>
-							<p class="sch">a fixed iteration; the network is the prior only</p>
-							<span class="k">the physics</span><span class="v">in the data term, at inference</span>
-							<span class="k">prior learned independently of the operator</span><span class="v"><b>yes</b>, a denoiser</span>
-							<span class="k">cost per map</span><span class="v">a few passes (eight here)</span>
-							<span class="k">new mask or noise level</span><span class="v"><b>nothing to retrain</b></span>
-							<p class="ex">PnPMass, this talk</p>
-						</div>
-						<div class="way">
-							<h4>posterior sampling</h4>
-							<p class="sch">a learned prior inside a sampler</p>
-							<span class="k">the physics</span><span class="v">in the likelihood, at sampling</span>
-							<span class="k">prior learned independently of the operator</span><span class="v"><b>yes</b>, a score model</span>
-							<span class="k">cost per map</span><span class="v">many passes per sample</span>
-							<span class="k">new mask or noise level</span><span class="v">nothing to retrain</span>
-							<p class="ex">score&#8209;based mass mapping, Remy et al. 2023</p>
-						</div>
-					</div>
-					<p class="lead-line need">A survey needs all of: accurate, <b>any configuration without retraining</b>, fast, and <b>error bars</b>. Plug&#8209;and&#8209;play gives the first three; the error bars come next.</p>
+					<svg class="ways4" viewBox="0 0 1180 452" role="img" aria-label="four block diagrams: end to end, unrolled, plug-and-play and posterior sampling, showing where the network sits, what is trained together, and what a new mask or noise level costs">
+					<g transform="translate(0,0)"><text class="t" x="140" y="30" text-anchor="middle">end to end</text><text class="l" x="140" y="54" text-anchor="middle">DeepMass, MMGAN</text><image href="../assets/figures/maps/shear_field_thumb.png" x="14" y="130" width="56" height="56" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="14" y="130" width="56" height="56" rx="4"/><text class="l" x="42" y="208" text-anchor="middle">data</text><path class="arw" d="M74 158 L90.0 158.0"/><path class="hd" d="M100 158 L90.0 152.5 L90.0 163.5 Z"/><rect class="net" x="102" y="118" width="90" height="80" rx="10"/><text class="b" x="147" y="164" text-anchor="middle">network</text><path class="arw" d="M194 158 L210.0 158.0"/><path class="hd" d="M220 158 L210.0 152.5 L210.0 163.5 Z"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="222" y="130" width="56" height="56" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="222" y="130" width="56" height="56" rx="4"/><text class="l" x="250" y="208" text-anchor="middle">image</text><rect class="train" x="94" y="108" width="106" height="100" rx="12"/><text class="la" x="147" y="98" text-anchor="middle">trained on pairs</text><text class="l" x="140" y="330" text-anchor="middle">new mask or noise level</text><text class="k" x="140" y="358" text-anchor="middle">retrain</text><text class="l" x="140" y="384" text-anchor="middle">one pass per map</text></g>
+					<g transform="translate(300,0)"><text class="t" x="140" y="30" text-anchor="middle">unrolled</text><text class="l" x="140" y="54" text-anchor="middle">MRI and CT reconstruction</text><image href="../assets/figures/maps/shear_field_thumb.png" x="2" y="136" width="44" height="44" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="2" y="136" width="44" height="44" rx="4"/><text class="l" x="24" y="206" text-anchor="middle">data</text><path class="arw" d="M46 158 L221.0 158.0"/><path class="hd" d="M231 158 L221.0 152.5 L221.0 163.5 Z"/><rect class="phys" x="54" y="138" width="30" height="40" rx="0"/><rect class="net" x="93" y="138" width="30" height="40" rx="8"/><rect class="phys" x="132" y="138" width="30" height="40" rx="0"/><rect class="net" x="171" y="138" width="30" height="40" rx="8"/><text class="b" x="216" y="166" text-anchor="middle">&#8230;</text><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="232" y="136" width="44" height="44" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="232" y="136" width="44" height="44" rx="4"/><text class="l" x="254" y="206" text-anchor="middle">image</text><rect class="train" x="46" y="126" width="164" height="64" rx="10"/><text class="la" x="128" y="114" text-anchor="middle">trained through, together</text><text class="l" x="140" y="330" text-anchor="middle">new mask or noise level</text><text class="k" x="140" y="358" text-anchor="middle">as far as training covered</text><text class="l" x="140" y="384" text-anchor="middle">K passes per map</text></g>
+					<g transform="translate(600,0)"><rect class="pick" x="-6" y="4" width="292" height="398" rx="14"/><text class="t" x="140" y="30" text-anchor="middle">plug-and-play</text><text class="l" x="140" y="54" text-anchor="middle">PnPMass, this talk</text><image href="../assets/figures/maps/shear_field_thumb.png" x="8" y="104" width="52" height="52" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="8" y="104" width="52" height="52" rx="4"/><text class="l" x="34" y="178" text-anchor="middle">data</text><path class="arw" d="M60 126 L67.0 126.0"/><path class="hd" d="M77 126 L67.0 120.5 L67.0 131.5 Z"/><rect class="phys" x="77" y="96" width="110" height="60" rx="0"/><text class="b" x="132" y="132" text-anchor="middle">data step</text><rect class="net" x="77" y="208" width="110" height="60" rx="12"/><text class="b" x="132" y="244" text-anchor="middle">denoiser</text><path class="arw" d="M164 156 L164.0 198.0"/><path class="hd" d="M164 208 L169.5 198.0 L158.5 198.0 Z"/><path class="arw" d="M100 208 L100.0 166.0"/><path class="hd" d="M100 156 L94.5 166.0 L105.5 166.0 Z"/><text class="b" x="132" y="188" text-anchor="middle">&#215;8</text><path class="arw" d="M187 126 L196.0 126.0"/><path class="hd" d="M206 126 L196.0 120.5 L196.0 131.5 Z"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="208" y="100" width="52" height="52" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="208" y="100" width="52" height="52" rx="4"/><text class="l" x="234" y="174" text-anchor="middle">image</text><rect class="train" x="67" y="198" width="130" height="80" rx="14"/><text class="la" x="132" y="300" text-anchor="middle">trained once, alone</text><text class="l" x="140" y="330" text-anchor="middle">new mask or noise level</text><text class="k acc" x="140" y="358" text-anchor="middle">nothing to retrain</text><text class="l" x="140" y="384" text-anchor="middle">eight passes per map</text></g>
+					<g transform="translate(900,0)"><text class="t" x="140" y="30" text-anchor="middle">posterior sampling</text><text class="l" x="140" y="54" text-anchor="middle">score-based, Remy et al. 2023</text><image href="../assets/figures/maps/shear_field_thumb.png" x="8" y="104" width="52" height="52" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="8" y="104" width="52" height="52" rx="4"/><text class="l" x="34" y="178" text-anchor="middle">data</text><path class="arw" d="M60 126 L67.0 126.0"/><path class="hd" d="M77 126 L67.0 120.5 L67.0 131.5 Z"/><rect class="phys" x="77" y="96" width="110" height="60" rx="0"/><text class="b" x="132" y="132" text-anchor="middle">likelihood</text><rect class="net" x="77" y="208" width="110" height="60" rx="12"/><text class="b" x="132" y="244" text-anchor="middle">score model</text><path class="arw" d="M164 156 L164.0 198.0"/><path class="hd" d="M164 208 L169.5 198.0 L158.5 198.0 Z"/><path class="arw" d="M100 208 L100.0 166.0"/><path class="hd" d="M100 156 L94.5 166.0 L105.5 166.0 Z"/><text class="b" x="132" y="188" text-anchor="middle">&#215;1000s</text><path class="arw" d="M187 126 L196.0 126.0"/><path class="hd" d="M206 126 L196.0 120.5 L196.0 131.5 Z"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="204" y="92" width="46" height="46" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="204" y="92" width="46" height="46" rx="4"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="212" y="100" width="46" height="46" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="212" y="100" width="46" height="46" rx="4"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="220" y="108" width="46" height="46" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="220" y="108" width="46" height="46" rx="4"/><text class="l" x="243" y="176" text-anchor="middle">samples</text><rect class="train" x="67" y="198" width="130" height="80" rx="14"/><text class="la" x="132" y="300" text-anchor="middle">trained once, alone</text><text class="l" x="140" y="330" text-anchor="middle">new mask or noise level</text><text class="k acc" x="140" y="358" text-anchor="middle">nothing to retrain</text><text class="l" x="140" y="384" text-anchor="middle">thousands of passes</text></g>
+					<rect class="phys" x="0" y="422" width="26" height="18" rx="0"/><text class="l" x="34" y="437" text-anchor="start">a physics step, fixed</text><rect class="net" x="300" y="422" width="26" height="18" rx="6"/><text class="l" x="334" y="437" text-anchor="start">a network</text><rect class="train" x="600" y="422" width="26" height="18" rx="4"/><text class="l" x="634" y="437" text-anchor="start">what is trained together</text>
+					</svg>
+					<p class="lead-line need">Only the two on the right survive a new mask or noise level without retraining. Plug&#8209;and&#8209;play does it in eight passes; the error bars come next.</p>
 					<aside class="notes">
-						<p><strong>four ways</strong></p>
+						<p><strong>four ways</strong> &mdash; <em>the dashed box is what is trained together; grey is physics, blue is a network</em></p>
 						<ul>
-							<li>the axis that matters for a survey: is the prior learned <strong>independently of the operator</strong>? then a new mask or noise level costs nothing</li>
-							<li>end to end: physics only in the training pairs; one pass; retrain per configuration (DeepMass, MMGAN)</li>
-							<li>unrolled: the iteration is the architecture, trained through; transfers only as far as training covered</li>
-							<li>plug-and-play: fixed iteration, network = prior only; eight passes; nothing to retrain</li>
-							<li>posterior sampling with a learned prior (score-based, Remy 2023; François this morning): full posterior, many passes per sample</li>
-							<li>▲ a survey needs accurate + any configuration + fast + error bars; PnP gives three, the bars come next</li>
+							<li>end to end: the physics only in the training pairs; one pass; a new mask or noise level means retraining (DeepMass, MMGAN)</li>
+							<li>unrolled: K physics steps and K networks on one rail, trained through together; transfers as far as training covered</li>
+							<li>plug-and-play: a fixed loop, data step and denoiser; only the denoiser is trained, once, alone; eight passes; nothing to retrain</li>
+							<li>posterior sampling: the same idea inside a sampler (score-based, Remy 2023; François this morning); full posterior, thousands of passes</li>
+							<li>▲ the two on the right survive a new configuration because the prior never saw the operator; PnP is the cheap one, and the bars come next</li>
 						</ul>
 					</aside>
 				</section>
@@ -1434,28 +1365,39 @@
 
 			<!-- ==========  CLOSE  ========== -->
 
-			<section class="openq" data-theme="light">
-				<h3 class="slide-title tight">Three open questions I would take from this room</h3>
-				<div class="coreq three">
-					<div class="qcard">
-						<span class="qtab">coverage where it matters</span>
-						<p>The conformal guarantee is <b>marginal</b>: on average over pixels. The misses concentrate at the <b class="alert">peaks</b>, which is where the information is. Conditional coverage at map level, at a cost a survey can pay?</p>
+			<section class="chainslide thesismap openq" data-theme="light">
+				<h3 class="slide-title tight">Three open questions, on the steps where they live</h3>
+				<span class="qstep s1 fragment" data-fragment-index="1"></span>
+				<span class="qstep s2 fragment" data-fragment-index="2"></span>
+				<span class="qstep s3 fragment" data-fragment-index="3"></span>
+				<div class="chart-slot" data-steps="kmap | mm | syst comp summ"></div>
+				<div class="qbay">
+					<div class="qslot k1 coreq">
+						<div class="qcard">
+							<span class="qtab">coverage where it matters</span>
+							<p>The conformal guarantee is <b>marginal</b>, and the misses sit at the <b class="alert">peaks</b>. Conditional coverage at map level, at a cost a survey can pay?</p>
+						</div>
 					</div>
-					<div class="qcard">
-						<span class="qtab">certificates for large denoisers</span>
-						<p>Plug&#8209;and&#8209;play converges if the denoiser is <b>non&#8209;expansive</b>. Regularising the Jacobian of a seven&#8209;million&#8209;parameter transformer is costly, so we verify convergence empirically. Cheaper <b class="alert">certificates</b>?</p>
+					<div class="qslot k2 coreq">
+						<div class="qcard">
+							<span class="qtab">certificates for large denoisers</span>
+							<p>Convergence needs a <b>non&#8209;expansive</b> denoiser; for seven million parameters we verify it empirically. A <b class="alert">cheaper certificate</b> than a Jacobian bound?</p>
+						</div>
 					</div>
-					<div class="qcard">
-						<span class="qtab">learned features under a wrong simulator</span>
-						<p>The encoder's ceiling is a ceiling <b>for the simulator</b>. When the physics is missing (baryons, in the backup), which feature degrades gracefully, and can we <b class="alert">tell without the truth</b>?</p>
+					<div class="qslot k3 coreq">
+						<div class="qcard">
+							<span class="qtab">learned features under a wrong simulator</span>
+							<p>The encoder's ceiling is the <b>simulator's</b>. When the physics is missing, which feature degrades gracefully, and <b class="alert">can we tell</b> without the truth?</p>
+						</div>
 					</div>
 				</div>
 				<aside class="notes">
-					<p><strong>open questions</strong></p>
+					<p><strong>open questions</strong> &mdash; <em>the chain again, three clicks</em></p>
 					<ul>
-						<li>coverage: marginal, misses at the peaks; conditional conformal at map level, at survey cost?</li>
-						<li>certificates: non-expansiveness of a 7 M transformer; Jacobian regularisation too costly; verified empirically; cheaper guarantees?</li>
-						<li>misspecification: the ceiling is the simulator's; baryons biased the hand-crafted features 3.6σ at Euclid area, fixed by dropping one band; the encoder has no band to drop; can we detect it without the truth?</li>
+						<li><strong>»</strong> the map: the guarantee is marginal, the misses at the peaks; conditional coverage at map level, at survey cost?</li>
+						<li><strong>»</strong> mass mapping: non-expansiveness of a 7 M transformer, verified empirically; a cheaper certificate?</li>
+						<li><strong>»</strong> systematics into the features: the ceiling is the simulator's; baryons (backup) biased the hand-crafted features and one band fixed it; the encoder has no band to drop; can we tell without the truth?</li>
+						<li>if any of these is your problem, find me at lunch</li>
 					</ul>
 				</aside>
 			</section>
