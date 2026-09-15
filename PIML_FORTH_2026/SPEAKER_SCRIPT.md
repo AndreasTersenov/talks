@@ -95,7 +95,7 @@ benchmarked, calibrated, tested.
 
 ---
 
-# Part 1 — learning the prior · frames 6–15
+# Part 1 — learning the prior · frames 6–16
 
 ---
 
@@ -208,24 +208,32 @@ back; eight iterations later it has converged.
 
 ---
 
-## A1.8 — the error bar, drawn · frame 14 · 1:26
+## A1.8 — the second network, and its objective · frame 14 · 1:00
 
 The map is half the result; the other half is the error bar. The data fans out to two networks.
 The denoiser, in the loop, gives the map. A second network, trained on the same simulated pairs,
-predicts the squared residual of the reconstruction, and the minimiser of that loss is the
-posterior variance, pixel by pixel: one forward pass, no sampling. The spread it has to cover comes
-from two places: the noise and the mask, the fan of maps from the first slide, and the learned
-prior that picked one of them. **▲** But a network's own variance carries no guarantee.
-
-[CLICK] So we calibrate it on held-out maps where the truth is known. Draw the network's interval:
-seven of fourteen truths land outside. Score each one by how far outside it fell, take the
-quantile, and widen every interval by that much: three of fourteen, the rate you asked for.
-**▲** That is conformalised quantile regression, and the guarantee is distribution-free and
-finite-sample: it holds whether or not the network is well specified.
+gives the error map. Its objective is the squared residual of the reconstruction: regress the
+square of the difference between the truth and the map, and the minimiser of that loss is the
+posterior variance, pixel by pixel. One forward pass each, no sampling. The spread it has to cover
+comes from two places: the noise and the mask, the fan of maps from the first slide, and the
+learned prior that picked one of them. **▲** But a network's own variance carries no guarantee.
 
 ---
 
-## A1.9 — accurate, with the smallest calibrated error bars · frame 15 · 1:16
+## A1.8b — conformal calibration · frame 15 · 1:01
+
+So we calibrate it on held-out maps where the truth is known, and the procedure is three steps you
+can see. Draw the network's interval at a pixel across the held-out set: seven of fourteen truths
+land outside, more than the rate we asked for. Score each one by how far outside it fell, negative
+if it was inside, and take the quantile. Widen every interval by that much: three of fourteen, the
+rate you asked for. [CLICK] **▲** That is conformalised quantile regression, and this is the
+guarantee: the miss rate sits between alpha minus one over n plus one and alpha, for any network
+and any distribution, with n held-out maps. Distribution-free, finite-sample. It holds whether or
+not the network is well specified.
+
+---
+
+## A1.9 — accurate, with the smallest calibrated error bars · frame 16 · 1:16
 
 The whole result in one plot. Across, reconstruction error; up, the size of the calibrated error
 bar; lower left is better. Colour is the miscoverage rate: before calibration the circles sit above
@@ -242,18 +250,18 @@ and weakest at the peaks; and this is a single cosmology.
 ---
 ---
 
-# Part 2 — learning the features, or not · frames 16–24
+# Part 2 — learning the features, or not · frames 17–25
 
 ---
 
-## A2.0 — the Part 2 card · frame 16 · 0:12
+## A2.0 — the Part 2 card · frame 17 · 0:12
 
 Part 2, reading the map. The map has to become a feature vector before inference, and the question
 is whether that step needs a network.
 
 ---
 
-## A2.1 — same power spectrum · frame 17 · 0:50
+## A2.1 — same power spectrum · frame 18 · 0:50
 
 The standard feature vector in this field is second order: the two-point function, the Fourier
 amplitudes. **▲** For a Gaussian random field it is complete. But the late-time matter field is not
@@ -265,7 +273,7 @@ wavelet statistics, Minkowski functionals.
 
 ---
 
-## A2.2 — the two hand-crafted features · frame 18 · 1:01
+## A2.2 — the two hand-crafted features · frame 19 · 1:01
 
 You have just seen a starlet in the previous talk, so I can be brief. Ours is the same isotropic
 undecimated wavelet transform: the map becomes a sum of band-pass images, each carrying structure of
@@ -278,7 +286,7 @@ every pixel. Think of it as the one-point distribution of the field in the wavel
 
 ---
 
-## A2.3 — likelihood-free inference · frame 19 · 1:01
+## A2.3 — likelihood-free inference · frame 20 · 1:01
 
 For these features there is no analytic likelihood. What we have is a simulator. So draw
 parameters from the prior, run it, keep the pairs. [CLICK] Those pairs train a conditional
@@ -292,7 +300,7 @@ it; what happens when the simulator's physics is wrong is a separate study, in t
 
 ---
 
-## A2.4 — the learned encoder · frame 20 · 1:06
+## A2.4 — the learned encoder · frame 21 · 1:06
 
 Beating second-order statistics is easy. The real question is how close to **all** of the
 information in the map a feature vector gets. And since the inference is already a network, why not
@@ -306,7 +314,7 @@ tests on every posterior. Only the feature vector differs.
 
 ---
 
-## A2.6 — the gap · frame 21 · 0:25
+## A2.6 — the gap · frame 22 · 0:25
 
 First result. The two are not far apart, but [CLICK] the learned encoder wins, by thirty-six per
 cent in constraining power. So the hand-crafted feature loses part of the information. But the
@@ -315,7 +323,7 @@ does not see.
 
 ---
 
-## A2.7 — the channels are correlated · frame 22 · 0:53
+## A2.7 — the channels are correlated · frame 23 · 0:53
 
 The maps are a multi-channel image. The galaxies are sliced by distance. [CLICK] Take the most
 distant slice. [CLICK] Its light is lensed by all the matter in front of it, [CLICK] which gives its
@@ -327,7 +335,7 @@ sees only the marginals. The encoder's first convolutional layer mixes all four 
 
 ---
 
-## A2.8 — two routes · frame 23 · 1:05
+## A2.8 — two routes · frame 24 · 1:05
 
 Two ways to give a hand-crafted feature the same access. **Route one**, change the input: for every
 pair of channels, multiply the two maps pixel by pixel. The product is strong only where both have
@@ -340,7 +348,7 @@ the redshift information. We call it the joint ℓ1-norm, and it needs no extra 
 
 ---
 
-## A2.9 — the answer · frame 24 · 0:52
+## A2.9 — the answer · frame 25 · 0:52
 
 Same maps, same flow, four feature vectors. The per-channel ℓ1-norm. [CLICK] Plus the product
 channels. [CLICK] The joint ℓ1-norm. [CLICK] And the learned encoder, which lands on top of the
@@ -354,7 +362,7 @@ changes.
 ---
 ---
 
-## O — three open questions, on the chain · frame 25 · 0:55
+## O — three open questions, on the chain · frame 26 · 0:55
 
 Before the conclusions, three open questions, on the steps where they live. [CLICK] The map:
 the conformal guarantee is marginal, and the misses sit at the peaks, where the information is.
@@ -367,7 +375,7 @@ these is your problem, find me at lunch.
 
 ---
 
-## C — conclusions · frame 26 · 0:54
+## C — conclusions · frame 27 · 0:54
 
 So. Question one: learn only the prior, keep the physics in the data term. **▲** Yes. Within one
 per cent of the networks trained end to end for a single configuration, the smallest calibrated
@@ -385,21 +393,21 @@ it. Thank you.
 
 Stamped by `measure-script.py`. Target **22:00**. The cut ladder, in order, each with what it buys:
 
-1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 24, so the gap
-   can be said there. Frame 21 stays in the file, skipped. −0:30
+1. **A2.6 folded into A2.9's build**: the auto-only arm is the first frame of frame 25, so the gap
+   can be said there. Frame 22 stays in the file, skipped. −0:30
 2. **A1.6's table folded into A1.7's opening sentence**: *nothing existing was accurate, flexible,
    fast and came with error bars at once*. −0:40
 3. **A0.4 Euclid folded into A0.3's close**: one sentence, *and Euclid is measuring billions of
    them now*. −0:35
 4. **A2.7's flipbook to three clicks**: distant slice, nearer slice, one map per channel. −0:20
-5. **A1.8 back to backup**, its two sentences kept in A1.9. −1:00
+5. **A1.8b back to backup**, its guarantee sentence kept in A1.9. −0:55
 
 **Never cut**: A1.1 (the inverse problem), A1.5's *four per cent against a hundred and
 fifty-seven*, A1.7, A1.9's *smallest calibrated bars, trained once*, A2.4's definition of the
 ceiling, A2.9's *a tie, not a win*.
 
-**Planned exit**: end of Part 1 (frame 15), expect 13:30 on the clock. Behind → cuts 1 and 4; the open
-questions (frame 25) can go to one spoken sentence, −0:40.
+**Planned exit**: end of Part 1 (frame 16), expect 14:00 on the clock. Behind → cuts 1 and 4; the open
+questions (frame 26) can go to one spoken sentence, −0:40.
 
 ---
 

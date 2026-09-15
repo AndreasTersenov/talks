@@ -3070,3 +3070,19 @@
 .reveal .slides section.uq2 figure.calib .kicker { display: block; margin: 0 0 0.05em 0.6em; }
 .reveal .slides section.uq2 figure.calib img { display: block; width: 100%; max-width: 100%; max-height: none; margin: 0; }
 .reveal .slides section.uq2 .pull { margin: 0.25em auto 0; font-size: 0.9em; }
+
+/* the error-bar slides, split (frames 14 and 15): the network and its objective,
+   then the calibration schematic with the slide to itself. */
+.reveal .slides section.uq2 svg.uqstrip { width: 92%; }
+.reveal .slides section.uq2 .objective { width: 88%; margin: 0.55em auto 0; text-align: left; }
+.reveal .slides section.uq2 .objective .kicker { display: block; margin: 0 0 0.05em 0.3em; }
+.reveal .slides section.uq2 .objective .uqloss { margin: 0.1em 0 0; text-align: center; }
+.reveal .slides section.uq2 .objective .uqloss .katex { font-size: 1.15em; }
+.reveal .slides section.uq2 .objective .gloss { margin: 0.35em 0 0; text-align: center; font-size: 0.86em; color: var(--fg); }
+.reveal .slides section.uq3 figure.calib { width: 96%; margin: 0.5em auto 0; }
+.reveal .slides section.uq3 figure.calib img { display: block; width: 100%; max-width: 100%; max-height: none; margin: 0; }
+.reveal .slides section.uq3 .guarantee { width: 88%; margin: 0.7em auto 0; border-top: 1px solid var(--hair); padding-top: 0.5em; }
+.reveal .slides section.uq3 .guarantee .cqeq { margin: 0; }
+.reveal .slides section.uq3 .guarantee .cqeq .katex { font-size: 1.15em; }
+.reveal .slides section.uq3 .guarantee .gloss { margin: 0.3em 0 0; font-size: 0.86em; text-align: center; color: var(--fg); }
+.reveal .slides section.uq3 .srcref { font-size: 0.7em; position: static; display: block; width: 88%; margin: 0.55em auto 0; text-align: right; }

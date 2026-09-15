@@ -782,24 +782,44 @@
 				</section>
 
 				<section class="uq2" data-theme="light">
-					<h3 class="slide-title tight"><span class="sec">&sect;1</span> A <b class="alert">second network</b> predicts the error; conformal calibration makes it honest</h3>
+					<h3 class="slide-title tight"><span class="sec">&sect;1</span> A <b class="alert">second network</b> predicts the error, pixel by pixel, from the same simulated pairs</h3>
 					<svg class="uqstrip" viewBox="0 0 1180 270" role="img" aria-label="the data fans out to two networks: the denoiser in the plug-and-play loop gives the map, a second variance network gives the predicted error, pixel by pixel; the two are trained on the same simulated pairs"><image href="../assets/figures/maps/shear_field_thumb.png" x="60" y="85" width="100" height="100" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="60" y="85" width="100" height="100" rx="4"/><text class="l" x="110" y="210" text-anchor="middle">data</text><path class="arw" d="M160 118 L288.6 72.3"/><path class="hd" d="M298 69 L286.7 67.2 L290.4 77.5 Z"/><path class="arw" d="M160 152 L288.6 197.7"/><path class="hd" d="M298 201 L290.4 192.5 L286.7 202.8 Z"/><rect class="net" x="300" y="40" width="300" height="58" rx="12"/><text class="b" x="450" y="76" text-anchor="middle">denoiser, in the loop, &#215;8</text><rect class="net" x="300" y="172" width="300" height="58" rx="12"/><text class="b" x="450" y="208" text-anchor="middle">variance network</text><rect class="train" x="290" y="28" width="320" height="214" rx="14"/><text class="la" x="450" y="20" text-anchor="middle">trained on the same simulated pairs</text><path class="arw" d="M600 69 L668.0 69.0"/><path class="hd" d="M678 69 L668.0 63.5 L668.0 74.5 Z"/><path class="arw" d="M600 201 L668.0 201.0"/><path class="hd" d="M678 201 L668.0 195.5 L668.0 206.5 Z"/><image href="../assets/figures/maps/pnpmass_kappa_panel.png" x="680" y="9" width="150" height="120" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="680" y="9" width="150" height="120" rx="4"/><image href="../assets/figures/maps/pnpmass_sigma_panel.png" x="680" y="141" width="150" height="120" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="680" y="141" width="150" height="120" rx="4"/><text class="k" x="848" y="62" text-anchor="start">the map, &#954;&#770;</text><text class="l" x="848" y="88" text-anchor="start">one forward pass</text><text class="k" x="848" y="194" text-anchor="start">its predicted error, &#963;&#770;</text><text class="l" x="848" y="220" text-anchor="start">one forward pass, no sampling</text></svg>
-					<figure class="calib fragment fade-in" data-fragment-index="1">
-						<span class="kicker">then, on held&#8209;out maps where the truth is known:</span>
+					<div class="objective">
+						<span class="kicker">the objective: the squared residual of the reconstruction</span>
+						<p class="uqloss">$$\min_{\Omega}\ \mathbb{E}\left[\left\| G_{\Omega}(\gamma) - \big(\kappa - F_{\Theta}(\gamma)\big)^{2} \right\|_2^{2}\right]$$</p>
+						<p class="gloss">its minimiser <b>is</b> the posterior variance, pixel by pixel: one forward pass, no sampling</p>
+					</div>
+					<aside class="notes">
+						<p><strong>the second network</strong></p>
+						<ul>
+							<li>the data fans out: the denoiser in the loop gives the map; a second network gives the error map; trained on the same simulated pairs</li>
+							<li>objective: regress the squared residual of the reconstruction; the minimiser of that loss is the posterior variance, pixel by pixel</li>
+							<li>one forward pass each, no sampling</li>
+							<li>where the spread comes from: noise + mask (the fan of maps), and the learned prior that picked one</li>
+							<li>▲ but a network's own variance carries no guarantee: next slide</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section class="uq3" data-theme="light">
+					<h3 class="slide-title tight"><span class="sec">&sect;1</span> <b class="alert">Conformal calibration</b> makes the error bar honest, on held&#8209;out maps</h3>
+					<figure class="calib">
 						<img class="plain" src="../assets/diagrams/cqr_schematic_talk.png"
 							alt="three panels: the network's interval on fourteen held-out pixels, seven truths outside; the conformity scores sorted with the quantile q marked; every interval widened by q, three of fourteen outside, the rate asked for">
 					</figure>
-					<p class="pull fragment fade-in" data-fragment-index="1">
-						A <b class="alert">coverage guarantee that holds</b> whether or not the network is well specified: distribution&#8209;free, finite&#8209;sample.
-					</p>
+					<div class="guarantee fragment fade-in">
+						<p class="cqeq">$$\alpha - \tfrac{1}{n+1} \;\le\; \mathbb{P}\big\{\kappa \notin [\hat\kappa^-,\, \hat\kappa^+]\big\} \;\le\; \alpha$$</p>
+						<p class="gloss">for any network and any distribution, with <b>n</b> held&#8209;out maps: <b class="alert">distribution&#8209;free, finite&#8209;sample</b></p>
+					</div>
+					<p class="srcref">Romano, Patterson &amp; Cand&egrave;s 2019, Leterme et al. 2026</p>
 					<aside class="notes">
-						<p><strong>the error bar</strong> &mdash; <em>one click: the calibration row</em></p>
+						<p><strong>conformal calibration</strong> &mdash; <em>one click: the guarantee</em></p>
 						<ul>
-							<li>the data fans out: the denoiser in the loop gives the map; a second network gives the squared residual, whose minimiser is the posterior variance, pixel by pixel; one pass each, no sampling</li>
-							<li>spread from: noise + mask (the fan of maps), and the learned prior that picked one</li>
-							<li>▲ a network's variance has no guarantee</li>
-							<li><strong>»</strong> on held-out maps: draw the interval, count the misses (7 of 14); score each by how far outside; take the quantile; widen every interval by it; now 3 of 14, the rate you asked for</li>
-							<li>▲ distribution-free, finite-sample; holds whether or not the network is right</li>
+							<li>held-out maps where the truth is known; draw the network's interval: 7 of 14 truths outside</li>
+							<li>score each by how far outside it fell (negative inside); take the quantile q</li>
+							<li>widen every interval by q: 3 of 14 outside, the rate you asked for; q can be negative and shrink them</li>
+							<li><strong>»</strong> ▲ the guarantee: miss rate between α − 1/(n+1) and α, for any network, any distribution; here 1024 maps, α ≈ 4.55 %</li>
+							<li>honest limit: marginal, an average over pixels; peaks are where it is weakest (open question at the end)</li>
 						</ul>
 					</aside>
 				</section>
