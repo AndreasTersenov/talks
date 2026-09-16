@@ -62,7 +62,7 @@
 				</div>
 				<div class="title-footer">
 					<p class="affil affil-lead"><b class="alert">Andreas Tersenov</b> &nbsp; FORTH, University of Crete, CEA Paris-Saclay</p>
-					<p class="affil affil-sub">with <b>Hubert Leterme</b>, <b>Jean-Luc Starck</b>, <b>Martin Kilbinger</b> and collaborators</p>
+					<p class="affil affil-sub">with <b>Hubert Leterme</b>, <b>Jean-Luc Starck</b>, <b>Martin Kilbinger</b> and <b>Jalal Fadili</b></p>
 				</div>
 
 				<!-- Out of the footer card and down to the bottom rail (Andreas, 2026-09-10). It is
@@ -484,19 +484,19 @@
 					<div class="choices mmchoices">
 						<div class="ch">
 							<span class="n">1</span><span class="cn">Kaiser&ndash;Squires</span>
-							<span class="ca">no prior, <b>smoothing</b> only</span>
+							<span class="ca">no prior, smoothing only</span>
 						</div>
 						<div class="ch">
 							<span class="n">2</span><span class="cn">Wiener filtering</span>
-							<span class="ca">an <b>&#8467;2 prior</b>: a Gaussian field</span>
+							<span class="ca">an &#8467;2 prior: a Gaussian field</span>
 						</div>
 						<div class="ch">
 							<span class="n">3</span><span class="cn">sparse recovery</span>
-							<span class="ca">an <b>&#8467;1 prior</b>: sparse in wavelets</span>
+							<span class="ca">an &#8467;1 prior: sparse in wavelets</span>
 						</div>
 						<div class="ch">
 							<span class="n">4</span><span class="cn">MCALens</span>
-							<span class="ca">Gaussian <b>plus</b> sparse</span>
+							<span class="ca">Gaussian + sparse</span>
 						</div>
 						<div class="ch learned">
 							<span class="n">5</span><span class="cn">deep learning</span>
@@ -723,7 +723,7 @@
 					<g transform="translate(900,0)"><text class="t" x="150" y="32" text-anchor="middle">posterior sampling</text><text class="l" x="150" y="58" text-anchor="middle">Remy et al. 2023</text><image href="../assets/figures/maps/shear_field_thumb.png" x="18" y="108" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="18" y="108" width="40" height="40" rx="4"/><path class="arw" d="M58 128 L63.0 128.0"/><path class="hd" d="M73 128 L63.0 122.5 L63.0 133.5 Z"/><rect class="phys" x="74" y="98" width="142" height="60" rx="0"/><text class="b" x="145" y="135" text-anchor="middle">data step</text><rect class="net" x="74" y="216" width="142" height="60" rx="12"/><text class="b" x="145" y="253" text-anchor="middle">score model</text><path class="arw" d="M206 158 L206.0 206.0"/><path class="hd" d="M206 216 L211.5 206.0 L200.5 206.0 Z"/><path class="arw" d="M84 216 L84.0 168.0"/><path class="hd" d="M84 158 L78.5 168.0 L89.5 168.0 Z"/><text class="b" x="145" y="194" text-anchor="middle">&#215;10<tspan baseline-shift="super" font-size="70%">3</tspan></text><path class="arw" d="M216 128 L218.0 128.0"/><path class="hd" d="M228 128 L218.0 122.5 L218.0 133.5 Z"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="226" y="98" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="226" y="98" width="40" height="40" rx="4"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="234" y="106" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="234" y="106" width="40" height="40" rx="4"/><image href="../assets/figures/maps/kappa_denoised_thumb.png" x="242" y="114" width="40" height="40" preserveAspectRatio="xMidYMid slice"/><rect class="frame" x="242" y="114" width="40" height="40" rx="4"/><text class="l" x="262" y="182" text-anchor="middle">samples</text><rect class="train" x="64" y="206" width="162" height="80" rx="14"/><text class="la" x="145" y="318" text-anchor="middle">trained once, alone</text><text class="l" x="150" y="362" text-anchor="middle">new mask or noise</text><text class="k acc" x="150" y="396" text-anchor="middle">nothing to retrain</text></g>
 					<line class="div" x1="300" y1="14" x2="300" y2="408"/><line class="div" x1="600" y1="14" x2="600" y2="408"/><line class="div" x1="900" y1="14" x2="900" y2="408"/>
 					</svg>
-					<p class="lead-line need">Dashed boxes: what is trained together. Only the two on the right survive a new mask or noise level without retraining.</p>
+					<p class="lead-line need">Dashed boxes: what is trained together. Only the two on the right work for a new mask or noise covariance without retraining.</p>
 					<aside class="notes">
 						<p><strong>four ways</strong> &mdash; <em>the dashed box is what is trained together; grey is physics, blue is a network</em></p>
 						<ul>
