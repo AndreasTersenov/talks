@@ -223,7 +223,7 @@
       "<li>Both are trained <b>jointly</b> on the expected log posterior under the flow</li>" +
       "</ul>",
     2: "<ul class='ns-bul'>" +
-      "<li>A <b>variational lower bound</b> on \\(I(t;\\theta)-H(\\theta)\\) (Barber &amp; Agakov 2003): tight when \\(q_\\psi = p(\\theta\\mid t)\\), so maximising it over \\(\\phi\\) maximises \\(I(t;\\theta)\\)</li>" +
+      "<li>A <b>variational lower bound</b> on \\(I(t;\\theta)-H(\\theta)\\): tight when \\(q_\\psi = p(\\theta\\mid t)\\), so maximising it over \\(\\phi\\) maximises \\(I(t;\\theta)\\)</li>" +
       "<li>At the optimum \\(t\\) is a <b>sufficient statistic</b>: \\(p(\\theta\\mid x)=p(\\theta\\mid t)\\)</li>" +
       "<li>The <b>ceiling</b> the hand-crafted features are measured against (VMIM, Jeffrey, Alsing &amp; Lanusse 2021)</li>" +
       "</ul>",
