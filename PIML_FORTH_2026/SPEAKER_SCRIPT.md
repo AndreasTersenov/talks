@@ -174,13 +174,15 @@ operator. Plug-and-play is the cheap one: eight passes. What we add is the error
 
 ---
 
-## A1.7 — plug-and-play · frame 11 · 1:30
+## A1.7 — plug-and-play · frame 11 · 1:47
 
-Here is the plug-and-play iteration. A gradient step on the data term, towards the measured shear.
-Then the step that used to be a proximal operator, enforcing a hand-crafted prior, is replaced by a
-**denoiser** trained on simulated maps. The iteration converges to a fixed point, under the usual
-non-expansiveness conditions. And the denoiser has learned a much richer model of a mass map than
-anything we can write down.
+Here is the iteration. The first line is one step of **forward–backward splitting**, the standard
+solver for a data term plus a regulariser, and the solver behind the sparse methods from two slides
+ago: a gradient step on the data term, towards the measured shear, then the proximal operator of
+the regulariser, which enforces the hand-crafted prior. Plug-and-play keeps the gradient step and
+replaces the proximal operator with a **denoiser** trained on simulated maps. The iteration
+converges to a fixed point, under the usual non-expansiveness conditions. And the denoiser has
+learned a much richer model of a mass map than anything we can write down.
 
 **▲** It is flexible because of *where the physics sits*. The denoiser is a Swin transformer with
 seven million parameters. It is trained once, on white Gaussian noise over a range of levels, and it
