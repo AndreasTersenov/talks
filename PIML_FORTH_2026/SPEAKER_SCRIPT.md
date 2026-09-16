@@ -12,13 +12,13 @@ read-through skips.
 | act | frames | at 121 wpm |
 |---|---|---|
 | Act 0 — the setup | 1–5 | 4:30 |
-| Part 1 — making the map | 6–19 | 14:56 |
+| Part 1 — making the map | 6–19 | 15:13 |
 | Part 2 — reading the map | 20–27 | 7:42 |
 | Close | 28 | 0:48 |
-| | **28 frames** | **27:56** |
+| | **28 frames** | **28:13** |
 
 > **Over the slot.** The cut ladder at the end says what to drop and what each cut buys. The planned
-> exit is the end of Part 1, at about 19:30 on the clock; behind that, take tiers 1 and 2 live.
+> exit is the end of Part 1, at about 19:45 on the clock; behind that, take tiers 1 and 2 live.
 
 ---
 
@@ -490,15 +490,15 @@ Four frames sit in the file with `data-visibility="hidden"` and no frame number.
 
 # The arithmetic, and how to close it
 
-**27:56 spoken against a 25-minute slot**, at 121 wpm, before the pauses. Stamped by
+**28:13 spoken against a 25-minute slot**, at 121 wpm, before the pauses. Stamped by
 `tools/measure-script.py PIML_FORTH_2026 --wpm 121 --write`; re-run it after every edit, and do not
 trust a row below you have not re-measured.
 
 | act | frames | measured | share |
 |---|---|---|---|
 | Act 0 | 1–5 | 4:30 | 16 % |
-| Part 1 | 6–19 | 14:56 | 53 % |
-| Part 2 | 20–27 | 7:42 | 28 % |
+| Part 1 | 6–19 | 15:13 | 54 % |
+| Part 2 | 20–27 | 7:42 | 27 % |
 | Close | 28 | 0:48 | 3 % |
 
 Part 1 carries the tomographic block, which is what makes the talk long. The ladder is ordered so
@@ -542,8 +542,8 @@ correlated channels of a tomographic analysis; paper in preparation*, and frames
 
 ## Planned exit
 
-End of Part 1, frame 19, at about **19:30** on the clock if nothing was cut. With tiers 0 to 2
-taken in advance (−3:30) it is about 16:30, and the talk lands near 24:30. Part 2 is 7:42 and has
+End of Part 1, frame 19, at about **19:45** on the clock if nothing was cut. With tiers 0 to 2
+taken in advance (−3:30) it is about 16:15, and the talk lands near 24:45. Part 2 is 7:42 and has
 no fat left below tier 2.
 
 ---
