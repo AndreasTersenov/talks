@@ -1,0 +1,1019 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Presentation for CosmoStat group meeting, Feb2025</title>
+	<meta name="description" content="A basic template to start a new talk">
+	<meta name="author" content="Andreas Tersenov">
+
+	<link rel="stylesheet" href="reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+	<link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<!-- ################################################################################################### -->
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title"> Shear & Convergence</h3>
+				<img src="../assets/diagrams/WL_distortions.png" alt="Weak Lensing Distortions" style="width:auto" ; height="300">
+				<div class="fragment fade-up">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title" style="text-align: center;">Convergence $\kappa$
+								</div>
+								<div class="block-content">
+									$$ \kappa = \frac{1}{2} (\partial_1 \partial_1 + \partial_2 \partial_2) \psi =
+									\frac12
+									\nabla^2 \psi $$
+									<hr style="height:6px; visibility:hidden;" />
+									<p style="text-align: center;"> &xrarr; <span style="color: red"> difficult to
+											measure
+										</span> </p>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="block">
+								<div class="block-title" style="text-align: center;">Shear $\gamma$
+								</div>
+								<div class="block-content">
+									$$ \gamma_1 = \frac{1}{2} (\partial_1 \partial_1 - \partial_2 \partial_2) \psi,
+									\,\,
+									\gamma_2 = \partial_1 \partial_2 \psi $$
+									<p style="text-align: center;"> &xrarr; can be measured by statistical analysis
+										of
+										galaxy shapes </p>
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Relation between <b class="alert">$\kappa$</b> and <b class="alert">$\gamma$</b>
+				</h3>
+				<span class="fragment fade-in">
+					<img src="../assets/diagrams/Relation_btw_kappa_and_gamma.pdf" alt="Relation between $\kappa$ and $\gamma$"
+						style="width:auto" ; height="300">
+				</span>
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<ul>
+								<li>From <b class="alert">convergence</b> to <b class="alert">shear</b>: $\,\, \gamma_i
+									=
+									\hat{P}_i \kappa$</li>
+								<li>From <b class="alert">shear</b> to <b class="alert">convergence</b>: $\,\, \kappa =
+									\hat{P}_1 \gamma_1 + \hat{P}_2 \gamma_2$</li>
+							</ul>
+						</div>
+					</div>
+					<br>
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title">
+								</div>
+								<div class="block-content">
+									<span style="color: gray;"> $$ \hat{P}_1(k)=\dfrac{k_1^2 - k_2^2}{k^2}, \,\,
+										\hat{P}_2(k)=\dfrac{2k_1k_2}{k^2} $$ </span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">The Weak Lensing Mass-Mapping as an Inverse Problem</h3>
+				<div class="container">
+					<div class="col">
+						Shear <b class="alert">$\gamma$</b><br>
+						<img data-src="../assets/figures/maps/shear_cat1.png" style="width:450px;"></img>
+					</div>
+
+					<div class="col fragment fade-up">
+						Convergence <b class="alert">$\kappa$</b><br>
+						<img data-src="../assets/figures/maps/kappa.png" style="width:450px;"></img>
+					</div>
+				</div>
+
+				<div style="position:relative; width:1000px; height:100px; margin:0 auto;">
+					<div class="fragment current-visible plain fade-up"
+						style="position:absolute;top:0;left:0;width:1000px;">
+						$$\gamma_1 = \frac{1}{2} (\partial_1^2 - \partial_2^2) \ \Psi \quad;\quad \gamma_2 = \partial_1
+						\partial_2 \ \Psi \quad;\quad \kappa = \frac{1}{2} (\partial_1^2 + \partial_2^2) \ \Psi$$
+					</div>
+					<div class="fragment current-visible plain fade-up"
+						style="position:absolute;top:0;left:0;width:1000px;">
+						$$\boxed{\gamma = \mathbf{P} \kappa}$$
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Kaiser-Squires inversion</h3>
+				<ul>
+					<li class="fragment semi-fade-out"><b class="alert">Mass mapping problem </b> recover an estimate of
+						the convergence from measurements of the shear
+
+						$$\kappa = \dfrac12 \Delta \psi, \,\, \gamma_1 = \dfrac12 \left( \partial_1^2 \psi -
+						\partial_2^2 \psi \right), \,\, \gamma_2 = \partial_1 \partial_2 \psi $$
+						$$\Rightarrow \kappa = \Delta^{-1} \left[ \left( \partial_1^2 - \partial_2^2 \right)
+						\gamma_1 +
+						2\partial_1 \partial_2 \gamma_2 \right] $$
+
+					</li>
+				</ul>
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title"> Kaiser-Squires estimator:
+								</div>
+								<div class="block-content">
+									$$ \tilde{\kappa}_E+i \tilde{\kappa}_B=\left(\frac{k_1^2-k_2^2}{k^2}+i \frac{2 k_1
+									k_2}{k^2}\right)\left(\tilde{\gamma}_1+i
+									\tilde{\gamma}_2\right)=\mathbf{P}\left(\tilde{\gamma}_1+i \tilde{\gamma}_2\right)
+									$$
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					&rarr; <em>$\tilde{\kappa}_E$ and $\tilde{\kappa}_B$ are complex representations of convergence E
+						and B
+						modes. </em>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">From galaxies to mass maps</h3>
+				<img src="../assets/diagrams/from_galaxies_to_mass_maps.pdf"> </img>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Mass mapping as an inverse problem</h3>
+				<br>
+				<ul>
+					<li>Binned data: $\gamma = F^* P F \, \kappa$</li>
+					<li>Unbinned data: $\gamma = T^* P F \, \kappa$</li>
+				</ul>
+				<br>
+				<br>
+				<em> <small>$T =$ Non Equispaced Disctrete Fourier Transform (NDFT) </small> </em>
+				<br><br><br>
+				<div class="block">
+					<div class="block-title">
+					</div>
+					<div class="block-content" align="center">
+						$$ \tilde{\boldsymbol{\kappa}}=\min _{\boldsymbol{\kappa}}\|\boldsymbol{\gamma}-\mathbf{A}
+						\boldsymbol{\kappa}\|_{\boldsymbol{\Sigma}_n}^2 $$
+						with $\mathbf{A} = \boldsymbol{F} \mathbf{P} \boldsymbol{F}^* $
+					</div>
+				</div>
+				<br><br><br>
+
+				<span style="color: red;">There is no unique and stable solution, it is an ill-posed problem.</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> Mass Mapping</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Kaiser-Squires inversion</h3>
+				<div class="block; fragment fade-in">
+					<div class="block-title"> Advantages:
+					</div>
+					<div class="block-content">
+						<ul>
+							<li>Simple <em class="alert">linear</em> operator</li>
+
+							<li>Very easy to implement in Fourier space</li>
+
+							<li>Optimal, in theory</li>
+						</ul>
+					</div>
+				</div>
+
+				<span class="fragment fade-in">
+					<div class="container">
+						<div class="col">
+							<div class="block">
+								<div class="block-title"> Practical difficulties:</div>
+								<div class="block-content">
+									<ul>
+										<li>Shear measurements are discrete, <b class="alert">noisy</b>, and <b
+												class="alert">irregularly sampled</b> </li>
+										<br>
+										<li>We actually measure the <i class="alert">reduced shear</i>: $g =
+											\gamma/(1-\kappa)$</li>
+										<br>
+										<li>Masks and integration over a subset of $\mathbb{R}^2$ lead to border errors
+											&rArr; <b class="alert">missing data problem</b></li>
+										<br>
+										<li>Convergence is recoverable up to a constant &rArr; <b
+												class="alert">mass-sheet
+												degeneracy problem</b> </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<img src="../assets/figures/maps/residual_kappa.pdf" alt="Kaiser-Squires inversion" style="width:auto" ;
+								height="500">
+						</div>
+					</div>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Inpainting</h3>
+				<ul>
+					<li><b class="alert">Inpainting methods</b> &rarr; techniques to fill in missing data in images by
+						estimating the missing values from the known ones.</li>
+					<li>A way to deal with the <b class="alert">missing data problem</b> in mass mapping and
+						with the <b class="alert">border effects</b> in the convergence field.</li>
+					<li>Implement a <b class="alert">sparse inpainting</b> based on the DCT (assume that
+						the full $\kappa$-field is sparse in the DCT dictionary &rarr; apply an iterative thresholding
+						algorithm to recover the missing data).</li>
+
+					</li>
+				</ul>
+
+				<img src="../assets/figures/maps/Inpainting.pdf" alt="Inpainting" style="width:auto">
+
+			</section>
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">MCALens</h3>
+				<ul>
+					<li>Models $\kappa$-field as a sum of a <b class="alert">Gaussian</b> and <b
+							class="alert">non-Gaussian</b> component
+						$$\boxed{\kappa = \underbrace{\kappa_{\rm NG}}_{\text{Standard Wiener filter approach}} +
+						\underbrace{\kappa_\rm G}_{\text{Modified wavelet approach}}}$$
+						$$\min _{\kappa_G, \kappa_{N G}}\left\|\gamma-\mathbf{A}\left(\kappa_G+\kappa_{N
+						G}\right)\right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)+C_{\mathrm{NG}}\left(\kappa_{N
+						G}\right) $$ </li>
+					<br>
+					<li><b class="alert">MCA</b> (morphological Component Analysis) performs an alternating
+						minimization
+						scheme:
+						<br><br>
+						<ul>
+							<li>Estimate $\mathbf{\kappa}_{\mathrm{G}}$ assuming $\mathbf{\kappa}_{\mathrm{NG}}$ is
+								known: $$\min _{\kappa_G}\left\|\left(\gamma-\mathbf{A}\kappa_{N G}\right)
+								-\mathbf{A}\kappa_{G} \right\|_{\Sigma_n}^2+C_{\mathrm{G}}\left(\kappa_G\right)$$
+							</li>
+							<li>Estimate $\mathbf{\kappa}_{\mathrm{NG}}$ assuming $\mathbf{\kappa}_{\mathrm{G}}$ is
+								known: $$\min _{\kappa_{NG}}\left\|\left(\gamma-\mathbf{A}\kappa_{G}\right)
+								-\mathbf{A}\kappa_{NG}
+								\right\|_{\Sigma_n}^2+C_{\mathrm{NG}}\left(\kappa_{NG}\right)$$
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Overview of mass mapping methods</h3>
+				<ul>
+					<li class="fragment fade-in"><b class="alert">Wiener filter</b>: Prior on $\kappa$ &rarr; Gaussian
+						random field, Likelihood
+						&rarr; Gaussian, Solution &rarr; corresponds to MAP for gaussian $\kappa$</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">Sparse recovery</b>: Prior on $\kappa$ &rarr;
+						sparse in wavelet basis, Enforces
+						model where matter field is a combination of DM halos</li>
+					</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">MCALens</b>:
+						Models $\kappa$-field as sum of a Gaussian and a non-Gaussian component, Uses Morphological
+						Component Analysis</li>
+					<br>
+					<li class="fragment fade-in"><b class="alert">Deep Learning Methods</b>:
+						<ul>
+							<li><b>DeepMass</b>: CNN with a U-Net-based architecture, prior from simulations</li>
+							<li><b>DeepPosterior</b>: Probabilistic mass mapping with deep generative models,
+								Prior from
+								2pt statistics modelling at large scales &
+								Deep Learning on simulations for small scales, Sampling with Annealed HMC</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Mass mapping methods: </h3>
+				<div class="container">
+					<div class="col" style="width: 1000px;">
+						<img src="../assets/figures/maps/mass_maps_(ks_iks_mca)_transparent_dark.pdf" alt="Summary statistics"
+							width="800px">
+					</div>
+					<div class="col" style="width: 100px;">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{ll}
+							\hline \hline
+							\text{Method} & \text{RMSE} \downarrow \\
+							\hline
+							\text{KS } & 1.1 \times 10^{-2} \\
+							\text{iKS } & 1.1 \times 10^{-2} \\
+							\text{MCALens} & 9.8 \times 10^{-3} \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+
+			<section class="inverted" data-background="#000">
+				<h2> Statistics</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+
+			<section>
+				<h3 class="slide-title">Higher Order Statistics: <b class="alert">Peak Counts</b></h3>
+				<img src="../assets/diagrams/cosmology_with_maps.pdf" alt="Cosmology with maps" style="height: 450px;">
+
+				<div class="block">
+					<div class="block-content">
+						<ul>
+							<li> <b class="alert">Peaks</b>: local maxima of the SNR field $\nu =
+								\dfrac{\left(\mathcal{W} \ast \kappa \right)(\theta_{\rm ker})}{\sigma_n^{\rm filt}}$
+							</li>
+							<br>
+							<li> Peaks trace regions where the value of <b class="alert">$\kappa$ is high</b> &rarr;
+								they are associated to
+								<b class="alert">massive structures</b>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Peak funtions</h3>
+				<ul>
+					<li class="fragment fade-in">The <b class="alert">peak function</b> is the <b class="alert">number
+							of
+							peaks</b> in a map as a function of the <b class="alert">SNR</b> $\nu$</li>
+				</ul>
+				<img class="fragment fade-in" src="../assets/figures/statistics/PC_hist_all_methods_ks_iks_mca_dark2.pdf" alt="">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet peaks</h3>
+				<ul>
+					<!-- <li class="fragment fade-in">To access the signal in the $\kappa$-maps at <em class="alert">small
+							scales</em>, where they are
+						dominated by noise &rarr; need to <em class="alert">filter</em> them </li> -->
+
+					<li class="fragment fade-in">We consider a <b class="alert">multi-scale analysis</b> compared to a
+						single-scale analysis
+					</li>
+
+					<li class="fragment fade-in">Apply (instead of Gaussian filter) a <b class="alert">starlet
+							transform</b> &rarr; allows us to
+						represent an image $I$ as a sum of wavelet coefficient images and a coarse resolution image
+						<!-- $$I(x,y) = c_J(x,y) + \sum_{j=1}^{j_{\rm max}} w_j(x,y) $$  -->
+					</li>
+				</ul>
+
+				<span class="fragment fade-in">
+					<img src="../assets/diagrams/starlet_transform.pdf" alt="Starlet transform" style="height: 250px;">
+				</span>
+
+
+				<span class="fragment fade-in">
+					<ul>
+						<li> Allows for the <b class="alert">simultaneous</b> processing of data at different scales
+							&rarr;
+							<b class="alert">efficiency</b>
+						</li>
+
+						<li> Each wavelet band covers a different frequency range, which leads to an almost <b
+								class="alert">diagonal peak count covariance matrix</b> </li>
+					</ul>
+				</span>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet peak funtions</h3>
+				<img src="../assets/figures/statistics/MSPC_hist_ks_iks_mca_4_scales_dark.pdf" alt="">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden" class="inverted" data-background="#000">
+				<h2> What happens if we consider all pixels instead of selecting multi-scale minima and maxima?</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section data-visibility="hidden">
+				<h3 class="slide-title">Starlet $\ell_1$-norm</h3>
+				<ul>
+					<li class="fragment fade-in">New higher order summary statistic for weak lensing observables </li>
+					<li class="fragment fade-in">Provides a fast multi-scale calculation of the full void and peak
+						distribution</li>
+					<li class="fragment fade-in"><b class="alert">$\ell_1$-norm</b> = sum of absolute values of the
+						starlet decomposition
+						coefficients of a weak lensing map </li>
+				</ul>
+
+				<span class="fragment fade-in">
+					<img src="../assets/figures/statistics/wavelet_l1_norm.pdf" alt="Wavelet l1 norm" style="height: 200px;">
+
+					$$ \boxed{ \ell_1^{j,i} = \sum_{u=1}^{\textrm{\# coef}(\mathcal{S}_{i,j})} \left| \mathcal{S}_{j,i}
+					[u]
+					\right| = \| \mathcal{S}_{j,i} \|_1} \, , \,\, \mathcal{S}_{j,i} = \{ w_{j,k}/B_i w_{j,k} B_{i+1}
+					\}$$
+
+				</span>
+
+				<div class="block; fragment fande-in">
+					<div class="block-title"></div>
+					<div class="block-content">
+						<span style="color: #49b649;">
+							<ul>
+								<li> Information encoded in <b class="alert">all</b> pixels
+								</li>
+
+								<li>Automatically includes peaks and voids</li>
+
+								<li>Multi-scale approach</li>
+
+								<li>Avoids the problem of defining peaks and voids</li>
+							</ul>
+						</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> Inference</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+			<section>
+				<h3 class="slide-title">Inference with HOS</h3>
+				<ul>
+					<li class="fragment fade-in"> Use <b class="alert">$\texttt{cosmoSLICS}$</b> simulations: suite
+						designed for the analysis of WL data beyond the standard 2pt cosmic shear
+					</li>
+					<br>
+					<li class="fragment fade-in"> <b class="alert">$\texttt{cosmoSLICS}$</b> cover a wide parameter
+						space in
+						$\left[ \Omega_m, \sigma_8,
+						w_0, h \right]$.</li>
+					<br>
+					<li class="fragment fade-in">For <b class="alert">Bayesian inference</b> &rarr; use a <b
+							class="alert">Gaussian
+							likelihood</b> for a cosmology independent covariance, and a <b class="alert">flat
+							prior</b>. </li>
+					<br>
+					<li class="fragment fade-in">To have a prediction of each HOS <b class="alert">given a new set of
+							parameters</b>&rarr; employ
+						an interpolation with <b class="alert">Gaussian Process Regressor</b> (GPR)</li>
+				</ul>
+				<br><br><br>
+				<!-- <div class="block; fragment fade-in">
+					<div class="block-title">
+						Gaussian Process
+					</div>
+					<div class="block-content">
+						<ul>
+							<li> A Gaussian process is a collection of random variables, any finite number of which have
+								a joint Gaussian distribution.</li>
+							<li> Assumes <em class="alert">smoothness</em> between parameters with close values </li>
+							<li> Computes the prediction for peak counts at a new point in parameter space</li>
+						</ul>
+
+					</div> -->
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Noise & Covariance</h3>
+				<ul>
+					<li>We consider <b class="alert">Gaussian</b>, but <b class="alert">non-white</b> noise &rarr; the
+						noise depends on the <b class="alert">number of galaxies</b> in each pixel $$\sigma_n =
+						\dfrac{\sigma_{\epsilon}}{\sqrt{2 n_{\rm gal} A_{\rm pix}}}$$</li>
+					<li>We incorporate <b class="alert">masks</b>
+					</li>
+					<li>Calculate covariance: $$ \boxed{C_{ij} = \sum_{r=1}^N \dfrac{\left( x_i^r - \mu_i \right) \left(
+						x_j^r - \mu_j \right)}{N-1}} \, , \,\,\,\mu_i = \dfrac{1}{N} \sum_r x_i^r $$ </li>
+				</ul>
+				<img src="../assets/figures/matrices/Correlation_Matrices_SSPC_ks_mca_dark.pdf" alt="Covariance" style="height: 230px;">
+				<img src="../assets/figures/matrices/Correlation_Matrices_MSPC_ks_mca_dark.pdf" alt="Covariance" style="height: 230px;">
+				<!-- <br>
+				<small class="alert">Starlet filter tends to make the covariance matrix more diagonal</small> -->
+			</section>
+
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">The (standard) mono-scale peak counts</h3>
+				<div class="container">
+					<div class="col">
+						<img src="../assets/figures/posteriors/triangle_plot_merged_sm04_sspc_GPypred_dark.pdf" alt="Mono-scale peak counts"
+							style="width:auto">
+					</div>
+					<div class="col">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{lcccc}
+							\hline \hline
+							\text{FoM} & \text{KS} & \text{iKS} & \text{MCALens} \\
+							\hline \hline
+							\left(\Omega_m, h\right) & 476 & 453 & 450 \\
+							\left(\Omega_m, w_0\right) & 152 & 141 & 233 \\
+							\left(\Omega_m, \sigma_8\right) & 1323 & 1285 & 1740 \\
+							\left(h, w_0\right) & 55 & 63 & 87 \\
+							\left(h, \sigma_8\right) & 336 & 292 & 293 \\
+							\left(w_0, \sigma_8\right) & 75 & 72 & 124 \\
+							\hline
+							\left(\Omega_m, h, w_0, \sigma_8\right) & 492 & 444 & 578 \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet multi-scale peak counts</h3>
+				<div class="container">
+					<div class="col">
+						<img src="../assets/figures/posteriors/countours_all_methods_MSPC_6scales_dark.pdf"
+							alt="Wavelet multi-scale peak counts" style="width:auto">
+					</div>
+					<div class="col">
+						<p>
+						<div style="font-size: 0.8em; line-height: 1.2; display: inline-block;" width="100px">
+							\[
+							\begin{array}{lcccc}
+							\hline \hline
+							\text{FoM} & \text{KS} & \text{iKS} & \text{MCALens} \\
+							\hline \hline
+							\left(\Omega_m, h\right) & 670 & 702 & 2159 \\
+							\left(\Omega_m, w_0\right) & 247 & 244 & 1051 \\
+							\left(\Omega_m, \sigma_8\right) & 2414 & 2517 & 9039 \\
+							\left(h, w_0\right) & 82 & 80 & 259 \\
+							\left(h, \sigma_8\right) & 411 & 433 & 1335 \\
+							\left(w_0, \sigma_8\right) & 131 & 129 & 577 \\
+							\hline
+							\left(\Omega_m, h, w_0, \sigma_8\right) & 758 & 755 & 1947 \\
+							\hline
+							\end{array}
+							\]
+						</div>
+						</p>
+					</div>
+
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Where does this improvement come from?</h3>
+				<img src="../assets/figures/posteriors/countours_ks_different_scales_dark.pdf" alt="Wavelet multi-scale peak counts"
+					style="width:auto">
+				<img src="../assets/figures/posteriors/countours_mca_different_scales_dark.pdf" alt="Wavelet multi-scale peak counts"
+					style="width:auto">
+			</section>
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Conclusions</h3>
+				<span class="fragment fade-in">
+					<div class="block">
+
+						<div class="block-content">
+							<ul>
+								<li>Investigated how different <b class="alert">mass mapping algorithms</b> affect <b
+										class="alert">cosmological inference</b>
+									using HOS from WL data.</li>
+								<li>Estimated <b class="alert">posterior</b> distributions of $\Omega_\mathrm{m}$,
+									$\sigma_8$, $h$, and $w_0$
+									using <b class="alert">peak counts</b> and <b class="alert">wavelet peak counts</b>.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br><br>
+
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title">Results</div>
+						<div class="block-content">
+							<ul>
+								<li> <b class="alert">MCALens Advantage</b>:
+									<ul>
+										<li>$\sim 17\%$ improvement in (FoM) over KS.</li>
+										<li>$\sim 157\%$ improvement in FoM over KS.</li>
+									</ul>
+								<li> <b class="alert">KS vs. iKS</b>: No significant difference in constraints &rarr;
+									inpainting does not
+									improve
+									performance</li>
+								<li><b class="alert">Wavelet Peak Counts</b>: Provide tighter constraints than
+									single-scale peak counts.</li>
+								<li><b class="alert">MCALens and Multi-Scale Approach</b>: Captures more small-scale
+									information, leading to
+									the greatest improvement.</li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<br>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-title"> Takeaway</div>
+						<div class="block-content">
+							<ul>
+								<li><b class="alert">Careful Selection Matters</b>: Choosing an advanced mass mapping
+									method
+									significantly enhances constraints on cosmological parameters from HOS.</li>
+							</ul>
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section class="inverted" data-background="#000">
+				<h2> New stuff</h2>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Future addition to this work</h3>
+				<span class="fragment fade-in">
+					<div class="block">
+						<div class="block-content">
+							<ul>
+								<li> Investigate the same thing within an <b class="alert">ILI framework</b> &rarr;
+									no need for covmat, allows to investigate bias in a more proper way, allows for
+									use of other statistics (e.g. NN-based statistics) </li>
+							</ul>
+						</div>
+					</div>
+					<img src="../assets/misc/Screenshot_UNIONS_FM.png" alt="UNIONS" style="width: 800px;">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">New mass-mapping method (with Hubert)
+				</h3>
+				<ul>
+					<li>
+						Develop a new mass-mapping method based on <b class="alert">Plug-and-Play </b> that provides a
+						<b class="alert">fast reconstruction</b> with <b class="alert">uncertainty quantification</b>
+						and is <b class="alert">trained once</b>
+					</li>
+					<li>
+						Plug-and-Play &rarr; framework that allows to combine <b class="alert">deep denoising</b>
+						algorithms with <b class="alert">optimization</b> algorithms to solve inverse problems </li>
+					<li>
+						Include <b class="alert">uncertaity quantification</b> </li>
+					<li>
+						Some nice results for <b class="alert">KappaTNG</b> with a simple U-Net denoiser</li>
+					<li>
+						Plan to train on <b class="alert">cosmoSLICS</b>, on different cosmologies & noise levels + use
+						more specialized denoisers
+					</li>
+				</ul>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Wavelet $\ell_1$-norm theory validation (with Vilasini)
+				</h3>
+				<ul>
+					<li>Vilasini has a theoretical prediction for the <b class="alert">wavelet $\ell_1$-norm</b>, for
+						any cosmology.
+					</li>
+					<li><b class="alert">Goal</b>: validate this theory by producing contours with this theory, and
+						compare them to the contours obtained from the simulations.
+					</li>
+					<li>
+						<b class="alert">Approach</b>:
+						<ul>
+							<li>calculate the wavelet $\ell_1$-norm on cosmoSLICS maps, interpolate with GPR emulator,
+								and produce contours</li>
+							<li>instead of using the emulator, use the theoretical prediction to produce contours</li>
+						</ul>
+
+					</li>
+				</ul>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Euclid (HOWLS) key-paper 2 - Cosmic shear higher-order statistics analysis of
+					DR1 data with theory
+				</h3>
+
+				<ul>
+					<li>
+						Do an analysis of Euclid DR1 with the wavelet $\ell_1$-norm emulator. </li>
+
+					<li>(also co-lead the mass-mapping brick in HOWLS)</li>
+				</ul>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Project: Testing impact baryonic effects on WL HOS (+BNT)</h3>
+				<p>
+					<u><b class="alert">Idea - </b>
+						Explore two things:
+				</p> </u>
+				<ul>
+					<li>
+						<b class="alert">Information content</b> of summary statistics as a function of <b
+							class="alert">scale cuts</b>
+					</li>
+					<li>
+						Testing the <b class="alert">impact of baryonic effects</b> on posterior contours
+					</li>
+				</ul>
+				<br><br>
+				<p>This will show:</p>
+				<ol>
+					<li>On what range of scales can the different statistics be used without explicit model for baryons
+					</li>
+					<li>Answer the question: <b class="alert">how much extra information beyond the PS</b> these
+						statistics can access in practice</li>
+				</ol>
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title"> Two possible outcomes</h3>
+				<ul>
+					<li> <b class="alert">Outcome 1</b>: See that when applying scale cuts to remove significant
+						baryonic impact, we are <b class="alert">still in a range of scales</b> where an (A) HOS
+						accesses significantly <b class="alert">more information than the PS </b>
+						<ul>
+							<li>
+								&rarr; Directly look at application on data
+							</li>
+						</ul>
+						<br>
+						or
+						<br> <br>
+					<li> <b class="alert">Outcome 2</b>: See that when applying scale cuts as to remove the impact of
+						baryons, we fall in range of scales where there is <b class="alert">not a lot of additional info
+							beyond the PS</b>
+						<ul>
+							<li>
+								&rarr; Motivates finding ways to add some baryonic perscription to the analytic model of
+								the l1-norm
+							</li>
+						</ul>
+
+						<br><br>
+						In any case, this framework gives a way to assess the <b class="alert">usable</b> information
+						content of different summary stats when systematics are taken into account
+
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">Some initial results</h3>
+
+				<div class="block"></div>
+				<img src="../assets/figures/maps/cosmoGRID.pdf" alt="CosmoGRID" style="width:auto">
+				<img src="../assets/figures/statistics/initial_residuals.pdf" alt="Initial residuals" style="width:auto">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">BNT transform </h3>
+
+				<ul>
+					<li>When we observe cosmic shear, contributions come from mass at different redshifts (distances).
+					</li>
+					<li>This creates projection effects: large and small-scale structures get mixed up.
+					</li>
+					<li>These effects make it harder to accurately analyze data and extract information</li>
+				</ul>
+				<img src="../assets/figures/statistics/nz_efficiency.pdf" alt="nz_efficiency" style="width:600px">
+			</section>
+
+			<!-- ################################################################################################### -->
+
+			<section>
+				<h3 class="slide-title">BNT transform </h3>
+
+				<ul>
+					<li>BNT Transform: A method to “null” or remove contributions from unwanted redshift ranges.
+					</li>
+					<li>It reorganizes the weak-lensing data so that only specific redshift ranges contribute to the
+						signal, making it easier to analyze.
+					</li>
+					<li>It focuses on isolating lensing contributions by sorting out overlapping signals.</li>
+
+				</ul>
+
+				<img src="../assets/figures/statistics/bnt_euclid.pdf" alt="BNT" style="width:800px">
+			</section>
+
+
+			<!-- ################################################################################################### -->
+
+
+
+		</div>
+	</div>
+
+	<style>
+		/* .reveal .slides {
+			border: 5px solid red;
+			min-height: 100%;
+			width: 128mm;
+			height: 96mm;
+		} */
+
+		.reveal .block {
+			background-color: #191919;
+			margin-left: 20px;
+			margin-right: 20px;
+			text-align: left;
+			padding-bottom: 0.1em;
+		}
+
+		.reveal .block-title {
+			background-color: #333333;
+			padding: 8px 35px 8px 14px;
+			color: #FFAA7F;
+			font-weight: bold;
+		}
+
+		.reveal .block-content {
+			padding: 8px 35px 8px 14px;
+		}
+
+		.reveal .slide-title {
+			border-left: 5px solid white;
+			text-align: left;
+			margin-left: 20px;
+			padding-left: 20px;
+		}
+
+		.reveal .alert {
+			color: #FFAA7F;
+			font-weight: bold;
+		}
+
+		.reveal .inverted {
+			filter: invert(100%);
+		}
+	</style>
+
+
+	<script src="reveal.js/dist/reveal.js"></script>
+	<script src="reveal.js/plugin/notes/notes.js"></script>
+	<script src="reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="reveal.js/plugin/highlight/highlight.js"></script>
+	<script src="reveal.js/plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			controls: true,
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: 'c/t',
+			hash: true,
+			transition: 'slide',
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 1200,
+			height: 720,
+
+			// Factor of the display size that should remain empty around the content
+			margin: 0.1,
+
+			// Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 1.5,
+
+			autoPlayMedia: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+
+			dependencies: [{
+				src: 'reveal.js/plugin/markdown/marked.js'
+			},
+			{
+				src: 'reveal.js/plugin/markdown/markdown.js'
+			},
+			{
+				src: 'reveal.js/plugin/notes/notes.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/math/math.js',
+				async: true
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-d3/reveald3.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/Chart.min.js'
+			},
+			{
+				src: 'reveal.js/plugin/reveal.js-plugins/chart/csv2chart.js'
+			},
+			{
+				src: 'reveal.js/plugin/highlight/highlight.js',
+				async: true
+			},
+			]
+		});
+	</script>
+</body>
+
+</html>
