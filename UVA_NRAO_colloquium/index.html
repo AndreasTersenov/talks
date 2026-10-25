@@ -1996,6 +1996,75 @@
 						</ul>
 					</aside>
 				</section>
+				<!-- =============================================================================
+				     Colloquium (2026-10-25), UNDER EVALUATION: the radio parallel to plug-and-play, as
+				     a plug-in loop. The PnP slide above is unchanged. The physics step is a socket that
+				     takes either instrument (uv coverage: AIRI; shear: PnPMass); the denoiser shows a
+				     REAL noisy -> denoised pair cut from the paper's PnP figure (no AIRI output is shown,
+				     because we cannot make one honestly). AIRI checked 2026-10-25: Terris, Dabbech, Tang
+				     & Wiaux 2023, MNRAS 518, 604. Tiles from tools/make-imaging-parallel.py. Styling in
+				     colloquium.css. The text-card version it replaces is in git history.
+				============================================================================== -->
+				<section class="radiopnp" data-theme="light">
+					<h3 class="slide-title tight">Radio imaging uses the same trick: the physics stays in the data
+						step, only the <em class="alert">prior is learned</em></h3>
+					<div class="pl-wrap">
+						<svg class="pl-return" viewBox="0 0 720 64" preserveAspectRatio="none" aria-hidden="true">
+							<path d="M 545 64 L 545 26 L 165 26 L 165 56" fill="none" stroke="currentColor"
+								stroke-width="2.2" />
+							<path d="M 157 51 L 165 63 L 173 51" fill="none" stroke="currentColor" stroke-width="2.2" />
+						</svg>
+						<span class="pl-repeat">&#8634; repeat until the map stops changing</span>
+						<div class="pl-row">
+							<span class="pl-io">data</span>
+							<span class="pl-arw">&rarr;</span>
+							<div class="pl-box pl-phys">
+								<b>a step towards the data</b>
+								<span class="pl-sub">the instrument: its operator and its noise</span>
+							</div>
+							<span class="pl-arw">&rarr;</span>
+							<div class="pl-box pl-den">
+								<b>a learned denoiser</b>
+								<div class="pl-pair">
+									<img src="../assets/diagrams/imaging_parallel/pnp_after_data_step.png" alt="a PnPMass map after the data step: noisy">
+									<span class="pl-arw small">&rarr;</span>
+									<img src="../assets/diagrams/imaging_parallel/pnp_after_denoiser.png" alt="the same map after the denoiser">
+								</div>
+								<span class="pl-sub">the prior, trained once on simulations</span>
+							</div>
+							<span class="pl-arw">&rarr;</span>
+							<span class="pl-io">map</span>
+						</div>
+						<div class="pl-plugs">
+							<span class="pl-plughead">plug in the instrument</span>
+							<div class="pl-plugrow">
+								<figure class="pl-plug fragment fade-in">
+									<img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="uv coverage of an interferometer">
+									<figcaption><b>radio</b>: AIRI<br><span class="pl-cite">Terris, Dabbech, Tang &amp;
+											Wiaux 2023</span></figcaption>
+								</figure>
+								<figure class="pl-plug lens">
+									<img src="../assets/diagrams/imaging_parallel/lens_shear.png" alt="the shear field, masked and noisy">
+									<figcaption><b>lensing</b>: PnPMass<br><span class="pl-cite">Leterme, Tersenov, Fadili
+											&amp; Starck 2026</span></figcaption>
+								</figure>
+							</div>
+						</div>
+					</div>
+					<aside class="notes">
+						<p><strong>the radio parallel</strong> (new, under evaluation; script beat to write)</p>
+						<ul>
+							<li>what we just did, as one loop: a step towards the data, then a learned denoiser,
+								repeat. The physics (the operator, the noise, the mask) lives only in the data step;
+								the network only replaces the prior</li>
+							<li>so the instrument is a plug-in: for us the shear and its mask</li>
+							<li>[CLICK] and radio astronomers plug in the uv coverage: that is AIRI (Wiaux group), as
+								good as SARA and much faster</li>
+							<li>if asked: their follow-up (Terris et al. 2024) found denoisers trained on medical
+								images work about as well, so the learned prior is quite generic</li>
+						</ul>
+					</aside>
+				</section>
 
 
 				<!-- ################################################################################################### -->

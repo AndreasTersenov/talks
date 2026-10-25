@@ -191,7 +191,22 @@ def lensing_panels(rng):
     save(draw_ks, "lens_ks.png")
 
 
+# ----------------------------------------------------------------------------- PnP tiles
+def pnp_tiles():
+    """The plug-in loop slide shows a REAL noisy -> denoised pair, not a simulated one: the two
+    map panels cut out of the paper's own PnP figure (iteration 1: after the data step, and
+    after the denoiser). Boxes found from the figure's dark map squares, 2026-10-25."""
+    from PIL import Image
+    src = os.path.join(os.path.dirname(__file__), "..", "assets", "figures", "maps", "PnP_4_tight.png")
+    im = Image.open(src).convert("RGB")
+    for name, box in (("pnp_after_data_step.png", (847, 598, 1297, 1049)),
+                      ("pnp_after_denoiser.png", (1810, 598, 2261, 1049))):
+        im.crop(box).save(os.path.join(OUT, name), optimize=True)
+        print("wrote", os.path.normpath(os.path.join(OUT, name)))
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     radio_panels(np.random.default_rng(7))
     lensing_panels(np.random.default_rng(11))
+    pnp_tiles()
