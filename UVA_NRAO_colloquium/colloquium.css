@@ -98,6 +98,16 @@
 .reveal .slides section.radiopnp .pl-cite { color: var(--fg-muted); font-size: 0.9em; }
 
 /* ----------------------------------------------------------------------------
+   Version B of the PnPMass results slide (coverage wording, under evaluation).
+   Its headline and sigma caption each wrap one line more than version A, which
+   pushed the closing sentence off the slide; four margins give the room back.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.pnpres.pnpres-b .pr-grid { margin-top: 0.5em; }
+.reveal .slides section.pnpres.pnpres-b .pr-sigma { margin-top: 0.2em; }
+.reveal .slides section.pnpres.pnpres-b .pr-points + .kicker { margin-top: 0.6em; }
+.reveal .slides section.pnpres.pnpres-b .pull { margin-top: 0.5em; }
+
+/* ----------------------------------------------------------------------------
    Title-slide logo row. Five equal-width columns left the wide CosmoStat
    wordmark pulling the row off-centre (2026-10-25, Andreas): the logos now sit
    at their own widths, centred, with an even gap, inside the title card's width.

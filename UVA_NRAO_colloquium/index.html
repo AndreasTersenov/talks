@@ -2223,6 +2223,91 @@
 						-->
 					</aside>
 				</section>
+				<!-- Colloquium (2026-10-25), VERSION B for comparison: the same slide with "calibrated"
+				     replaced by coverage language (COLLOQUIUM_ADAPTATION.md §4). Version A, the original,
+				     is the slide just above. Keep one, remove the other once Andreas has compared. -->
+				<section class="pnpres pnpres-b" data-theme="light">
+					<h3 class="slide-title tight">PnPMass is as accurate as the
+						fine&#8209;tuned networks, with the <b class="alert">smallest error bars that keep their coverage</b></h3>
+
+					<div class="pr-grid">
+						<figure class="pr-main">
+							<img src="../assets/figures/statistics/pnpmass_uq_summary_white.png"
+								alt="mean interval length at the guaranteed coverage against reconstruction error for Wiener, MCALens, DeepMass and both PnPMass variants">
+							<figcaption>512 test maps, &kappa;TNG. Circles before calibration, diamonds after.
+							</figcaption>
+						</figure>
+
+						<div class="pr-side">
+							<ul class="pr-points">
+								<li>lower left is better; after the conformal step, every method&rsquo;s 2&sigma; bars contain the
+										<b>truth 95&nbsp;% of the time</b>
+								</li>
+								<li>accuracy comparable to the SOTA deep&#8209;learning methods</li>
+								<li>smallest intervals of all methods, at that coverage</li>
+								<li>PnPMass is indep. of mask and noise covariance</li>
+							</ul>
+
+							<p class="kicker fragment fade-in" data-fragment-index="1">the uncertainty map traces the
+								structure</p>
+							<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
+								<img src="../assets/figures/maps/pnpmass_kappa_sigma_white.png"
+									alt="a PnPMass convergence map beside its per-pixel calibrated uncertainty, on the same field">
+								<figcaption>The map, and its &sigma;, with guaranteed coverage, on the same field.</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<p class="pull fragment fade-in" data-fragment-index="2">
+						DeepMass and MMGAN need retraining for every new mask or noise level; PnPMass is trained
+						<b>once</b>
+						and applies to <b class="alert">any configuration</b>.
+					</p>
+
+					<aside class="notes">
+						<p><em>radio parallel:</em> standard CLEAN images carry no per-pixel error bars.</p>
+						<p><strong>accurate, calibrated</strong></p>
+						<ul>
+							<li>accurate maps <strong>and</strong> error bars, <strong>perfectly calibrated, with
+									mathematical guarantees</strong></li>
+							<li>via <strong>moment networks</strong> + <strong>conformalized quantile
+									regression</strong></li>
+							<li>axes: x = reconstruction error, y = size of calibrated bars → <strong>lower left is
+									better</strong></li>
+							<li>colour = miscoverage: circles above target before, every diamond on it after. Not
+								<em>who covers</em> — everyone covers, that is the guarantee — but who covers with the
+								<strong>tightest bars</strong></li>
+							<li>▲ accuracy within <strong>~1 %</strong> of <strong>DeepMass</strong>, trained for that
+								exact mask and noise; <strong>smallest calibrated bars</strong> of all</li>
+							<li><strong>»</strong> DeepMass needs retraining per mask/noise → not applicable to a real
+								survey; PnPMass trained <strong>once</strong>, any field</li>
+						</ul>
+						<!-- PARKED 2026-09-13, the note this replaced:
+						     SAY: this is the whole result in one plot. Left and down is better — reconstruction error
+						      across,
+						      the size of the calibrated interval up. First thing to notice: after calibration everybody is on
+						      the target miscoverage. That is not a result, that is the conformal guarantee doing its job. So
+						      the comparison is not who covers — everyone covers — it is who covers with the tightest bars.
+						      Three things then. Accuracy: we are level with the deep-learning methods, within about one
+						      percent of a DeepMass that was fine-tuned to this exact mask and this exact noise. Uncertainty:
+						      we have the smallest calibrated interval of anything tested, on all five hundred and twelve test
+						      images. And deployability: the mask and the noise covariance enter at inference, not in
+						      training,
+						      so one trained denoiser covers any configuration. [CLICK] And the uncertainty is not a constant
+						      —
+						      here is the map next to its own error bars, same field. It rises exactly where the structure is,
+						      which is what lets the bars stay small everywhere else. [CLICK] That last point is the one I
+						      care
+						      about. DeepMass and MMGAN get retrained whenever the footprint or the noise changes — tens of
+						      GPU-hours, every time. We train once. That is the difference between a method that wins a
+						      benchmark and one Euclid could actually run. Two limitations, and I would rather say them than
+						      be
+						      asked: the coverage guarantee is marginal, not conditional — what escapes concentrates at the
+						      peaks, which is where Part 1 said the information lives — and kappa-TNG is a single
+						      cosmology. Both are named next steps.
+						-->
+					</aside>
+				</section>
 			</section>
 
 			<!-- PARKED — the original three-figure version of the results slide, superseded
