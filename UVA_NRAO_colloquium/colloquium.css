@@ -1,0 +1,43 @@
+/* ============================================================================
+ * colloquium.css — components added for the UVA / NRAO colloquium (2026-10).
+ * Loaded after white.css. Theme tokens only, no hex (CLAUDE.md).
+ * ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   Title-slide logo row. Five equal-width columns left the wide CosmoStat
+   wordmark pulling the row off-centre (2026-10-25, Andreas): the logos now sit
+   at their own widths, centred, with an even gap, inside the title card's width.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .container.logo-row {
+	display: flex; justify-content: center; align-items: center; gap: 2.4em;
+	max-width: 86%; margin-left: auto; margin-right: auto;
+}
+.reveal .slides section .container.logo-row > .col { flex: 0 0 auto; width: auto; }
+.reveal .slides section .container.logo-row img { margin: 0; }
+/* per-logo heights (canvas px), balanced by eye: seals taller, wordmarks shorter.
+   Natural aspect ratios: Rotunda 0.98, Crete 1.0, FORTH 4.48, IA 0.74, CosmoStat 8.1;
+   at these heights the row is ~890 px, inside the title card's ~970. */
+.reveal .slides section .logo-row img { width: auto; max-width: none; }
+.reveal .slides section .logo-row img[src*="Rotunda"]   { height: 66px; }
+.reveal .slides section .logo-row img[src*="logo-crete"] { height: 60px; }
+.reveal .slides section .logo-row img[src*="ICS-for"]   { height: 44px; }
+.reveal .slides section .logo-row img[src*="oie_"]      { height: 72px; }
+.reveal .slides section .logo-row img[src*="CosmoStat"] { height: 34px; }
+/* ----------------------------------------------------------------------------
+   Title slide, one card (2026-10-25, Andreas): the byline lives inside the
+   title card under a hairline, instead of in a second veiled box. Logos at the
+   foot of the slide, below the slides link.
+   -------------------------------------------------------------------------- */
+.reveal .slides section .title-card .tc-byline {
+	display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 0.75em;
+	margin-top: 0.85em; padding-top: 0.6em; border-top: 1px solid var(--hair);
+}
+.reveal .slides section .title-card .tc-name {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 0.95em; color: var(--accent);
+}
+.reveal .slides section .title-card .tc-affil {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+	font-size: 0.8em; color: var(--fg);
+}
+.reveal .slides section .slides-link { margin-top: 1.6em; }
+.reveal .slides section .container.logo-row { margin-top: 2.1em !important; }
