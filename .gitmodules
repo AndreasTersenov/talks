@@ -52,3 +52,6 @@
 [submodule "PIML_FORTH_2026/reveal.js"]
 	path = PIML_FORTH_2026/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "CosmoStat_group_meeting_2025/reveal.js"]
+	path = CosmoStat_group_meeting_2025/reveal.js
+	url = https://github.com/EiffL/reveal.js.git

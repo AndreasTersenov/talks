@@ -9,3 +9,10 @@ PhD_Defense_2026/examples/
 
 # bytecode from tools/ importing print-script.py
 __pycache__/
+
+# Generated exports: rebuilt from the deck / script on demand. The .pptx files
+# are 120-170 MB, over GitHub's 100 MB file limit.
+*.pptx
+PhD_Defense_2026/pptx_export/Fonts.zip
+*/SPEAKER_SCRIPT.pdf
+*/SPEAKER_SCRIPT.html
