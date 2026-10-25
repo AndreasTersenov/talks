@@ -33,6 +33,9 @@
 	<link rel="stylesheet" href="neural_summaries.css">
 	<link rel="stylesheet" href="bnt_explainer.css">
 	<link rel="stylesheet" href="sbi_pipeline.css">
+
+	<!-- Light slides on plain white, not the theme's warm paper. Last, so it wins. -->
+	<link rel="stylesheet" href="white.css">
 </head>
 
 
@@ -1543,7 +1546,7 @@
 
 						<div class="resultcol">
 							<figure class="fig stemfig">
-								<img class="plain" src="../assets/figures/statistics/fom_massmapping_stems.png"
+								<img class="plain" src="../assets/figures/statistics/fom_massmapping_stems_white.png"
 									alt="the four-parameter figure of merit relative to Kaiser-Squires, drawn as stems: Kaiser-Squires and inpainting KS both at 1.00, MCALens at 2.6; the colours are the corner plot&#39;s">
 							</figure>
 							<!-- PARKED 2026-09-07 - the CSS bar ladder this figure replaces.
@@ -2005,7 +2008,7 @@
 
 					<div class="pr-grid">
 						<figure class="pr-main">
-							<img src="../assets/figures/statistics/pnpmass_uq_summary.png"
+							<img src="../assets/figures/statistics/pnpmass_uq_summary_white.png"
 								alt="mean calibrated interval length against reconstruction error for Wiener, MCALens, DeepMass and both PnPMass variants">
 							<figcaption>512 test maps, &kappa;TNG. Circles before calibration, diamonds after.
 							</figcaption>
@@ -2024,7 +2027,7 @@
 							<p class="kicker fragment fade-in" data-fragment-index="1">the uncertainty map traces the
 								structure</p>
 							<figure class="pr-sigma fragment fade-in" data-fragment-index="1">
-								<img src="../assets/figures/maps/pnpmass_kappa_sigma.png"
+								<img src="../assets/figures/maps/pnpmass_kappa_sigma_white.png"
 									alt="a PnPMass convergence map beside its per-pixel calibrated uncertainty, on the same field">
 								<figcaption>The map, and its calibrated &sigma; on the same field.</figcaption>
 							</figure>
@@ -2780,7 +2783,7 @@
 				<h3 class="slide-title tight">Two very different fields can have the <em class="alert">same power
 						spectrum</em>
 				</h3>
-				<img class="plain figfill" src="../assets/diagrams/pk_lss_light.png"
+				<img class="plain figfill" src="../assets/diagrams/pk_lss_light_white.png"
 					alt="a large-scale-structure map, a Gaussian map, and their identical power spectra">
 				<p class="lead-line">To access the information the power spectrum misses we need
 					<b class="alert">higher&#8209;order statistics</b>: peak counts, wavelet statistics, the
@@ -2813,7 +2816,7 @@
 				     the theme's paper with tools/whitefig-to-paper.py — a pure-white figure on
 				     a light slide reads as a brighter rectangle pasted on the page. -->
 				<figure class="hg-fig">
-					<img class="plain" src="../assets/figures/posteriors/ajani_peaks_multiscale.png"
+					<img class="plain" src="../assets/figures/posteriors/ajani_peaks_multiscale_white.png"
 						alt="forecast contours on the summed neutrino mass, the matter density and the primordial amplitude, for four summaries: the power spectrum is much the widest, peaks after a single Gaussian filter are tighter, and starlet peaks and multi-Gaussian peaks are tighter again">
 					<figcaption>Forecasts from the same convergence maps: power spectrum, single-scale
 						peaks, and multi-scale peaks.
@@ -3089,17 +3092,17 @@
 
 				<div class="wv-row">
 					<figure class="wv-card">
-						<img class="plain" src="../assets/diagrams/wavelet_shape.png"
+						<img class="plain" src="../assets/diagrams/wavelet_shape_white.png"
 							alt="the starlet wavelet at three dilations, visibly the same shape at three widths">
 					</figure>
 					<figure class="wv-wide">
-						<img class="plain" src="../assets/diagrams/wavelet_transform.png"
+						<img class="plain" src="../assets/diagrams/wavelet_transform_white.png"
 							alt="a signal carrying three wave packets of different wavelength at different places, decomposed into four wavelet bands plus a coarse residual, each packet answering in the band that matches its size">
 					</figure>
 				</div>
 
 				<div class="popover fragment fade-in" data-fragment-index="1">
-					<img src="../assets/diagrams/wavelet_what.png"
+					<img src="../assets/diagrams/wavelet_what_white.png"
 						alt="a convergence map convolved with a small wavelet gives a map of the small-scale structure; the same map convolved with a large wavelet gives a map of the large-scale structure">
 					<p class="kicker pop-kicker">why wavelets for convergence maps</p>
 					<ul class="points dots pop-points">
@@ -3388,7 +3391,7 @@
 				<p class="gm-lede">Learn the distribution from which a set of samples was drawn.</p>
 
 				<figure class="gm-fig">
-					<img class="plain" src="../assets/diagrams/generative_modelling.png"
+					<img class="plain" src="../assets/diagrams/generative_modelling_white.png"
 						alt="three panels: the true two-moons density, a finite set of samples drawn from it, and the density a model fits to those samples">
 				</figure>
 
@@ -3443,7 +3446,7 @@
 				</h3>
 
 				<figure class="ft-chain">
-					<img class="plain" src="../assets/diagrams/normflow_chain.png"
+					<img class="plain" src="../assets/diagrams/normflow_chain_white.png"
 						alt="a chain of invertible maps carrying a simple density through intermediate stages into a complex multi-modal one">
 				</figure>
 
@@ -3524,15 +3527,15 @@
 				</p>
 
 				<div class="r-stack sbi-fig">
-					<img class="plain" src="../assets/diagrams/sbi_build_1.png"
+					<img class="plain" src="../assets/diagrams/sbi_build_1_white.png"
 						alt="stage one: parameters drawn from the prior, pushed through a simulator, producing simulated data">
 					<!-- PARKED 2026-09-07 - the middle plate.  The build is now two steps, not three
 					     (Andreas): simulation alone, then Learning and Inference together, so plate 2
 					     is never on screen by itself.  Restore this and split the indices to go back.
-					<img class="plain" src="../assets/diagrams/sbi_build_2.png"
+					<img class="plain" src="../assets/diagrams/sbi_build_2_white.png"
 						alt="stage two added: the parameter-data pairs training a conditional normalizing flow">
 					-->
-					<img class="plain fragment" data-fragment-index="1" src="../assets/diagrams/sbi_build_3.png"
+					<img class="plain fragment" data-fragment-index="1" src="../assets/diagrams/sbi_build_3_white.png"
 						alt="stages two and three added: the parameter-data pairs training a conditional normalizing flow, and the trained flow evaluated at the real observation to give a posterior">
 				</div>
 
@@ -6272,7 +6275,7 @@
 					</h3>
 
 					<figure class="tc-wide tall">
-						<img class="plain" src="../assets/diagrams/wavelet_vs_fourier.png"
+						<img class="plain" src="../assets/diagrams/wavelet_vs_fourier_white.png"
 							alt="left: three sines, each one frequency spanning the whole axis; right: the starlet wavelet at three dilations, compact and localised">
 					</figure>
 
@@ -6332,7 +6335,7 @@
 						band-pass image per scale plus a coarse residual</h3>
 
 					<figure class="tc-wide tall">
-						<img class="plain" src="../assets/diagrams/wavelet_bands.png"
+						<img class="plain" src="../assets/diagrams/wavelet_bands_white.png"
 							alt="a signal made of three wave packets, decomposed into five starlet bands plus a coarse residual; each packet appears in the band matching its size">
 					</figure>
 
@@ -6386,7 +6389,7 @@
 
 					<div class="tc-grid">
 						<figure>
-							<img class="plain" src="../assets/diagrams/wavelet_image_demo.png"
+							<img class="plain" src="../assets/diagrams/wavelet_image_demo_white.png"
 								alt="three levels of a 2-D wavelet transform of a photograph, in the classical quadrant mosaic: the approximation shrinking into the corner, with vertical, horizontal and diagonal detail bands at each level">
 						</figure>
 						<div class="tc-side">
@@ -6513,7 +6516,7 @@
 				<section class="teach" data-theme="light">
 					<h3 class="slide-title tight">The non-Gaussian information is in the <em class="alert">phases</em>
 					</h3>
-					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light.png"
+					<img class="plain figfill wide" src="../assets/diagrams/2pt-phase-amp_light_white.png"
 						alt="the original density field, the same field keeping only the phases, and keeping only the amplitudes">
 					<ul class="points tp-points">
 						<li>the power spectrum keeps only the <b>Fourier amplitudes</b></li>
@@ -6920,7 +6923,7 @@
 					<p class="axis-note" style="text-align:center;">three-parameter figure of merit, matched pipeline
 					</p>
 					<figure class="fig stemfig">
-						<img class="plain" src="../assets/figures/statistics/fom_summaries_stems.png"
+						<img class="plain" src="../assets/figures/statistics/fom_summaries_stems_white.png"
 							style="max-height:295px;"
 							alt="the three-parameter figure of merit for four summaries, drawn as stems with error bars: l1 on auto-maps 2448, l1 plus product cross-maps 3045, the joint l1-norm 3371 and the VMIM-trained CNN 3326, the last two agreeing within their errors">
 					</figure>
@@ -9149,6 +9152,12 @@
 
 	<script src="pipeline.js"></script>
 	<script src="../assets/themes/theme-switch.js"></script>
+	<!-- theme-switch.js paints light slides the paper colour; this deck wants white.
+	     Runs before reveal.js reads the backgrounds, so PDF export follows too. -->
+	<script>
+		document.querySelectorAll('.reveal .slides section[data-background-color="#f7f5f0"]')
+			.forEach(function (s) { s.setAttribute('data-background-color', '#ffffff'); });
+	</script>
 	<script src="reveal.js/dist/reveal.js"></script>
 	<script src="reveal.js/plugin/notes/notes.js"></script>
 	<script src="reveal.js/plugin/highlight/highlight.js"></script>

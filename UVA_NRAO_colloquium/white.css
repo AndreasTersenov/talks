@@ -1,0 +1,20 @@
+/* ============================================================================
+ * white.css — this deck's light slides on plain white instead of the Preprint
+ * theme's warm paper (#f7f5f0).  Loaded last, so it wins over talks.css and
+ * custom.css without touching the shared theme the other decks use.
+ *
+ * The slide-background layer is set by the small script after theme-switch.js
+ * in index.html; the figures made on paper have _white.png variants
+ * (tools/paperfig-to-white.py).
+ * ========================================================================== */
+.reveal .slides section[data-theme="light"],
+.reveal .slides section.light-slide {
+	--bg: #ffffff;
+	--surface: #ffffff;                       /* cards are set off by edge + shadow */
+	--fg-muted: #60636b;                      /* neutral, not the paper's warm grey */
+	--title-veil: rgba(255, 255, 255, 0.80);
+}
+
+/* the two plates that were paper-coloured on dark slides */
+.reveal .slides section img.plain.logo-plate { background: #ffffff; }
+.reveal .slides section.probes .plate { background: #ffffff; }

@@ -279,3 +279,21 @@ tomo_pnp_nrmse_per_iteration.png	statistics	draft Fig. 5, PnPMass3D error per it
 PnP_11_talk.png	maps	PnP_11 with the in-figure bullets painted out and the empty top cropped, for the PIML residuals frame
 PnP_14_talk.png	maps	PnP_14, same treatment
 Relation_btw_kappa_and_gamma_light.png	diagrams	the kappa/gamma/potential figure with dark labels, for light slides
+2pt-phase-amp_light_white.png	diagrams	2pt-phase-amp_light.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+ajani_peaks_multiscale_white.png	figures/posteriors	ajani_peaks_multiscale.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+fom_massmapping_stems_white.png	figures/statistics	fom_massmapping_stems.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+fom_summaries_stems_white.png	figures/statistics	fom_summaries_stems.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+generative_modelling_white.png	diagrams	generative_modelling.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+normflow_chain_white.png	diagrams	normflow_chain.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+pk_lss_light_white.png	diagrams	pk_lss_light.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+pnpmass_kappa_sigma_white.png	figures/maps	pnpmass_kappa_sigma.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+pnpmass_uq_summary_white.png	figures/statistics	pnpmass_uq_summary.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+sbi_build_1_white.png	diagrams	sbi_build_1.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+sbi_build_2_white.png	diagrams	sbi_build_2.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+sbi_build_3_white.png	diagrams	sbi_build_3.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_bands_white.png	diagrams	wavelet_bands.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_image_demo_white.png	diagrams	wavelet_image_demo.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_shape_white.png	diagrams	wavelet_shape.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_transform_white.png	diagrams	wavelet_transform.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_vs_fourier_white.png	diagrams	wavelet_vs_fourier.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+wavelet_what_white.png	diagrams	wavelet_what.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
