@@ -4,6 +4,37 @@
  * ========================================================================== */
 
 /* ----------------------------------------------------------------------------
+   The radio-interferometry bridge (.imgpar), after the inverse-problem slide:
+   two rows of three simulated panels (tools/make-imaging-parallel.py). Each
+   row is its own grid so that a whole row can be one fragment.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.imgpar .ix-grid { display: grid; row-gap: 0.35em; margin-top: 0.45em; }
+.reveal .slides section.imgpar .ix-row {
+	display: grid; grid-template-columns: 5em 210px 2.4em 210px 2.4em 210px;
+	justify-content: center; align-items: center; column-gap: 0.25em;
+}
+.reveal .slides section.imgpar .ix-head span,
+.reveal .slides section.imgpar .ix-label,
+.reveal .slides section.imgpar figcaption,
+.reveal .slides section.imgpar .ix-tag {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+}
+.reveal .slides section.imgpar .ix-head span { color: var(--accent); font-size: 0.75em; text-align: center; }
+.reveal .slides section.imgpar .ix-label { color: var(--fg); font-size: 0.8em; text-align: right; padding-right: 0.4em; }
+.reveal .slides section.imgpar figure { margin: 0; }
+.reveal .slides section.imgpar figure img {
+	display: block; width: 210px; height: 210px; margin: 0;
+	border: 0; border-radius: 8px; box-shadow: none; background: transparent;
+}
+.reveal .slides section.imgpar figcaption {
+	color: var(--fg-muted); font-size: 0.66em; text-align: center; margin-top: 0.2em;
+}
+.reveal .slides section.imgpar .ix-arw { color: var(--accent); font-size: 1.4em; text-align: center; }
+.reveal .slides section.imgpar .ix-tag {
+	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 0.4em 2.2em 0 0;
+}
+
+/* ----------------------------------------------------------------------------
    Title-slide logo row. Five equal-width columns left the wide CosmoStat
    wordmark pulling the row off-centre (2026-10-25, Andreas): the logos now sit
    at their own widths, centred, with an even gap, inside the title card's width.
@@ -23,6 +54,9 @@
 .reveal .slides section .logo-row img[src*="ICS-for"]   { height: 44px; }
 .reveal .slides section .logo-row img[src*="oie_"]      { height: 72px; }
 .reveal .slides section .logo-row img[src*="CosmoStat"] { height: 34px; }
+/* captions stay on one line, so a long one cannot lift its panel out of the row */
+.reveal .slides section.imgpar figcaption { white-space: nowrap; }
+
 /* ----------------------------------------------------------------------------
    Title slide, one card (2026-10-25, Andreas): the byline lives inside the
    title card under a hairline, instead of in a second veiled box. Logos at the

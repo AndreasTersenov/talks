@@ -1011,6 +1011,58 @@
 						-->
 					</aside>
 				</section>
+				<!-- =============================================================================
+				     Colloquium (2026-10-25): the radio-interferometry bridge, as pictures. NRAO and
+				     the ALMA science centre are in the room, and mass mapping is their imaging problem
+				     in different clothes. The same three steps in both rows: the image, what the
+				     instrument measures, the direct inverse. All six panels are simulated for the
+				     slide by tools/make-imaging-parallel.py (a toy radio sky and VLA-like array, a
+				     lognormal mass map with a toy mask), and the slide says so. Lensing row on a click.
+				     The text-table version it replaces is in git history (2026-10-25).
+				     Styling in colloquium.css.
+				============================================================================== -->
+				<section class="imgpar" data-theme="light">
+					<h3 class="slide-title tight">Radio and lensing both measure an <em class="alert">incomplete,
+							noisy transform</em> of the image we want</h3>
+					<div class="ix-grid">
+						<div class="ix-row ix-head">
+							<span></span><span>the image</span><span></span><span>what we measure</span><span></span><span>the
+								direct inverse</span>
+						</div>
+						<div class="ix-row">
+							<span class="ix-label">radio</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/radio_sky.png" alt="a toy radio sky: a double-lobed radio galaxy and compact sources"><figcaption>a radio sky</figcaption></figure>
+							<span class="ix-arw">&rarr;</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="the uv coverage of a one-hour track with a VLA-like array: six spokes"><figcaption><i>uv</i> coverage</figcaption></figure>
+							<span class="ix-arw">&rarr;</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/radio_dirty.png" alt="the dirty image: the sky with sidelobes streaking across it"><figcaption>dirty image: sidelobes</figcaption></figure>
+						</div>
+						<div class="ix-row fragment fade-in">
+							<span class="ix-label">lensing</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/lens_kappa.png" alt="a simulated convergence map"><figcaption>the mass map</figcaption></figure>
+							<span class="ix-arw">&rarr;</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/lens_shear.png" alt="the shear as sticks, with masked holes and a missing strip"><figcaption>shear: masked, noisy</figcaption></figure>
+							<span class="ix-arw">&rarr;</span>
+							<figure><img src="../assets/diagrams/imaging_parallel/lens_ks.png" alt="the Kaiser-Squires map: noisy, and filling the masked gaps"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
+						</div>
+					</div>
+					<p class="ix-tag">all panels simulated for this slide</p>
+					<aside class="notes">
+						<p><strong>the radio bridge</strong> (new for the colloquium; script beat to write)</p>
+						<ul>
+							<li>for the radio astronomers: <strong>this is your problem</strong></li>
+							<li>radio: the sky &rarr; the interferometer samples its Fourier transform only on these
+								tracks, and never at zero spacing &rarr; invert directly and you get the dirty image,
+								sidelobes everywhere</li>
+							<li>[CLICK] lensing: the mass &rarr; we measure the shear, a non-local transform of it,
+								with holes and far more noise than signal; and the mean of the map is invisible (the
+								mass-sheet degeneracy, our missing zero spacing) &rarr; invert directly
+								(Kaiser&ndash;Squires) and you get noise, and structure leaking into the gaps</li>
+							<li>both are fixed the same way: add a prior. CLEAN, MEM, sparsity for you; Wiener,
+								sparsity, MCALens for us</li>
+						</ul>
+					</aside>
+				</section>
 
 
 				<!-- ################################################################################################### -->
@@ -1032,8 +1084,8 @@
 				     The residual map that used to sit here was replaced by the truth/KS pair:a residual asks the room to imagine the comparison, the pair just shows it.
 				============================================================================== -->
 				<section class="ksmain" data-theme="light">
-					<h3 class="slide-title tight">Kaiser&ndash;Squires inversion is exact for complete, noiseless data,
-						but <em class="alert">amplifies the noise</em></h3>
+					<h3 class="slide-title tight">Kaiser&ndash;Squires is the <em class="alert">dirty image</em> of
+						lensing: exact for complete, noiseless data, but it amplifies the noise</h3>
 
 					<figure class="ksfig">
 						<img src="../assets/figures/maps/ks_vs_truth.png"
