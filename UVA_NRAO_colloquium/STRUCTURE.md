@@ -137,7 +137,12 @@ defence ran 8–20 % over its read-through). `from` = the frame in the forked de
 | close | 3:00 |
 | **total** | **35:00 read-through → ~38–42 delivered** |
 
-### Out of the main line (parked with `data-visibility="hidden"`, kept as backup)
+### Candidates for leaving the main line — *not parked yet*
+
+**Decided 2026-10-25 (Andreas): park nothing up front.** Build the new slides and the additions
+first, time the talk, and only then decide what to remove or compress. The list below is the
+candidate pool for that decision, not a done deal; the budget above assumes it, so until then the
+deck runs long.
 
 2 (timeline, merged into C3) · 4 (probes) · 8, 21, 37, 45 (paper dividers) · 17 (merged) · 29
 (Ajani forecasts) · 32 (Bayes chain) · 33 (Gaussian likelihood) · 34 (generative modelling) · 35
@@ -239,6 +244,8 @@ data arrive").
 
 ## Open items for Andreas
 
+- **Remind Andreas at the end of the pass:** the on-screen ratio notation, 157 % → ×2.6 (C15, C36)
+  and 36 % → ×1.36 (C27). Deferred by him on 2026-10-25, undecided.
 - The **×2.6 interpretation** (Numbers).
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
