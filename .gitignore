@@ -16,3 +16,8 @@ __pycache__/
 PhD_Defense_2026/pptx_export/Fonts.zip
 */SPEAKER_SCRIPT.pdf
 */SPEAKER_SCRIPT.html
+
+# Vilasini Tinnaneri Sreekanth's PhD defence deck, kept locally as the reference
+# PhD_Day_2025 was adapted from. Not ours to publish, and its figures were never
+# in the repo, so it rendered with 54 broken images on Pages.
+PhD_Day_2025/index_Vilasini.html
