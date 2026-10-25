@@ -55,3 +55,6 @@
 [submodule "CosmoStat_group_meeting_2025/reveal.js"]
 	path = CosmoStat_group_meeting_2025/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "UVA_NRAO_colloquium/reveal.js"]
+	path = UVA_NRAO_colloquium/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
