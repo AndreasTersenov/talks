@@ -94,8 +94,8 @@ defence ran 8–20 % over its read-through). `from` = the frame in the forked de
 |---|---|---|---|---|
 | C7 | Making the map: Q1, Q2 | 8 | 0:20 | rework: plain divider, no paper title |
 | C8 | We measure the shear, but we want the mass map | 9–11 | 1:15 | merge: no derivative equations; one line on *why* κ (peaks and voids need a scalar field) |
-| C9 | Mass mapping is an imaging problem with missing and noisy data, like interferometry | 12 | 1:30 | rework: γ = MPκ + n beside V = SFI + n; the mass-sheet degeneracy as the missing zero spacing |
-| C10 | Kaiser–Squires is exact for complete, noiseless data, but amplifies the noise | 13 | 0:50 | headline back to the defence's (2026-10-27): no "dirty image" after C9 |
+| C9 | Kaiser–Squires is exact for complete, noiseless data, but amplifies the noise | 13 | 0:50 | headline back to the defence's (2026-10-27); it comes before the bridge, so the bridge can call it back |
+| C10 | Mass mapping is an imaging problem with missing and noisy data, like interferometry | 12 | 1:30 | rework: γ = MPκ + n beside V = SFI + n; the mass-sheet degeneracy as the missing zero spacing. Moved after Kaiser–Squires (2026-10-27): its direct-inverse column is the map just explained, and "add a prior" leads into C11 |
 | C11 | Every method is regularised imaging: a data term plus a prior | 14 | 1:00 | keep the one equation; a short walk through the priors (Gaussian, sparse, both, learned), from the parked A1.7 text |
 | C12 | MCALens: a smooth Gaussian part plus sparse peaks | 15 | 0:45 | rework: no prox formula. "A gradient step, then a denoising step", in words, because C18 needs it |
 | C13 | Does the choice change the science? Hold everything else fixed and find out | 16, 17 | 1:00 | merge |
@@ -162,7 +162,7 @@ Decided at the timed run on Wednesday, not before. In order:
 - **−3:00**: also C28 to a single still; C33 merges into C34.
 - **−5:00**: also C23 merges into C24; C17 becomes one spoken line on C18.
 
-Never cut: C2, C9, C15, C19, C30, C34, C36.
+Never cut: C2, C10, C15, C19, C30, C34, C36.
 
 ## Numbers
 
@@ -184,7 +184,7 @@ once, out loud.
 
 ## The bridges, and how to say them (from `COLLOQUIUM_ADAPTATION.md` §5)
 
-- **C9 only: interferometry.** Andreas, 2026-10-27: one slide makes the connection, then the talk
+- **C10 only: interferometry.** Andreas, 2026-10-27: one slide makes the connection, then the talk
   draws no more explicit parallels. On it: d = A s + n, visibilities ↔ shear, uv coverage ↔ mask,
   dirty image ↔ Kaiser–Squires. In the notes, for questions only: no zero spacing ↔ the mass-sheet
   degeneracy; where the analogy stops (their gaps are in Fourier space, ours in real space and
@@ -244,7 +244,7 @@ data arrive").
 | day | work |
 |---|---|
 | **Sun 25** | this file signed off |
-| **Mon 26** | pass 1, mechanical: title slide, dividers, § markers, chain labels, the on-slide vocabulary and numbers; park the cuts. Pass 2: merges and new slides (C2, C9, C35, C36). Ledger entries for UNIONS and C4 |
+| **Mon 26** | pass 1, mechanical: title slide, dividers, § markers, chain labels, the on-slide vocabulary and numbers; park the cuts. Pass 2: merges and new slides (C2, C10, C35, C36). Ledger entries for UNIONS and C4 |
 | **Tue 27** | script rewritten for every changed beat; measure with `tools/measure-script.py`; untimed run-through in the evening |
 | **Wed 28** | timed run-through; cut along the planned exits; PDF export; screenshots |
 | **Thu 29** | silent click-through a few hours before; talk |
@@ -255,8 +255,9 @@ data arrive").
   and 36 % → ×1.36 (C27). Deferred by him on 2026-10-25, undecided.
 - The **×2.6 interpretation** (Numbers).
 - **Versions compared, one kept of each** (2026-10-27):
-  - C9 radio bridge: **decided 2026-10-27**, the equation slide (#/7/5); the picture version is
-    gone. Its lensing row is now the PnPMass paper's field (κTNG), not the toy simulation.
+  - C10 radio bridge: **decided 2026-10-27**, the equation slide (#/7/6, after Kaiser–Squires);
+    the picture version is gone. Its lensing row is now the PnPMass paper's field (κTNG), not the
+    toy simulation.
   - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
     AIRI plug-in loop is gone. The paper-figure slide with the equations (#/8/1) stays for now;
     most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
