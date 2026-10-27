@@ -95,7 +95,7 @@ defence ran 8–20 % over its read-through). `from` = the frame in the forked de
 | C7 | Making the map: Q1, Q2 | 8 | 0:20 | rework: plain divider, no paper title |
 | C8 | We measure the shear, but we want the mass map | 9–11 | 1:15 | merge: no derivative equations; one line on *why* κ (peaks and voids need a scalar field) |
 | C9 | Mass mapping is an imaging problem with missing and noisy data, like interferometry | 12 | 1:30 | rework: γ = MPκ + n beside V = SFI + n; the mass-sheet degeneracy as the missing zero spacing |
-| C10 | The direct inversion is the dirty image of lensing | 13 | 0:50 | rework |
+| C10 | Kaiser–Squires is exact for complete, noiseless data, but amplifies the noise | 13 | 0:50 | headline back to the defence's (2026-10-27): no "dirty image" after C9 |
 | C11 | Every method is regularised imaging: a data term plus a prior | 14 | 1:00 | keep the one equation; a short walk through the priors (Gaussian, sparse, both, learned), from the parked A1.7 text |
 | C12 | MCALens: a smooth Gaussian part plus sparse peaks | 15 | 0:45 | rework: no prox formula. "A gradient step, then a denoising step", in words, because C18 needs it |
 | C13 | Does the choice change the science? Hold everything else fixed and find out | 16, 17 | 1:00 | merge |
@@ -103,8 +103,8 @@ defence ran 8–20 % over its read-through). `from` = the frame in the forked de
 | C15 | A map that is 4 % better gives a ×2.6 higher figure of merit | 19 | 1:40 | rework: the first corner plot, explained; the parameters in words; "fidelity is not science yield" |
 | C16 | The gain comes from the small scales | 20 | 0:35 | keep, shorter: "remember this; it comes back in the last part" |
 | C17 | Learned methods are accurate, but must be retrained, and give no error bars | 22 | 0:45 | rework: no table |
-| C18 | Plug-and-play: replace the denoising step by a network trained once | 23 | 1:40 | rework: the loop as a picture, no iteration equations. Credit Hubert Leterme here. The radio parallel (AIRI), if verified |
-| C19 | PnPMass is as accurate as the specialised networks, with the smallest error bars that keep their coverage | 24 | 1:40 | rework: "guaranteed coverage", never "calibrated"; conformal in one sentence |
+| C18 | Plug-and-play: replace the denoising step by a network trained once | 23 | 1:40 | rework: the loop as a picture, no iteration equations. Credit Hubert Leterme here. No radio on screen (2026-10-27); AIRI in the notes, if asked |
+| C19 | PnPMass is as accurate as the specialised networks, with the smallest calibrated error bars | 24 | 1:40 | the defence slide, wording kept (Andreas, 2026-10-27); say once what "calibrated" means; conformal in one sentence |
 
 ### Movement II — reading the map · ~14:30
 
@@ -184,11 +184,14 @@ once, out loud.
 
 ## The bridges, and how to say them (from `COLLOQUIUM_ADAPTATION.md` §5)
 
-- **C9–C11, C18–C19: interferometry.** Visibilities ↔ shear; no zero spacing ↔ the mass-sheet
-  degeneracy; dirty image ↔ Kaiser–Squires; RML imaging ↔ data term + regulariser; learned
-  denoisers in forward–backward (AIRI, R2D2) ↔ PnPMass; CLEAN images without per-pixel errors ↔
-  conformal error bars. **Verify the radio references** before any of them is on a slide; AIRI above
-  all, because it is the likeliest question.
+- **C9 only: interferometry.** Andreas, 2026-10-27: one slide makes the connection, then the talk
+  draws no more explicit parallels. On it: d = A s + n, visibilities ↔ shear, uv coverage ↔ mask,
+  dirty image ↔ Kaiser–Squires. In the notes, for questions only: no zero spacing ↔ the mass-sheet
+  degeneracy; where the analogy stops (their gaps are in Fourier space, ours in real space and
+  noise-dominated); RESOLVE ↔ Wiener; AIRI ↔ PnPMass (C18 notes); CLEAN without per-pixel errors
+  (C19 notes). Radio references checked 2026-10-27: AIRI is Terris, Dabbech, Tang &
+  Wiaux 2023, MNRAS 518, 604, its denoiser trained on optical images; the follow-up (Terris, Tang,
+  Jackson & Wiaux 2024) found MRI-trained denoisers work about as well.
 - **C15: fidelity is not science yield.** 4 % in RMSE, ×2.6 in the figure of merit.
 - **C31: feedback is GECO's physics.** Acknowledge it, and offer lensing-as-a-feedback-probe as a
   forward-looking idea in C35, never as a result.
@@ -197,7 +200,7 @@ once, out loud.
 
 ## Vocabulary rules (from `COLLOQUIUM_ADAPTATION.md` §4)
 
-**calibrated** → guaranteed coverage · **convergence** → the mass map (κ named once); the iteration
+**calibrated**: kept on C19 (Andreas, 2026-10-27), and said once, aloud, what it means · **convergence** → the mass map (κ named once); the iteration
 "settles" · **FoM** → name the quantity once per number · **Stage IV** → Euclid- and Rubin-era ·
 **C_ℓ, ℓ_max** → arcminutes · **HOS** → statistics beyond the power spectrum · **baryonic
 contamination** → galaxy feedback · method names: Kaiser–Squires, MCALens and PnPMass only.
@@ -251,6 +254,14 @@ data arrive").
 - **Remind Andreas at the end of the pass:** the on-screen ratio notation, 157 % → ×2.6 (C15, C36)
   and 36 % → ×1.36 (C27). Deferred by him on 2026-10-25, undecided.
 - The **×2.6 interpretation** (Numbers).
+- **Versions compared, one kept of each** (2026-10-27):
+  - C9 radio bridge: **decided 2026-10-27**, the equation slide (#/7/5); the picture version is
+    gone. Its lensing row is now the PnPMass paper's field (κTNG), not the toy simulation.
+  - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
+    AIRI plug-in loop is gone. The paper-figure slide with the equations (#/8/1) stays for now;
+    most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
+  - C19 results: **decided 2026-10-27**, version A, "smallest calibrated error bars" (#/8/3); the
+    coverage-wording version is gone.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
 - **C35**: what you are working on here. Later, as decided.
