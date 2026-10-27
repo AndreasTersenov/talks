@@ -4,69 +4,6 @@
  * ========================================================================== */
 
 /* ----------------------------------------------------------------------------
-   The plug-and-play radio parallel (.radiopnp), a plug-in loop. Fixed column
-   widths so the return arrow (an SVG over the boxes) lands on their centres:
-   phys centre = 165 px, denoiser centre = 545 px in the 720-px middle span.
-   -------------------------------------------------------------------------- */
-.reveal .slides section.radiopnp .pl-wrap { width: 960px; margin: 0.3em auto 0; position: relative; }
-.reveal .slides section.radiopnp .pl-return {
-	display: block; width: 720px; height: 64px; margin: 0 0 0 120px; color: var(--accent);
-}
-.reveal .slides section.radiopnp .pl-repeat {
-	position: absolute; top: -6px; left: 120px; width: 720px; text-align: center;
-	font-family: var(--label); font-style: var(--label-style); font-size: 0.66em; color: var(--fg-muted);
-}
-.reveal .slides section.radiopnp .pl-repeat { background: transparent; }
-.reveal .slides section.radiopnp .pl-row {
-	display: grid; grid-template-columns: 70px 50px 330px 50px 340px 50px 70px;
-	align-items: center; justify-content: center;
-}
-.reveal .slides section.radiopnp .pl-io {
-	font-family: var(--label); font-style: var(--label-style); font-size: 0.75em; color: var(--fg-muted);
-	text-align: center;
-}
-.reveal .slides section.radiopnp .pl-arw { color: var(--accent); font-size: 1.3em; text-align: center; }
-.reveal .slides section.radiopnp .pl-arw.small { font-size: 1em; }
-.reveal .slides section.radiopnp .pl-box {
-	background: var(--surface); border: 1px solid var(--edge); border-radius: 10px;
-	padding: 0.5em 0.7em; text-align: center; font-size: 0.75em; line-height: 1.3;
-	align-self: stretch; display: flex; flex-direction: column; justify-content: center;
-}
-.reveal .slides section.radiopnp .pl-box.pl-den { border: 2px solid var(--accent); }
-.reveal .slides section.radiopnp .pl-sub {
-	display: block; margin-top: 0.3em; color: var(--fg-muted);
-	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
-	font-size: 0.9em;
-}
-.reveal .slides section.radiopnp .pl-pair {
-	display: flex; align-items: center; justify-content: center; gap: 0.35em; margin-top: 0.35em;
-}
-.reveal .slides section.radiopnp .pl-pair img {
-	width: 120px; height: 120px; margin: 0; border: 0; border-radius: 6px; box-shadow: none;
-}
-.reveal .slides section.radiopnp .pl-plugs {
-	width: 330px; margin: 0.9em 0 0 120px; padding-top: 0.35em; position: relative;
-	border-top: 2px dashed var(--edge); text-align: center;
-}
-/* a short dashed lead from the physics box down to its sockets */
-.reveal .slides section.radiopnp .pl-plugs::before {
-	content: ""; position: absolute; left: 50%; top: -0.9em; height: 0.9em; border-left: 2px dashed var(--edge);
-}
-.reveal .slides section.radiopnp .pl-plughead {
-	font-family: var(--label); font-style: var(--label-style); font-size: 0.66em; color: var(--fg-muted);
-}
-.reveal .slides section.radiopnp .pl-plugrow { display: flex; justify-content: center; gap: 1.1em; margin-top: 0.3em; }
-.reveal .slides section.radiopnp .pl-plug { margin: 0; width: 140px; }
-.reveal .slides section.radiopnp .pl-plug img {
-	display: block; width: 110px; height: 110px; margin: 0 auto; border: 0; border-radius: 6px; box-shadow: none;
-}
-.reveal .slides section.radiopnp .pl-plug figcaption {
-	font-size: 0.62em; line-height: 1.3; margin-top: 0.25em; color: var(--fg);
-}
-.reveal .slides section.radiopnp .pl-plug.lens img { outline: 3px solid var(--accent); outline-offset: 2px; }
-.reveal .slides section.radiopnp .pl-cite { color: var(--fg-muted); font-size: 0.9em; }
-
-/* ----------------------------------------------------------------------------
    Version B of the PnPMass results slide (coverage wording, under evaluation).
    Its headline and sigma caption each wrap one line more than version A, which
    pushed the closing sentence off the slide; four margins give the room back.
@@ -169,3 +106,148 @@
 	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 0.4em 2.2em 0 0;
 }
 
+/* ----------------------------------------------------------------------------
+   Plug-and-play as a loop (.pnpb): the loop on the left
+   with one step lit per click, the map it produces on the right (after Wassim
+   Kabalan's particle-mesh slide). State comes from the zero-size .pb-mk
+   markers placed before the stage and the captions, read off reveal's own
+   classes: .visible for what has been built, .current-fragment for what is
+   lit now. Ring geometry is in px and matches the SVG viewBox (400 x 285):
+   node centres at x = 90 and 310 (180 px wide), tops at 80, bottoms at 190.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.pnpb .pb-mk { display: inline; padding: 0; margin: 0; line-height: 0; }
+.reveal .slides section.pnpb .pb-stage {
+	display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 0.5em;
+}
+.reveal .slides section.pnpb .pb-in { width: 165px; display: flex; flex-direction: column; align-items: center; }
+.reveal .slides section.pnpb .pb-cards { position: relative; width: 150px; height: 150px; }
+.reveal .slides section.pnpb .pb-cards img,
+.reveal .slides section.pnpb .pb-frames img,
+.reveal .slides section.pnpb .pb-truth img {
+	display: block; margin: 0; max-width: none; max-height: none; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpb .pb-cards img { position: absolute; width: 128px; height: 128px; border-radius: 3px; }
+.reveal .slides section.pnpb .pb-cards .pb-g2 { left: 22px; top: 0; }
+.reveal .slides section.pnpb .pb-cards .pb-g1 { left: 0; top: 22px; box-shadow: var(--shadow); }
+.reveal .slides section.pnpb .pb-lab,
+.reveal .slides section.pnpb .pb-back,
+.reveal .slides section.pnpb .pb-tl,
+.reveal .slides section.pnpb figcaption {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+	color: var(--fg-muted);
+}
+.reveal .slides section.pnpb .pb-lab { font-size: 0.6em; margin-top: 0.3em; text-align: center; }
+.reveal .slides section.pnpb .pb-arw { color: var(--accent); font-size: 1.3em; flex: 0 0 auto; }
+
+/* the ring */
+.reveal .slides section.pnpb .pb-ring { position: relative; flex: 0 0 auto; width: 400px; height: 285px; }
+.reveal .slides section.pnpb .pb-arcs { position: absolute; left: 0; top: 0; width: 400px; height: 285px; }
+.reveal .slides section.pnpb .pb-arc {
+	fill: none; stroke: var(--fg-muted); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+	opacity: 0.55; transition: stroke 0.3s ease, opacity 0.3s ease;
+}
+.reveal .slides section.pnpb .pb-node {
+	position: absolute; top: 80px; width: 180px; height: 110px; box-sizing: border-box;
+	display: flex; flex-direction: column; justify-content: center; text-align: center;
+	padding: 0.4em 0.55em; font-size: 0.6em; line-height: 1.25;
+	background: var(--surface); border: 1px solid var(--edge); border-radius: 10px;
+	transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.reveal .slides section.pnpb .pb-node.pb-a { left: 0; }
+.reveal .slides section.pnpb .pb-node.pb-b { left: 220px; }
+.reveal .slides section.pnpb .pb-sub {
+	display: block; margin-top: 0.35em; color: var(--fg-muted);
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+}
+.reveal .slides section.pnpb .pb-back {
+	position: absolute; left: 0; width: 400px; top: 252px; text-align: center; font-size: 0.58em;
+}
+/* lit: a 2px accent ring drawn as a shadow, so the box does not change size */
+.reveal .slides section.pnpb .pb-mk1.current-fragment ~ .pb-stage .pb-a,
+.reveal .slides section.pnpb .pb-mk2.current-fragment ~ .pb-stage .pb-b {
+	border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+	background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+.reveal .slides section.pnpb .pb-mk2.current-fragment ~ .pb-stage .pb-top,
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-arc { stroke: var(--accent); opacity: 1; }
+
+/* the map */
+.reveal .slides section.pnpb .pb-map { flex: 0 0 auto; width: 270px; }
+.reveal .slides section.pnpb .pb-ticks {
+	display: flex; align-items: center; justify-content: center; gap: 0.35em; margin-bottom: 0.35em;
+}
+.reveal .slides section.pnpb .pb-tl { font-size: 0.58em; margin-right: 0.2em; }
+.reveal .slides section.pnpb .pb-tk {
+	display: inline-block; width: 1.6em; height: 1.6em; line-height: 1.6em; border-radius: 50%;
+	font-family: var(--mono); font-size: 0.5em; text-align: center;
+	color: var(--fg-muted); border: 1px solid var(--edge); background: var(--surface);
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.reveal .slides section.pnpb .pb-mk1.visible ~ .pb-stage .pb-t1,
+.reveal .slides section.pnpb .pb-mk3.visible ~ .pb-stage .pb-tk {
+	background: var(--accent); border-color: var(--accent); color: var(--surface);
+}
+.reveal .slides section.pnpb .pb-frames { position: relative; width: 270px; height: 270px; }
+.reveal .slides section.pnpb .pb-frames > * { position: absolute; left: 0; top: 0; width: 270px; height: 270px; }
+.reveal .slides section.pnpb .pb-zero {
+	box-sizing: border-box; border: 2px dashed var(--edge); border-radius: 4px;
+	display: flex; align-items: center; justify-content: center;
+	font-family: var(--label); font-style: var(--label-style); font-size: 0.62em; color: var(--fg-muted);
+}
+.reveal .slides section.pnpb .pb-f { opacity: 0; transition: opacity 0.35s ease; }
+.reveal .slides section.pnpb .pb-mk1.visible ~ .pb-stage .pb-f1,
+.reveal .slides section.pnpb .pb-mk2.visible ~ .pb-stage .pb-f2,
+.reveal .slides section.pnpb .pb-mk3.visible ~ .pb-stage .pb-r6 { opacity: 1; }
+
+.reveal .slides section.pnpb .pb-truth { flex: 0 0 auto; width: 140px; margin: 0 0 0 10px; align-self: flex-start; padding-top: 1.6em; }
+.reveal .slides section.pnpb .pb-truth img { width: 140px; height: 140px; }
+.reveal .slides section.pnpb .pb-truth figcaption { font-size: 0.55em; text-align: center; margin-top: 0.25em; }
+
+/* the run (click 3): iterations 2-4 play once, 1 s per step, the loop lighting
+   in turn. Fill mode `both` holds each element at its first keyframe during its
+   delay, which overrides the static end state above until its moment comes. */
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r { animation: pb-on 0.35s ease both; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r1 { animation-delay: 0s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r2 { animation-delay: 1s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r3 { animation-delay: 2s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r4 { animation-delay: 3s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r5 { animation-delay: 4s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-r6 { animation-delay: 5s; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-t2 { animation: pb-tick 0.3s ease 0s both; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-t3 { animation: pb-tick 0.3s ease 2s both; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-t4 { animation: pb-tick 0.3s ease 4s both; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-a { animation: pb-lit-a 6s step-end both; }
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-stage .pb-b { animation: pb-lit-b 6s step-end both; }
+@keyframes pb-on { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pb-tick {
+	from { background: var(--surface); border-color: var(--edge); color: var(--fg-muted); }
+	to { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+}
+@keyframes pb-lit-a {
+	0%, 33.333%, 66.667% {
+		border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+		background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	}
+	16.667%, 50%, 83.333%, 100% { border-color: var(--edge); box-shadow: none; background-color: var(--surface); }
+}
+@keyframes pb-lit-b {
+	0%, 33.333%, 66.667% { border-color: var(--edge); box-shadow: none; background-color: var(--surface); }
+	16.667%, 50%, 83.333%, 100% {
+		border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+		background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	}
+}
+/* the PDF shows each click's end state */
+html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
+
+/* the captions, one per state, stacked in one cell so the slide never changes height */
+.reveal .slides section.pnpb .pb-caps { display: grid; margin: 0.7em auto 0; max-width: 90%; }
+.reveal .slides section.pnpb .pb-caps > span {
+	grid-area: 1 / 1; text-align: center; font-size: 0.68em; color: var(--fg);
+	opacity: 0; transition: opacity 0.35s ease;
+}
+.reveal .slides section.pnpb .pb-mk1:not(.visible) ~ .pb-caps .pb-c0,
+.reveal .slides section.pnpb .pb-mk1.current-fragment ~ .pb-caps .pb-c1,
+.reveal .slides section.pnpb .pb-mk2.current-fragment ~ .pb-caps .pb-c2,
+.reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-caps .pb-c3 { opacity: 1; }
+.reveal .slides section.pnpb .credit-line { margin-top: 0.5em; }

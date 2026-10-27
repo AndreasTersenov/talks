@@ -2038,71 +2038,98 @@
 					</aside>
 				</section>
 				<!-- =============================================================================
-				     Colloquium (2026-10-25), UNDER EVALUATION: the radio parallel to plug-and-play, as
-				     a plug-in loop. The PnP slide above is unchanged. The physics step is a socket that
-				     takes either instrument (uv coverage: AIRI; shear: PnPMass); the denoiser shows a
-				     REAL noisy -> denoised pair cut from the paper's PnP figure (no AIRI output is shown,
-				     because we cannot make one honestly). AIRI checked 2026-10-25: Terris, Dabbech, Tang
-				     & Wiaux 2023, MNRAS 518, 604. Tiles from tools/make-imaging-parallel.py. Styling in
-				     colloquium.css. The text-card version it replaces is in git history.
+				     Colloquium: plug-and-play as a loop. Andreas kept it over the radio plug-in
+				     version (2026-10-27, in git history) and dropped its radio click: after the
+				     bridge slide the talk draws no more explicit parallels.
+				     Model: Wassim Kabalan's particle-mesh slide, the loop on the left with one step
+				     lit per click and the map it produces on the right. The loop is HTML; the maps
+				     are the paper's own panels, cut from PnP_4/7/8/9 by tools/make-pnp-build.py.
+				     Clicks:
+				       (1) the data step lights; the map after it, noisy
+				       (2) the denoiser lights; the map after it, clean
+				       (3) iterations 2-4 play by themselves (CSS animation, 6 s), the loop lighting
+				           in turn and the iteration counter ticking; ?print-pdf shows the end state
+				     Mechanism as on the thesis map: zero-size .pb-mk markers BEFORE the stage,
+				     read by general-sibling selectors off reveal's own .visible and
+				     .current-fragment. No JS listener, so ?print-pdf stays correct.
+				     Styling in colloquium.css.
 				============================================================================== -->
-				<section class="radiopnp" data-theme="light">
-					<h3 class="slide-title tight">Radio imaging uses the same trick: the physics stays in the data
-						step, only the <em class="alert">prior is learned</em></h3>
-					<div class="pl-wrap">
-						<svg class="pl-return" viewBox="0 0 720 64" preserveAspectRatio="none" aria-hidden="true">
-							<path d="M 545 64 L 545 26 L 165 26 L 165 56" fill="none" stroke="currentColor"
-								stroke-width="2.2" />
-							<path d="M 157 51 L 165 63 L 173 51" fill="none" stroke="currentColor" stroke-width="2.2" />
-						</svg>
-						<span class="pl-repeat">&#8634; repeat until the map stops changing</span>
-						<div class="pl-row">
-							<span class="pl-io">data</span>
-							<span class="pl-arw">&rarr;</span>
-							<div class="pl-box pl-phys">
-								<b>a step towards the data</b>
-								<span class="pl-sub">the instrument: its operator and its noise</span>
+				<section class="pnpb" data-theme="light">
+					<h3 class="slide-title tight">Plug-and-play: a step towards the data, then a <em class="alert">learned
+							denoiser</em>, repeated</h3>
+					<span class="fragment pb-mk pb-mk1" data-fragment-index="1"></span>
+					<span class="fragment pb-mk pb-mk2" data-fragment-index="2"></span>
+					<span class="fragment pb-mk pb-mk3" data-fragment-index="3"></span>
+					<div class="pb-stage">
+						<div class="pb-in">
+							<div class="pb-cards">
+								<img class="pb-g2" src="../assets/figures/maps/pnp_build/gamma2.png" alt="the second shear component, masked and noisy">
+								<img class="pb-g1" src="../assets/figures/maps/pnp_build/gamma1.png" alt="the first shear component, masked and noisy">
 							</div>
-							<span class="pl-arw">&rarr;</span>
-							<div class="pl-box pl-den">
-								<b>a learned denoiser</b>
-								<div class="pl-pair">
-									<img src="../assets/diagrams/imaging_parallel/pnp_after_data_step.png" alt="a PnPMass map after the data step: noisy">
-									<span class="pl-arw small">&rarr;</span>
-									<img src="../assets/diagrams/imaging_parallel/pnp_after_denoiser.png" alt="the same map after the denoiser">
-								</div>
-								<span class="pl-sub">the prior, trained once on simulations</span>
-							</div>
-							<span class="pl-arw">&rarr;</span>
-							<span class="pl-io">map</span>
+							<span class="pb-lab">the measured shear</span>
 						</div>
-						<div class="pl-plugs">
-							<span class="pl-plughead">plug in the instrument</span>
-							<div class="pl-plugrow">
-								<figure class="pl-plug fragment fade-in">
-									<img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="uv coverage of an interferometer">
-									<figcaption><b>radio</b>: AIRI<br><span class="pl-cite">Terris, Dabbech, Tang &amp;
-											Wiaux 2023</span></figcaption>
-								</figure>
-								<figure class="pl-plug lens">
-									<img src="../assets/diagrams/imaging_parallel/lens_shear.png" alt="the shear field, masked and noisy">
-									<figcaption><b>lensing</b>: PnPMass<br><span class="pl-cite">Leterme, Tersenov, Fadili
-											&amp; Starck 2026</span></figcaption>
-								</figure>
+						<span class="pb-arw">&rarr;</span>
+						<div class="pb-ring">
+							<svg class="pb-arcs" viewBox="0 0 400 285" aria-hidden="true">
+								<path class="pb-arc pb-top" d="M 90 80 C 90 10, 310 10, 310 80" />
+								<path class="pb-arc pb-top" d="M 302 68 L 310 80 L 318 68" />
+								<path class="pb-arc pb-bot" d="M 310 190 C 310 262, 90 262, 90 190" />
+								<path class="pb-arc pb-bot" d="M 82 202 L 90 190 L 98 202" />
+							</svg>
+							<div class="pb-node pb-a"><b>a step towards the data</b><span class="pb-sub">the instrument:
+									operator, mask, noise</span></div>
+							<div class="pb-node pb-b"><b>a learned denoiser</b><span class="pb-sub">the prior, trained once
+									on simulations</span></div>
+							<span class="pb-back">feed the map back in</span>
+						</div>
+						<span class="pb-arw">&rarr;</span>
+						<div class="pb-map">
+							<div class="pb-ticks"><span class="pb-tl">iteration</span><span class="pb-tk pb-t1">1</span><span
+									class="pb-tk pb-t2">2</span><span class="pb-tk pb-t3">3</span><span
+									class="pb-tk pb-t4">4</span></div>
+							<div class="pb-frames">
+								<div class="pb-zero"><span>start from $\kappa = 0$</span></div>
+								<img class="pb-f pb-f1" src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the map after the first data step: the structures are there, buried in noise">
+								<img class="pb-f pb-f2" src="../assets/figures/maps/pnp_build/after_denoiser_1.png" alt="the map after the first denoiser step: clean">
+								<img class="pb-f pb-r pb-r1" src="../assets/figures/maps/pnp_build/after_data_step_2.png" alt="iteration 2, after the data step">
+								<img class="pb-f pb-r pb-r2" src="../assets/figures/maps/pnp_build/after_denoiser_2.png" alt="iteration 2, after the denoiser">
+								<img class="pb-f pb-r pb-r3" src="../assets/figures/maps/pnp_build/after_data_step_3.png" alt="iteration 3, after the data step">
+								<img class="pb-f pb-r pb-r4" src="../assets/figures/maps/pnp_build/after_denoiser_3.png" alt="iteration 3, after the denoiser">
+								<img class="pb-f pb-r pb-r5" src="../assets/figures/maps/pnp_build/after_data_step_4.png" alt="iteration 4, after the data step">
+								<img class="pb-f pb-r pb-r6" src="../assets/figures/maps/pnp_build/after_denoiser_4.png" alt="iteration 4, after the denoiser: the reconstructed map">
 							</div>
 						</div>
+						<figure class="pb-truth">
+							<img src="../assets/figures/maps/pnp_build/truth.png" alt="the true convergence map of the simulation">
+							<figcaption>the true map</figcaption>
+						</figure>
 					</div>
+					<div class="pb-caps">
+						<span class="pb-c0">Two shear components, masked and noisy, and an empty map to start from.</span>
+						<span class="pb-c1">A step towards the data: the physics lives here, and only here.</span>
+						<span class="pb-c2">A denoiser trained on simulations removes what does not look like a mass map.</span>
+						<span class="pb-c3">Feed the map back in, and repeat until it stops changing.</span>
+					</div>
+					<p class="credit-line">Leterme, Tersenov, Fadili &amp; Starck 2026, arXiv:2603.22006</p>
 					<aside class="notes">
-						<p><strong>the radio parallel</strong> (new, under evaluation; script beat to write)</p>
+						<p><strong>plug-and-play, as a loop</strong> (script beat to write)</p>
 						<ul>
-							<li>what we just did, as one loop: a step towards the data, then a learned denoiser,
-								repeat. The physics (the operator, the noise, the mask) lives only in the data step;
-								the network only replaces the prior</li>
-							<li>so the instrument is a plug-in: for us the shear and its mask</li>
-							<li>[CLICK] and radio astronomers plug in the uv coverage: that is AIRI (Wiaux group), as
-								good as SARA and much faster</li>
-							<li>if asked: their follow-up (Terris et al. 2024) found denoisers trained on medical
-								images work about as well, so the learned prior is quite generic</li>
+							<li>the whole method is this loop: a step towards the data, then a learned denoiser,
+								repeat. Start from an empty map</li>
+							<li>[CLICK] the data step pulls the map towards the measured shear. The physics lives
+								here and only here: the shear operator, the mask, the noise covariance. Out comes a
+								noisy map</li>
+							<li>[CLICK] the denoiser: a network (Swin transformer, 7 million parameters) trained once
+								on simulations, on white Gaussian noise over a range of levels. It replaces the
+								prior. Out comes a clean map</li>
+							<li>[CLICK] feed it back in and repeat; it settles to a fixed point. Compare with the
+								truth on the right</li>
+							<li>so the network never sees the survey: the mask and the noise live only in the data
+								step, and one network serves any footprint and any noise</li>
+							<li><em>if asked (radio):</em> the same method images the radio sky: AIRI, Terris,
+								Dabbech, Tang &amp; Wiaux 2023 (MNRAS 518, 604), with a denoiser trained on optical
+								images. Their follow-up (Terris, Tang, Jackson &amp; Wiaux 2024) found denoisers
+								trained on MRI images work about as well, so the learned prior is quite generic</li>
 						</ul>
 					</aside>
 				</section>
