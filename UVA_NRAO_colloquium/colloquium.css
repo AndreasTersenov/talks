@@ -52,48 +52,66 @@
    -------------------------------------------------------------------------- */
 .reveal .slides section.imgeq .eq-grid {
 	display: grid; justify-content: center; align-items: center;
-	grid-template-columns: 7em 172px 1.4em 172px 172px 5.4em 2em 172px;
-	column-gap: 8px; row-gap: 0.1em; margin-top: 0.35em;
+	grid-template-columns: 6.4em 138px 1.4em 138px 3.8em 138px 4.6em 1.6em 138px;
+	column-gap: 8px; row-gap: 0.85em; margin-top: 0.5em;
 }
-.reveal .slides section.imgeq .eq-sym { font-size: 1.15em; text-align: center; color: var(--fg); line-height: 1.2; }
 .reveal .slides section.imgeq .eq-what,
 .reveal .slides section.imgeq .eq-row,
-.reveal .slides section.imgeq .eq-noise,
+.reveal .slides section.imgeq .eq-oplab,
 .reveal .slides section.imgeq figcaption {
 	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
 }
-.reveal .slides section.imgeq .eq-what {
-	font-size: 0.6em; color: var(--fg-muted); text-align: center; align-self: start; padding-bottom: 0.35em;
+/* the header row: each symbol with its label under it, all hung from the top */
+.reveal .slides section.imgeq .eq-sym {
+	font-size: 1.15em; text-align: center; color: var(--fg); line-height: 1.2; align-self: start;
 }
+.reveal .slides section.imgeq .eq-what {
+	display: block; font-size: 0.52em; line-height: 1.3; margin-top: 0.15em; color: var(--fg-muted);
+}
+/* A covers two columns: the sampling (a picture) and the transform (a symbol) */
+.reveal .slides section.imgeq .eq-span2 { grid-column: span 2; }
 .reveal .slides section.imgeq .eq-row { font-size: 0.8em; color: var(--fg); text-align: right; padding-right: 0.3em; }
 .reveal .slides section.imgeq .eq-rowmath {
 	display: block; font-style: normal; font-size: 0.8em; color: var(--fg-muted); margin-top: 0.2em;
 }
-.reveal .slides section.imgeq .eq-op { text-align: center; font-size: 1em; color: var(--fg-muted); margin-bottom: 1.1em; }
-.reveal .slides section.imgeq .eq-noise {
-	font-size: 0.62em; color: var(--fg-muted); text-align: center; margin-bottom: 1.6em;
+/* the operators between the panels: =, F or P, +, and the arrow. Each sits on the panels'
+   centre line (the margin makes up for the caption under the panels); a label hangs below
+   it out of the flow, so it cannot move the symbol */
+.reveal .slides section.imgeq .eq-op,
+.reveal .slides section.imgeq .eq-opr,
+.reveal .slides section.imgeq .eq-noise,
+.reveal .slides section.imgeq .eq-arw {
+	position: relative; text-align: center; line-height: 1; margin-bottom: 20px;
 }
-.reveal .slides section.imgeq .eq-arw { color: var(--accent); font-size: 1.4em; text-align: center; margin-bottom: 0.6em; }
+.reveal .slides section.imgeq .eq-op,
+.reveal .slides section.imgeq .eq-noise { font-size: 1.5em; color: var(--fg); }
+.reveal .slides section.imgeq .eq-opr { font-size: 1.35em; color: var(--fg); }
+.reveal .slides section.imgeq .eq-arw { font-size: 1.4em; color: var(--accent); }
+.reveal .slides section.imgeq .eq-oplab {
+	position: absolute; left: 0; right: 0; top: 100%; margin-top: 0.35em;
+	font-size: 0.4em; line-height: 1.25; color: var(--fg-muted);
+}
 .reveal .slides section.imgeq figure { margin: 0; }
 .reveal .slides section.imgeq figure img {
-	display: block; width: 172px; height: 172px; margin: 0; max-width: none; max-height: none;
+	display: block; width: 138px; height: 138px; margin: 0; max-width: none; max-height: none;
 	border: 0; border-radius: 8px; box-shadow: none; background: transparent;
 }
 .reveal .slides section.imgeq figcaption {
 	color: var(--fg-muted); font-size: 0.6em; text-align: center; margin-top: 0.2em; white-space: nowrap;
 }
 .reveal .slides section.imgeq .eq-inv figcaption,
-.reveal .slides section.imgeq span.eq-inv { color: var(--accent); }
+.reveal .slides section.imgeq span.eq-inv,
+.reveal .slides section.imgeq .eq-inv .eq-what { color: var(--accent); }
 /* the paper's panels carry their own 1-px black frame: square corners, or the frame is clipped */
 .reveal .slides section.imgeq figure img[src*="pnp_build"] { border-radius: 2px; }
 /* the two shear components as stacked cards, as on the plug-and-play slide */
-.reveal .slides section.imgeq .eq-cards { position: relative; width: 172px; height: 172px; }
-.reveal .slides section.imgeq .eq-cards img { position: absolute; width: 148px; height: 148px; }
-.reveal .slides section.imgeq .eq-cards .eq-g2 { left: 24px; top: 0; }
-.reveal .slides section.imgeq .eq-cards .eq-g1 { left: 0; top: 24px; box-shadow: var(--shadow); }
+.reveal .slides section.imgeq .eq-cards { position: relative; width: 138px; height: 138px; }
+.reveal .slides section.imgeq .eq-cards img { position: absolute; width: 120px; height: 120px; }
+.reveal .slides section.imgeq .eq-cards .eq-g2 { left: 18px; top: 0; }
+.reveal .slides section.imgeq .eq-cards .eq-g1 { left: 0; top: 18px; box-shadow: var(--shadow); }
 .reveal .slides section.imgeq .ix-tag {
 	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
-	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 0.4em 2.2em 0 0;
+	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 1.2em 2.2em 0 0;
 }
 
 /* ----------------------------------------------------------------------------

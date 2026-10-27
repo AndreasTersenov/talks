@@ -1019,7 +1019,10 @@
 				     Model: the "Inverse problems in cosmology" slide of Wassim Kabalan's defence, one
 				     equation and its instances as pictures. Here the equation is the header row,
 				     d = A s + n, each symbol over its own column, and each instrument is one row of
-				     pictures under it: a picture equation. The direct inverse, A&dagger;d (dirty image,
+				     pictures under it: a picture equation. A spans two columns, the sampling as a
+				     picture (uv coverage, mask) and the transform as a symbol (F, P), so each row
+				     reads as its own equation, V = S F I and gamma = M P kappa (Andreas, 2026-10-27:
+				     A is not just the mask). The direct inverse, A&dagger;d (dirty image,
 				     Kaiser-Squires), is a separate last column on its own click.
 				     Clicks: (1) the lensing row; (2) the direct-inverse column.
 				     Radio row: a toy simulation, tools/make-imaging-parallel.py. Lensing row: the
@@ -1034,29 +1037,21 @@
 							equation</em></h3>
 					<div class="eq-grid">
 						<span></span>
-						<span class="eq-sym">$\mathbf{d}$</span>
+						<span class="eq-sym">$\mathbf{d}$<span class="eq-what">what we measure</span></span>
 						<span class="eq-sym eq-eq">$=$</span>
-						<span class="eq-sym">$\mathbf{A}$</span>
-						<span class="eq-sym">$\mathbf{s}$</span>
-						<span class="eq-sym">$+\;\mathbf{n}$</span>
+						<span class="eq-sym eq-span2">$\mathbf{A}$<span class="eq-what">how we measure</span></span>
+						<span class="eq-sym">$\mathbf{s}$<span class="eq-what">the image we want</span></span>
+						<span class="eq-sym">$+\;\mathbf{n}$<span class="eq-what">noise</span></span>
 						<span></span>
-						<span class="eq-sym eq-inv fragment" data-fragment-index="2">$\mathbf{A}^{\dagger}\mathbf{d}$</span>
-
-						<span></span>
-						<span class="eq-what">what we measure</span>
-						<span></span>
-						<span class="eq-what">the instrument</span>
-						<span class="eq-what">the image we want</span>
-						<span class="eq-what">noise</span>
-						<span></span>
-						<span class="eq-what eq-inv fragment" data-fragment-index="2">invert directly</span>
+						<span class="eq-sym eq-inv fragment" data-fragment-index="2">$\mathbf{A}^{\dagger}\mathbf{d}$<span class="eq-what">invert directly</span></span>
 
 						<span class="eq-row">radio<span class="eq-rowmath">$V = S\,F\,I + n$</span></span>
 						<figure><img src="../assets/diagrams/imaging_parallel/radio_vis.png" alt="the visibilities: points along the uv tracks, coloured by amplitude, brightest at short baselines"><figcaption>visibilities</figcaption></figure>
 						<span class="eq-op">=</span>
 						<figure><img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="the uv coverage of a one-hour track with a VLA-like array: six spokes"><figcaption><i>uv</i> coverage</figcaption></figure>
+						<span class="eq-opr">$F$<span class="eq-oplab">Fourier transform</span></span>
 						<figure><img src="../assets/diagrams/imaging_parallel/radio_sky.png" alt="a toy radio sky: a double-lobed radio galaxy and compact sources"><figcaption>the radio sky</figcaption></figure>
-						<span class="eq-noise">+ thermal noise</span>
+						<span class="eq-noise">+<span class="eq-oplab">thermal noise</span></span>
 						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
 						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/diagrams/imaging_parallel/radio_dirty.png" alt="the dirty image: the sky with sidelobes streaking across it"><figcaption>dirty image: sidelobes</figcaption></figure>
 
@@ -1064,8 +1059,9 @@
 						<figure class="fragment" data-fragment-index="1"><div class="eq-cards"><img class="eq-g2" src="../assets/figures/maps/pnp_build/gamma2.png" alt="the second shear component, masked and noisy"><img class="eq-g1" src="../assets/figures/maps/pnp_build/gamma1.png" alt="the first shear component, masked and noisy: the holes are around bright stars"></div><figcaption>shear: masked, noisy</figcaption></figure>
 						<span class="eq-op fragment" data-fragment-index="1">=</span>
 						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/mask.png" alt="the survey mask: the footprint, with holes around bright stars"><figcaption>the mask</figcaption></figure>
+						<span class="eq-opr fragment" data-fragment-index="1">$P$<span class="eq-oplab">shear operator</span></span>
 						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/truth.png" alt="the true convergence map of the simulation, with the footprint outlined"><figcaption>the mass map</figcaption></figure>
-						<span class="eq-noise fragment" data-fragment-index="1">+ shape noise</span>
+						<span class="eq-noise fragment" data-fragment-index="1">+<span class="eq-oplab">shape noise</span></span>
 						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
 						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the Kaiser-Squires map of the same field: the structure buried in noise, and spilling past the footprint"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
 					</div>
@@ -1095,9 +1091,9 @@
 							<li><em>if asked:</em> the mean of our map is invisible (the mass-sheet degeneracy),
 								like your missing zero spacing: both direct images come out with zero mean (the
 								dirty beam integrates to zero)</li>
-							<li><em>if asked:</em> A holds more than the picture: the Fourier transform for you,
-								the shear operator for us; the panel shows only what the instrument adds, the uv
-								coverage and the mask. The lensing direct inverse is noise-weighted, as a naturally
+							<li>A is two things in each row: where we sample (the uv coverage, the mask) and the
+								transform the sky goes through (Fourier, the shear operator)</li>
+							<li><em>if asked:</em> the lensing direct inverse is noise-weighted, as a naturally
 								weighted dirty image is</li>
 							<li><em>if asked:</em> the Wiener filter's radio twin is RESOLVE (a Gaussian-process
 								prior, Ensslin's group)</li>
