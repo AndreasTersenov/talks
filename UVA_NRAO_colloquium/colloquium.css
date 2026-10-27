@@ -259,3 +259,30 @@ html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
 .reveal .slides section.pnpb .pb-mk2.current-fragment ~ .pb-caps .pb-c2,
 .reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-caps .pb-c3 { opacity: 1; }
 .reveal .slides section.pnpb .credit-line { margin-top: 0.5em; }
+
+/* ==========================================================================
+   Feedback, rebuilt as two (.fbsk, .fbvid): the sketch alone, then the video
+   on a dark slide with the questions over it. The original slide stays until
+   Andreas picks.
+   ========================================================================== */
+/* the sketch alone, large; its own defs, so it does not lean on the original slide's */
+.reveal .slides section.fbsk svg.scales { display: block; margin: 0.6em auto 0; }
+.reveal .slides section.fbsk svg.scales .cut { fill: url(#hatch-b); }
+.reveal .slides section.fbsk svg.scales .sketch { filter: url(#roughen-b); }
+.reveal .slides section.fbsk svg.scales .sketchline { filter: url(#roughen-line-b); }
+.reveal .slides section.fbsk svg.scales text { filter: url(#roughen-text-b); }
+
+/* the video, frameless on black; the question cards fade in over its middle */
+.reveal .slides section.fbvid .fbv { position: relative; width: 960px; margin: 0.4em auto 0; }
+.reveal .slides section.fbvid .fbv video {
+	display: block; width: 100%; height: auto; max-width: none; max-height: none; margin: 0;
+}
+.reveal .slides section.fbvid .fbq {
+	position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+	width: 84%; max-width: none; margin: 0;
+}
+.reveal .slides section.fbvid .fbq .qcard {
+	background: color-mix(in srgb, var(--surface) 72%, transparent);
+	backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.reveal .slides section.fbvid .cap { text-align: center; margin-top: 0.4em; }

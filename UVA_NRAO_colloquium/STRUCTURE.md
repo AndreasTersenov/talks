@@ -263,6 +263,12 @@ data arrive").
     most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
   - C19 results: **decided 2026-10-27**, version A, "smallest calibrated error bars" (#/8/3); the
     coverage-wording version is gone.
+  - C31 feedback: **open** (2026-10-27; Andreas was told to make the video larger). The original
+    (#/22/0) against a pair in his order (signal and systematics share scales, then feedback as a
+    dominant one, then the questions): the sketch alone, stretched along the scale axis, its dashed
+    curve relabelled "systematics", with its two clicks (#/22/1); then a dark slide, the Illustris video at 960 px with a poster
+    frame for the PDF, the two questions (Andreas's wording) fading in over its middle on
+    semi-transparent cards (#/22/2). The lead line is off the screen in the pair. Andreas compares and picks.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
 - **C35**: what you are working on here. Later, as decided.

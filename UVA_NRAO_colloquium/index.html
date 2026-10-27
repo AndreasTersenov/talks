@@ -4437,6 +4437,136 @@
 					</aside>
 				</section>
 
+				<!-- =============================================================================
+				     Colloquium (2026-10-27): the slide above, rebuilt as two in Andreas's order: first the
+				     non-Gaussian signal shares its scales with most systematics (the sketch alone, its
+				     dashed curve relabelled "systematics", the two clicks kept); then galaxy feedback as
+				     one of the dominant ones, on a dark slide so the Illustris video sits large and
+				     frameless, with the two questions fading in over it on semi-transparent cards. The
+				     video's poster (90 s in, z = 0.63) is what the PDF shows. The sketch's defs carry a
+				     -b suffix so neither version depends on the other's. The original stays until
+				     Andreas picks. Notes: the original's, reordered. Styling in colloquium.css.
+				============================================================================== -->
+				<section class="fbsk" data-theme="light">
+					<h3 class="slide-title tight">The non-Gaussian signal lives on the same small scales as <em
+							class="alert">most systematics</em></h3>
+					<svg class="scales" viewBox="0 0 944 370" width="1100" height="431" role="img"
+						aria-label="schematic: the non-Gaussian information peaks at intermediate scales while the systematics rise at the smallest; how much must be removed decides whether anything is left">
+						<defs>
+							<pattern id="hatch-b" width="9" height="9" patternUnits="userSpaceOnUse"
+								patternTransform="rotate(45)">
+								<line x1="0" y1="0" x2="0" y2="9" stroke="var(--fg-muted)" stroke-width="2.4"
+									opacity="0.55" />
+							</pattern>
+							<filter id="roughen-b" x="-8%" y="-20%" width="116%" height="140%">
+								<feTurbulence type="fractalNoise" baseFrequency="0.022 0.045" numOctaves="4"
+									seed="11" result="n" />
+								<feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R"
+									yChannelSelector="G" />
+							</filter>
+							<filter id="roughen-line-b" filterUnits="userSpaceOnUse" x="0" y="0" width="944"
+								height="380">
+								<feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3"
+									seed="3" result="ln" />
+								<feDisplacementMap in="SourceGraphic" in2="ln" scale="4" xChannelSelector="R"
+									yChannelSelector="G" />
+							</filter>
+							<filter id="roughen-text-b" x="-14%" y="-40%" width="128%" height="180%">
+								<feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="3"
+									seed="5" result="tn" />
+								<feDisplacementMap in="SourceGraphic" in2="tn" scale="2.4" xChannelSelector="R"
+									yChannelSelector="G" />
+							</filter>
+						</defs>
+
+						<!-- How far the contamination reaches, in two steps. The slide opens on the
+						     curves alone so the room reads the figure before it is asked a question
+						     about it; fade-in-then-out shows the optimistic band only while it is the
+						     current fragment, so the pessimistic one replaces it rather than stacking. -->
+						<g class="fragment fade-in-then-out" data-fragment-index="1">
+							<rect class="cut sketch" x="640.1" y="43.5" width="280.6" height="226.2" />
+							<text class="bandlab" x="779.8" y="31.9" text-anchor="middle">optimistic</text>
+						</g>
+						<g class="fragment fade-in" data-fragment-index="2">
+							<rect class="cut sketch" x="340" y="43.5" width="580.7" height="226.2" />
+							<text class="bandlab" x="629.7" y="31.9" text-anchor="middle">pessimistic</text>
+						</g>
+
+						<!-- information beyond two-point: rises, peaks at intermediate scales -->
+						<path class="infofill sketch"
+							d="M85.5,266.8 C242.1,263.9 372.6,159.5 509.6,101.5 C587.9,72.5 672.8,69.6 757.6,78.3 C822.8,87 875,92.8 920.7,98.6 L920.7,269.7 L85.5,269.7 Z" />
+						<path class="info sketch"
+							d="M85.5,266.8 C242.1,263.9 372.6,159.5 509.6,101.5 C587.9,72.5 672.8,69.6 757.6,78.3 C822.8,87 875,92.8 920.7,98.6" />
+						<!-- systematics: negligible until the smallest scales, then steep -->
+						<path class="feedfill sketch"
+							d="M85.5,268.2 C274.7,268.2 431.3,263.9 555.3,249.4 C672.8,232 757.6,176.9 920.7,63.8 L920.7,269.7 L85.5,269.7 Z" />
+						<path class="feed sketch"
+							d="M85.5,268.2 C274.7,268.2 431.3,263.9 555.3,249.4 C672.8,232 757.6,176.9 920.7,63.8" />
+
+						<!-- axis -->
+						<line class="frameline sketchline" x1="85.5" y1="269.7" x2="920.7" y2="269.7" />
+						<line class="frameline sketchline" x1="85.5" y1="269.7" x2="85.5" y2="40.6" />
+						<text class="axlab" x="85.5" y="293.7" text-anchor="start">large, linear scales</text>
+						<text class="axlab" x="920.7" y="293.7" text-anchor="end">small, non-linear
+							scales</text>
+						<text class="axlab" x="70.2" y="49.3" text-anchor="end"
+							transform="rotate(-90 70.2 49.3)">more &rarr;</text>
+						<text class="schematic-note" x="920.7" y="360.7" text-anchor="end">(schematic, not to
+							scale)</text>
+
+						<!-- legend, below the axis so it never collides with the shaded range -->
+						<line class="info sketchline" x1="88.2" y1="321.7" x2="127.8" y2="321.7" />
+						<text class="lab acc" x="136.8" y="328.7">information beyond two-point</text>
+						<line class="feed sketchline" x1="88.2" y1="353.7" x2="127.8" y2="353.7" />
+						<text class="lab mut" x="136.8" y="360.7">systematics</text>
+					</svg>
+					<aside class="notes">
+						<ul>
+							<li>systematics = phys/obs effects in the measurement, not in the model. Unmodelled → biased result</li>
+							<li>the problem: non-Gaussian information and most systematics live on <strong>the same small
+									scales</strong> → can't model them reliably for HOS -> conservative answer is to cut them</li>
+							<li><strong>»</strong> <em>optimistic</em>: only the smallest scales contaminated, most of
+								the non-gaus info survives</li>
+							<li><strong>»</strong> <em>pessimistic</em>: contamination reaches further, and after the
+								cut the power spectrum does just as well</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section class="fbvid" data-background-color="#000">
+					<h3 class="slide-title tight">Galaxy feedback is one of the <em class="alert">dominant</em>
+						small-scale systematics</h3>
+					<div class="fbv">
+						<video class="plain" src="../assets/videos/illustris_movie_cube_sub_frame.mp4"
+							poster="../assets/videos/illustris_movie_cube_sub_frame_poster.jpg" loop muted autoplay
+							playsinline></video>
+						<div class="coreq fbq">
+							<div class="qcard fragment" data-fragment-index="1">
+								<span class="qtab">question 1</span>
+								<p>How much does <b class="alert">unmodelled</b> feedback bias our <b class="alert">higher-order
+										statistics</b> as surveys reach Stage IV?</p>
+							</div>
+							<div class="qcard fragment" data-fragment-index="2">
+								<span class="qtab">question 2</span>
+								<p>Once the affected scales are cut, is <b class="alert">anything left</b> beyond the power
+									spectrum?</p>
+							</div>
+						</div>
+					</div>
+					<p class="cap">Illustris simulation: dark matter, and the gas heated by feedback</p>
+					<aside class="notes">
+						<ul>
+							<li>dominant astrophysical one at small scales: <strong>baryonic feedback</strong> — AGN and
+								supernovae push gas out of haloes, suppressing small scales</li>
+							<li>our inference sims are <strong>DMO</strong>, and feedback models disagree →
+								physics we can't model reliably</li>
+							<li><strong>»</strong> two questions: how much does unmodelled feedback bias HOS, and how does it grow with
+								area as surveys expand</li>
+							<li><strong>»</strong> And after the cut is there anything left over the power spectrum, or our efforts in designing better stats were in vein, cause they are useless in real world?</li>
+						</ul>
+					</aside>
+				</section>
+
 
 
 
