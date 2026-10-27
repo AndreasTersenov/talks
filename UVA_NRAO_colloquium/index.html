@@ -1012,54 +1012,95 @@
 					</aside>
 				</section>
 				<!-- =============================================================================
-				     Colloquium (2026-10-25): the radio-interferometry bridge, as pictures. NRAO and
-				     the ALMA science centre are in the room, and mass mapping is their imaging problem
-				     in different clothes. The same three steps in both rows: the image, what the
-				     instrument measures, the direct inverse. All six panels are simulated for the
-				     slide by tools/make-imaging-parallel.py (a toy radio sky and VLA-like array, a
-				     lognormal mass map with a toy mask), and the slide says so. Lensing row on a click.
-				     The text-table version it replaces is in git history (2026-10-25).
-				     Styling in colloquium.css.
+				     Colloquium: the radio-interferometry bridge. NRAO and the ALMA science centre are
+				     in the room, and mass mapping is their imaging problem in different clothes. This
+				     is the ONE slide that draws the parallel (Andreas, 2026-10-27: one slide, then no
+				     more explicit parallels). It beat a picture version, now in git history.
+				     Model: the "Inverse problems in cosmology" slide of Wassim Kabalan's defence, one
+				     equation and its instances as pictures. Here the equation is the header row,
+				     d = A s + n, each symbol over its own column, and each instrument is one row of
+				     pictures under it: a picture equation. The direct inverse, A&dagger;d (dirty image,
+				     Kaiser-Squires), is a separate last column on its own click.
+				     Clicks: (1) the lensing row; (2) the direct-inverse column.
+				     Radio row: a toy simulation, tools/make-imaging-parallel.py. Lensing row: the
+				     PnPMass paper's own panels (kappaTNG, with a real catalogue's mask and noise), cut
+				     by tools/make-pnp-build.py, the same field as the plug-and-play slide. Its direct
+				     inverse is the first PnP data step from kappa = 0, tau A^T Sigma^-1 gamma: a
+				     noise-weighted Kaiser-Squires map, as a naturally weighted dirty image is the
+				     noise-weighted adjoint. Styling in colloquium.css.
 				============================================================================== -->
-				<section class="imgpar" data-theme="light">
-					<h3 class="slide-title tight">Radio and lensing both measure an <em class="alert">incomplete,
-							noisy transform</em> of the image we want</h3>
-					<div class="ix-grid">
-						<div class="ix-row ix-head">
-							<span></span><span>the image</span><span></span><span>what we measure</span><span></span><span>the
-								direct inverse</span>
-						</div>
-						<div class="ix-row">
-							<span class="ix-label">radio</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/radio_sky.png" alt="a toy radio sky: a double-lobed radio galaxy and compact sources"><figcaption>a radio sky</figcaption></figure>
-							<span class="ix-arw">&rarr;</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="the uv coverage of a one-hour track with a VLA-like array: six spokes"><figcaption><i>uv</i> coverage</figcaption></figure>
-							<span class="ix-arw">&rarr;</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/radio_dirty.png" alt="the dirty image: the sky with sidelobes streaking across it"><figcaption>dirty image: sidelobes</figcaption></figure>
-						</div>
-						<div class="ix-row fragment fade-in">
-							<span class="ix-label">lensing</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/lens_kappa.png" alt="a simulated convergence map"><figcaption>the mass map</figcaption></figure>
-							<span class="ix-arw">&rarr;</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/lens_shear.png" alt="the shear as sticks, with masked holes and a missing strip"><figcaption>shear: masked, noisy</figcaption></figure>
-							<span class="ix-arw">&rarr;</span>
-							<figure><img src="../assets/diagrams/imaging_parallel/lens_ks.png" alt="the Kaiser-Squires map: noisy, and filling the masked gaps"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
-						</div>
+				<section class="imgeq" data-theme="light">
+					<h3 class="slide-title tight">Radio imaging and mass mapping solve the <em class="alert">same
+							equation</em></h3>
+					<div class="eq-grid">
+						<span></span>
+						<span class="eq-sym">$\mathbf{d}$</span>
+						<span class="eq-sym eq-eq">$=$</span>
+						<span class="eq-sym">$\mathbf{A}$</span>
+						<span class="eq-sym">$\mathbf{s}$</span>
+						<span class="eq-sym">$+\;\mathbf{n}$</span>
+						<span></span>
+						<span class="eq-sym eq-inv fragment" data-fragment-index="2">$\mathbf{A}^{\dagger}\mathbf{d}$</span>
+
+						<span></span>
+						<span class="eq-what">what we measure</span>
+						<span></span>
+						<span class="eq-what">the instrument</span>
+						<span class="eq-what">the image we want</span>
+						<span class="eq-what">noise</span>
+						<span></span>
+						<span class="eq-what eq-inv fragment" data-fragment-index="2">invert directly</span>
+
+						<span class="eq-row">radio<span class="eq-rowmath">$V = S\,F\,I + n$</span></span>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_vis.png" alt="the visibilities: points along the uv tracks, coloured by amplitude, brightest at short baselines"><figcaption>visibilities</figcaption></figure>
+						<span class="eq-op">=</span>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="the uv coverage of a one-hour track with a VLA-like array: six spokes"><figcaption><i>uv</i> coverage</figcaption></figure>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_sky.png" alt="a toy radio sky: a double-lobed radio galaxy and compact sources"><figcaption>the radio sky</figcaption></figure>
+						<span class="eq-noise">+ thermal noise</span>
+						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
+						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/diagrams/imaging_parallel/radio_dirty.png" alt="the dirty image: the sky with sidelobes streaking across it"><figcaption>dirty image: sidelobes</figcaption></figure>
+
+						<span class="eq-row fragment" data-fragment-index="1">lensing<span class="eq-rowmath">$\gamma = M\,P\,\kappa + n$</span></span>
+						<figure class="fragment" data-fragment-index="1"><div class="eq-cards"><img class="eq-g2" src="../assets/figures/maps/pnp_build/gamma2.png" alt="the second shear component, masked and noisy"><img class="eq-g1" src="../assets/figures/maps/pnp_build/gamma1.png" alt="the first shear component, masked and noisy: the holes are around bright stars"></div><figcaption>shear: masked, noisy</figcaption></figure>
+						<span class="eq-op fragment" data-fragment-index="1">=</span>
+						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/mask.png" alt="the survey mask: the footprint, with holes around bright stars"><figcaption>the mask</figcaption></figure>
+						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/truth.png" alt="the true convergence map of the simulation, with the footprint outlined"><figcaption>the mass map</figcaption></figure>
+						<span class="eq-noise fragment" data-fragment-index="1">+ shape noise</span>
+						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
+						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the Kaiser-Squires map of the same field: the structure buried in noise, and spilling past the footprint"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
 					</div>
-					<p class="ix-tag">all panels simulated for this slide</p>
+					<p class="ix-tag">radio: simulated for this slide. Lensing: a &kappa;TNG simulation with a real
+						catalogue&rsquo;s mask and noise, Leterme, Tersenov, Fadili &amp; Starck 2026</p>
 					<aside class="notes">
-						<p><strong>the radio bridge</strong> (new for the colloquium; script beat to write)</p>
+						<p><strong>the radio bridge</strong> (the one radio slide; script beat to write)</p>
 						<ul>
-							<li>for the radio astronomers: <strong>this is your problem</strong></li>
-							<li>radio: the sky &rarr; the interferometer samples its Fourier transform only on these
-								tracks, and never at zero spacing &rarr; invert directly and you get the dirty image,
-								sidelobes everywhere</li>
-							<li>[CLICK] lensing: the mass &rarr; we measure the shear, a non-local transform of it,
-								with holes and far more noise than signal; and the mean of the map is invisible (the
-								mass-sheet degeneracy, our missing zero spacing) &rarr; invert directly
-								(Kaiser&ndash;Squires) and you get noise, and structure leaking into the gaps</li>
-							<li>both are fixed the same way: add a prior. CLEAN, MEM, sparsity for you; Wiener,
-								sparsity, MCALens for us</li>
+							<li>for the radio astronomers: <strong>this is your problem</strong>. One equation for
+								both instruments: what we measure = the instrument acting on the image we want, plus
+								noise</li>
+							<li>radio: the visibilities are the sky, Fourier transformed and sampled only on the uv
+								tracks, plus thermal noise</li>
+							<li>[CLICK] lensing: the equation from the last slide. The shear is the mass map through
+								the shear operator and the mask, plus shape noise far larger than the signal. A real
+								simulation and a real survey mask: the holes are bright stars</li>
+							<li>[CLICK] invert directly (the adjoint): the dirty image, sidelobes everywhere; for us
+								Kaiser&ndash;Squires, noise, and structure leaking past the mask edges</li>
+							<li>both are fixed the same way: add a prior. CLEAN, MEM, sparsity (SARA) for you;
+								Wiener, sparsity, MCALens for us</li>
+							<li><em>if asked, where the analogy stops:</em> your gaps are in Fourier space (the
+								unsampled uv plane), and bright fields are limited by coverage and calibration more
+								than by thermal noise. Ours are in real space (the mask), and every pixel is
+								noise-dominated. And our operator alone loses nothing: the shear operator is a pure
+								phase in Fourier space, so a complete, noiseless field inverts exactly (up to the
+								mean)</li>
+							<li><em>if asked:</em> the mean of our map is invisible (the mass-sheet degeneracy),
+								like your missing zero spacing: both direct images come out with zero mean (the
+								dirty beam integrates to zero)</li>
+							<li><em>if asked:</em> A holds more than the picture: the Fourier transform for you,
+								the shear operator for us; the panel shows only what the instrument adds, the uv
+								coverage and the mask. The lensing direct inverse is noise-weighted, as a naturally
+								weighted dirty image is</li>
+							<li><em>if asked:</em> the Wiener filter's radio twin is RESOLVE (a Gaussian-process
+								prior, Ensslin's group)</li>
 						</ul>
 					</aside>
 				</section>

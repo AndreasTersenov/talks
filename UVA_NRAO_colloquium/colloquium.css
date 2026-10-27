@@ -4,37 +4,6 @@
  * ========================================================================== */
 
 /* ----------------------------------------------------------------------------
-   The radio-interferometry bridge (.imgpar), after the inverse-problem slide:
-   two rows of three simulated panels (tools/make-imaging-parallel.py). Each
-   row is its own grid so that a whole row can be one fragment.
-   -------------------------------------------------------------------------- */
-.reveal .slides section.imgpar .ix-grid { display: grid; row-gap: 0.35em; margin-top: 0.45em; }
-.reveal .slides section.imgpar .ix-row {
-	display: grid; grid-template-columns: 5em 210px 2.4em 210px 2.4em 210px;
-	justify-content: center; align-items: center; column-gap: 0.25em;
-}
-.reveal .slides section.imgpar .ix-head span,
-.reveal .slides section.imgpar .ix-label,
-.reveal .slides section.imgpar figcaption,
-.reveal .slides section.imgpar .ix-tag {
-	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
-}
-.reveal .slides section.imgpar .ix-head span { color: var(--accent); font-size: 0.75em; text-align: center; }
-.reveal .slides section.imgpar .ix-label { color: var(--fg); font-size: 0.8em; text-align: right; padding-right: 0.4em; }
-.reveal .slides section.imgpar figure { margin: 0; }
-.reveal .slides section.imgpar figure img {
-	display: block; width: 210px; height: 210px; margin: 0;
-	border: 0; border-radius: 8px; box-shadow: none; background: transparent;
-}
-.reveal .slides section.imgpar figcaption {
-	color: var(--fg-muted); font-size: 0.66em; text-align: center; margin-top: 0.2em;
-}
-.reveal .slides section.imgpar .ix-arw { color: var(--accent); font-size: 1.4em; text-align: center; }
-.reveal .slides section.imgpar .ix-tag {
-	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 0.4em 2.2em 0 0;
-}
-
-/* ----------------------------------------------------------------------------
    The plug-and-play radio parallel (.radiopnp), a plug-in loop. Fixed column
    widths so the return arrow (an SVG over the boxes) lands on their centres:
    phys centre = 165 px, denoiser centre = 545 px in the 720-px middle span.
@@ -127,8 +96,6 @@
 .reveal .slides section .logo-row img[src*="ICS-for"]   { height: 44px; }
 .reveal .slides section .logo-row img[src*="oie_"]      { height: 72px; }
 .reveal .slides section .logo-row img[src*="CosmoStat"] { height: 34px; }
-/* captions stay on one line, so a long one cannot lift its panel out of the row */
-.reveal .slides section.imgpar figcaption { white-space: nowrap; }
 
 /* ----------------------------------------------------------------------------
    Title slide, one card (2026-10-25, Andreas): the byline lives inside the
@@ -148,3 +115,57 @@
 }
 .reveal .slides section .slides-link { margin-top: 1.6em; }
 .reveal .slides section .container.logo-row { margin-top: 2.1em !important; }
+
+/* ----------------------------------------------------------------------------
+   The radio bridge (.imgeq), the one radio slide: the equation d = A s + n is
+   the header row, each symbol over its own column, and each instrument is a
+   row of pictures under it. One grid for everything, so the
+   symbols line up with their panels; every cell is a direct child, so a row
+   is a fragment cell by cell (display: contents would not fade).
+   -------------------------------------------------------------------------- */
+.reveal .slides section.imgeq .eq-grid {
+	display: grid; justify-content: center; align-items: center;
+	grid-template-columns: 7em 172px 1.4em 172px 172px 5.4em 2em 172px;
+	column-gap: 8px; row-gap: 0.1em; margin-top: 0.35em;
+}
+.reveal .slides section.imgeq .eq-sym { font-size: 1.15em; text-align: center; color: var(--fg); line-height: 1.2; }
+.reveal .slides section.imgeq .eq-what,
+.reveal .slides section.imgeq .eq-row,
+.reveal .slides section.imgeq .eq-noise,
+.reveal .slides section.imgeq figcaption {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+}
+.reveal .slides section.imgeq .eq-what {
+	font-size: 0.6em; color: var(--fg-muted); text-align: center; align-self: start; padding-bottom: 0.35em;
+}
+.reveal .slides section.imgeq .eq-row { font-size: 0.8em; color: var(--fg); text-align: right; padding-right: 0.3em; }
+.reveal .slides section.imgeq .eq-rowmath {
+	display: block; font-style: normal; font-size: 0.8em; color: var(--fg-muted); margin-top: 0.2em;
+}
+.reveal .slides section.imgeq .eq-op { text-align: center; font-size: 1em; color: var(--fg-muted); margin-bottom: 1.1em; }
+.reveal .slides section.imgeq .eq-noise {
+	font-size: 0.62em; color: var(--fg-muted); text-align: center; margin-bottom: 1.6em;
+}
+.reveal .slides section.imgeq .eq-arw { color: var(--accent); font-size: 1.4em; text-align: center; margin-bottom: 0.6em; }
+.reveal .slides section.imgeq figure { margin: 0; }
+.reveal .slides section.imgeq figure img {
+	display: block; width: 172px; height: 172px; margin: 0; max-width: none; max-height: none;
+	border: 0; border-radius: 8px; box-shadow: none; background: transparent;
+}
+.reveal .slides section.imgeq figcaption {
+	color: var(--fg-muted); font-size: 0.6em; text-align: center; margin-top: 0.2em; white-space: nowrap;
+}
+.reveal .slides section.imgeq .eq-inv figcaption,
+.reveal .slides section.imgeq span.eq-inv { color: var(--accent); }
+/* the paper's panels carry their own 1-px black frame: square corners, or the frame is clipped */
+.reveal .slides section.imgeq figure img[src*="pnp_build"] { border-radius: 2px; }
+/* the two shear components as stacked cards, as on the plug-and-play slide */
+.reveal .slides section.imgeq .eq-cards { position: relative; width: 172px; height: 172px; }
+.reveal .slides section.imgeq .eq-cards img { position: absolute; width: 148px; height: 148px; }
+.reveal .slides section.imgeq .eq-cards .eq-g2 { left: 24px; top: 0; }
+.reveal .slides section.imgeq .eq-cards .eq-g1 { left: 0; top: 24px; box-shadow: var(--shadow); }
+.reveal .slides section.imgeq .ix-tag {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 0.4em 2.2em 0 0;
+}
+

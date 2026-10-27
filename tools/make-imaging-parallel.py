@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""The radio-interferometry / weak-lensing parallel, as six simulated panels.
+"""The radio row of the radio-interferometry / weak-lensing bridge, as four simulated panels.
 
 For the UVA / NRAO colloquium (2026-10): the bridge slide after "mass mapping is an ill-posed
-inverse problem". Two rows, the same three steps in each:
+inverse problem" writes d = A s + n once and puts one instrument per row under it:
 
-    radio     the sky          ->  uv coverage (what an interferometer samples)  ->  dirty image
-    lensing   the mass map     ->  shear sticks, masked and noisy               ->  Kaiser-Squires
+    radio     visibilities  =  uv coverage  x  the sky  + thermal noise   ->  dirty image
 
-Everything here is an ILLUSTRATION made for the slide (a toy radio sky, a lognormal field, a toy
-VLA-like array, a toy mask), not data and not a paper result; the slide says so.
+The lensing row is the PnPMass paper's own panels (tools/make-pnp-build.py). The toy lensing
+panels this script used to write went with the slide that used them (2026-10-27); they are in git
+history. It still cuts the two tiles of the plug-and-play radio slide (pnp_tiles).
+
+Everything here is an ILLUSTRATION made for the slide (a toy radio sky, a toy VLA-like array),
+not data; the slide says so.
 
     venv/bin/python tools/make-imaging-parallel.py      # writes assets/diagrams/imaging_parallel/*.png
 
-Needs numpy, scipy and matplotlib. Fixed seeds, so it is reproducible.
+Needs numpy and matplotlib. Fixed seed, so it is reproducible.
 """
 import os
 import numpy as np
@@ -20,7 +23,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import PowerNorm, Normalize
-from scipy.ndimage import gaussian_filter
 
 N = 256                     # grid
 PX = 600                    # output panel size, pixels
@@ -120,75 +122,14 @@ def radio_panels(rng):
 
     save(dirty, "radio_dirty.png", norm=Normalize(vmin=-0.12, vmax=0.7))
 
+    # the data themselves, for the equation slide: the visibilities on the uv tracks, coloured by
+    # amplitude (no new random draws, so the panels above are unchanged)
+    amp = np.log10(np.abs((F + noise)[iv, iu]))
+    order = np.argsort(amp)
 
-# ----------------------------------------------------------------------------- lensing
-def lognormal_kappa(rng):
-    k1 = np.fft.fftfreq(N)[None, :]
-    k2 = np.fft.fftfreq(N)[:, None]
-    k = np.sqrt(k1 ** 2 + k2 ** 2)
-    k[0, 0] = 1.0
-    pk = k ** -2.4 * np.exp(-(k / 0.18) ** 2)
-    pk[0, 0] = 0.0
-    g = np.real(np.fft.ifft2(np.fft.fft2(rng.normal(size=(N, N))) * np.sqrt(pk)))
-    g = (g - g.mean()) / g.std()
-    kap = np.exp(0.9 * g)
-    return (kap - kap.mean()) / kap.std(), k1, k2
-
-
-def mask_holes(rng):
-    y, x = np.mgrid[0:N, 0:N]
-    M = np.ones((N, N))
-    for _ in range(7):                                          # bright-star holes
-        cx, cy = rng.uniform(25, N - 25, 2)
-        M[(x - cx) ** 2 + (y - cy) ** 2 < rng.uniform(7, 14) ** 2] = 0
-    M[(x > 150) & (x < 168) & (y > 30)] = 0                      # a missing strip
-    M[(x < 18) | (y > N - 14)] = 0                               # the survey edge
-    return M
-
-
-def lensing_panels(rng):
-    kap, k1, k2 = lognormal_kappa(rng)
-    ksq = k1 ** 2 + k2 ** 2
-    ksq[0, 0] = 1.0
-    P1, P2 = (k1 ** 2 - k2 ** 2) / ksq, 2 * k1 * k2 / ksq
-    P1[0, 0] = P2[0, 0] = 0.0                                    # the mass sheet is invisible
-    K = np.fft.fft2(kap)
-    g1, g2 = np.real(np.fft.ifft2(P1 * K)), np.real(np.fft.ifft2(P2 * K))
-    M = mask_holes(rng)
-    sn = 3.0 * np.std(g1)                                         # shape noise per pixel
-    n1, n2 = rng.normal(size=(N, N)) * sn, rng.normal(size=(N, N)) * sn
-    o1, o2 = (g1 + n1) * M, (g2 + n2) * M
-    ks = np.real(np.fft.ifft2(P1 * np.fft.fft2(o1) + P2 * np.fft.fft2(o2)))
-    ks = gaussian_filter(ks, 1.3)
-
-    lo, hi = np.percentile(kap, [1, 99.7])
-    save(kap, "lens_kappa.png", norm=Normalize(vmin=lo, vmax=hi))
-
-    def draw_shear(ax):
-        ax.imshow(np.where(M > 0, np.nan, 1.0), cmap="Greys", vmin=0, vmax=1.35, origin="lower",
-                  interpolation="nearest", alpha=0.45)            # masked = dark grey
-        cell = N // 22
-        for i in range(22):
-            for j in range(22):
-                sl = (slice(i * cell, (i + 1) * cell), slice(j * cell, (j + 1) * cell))
-                if M[sl].mean() < 0.6:
-                    continue
-                a1, a2 = o1[sl][M[sl] > 0].mean(), o2[sl][M[sl] > 0].mean()
-                e = np.hypot(a1, a2)
-                phi = 0.5 * np.arctan2(a2, a1)
-                L = min(e / (2.2 * np.std(g1)) * cell * 1.8, cell * 1.05)
-                xc, yc = (j + 0.5) * cell, (i + 0.5) * cell
-                dx, dy = 0.5 * L * np.cos(phi), 0.5 * L * np.sin(phi)
-                ax.plot([xc - dx, xc + dx], [yc - dy, yc + dy], color="#f2f2f2", lw=1.6,
-                        solid_capstyle="round")
-    save(draw_shear, "lens_shear.png")
-
-    def draw_ks(ax):
-        klo, khi = np.percentile(ks[M > 0], [1, 99.7])
-        ax.imshow(ks, cmap=CMAP, norm=Normalize(vmin=klo, vmax=khi), origin="lower",
-                  interpolation="bilinear")
-        ax.contour(M, levels=[0.5], colors="white", linewidths=0.9, origin="lower")
-    save(draw_ks, "lens_ks.png")
+    def draw_vis(ax):
+        ax.scatter(uv[order, 0] + N / 2, uv[order, 1] + N / 2, s=3.2, c=amp[order], cmap=CMAP, lw=0)
+    save(draw_vis, "radio_vis.png")
 
 
 # ----------------------------------------------------------------------------- PnP tiles
@@ -208,5 +149,4 @@ def pnp_tiles():
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     radio_panels(np.random.default_rng(7))
-    lensing_panels(np.random.default_rng(11))
     pnp_tiles()
