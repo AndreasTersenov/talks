@@ -242,6 +242,21 @@ baryon-sensitive per se but that their contours are tighter *and* their displace
 differs: both wavelet statistics push σ8 and w0 low with little movement in Ωm, while the PS
 slides along its Ωm–σ8 degeneracy toward low Ωm and absorbs the rest in w0.
 
+All six areas the bias figure plots (`fig:nsigma_vs_area`), **read off the paper's vector figure**
+(`figures/bias_vs_area_three_stats.pdf`, arXiv source of 2609.09131) on 2026-10-27, calibrated on its
+own tick marks; mean ± the std over the five NPE runs. They reproduce the rows above. The figure has
+**no full-sky point**: its largest area is 35 000 deg², which the paper's text calls "approaching the
+full sky (>30 000 deg²)". Drawn by `tools/make-bias-vs-area.py` for the colloquium (C32).
+
+| area [deg²] | PS | starlet peaks | starlet ℓ1 |
+|---|---|---|---|
+| 2 000 | 0.43 ± 0.05 | 0.75 ± 0.11 | 0.96 ± 0.32 |
+| 5 000 | 1.25 ± 0.12 | 2.00 ± 0.32 | 2.41 ± 0.16 |
+| 10 000 | 2.10 ± 0.22 | 3.08 ± 0.43 | 3.44 ± 0.32 |
+| 14 000 | 2.21 ± 0.22 | 3.66 ± 0.40 | 3.60 ± 0.29 |
+| 28 000 | 3.08 ± 0.35 | 5.61 ± 0.38 | 5.67 ± 0.44 |
+| 35 000 | 3.57 ± 0.48 | 6.24 ± 0.51 | 6.08 ± 0.33 |
+
 ### The cuts
 
 - **PS — a sliding ℓmax**, tuned per area: **860 / 580 / 540 / 460 / 380 / 380 / 340** for

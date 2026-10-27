@@ -4,6 +4,7 @@
 attention_vs_convolution.pdf	diagrams	-
 attention_vs_convolution.png	diagrams	-
 Background-Euclid.jpeg	backgrounds	-
+bias_vs_area_regions.png	statistics	the paper's bias-vs-area points redrawn at slide size, survey classes as regions (tools/make-bias-vs-area.py); UVA_NRAO_colloquium C32
 Cls.pdf	figures	statistics
 Correlation_Matrices_MSPC_ks_mca_dark.pdf	figures	matrices
 Correlation_Matrices_SSPC_ks_iks_mca_dark.pdf	figures	matrices

@@ -4697,6 +4697,73 @@
 					</aside>
 				</section>
 
+				<!-- =============================================================================
+				     Colloquium (2026-10-27): the slide above with its left figure redrawn. The paper's
+				     half-column plot was unreadable at slide size (Andreas); this draws the same six
+				     areas at slide size, with the survey classes as regions (small surveys, Stage III,
+				     Stage IV, beyond; suggested to Andreas) on a log area axis. Numbers read off the
+				     paper's vector figure; class edges and sources in tools/make-bias-vs-area.py. The
+				     original stays until Andreas picks. Styling in colloquium.css.
+				============================================================================== -->
+				<section class="biasarea" data-theme="light" data-background-color="#ffffff">
+					<h3 class="slide-title tight">Baryonic bias grows with survey area</h3>
+					<div class="container" style="align-items:center; margin-top:0.2em;">
+						<div class="col bva-left">
+							<img class="plain bva-fig" src="../assets/figures/statistics/bias_vs_area_regions.png"
+								alt="baryonic bias in sigma against survey area, on a log axis split into small surveys, Stage III, Stage IV and beyond: all three statistics rise with area, the two higher-order statistics well above the power spectrum, past 5 sigma beyond Stage IV">
+							<ul style="font-size:0.86em;">
+								<li>At <b class="alert">14,000 deg&sup2;</b> (Stage IV): $C_\ell$ shows <b
+										class="alert">2.2&sigma;</b>, peaks and the <span class="nobr">$\ell_1$-norm</span> <b
+										class="alert">3.6&sigma;</b></li>
+								<li>HOS show <b class="alert">higher bias</b> than $C_\ell$: more sensitive to the
+									baryonically-contaminated small scales</li>
+							</ul>
+						</div>
+						<div class="col bva-right">
+							<div class="r-stack bva-contours">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step1.png"
+									alt="baryon-biased power-spectrum posteriors, tightening and marching away from the truth as the survey area grows from 2,000 to 35,000 square degrees">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step2.png" alt="">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step3.png" alt="">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step4.png" alt="">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step5.png" alt="">
+								<img class="plain" src="../assets/figures/posteriors/p1_contours_vs_area_ps/step6.png" alt="">
+							</div>
+						</div>
+					</div>
+					<p class="footnote">measured at full map resolution: $\ell_{\rm
+						max}=1024$ for $C_\ell$, all four wavelet bands for the HOS</p>
+					<!-- credit dropped 2026-09-11: it sat on the footnote's baseline and read as its
+					     tail. The footnote centres again once this is gone. -->
+					<!-- <span class="srcref">Tersenov+ 2026, A&amp;A</span> -->
+					<!-- Colloquium (2026-10-25): the citation that left with the paper dividers. -->
+					<p class="credit-line">Tersenov, Guerrini, Starck &amp; Kilbinger 2026, arXiv:2609.09131</p>
+					<aside class="notes">
+						<ul>
+							<li>how large the bias is if we do nothing</li>
+							<li>train the
+								flow on <strong>DMO</strong> (no baryon model at all), feed it a realistic
+								<strong>baryonified</strong> observation</li>
+							<li>run across survey areas to see how the bias evolves</li>
+							<li>previous-generation area: not significant. Errors shrink with area,
+								→ <strong>Euclid: really bad</strong></li>
+							<li>▲ HOS more biased than the power spectrum — more sensitive to the contaminated small
+								scales</li>
+						</ul>
+						<!-- PARKED 2026-09-13, the note this replaced:
+						     Bias grows with survey area (more area, smaller errors, higher sensitivity). At
+						      Stage IV (~14,000 deg2): PS 2.2 sigma, peaks 3.6, l1 3.6. At full sky: PS ~3.5 sigma, both HOS
+						      above
+						      6. IMPORTANT: all of this is at FULL MAP RESOLUTION - lmax 1024 for the power spectrum, every
+						      wavelet band for the HOS - i.e. no scale cuts yet. That is the point: this is what you get if
+						      you
+						      use everything the maps offer. HOS are more sensitive than C_l because they live on the
+						      contaminated
+						      small scales.
+						-->
+					</aside>
+				</section>
+
 
 				<!-- Mitigation: Scale Cuts (LAM version, light) -->
 				<section data-theme="light">

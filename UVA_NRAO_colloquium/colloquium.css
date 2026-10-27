@@ -286,3 +286,19 @@ html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
 	backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
 }
 .reveal .slides section.fbvid .cap { text-align: center; margin-top: 0.4em; }
+
+/* ==========================================================================
+   Bias against survey area, redrawn (.biasarea): the figure at slide size,
+   with the survey classes as regions. The original slide stays until
+   Andreas picks.
+   ========================================================================== */
+.reveal .slides section.biasarea .bva-left { flex: 0 0 620px; }
+.reveal .slides section.biasarea .bva-right { flex: 0 0 475px; }
+.reveal .slides section.biasarea .nobr { white-space: nowrap; }
+.reveal .slides section.biasarea .bva-fig { width: 560px; max-width: 100%; height: auto; max-height: none; }
+/* the corner plot, larger (Andreas, 2026-10-27). The r-stack is a grid, so the width goes on it;
+   reveal caps slide images at 95 %, hence max-width: none on the images. */
+.reveal .slides section.biasarea .bva-contours { width: 465px; margin: 0 auto; }
+.reveal .slides section.biasarea .bva-contours img {
+	width: 100%; max-width: none; height: auto; max-height: none; margin: 0 auto;
+}
