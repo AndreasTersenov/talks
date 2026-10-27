@@ -11,8 +11,12 @@ Decided 2026-10-25 (Andreas):
   visitors, and a slot opened for the fellows. This one introduces him to the department and to NRAO,
   and shows what he does.
 - **Slot.** 45 minutes of talking, then questions.
-- **Title kept**: *Trustworthy non-Gaussian inference for weak-lensing cosmology*. So both title words
-  have to be defined early and in plain language (A6).
+- **Title**: *Trustworthy non-Gaussian inference for weak-lensing cosmology in the Euclid era*: the
+  defence title, with "in the Euclid era" added on 2026-10-26 at Satya's suggestion. It places the
+  talk as someone coming from Europe with Euclid work, which should draw a wider room. The analyses
+  use Euclid-like simulations, not Euclid data, so the talk promises readiness for Euclid, never
+  Euclid results. Both title words still have to be defined early and in plain language (A6), and
+  Euclid arrives early, at C5.
 - **Depth.** Both halves stay. The mapping half goes *deeper* than in the defence; the cuts come from
   the inference teaching and the defence apparatus, and further cuts are decided at the timed run.
 - **No new post-PhD results.** The outlook may point at them later.
