@@ -325,7 +325,10 @@ data arrive").
     to the small scales; flexible, any mask and noise level without retraining; fast, on the data and
     on thousands of simulations; error bars we can trust, pixel by pixel, calibrated), then on a
     click "No existing method meets all four at once"; which method misses what is in the notes.
-    Andreas compares and picks.
+    Andreas did not like the cards' look; two more layouts after it, same words and notes: a
+    typographic list (large accent keywords, hairlines between rows) and the four requirements
+    around a mass map (the loop's PnPMass reconstruction) with short leaders. Andreas compares and
+    picks among the table and the three.
   - C14, C15 without iKS: **open** (2026-10-28; Andreas: iterative Kaiser-Squires only confuses
     the room). Each original followed by a copy without it: the maps as a row of three (truth, KS,
     MCALens), each prior under its own map; the figure-of-merit slide with the corner plot's iKS

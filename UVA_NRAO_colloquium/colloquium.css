@@ -873,3 +873,50 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 .reveal .slides section.mmnoiks .mm3 .mmname { justify-content: center; }
 .reveal .slides section.mmnoiks .mm3 .mmwhat { max-width: 95%; }
 .reveal .slides section.mmnoiks .lead-line { margin-top: 1em; }
+
+/* ---------------------------------------------------------------------------
+   The requirements, version 2 (.needs-list): a typographic list. A large serif keyword in the
+   accent colour, its line beside it on the same baseline, hairlines between the rows.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.needs-list .nd-list { width: 88%; margin: 1.3em auto 0; }
+.reveal .slides section.needs-list .nd-r {
+	display: grid; grid-template-columns: 330px 1fr; align-items: baseline; column-gap: 1.2em;
+	padding: 0.55em 0.2em; border-top: 1px solid var(--edge); text-align: left;
+}
+.reveal .slides section.needs-list .nd-r:first-child { border-top: 0; }
+.reveal .slides section.needs-list .nd-k {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 1.3em; line-height: 1.15; color: var(--accent);
+}
+.reveal .slides section.needs-list .nd-d { font-size: 0.86em; line-height: 1.35; color: var(--fg); }
+.reveal .slides section.needs-list .nd-gap,
+.reveal .slides section.needs-map .nd-gap {
+	margin: 1.3em auto 0; text-align: center; font-size: 0.9em; color: var(--fg);
+}
+
+/* ---------------------------------------------------------------------------
+   The requirements, version 3 (.needs-map): around a mass map. The map 330 px in the middle of a
+   1040 x 330 stage; each requirement beside one of its corners, joined to the map's edge by a
+   short accent leader (the label's ::after), left labels set right, right labels set left.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.needs-map .nd-map { position: relative; width: 1040px; height: 330px; margin: 1em auto 0; }
+.reveal .slides section.needs-map .nd-img {
+	position: absolute; left: 355px; top: 0; width: 330px; height: 330px; margin: 0;
+	max-width: none; max-height: none; border: 0; box-shadow: var(--shadow); background: transparent;
+}
+.reveal .slides section.needs-map .nd-l {
+	position: absolute; width: 300px; display: flex; flex-direction: column; gap: 0.25em;
+}
+.reveal .slides section.needs-map .nd-tl, .reveal .slides section.needs-map .nd-bl { left: 0; text-align: right; align-items: flex-end; }
+.reveal .slides section.needs-map .nd-tr, .reveal .slides section.needs-map .nd-br { right: 0; text-align: left; align-items: flex-start; }
+.reveal .slides section.needs-map .nd-tl, .reveal .slides section.needs-map .nd-tr { top: 30px; }
+.reveal .slides section.needs-map .nd-bl, .reveal .slides section.needs-map .nd-br { top: 205px; }
+.reveal .slides section.needs-map .nd-k {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 1.2em; line-height: 1.15; color: var(--accent);
+}
+.reveal .slides section.needs-map .nd-d { font-size: 0.74em; line-height: 1.35; color: var(--fg); }
+/* the leader: from the label's inner edge to the map, at the keyword's height */
+.reveal .slides section.needs-map .nd-l::after {
+	content: ""; position: absolute; top: 0.75em; width: 46px; border-top: 1.5px solid var(--accent);
+}
+.reveal .slides section.needs-map .nd-tl::after, .reveal .slides section.needs-map .nd-bl::after { left: calc(100% + 6px); }
+.reveal .slides section.needs-map .nd-tr::after, .reveal .slides section.needs-map .nd-br::after { right: calc(100% + 6px); }
