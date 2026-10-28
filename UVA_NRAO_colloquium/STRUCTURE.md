@@ -319,7 +319,9 @@ data arrive").
     over the Euclid field, four with the result of ours that backs it on a smaller line, all on
     screen from the start, the fuller sentences in the notes. The defence's four answers are hidden,
     kept in the file.
-  - C17 learned methods: **open** (2026-10-28; Andreas: the table is not the best thing, but the talk
+  - C17 learned methods: **decided 2026-10-28, the requirements around a mass map** (the true map
+    of the loop's field, Andreas: it looks better, and which map does not matter here); the table,
+    the cards and the list hidden, kept in the file. Was open (2026-10-28; Andreas: the table is not the best thing, but the talk
     still needs the motivation). The DL table (#/9/0) against a requirements slide after it (#/9/1):
     what a mass-mapping method needs to be used on a survey like Euclid, four cards (accurate, down
     to the small scales; flexible, any mask and noise level without retraining; fast, on the data and
@@ -327,14 +329,14 @@ data arrive").
     click "No existing method meets all four at once"; which method misses what is in the notes.
     Andreas did not like the cards' look; two more layouts after it, same words and notes: a
     typographic list (large accent keywords, hairlines between rows) and the four requirements
-    around a mass map (the loop's PnPMass reconstruction) with short leaders. Andreas compares and
-    picks among the table and the three.
-  - C14, C15 without iKS: **open** (2026-10-28; Andreas: iterative Kaiser-Squires only confuses
+    around a mass map with short leaders.
+  - C14, C15 without iKS: **decided 2026-10-28, the copies without iKS**; the originals hidden, kept
+    in the file. Was open (2026-10-28; Andreas: iterative Kaiser-Squires only confuses
     the room). Each original followed by a copy without it: the maps as a row of three (truth, KS,
     MCALens), each prior under its own map; the figure-of-merit slide with the corner plot's iKS
     paths deleted from its vector source (6 fills in each red, 10 strokes, the legend entry; the
     MCALens legend row moved up) and the stems redrawn without iKS. The notes keep iKS as a Q&A
-    line (same posterior as KS). Andreas compares and picks.
+    line (same posterior as KS).
 - C33, C34 trimmed (2026-10-28, Andreas): the cut slide gives the C_l cut at Euclid's area only
   (ell_max = 460 at 14,000 deg^2, PAPER_FACTS section 4) and the starlet as "the same approach,
   but removing the finest wavelet bands instead of multipoles" (Andreas's wording); the result slide loses "and this is conservative" and keeps

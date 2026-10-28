@@ -1643,7 +1643,8 @@
 				</section>
 
 				<!-- ============ A1.2 — three reconstructions of one field ============ -->
-				<section data-theme="light">
+				<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the original maps slide (truth, KS, iKS, MCALens); the copy without iKS after it kept. -->
+				<section data-visibility="hidden" data-theme="light">
 					<h3 class="slide-title tight">MCALens recovers <b
 							class="alert">small-scale
 							structure</b> that Kaiser&ndash;Squires smooths out</h3>
@@ -1762,7 +1763,8 @@
 				</section>
 
 				<!-- ============ A1.4 — the answer ============ -->
-				<section data-theme="light">
+				<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the original figure-of-merit slide with iKS; the copy without iKS after it kept. -->
+				<section data-visibility="hidden" data-theme="light">
 					<h3 class="slide-title tight">MCALens improves the figure of merit by <b
 							class="alert">157 %</b> over Kaiser&ndash;Squires, by making more information in the data
 						available.</h3>
@@ -1980,7 +1982,8 @@
 
 				<!-- ################################################################################################### -->
 
-				<section data-theme="light" class="dlslide">
+				<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the deep-learning table; the requirements around a mass map, three slides on, kept. -->
+				<section data-visibility="hidden" data-theme="light" class="dlslide">
 					<h3 class="slide-title">What about Deep Learning for Mass Mapping?</h3>
 
 					<p class="lede">Yes, people have tried it (with various approaches) &hellip; and it works!</p>
@@ -2065,7 +2068,8 @@
 				     table is not the best thing, but the talk still needs the motivation, what a state-of-the-art
 				     method must do to be used on a survey like Euclid. Four requirements, then (click) the gap.
 				     Styling in colloquium.css under .needs. -->
-				<section data-theme="light" class="needs">
+				<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the requirements as cards; the version around a mass map kept. -->
+				<section data-visibility="hidden" data-theme="light" class="needs">
 					<h3 class="slide-title tight">What a mass-mapping method needs, to be used on a survey like
 						<em class="alert">Euclid</em></h3>
 					<div class="nd-row">
@@ -2130,15 +2134,16 @@
 				</section>
 
 				<!-- THE REQUIREMENTS, version 3 (2026-10-28, Andreas also wanted to see it): the four
-				     requirements around a mass map, each joined to it by a short leader. The map is the PnPMass
-				     reconstruction of the loop slide (pnp_build/after_denoiser_4.png), standing for "a mass map".
+				     requirements around a mass map, each joined to it by a short leader. The map is the true map
+				     of the loop slide's field (pnp_build/truth.png), standing for "a mass map": it looks better
+				     than the reconstruction, and here which one it is does not matter (Andreas).
 				     Styling in colloquium.css under .needs-map. -->
 				<section data-theme="light" class="needs-map">
 					<h3 class="slide-title tight">What a mass-mapping method needs, to be used on a survey like
 						<em class="alert">Euclid</em></h3>
 					<div class="nd-map">
-						<img class="nd-img" src="../assets/figures/maps/pnp_build/after_denoiser_4.png"
-							alt="a reconstructed mass map of a simulated survey field">
+						<img class="nd-img" src="../assets/figures/maps/pnp_build/truth.png"
+							alt="the true mass map of a simulated survey field">
 						<div class="nd-l nd-tl"><span class="nd-k">accurate</span><span class="nd-d">down to the small scales, where the information is</span></div>
 						<div class="nd-l nd-tr"><span class="nd-k">flexible</span><span class="nd-d">any mask and noise level, without retraining</span></div>
 						<div class="nd-l nd-bl"><span class="nd-k">fast</span><span class="nd-d">on the data, and on thousands of simulations</span></div>
