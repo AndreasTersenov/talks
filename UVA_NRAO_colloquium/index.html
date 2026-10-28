@@ -720,7 +720,8 @@
 				<!-- Colloquium (2026-10-25): the Part 1 paper divider became the first-half
 				     divider. The paper title, authors and arXiv link leave the main line; the
 				     citation moves onto the result slides. Q1 and Q2 as in STRUCTURE.md. -->
-				<section class="actopen" data-background="#000">
+				<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the divider with the numbered questions; the version with the problem and topic tags after it kept. -->
+				<section data-visibility="hidden" class="actopen" data-background="#000">
 					<span class="kicker">the first half</span>
 					<h2>Making the map</h2>
 					<ul class="qlist">
@@ -740,6 +741,26 @@
 						<p><strong>Part 1 divider</strong></p>
 						<ul>
 							<li>first paper — but to motivate it, back to weak-lensing basics</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- DIVIDER, version 2 (2026-10-28, Andreas: the exact questions are too specific for a
+				     colloquium; say the problem and the kind of work instead), and without the pipeline
+				     strip. Beside the original for comparison. Styling in colloquium.css under .act-topics. -->
+				<section class="actopen actopen-topics" data-background="#000">
+					<span class="kicker">the first half</span>
+					<h2>Making the map</h2>
+					<p class="act-lead">From noisy, incomplete shear measurements to a map of the matter</p>
+					<ul class="act-topics">
+						<li>an ill&#8209;posed inverse problem</li>
+						<li>priors, hand&#8209;crafted and learned</li>
+						<li>uncertainty quantification</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>the first half: from the shear to the map, an inverse problem; the priors that make it
+								solvable, and the uncertainty on the result</li>
 						</ul>
 					</aside>
 				</section>
@@ -1192,8 +1213,8 @@
 				     noise-weighted adjoint. Styling in colloquium.css.
 				============================================================================== -->
 				<section class="imgeq" data-theme="light">
-					<h3 class="slide-title tight">Radio imaging and mass mapping solve the <em class="alert">same
-							equation</em></h3>
+					<h3 class="slide-title tight">Radio imaging and mass mapping solve almost the <em class="alert">same
+							equation</em> (both are ill-posed inv. problems)</h3>
 					<div class="eq-grid">
 						<span></span>
 						<span class="eq-sym">$\mathbf{d}$<span class="eq-what">what we measure</span></span>
@@ -1224,8 +1245,8 @@
 						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
 						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the Kaiser-Squires map of the same field: the structure buried in noise, and spilling past the footprint"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
 					</div>
-					<p class="ix-tag">radio: simulated for this slide. Lensing: a &kappa;TNG simulation with a real
-						catalogue&rsquo;s mask and noise, Leterme, Tersenov, Fadili &amp; Starck 2026</p>
+					<!-- <p class="ix-tag">radio: simulated for this slide. Lensing: a &kappa;TNG simulation with a real
+						catalogue&rsquo;s mask and noise, Leterme, Tersenov, Fadili &amp; Starck 2026</p> -->
 					<aside class="notes">
 						<p><strong>the radio bridge</strong> (the one radio slide; script beat to write)</p>
 						<ul>
@@ -3202,7 +3223,8 @@
 			     the whole content of the transition. ============ -->
 			<!-- Colloquium (2026-10-25): no "Parts 3 and 4"; the twin of the first-half divider,
 			     carrying Q3 and Q4 as in STRUCTURE.md. -->
-			<section class="actopen" data-background="#000">
+			<!-- HIDDEN 2026-10-28 (Andreas), kept in the file: the divider with the numbered questions; the version with the problem and topic tags after it kept. -->
+			<section data-visibility="hidden" class="actopen" data-background="#000">
 				<span class="kicker">the second half</span>
 				<h2>Reading the map</h2>
 				<ul class="qlist">
@@ -3237,6 +3259,27 @@
 					      feedback. Those are questions three and four from the board at the start — same words, same
 					      order.
 					-->
+				</aside>
+			</section>
+
+			<!-- DIVIDER, version 2 (2026-10-28, Andreas: the exact questions are too specific for a
+			     colloquium; say the problem and the kind of work instead), and without the pipeline
+			     strip. Beside the original for comparison. Styling in colloquium.css under .act-topics. -->
+			<section class="actopen actopen-topics" data-background="#000">
+				<span class="kicker">the second half</span>
+				<h2>Reading the map</h2>
+				<p class="act-lead">From the map to the cosmological parameters</p>
+				<ul class="act-topics">
+					<li>statistics beyond the power spectrum</li>
+					<li>simulation&#8209;based inference</li>
+					<li>small&#8209;scale systematics</li>
+				</ul>
+
+				<aside class="notes">
+					<ul>
+						<li>the second half: compressing the map into a few numbers, inferring the parameters from
+							them, and what small-scale astrophysics does to the result</li>
+					</ul>
 				</aside>
 			</section>
 

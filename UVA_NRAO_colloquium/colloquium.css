@@ -920,3 +920,20 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 }
 .reveal .slides section.needs-map .nd-tl::after, .reveal .slides section.needs-map .nd-bl::after { left: calc(100% + 6px); }
 .reveal .slides section.needs-map .nd-tr::after, .reveal .slides section.needs-map .nd-br::after { right: calc(100% + 6px); }
+
+/* ---------------------------------------------------------------------------
+   The dividers, version 2 (.actopen-topics, 2026-10-28): the problem in one line, then the kind of
+   work as three peer tags, instead of the numbered questions.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.actopen .act-lead {
+	margin: 0.8em auto 0; font-size: 0.95em; line-height: 1.35;
+	color: color-mix(in srgb, var(--fg) 88%, transparent);
+}
+.reveal .slides section.actopen .act-topics {
+	display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+	list-style: none; margin: 1.1em auto 0; padding: 0;
+}
+.reveal .slides section.actopen .act-topics li {
+	margin: 0; padding: 0.4em 1em; border: 1px solid var(--edge); border-radius: 8px;
+	background: var(--surface); font-size: 0.78em; color: var(--fg);
+}
