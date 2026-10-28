@@ -131,7 +131,7 @@ defence ran 8–20 % over its read-through). `from` = the frame in the forked de
 
 | # | slide | from | min | change |
 |---|---|---|---|---|
-| C35 | What I want to do here | 110 | 1:30 | rework: real data (UNIONS, Euclid, Rubin), closing the loop between the halves, feedback as a signal (GECO), learned priors with guarantees for other inverse problems (radio, 21-cm). Collaborators credited here. UVA-specific plans: Andreas, later |
+| C35 | What I want to do here | 110 | 1:30 | **dropped 2026-10-28** (show the work, do not say it; see Open items). Was: rework: real data (UNIONS, Euclid, Rubin), closing the loop between the halves, feedback as a signal (GECO), learned priors with guarantees for other inverse problems (radio, 21-cm). Collaborators credited here. UVA-specific plans: Andreas, later |
 | C36 | Conclusions: four answers, three takeaways, and what to come and talk to me about | 51 | 1:30 | rework. Ends the deck (checklist: end on conclusions, not on future work) |
 
 | block | min |
@@ -297,19 +297,12 @@ data arrive").
     20 000, Euclid and Rubin) and beyond (to the full sky); the corner plot beside it larger (370 to
     465 px), and without the "At full sky" bullet (the plot has no full-sky point). Class edges
     confirmed by Andreas (2026-10-27). Andreas compares and picks.
-  - C36 conclusions: **open** (2026-10-28; Andreas: the four answers are the defence's, too technical
-    and detailed for a colloquium, and not as questions). The four-answer slide (#/25) against one
-    block over the same Euclid field (#/26), all on screen from the start: six general statements,
-    four of them with the result of ours that backs it on a smaller line (Andreas's middle ground):
-    Stage IV surveys are now underway (Euclid, LSST, Roman); we need advanced methods that make full
-    use of the data (a better mass map alone can significantly tighten the constraints); learned
-    priors and physics combine well, with calibrated uncertainties (PnPMass can be applied to real
-    data: trained once, for any mask and noise); non-Gaussian statistics are needed to maximise the
-    return of these surveys (interpretable wavelet statistics match an optimal neural network);
-    small-scale astrophysics, above all galaxy feedback, needs great care (even on feedback-safe
-    scales, higher-order statistics add information beyond the power spectrum); the methods are not
-    limited to lensing. The fuller sentences are in the notes, the first one being where the
-    statistical errors leave methods and systematics as the limit. Andreas compares and picks.
+  - C36 conclusions: **decided 2026-10-28**, the one-block slide (#/25): six general statements
+    over the Euclid field, four with the result of ours that backs it on a smaller line, all on
+    screen from the start, the fuller sentences in the notes. The defence's four answers are hidden,
+    kept in the file.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
-- **C35**: what you are working on here. Later, as decided.
+- **C35 dropped (2026-10-28).** Andreas: no "what I want to do here" slide, and no explicit
+  "come and talk to me". The talk positions him as the person at UVA and NRAO to talk to about
+  advanced methods, deep learning and astrostatistics by showing the work, not by saying so.
