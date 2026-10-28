@@ -597,9 +597,21 @@ Not thesis results, so they need their own source lines. All traced to the thesi
 | Euclid survey area | **~14,000 deg²** of extragalactic sky | `cosmology-basics.tex` L360, citing `euclid_2024` |
 | …as a fraction of the sky | **~34 %**, "about a third" [derived] | 14,000 / 41,253 deg² |
 | Euclid launch | **2023** | same line |
-| Euclid DR1 | **June 2027**, first cosmological data release | same line |
+| Euclid DR1 | **June 2027**, first cosmological data release | same line; **superseded in public wording** by ESA's split below |
+| Euclid launch, exact | **1 July 2023** | ESA, Euclid overview (esa.int) |
+| Euclid survey start | routine science observations from **14 February 2024**, a **six-year** survey | ESA, Euclid overview; Euclid Consortium timeline |
+| Euclid Q1 | **19 March 2025**: **63 deg²** (three deep fields), **26 million galaxies** from about a week of observing | ESA Q1 release, March 2025 |
+| Euclid DR1-Foundation | **November 2026**: ~**1,900 deg²**, raw and calibrated images, catalogues, spectra | ESA, "DR1 timeline" page, update of 15 June 2026 |
+| Euclid DR1, lensing products | **mid-2027**: the higher-level weak-lensing and clustering products | same ESA page. DR1's exact day is internal (Consortium meeting, Napoli, Oct 2026: "if needed, just say June 2027"); say **months only** |
+| Euclid release schedule (tentative) | DR1-Foundation **12 Nov 2026** · DR1 **mid-2027** · Q3 **2028** · DR2 **June 2029** · Q4 **2030** · DR3 **October 2031**; Q2 was **24 June 2026** | ESA, Euclid timeline page (cosmos.esa.int/web/euclid/timeline), "tentative" |
+| Euclid DR2 area | ~**7,500 deg²** (a planning figure) | Troja, Tutusaus & Sorce, "Euclid in a nutshell", on behalf of the EC, arXiv:2211.09668 (2022); the Napoli DR2 slide gives the same |
+| Euclid DR3 | the full Wide Survey, ~**14,000 deg²** | ESA (October 2031, tentative); "Euclid in a nutshell" (full EWS area) |
+| Euclid Consortium | about **2,000 scientists**, **18 countries** (over 350 institutions) | Euclid Consortium acknowledgements, v1.1, Dec 2025 |
+| Euclid HOWLS DR1 forecast | five higher-order statistics (incl. the ℓ1-norm and peaks) **each beat the shear two-point functions by ×2.5 on w₀**, DR1-like setup; A.T. a co-author | Euclid preparation LXXXV, Vinciguerra et al. 2026, A&A 707, A235, arXiv:2510.04953. Not on a slide (Andreas, 2026-10-28: details); Q&A only |
 | Euclid probes | weak lensing from visible imaging, clustering from NIR | same line |
 | Rubin/LSST area | **~18,000 deg²**, southern sky, ground-based | `cosmology-basics.tex` L359 |
+| Rubin LSST start | the ten-year LSST **began in June 2026** | Rubin Observatory, "LSST" page (rubinobservatory.org); Rubin's announcement gives 29 June |
+| Roman launch | **30 August 2026**, Falcon Heavy, to L2; ~3-month commissioning; **first images by early 2027** | NASA news release, "NASA's Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches" |
 | Stage IV galaxy counts | **"billions of galaxies"** | `cosmology-basics.tex` L357, L359; `conclusion.tex` L7 |
 | ΛCDM budget | dark energy ~68 %, CDM ~27 %, baryons <5 % of total | `cosmology-basics.tex` §Composition, citing `Planck2020params` |
 

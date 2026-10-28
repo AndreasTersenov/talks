@@ -372,7 +372,7 @@
 								<li><b class="alert">14,000 deg&sup2;</b>, about a third of the sky</li>
 								<li>The shapes of <b class="alert">billions of galaxies</b></li>
 								<li>Weak lensing from the visible imaging, clustering from the near-infrared</li>
-								<li>First cosmological release, June 2027</li>
+								<li>Weak-lensing data release, mid-2027</li>
 							</ul>
 						</div>
 						<figure>
@@ -410,6 +410,83 @@
 					      read a non-Gaussian field, and it takes inference machinery that works without a likelihood. That is
 					      what I spent the PhD on, and that is what the rest of this talk is about.
 					-->
+				</aside>
+			</section>
+
+			<!-- =============================================================================
+			     Colloquium (2026-10-28): where Euclid is now, for a room that will want to hear it
+			     (Andreas: general, a little "insider" but nothing internal). Public facts only, in
+			     PAPER_FACTS section 9 with their sources (ESA, the Euclid Consortium); dates as
+			     months (ESA's dates are tentative). Click 1: what happens before the weak-lensing
+			     release (validation, calibration, a blind analysis): how every Stage IV analysis runs,
+			     not an internal schedule. Click 2: the areas, Q1, DR1, DR2, DR3. Click 3: Rubin's LSST
+			     (began June 2026) and Roman (launched August 2026): all three are live this year.
+			     Background: the Perseus early-release image, cropped 16:9 to 2400 px
+			     (assets/backgrounds/euclid_perseus_bg.jpg). Styling in colloquium.css.
+			============================================================================== -->
+			<section class="euclidnow" data-background-color="#000"
+				data-background-image="../assets/backgrounds/euclid_perseus_bg.jpg" data-background-opacity="0.3">
+				<h3 class="slide-title tight">Euclid has been surveying since 2024, and its first large release is
+					<em class="alert">next month</em></h3>
+				<div class="en-line">
+					<div class="en-m"><span class="en-dot"></span><span class="en-date">Jul 2023</span><span
+							class="en-what">launch</span></div>
+					<div class="en-m"><span class="en-dot"></span><span class="en-date">Feb 2024</span><span
+							class="en-what">survey starts</span><span class="en-more">six years</span></div>
+					<div class="en-m"><span class="en-dot"></span><span class="en-date">Mar 2025</span><span
+							class="en-what">Q1</span><span class="en-more">63 deg&sup2;, 26 million galaxies</span></div>
+					<div class="en-m en-now"><span class="en-dot"></span><span class="en-date">Nov 2026</span><span
+							class="en-what">DR1-Foundation</span><span class="en-more">~1,900 deg&sup2;: images,
+							catalogues, spectra</span><span class="en-tag">next month</span></div>
+					<div class="en-m en-fut"><span class="en-dot"></span><span class="en-date">mid-2027</span><span
+							class="en-what">DR1 lensing</span><span class="en-more">the weak-lensing and clustering
+							products</span></div>
+					<div class="en-m en-fut"><span class="en-dot"></span><span class="en-date">Jun 2029</span><span
+							class="en-what">DR2</span><span class="en-more">~7,500 deg&sup2;</span></div>
+					<div class="en-m en-fut"><span class="en-dot"></span><span class="en-date">Oct 2031</span><span
+							class="en-what">DR3</span><span class="en-more">the full survey</span></div>
+				</div>
+				<p class="en-behind fragment" data-fragment-index="1">until the weak-lensing release, the shapes are
+					validated and calibrated, and the cosmology is analysed <b class="alert">blind</b>, unblinded only at
+					the end</p>
+				<div class="en-area fragment" data-fragment-index="2">
+					<div class="en-row"><span class="en-lab">Q1</span><span class="en-bar" style="--w:0.45%"></span><span
+							class="en-val">63 deg&sup2;</span></div>
+					<div class="en-row"><span class="en-lab">DR1</span><span class="en-bar" style="--w:13.6%"></span><span
+							class="en-val">~1,900 deg&sup2;</span></div>
+					<div class="en-row"><span class="en-lab">DR2</span><span class="en-bar" style="--w:53.6%"></span><span
+							class="en-val">~7,500 deg&sup2;</span></div>
+					<div class="en-row"><span class="en-lab">DR3</span><span class="en-bar" style="--w:100%"></span><span
+							class="en-val">~14,000 deg&sup2;</span></div>
+				</div>
+				<p class="en-others fragment" data-fragment-index="3">and not alone: <b class="alert">Rubin</b>&rsquo;s
+					ten-year LSST began in June, ~18,000 deg&sup2; from the ground; <b class="alert">Roman</b> launched
+					in August, first images early 2027</p>
+				<p class="en-ec">the Euclid Consortium: about 2,000 scientists from 18 countries</p>
+				<!-- <p class="en-credit">background: Euclid&rsquo;s view of the Perseus cluster, ESA/Euclid/Euclid
+					Consortium/NASA, image processing by J.-C. Cuillandre (CEA Paris-Saclay) and G. Anselmi</p> -->
+				<aside class="notes">
+					<p><strong>Euclid now</strong></p>
+					<ul>
+						<li>launched July 2023; surveying since February 2024, for six years, toward ~14,000 deg&sup2;</li>
+						<li>first quick release (Q1), March 2025: 63 deg&sup2; of deep fields, already 26 million
+							galaxies from about a week of observing</li>
+						<li><strong>next month</strong>: DR1-Foundation, ~1,900 deg&sup2; of images, catalogues and
+							spectra, thirty times Q1</li>
+						<li>the weak-lensing and clustering products follow in mid-2027: the data the methods of this
+							talk are built for. Then DR2 in 2029 (~7,500 deg&sup2;) and DR3, the full survey, in 2031</li>
+						<li><em>if asked:</em> quick releases of the deep fields come in between (Q2 was this June;
+							Q3, Q4 to come)</li>
+						<li><strong>»</strong> behind the scenes, until then: the galaxy shapes are validated and
+							calibrated, and the cosmology analysis runs blind, so nobody, us included, sees the answer
+							before the analysis is frozen</li>
+						<li><strong>»</strong> the areas: Q1, DR1, DR2, DR3</li>
+						<li><strong>»</strong> and not alone: Rubin's LSST began this June (ten years, the southern
+							sky, ~18,000 deg&sup2;), Roman launched at the end of August (first images early 2027). All
+							three lensing surveys of this generation are live this year: that is the "era" in the
+							title</li>
+						<li><em>say months</em>: ESA's dates are tentative, and DR1's exact day is not public</li>
+					</ul>
 				</aside>
 			</section>
 
@@ -3021,6 +3098,7 @@
 				</figure>
 
 
+				<p class="in-euclid"><img src="../assets/logos/Euclid.png" alt="the Euclid Consortium">In Euclid, a dedicated group (HOWLS) prepares these statistics for the first data release.</p>
 				<aside class="notes">
 					<p><strong>the gain</strong></p>
 					<ul>
@@ -3818,6 +3896,7 @@
 					are run <b>once</b>. The trained flow evaluates the posterior for <b class="alert">any</b>
 					observation immediately (<b>amortised</b> inference).</p> -->
 
+				<p class="in-euclid"><img src="../assets/logos/Euclid.png" alt="the Euclid Consortium">In Euclid, the weak-lensing group prepares simulation-based analyses of the survey.</p>
 				<aside class="notes">
 					<p><strong>simulation-based inference</strong></p>
 					<ul>
