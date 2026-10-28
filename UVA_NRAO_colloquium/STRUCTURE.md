@@ -271,6 +271,15 @@ data arrive").
     formula l1(bin) = sum over the pixels in the bin of |value| types itself a part per step. An
     illustration field (tools/make-l1-sort.py); notes per click, plus P(D) for the radio room if asked.
     Andreas compares and picks.
+  - C29 cross-bin (joint l1): **decided 2026-10-27**, two slides: route 1 alone, titled in general
+    terms (combine pairs of bins into new maps that encode their cross-bin structure) with the
+    product maps as "for example", larger, no caption (#/22/5; convolution maps: notes only), then route 2 as a build (#/22/6). The original two-route slide
+    and a one-slide version are gone (git history). The build, in the l1 slide's language
+    (tools/make-joint-l1.py, an illustration): one wavelet scale in two tomographic bins; pair (one
+    pixel, one point), the joint distribution (correlated), its marginals (the per-bin l1 curves),
+    shuffle (bin j permuted: same marginals, no correlation), cells (10 x 10), weigh and add up; the
+    formula greys in at the cells and turns black part by part. Wording in distributions and
+    marginals, no metaphors (Andreas).
   - C31 feedback: **open** (2026-10-27; Andreas was told to make the video larger). The original
     (#/22/0) against a pair in his order (signal and systematics share scales, then feedback as a
     dominant one, then the questions): the sketch alone, stretched along the scale axis, its dashed

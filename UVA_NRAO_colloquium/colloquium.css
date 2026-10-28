@@ -413,3 +413,103 @@ html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
 
 /* the PDF shows each click's end state */
 html.print-pdf .reveal .slides section.l1x * { transition: none !important; }
+
+/* ==========================================================================
+   The cross-bin slides, rebuilt as two (.r1x, .jl1x): route 1 alone, route 2
+   as a build. The build's SVG comes from tools/make-joint-l1.py (joint_l1.js);
+   markers .jm1..6 move it: pair, joint distribution, marginals, shuffle,
+   cells, weigh and add up.
+   ========================================================================== */
+/* route 1 alone: the product, large */
+.reveal .slides section.r1x .r1eg { text-align: center; margin-top: 1.1em; }
+.reveal .slides section.r1x .r1row {
+	display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 0.5em;
+}
+.reveal .slides section.r1x .r1row figure { margin: 0; text-align: center; }
+.reveal .slides section.r1x .r1row img {
+	display: block; width: 250px; height: auto; max-width: none; max-height: none; border: 1px solid var(--edge);
+}
+.reveal .slides section.r1x .r1row .out img { width: 300px; }
+.reveal .slides section.r1x .r1row figcaption { margin-top: 0.3em; font-size: 0.8em; color: var(--fg); }
+.reveal .slides section.r1x .op { font-size: 1.6em; color: var(--accent); font-weight: 600; line-height: 1; }
+
+/* the build */
+.reveal .slides section.jl1x .jm { position: absolute; width: 0; height: 0; overflow: hidden; }
+.reveal .slides section.jl1x .jwrap { width: 1060px; margin: 0.3em auto 0; }
+.reveal .slides section.jl1x .jl1-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.reveal .slides section.jl1x .j-frame { fill: none; stroke: var(--edge); stroke-width: 1.2; }
+.reveal .slides section.jl1x .j-zero { stroke: var(--edge); stroke-width: 1; }
+.reveal .slides section.jl1x .j-maplab,
+.reveal .slides section.jl1x .j-axlab,
+.reveal .slides section.jl1x .j-tick,
+.reveal .slides section.jl1x .j-shlab {
+	font-family: var(--label); font-style: var(--label-style); font-size: 18px;
+	fill: var(--fg-muted); text-anchor: middle;
+}
+.reveal .slides section.jl1x .j-shlab { text-anchor: start; font-size: 16px; opacity: 0; transition: opacity 0.5s ease; }
+.reveal .slides section.jl1x .j-sub { font-size: 12px; }
+
+/* click 1, pair: the position ringed in both maps, its point, and guide lines to the axes */
+.reveal .slides section.jl1x .j-ring { fill: none; stroke: var(--fg); stroke-width: 2; opacity: 0; transition: opacity 0.4s ease; }
+.reveal .slides section.jl1x .j-guide { stroke: var(--accent); stroke-width: 1.3; opacity: 0; transition: opacity 0.4s ease 0.9s; }
+.reveal .slides section.jl1x .jm1.visible ~ .jm2:not(.visible) ~ .jwrap .j-ring,
+.reveal .slides section.jl1x .jm1.visible ~ .jm2:not(.visible) ~ .jwrap .j-guide { opacity: 1; }
+.reveal .slides section.jl1x .j-ex {
+	fill: var(--accent); stroke: var(--surface); stroke-width: 1.5; opacity: 0;
+	transition: transform 1s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.3s ease;
+}
+.reveal .slides section.jl1x .jm1.visible ~ .jwrap .j-ex { opacity: 1; transform: translate(var(--x), var(--y)); }
+.reveal .slides section.jl1x .jm3.visible ~ .jwrap .j-ex { opacity: 0; }
+
+/* the dots: one per pixel; click 2, the joint distribution; 4, bin j shuffled; 5, back; 6, weighed */
+.reveal .slides section.jl1x .j-dot {
+	fill: var(--fg); opacity: 0; transform-box: fill-box; transform-origin: 50% 50%;
+	transition: transform 1.1s cubic-bezier(0.45, 0, 0.2, 1) var(--d), opacity 0.35s ease var(--d);
+}
+.reveal .slides section.jl1x .jm2.visible ~ .jwrap .j-dot { opacity: 0.5; transform: translate(var(--x), var(--y)); }
+.reveal .slides section.jl1x .jm4.visible ~ .jwrap .j-dot { transform: translate(var(--x), var(--y4)); transition-delay: var(--d4); }
+.reveal .slides section.jl1x .jm5.visible ~ .jwrap .j-dot { transform: translate(var(--x), var(--y)); transition-delay: var(--d4); }
+.reveal .slides section.jl1x .jm6.visible ~ .jwrap .j-dot {
+	transform: translate(var(--x), var(--y)) scale(var(--k)); opacity: 0.14;
+	transition: transform 0.8s ease, opacity 0.6s ease 1.7s;
+}
+
+/* click 3, marginals: each bin's own l1 curve grows from the plane's edge */
+.reveal .slides section.jl1x .j-sh { transform-box: fill-box; transition: transform 0.7s ease; }
+.reveal .slides section.jl1x .j-shx { transform-origin: 50% 100%; transform: scaleY(0); }
+.reveal .slides section.jl1x .j-shy { transform-origin: 0 50%; transform: scaleX(0); }
+.reveal .slides section.jl1x .jm3.visible ~ .jwrap .j-sh { transform: none; }
+.reveal .slides section.jl1x .jm3.visible ~ .jwrap .j-shlab { opacity: 1; }
+
+/* click 5, cells: the grid; click 6, each cell fills with its sum, after the points have grown */
+.reveal .slides section.jl1x .j-grid { stroke: var(--fg-muted); stroke-width: 0.8; opacity: 0; transition: opacity 0.5s ease; }
+.reveal .slides section.jl1x .jm5.visible ~ .jwrap .j-grid { opacity: 0.45; }
+.reveal .slides section.jl1x .j-cell { fill: var(--accent); fill-opacity: 0; transition: fill-opacity 0.8s ease; }
+.reveal .slides section.jl1x .jm6.visible ~ .jwrap .j-cell { fill-opacity: var(--a); transition-delay: 0.9s; }
+
+/* the formula: light grey from the cells click, black part by part (cells, then the rest) */
+.reveal .slides section.jl1x .jeq { display: grid; justify-content: center; margin-top: 0.1em; font-size: 0.78em; color: var(--fg); }
+.reveal .slides section.jl1x .jeq > span { grid-area: 1 / 1; opacity: 0; transition: opacity 0.45s ease; }
+.reveal .slides section.jl1x .jeq .katex-display { margin: 0; }
+.reveal .slides section.jl1x .jeq .e0 { color: color-mix(in srgb, var(--fg) 28%, var(--surface)); }
+.reveal .slides section.jl1x .jm5.visible ~ .jeq .e0,
+.reveal .slides section.jl1x .jm5.visible ~ .jm6:not(.visible) ~ .jeq .e5,
+.reveal .slides section.jl1x .jm6.visible ~ .jeq .e6 { opacity: 1; }
+
+/* the captions, one per state, stacked in one cell */
+/* narrower than the slide, so a long caption wraps short of the navigation arrows */
+.reveal .slides section.jl1x .jcaps { display: grid; margin: 0.2em auto 0; max-width: 80%; }
+.reveal .slides section.jl1x .jcaps > span {
+	grid-area: 1 / 1; text-align: center; font-size: 1em; color: var(--fg);
+	opacity: 0; transition: opacity 0.35s ease;
+}
+.reveal .slides section.jl1x .jm1:not(.visible) ~ .jcaps .c0,
+.reveal .slides section.jl1x .jm1.visible ~ .jm2:not(.visible) ~ .jcaps .c1,
+.reveal .slides section.jl1x .jm2.visible ~ .jm3:not(.visible) ~ .jcaps .c2,
+.reveal .slides section.jl1x .jm3.visible ~ .jm4:not(.visible) ~ .jcaps .c3,
+.reveal .slides section.jl1x .jm4.visible ~ .jm5:not(.visible) ~ .jcaps .c4,
+.reveal .slides section.jl1x .jm5.visible ~ .jm6:not(.visible) ~ .jcaps .c5,
+.reveal .slides section.jl1x .jm6.visible ~ .jcaps .c6 { opacity: 1; }
+
+/* the PDF shows each click's end state */
+html.print-pdf .reveal .slides section.jl1x * { transition: none !important; }

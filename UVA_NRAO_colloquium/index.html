@@ -4160,114 +4160,95 @@
 					</aside>
 				</section>
 
-				<section data-theme="light" data-background-color="#ffffff">
-					<h3 class="slide-title tight">The <em class="alert">cross-bin</em>
-						information can be reached through cross maps or through a joint statistic</h3>
-					<div class="routes">
 
-						<div class="route">
-							<span class="kicker">route 1 &mdash; change the input</span>
-							<div class="body">
-								<div class="xmap">
-									<div class="pair">
-										<figure><img src="../assets/figures/maps/p2_crossmap_build/k1.png"
-												alt="the convergence map of tomographic bin 1">
-											<figcaption>$\kappa_1$</figcaption>
-										</figure>
-										<span class="op">&times;</span>
-										<figure><img src="../assets/figures/maps/p2_crossmap_build/k2.png"
-												alt="the convergence map of tomographic bin 2">
-											<figcaption>$\kappa_2$</figcaption>
-										</figure>
-									</div>
-									<span class="op">=</span>
-									<figure class="out"><img src="../assets/figures/maps/p2_crossmap_build/prod12.png"
-											alt="the pointwise product of the two maps: near-zero almost everywhere, bright where both bins have structure">
-										<figcaption>$\kappa_1\kappa_2$</figcaption>
-									</figure>
-								</div>
-							</div>
-							<p class="rcap">The pixel-wise product of two bins is strong only where <b>both</b> have
-								structure. One map per bin pair, each analysed with the same &#8467;1-norm.</p>
-						</div>
 
-						<div class="route fragment fade-in" data-fragment-index="1">
-							<span class="kicker">route 2 &mdash; change the statistic</span>
-							<div class="body">
-								<div class="plane">
-									<span class="ylab">bin <i>j</i> coefficient</span>
-									<span class="planefig">
-										<img src="../assets/figures/statistics/p2_l1_joint_cellmap_tight.png"
-											alt="the joint plane of wavelet coefficients for a bin pair, with the two one-dimensional histograms along its edges">
-										<span class="mask fragment fade-out" data-fragment-index="2"><span>the per-bin
-												&#8467;1-norm<br>only sees the two<br>marginal histograms</span></span>
-									</span>
-									<span class="xlab">bin <i>i</i> coefficient</span>
-								</div>
-							</div>
-							<div class="jointdef fragment fade-in" data-fragment-index="2">$$L^{ij}_{ab}
-								\;=\!\!\sum_{\boldsymbol{p}\,\in\,\mathrm{cell}(a,b)}\!\!
-								\tfrac{1}{2}\big(|u_i(\boldsymbol{p})| + |u_j(\boldsymbol{p})|\big)$$</div>
-							<p class="rcap fragment fade-in" data-fragment-index="2">each cell sums the <b>&#8467;1
-									weight</b> of the pixels that fall in it</p>
-						</div>
-
+				<!-- =============================================================================
+				     Colloquium (2026-10-27): the cross-bin slide (two routes on one slide, the paper's
+				     joint-histogram figure and the cell-sum formula), rebuilt as two (Andreas chose this
+				     over the original and over a one-slide version; both in git history): route 1 alone,
+				     then route 2 as a build in the language of the l1 build (tools/make-joint-l1.py into
+				     joint_l1.js; same starlet, same colours). Wording: distributions and marginals, not
+				     metaphors (Andreas). Styling in colloquium.css.
+				============================================================================== -->
+				<section class="r1x" data-theme="light" data-background-color="#ffffff">
+					<h3 class="slide-title tight">Route 1: combine pairs of bins into new maps that encode their
+						<em class="alert">cross-bin structure</em></h3>
+					<div class="r1eg kicker">for example, the pixel-wise product</div>
+					<div class="r1row">
+						<figure><img src="../assets/figures/maps/p2_crossmap_build/k1.png" alt="the convergence map of tomographic bin 1"><figcaption>$\kappa_1$</figcaption></figure>
+						<span class="op">&times;</span>
+						<figure><img src="../assets/figures/maps/p2_crossmap_build/k2.png" alt="the convergence map of tomographic bin 2"><figcaption>$\kappa_2$</figcaption></figure>
+						<span class="op">=</span>
+						<figure class="out"><img src="../assets/figures/maps/p2_crossmap_build/prod12.png" alt="the pointwise product of the two maps: near-zero almost everywhere, bright where both bins have structure"><figcaption>$\kappa_1\kappa_2$</figcaption></figure>
 					</div>
-					<!-- <p class="oneline fragment fade-in" data-fragment-index="3">The cross-map reduces each bin pair to
-						<b>one field</b> before computing the statistic. The <b>joint &#8467;1-norm</b> uses the full 2-D
-						distribution and needs no additional maps.
-					</p> -->
 					<aside class="notes">
-						<p><strong>two routes</strong></p>
+						<p><strong>route 1</strong></p>
 						<ul>
 							<li>two-point extends easily — cross-bin correlations. For HOS there is no obvious
 								equivalent</li>
 							<li><strong>first</strong>: extra maps for the cross structure — multiply each pair of bins
 								pix by pix; strong only where <strong>both</strong> have structure at the same
 								place. Compute the ℓ1 on those too</li>
-							<li><strong>second</strong>: change the stat — define stat that generalises the ℓ1
-								from one map to a <strong>pair</strong> of tomo bins</li>
-							<li>each pixel has a wavelet coeff in each of the 2 maps → instead of building one l1 histogram per map (the two
-								curves on the axes) → build one <strong>two-dimensional</strong> histogram
-								over the pair</li>
-							<li><strong>diagonal</strong> cells = collect places where both maps equally strong;
-								<strong>off-diagonal</strong> = one strong, one weak</li>
-								<li>Named this stat "joint l1-norm" & you can think about it as a joint multiscale PDF in wavelet domain</li>
+							<li><em>if asked:</em> we also built convolution cross-maps (the flat-sky analogue of the
+								cross-spectrum). They add less, and their gain is sensitive to the training
+								realisation: they mostly re-supply two-point information the autos already have</li>
 						</ul>
-						<!-- PARKED 2026-09-13, the note this replaced:
-						     SAY: the gap is structural, so there are exactly two places to intervene - the
-						      input, or the statistic. ROUTE 1, the obvious one: manufacture the missing channel. For each bin
-						      pair, multiply the two maps pixel by pixel; the product is near zero almost everywhere and
-						      lights up
-						      only where the two bins have coincident structure, so its spatial mean is the zero-lag
-						      cross-correlation and its one-point statistics carry the higher joint structure of the pair. Six
-						      pairs, six new channels, and the SAME l1-norm runs on each. Built patch-locally, from the
-						      patch's
-						      own two maps, so a survey observing only that patch could actually form them. IF ASKED: we also
-						      test
-						      a convolution cross-map, the flat-sky analogue of the harmonic product; it is patch-wide, so its
-						      variance sits in a few tens of large-scale modes and it mostly re-supplies two-point information
-						      the
-						      autos already have. ROUTE 2: leave the four maps alone and change what the statistic reads. At a
-						      given scale, every pixel gives the four bins' coefficients at once. The per-bin l1-norm is the
-						      |.|-weighted 1-D histogram of each - literally the two curves on the edges of this figure. Lay a
-						      fixed 10 by 10 grid on the pair plane instead and sum half of |u_i| plus |u_j| in each cell:
-						      that is
-						      the joint l1-norm. Ten by ten cells, six bin pairs, four scales, concatenated into the data
-						      vector.
-						      Summing the absolute value rather than counting pixels is what keeps it an l1-norm rather than a
-						      joint PDF estimate. THE POINT, and it is the reason the joint l1 exists: the product map reduces
-						      a
-						      bin pair to a single derived field BEFORE the statistic is taken; the joint l1-norm never
-						      reduces
-						      it. CAVEAT if asked: pairwise is the ceiling a patch can populate - a 4-D histogram over K^4
-						      cells
-						      against 80x80 pixels is almost everywhere empty, so genuine 3- and 4-bin structure stays with
-						      the
-						      network. Numbers next slide.
-						-->
 					</aside>
 				</section>
+
+				<section class="jl1x" data-theme="light" data-background-color="#ffffff">
+					<h3 class="slide-title tight">Route 2: read the bins <em class="alert">jointly</em>, with one
+						statistic</h3>
+					<span class="jm jm1 fragment" data-fragment-index="1"></span>
+					<span class="jm jm2 fragment" data-fragment-index="2"></span>
+					<span class="jm jm3 fragment" data-fragment-index="3"></span>
+					<span class="jm jm4 fragment" data-fragment-index="4"></span>
+					<span class="jm jm5 fragment" data-fragment-index="5"></span>
+					<span class="jm jm6 fragment" data-fragment-index="6"></span>
+					<div class="jwrap"><div class="jl1" data-jl1></div></div>
+					<div class="jeq">
+						<span class="e0">$${L(\text{cell})\;=\;}\mathop{\sum}\limits_{\text{pixels in the cell}}{\tfrac12\big(\,|\text{value in bin } i| + |\text{value in bin } j|\,\big)}$$</span>
+						<span class="e5">$$\phantom{L(\text{cell})\;=\;}\mathop{\phantom{\sum}}\limits_{\text{pixels in the cell}}\phantom{\tfrac12\big(\,|\text{value in bin } i| + |\text{value in bin } j|\,\big)}$$</span>
+						<span class="e6">$${L(\text{cell})\;=\;}\mathop{\sum}\limits_{\text{pixels in the cell}}{\tfrac12\big(\,|\text{value in bin } i| + |\text{value in bin } j|\,\big)}$$</span>
+					</div>
+					<div class="jcaps">
+						<span class="c0">the same wavelet scale in two tomographic bins of one field</span>
+						<span class="c1">each pixel has a coefficient in both bins: <b class="alert">one point</b> in the
+							plane</span>
+						<span class="c2">all pixels: their <b class="alert">joint distribution</b>, correlated because the
+							same matter lenses both bins</span>
+						<span class="c3">the per-bin $\ell_1$-norms see only its two <b class="alert">marginals</b></span>
+						<span class="c4">shuffle the pixels of bin <i>j</i>: the same marginals, a different joint
+							distribution.<br>The per-bin $\ell_1$ <b class="alert">cannot tell</b></span>
+						<span class="c5">the <b class="alert">joint $\ell_1$-norm</b>: bin the joint distribution on a
+							10 &times; 10 grid&hellip;</span>
+						<span class="c6">&hellip; and sum the $\ell_1$ weight of the pixels in each cell</span>
+					</div>
+					<aside class="notes">
+						<p><strong>route 2, the joint ℓ1</strong></p>
+						<ul>
+							<li>second route: change the stat — generalise the ℓ1 from one map to a <strong>pair</strong>
+								of tomo bins. Same wavelet scale, two bins</li>
+							<li><strong>»</strong> each pixel has a wavelet coefficient in each of the two maps → one
+								point in the plane</li>
+							<li><strong>»</strong> all pixels: the joint distribution of the pair, correlated (along the
+								diagonal) because the same matter lenses both bins</li>
+							<li><strong>»</strong> the per-bin ℓ1-norms are its two marginals (|u|-weighted): the
+								one-map curves from before</li>
+							<li><strong>»</strong> shuffle the pixels of one map: neither marginal changes, the joint
+								distribution does. A per-bin statistic cannot see the cross-bin structure</li>
+							<li><strong>»</strong> instead of one ℓ1 histogram per map, one
+								<strong>two-dimensional</strong> histogram over the pair: a 10 × 10 grid</li>
+							<li><strong>»</strong> sum ½(|u<sub>i</sub>| + |u<sub>j</sub>|) per cell. Diagonal cells:
+								both maps equally strong; off-diagonal: one strong, one weak. The "joint ℓ1-norm": a
+								joint multiscale PDF in the wavelet domain. Six bin pairs, four scales</li>
+							<li><em>if asked:</em> the maps are an illustration (two correlated lognormal fields).
+								Pairwise is the ceiling: a 4-D histogram over 80 × 80 pixels is almost everywhere
+								empty, so genuine 3- and 4-bin structure stays with the network</li>
+						</ul>
+					</aside>
+				</section>
+
 
 
 				<!-- ============ ACT 2, beat 3 — the result: every l1 arm against the CNN ============
@@ -9687,6 +9668,7 @@
 	<script src="bnt_explainer.js"></script>
 	<script src="sbi_pipeline.js"></script>
 	<script src="l1_sort.js"></script>
+	<script src="joint_l1.js"></script>
 
 	<script>
 		Reveal.initialize({
