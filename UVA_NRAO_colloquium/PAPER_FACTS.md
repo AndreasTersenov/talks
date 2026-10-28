@@ -612,9 +612,35 @@ Not thesis results, so they need their own source lines. All traced to the thesi
 | Rubin/LSST area | **~18,000 deg²**, southern sky, ground-based | `cosmology-basics.tex` L359 |
 | Rubin LSST start | the ten-year LSST **began in June 2026** | Rubin Observatory, "LSST" page (rubinobservatory.org); Rubin's announcement gives 29 June |
 | Roman launch | **30 August 2026**, Falcon Heavy, to L2; ~3-month commissioning; **first images by early 2027** | NASA news release, "NASA's Dark Universe-Seeking Nancy Grace Roman Space Telescope Launches" |
+| Euclid VIS pixel scale | **0.1″** | Cropper et al. 2012, "VIS: the visible imager for Euclid", arXiv:1208.3369. Q&A only |
+| Euclid VIS PSF | FWHM **≈ 0.16″** (0.156″ mean, measured; design requirement < 0.18″ at 800 nm) | Euclid ERO weak lensing of Abell 2390, arXiv:2507.07629; requirement: arXiv:1208.3369. Q&A only |
+| Euclid lensing galaxy density | **≥ 30 per arcmin²** required for the dark-energy figure-of-merit goal | Euclid Definition Study Report, Laureijs et al. 2011, arXiv:1110.3193. Q&A only; × 14,000 deg² gives **~1.5 × 10⁹** [derived] |
 | Stage IV galaxy counts | **"billions of galaxies"** | `cosmology-basics.tex` L357, L359; `conclusion.tex` L7 |
 | ΛCDM budget | dark energy ~68 %, CDM ~27 %, baryons <5 % of total | `cosmology-basics.tex` §Composition, citing `Planck2020params` |
 
 **"1.5 billion galaxies" is deliberately not used.** It appears on the `../PhD_Day_2025` slide and
 is a real Euclid figure in the mission literature, but it is **not in the thesis**, so it fails the
 ledger rule. "Billions of galaxy shapes" is supported and lands just as hard.
+
+---
+
+## 10. Physical scales [derived], for the Q&A cheat sheet
+
+Flat ΛCDM, h = 0.674, Ωm = 0.315 (Planck 2018-like), computed 2026-10-28. Angles converted at the
+lens redshift z ≈ 0.5, where the lensing kernel peaks for sources at z ≈ 1. Multipole ↔ angle as
+θ ≈ π/ℓ (the half-wavelength), ℓ ↔ k by Limber, k ≈ ℓ/χ(z).
+
+| z | χ (Mpc) | 1′ comoving | 1′ proper |
+|---|---|---|---|
+| 0.3 | 1,236 | 0.36 Mpc | 277 kpc |
+| 0.5 | 1,951 | 0.57 Mpc | 378 kpc |
+| 0.7 | 2,585 | 0.75 Mpc | 442 kpc |
+| 1.0 | 3,401 | 0.99 Mpc | 495 kpc |
+
+At z = 0.5: 2′ ≈ 0.76 Mpc proper (k ≈ 4 h/Mpc); 4′ ≈ 1.5 Mpc (k ≈ 2); 8′ ≈ 3.0 Mpc (k ≈ 1); 10′ ≈
+3.8 Mpc (k ≈ 0.8); 20′ ≈ 7.6 Mpc (k ≈ 0.4); 40′ ≈ 15 Mpc; 80′ ≈ 30 Mpc (k ≈ 0.1). ℓ = 460 ↔ θ ≈
+23′ ↔ k ≈ 0.35 h/Mpc (0.55 at z = 0.3); ℓ = 336 ↔ 32′ ↔ k ≈ 0.26; ℓ = 1024 ↔ 10.5′ ↔ k ≈ 0.8.
+R200c at z = 0.5: 10¹³ M☉ → 380 kpc (1.0′); 10¹⁴ → 815 kpc (2.2′); 10¹⁵ → 1.76 Mpc (4.6′).
+Shape noise σ_ε = 0.26 per component, n = 30 arcmin⁻²: 0.047 per 1′ pixel; a 1 % shear at S/N = 1
+needs ≈ 680 galaxies, ≈ 23 arcmin², a ≈ 5′ × 5′ patch. HEALPix Nside = 512 pixel ≈ 6.9′.
+

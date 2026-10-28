@@ -497,3 +497,287 @@ inference beyond the power spectrum, apply to radio imaging, to 21-centimetre co
 inverse problems with a known instrument and noise model.
 
 Thank you.
+
+
+**Q&A — the five to rehearse aloud**
+
+The questions this room is most likely to ask and least forgiving about. ⚠ marks an answer whose
+honest core is a limitation: say it plainly, then the next step.
+
+**"How is PnPMass different from AIRI or R2D2?"**
+It is the same family: a learned denoiser inside a forward–backward iteration, as in AIRI. What is
+specific to ours is the spin-2 lensing operator; a single denoiser trained once on white noise over
+a range of levels, which works for any noise covariance and footprint because of how the gradient
+step is preconditioned; and per-pixel error bars with a calibrated coverage. (Backup 69–70.)
+
+**⚠ "Does the iteration provably converge?"**
+Formally, it converges linearly to a unique fixed point if the step size is below a bound set by the
+operator, here 0.176, and the denoiser is mean-preserving and non-expansive. The mean is enforced by
+construction. Non-expansiveness is not enforced, because constraining the spectral norm of the
+network's Jacobian during training is expensive, so the guarantee is formal. In practice it converges
+in a few iterations.
+
+**⚠ "Your coverage guarantee holds on simulations. What does it guarantee on real data?"**
+Conformal calibration assumes the calibration maps and the data come from the same distribution. If
+the simulations miss part of the physics, the guarantee does not transfer. That gap is exactly what
+"trustworthy" has to address next: testing the simulations against the data, and calibration that
+is robust to such shifts.
+
+**⚠ "Which feedback model did you use, and would a stronger one change the conclusion?"**
+One baryonification model, with fixed parameters. Stronger feedback would push the cuts to larger
+scales and reduce the gain, so the result is conditional on that model. The next step is a range of
+feedback strengths, or marginalising over the baryonic parameters instead of cutting.
+
+**⚠ "Is the network really optimal? A better one might beat the joint ℓ1-norm."**
+The training objective maximises a lower bound on the mutual information, so the network is the best
+compression we could train, not an absolute bound. We tried several architectures, and a ResNet-18
+was best. The maps were also fairly coarse, 7.5-arcminute pixels; at finer resolution a network may
+gain more.
+
+
+**Q&A — Euclid**
+
+Public facts only (`PAPER_FACTS.md` §9). Months, never days; nothing from Consortium meetings.
+
+**"When can people use the data?"**
+Q1, sixty-three square degrees of deep fields, has been public since March 2025. The next release,
+DR1-Foundation, is due next month: about nineteen hundred square degrees of images, catalogues and
+spectra. The weak-lensing and clustering products follow in mid-2027, DR2 in 2029 and DR3, the full
+survey, in 2031. ESA describes these dates as tentative.
+
+**"What does Euclid do that Rubin cannot, and the other way round?"**
+From space the point-spread function is small and stable, about 0.16 arcseconds with 0.1-arcsecond
+pixels, so galaxy shapes are measured with a PSF several times smaller than from the ground. Rubin
+goes deeper over a larger area, about eighteen thousand square degrees, in six optical bands, which
+helps the photometric redshifts. The two are complementary, and joint analyses are planned.
+
+**"How do you get the redshifts?"**
+Photometrically: Euclid's near-infrared photometry combined with ground-based optical imaging, UNIONS
+in the north, and DES and later Rubin in the south. The galaxies are then divided into tomographic
+bins.
+
+**"How many galaxies?"**
+The requirement is at least thirty per square arcminute for lensing; over fourteen thousand square
+degrees, that is of order one and a half billion.
+
+**"What limits Euclid's lensing analysis?"**
+Systematics: the PSF model, the calibration of the shear measurement and of the photometric
+redshifts, intrinsic alignments, blending, detector effects, and on small scales baryonic feedback,
+the subject of the last part.
+
+**"Will higher-order statistics be part of Euclid's cosmology?"**
+Euclid has a group dedicated to them. A public forecast for a DR1-like setup (Euclid preparation,
+Vinciguerra et al. 2026) found that each of five higher-order statistics, including the ℓ1-norm and
+peak counts, tightens w0 by about a factor of 2.5 relative to the shear two-point functions. Which
+statistics enter the official analysis is decided within the collaboration.
+
+**"How does Euclid compare with current surveys?"**
+Current lensing surveys cover hundreds to a few thousand square degrees: KiDS about a thousand, DES
+Year 3 about four thousand, HSC a few hundred. Euclid covers about fourteen thousand, with space-based
+shapes.
+
+**"Euclid also measures clustering. How do the two combine?"**
+Lensing comes from the visible imager; clustering from slitless near-infrared spectroscopy of
+Hα-emitting galaxies, at redshifts of roughly one to two, and from the photometric sample. Combining
+lensing, galaxy–galaxy lensing and clustering breaks degeneracies, for example between the growth
+of structure and the geometry.
+
+**"Is the UNIONS map on your slide Euclid data?"**
+No. UNIONS is a ground-based survey of the northern sky, which also provides optical photometry for
+Euclid's photometric redshifts. The map is from UNIONS's own shape catalogue.
+
+
+**Q&A — physical scales, a cheat sheet**
+
+Approximate, at z ≈ 0.5, where the lensing of z ≈ 1 sources peaks; proper distances (`PAPER_FACTS.md`
+§10 has the exact values).
+
+**1′ ≈ 0.4 Mpc.**
+
+**2′–4′ ≈ 1–1.5 Mpc:** cluster-sized haloes, where the first study's gain comes from.
+
+**8′ ≈ 3 Mpc, k ≈ 1 h/Mpc:** below it, Kaiser–Squires gains nothing.
+
+**ℓ ≈ 460 ≈ 20′ ≈ 9 Mpc, k ≈ 0.3 h/Mpc:** the power-spectrum cut at Euclid's area.
+
+**Finest wavelet band ≈ 10′ ≈ 4 Mpc:** the one removed; the rest are ≈ 20′–80′, 8–30 Mpc.
+
+**Feedback:** ~1 % suppression of the power spectrum from k ≈ 0.3 h/Mpc, 10–30 % at k ≈ 1–10.
+
+**Averaging ellipticities:** ~700 galaxies to detect a 1 % shear, a ~5′ × 5′ patch, ~2 Mpc.
+
+**Euclid's PSF ≈ 0.16″ ≈ 1 kpc.**
+
+**ℓ ↔ angle:** θ ≈ π/ℓ, so ℓ = 1000 ≈ 10′.
+
+
+**Q&A — radio and imaging (NRAO, ALMA)**
+
+**"Is there a regularisation weight to tune, like CLEAN's gain and threshold?"**
+No. The step size is set by the spectrum of the operator, and the denoiser takes the corresponding
+noise level as an input. The strength of the prior is set by the training distribution, not by a
+hand-tuned weight.
+
+**"What is the noise model? White, correlated?"**
+Shape noise is independent between galaxies, so the covariance is diagonal: the ellipticity variance
+over the number of galaxies in each pixel, and a very large variance in the masked pixels. The
+gradient step is preconditioned so that the noise the denoiser sees is white, which is why one
+network trained on white noise works for any covariance. For radio data, correlated image-plane
+noise would enter through a data term in the visibility domain.
+
+**"Does the denoiser invent structure, in the masked regions for example?"**
+Inside the mask the data carry no information, so the map there comes from the prior; the predicted
+error is correspondingly larger, and the downstream analyses exclude the masked areas. Elsewhere the
+fixed point has to stay consistent with the measured shear. The calibration is marginal, so the
+misses concentrate at the peaks.
+
+**⚠ "Could conformal calibration work for interferometric images, without a ground truth?"**
+It needs calibration examples with a known truth, so simulated skies passed through the instrument's
+forward model: the uv coverage and the noise. The guarantee then holds to the extent that the
+simulated skies are representative. In cosmology we have simulations built for that purpose; for
+radio, the sky model is the harder part.
+
+**"How do you fix the mean, your equivalent of the missing zero spacing?"**
+The map is reconstructed with zero mean; the denoiser's output is mean-centred. The statistics are
+computed on wavelet bands, which have zero mean, so a constant offset does not affect them.
+
+**"What does it cost?"**
+Training takes about a day and a half for the denoiser and two days for the error network, on one
+GPU, once. A map with its error bars then takes under a minute, and the calibration about two
+minutes. DeepMass is faster per map, seven seconds, but has to be retrained, about two days, for
+every new mask and noise level.
+
+**⚠ "Does it scale to Euclid's full sky?"**
+The current version works on flat 5×5-degree fields. A spherical version is the next step.
+(Backup 111.)
+
+**"Why not reconstruct from the galaxy catalogue directly?"**
+Binning the shapes into pixels is the analogue of gridding visibilities, and the pixel noise variance
+follows from the number of galaxies in each pixel. A catalogue-level forward model is possible, at a
+higher cost.
+
+
+**Q&A — galaxy evolution and theory (GECO, VITA)**
+
+**"Instead of removing the feedback scales, could you measure feedback with them?"**
+In principle, yes: with feedback parameters in the forward simulations, the same statistics would
+constrain them. Baryonification is about a thousand times faster than particle-based methods, which
+makes such simulation suites feasible. That is future work, not a result.
+
+**⚠ "The mass-mapping prior was learned from simulations. Does it depend on their feedback model?"**
+Yes, potentially. The PnPMass denoiser was trained on IllustrisTNG maps, so its prior includes TNG's
+feedback. Testing it on simulations with a different feedback model, and at other cosmologies, is
+needed before using it on data; the paper names robustness across cosmologies as the first open
+direction.
+
+**"Do the peaks correspond to haloes?"**
+The high signal-to-noise peaks mostly do, to single massive haloes. Lower ones are often projections
+of several structures along the line of sight, or noise. The statistic uses them as a population, so
+all of them carry cosmological information without being identified individually.
+
+**"Massive neutrinos also suppress small-scale power. Are they degenerate with feedback?"**
+They are, partly. The forecast I showed included the neutrino mass, and higher-order statistics
+tightened it. In the feedback study the neutrino mass was not varied.
+
+**⚠ "Intrinsic alignments are a small-scale effect too. Are they included?"**
+No. They are not in these simulations; forward-modelling them at map level is on the list, with
+photometric redshifts and source clustering. (Backup 110.)
+
+**"Are dark-matter-only simulations adequate after the cut?"**
+By construction, for this baryon model: we cut until the bias, measured on an observation with
+feedback, is below 0.3 sigma at each survey area.
+
+
+**Q&A — cosmology and the CMB (Simons Observatory)**
+
+**"What does this say about the S8 tension?"**
+Nothing directly; there is no new measurement here. But one proposed explanation for the lower
+lensing S8 is stronger feedback suppressing small-scale power, and those small scales are exactly
+where cosmology and feedback are degenerate for these statistics. (Backup 55, 57.)
+
+**"Could you apply this to CMB lensing, or cross-correlate with it?"**
+The same statistics apply to CMB lensing convergence maps, and cross-correlations with galaxy lensing
+help calibrate the shear and the redshifts. It is not part of this work.
+
+**⚠ "In the first study you used a Gaussian likelihood for peak counts, but later you said it is not
+justified."**
+The first study used an emulator with a Gaussian likelihood and a simulated covariance, standard at
+the time. All the methods shared it, so the relative comparison holds; the later studies use
+simulation-based inference.
+
+**"Does the choice of mass map matter for the power spectrum?"**
+The power spectrum is measured from the shear directly, without a map. The mass-mapping choice
+matters for map-based statistics; the first study used peak statistics.
+
+**"Isn't 157 per cent suspiciously large?"**
+The figure of merit here is the fourth root of the Fisher determinant over the four parameters, so a
+factor of two point six corresponds to error bars about one point six times smaller per parameter,
+on average. It is also a ratio between two chains that differ in a single step, so systematics that
+would affect an absolute number cancel.
+
+**"Can I compare the numbers across your three studies?"**
+No: they use three different simulation suites and survey geometries. Compare relative values within
+each study.
+
+
+**Q&A — statistics, machine learning, the ISM**
+
+**"How do you check the posteriors?"**
+Every posterior is tested for coverage on simulated observations with known parameters, with TARP and
+simulation-based calibration. (Backup 93–94.)
+
+**"Your per-pixel intervals: do they give the significance of a peak?"**
+Not directly. They are marginal and pixel-wise, not a joint band over the map, and they do not encode
+the correlations between pixels that a peak's significance needs.
+
+**"Why normalizing flows, and not other density estimators?"**
+They give exact densities and fast sampling, and neural posterior estimation with flows is
+well-tested. Other estimators would also work.
+
+**"How many simulations did you need?"**
+For the comparison with the network, 899 cosmologies, about three hundred thousand patches. For the
+feedback study, the full suite of two and a half thousand cosmologies.
+
+**"How does the ℓ1-norm relate to the scattering transform?"**
+The mean absolute wavelet coefficient in a band is the first-order scattering coefficient. The
+ℓ1-norm resolves it by amplitude, so it keeps the shape of the distribution; scattering adds second-
+order terms that couple scales, while the joint ℓ1-norm couples redshift bins.
+
+**"Could the same statistics be used on dust, HI or molecular-cloud maps?"**
+Yes. Multiscale statistics of this kind, and scattering transforms, are already used for the
+interstellar medium and turbulence; the "same power spectrum, different fields" problem is the same
+one. (Backup 81, on the phases.)
+
+
+**Q&A — anyone**
+
+**"When will you apply this to Euclid data?"**
+The weak-lensing products are planned for mid-2027. Everything I showed is on simulations, by design,
+since validating a reconstruction requires the truth. What transfers directly is PnPMass, which is
+trained once and takes the mask and noise only at inference, and the ℓ1-norm pipeline, which needs
+the simulations run at the survey's noise level and footprint.
+
+**"Will Euclid use these methods?"**
+They are developed with Euclid in mind, and the collaboration has groups working on higher-order
+statistics and on simulation-based inference. Which methods enter the official analysis is decided
+within the collaboration.
+
+**"How do you know the machine learning does not invent structure?"**
+In the reconstruction, the network is one step of an iteration whose other step enforces consistency
+with the measured shear. For the inference, the trained flow evaluates a new observation in
+milliseconds, so we test it on thousands of simulated observations with known parameters and check
+the coverage of the posteriors.
+
+**"Why the ℓ1-norm, rather than the sum of squares?"**
+The sum of squares in a band is a band power, which is two-point information. The ℓ1-norm, binned by
+coefficient value, retains the shape of the distribution, including its tails, which is where the
+non-Gaussian information is.
+
+**"Why weak lensing rather than galaxy clustering?"**
+Lensing responds to the total matter, so no galaxy-bias model is needed between the observable and
+the matter field. It is also sensitive to both the geometry and the growth of structure.
+
+**"What is the most important result?"**
+That analysis choices treated as neutral are not: the reconstruction method and the summary statistic
+both change the constraints, and with calibrated methods we can extract more of the information and
+quantify how far to trust it.
