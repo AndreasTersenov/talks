@@ -2125,6 +2125,8 @@
 				       (2) the denoiser lights; the map after it, clean
 				       (3) iterations 2-4 play by themselves (CSS animation, 6 s), the loop lighting
 				           in turn and the iteration counter ticking; ?print-pdf shows the end state
+				       (4) added 2026-10-28 (Andreas): the error bars. A row under the loop, one extra
+				           pass (a data step, then a second network), and the error map under the map
 				     Mechanism as on the thesis map: zero-size .pb-mk markers BEFORE the stage,
 				     read by general-sibling selectors off reveal's own .visible and
 				     .current-fragment. No JS listener, so ?print-pdf stays correct.
@@ -2136,6 +2138,7 @@
 					<span class="fragment pb-mk pb-mk1" data-fragment-index="1"></span>
 					<span class="fragment pb-mk pb-mk2" data-fragment-index="2"></span>
 					<span class="fragment pb-mk pb-mk3" data-fragment-index="3"></span>
+					<span class="fragment pb-mk pb-mk4" data-fragment-index="4"></span>
 					<div class="pb-stage">
 						<div class="pb-in">
 							<div class="pb-cards">
@@ -2180,11 +2183,34 @@
 							<figcaption>the true map</figcaption>
 						</figure>
 					</div>
+					<!-- click 4, the error map: one extra pass, as in the paper's Algorithm 1 and its
+					     flowchart's third row. A data step from the converged map, then the order-2 moment
+					     network in place of the denoiser. The row mirrors the stage's columns, so its two
+					     nodes sit under the loop's and the error map under the map. -->
+					<div class="pb-extra">
+						<div class="pb-in pb-xlab"><span>then, one extra pass</span></div>
+						<span class="pb-arw pb-ghost" aria-hidden="true">&rarr;</span>
+						<div class="pb-xring">
+							<div class="pb-node pb-xa"><b>a step towards the data</b><span class="pb-sub">from the
+									converged map</span></div>
+							<span class="pb-xarw" aria-hidden="true">&rarr;</span>
+							<div class="pb-node pb-xg"><b>a second network</b><span class="pb-sub">each pixel&rsquo;s
+									error, also trained once</span></div>
+						</div>
+						<span class="pb-arw pb-xout" aria-hidden="true">&rarr;</span>
+						<figure class="pb-sig">
+							<img src="../assets/figures/maps/pnp_build/sigma.png" alt="the predicted error of each pixel of the reconstructed map, largest around the massive structures">
+							<figcaption>the error of each pixel</figcaption>
+						</figure>
+						<div class="pb-xpad"></div>
+					</div>
 					<div class="pb-caps">
 						<span class="pb-c0">Two shear components, masked and noisy, and an empty map to start from.</span>
 						<span class="pb-c1">A step towards the data: the physics lives here, and only here.</span>
 						<span class="pb-c2">A denoiser trained on simulations removes what does not look like a mass map.</span>
 						<span class="pb-c3">Feed the map back in, and repeat until it stops changing.</span>
+						<span class="pb-c4">One extra pass, with a second network (a moment network), gives every
+							pixel its error bar; conformal calibration then guarantees their coverage.</span>
 					</div>
 					<p class="credit-line">Leterme, Tersenov, Fadili &amp; Starck 2026, arXiv:2603.22006</p>
 					<aside class="notes">
@@ -2200,6 +2226,143 @@
 								prior. Out comes a clean map</li>
 							<li>[CLICK] feed it back in and repeat; it settles to a fixed point. Compare with the
 								truth on the right</li>
+							<li>[CLICK] the error bars. A map without them cannot be used for science: you cannot
+								tell which peaks are real, or carry the map into an inference. One extra pass: a data
+								step from the converged map, then a second network in place of the denoiser, trained
+								once like it (an order-2 moment network, on the squared residuals). Out comes the
+								error of each pixel, with no sampling. A network's own error bars are not a
+								guarantee, so they are calibrated with conformal prediction on held-out simulations:
+								the 2&sigma; bars then contain the truth 95 % of the time. <em>I won't go into the
+								details, but happy to talk about it afterwards</em></li>
+							<li>so the network never sees the survey: the mask and the noise live only in the data
+								step, and one network serves any footprint and any noise</li>
+							<li><em>if asked (radio):</em> the same method images the radio sky: AIRI, Terris,
+								Dabbech, Tang &amp; Wiaux 2023 (MNRAS 518, 604), with a denoiser trained on optical
+								images. Their follow-up (Terris, Tang, Jackson &amp; Wiaux 2024) found denoisers
+								trained on MRI images work about as well, so the learned prior is quite generic</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- VERSION 2 of the plug-and-play loop (2026-10-28), beside the one above for Andreas to
+				     compare: the same slide, with the error bars as clicks 4-5 drawn differently (see the row's
+				     comment). Styling in colloquium.css under .pnpb-v2. -->
+				<section class="pnpb pnpb-v2" data-theme="light">
+					<h3 class="slide-title tight">Plug-and-play: a step towards the data, then a <em class="alert">learned
+							denoiser</em>, repeated</h3>
+					<span class="fragment pb-mk pb-mk1" data-fragment-index="1"></span>
+					<span class="fragment pb-mk pb-mk2" data-fragment-index="2"></span>
+					<span class="fragment pb-mk pb-mk3" data-fragment-index="3"></span>
+					<span class="fragment pb-mk pb-mk4" data-fragment-index="4"></span>
+					<span class="fragment pb-mk pb-mk5" data-fragment-index="5"></span>
+					<div class="pb-stage">
+						<div class="pb-in">
+							<div class="pb-cards">
+								<img class="pb-g2" src="../assets/figures/maps/pnp_build/gamma2.png" alt="the second shear component, masked and noisy">
+								<img class="pb-g1" src="../assets/figures/maps/pnp_build/gamma1.png" alt="the first shear component, masked and noisy">
+							</div>
+							<span class="pb-lab">the measured shear</span>
+						</div>
+						<span class="pb-arw">&rarr;</span>
+						<div class="pb-ring">
+							<svg class="pb-arcs" viewBox="0 0 400 285" aria-hidden="true">
+								<path class="pb-arc pb-top" d="M 98 70 L 98 44 Q 98 30 112 30 L 288 30 Q 302 30 302 44 L 302 66" />
+								<path class="pb-arc pb-top" d="M 296.3 57.8 L 302 66 L 307.7 57.8" />
+								<path class="pb-arc pb-bot" d="M 302 200 L 302 226 Q 302 240 288 240 L 112 240 Q 98 240 98 226 L 98 204" />
+								<path class="pb-arc pb-bot" d="M 92.3 212.2 L 98 204 L 103.7 212.2" />
+							</svg>
+							<div class="pb-node pb-a"><b>a step towards the data</b><span class="pb-sub pb-fm">$\gamma =
+									\mathbf{M}\,\mathbf{P}\,\kappa + \mathbf{n}$</span></div>
+							<div class="pb-node pb-b"><b>a learned denoiser</b><svg class="pb-nnmini" viewBox="0 0 84 34" width="84" height="34" aria-hidden="true"><g class="pb-ne"><line x1="6" y1="8.3" x2="30" y2="4"/><line x1="6" y1="8.3" x2="30" y2="12.7"/><line x1="6" y1="8.3" x2="30" y2="21.3"/><line x1="6" y1="8.3" x2="30" y2="30"/><line x1="6" y1="17" x2="30" y2="4"/><line x1="6" y1="17" x2="30" y2="12.7"/><line x1="6" y1="17" x2="30" y2="21.3"/><line x1="6" y1="17" x2="30" y2="30"/><line x1="6" y1="25.7" x2="30" y2="4"/><line x1="6" y1="25.7" x2="30" y2="12.7"/><line x1="6" y1="25.7" x2="30" y2="21.3"/><line x1="6" y1="25.7" x2="30" y2="30"/><line x1="30" y1="4" x2="54" y2="4"/><line x1="30" y1="4" x2="54" y2="12.7"/><line x1="30" y1="4" x2="54" y2="21.3"/><line x1="30" y1="4" x2="54" y2="30"/><line x1="30" y1="12.7" x2="54" y2="4"/><line x1="30" y1="12.7" x2="54" y2="12.7"/><line x1="30" y1="12.7" x2="54" y2="21.3"/><line x1="30" y1="12.7" x2="54" y2="30"/><line x1="30" y1="21.3" x2="54" y2="4"/><line x1="30" y1="21.3" x2="54" y2="12.7"/><line x1="30" y1="21.3" x2="54" y2="21.3"/><line x1="30" y1="21.3" x2="54" y2="30"/><line x1="30" y1="30" x2="54" y2="4"/><line x1="30" y1="30" x2="54" y2="12.7"/><line x1="30" y1="30" x2="54" y2="21.3"/><line x1="30" y1="30" x2="54" y2="30"/><line x1="54" y1="4" x2="78" y2="8.3"/><line x1="54" y1="4" x2="78" y2="17"/><line x1="54" y1="4" x2="78" y2="25.7"/><line x1="54" y1="12.7" x2="78" y2="8.3"/><line x1="54" y1="12.7" x2="78" y2="17"/><line x1="54" y1="12.7" x2="78" y2="25.7"/><line x1="54" y1="21.3" x2="78" y2="8.3"/><line x1="54" y1="21.3" x2="78" y2="17"/><line x1="54" y1="21.3" x2="78" y2="25.7"/><line x1="54" y1="30" x2="78" y2="8.3"/><line x1="54" y1="30" x2="78" y2="17"/><line x1="54" y1="30" x2="78" y2="25.7"/></g><g class="pb-nlm"><circle cx="6" cy="8.3" r="3.4"/><circle cx="6" cy="17" r="3.4"/><circle cx="6" cy="25.7" r="3.4"/><circle cx="30" cy="4" r="3.4"/><circle cx="30" cy="12.7" r="3.4"/><circle cx="30" cy="21.3" r="3.4"/><circle cx="30" cy="30" r="3.4"/><circle cx="54" cy="4" r="3.4"/><circle cx="54" cy="12.7" r="3.4"/><circle cx="54" cy="21.3" r="3.4"/><circle cx="54" cy="30" r="3.4"/><circle cx="78" cy="8.3" r="3.4"/><circle cx="78" cy="17" r="3.4"/><circle cx="78" cy="25.7" r="3.4"/></g></svg><span class="pb-sub">trained once on
+									sims</span></div>
+							<span class="pb-back">feed the map back in</span>
+						</div>
+						<span class="pb-arw">&rarr;</span>
+						<div class="pb-map">
+							<div class="pb-ticks"><span class="pb-tl">iteration</span><span class="pb-tk pb-t1">1</span><span
+									class="pb-tk pb-t2">2</span><span class="pb-tk pb-t3">3</span><span
+									class="pb-tk pb-t4">4</span></div>
+							<div class="pb-frames">
+								<div class="pb-zero"><span>start from $\kappa = 0$</span></div>
+								<img class="pb-f pb-f1" src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the map after the first data step: the structures are there, buried in noise">
+								<img class="pb-f pb-f2" src="../assets/figures/maps/pnp_build/after_denoiser_1.png" alt="the map after the first denoiser step: clean">
+								<img class="pb-f pb-r pb-r1" src="../assets/figures/maps/pnp_build/after_data_step_2.png" alt="iteration 2, after the data step">
+								<img class="pb-f pb-r pb-r2" src="../assets/figures/maps/pnp_build/after_denoiser_2.png" alt="iteration 2, after the denoiser">
+								<img class="pb-f pb-r pb-r3" src="../assets/figures/maps/pnp_build/after_data_step_3.png" alt="iteration 3, after the data step">
+								<img class="pb-f pb-r pb-r4" src="../assets/figures/maps/pnp_build/after_denoiser_3.png" alt="iteration 3, after the denoiser">
+								<img class="pb-f pb-r pb-r5" src="../assets/figures/maps/pnp_build/after_data_step_4.png" alt="iteration 4, after the data step">
+								<img class="pb-f pb-r pb-r6" src="../assets/figures/maps/pnp_build/after_denoiser_4.png" alt="iteration 4, after the denoiser: the reconstructed map">
+							</div>
+						</div>
+						<figure class="pb-truth">
+							<img src="../assets/figures/maps/pnp_build/truth.png" alt="the true convergence map of the simulation">
+							<figcaption>the true map</figcaption>
+						</figure>
+					</div>
+					<!-- clicks 4-5, the error bars (version 2, 2026-10-28, Andreas: an arrow from the converged
+					     map, the second network drawn as a network, then the error map, conformal calibration
+					     and the calibrated result, running right to left under the loop). The row repeats the
+					     stage's columns. The calibrated result is the paper's own: its appendix figure shows
+					     calibration on this field only as the CQR bounds minus the true map, so those are shown. -->
+					<div class="pb-uq">
+						<figure class="pb-cal pb-u5">
+							<div class="pb-bounds">
+								<img src="../assets/figures/maps/pnp_build/bound_low.png" alt="the calibrated lower bound minus the true map: below zero, blue, almost everywhere">
+								<img src="../assets/figures/maps/pnp_build/bound_high.png" alt="the calibrated upper bound minus the true map: above zero, red, almost everywhere">
+							</div>
+							<figcaption>calibrated bounds, minus the true map</figcaption>
+						</figure>
+						<span class="pb-arw pb-u5" aria-hidden="true">&larr;</span>
+						<div class="pb-uring">
+							<div class="pb-node pb-cqr pb-u5"><b>conformal calibration</b><span class="pb-sub">CQR</span></div>
+							<span class="pb-uarw pb-u5" aria-hidden="true">&larr;</span>
+							<figure class="pb-usig pb-u4">
+								<img src="../assets/figures/maps/pnp_build/sigma.png" alt="the predicted error of each pixel of the reconstructed map, largest around the massive structures">
+								<figcaption>the error of each pixel</figcaption>
+							</figure>
+						</div>
+						<span class="pb-arw pb-u4" aria-hidden="true">&larr;</span>
+						<div class="pb-nncol pb-u4">
+							<span class="pb-down" aria-hidden="true">&darr;</span>
+							<svg class="pb-nn" viewBox="0 0 150 96" width="150" height="96" aria-hidden="true"><g class="pb-ne"><line x1="14" y1="19.5" x2="54.7" y2="10"/><line x1="14" y1="19.5" x2="54.7" y2="29"/><line x1="14" y1="19.5" x2="54.7" y2="48"/><line x1="14" y1="19.5" x2="54.7" y2="67"/><line x1="14" y1="19.5" x2="54.7" y2="86"/><line x1="14" y1="38.5" x2="54.7" y2="10"/><line x1="14" y1="38.5" x2="54.7" y2="29"/><line x1="14" y1="38.5" x2="54.7" y2="48"/><line x1="14" y1="38.5" x2="54.7" y2="67"/><line x1="14" y1="38.5" x2="54.7" y2="86"/><line x1="14" y1="57.5" x2="54.7" y2="10"/><line x1="14" y1="57.5" x2="54.7" y2="29"/><line x1="14" y1="57.5" x2="54.7" y2="48"/><line x1="14" y1="57.5" x2="54.7" y2="67"/><line x1="14" y1="57.5" x2="54.7" y2="86"/><line x1="14" y1="76.5" x2="54.7" y2="10"/><line x1="14" y1="76.5" x2="54.7" y2="29"/><line x1="14" y1="76.5" x2="54.7" y2="48"/><line x1="14" y1="76.5" x2="54.7" y2="67"/><line x1="14" y1="76.5" x2="54.7" y2="86"/><line x1="54.7" y1="10" x2="95.3" y2="10"/><line x1="54.7" y1="10" x2="95.3" y2="29"/><line x1="54.7" y1="10" x2="95.3" y2="48"/><line x1="54.7" y1="10" x2="95.3" y2="67"/><line x1="54.7" y1="10" x2="95.3" y2="86"/><line x1="54.7" y1="29" x2="95.3" y2="10"/><line x1="54.7" y1="29" x2="95.3" y2="29"/><line x1="54.7" y1="29" x2="95.3" y2="48"/><line x1="54.7" y1="29" x2="95.3" y2="67"/><line x1="54.7" y1="29" x2="95.3" y2="86"/><line x1="54.7" y1="48" x2="95.3" y2="10"/><line x1="54.7" y1="48" x2="95.3" y2="29"/><line x1="54.7" y1="48" x2="95.3" y2="48"/><line x1="54.7" y1="48" x2="95.3" y2="67"/><line x1="54.7" y1="48" x2="95.3" y2="86"/><line x1="54.7" y1="67" x2="95.3" y2="10"/><line x1="54.7" y1="67" x2="95.3" y2="29"/><line x1="54.7" y1="67" x2="95.3" y2="48"/><line x1="54.7" y1="67" x2="95.3" y2="67"/><line x1="54.7" y1="67" x2="95.3" y2="86"/><line x1="54.7" y1="86" x2="95.3" y2="10"/><line x1="54.7" y1="86" x2="95.3" y2="29"/><line x1="54.7" y1="86" x2="95.3" y2="48"/><line x1="54.7" y1="86" x2="95.3" y2="67"/><line x1="54.7" y1="86" x2="95.3" y2="86"/><line x1="95.3" y1="10" x2="136" y2="29"/><line x1="95.3" y1="10" x2="136" y2="48"/><line x1="95.3" y1="10" x2="136" y2="67"/><line x1="95.3" y1="29" x2="136" y2="29"/><line x1="95.3" y1="29" x2="136" y2="48"/><line x1="95.3" y1="29" x2="136" y2="67"/><line x1="95.3" y1="48" x2="136" y2="29"/><line x1="95.3" y1="48" x2="136" y2="48"/><line x1="95.3" y1="48" x2="136" y2="67"/><line x1="95.3" y1="67" x2="136" y2="29"/><line x1="95.3" y1="67" x2="136" y2="48"/><line x1="95.3" y1="67" x2="136" y2="67"/><line x1="95.3" y1="86" x2="136" y2="29"/><line x1="95.3" y1="86" x2="136" y2="48"/><line x1="95.3" y1="86" x2="136" y2="67"/></g><g class="pb-nl pb-nl0"><circle cx="14" cy="19.5" r="5.5"/><circle cx="14" cy="38.5" r="5.5"/><circle cx="14" cy="57.5" r="5.5"/><circle cx="14" cy="76.5" r="5.5"/></g><g class="pb-nl pb-nl1"><circle cx="54.7" cy="10" r="5.5"/><circle cx="54.7" cy="29" r="5.5"/><circle cx="54.7" cy="48" r="5.5"/><circle cx="54.7" cy="67" r="5.5"/><circle cx="54.7" cy="86" r="5.5"/></g><g class="pb-nl pb-nl2"><circle cx="95.3" cy="10" r="5.5"/><circle cx="95.3" cy="29" r="5.5"/><circle cx="95.3" cy="48" r="5.5"/><circle cx="95.3" cy="67" r="5.5"/><circle cx="95.3" cy="86" r="5.5"/></g><g class="pb-nl pb-nl3"><circle cx="136" cy="29" r="5.5"/><circle cx="136" cy="48" r="5.5"/><circle cx="136" cy="67" r="5.5"/></g></svg>
+							<span class="pb-nnlab">a second network</span>
+						</div>
+						<div class="pb-xpad"></div>
+					</div>
+					<div class="pb-caps">
+						<span class="pb-c0">Two shear components, masked and noisy, and an empty map to start from.</span>
+						<span class="pb-c1">A step towards the data: the physics lives here, and only here.</span>
+						<span class="pb-c2">A denoiser trained on simulations removes what does not look like a mass map.</span>
+						<span class="pb-c3">Feed the map back in, and repeat until it stops changing.</span>
+						<span class="pb-c4">A second network (a moment network) predicts the error of each pixel, in one
+							pass.</span>
+						<span class="pb-c5">Conformal calibration then guarantees the coverage: the true map lies within
+							the bounds 95&nbsp;% of the time.</span>
+					</div>
+					<p class="credit-line">Leterme, Tersenov, Fadili &amp; Starck 2026, arXiv:2603.22006</p>
+					<aside class="notes">
+						<p><strong>plug-and-play, as a loop</strong> (script beat to write)</p>
+						<ul>
+							<li>the whole method is this loop: a step towards the data, then a learned denoiser,
+								repeat. Start from an empty map</li>
+							<li>[CLICK] the data step pulls the map towards the measured shear. The physics lives
+								here and only here: the shear operator, the mask, the noise covariance. Out comes a
+								noisy map</li>
+							<li>[CLICK] the denoiser: a network (Swin transformer, 7 million parameters) trained once
+								on simulations, on white Gaussian noise over a range of levels. It replaces the
+								prior. Out comes a clean map</li>
+							<li>[CLICK] feed it back in and repeat; it settles to a fixed point. Compare with the
+								truth on the right</li>
+							<li>[CLICK] the error bars. A map without them cannot be used for science: you cannot
+								tell which peaks are real, or carry the map into an inference. From the converged map
+								(strictly, one more data step from it), a second network takes the denoiser's place,
+								trained once like it (an order-2 moment network, on the squared residuals). Out comes
+								the error of each pixel, in a single pass, no sampling</li>
+							<li>[CLICK] a network's own error bars are not a guarantee, so they are calibrated with
+								conformal prediction on held-out simulations. Shown here as the paper shows it: the
+								calibrated lower bound minus the truth is blue (below it) almost everywhere, the upper
+								red (above it); the 2&sigma; bounds bracket the truth 95 % of the time. <em>I won't go
+								into the details, but happy to talk about it afterwards</em></li>
 							<li>so the network never sees the survey: the mask and the noise live only in the data
 								step, and one network serves any footprint and any noise</li>
 							<li><em>if asked (radio):</em> the same method images the radio sky: AIRI, Terris,

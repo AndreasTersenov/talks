@@ -260,6 +260,64 @@ html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
 .reveal .slides section.pnpb .pb-mk3.current-fragment ~ .pb-caps .pb-c3 { opacity: 1; }
 .reveal .slides section.pnpb .credit-line { margin-top: 0.5em; }
 
+/* click 4, the error bars: one extra pass as a row under the loop (the paper's flowchart draws it as
+   a third row). The row repeats the stage's columns (165 | arrow | 400 | arrow | 270 | 150) with the
+   same gap, so its nodes sit under the loop's and the error map under the map. On the click: the row
+   fades in, the data step lights, then the second network, then the error map appears. */
+.reveal .slides section.pnpb .pb-extra {
+	display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 0.35em;
+}
+.reveal .slides section.pnpb .pb-extra > * { opacity: 0; transition: opacity 0.35s ease; }
+.reveal .slides section.pnpb .pb-mk4.visible ~ .pb-extra > * { opacity: 1; }
+.reveal .slides section.pnpb .pb-extra > .pb-ghost { visibility: hidden; }
+.reveal .slides section.pnpb .pb-xlab span {
+	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
+	font-size: 0.62em; color: var(--fg-muted); text-align: center;
+}
+.reveal .slides section.pnpb .pb-xring { position: relative; flex: 0 0 auto; width: 400px; height: 90px; }
+.reveal .slides section.pnpb .pb-node.pb-xa,
+.reveal .slides section.pnpb .pb-node.pb-xg { top: 0; height: 90px; }
+.reveal .slides section.pnpb .pb-node.pb-xa { left: 0; }
+.reveal .slides section.pnpb .pb-node.pb-xg { left: 220px; }
+.reveal .slides section.pnpb .pb-xarw {
+	position: absolute; left: 180px; width: 40px; top: 45px; transform: translateY(-50%);
+	text-align: center; color: var(--accent); font-size: 1.3em;
+}
+.reveal .slides section.pnpb .pb-sig {
+	flex: 0 0 auto; width: 270px; margin: 0; display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section.pnpb .pb-sig img {
+	display: block; width: 160px; height: 160px; margin: 0; max-width: none; max-height: none;
+	border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpb .pb-sig figcaption { font-size: 0.55em; text-align: center; margin-top: 0.25em; }
+.reveal .slides section.pnpb .pb-xpad { flex: 0 0 auto; width: 150px; }
+/* the end state: the second network lit, the error map shown */
+.reveal .slides section.pnpb .pb-mk4.visible ~ .pb-extra .pb-xg {
+	border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+	background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+/* the pass, played once on the click: data step 0.4-1.4 s, second network from 1.4 s, map at 1.6 s */
+.reveal .slides section.pnpb .pb-mk4.current-fragment ~ .pb-extra .pb-xa { animation: pb-xa 1.4s step-end both; }
+.reveal .slides section.pnpb .pb-mk4.current-fragment ~ .pb-extra .pb-xg { animation: pb-xg 1.4s step-end both; }
+.reveal .slides section.pnpb .pb-mk4.current-fragment ~ .pb-extra .pb-sig { animation: pb-on 0.35s ease 1.6s both; }
+@keyframes pb-xa {
+	0% { border-color: var(--edge); box-shadow: none; background-color: var(--surface); }
+	28.571% {
+		border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+		background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	}
+	100% { border-color: var(--edge); box-shadow: none; background-color: var(--surface); }
+}
+@keyframes pb-xg {
+	0% { border-color: var(--edge); box-shadow: none; background-color: var(--surface); }
+	100% {
+		border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+		background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+	}
+}
+.reveal .slides section.pnpb .pb-mk4.current-fragment ~ .pb-caps .pb-c4 { opacity: 1; }
+
 /* ==========================================================================
    Feedback, rebuilt as two (.fbsk, .fbvid): the sketch alone, then the video
    on a dark slide with the questions over it. The original slide stays until
@@ -681,3 +739,99 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 	color: color-mix(in srgb, var(--fg) 80%, transparent);
 }
 .reveal .slides section.conc2 .conc-sub::before { content: "\2192\00a0"; color: var(--accent); }
+
+/* ---------------------------------------------------------------------------
+   Plug-and-play, version 2 (.pnpb-v2, 2026-10-28): the error bars as clicks 4-5, running right to
+   left under the loop. Click 4: an arrow down from the converged map into a second network, drawn
+   as a network whose layers light in turn, then the error map. Click 5: conformal calibration, then
+   the paper's calibrated bounds minus the true map. The row repeats the stage's columns
+   (165 | arrow | 400 | arrow | 270 | 150); every column puts its middle on the error map's (75 px).
+   -------------------------------------------------------------------------- */
+.reveal .slides section.pnpb-v2 .pb-uq {
+	display: flex; align-items: flex-start; justify-content: center; gap: 6px; margin-top: 0.1em;
+}
+.reveal .slides section.pnpb-v2 .pb-u4,
+.reveal .slides section.pnpb-v2 .pb-u5 { opacity: 0; transition: opacity 0.35s ease; }
+.reveal .slides section.pnpb-v2 .pb-mk4.visible ~ .pb-uq .pb-u4,
+.reveal .slides section.pnpb-v2 .pb-mk5.visible ~ .pb-uq .pb-u5 { opacity: 1; }
+.reveal .slides section.pnpb-v2 .pb-uq img {
+	display: block; margin: 0; max-width: none; max-height: none; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.pnpb-v2 .pb-uq figure { margin: 0; }
+.reveal .slides section.pnpb-v2 .pb-uq figcaption {
+	font-size: 0.64em; text-align: center; margin-top: 0.25em; line-height: 1.25;
+}
+.reveal .slides section.pnpb-v2 .pb-uq > .pb-arw { height: 152px; display: flex; align-items: center; }
+
+/* the calibrated bounds: wider than the shear column above, overhanging to the left */
+.reveal .slides section.pnpb-v2 .pb-cal { flex: 0 0 auto; width: 165px; padding-top: 22px; }
+.reveal .slides section.pnpb-v2 .pb-bounds { display: flex; gap: 8px; width: 222px; margin-left: -57px; }
+.reveal .slides section.pnpb-v2 .pb-bounds img { width: 107px; height: 107px; }
+.reveal .slides section.pnpb-v2 .pb-cal figcaption { width: 222px; margin-left: -57px; }
+
+/* under the loop: conformal calibration on the left, the error map on the right */
+.reveal .slides section.pnpb-v2 .pb-uring { position: relative; flex: 0 0 auto; width: 400px; height: 165px; }
+.reveal .slides section.pnpb-v2 .pb-node.pb-cqr { left: 0; top: 34px; height: 84px; }
+.reveal .slides section.pnpb-v2 .pb-uarw {
+	position: absolute; left: 196px; width: 55px; top: 76px; transform: translateY(-50%);
+	text-align: center; color: var(--accent); font-size: 1.3em;
+}
+.reveal .slides section.pnpb-v2 .pb-usig { position: absolute; left: 204px; top: 22px; width: 196px; }
+.reveal .slides section.pnpb-v2 .pb-usig img { width: 107px; height: 107px; margin: 0 auto; }
+
+/* the second network, under the map */
+.reveal .slides section.pnpb-v2 .pb-nncol {
+	flex: 0 0 auto; width: 270px; display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section.pnpb-v2 .pb-down { display: block; height: 28px; line-height: 28px; color: var(--accent); font-size: 1.3em; }
+.reveal .slides section.pnpb-v2 .pb-nn { display: block; margin: 0; }
+.reveal .slides section.pnpb-v2 .pb-ne line { stroke: var(--fg-muted); stroke-width: 0.8; opacity: 0.35; }
+.reveal .slides section.pnpb-v2 .pb-nl circle {
+	fill: var(--surface); stroke: var(--accent); stroke-width: 1.5;
+}
+.reveal .slides section.pnpb-v2 .pb-mk4.visible ~ .pb-uq .pb-nl circle {
+	fill: color-mix(in srgb, var(--accent) 35%, var(--surface));
+}
+.reveal .slides section.pnpb-v2 .pb-nnlab { font-size: 0.7em; font-weight: 600; color: var(--fg); margin-top: 0.3em; }
+
+/* the end of click 5: calibration lit */
+.reveal .slides section.pnpb-v2 .pb-mk5.visible ~ .pb-uq .pb-cqr {
+	border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+	background-color: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+/* played once on each click: the layers light in turn, then the error map; calibration, then the bounds */
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-nl circle { animation: pb-nfill 0.3s ease both; }
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-nl0 circle { animation-delay: 0.35s; }
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-nl1 circle { animation-delay: 0.6s; }
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-nl2 circle { animation-delay: 0.85s; }
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-nl3 circle { animation-delay: 1.1s; }
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-usig,
+.reveal .slides section.pnpb-v2 .pb-mk4.current-fragment ~ .pb-uq .pb-u4.pb-arw { animation: pb-on 0.35s ease 1.4s both; }
+.reveal .slides section.pnpb-v2 .pb-mk5.current-fragment ~ .pb-uq .pb-cal,
+.reveal .slides section.pnpb-v2 .pb-mk5.current-fragment ~ .pb-uq .pb-u5.pb-arw { animation: pb-on 0.35s ease 0.8s both; }
+@keyframes pb-nfill {
+	from { fill: var(--surface); }
+	to { fill: color-mix(in srgb, var(--accent) 35%, var(--surface)); }
+}
+.reveal .slides section.pnpb .pb-mk5.current-fragment ~ .pb-caps .pb-c5 { opacity: 1; }
+
+/* version 2, the loop itself (2026-10-28, Andreas: less text, larger; square arrows; a small
+   network in the denoiser box). Nodes 196 x 130 from y = 70; the arrows in the SVG are square, from
+   the middle of one box's edge (x = 98, 302) out to y = 30 or 240 and into the other's. */
+.reveal .slides section.pnpb-v2 .pb-node {
+	top: 70px; width: 196px; height: 130px; padding: 0.3em 0.2em; font-size: 0.68em;
+}
+.reveal .slides section.pnpb-v2 .pb-node.pb-b { left: 204px; }
+.reveal .slides section.pnpb-v2 .pb-node.pb-cqr { width: 196px; }
+.reveal .slides section.pnpb-v2 .pb-sub { margin-top: 0.3em; }
+.reveal .slides section.pnpb-v2 .pb-fm { font-family: inherit; font-style: normal; color: var(--fg); font-size: 1.05em; }
+.reveal .slides section.pnpb-v2 .pb-nnmini { display: block; margin: 0.35em auto 0; }
+.reveal .slides section.pnpb-v2 .pb-nnmini .pb-ne line { stroke: var(--fg-muted); stroke-width: 0.7; opacity: 0.4; }
+.reveal .slides section.pnpb-v2 .pb-nnmini .pb-nlm circle { fill: var(--surface); stroke: var(--accent); stroke-width: 1.2; }
+.reveal .slides section.pnpb-v2 .pb-back { top: 250px; font-size: 0.66em; }
+.reveal .slides section.pnpb-v2 .pb-lab { font-size: 0.68em; }
+.reveal .slides section.pnpb-v2 .pb-tl { font-size: 0.66em; }
+.reveal .slides section.pnpb-v2 .pb-tk { font-size: 0.56em; }
+.reveal .slides section.pnpb-v2 .pb-truth figcaption { font-size: 0.64em; }
+.reveal .slides section.pnpb-v2 .pb-caps > span { font-size: 0.74em; }

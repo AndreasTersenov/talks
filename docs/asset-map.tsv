@@ -210,6 +210,7 @@ p1_contours_vs_area_ps/step1..6.png	posteriors	build-up, 6 frames, paper render 
 p2_bnt_analytic/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
 p2_corner_cnn_vs_l1/step1..4.png	posteriors	build-up, 4 frames, paper render 2026-08
 p2_corner_cnn_vs_l1_auto_only/step1..2.png	posteriors	build-up, 2 frames, l1 auto-only then +CNN, paper render 2026-08
+pnp_build/*.png	maps	PnPMass panels cut from the paper's figures by tools/make-pnp-build.py: gamma1/2, truth, after_data_step_1..4, after_denoiser_1..4, mask (traced), sigma (2026-10-28, the error map, from pnpmass_kappa_sigma_white.png), and bound_low/bound_high (2026-10-28, the CQR bounds minus the true map, rendered from the arXiv source's img/pnpmass_low.pdf and img/pnpmass_high.pdf with --arxiv); UVA_NRAO_colloquium C18, C10
 p1_bias_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_fom_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_hos_frac_diff_l1/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08

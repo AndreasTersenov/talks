@@ -262,6 +262,22 @@ data arrive").
   - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
     AIRI plug-in loop is gone. The paper-figure slide with the equations (#/8/1) stays for now;
     most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
+    A fourth click (2026-10-28, Andreas: uncertainty matters, name the method, no details, "happy
+    to chat afterwards" said aloud): one extra pass as a row under the loop, a data step from the
+    converged map, then a second network (order-2 moment network) in place of the denoiser, giving
+    the error of each pixel (the paper's Algorithm 1); the caption names conformal calibration.
+    **Open** (2026-10-28): a version 2 right after it (Andreas): click 4, an arrow down from the
+    converged map into a second network drawn as a network, then the error map; click 5, conformal
+    calibration, then the calibrated result, right to left under the loop, no "extra pass" row
+    label and no second data step. The calibrated result is the paper's own appendix panels (the
+    CQR bounds minus the true map, blue below and red above): the paper has no calibrated error map
+    for this field, and a width map read back from those colours did not reproduce its calibration
+    numbers (about 12 % narrower than 2 sigma-hat on this field, against the paper's ~1 % wider on
+    average), so none is shown. Refined the same day (Andreas): less text and larger throughout; the
+    data step shows the forward model (gamma = M P kappa + n) instead of "operator, mask, noise"; the
+    denoiser box reads "trained once on sims" around a small drawn network; the loop's arrows are square
+    (tried as one circle first); calibration reads "CQR"; the error map at the bounds' size. Version 1 is left
+    as it was. Andreas compares and picks.
   - C19 results: **decided 2026-10-28**, the result plot redrawn as a build (#/8/3), both axes
     relative to DeepMass: accuracy (a number line), the networks' own error bars, calibration (all at
     95 % coverage, with trails), PnPMass smallest, then the card "other deep-learning methods need
