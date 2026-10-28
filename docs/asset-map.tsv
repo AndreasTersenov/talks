@@ -149,6 +149,7 @@ maps-tophat.png	figures	maps
 mass_map_tomo.png	figures	maps
 mass_maps_(ks_iks_mca)_transparent_dark.pdf	figures	maps
 mass_maps_comparison_transparent_dark.pdf	figures	maps
+mcmc_sampling_white.gif	misc	mcmc_sampling.gif's chain and frames on a white ground (tools/make-mcmc-gif.py --white), so the paper-ground original stays for the other decks; UVA_NRAO_colloquium C25
 miscoverage_rate.png	figures	statistics
 miscoverage_rate1.png	figures	statistics
 nsigma_vs_mask_area_all_stats_lmax1024_dark.pdf	figures	statistics

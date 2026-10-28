@@ -11,10 +11,14 @@ slide: it is the shape a Gaussian likelihood with a fixed covariance actually
 produces, and the anticorrelation is the degeneracy the room expects to see in an
 Omega_m - sigma_8 plane.
 
-    /usr/local/bin/python3 tools/make-mcmc-gif.py
+    /usr/local/bin/python3 tools/make-mcmc-gif.py            # the paper ground
+    /usr/local/bin/python3 tools/make-mcmc-gif.py --white    # a white ground
 
-Writes assets/misc/mcmc_sampling.gif.
+Writes assets/misc/mcmc_sampling.gif, or with --white assets/misc/mcmc_sampling_white.gif:
+the same chain (same seed), only the ground differs, for decks whose light slides are
+white (UVA_NRAO_colloquium). A separate file, so the decks on the paper ground keep theirs.
 """
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -27,6 +31,9 @@ MUTED  = "#6a6760"
 ACCENT = "#2f49c0"
 
 OUT     = "assets/misc/mcmc_sampling.gif"
+if "--white" in sys.argv:
+    PAPER = "#ffffff"
+    OUT = "assets/misc/mcmc_sampling_white.gif"
 FRAMES  = 70
 PER     = 55          # chain steps revealed per frame
 STEP    = 0.42        # proposal width
