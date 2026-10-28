@@ -263,6 +263,14 @@ data arrive").
     most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
   - C19 results: **decided 2026-10-27**, version A, "smallest calibrated error bars" (#/8/3); the
     coverage-wording version is gone.
+  - C24 the two statistics: **open** (2026-10-27; Andreas feared the l1-norm formula would lose the
+    room). The original (#/15) against a copy whose bottom row is a build (#/16), appearing on its own
+    click after the starlet row: one starlet band pixel by pixel; then (1) peak counts, the maxima
+    ringed and sorted by height; (2) sort: every pixel by value, the band's histogram; (3) weigh: each
+    block as tall as |value|; (4) add up: one bar per bin, voids and peaks remain, the l1-norm. The
+    formula l1(bin) = sum over the pixels in the bin of |value| types itself a part per step. An
+    illustration field (tools/make-l1-sort.py); notes per click, plus P(D) for the radio room if asked.
+    Andreas compares and picks.
   - C31 feedback: **open** (2026-10-27; Andreas was told to make the video larger). The original
     (#/22/0) against a pair in his order (signal and systematics share scales, then feedback as a
     dominant one, then the questions): the sketch alone, stretched along the scale axis, its dashed

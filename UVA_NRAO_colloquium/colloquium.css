@@ -314,3 +314,102 @@ html.print-pdf .reveal .slides section.pnpb * { animation: none !important; }
 	margin: 0; font-family: var(--r-heading-font); font-style: italic;
 	font-size: 1.5em; line-height: 1.3; color: var(--fg);
 }
+
+/* ==========================================================================
+   The l1-norm, sorted (.l1x): slide 32's bottom row rebuilt as a build. The
+   SVG comes from tools/make-l1-sort.py (l1_sort.js); every block carries its
+   place in each state as custom properties, and the zero-size markers
+   .l1-mk0..4 move them: the row appears, peaks, sort, weigh, add up. The
+   original slide stays until Andreas picks.
+   ========================================================================== */
+.reveal .slides section.l1x .l1-mk { position: absolute; width: 0; height: 0; overflow: hidden; }
+.reveal .slides section.l1x .l1wrap { position: relative; width: 940px; margin: 0.45em auto 0; }
+.reveal .slides section.l1x .l1s-svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* the whole row waits for the first click, after the starlet row */
+.reveal .slides section.l1x .l1wrap,
+.reveal .slides section.l1x .l1caps { opacity: 0; transition: opacity 0.5s ease; }
+.reveal .slides section.l1x .l1-mk0.visible ~ .l1wrap,
+.reveal .slides section.l1x .l1-mk0.visible ~ .l1caps { opacity: 1; }
+
+.reveal .slides section.l1x .l1s-frame { fill: none; stroke: var(--edge); stroke-width: 1; }
+.reveal .slides section.l1x .l1s-axis { stroke: var(--fg-muted); stroke-width: 1.3; }
+.reveal .slides section.l1x .l1s-tick,
+.reveal .slides section.l1x .l1s-end,
+.reveal .slides section.l1x .l1s-axlab {
+	font-family: var(--label); font-style: var(--label-style); font-size: 17px;
+	fill: var(--fg-muted); text-anchor: middle;
+}
+.reveal .slides section.l1x .l1s-end { font-style: normal; font-size: 21px; }
+
+/* the blocks: at rest they sit on the map, exactly over its image */
+.reveal .slides section.l1x .px {
+	transform-box: fill-box; transform-origin: 0 0;
+	transition: transform 1.15s cubic-bezier(0.45, 0, 0.2, 1) var(--d);
+}
+/* click 2: the peaks alone */
+.reveal .slides section.l1x .l1-mk1.visible ~ .l1wrap .px.pk {
+	transform: translate(var(--dx1), var(--dy1)) scale(var(--s1));
+}
+/* click 3, sort: every pixel, stacked by value */
+.reveal .slides section.l1x .l1-mk2.visible ~ .l1wrap .px,
+.reveal .slides section.l1x .l1-mk2.visible ~ .l1wrap .px.pk {
+	transform: translate(var(--dx2), var(--dy2)) scale(var(--s2));
+}
+/* click 4, weigh: each block, where it stands, as tall as |value| */
+.reveal .slides section.l1x .l1-mk3.visible ~ .l1wrap .px,
+.reveal .slides section.l1x .l1-mk3.visible ~ .l1wrap .px.pk {
+	transform: translate(var(--dx2), var(--dy3)) scale(var(--s2), var(--t3));
+}
+/* click 5, add up: each bin one bar, each pixel a slice as thick as |value| */
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1wrap .px,
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1wrap .px.pk {
+	transform: translate(var(--dx4), var(--dy4)) scale(var(--s4), var(--t4));
+}
+
+/* the rings round the peaks, on the map: the peaks click only */
+.reveal .slides section.l1x .l1s-ring {
+	fill: none; stroke: var(--fg); stroke-width: 1.6; opacity: 0; transition: opacity 0.4s ease;
+}
+.reveal .slides section.l1x .l1-mk1.visible ~ .l1-mk2:not(.visible) ~ .l1wrap .l1s-ring { opacity: 1; }
+
+/* add up: the curve and the two humps, once the blocks have settled */
+.reveal .slides section.l1x .l1s-curve {
+	fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linejoin: round; opacity: 0;
+	transition: opacity 0.5s ease;
+}
+.reveal .slides section.l1x .l1s-hump {
+	font-family: var(--label); font-style: var(--label-style); font-size: 21px;
+	fill: var(--fg); text-anchor: middle; opacity: 0; transition: opacity 0.5s ease;
+}
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1wrap .l1s-curve,
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1wrap .l1s-hump { opacity: 1; transition-delay: 1.5s; }
+
+/* the formula, top right of the histogram: the whole of it in light grey from the l1 click (not
+   during the peaks), and black copies stacked on it in one cell, one per state; the parts not yet said are
+   \phantom, so each black part lands exactly on its grey one */
+.reveal .slides section.l1x .l1eq {
+	position: absolute; top: 30px; right: 0; display: grid; font-size: 0.82em; color: var(--fg);
+}
+.reveal .slides section.l1x .l1eq > span { grid-area: 1 / 1; opacity: 0; transition: opacity 0.45s ease; }
+.reveal .slides section.l1x .l1eq .katex-display { margin: 0; }
+.reveal .slides section.l1x .l1eq .e0 { color: color-mix(in srgb, var(--fg) 28%, var(--surface)); }
+.reveal .slides section.l1x .l1-mk2.visible ~ .l1wrap .l1eq .e0 { opacity: 1; }
+.reveal .slides section.l1x .l1-mk2.visible ~ .l1-mk3:not(.visible) ~ .l1wrap .e2,
+.reveal .slides section.l1x .l1-mk3.visible ~ .l1-mk4:not(.visible) ~ .l1wrap .e3,
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1wrap .e4 { opacity: 1; }
+
+/* the captions, one per state, stacked in one cell so the slide never changes height */
+.reveal .slides section.l1x .l1caps { display: grid; margin: 0.3em auto 0; max-width: 94%; }
+.reveal .slides section.l1x .l1caps > span {
+	grid-area: 1 / 1; text-align: center; font-size: 0.88em; color: var(--fg);
+	opacity: 0; transition: opacity 0.35s ease;
+}
+.reveal .slides section.l1x .l1-mk0.visible ~ .l1-mk1:not(.visible) ~ .l1caps .c0,
+.reveal .slides section.l1x .l1-mk1.visible ~ .l1-mk2:not(.visible) ~ .l1caps .c1,
+.reveal .slides section.l1x .l1-mk2.visible ~ .l1-mk3:not(.visible) ~ .l1caps .c2,
+.reveal .slides section.l1x .l1-mk3.visible ~ .l1-mk4:not(.visible) ~ .l1caps .c3,
+.reveal .slides section.l1x .l1-mk4.visible ~ .l1caps .c4 { opacity: 1; }
+
+/* the PDF shows each click's end state */
+html.print-pdf .reveal .slides section.l1x * { transition: none !important; }
