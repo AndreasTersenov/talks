@@ -319,6 +319,13 @@ data arrive").
     over the Euclid field, four with the result of ours that backs it on a smaller line, all on
     screen from the start, the fuller sentences in the notes. The defence's four answers are hidden,
     kept in the file.
+  - C17 learned methods: **open** (2026-10-28; Andreas: the table is not the best thing, but the talk
+    still needs the motivation). The DL table (#/9/0) against a requirements slide after it (#/9/1):
+    what a mass-mapping method needs to be used on a survey like Euclid, four cards (accurate, down
+    to the small scales; flexible, any mask and noise level without retraining; fast, on the data and
+    on thousands of simulations; error bars we can trust, pixel by pixel, calibrated), then on a
+    click "No existing method meets all four at once"; which method misses what is in the notes.
+    Andreas compares and picks.
 - C33, C34 trimmed (2026-10-28, Andreas): the cut slide gives the C_l cut at Euclid's area only
   (ell_max = 460 at 14,000 deg^2, PAPER_FACTS section 4) and the starlet as "the same approach,
   but removing the finest wavelet bands instead of multipoles" (Andreas's wording); the result slide loses "and this is conservative" and keeps

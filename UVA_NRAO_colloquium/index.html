@@ -1961,6 +1961,42 @@
 					</aside>
 				</section>
 
+				<!-- THE REQUIREMENTS (2026-10-28), beside the table above for Andreas to compare. Andreas: the
+				     table is not the best thing, but the talk still needs the motivation, what a state-of-the-art
+				     method must do to be used on a survey like Euclid. Four requirements, then (click) the gap.
+				     Styling in colloquium.css under .needs. -->
+				<section data-theme="light" class="needs">
+					<h3 class="slide-title tight">What a mass-mapping method needs, to be used on a survey like
+						<em class="alert">Euclid</em></h3>
+					<div class="nd-row">
+						<div class="nd-card"><span class="nd-k">accurate</span><span class="nd-d">down to the small
+								scales, where the information is</span></div>
+						<div class="nd-card"><span class="nd-k">flexible</span><span class="nd-d">any mask and noise
+								level, without retraining</span></div>
+						<div class="nd-card"><span class="nd-k">fast</span><span class="nd-d">on the data, and on
+								thousands of simulations</span></div>
+						<div class="nd-card"><span class="nd-k">error bars we can trust</span><span class="nd-d">pixel
+								by pixel, calibrated</span></div>
+					</div>
+					<p class="nd-gap fragment fade-in">No existing method meets all four at once.</p>
+					<aside class="notes">
+						<ul>
+							<li>the map matters (the figure of merit more than doubled), so build the best one we can,
+								for a survey like Euclid. Four requirements</li>
+							<li><strong>accurate</strong> &mdash; down to the small scales, where the gain came from</li>
+							<li><strong>flexible</strong> &mdash; the mask and the noise change from survey to survey,
+								and within one; a method that must be retrained each time cannot follow</li>
+							<li><strong>fast</strong> &mdash; the same reconstruction runs on the data and on every
+								simulation of the inference</li>
+							<li><strong>error bars we can trust</strong> &mdash; pixel by pixel, calibrated</li>
+							<li>[CLICK] no existing method meets all four: model-based ones (Wiener, MCALens) are
+								flexible but less accurate or slow; deep networks (DeepMass, MMGAN) are accurate but
+								retrained for every mask and noise level; sampling them (DeepPosterior) is slow</li>
+							<li>this paper led by <strong>Hubert Leterme</strong></li>
+						</ul>
+					</aside>
+				</section>
+
 
 				<!-- ################################################################# ################################## -->
 

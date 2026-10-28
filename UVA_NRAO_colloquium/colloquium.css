@@ -835,3 +835,23 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 .reveal .slides section.pnpb-v2 .pb-tk { font-size: 0.56em; }
 .reveal .slides section.pnpb-v2 .pb-truth figcaption { font-size: 0.64em; }
 .reveal .slides section.pnpb-v2 .pb-caps > span { font-size: 0.74em; }
+
+/* ---------------------------------------------------------------------------
+   The requirements (.needs, 2026-10-28): what a mass-mapping method needs, to be used on a survey
+   like Euclid. Four peer cards in a row, a keyword and one line each; the gap on a click.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.needs .nd-row {
+	display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 1.6em auto 0; width: 94%;
+}
+.reveal .slides section.needs .nd-card {
+	display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center;
+	padding: 1.1em 0.8em 1.2em; border: 1px solid var(--edge); border-top: 3px solid var(--accent);
+	border-radius: 10px; background: var(--surface); box-shadow: var(--shadow);
+}
+.reveal .slides section.needs .nd-k {
+	font-family: var(--r-heading-font); font-weight: 600; font-size: 1.05em; line-height: 1.2; color: var(--accent);
+}
+.reveal .slides section.needs .nd-d { margin-top: 0.6em; font-size: 0.7em; line-height: 1.4; color: var(--fg); }
+.reveal .slides section.needs .nd-gap {
+	margin: 1.5em auto 0; text-align: center; font-size: 0.9em; color: var(--fg);
+}
