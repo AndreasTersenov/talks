@@ -5056,11 +5056,9 @@
 					</h3>
 					<ul style="font-size:0.88em; margin-bottom:0.5em;">
 						<li>Criterion: bring the baryonic bias <b class="alert">below 0.3$\sigma$</b></li>
-						<li>$C_\ell$: <b class="alert">$\ell_{\rm max}$ tuned per survey area</b>, from 860 at 2,000
-							deg&sup2; to <b class="alert">340</b> at full sky</li>
-						<li>starlet: the contamination is concentrated in the <b class="alert">finest band</b>, so
-							dropping
-							$j=1$ is enough at every area</li>
+						<li>$C_\ell$: keep multipoles up to <b class="alert">$\ell_{\rm max} = 460$</b> at
+							14,000&nbsp;deg&sup2; (Euclid)</li>
+						<li>starlet: the same approach, but removing the <b class="alert">finest wavelet bands</b> instead of multipoles</li>
 					</ul>
 					<img class="plain" src="../assets/figures/statistics/p1_ps_bias_vs_lmax/step2.png"
 						style="max-height:270px; display:block; margin:0 auto;"
@@ -5110,19 +5108,19 @@
 				<!-- Are HOS still useful? (LAM version of the safe-scales slide, light) -->
 				<section data-theme="light" data-background-color="#ffffff">
 					<h3 class="slide-title tight">Are HOS still useful?</h3>
-					<div class="container" style="align-items:center; margin-top:0.2em;">
+					<div class="container" style="align-items:center; margin-top:0;">
 						<div class="col fragment fade-in" data-fragment-index="0" style="flex:1.45;">
 							<div class="r-stack">
 								<img class="plain"
 									src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step1.png"
-									style="max-height:480px;"
+									style="max-height:575px;"
 									alt="posteriors on baryon-safe scales at 14,000 square degrees: the power spectrum first, then peaks, then the l1-norm, all consistent with the truth">
 								<img class="plain fragment" data-fragment-index="1"
 									src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step2.png"
-									style="max-height:480px;" alt="">
+									style="max-height:575px;" alt="">
 								<img class="plain fragment" data-fragment-index="2"
 									src="../assets/figures/posteriors/p1_contours_baryon_safe_14k/step3.png"
-									style="max-height:480px;" alt="">
+									style="max-height:575px;" alt="">
 							</div>
 						</div>
 						<div class="col hos-side" style="flex:0.85;">
@@ -5135,13 +5133,7 @@
 									<b>complementary</b> to $C_\ell$
 								</li>
 								<li>the non-Gaussian signal survives on <b>quasi&#8209;linear</b> scales</li>
-
-							</ul>
-
-							<p class="kicker fragment fade-in" data-fragment-index="2">and this is conservative</p>
-							<ul class="points fragment fade-in" data-fragment-index="2">
-								<li>the whole&#8209;band cut is <b>not optimised</b>, and better baryon modelling would
-									allow smaller scales, where the gain is larger</li>
+								<li>better baryon modelling would allow smaller scales, where the gain is larger</li>
 							</ul>
 						</div>
 					</div>

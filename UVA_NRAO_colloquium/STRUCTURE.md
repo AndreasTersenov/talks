@@ -319,6 +319,11 @@ data arrive").
     over the Euclid field, four with the result of ours that backs it on a smaller line, all on
     screen from the start, the fuller sentences in the notes. The defence's four answers are hidden,
     kept in the file.
+- C33, C34 trimmed (2026-10-28, Andreas): the cut slide gives the C_l cut at Euclid's area only
+  (ell_max = 460 at 14,000 deg^2, PAPER_FACTS section 4) and the starlet as "the same approach,
+  but removing the finest wavelet bands instead of multipoles" (Andreas's wording); the result slide loses "and this is conservative" and keeps
+  "better baryon modelling would allow smaller scales, where the gain is larger".
+  The result slide's corner plot enlarged (480 to 575 px), same day.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
 - **C35 dropped (2026-10-28).** Andreas: no "what I want to do here" slide, and no explicit
