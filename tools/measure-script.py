@@ -143,6 +143,7 @@ def main():
     global WPM
     if "--wpm" in sys.argv:
         WPM = float(sys.argv[sys.argv.index("--wpm") + 1])
+    target = sys.argv[sys.argv.index("--target") + 1] if "--target" in sys.argv else "40:00"
     root = os.path.dirname(os.path.abspath(__file__)) + "/.."
     spath = os.path.join(root, d, "SPEAKER_SCRIPT.md")
     dpath = os.path.join(root, d, "index.html")
@@ -217,7 +218,7 @@ def main():
     print("-" * 92)
     if parked:
         print("%-10s %-52s %6s %6s" % ("(skipped)", "not spoken, kept in the file", "", mmss(parked)))
-    print("%-10s %-52s %6s %6s   (target 40:00, at %g wpm)" % ("SPOKEN", "", "", mmss(total), WPM))
+    print("%-10s %-52s %6s %6s   (target %s, at %g wpm)" % ("SPOKEN", "", "", mmss(total), target, WPM))
 
     if problems:
         print("\n%d CLICK/frame problem(s):" % len(problems))

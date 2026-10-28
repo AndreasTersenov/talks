@@ -342,6 +342,13 @@ data arrive").
   but removing the finest wavelet bands instead of multipoles" (Andreas's wording); the result slide loses "and this is conservative" and keeps
   "better baryon modelling would allow smaller scales, where the gain is larger".
   The result slide's corner plot enlarged (480 to 575 px), same day.
+- **Speaker script written (2026-10-28)**, then revised the same day for register (Andreas: no
+  claude-isms, nothing cheesy, scientific wording). `SPEAKER_SCRIPT.md` is now the colloquium's (the
+  copy of the defence script it replaces is unchanged in `PhD_Defense_2026/`): prose, the defence's
+  sentences wherever a slide carried over, new prose for the rebuilt slides. **32:13** read-through
+  at 121 wpm against a 36:00 target (Introduction 4:28, Making the map 11:42, Reading the map 10:21,
+  Feedback 4:01, Close 1:41); every [CLICK] matches the deck; a cut ladder (short paths −3:57) and
+  Q&A for the room. Printable: `SPEAKER_SCRIPT_PRINT.pdf` (`tools/print-script.py`). To confirm with Andreas: the ×2.6 reading (√2.57 ≈ 1.6 per parameter).
 - C7, C20 dividers: **decided 2026-10-28, the new versions**; the originals hidden, kept in the file
   (Andreas: the numbered questions are too specific for a colloquium). The new versions have the problem in one line and three topic
   tags: "From noisy, incomplete shear measurements to a map of the matter" (an ill-posed inverse
