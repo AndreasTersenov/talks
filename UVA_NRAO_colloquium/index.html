@@ -1714,6 +1714,53 @@
 					</aside>
 				</section>
 
+				<!-- WITHOUT iKS (2026-10-28), beside the slide above for Andreas to compare. Andreas: iterative
+				     Kaiser-Squires only confuses a colloquium room, and it changes nothing (same posterior as KS).
+				     Three of the four panels, cut by tools/make-noiks-figures.py, in a row; in a row a caption
+				     under each panel is unambiguous, so each method's prior sits right under its map. Styling in
+				     colloquium.css under .mmnoiks. -->
+				<section data-theme="light" class="mmnoiks">
+					<h3 class="slide-title tight">MCALens recovers <b class="alert">small-scale structure</b> that
+						Kaiser&ndash;Squires smooths out</h3>
+					<div class="mm3">
+						<figure class="mmitem truth">
+							<img class="plain" src="../assets/figures/maps/mass_maps_noiks/truth.png"
+								alt="the true convergence map of the simulation">
+							<span class="mmname">truth</span>
+							<span class="mmwhat">the true map (simulations only)</span>
+						</figure>
+						<figure class="mmitem">
+							<img class="plain" src="../assets/figures/maps/mass_maps_noiks/ks.png"
+								alt="the Kaiser-Squires reconstruction of the same field, with the survey mask outlined: noisy, small scales lost">
+							<span class="mmname">KS<span class="mtag">Euclid baseline</span></span>
+							<span class="mmwhat">prior: <b>none</b>. Direct inversion, then smoothing</span>
+						</figure>
+						<figure class="mmitem sota">
+							<img class="plain" src="../assets/figures/maps/mass_maps_noiks/mcalens.png"
+								alt="the MCALens reconstruction of the same field: the small-scale structure recovered">
+							<span class="mmname">MCALens<span class="mtag sota">state of the art</span></span>
+							<span class="mmwhat">prior: a <b>Gaussian</b> background <b>plus</b> a <b>sparse</b>
+								non&#8209;Gaussian component</span>
+						</figure>
+					</div>
+					<p class="lead-line">Mass mapping has been treated as a <b>preprocessing step</b> with little effect
+						on the cosmology, which is why the Euclid baseline is the simplest method, Kaiser&ndash;Squires.
+					</p>
+					<p class="credit-line">Tersenov, Baumont, Starck &amp; Kilbinger 2025, arXiv:2501.06961</p>
+					<aside class="notes">
+						<p><strong>the maps</strong></p>
+						<ul>
+							<li>the baseline: <strong>KS</strong>, what <strong>Euclid</strong> plans — mass mapping
+								treated as preprocessing, so the simplest became default</li>
+							<li><strong>MCALens</strong> is the state of the art: point at the small scales KS has
+								smoothed away</li>
+							<li>so what posteriors do they give?</li>
+							<li><em>if asked:</em> the paper also tests KS with the mask inpainted first (iKS), the other
+								Euclid baseline. It gives the same posterior as KS, so it is left out here</li>
+						</ul>
+					</aside>
+				</section>
+
 				<!-- ============ A1.4 — the answer ============ -->
 				<section data-theme="light">
 					<h3 class="slide-title tight">MCALens improves the figure of merit by <b
@@ -1800,6 +1847,59 @@
 						      that did not matter, which is why everyone went for the simplest method. It matters, so for real
 						      cosmological results we need to push for advanced algorithms.
 						-->
+					</aside>
+				</section>
+
+				<!-- WITHOUT iKS (2026-10-28), beside the slide above for Andreas to compare: the corner plot with
+				     the iKS paths deleted from its vector source and the stems without iKS
+				     (tools/make-noiks-figures.py, tools/make-fom-stems.py --no-iks). -->
+				<section data-theme="light">
+					<h3 class="slide-title tight">MCALens improves the figure of merit by <b
+							class="alert">157 %</b> over Kaiser&ndash;Squires, by making more information in the data
+						available.</h3>
+
+					<div class="resultpair">
+						<figure class="fig">
+							<img class="plain"
+								src="../assets/figures/posteriors/countours_all_methods_noiks_MSPC_6scales_light.png"
+								alt="four-parameter corner plot comparing the posteriors from Kaiser-Squires and MCALens wavelet peak counts">
+							<!-- <figcaption>wavelet multi&#8209;scale peak counts, <b>&Omega;<sub>m</sub>, h, w<sub>0</sub>,
+									&sigma;<sub>8</sub></b></figcaption> -->
+						</figure>
+
+						<div class="resultcol">
+							<figure class="fig stemfig">
+								<img class="plain" src="../assets/figures/statistics/fom_massmapping_stems_noiks_white.png"
+									alt="map quality and figure of merit relative to Kaiser-Squires, drawn as stems: MCALens 1.04 times on the map, 2.6 times on the figure of merit; the colours are the corner plot&#39;s">
+							</figure>
+
+							<div class="takeaway">
+								<span class="label"></span>
+								<ul class="points dots">
+									<li>MCALens improves the RMSE by only <b>4 %</b>, but the figure of merit by <b
+											class="alert">157 %</b></li>
+									<li>&rArr; WL surveys should use <b class="alert">advanced reconstruction</b>
+										methods to maximise their scientific outputs.</li>
+							</div>
+						</div>
+					</div>
+
+					<!-- <p class="caveat">Inpainting has no effect here because peaks in the masked regions are excluded anyway; this would <b>not</b> hold for a Fourier&#8209;space statistic. No error bars on the figure of merit (one chain per method).</p> -->
+					<aside class="notes">
+						<p><strong>the answer &mdash; <em>first corner plot, take your time</em></strong></p>
+						<ul>
+							<li>explain the plot: off-diagonal = joint distribution of a pair; diagonal = one parameter;
+								two shades = <strong>68 and 95 %</strong>; smaller = more precise</li>
+							<li>grey = Kaiser&ndash;Squires, blue = MCALens</li>
+							<li><strong>MCALens visibly tighter on every parameter</strong></li>
+							<li>stems: both are improvement over KS. <strong>open</strong> = RMSE, <strong>4 %</strong>
+								better. <strong>filled</strong> = constraining power, <strong>×2.6</strong>, <strong>160
+									%</strong></li>
+							<li>map quality and constraining power are <strong>not the same objective</strong></li>
+							<li>→ surveys should use advanced reconstruction to maximise scientific output</li>
+							<li><em>if asked:</em> KS with the mask inpainted first (iKS, the other Euclid baseline)
+								gives the same posterior as KS; left out here</li>
+						</ul>
 					</aside>
 				</section>
 

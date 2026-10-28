@@ -28,10 +28,16 @@ Numbers are the PAPER_FACTS ledger, unchanged:
 Run with a python that has numpy and matplotlib:
 
     /usr/local/bin/python3 tools/make-fom-stems.py
+    /usr/local/bin/python3 tools/make-fom-stems.py --no-iks   # slide 21 without inpainting KS
+
+--no-iks (2026-10-28, UVA_NRAO_colloquium, Andreas: iKS only confuses a colloquium room) draws
+the mass-mapping panel with Kaiser-Squires and MCALens alone, to
+assets/figures/statistics/fom_massmapping_stems_noiks.png, and writes nothing else.
 
 Writes assets/figures/statistics/fom_massmapping_stems.png
    and assets/figures/statistics/fom_summaries_stems.png
 """
+import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -88,7 +94,7 @@ def stems(ax, xs, vals, cols, lw=3.4, ms=13):
 
 
 # ------------------------------------------------------- slide 21: mass mapping
-def massmapping():
+def massmapping(no_iks=False):
     """Frame 19: map quality and constraining power, side by side.
 
     Both quantities are shown as IMPROVEMENT OVER KAISER-SQUIRES, so higher is
@@ -133,6 +139,12 @@ def massmapping():
     fom   = [1.00, 1.00, 2.57]
     ftags = ["1.00×", "1.00×", "2.6×"]
     d     = 0.19
+    if no_iks:                                       # drop the middle method, keep the colours
+        keep = [0, 2]
+        names, cols = [names[k] for k in keep], [cols[k] for k in keep]
+        rmse, rtags = [rmse[k] for k in keep], [rtags[k] for k in keep]
+        fom, ftags = [fom[k] for k in keep], [ftags[k] for k in keep]
+        xs = np.array([0, 1])
 
     fig, ax = plt.subplots(figsize=(5.55, 3.55))
     fig.patch.set_facecolor(PAPER)
@@ -160,7 +172,7 @@ def massmapping():
         loc="upper left", frameon=False, fontsize=14, labelcolor=INK,
         handlelength=2.4, borderaxespad=0.6)
 
-    ax.set_xlim(-0.62, 2.62)
+    ax.set_xlim(-0.62, xs[-1] + 0.62)
     ax.set_ylim(0, 3.2)
     ax.set_yticks([0, 1, 2, 3])
     ax.set_yticklabels(["0", "1", "2", "3"], fontsize=14.5)
@@ -168,7 +180,7 @@ def massmapping():
     ax.set_xticks(xs)
     ax.set_xticklabels(names, fontsize=15, color=INK)
     fig.tight_layout()
-    out = "assets/figures/statistics/fom_massmapping_stems.png"
+    out = "assets/figures/statistics/fom_massmapping_stems%s.png" % ("_noiks" if no_iks else "")
     fig.savefig(out, dpi=220, facecolor=PAPER)
     trim(out)
     print("wrote", out, Image.open(out).size)
@@ -219,5 +231,8 @@ def summaries():
     print("wrote", out, Image.open(out).size)
 
 
-massmapping()
-summaries()
+if "--no-iks" in sys.argv:
+    massmapping(no_iks=True)
+else:
+    massmapping()
+    summaries()

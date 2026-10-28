@@ -326,6 +326,12 @@ data arrive").
     on thousands of simulations; error bars we can trust, pixel by pixel, calibrated), then on a
     click "No existing method meets all four at once"; which method misses what is in the notes.
     Andreas compares and picks.
+  - C14, C15 without iKS: **open** (2026-10-28; Andreas: iterative Kaiser-Squires only confuses
+    the room). Each original followed by a copy without it: the maps as a row of three (truth, KS,
+    MCALens), each prior under its own map; the figure-of-merit slide with the corner plot's iKS
+    paths deleted from its vector source (6 fills in each red, 10 strokes, the legend entry; the
+    MCALens legend row moved up) and the stems redrawn without iKS. The notes keep iKS as a Q&A
+    line (same posterior as KS). Andreas compares and picks.
 - C33, C34 trimmed (2026-10-28, Andreas): the cut slide gives the C_l cut at Euclid's area only
   (ell_max = 460 at 14,000 deg^2, PAPER_FACTS section 4) and the starlet as "the same approach,
   but removing the finest wavelet bands instead of multipoles" (Andreas's wording); the result slide loses "and this is conservative" and keeps

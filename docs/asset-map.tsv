@@ -103,6 +103,7 @@ cosmoSLICS_mass_maps.png	figures	maps
 cosmology_with_maps-1.png	diagrams	-
 cosmology_with_maps.pdf	diagrams	-
 countours_all_methods_MSPC_6scales_dark.pdf	figures	posteriors
+countours_all_methods_noiks_MSPC_6scales_dark.pdf	figures	posteriors	the corner plot with the iKS paths deleted from its vector source, and its light PNG (countours_all_methods_noiks_MSPC_6scales_light.png), by tools/make-noiks-figures.py; UVA_NRAO_colloquium C15
 countours_ks_different_scales_dark.pdf	figures	posteriors
 countours_mca_different_scales_dark.pdf	figures	posteriors
 covariance_matrices.pdf	figures	matrices
@@ -211,6 +212,7 @@ p2_bnt_analytic/step1..3.png	posteriors	build-up, 3 frames, paper render 2026-08
 p2_corner_cnn_vs_l1/step1..4.png	posteriors	build-up, 4 frames, paper render 2026-08
 p2_corner_cnn_vs_l1_auto_only/step1..2.png	posteriors	build-up, 2 frames, l1 auto-only then +CNN, paper render 2026-08
 pnp_build/*.png	maps	PnPMass panels cut from the paper's figures by tools/make-pnp-build.py: gamma1/2, truth, after_data_step_1..4, after_denoiser_1..4, mask (traced), sigma (2026-10-28, the error map, from pnpmass_kappa_sigma_white.png), and bound_low/bound_high (2026-10-28, the CQR bounds minus the true map, rendered from the arXiv source's img/pnpmass_low.pdf and img/pnpmass_high.pdf with --arxiv); UVA_NRAO_colloquium C18, C10
+mass_maps_noiks/*.png	maps	truth, ks, mcalens: three panels of mass_maps_(ks_iks_mca)_transparent_light.png, cut by tools/make-noiks-figures.py; UVA_NRAO_colloquium C14
 p1_bias_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_fom_vs_area/step1..3.png	statistics	build-up, 3 frames, paper render 2026-08
 p1_hos_frac_diff_l1/step1..4.png	statistics	build-up, 4 frames, paper render 2026-08
@@ -287,6 +289,7 @@ Relation_btw_kappa_and_gamma_light.png	diagrams	the kappa/gamma/potential figure
 2pt-phase-amp_light_white.png	diagrams	2pt-phase-amp_light.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
 ajani_peaks_multiscale_white.png	figures/posteriors	ajani_peaks_multiscale.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
 fom_massmapping_stems_white.png	figures/statistics	fom_massmapping_stems.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
+fom_massmapping_stems_noiks.png	figures/statistics	the mass-mapping stems without iKS (tools/make-fom-stems.py --no-iks), and its _white.png by tools/paperfig-to-white.py; UVA_NRAO_colloquium C15
 fom_summaries_stems_white.png	figures/statistics	fom_summaries_stems.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
 generative_modelling_white.png	diagrams	generative_modelling.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium
 normflow_chain_white.png	diagrams	normflow_chain.png taken from paper (#f7f5f0) to white by tools/paperfig-to-white.py; UVA_NRAO_colloquium

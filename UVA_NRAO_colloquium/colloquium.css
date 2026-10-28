@@ -855,3 +855,21 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 .reveal .slides section.needs .nd-gap {
 	margin: 1.5em auto 0; text-align: center; font-size: 0.9em; color: var(--fg);
 }
+
+/* ---------------------------------------------------------------------------
+   The maps without iKS (.mmnoiks, 2026-10-28): three panels in a row, each method's prior under
+   its own map. Reuses the .mmitem / .mmname / .mmwhat look of the original's key.
+   -------------------------------------------------------------------------- */
+.reveal .slides section.mmnoiks .mm3 {
+	display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; width: 100%; margin: 0.6em auto 0;
+}
+.reveal .slides section.mmnoiks .mm3 .mmitem {
+	margin: 0; padding: 0; border-left: 0; text-align: center;
+	display: flex; flex-direction: column; align-items: center;
+}
+.reveal .slides section.mmnoiks .mm3 img {
+	display: block; width: 100%; max-width: none; margin: 0 0 0.45em; border: 0; box-shadow: none; background: transparent;
+}
+.reveal .slides section.mmnoiks .mm3 .mmname { justify-content: center; }
+.reveal .slides section.mmnoiks .mm3 .mmwhat { max-width: 95%; }
+.reveal .slides section.mmnoiks .lead-line { margin-top: 1em; }
