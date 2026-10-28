@@ -260,8 +260,8 @@ data arrive").
     the picture version is gone. Its lensing row is now the PnPMass paper's field (κTNG), not the
     toy simulation.
   - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
-    AIRI plug-in loop is gone. The paper-figure slide with the equations (#/8/1) stays for now;
-    most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
+    AIRI plug-in loop is gone. The paper-figure slide with the equations was hidden on 2026-10-28
+    (Andreas), leaving the loop alone.
     A fourth click (2026-10-28, Andreas: uncertainty matters, name the method, no details, "happy
     to chat afterwards" said aloud): one extra pass as a row under the loop, a data step from the
     converged map, then a second network (order-2 moment network) in place of the denoiser, giving
@@ -277,21 +277,21 @@ data arrive").
     data step shows the forward model (gamma = M P kappa + n) instead of "operator, mask, noise"; the
     denoiser box reads "trained once on sims" around a small drawn network; the loop's arrows are square
     (tried as one circle first); calibration reads "CQR"; the error map at the bounds' size. Version 1 is left
-    as it was. Andreas compares and picks.
+    as it was. **Decided 2026-10-28: version 2**; version 1 hidden, kept in the file.
   - C19 results: **decided 2026-10-28**, the result plot redrawn as a build (#/8/3), both axes
     relative to DeepMass: accuracy (a number line), the networks' own error bars, calibration (all at
     95 % coverage, with trails), PnPMass smallest, then the card "other deep-learning methods need
     retraining for every new mask and noise level; PnPMass is trained once and applies to any
     configuration". The defence slide (with "smallest calibrated error bars", kept as the title) and
     a three-tiles version are gone (git history).
-  - C24 the two statistics: **open** (2026-10-27; Andreas feared the l1-norm formula would lose the
+  - C24 the two statistics: **decided 2026-10-28, the build**; the original hidden, kept in the
+    file. Was open (2026-10-27; Andreas feared the l1-norm formula would lose the
     room). The original (#/15) against a copy whose bottom row is a build (#/16), appearing on its own
     click after the starlet row: one starlet band pixel by pixel; then (1) peak counts, the maxima
     ringed and sorted by height; (2) sort: every pixel by value, the band's histogram; (3) weigh: each
     block as tall as |value|; (4) add up: one bar per bin, voids and peaks remain, the l1-norm. The
     formula l1(bin) = sum over the pixels in the bin of |value| types itself a part per step. An
     illustration field (tools/make-l1-sort.py); notes per click, plus P(D) for the radio room if asked.
-    Andreas compares and picks.
   - C29 cross-bin (joint l1): **decided 2026-10-27**, two slides: route 1 alone, titled in general
     terms (combine pairs of bins into new maps that encode their cross-bin structure) with the
     product maps as "for example", larger, no caption (#/22/5; convolution maps: notes only), then route 2 as a build (#/22/6). The original two-route slide
@@ -301,12 +301,13 @@ data arrive").
     shuffle (bin j permuted: same marginals, no correlation), cells (10 x 10), weigh and add up; the
     formula greys in at the cells and turns black part by part. Wording in distributions and
     marginals, no metaphors (Andreas).
-  - C31 feedback: **open** (2026-10-27; Andreas was told to make the video larger). The original
+  - C31 feedback: **decided 2026-10-28, the pair**; the original hidden, kept in the file. Was open
+    (2026-10-27; Andreas was told to make the video larger). The original
     (#/22/0) against a pair in his order (signal and systematics share scales, then feedback as a
     dominant one, then the questions): the sketch alone, stretched along the scale axis, its dashed
     curve relabelled "systematics", with its two clicks (#/22/1); then a dark slide, the Illustris video at 960 px with a poster
     frame for the PDF, the two questions (Andreas's wording) fading in over its middle on
-    semi-transparent cards (#/22/2). The lead line is off the screen in the pair. Andreas compares and picks.
+    semi-transparent cards (#/22/2). The lead line is off the screen in the pair.
   - C32 bias against area: **open** (2026-10-27; the paper figure's labels were unreadable). The
     original (#/22/4) against a copy with the figure redrawn at slide size (#/22/5): same points, a
     log area axis split into small surveys (< 3 000 deg²), Stage III (to 7 500, DES), Stage IV (to
