@@ -2562,14 +2562,15 @@
 						<div class="pb-xpad"></div>
 					</div>
 					<div class="pb-caps">
-						<span class="pb-c0">Two shear components, masked and noisy, and an empty map to start from.</span>
-						<span class="pb-c1">A step towards the data: the physics lives here, and only here.</span>
-						<span class="pb-c2">A denoiser trained on simulations removes what does not look like a mass map.</span>
-						<span class="pb-c3">Feed the map back in, and repeat until it stops changing.</span>
-						<span class="pb-c4">A second network (a moment network) predicts the error of each pixel, in one
+						<span class="pb-c0">Two shear components, masked and noisy; the iteration starts from an empty map.</span>
+						<span class="pb-c1">A gradient step towards the data, which contains the physical model: operator, mask and
+							noise.</span>
+						<span class="pb-c2">A denoiser, trained once on simulations, acts as the prior.</span>
+						<span class="pb-c3">The two steps are iterated until the map converges to a fixed point.</span>
+						<span class="pb-c4">A second network (a moment network) predicts the error of each pixel, in a single
 							pass.</span>
-						<span class="pb-c5">Conformal calibration then guarantees the coverage: the true map lies within
-							the bounds 95&nbsp;% of the time.</span>
+						<span class="pb-c5">Conformal calibration guarantees the coverage: the bounds contain the true map at
+							the nominal 95&nbsp;% rate.</span>
 					</div>
 					<p class="credit-line">Leterme, Tersenov, Fadili &amp; Starck 2026, arXiv:2603.22006</p>
 					<aside class="notes">
