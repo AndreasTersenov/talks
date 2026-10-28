@@ -308,12 +308,13 @@ data arrive").
     curve relabelled "systematics", with its two clicks (#/22/1); then a dark slide, the Illustris video at 960 px with a poster
     frame for the PDF, the two questions (Andreas's wording) fading in over its middle on
     semi-transparent cards (#/22/2). The lead line is off the screen in the pair.
-  - C32 bias against area: **open** (2026-10-27; the paper figure's labels were unreadable). The
+  - C32 bias against area: **decided 2026-10-28, the redrawn copy**; the original hidden, kept in
+    the file. Was open (2026-10-27; the paper figure's labels were unreadable). The
     original (#/22/4) against a copy with the figure redrawn at slide size (#/22/5): same points, a
     log area axis split into small surveys (< 3 000 deg²), Stage III (to 7 500, DES), Stage IV (to
     20 000, Euclid and Rubin) and beyond (to the full sky); the corner plot beside it larger (370 to
     465 px), and without the "At full sky" bullet (the plot has no full-sky point). Class edges
-    confirmed by Andreas (2026-10-27). Andreas compares and picks.
+    confirmed by Andreas (2026-10-27).
   - C36 conclusions: **decided 2026-10-28**, the one-block slide (#/25): six general statements
     over the Euclid field, four with the result of ours that backs it on a smaller line, all on
     screen from the start, the fuller sentences in the notes. The defence's four answers are hidden,
