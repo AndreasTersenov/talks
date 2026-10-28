@@ -513,3 +513,88 @@ html.print-pdf .reveal .slides section.l1x * { transition: none !important; }
 
 /* the PDF shows each click's end state */
 html.print-pdf .reveal .slides section.jl1x * { transition: none !important; }
+
+/* ==========================================================================
+   The PnPMass result as a build (.pnptr): the SVG from
+   tools/make-pnp-tradeoff.py (pnp_tradeoff.js), moved by the markers
+   .tm1..4.
+   ========================================================================== */
+.reveal .slides section.pnptr .tm { position: absolute; width: 0; height: 0; overflow: hidden; }
+.reveal .slides section.pnptr .tr-row {
+	display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 0.4em;
+}
+.reveal .slides section.pnptr .tr-plot { width: 760px; flex: 0 0 760px; }
+.reveal .slides section.pnptr .tr-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.reveal .slides section.pnptr .tr-grid { stroke: var(--edge); stroke-width: 0.8; }
+.reveal .slides section.pnptr .tr-ref { stroke: var(--fg-muted); stroke-width: 1; opacity: 0.45; }
+.reveal .slides section.pnptr .tr-axis { stroke: var(--fg-muted); stroke-width: 1.3; }
+.reveal .slides section.pnptr .tr-tick,
+.reveal .slides section.pnptr .tr-axlab,
+.reveal .slides section.pnptr .tr-better {
+	font-family: var(--label); font-style: var(--label-style); font-size: 16px;
+	fill: var(--fg-muted); text-anchor: middle;
+}
+.reveal .slides section.pnptr .tr-ytick { text-anchor: end; }
+.reveal .slides section.pnptr .tr-axlab { font-size: 18px; }
+.reveal .slides section.pnptr .tr-better { text-anchor: start; fill: var(--accent); }
+/* the error-bar axis arrives with the error bars (click 2): before it, the line of methods is a number line */
+.reveal .slides section.pnptr .tr-yax { opacity: 0; transition: opacity 0.5s ease; }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-yax { opacity: 1; }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-refy { opacity: 0.45; }
+
+/* the points: PnPMass and its variant in the accent, the others in grey; labels in text ink */
+.reveal .slides section.pnptr .tr-pt {
+	color: var(--fg-muted); opacity: 0; transform: translate(var(--x), var(--y1));
+	transition: transform 1s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.4s ease;
+}
+.reveal .slides section.pnptr .tr-pt.pnp { color: var(--accent); }
+.reveal .slides section.pnptr .tr-dot {
+	fill: currentColor; stroke: var(--surface); stroke-width: 2.2;
+	transform-box: fill-box; transform-origin: 50% 50%; transition: fill 0.4s ease, stroke 0.4s ease, transform 0.4s ease;
+}
+.reveal .slides section.pnptr .tr-lab {
+	font-family: var(--label); font-style: var(--label-style); font-size: 17px; fill: var(--fg);
+	transition: opacity 0.4s ease;
+}
+.reveal .slides section.pnptr .tr-lab2 { opacity: 0; }
+.reveal .slides section.pnptr .tr-trail { stroke: var(--fg-muted); stroke-width: 2; opacity: 0; transition: opacity 0.5s ease 0.7s; }
+.reveal .slides section.pnptr .tr-trail.pnp { stroke: var(--accent); }
+
+/* click 1, accuracy: the methods on a line */
+.reveal .slides section.pnptr .tm1.visible ~ .tr-row .tr-pt { opacity: 1; }
+/* click 2, the networks' own error bars: open circles; Wiener and MCALens have none */
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-pt.nn { transform: translate(var(--x), var(--y2)); }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-pt.cl { opacity: 0; }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-pt.nn .tr-dot { fill: var(--surface); stroke: currentColor; }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-lab1 { opacity: 0; }
+.reveal .slides section.pnptr .tm2.visible ~ .tr-row .tr-lab2 { opacity: 1; }
+/* click 3, calibrated: every method at its calibrated size, the trails showing the move */
+.reveal .slides section.pnptr .tm3.visible ~ .tr-row .tr-pt,
+.reveal .slides section.pnptr .tm3.visible ~ .tr-row .tr-pt.nn,
+.reveal .slides section.pnptr .tm3.visible ~ .tr-row .tr-pt.cl { opacity: 1; transform: translate(var(--x), var(--y3)); }
+.reveal .slides section.pnptr .tm3.visible ~ .tr-row .tr-pt.nn .tr-dot { fill: currentColor; stroke: var(--surface); }
+.reveal .slides section.pnptr .tm3.visible ~ .tr-row .tr-trail { opacity: 0.55; }
+/* click 4, PnPMass: the others recede, PnPMass grows, the card comes in */
+.reveal .slides section.pnptr .tm4.visible ~ .tr-row .tr-pt:not(.pnp0) { opacity: 0.35; }
+.reveal .slides section.pnptr .tm4.visible ~ .tr-row .tr-pt.pnp0 .tr-dot { transform: scale(1.45); }
+.reveal .slides section.pnptr .tr-once {
+	flex: 0 0 290px; max-width: 290px; margin: 0; opacity: 0; transition: opacity 0.5s ease 0.3s;
+}
+.reveal .slides section.pnptr .tr-once p { margin: 0; font-size: 0.78em; line-height: 1.42; color: var(--fg); }
+.reveal .slides section.pnptr .tr-once p b { font-weight: 600; }
+.reveal .slides section.pnptr .tr-once .label { font-size: 0.62em; }
+.reveal .slides section.pnptr .tm4.visible ~ .tr-row .tr-once { opacity: 1; }
+
+/* the captions, one per state, stacked in one cell; short of the navigation arrows */
+.reveal .slides section.pnptr .trcaps { display: grid; margin: 0.25em auto 0; max-width: 80%; }
+.reveal .slides section.pnptr .trcaps > span {
+	grid-area: 1 / 1; text-align: center; font-size: 0.9em; color: var(--fg);
+	opacity: 0; transition: opacity 0.35s ease;
+}
+.reveal .slides section.pnptr .tm1:not(.visible) ~ .trcaps .c0,
+.reveal .slides section.pnptr .tm1.visible ~ .tm2:not(.visible) ~ .trcaps .c1,
+.reveal .slides section.pnptr .tm2.visible ~ .tm3:not(.visible) ~ .trcaps .c2,
+.reveal .slides section.pnptr .tm3.visible ~ .tm4:not(.visible) ~ .trcaps .c3,
+.reveal .slides section.pnptr .tm4.visible ~ .trcaps .c4 { opacity: 1; }
+.reveal .slides section.pnptr .credit-line { margin-top: 0.4em; }
+html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }

@@ -191,6 +191,26 @@ After calibration **all** methods hit the same miscoverage rate — that is what
 The comparison is therefore purely about **which method achieves it with the tightest bars**,
 which is the correct axis and worth saying explicitly.
 
+### Calibrated error-bar size (the summary figure, read off its vector source)
+
+Mean prediction-interval length, normalised by each image's ℓ2 norm, **read off the paper's vector
+figure** (`img/summary.pdf`, arXiv source of 2603.22006) on 2026-10-28, calibrated on its own tick
+marks; the same read reproduces the RMSE column above to the third digit. Ratios **[derived]**, to
+DeepMass after calibration (3.136). Drawn by `tools/make-pnp-tradeoff.py` for the colloquium (C19).
+
+| method | before calibration | after | after / DeepMass |
+|---|---|---|---|
+| Wiener | — (initialised to 0) | 3.251 | 1.037 |
+| MCALens | — (initialised to 0) | 3.240 | 1.033 |
+| DeepMass | 3.200 | 3.136 | 1.000 |
+| PnPMass (residual) | 3.025 | 3.100 | 0.989 |
+| PnPMass | 2.974 | 3.004 | **0.958** |
+
+Calibration **shrinks** DeepMass's bars and **widens** PnPMass's slightly; the paper explains the
+first (Sect. "Effect of the calibration on the confidence intervals"). Before calibration the
+moment-network bars miss slightly too often (marker colours ≈ 5.6–6.2 % against the 4.55 %
+target, read off the colour bar, so approximate: not slide-eligible as numbers).
+
 ### Timing (κTNG)
 
 | | training (order 1) | training (order 2) | calibration | inference |

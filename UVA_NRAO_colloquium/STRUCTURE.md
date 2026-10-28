@@ -261,8 +261,12 @@ data arrive").
   - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
     AIRI plug-in loop is gone. The paper-figure slide with the equations (#/8/1) stays for now;
     most probably hidden at the timing pass, leaving the loop alone (Andreas, 2026-10-27).
-  - C19 results: **decided 2026-10-27**, version A, "smallest calibrated error bars" (#/8/3); the
-    coverage-wording version is gone.
+  - C19 results: **decided 2026-10-28**, the result plot redrawn as a build (#/8/3), both axes
+    relative to DeepMass: accuracy (a number line), the networks' own error bars, calibration (all at
+    95 % coverage, with trails), PnPMass smallest, then the card "other deep-learning methods need
+    retraining for every new mask and noise level; PnPMass is trained once and applies to any
+    configuration". The defence slide (with "smallest calibrated error bars", kept as the title) and
+    a three-tiles version are gone (git history).
   - C24 the two statistics: **open** (2026-10-27; Andreas feared the l1-norm formula would lose the
     room). The original (#/15) against a copy whose bottom row is a build (#/16), appearing on its own
     click after the starlet row: one starlet band pixel by pixel; then (1) peak counts, the maxima
