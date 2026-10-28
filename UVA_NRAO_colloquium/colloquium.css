@@ -664,3 +664,20 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 
 /* the SBI slide gives up a little height for its "in Euclid" line */
 .reveal .slides section.sbigen .sbi-fig img { max-height: 515px; }
+
+/* the conclusions as one block (2026-10-28): short statements over the Euclid field, in one
+   translucent card like the four-answer slide's, all at once; the sentences are in the notes */
+.reveal .slides section.conc2 .conc-block {
+	width: fit-content; max-width: 84%; margin: 0.6em auto 0; padding: 0.4em 1.9em 0.95em 1.5em;
+	border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent); border-radius: 12px;
+	background: color-mix(in srgb, var(--bg) 66%, transparent);
+	backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.reveal .slides section.conc2 .conc-block .points { font-size: 1.12em; line-height: 1.35; }
+.reveal .slides section.conc2 .conc-block .points li { margin-top: 0.5em; }
+/* under a general statement, the result of ours that backs it: smaller, muted, an accent arrow */
+.reveal .slides section.conc2 .conc-sub {
+	display: block; margin: 0.12em 0 0 0.2em; font-size: 0.8em; line-height: 1.35;
+	color: color-mix(in srgb, var(--fg) 80%, transparent);
+}
+.reveal .slides section.conc2 .conc-sub::before { content: "\2192\00a0"; color: var(--accent); }

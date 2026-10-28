@@ -297,6 +297,19 @@ data arrive").
     20 000, Euclid and Rubin) and beyond (to the full sky); the corner plot beside it larger (370 to
     465 px), and without the "At full sky" bullet (the plot has no full-sky point). Class edges
     confirmed by Andreas (2026-10-27). Andreas compares and picks.
+  - C36 conclusions: **open** (2026-10-28; Andreas: the four answers are the defence's, too technical
+    and detailed for a colloquium, and not as questions). The four-answer slide (#/25) against one
+    block over the same Euclid field (#/26), all on screen from the start: six general statements,
+    four of them with the result of ours that backs it on a smaller line (Andreas's middle ground):
+    Stage IV surveys are now underway (Euclid, LSST, Roman); we need advanced methods that make full
+    use of the data (a better mass map alone can significantly tighten the constraints); learned
+    priors and physics combine well, with calibrated uncertainties (PnPMass can be applied to real
+    data: trained once, for any mask and noise); non-Gaussian statistics are needed to maximise the
+    return of these surveys (interpretable wavelet statistics match an optimal neural network);
+    small-scale astrophysics, above all galaxy feedback, needs great care (even on feedback-safe
+    scales, higher-order statistics add information beyond the power spectrum); the methods are not
+    limited to lensing. The fuller sentences are in the notes, the first one being where the
+    statistical errors leave methods and systematics as the limit. Andreas compares and picks.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
 - **C35**: what you are working on here. Later, as decided.
