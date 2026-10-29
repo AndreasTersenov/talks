@@ -364,6 +364,11 @@ data arrive").
   problem / priors, hand-crafted and learned / uncertainty quantification) and "From the map to the
   cosmological parameters" (statistics beyond the power spectrum / simulation-based inference /
   small-scale systematics), and no pipeline strip (Andreas).
+  The papers each half is built on, under the tags (2026-10-29, Andreas), in talk order, by arXiv
+  number rather than journal (Andreas: what others do): Tersenov, Baumont, Starck & Kilbinger
+  2025, arXiv:2501.06961 and Leterme, Tersenov, Fadili & Starck 2026, arXiv:2603.22006; then Tersenov, Starck & Kilbinger 2026, submitted to A&A, and Tersenov, Guerrini,
+  Starck & Kilbinger 2026, arXiv:2609.09131 (no "submitted": the arXiv number is enough, Andreas).
+  The ℓ1 paper's credit line on C27 now carries the same year and status.
 - **UNIONS map** facts for C2.
 - A **UVA / GECO logo** for C1 (not in `assets/logos/` yet).
 - **C35 dropped (2026-10-28).** Andreas: no "what I want to do here" slide, and no explicit

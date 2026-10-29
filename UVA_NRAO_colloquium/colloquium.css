@@ -1002,3 +1002,6 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 	margin: 0; padding: 0.4em 1em; border: 1px solid var(--edge); border-radius: 8px;
 	background: var(--surface); font-size: 0.78em; color: var(--fg);
 }
+/* the papers the half is built on (2026-10-29), as credit lines well below the topics; a little
+   larger and brighter than a figure's credit line, since here they are the content */
+.reveal .slides section.actopen .act-refs { margin-top: 2.4em; font-size: 0.62em; opacity: 0.95; }
