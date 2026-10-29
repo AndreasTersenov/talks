@@ -795,6 +795,15 @@ html.print-pdf .reveal .slides section.pnptr * { transition: none !important; }
 	color: color-mix(in srgb, var(--fg) 80%, transparent);
 }
 .reveal .slides section.conc2 .conc-sub::before { content: "\2192\00a0"; color: var(--accent); }
+/* with dividers (2026-10-29): a hairline between the points, inside the one block, so each
+   statement and the result under it read as a unit. The gap moves into padding either side,
+   and the dashes go: the hairlines already separate the points */
+.reveal .slides section.conc-div .conc-block { padding: 0.25em 1.9em 0.4em 1.6em; }
+.reveal .slides section.conc-div .conc-block .points li { margin-top: 0; padding: 0.36em 0; }
+.reveal .slides section.conc-div .conc-block .points li + li {
+	border-top: 1px solid color-mix(in srgb, var(--fg) 32%, transparent);
+}
+.reveal .slides section.conc-div .conc-block .points li::before { content: none; }
 
 /* ---------------------------------------------------------------------------
    Plug-and-play, version 2 (.pnpb-v2, 2026-10-28): the error bars as clicks 4-5, running right to

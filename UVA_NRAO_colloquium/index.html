@@ -5689,7 +5689,58 @@
 			     Andreas to compare. For the colloquium: the big picture, not the papers. Short
 			     statements only, all on screen from the start; the sentences are said, and they are in the notes.
 			     Same Euclid deep field as the slide above; styling in colloquium.css under .conc2. -->
-			<section class="closing conc2" data-background-image="../assets/backgrounds/Background-Euclid.jpeg"
+			<!-- HIDDEN 2026-10-29 (Andreas): replaced by the version with dividers right after it. -->
+			<section class="closing conc2" data-visibility="hidden" data-background-image="../assets/backgrounds/Background-Euclid.jpeg"
+				data-background-opacity="0.4" data-background-size="cover" data-background-position="center">
+				<h1>Conclusions</h1>
+				<div class="conc-block">
+					<ul class="points">
+						<li>Stage&nbsp;IV surveys are now underway (Euclid, LSST, Roman)</li>
+						<li>We need advanced methods that make full use of the data
+							<span class="conc-sub">a better mass map alone can significantly tighten the
+								constraints</span></li>
+						<li>Learned priors and physics combine well, with calibrated uncertainties
+							<span class="conc-sub">PnPMass can be applied to real data: trained once, for any mask
+								and noise</span></li>
+						<li>Non&#8209;Gaussian statistics are needed to maximise the return of these surveys
+							<span class="conc-sub">interpretable wavelet statistics match an optimal neural
+								network</span></li>
+						<li>Small&#8209;scale astrophysics, above all galaxy feedback, needs great care
+							<span class="conc-sub">even on feedback&#8209;safe scales, higher&#8209;order statistics
+								add information beyond the power spectrum</span></li>
+						<li>The methods are not limited to lensing</li>
+					</ul>
+				</div>
+				<aside class="notes">
+					<ul>
+						<li><strong>Stage IV</strong> &mdash; Euclid and Rubin are taking data and Roman has launched:
+							billions of galaxy shapes, and a dark-matter map over a third of the sky. With that many
+							galaxies the statistical errors become so small that our methods and systematics set the
+							limit</li>
+						<li><strong>methods</strong> &mdash; the mass map is part of the measurement: a better
+							reconstruction of the same data more than doubles the figure of merit</li>
+						<li><strong>learned priors</strong> &mdash; a network trained once, inside the physical model of
+							the measurement, gives accurate maps for any mask and noise level, with calibrated error
+							bars. That is what makes it usable on real survey data</li>
+						<li><strong>non-Gaussian</strong> &mdash; gravity makes the late Universe non-Gaussian, and that
+							information sits in small-scale structure the power spectrum does not capture.
+							Multiscale wavelet statistics, read jointly across redshift bins, keep as much as a
+							network trained to be optimal, with no training</li>
+						<li><strong>feedback</strong> &mdash; it acts on the same small scales. Even with those scales
+							removed, these statistics add constraining power beyond the power spectrum, and better
+							feedback models would recover more</li>
+						<li><strong>not only lensing</strong> &mdash; learned priors with calibrated errors, and
+							inference beyond the power spectrum, carry over to radio imaging, 21-cm, and any inverse
+							problem with a known instrument and noise</li>
+						<li>thank you</li>
+					</ul>
+				</aside>
+			</section>
+
+			<!-- WITH DIVIDERS (2026-10-29; kept, the version above is hidden): the same six
+			     points in the same block, with a hairline between them, so each general statement and the
+			     result under it read as one unit. Styling in colloquium.css under .conc-div. -->
+			<section class="closing conc2 conc-div" data-background-image="../assets/backgrounds/Background-Euclid.jpeg"
 				data-background-opacity="0.4" data-background-size="cover" data-background-position="center">
 				<h1>Conclusions</h1>
 				<div class="conc-block">
