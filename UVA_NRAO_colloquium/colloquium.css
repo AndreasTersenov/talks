@@ -113,6 +113,62 @@
 	font-family: var(--label); font-style: var(--label-style); letter-spacing: var(--label-tracking);
 	color: var(--fg-muted); font-size: 0.6em; text-align: right; margin: 1.2em 2.2em 0 0;
 }
+/* The boxed version (.imgeq-bands): a faint box of its own colour behind each term, covering
+   its symbol and both rows, so A's box spans its two columns. The boxes live in an underlay
+   grid (.eq-under) behind the panel grid, with the same columns and rows: absolutely
+   positioned children of the panel grid itself would have been simpler, but Chrome's print
+   misplaces or drops them, page by page, in the PDF. Hence the explicit rows, measured from
+   the content (the header, then 128 px panels with a caption). Each box is two pieces, the
+   header and radio rows, then the lensing row, which wipes down on click 1; the colours are
+   opaque, so the pieces overlap without a seam. The panels shrink to 128 px to leave room
+   for the padding. */
+.reveal .slides section.imgeq-bands {
+	--band-d: color-mix(in oklab, #d08a2a 14%, var(--bg));
+	--band-a: color-mix(in oklab, #2a9d78 14%, var(--bg));
+	--band-s: color-mix(in oklab, #9b59b6 12%, var(--bg));
+	--band-n: color-mix(in oklab, #7d7a72 14%, var(--bg));
+	--band-i: color-mix(in oklab, var(--accent) 10%, var(--bg));
+}
+.reveal .slides section.imgeq-bands .eq-wrap {
+	position: relative; isolation: isolate; width: max-content; margin: 0.9em auto 0;
+	--rgap: 1.25em;
+}
+.reveal .slides section.imgeq-bands .eq-grid,
+.reveal .slides section.imgeq-bands .eq-under {
+	display: grid; margin: 0;
+	grid-template-columns: 5.6em 128px 1.4em 128px 3.6em 128px 4.6em 1.6em 128px;
+	grid-template-rows: 2.6em calc(128px + 1em) calc(128px + 1em);
+	column-gap: 22px; row-gap: var(--rgap);
+}
+.reveal .slides section.imgeq-bands .eq-under { position: absolute; inset: 0; z-index: -1; }
+.reveal .slides section.imgeq-bands .eq-what { white-space: nowrap; }
+.reveal .slides section.imgeq-bands figure img { width: 128px; height: 128px; }
+.reveal .slides section.imgeq-bands .eq-cards { width: 128px; height: 128px; }
+.reveal .slides section.imgeq-bands .eq-cards img { width: 112px; height: 112px; }
+.reveal .slides section.imgeq-bands .eq-cards .eq-g2 { left: 16px; }
+.reveal .slides section.imgeq-bands .eq-cards .eq-g1 { top: 16px; }
+/* the direct inverse's captions take two lines: the second hangs below a one-line box, so the
+   panels stay level with their row, and that column's box reaches down to cover it */
+.reveal .slides section.imgeq-bands .eq-inv figcaption { white-space: normal; height: 1lh; }
+/* negative margins grow each box past its grid area, into the gaps */
+.reveal .slides section.imgeq-bands .eq-band {
+	grid-row: 1 / 3; margin: -10px -7px -8px; border-radius: 10px; background: var(--band);
+}
+.reveal .slides section.imgeq-bands .eq-band.lo {
+	grid-row: 3 / 4; margin-top: calc(-1 * var(--rgap) - 6px); border-radius: 0 0 10px 10px;
+}
+.reveal .slides section.imgeq-bands .eq-band.all { grid-row: 1 / 4; margin-bottom: -26px; }
+.reveal .slides section.imgeq-bands .eq-band.bd { grid-column: 2 / 3; --band: var(--band-d); margin-left: -12px; margin-right: -12px; }
+.reveal .slides section.imgeq-bands .eq-band.ba { grid-column: 4 / 6; --band: var(--band-a); }
+.reveal .slides section.imgeq-bands .eq-band.bs { grid-column: 6 / 7; --band: var(--band-s); }
+.reveal .slides section.imgeq-bands .eq-band.bn { grid-column: 7 / 8; --band: var(--band-n); }
+.reveal .slides section.imgeq-bands .eq-band.bi { grid-column: 9 / 10; --band: var(--band-i); }
+/* the lower pieces grow down instead of fading */
+.reveal .slides section.imgeq-bands .eq-band.lo.fragment {
+	opacity: 1; visibility: visible; clip-path: inset(0 0 100% 0); transition: clip-path 0.5s ease;
+}
+.reveal .slides section.imgeq-bands .eq-band.lo.fragment.visible { clip-path: inset(0); }
+html.print-pdf .reveal .slides section.imgeq-bands * { transition: none !important; }
 
 /* ----------------------------------------------------------------------------
    Plug-and-play as a loop (.pnpb): the loop on the left

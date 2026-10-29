@@ -259,6 +259,11 @@ data arrive").
   - C10 radio bridge: **decided 2026-10-27**, the equation slide (#/7/6, after Kaiser–Squires);
     the picture version is gone. Its lensing row is now the PnPMass paper's field (κTNG), not the
     toy simulation.
+    Boxed version **decided 2026-10-29**, the original hidden (Andreas: what A corresponds to was
+    unclear, since A covers two columns). A faint box of its own colour behind each term, from its
+    symbol down through both rows, so A's box spans the sampling and the transform; the boxes
+    grow down with the lensing row on click 1, and the direct inverse gets an accent box on
+    click 2. Panels 128 px instead of 138.
   - C18 plug-and-play: **decided 2026-10-27**, the loop slide (#/8/2), without its radio click; the
     AIRI plug-in loop is gone. The paper-figure slide with the equations was hidden on 2026-10-28
     (Andreas), leaving the loop alone.

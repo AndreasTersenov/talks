@@ -1212,7 +1212,9 @@
 				     noise-weighted Kaiser-Squires map, as a naturally weighted dirty image is the
 				     noise-weighted adjoint. Styling in colloquium.css.
 				============================================================================== -->
-				<section class="imgeq" data-theme="light">
+				<!-- HIDDEN 2026-10-29 (Andreas): replaced by the boxed version right after it, which shows
+				     which columns each term covers, A's two above all. -->
+				<section class="imgeq" data-theme="light" data-visibility="hidden">
 					<h3 class="slide-title tight">Radio imaging and mass mapping solve almost the <em class="alert">same
 							equation</em> (both are ill-posed inv. problems)</h3>
 					<div class="eq-grid">
@@ -1273,6 +1275,94 @@
 								dirty beam integrates to zero)</li>
 							<li>A is two things in each row: where we sample (the uv coverage, the mask) and the
 								transform the sky goes through (Fourier, the shear operator)</li>
+							<li><em>if asked:</em> the lensing direct inverse is noise-weighted, as a naturally
+								weighted dirty image is</li>
+							<li><em>if asked:</em> the Wiener filter's radio twin is RESOLVE (a Gaussian-process
+								prior, Ensslin's group)</li>
+						</ul>
+					</aside>
+				</section>
+
+				<!-- WITH BOXES (2026-10-28; kept 2026-10-29, the version above is hidden): a faint box of its own
+				     colour behind each term of the equation, covering its symbol and both rows, so A's box spans
+				     its two columns (the sampling and the transform). The boxes cover the radio row first and
+				     grow down with the lensing row on click 1; the direct inverse gets an accent box on click 2.
+				     Same clicks as above. Styling in colloquium.css under .imgeq-bands. -->
+				<section class="imgeq imgeq-bands" data-theme="light">
+					<h3 class="slide-title tight">Radio imaging and mass mapping solve almost the <em class="alert">same
+							equation</em> (both are ill-posed inv. problems)</h3>
+					<div class="eq-wrap">
+					<div class="eq-under" aria-hidden="true">
+						<span class="eq-band bd"></span>
+						<span class="eq-band ba"></span>
+						<span class="eq-band bs"></span>
+						<span class="eq-band bn"></span>
+						<span class="eq-band lo bd fragment" data-fragment-index="1"></span>
+						<span class="eq-band lo ba fragment" data-fragment-index="1"></span>
+						<span class="eq-band lo bs fragment" data-fragment-index="1"></span>
+						<span class="eq-band lo bn fragment" data-fragment-index="1"></span>
+						<span class="eq-band all bi fragment" data-fragment-index="2"></span>
+					</div>
+					<div class="eq-grid">
+						<span></span>
+						<span class="eq-sym">$\mathbf{d}$<span class="eq-what">what we measure</span></span>
+						<span class="eq-sym eq-eq">$=$</span>
+						<span class="eq-sym eq-span2">$\mathbf{A}$<span class="eq-what">how we measure</span></span>
+						<span class="eq-sym">$\mathbf{s}$<span class="eq-what">the image we want</span></span>
+						<span class="eq-sym">$+\;\mathbf{n}$<span class="eq-what">noise</span></span>
+						<span></span>
+						<span class="eq-sym eq-inv fragment" data-fragment-index="2">$\mathbf{A}^{\dagger}\mathbf{d}$<span class="eq-what">invert directly</span></span>
+
+						<span class="eq-row">radio<span class="eq-rowmath">$V = S\,F\,I + n$</span></span>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_vis.png" alt="the visibilities: points along the uv tracks, coloured by amplitude, brightest at short baselines"><figcaption>visibilities</figcaption></figure>
+						<span class="eq-op">=</span>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_uv.png" alt="the uv coverage of a one-hour track with a VLA-like array: six spokes"><figcaption><i>uv</i> coverage</figcaption></figure>
+						<span class="eq-opr">$F$<span class="eq-oplab">Fourier transform</span></span>
+						<figure><img src="../assets/diagrams/imaging_parallel/radio_sky.png" alt="a toy radio sky: a double-lobed radio galaxy and compact sources"><figcaption>the radio sky</figcaption></figure>
+						<span class="eq-noise">+<span class="eq-oplab">thermal noise</span></span>
+						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
+						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/diagrams/imaging_parallel/radio_dirty.png" alt="the dirty image: the sky with sidelobes streaking across it"><figcaption>dirty image: sidelobes</figcaption></figure>
+
+						<span class="eq-row fragment" data-fragment-index="1">lensing<span class="eq-rowmath">$\gamma = M\,P\,\kappa + n$</span></span>
+						<figure class="fragment" data-fragment-index="1"><div class="eq-cards"><img class="eq-g2" src="../assets/figures/maps/pnp_build/gamma2.png" alt="the second shear component, masked and noisy"><img class="eq-g1" src="../assets/figures/maps/pnp_build/gamma1.png" alt="the first shear component, masked and noisy: the holes are around bright stars"></div><figcaption>shear: masked, noisy</figcaption></figure>
+						<span class="eq-op fragment" data-fragment-index="1">=</span>
+						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/mask.png" alt="the survey mask: the footprint, with holes around bright stars"><figcaption>the mask</figcaption></figure>
+						<span class="eq-opr fragment" data-fragment-index="1">$P$<span class="eq-oplab">shear operator</span></span>
+						<figure class="fragment" data-fragment-index="1"><img src="../assets/figures/maps/pnp_build/truth.png" alt="the true convergence map of the simulation, with the footprint outlined"><figcaption>the mass map</figcaption></figure>
+						<span class="eq-noise fragment" data-fragment-index="1">+<span class="eq-oplab">shape noise</span></span>
+						<span class="eq-arw fragment" data-fragment-index="2">&rarr;</span>
+						<figure class="eq-inv fragment" data-fragment-index="2"><img src="../assets/figures/maps/pnp_build/after_data_step_1.png" alt="the Kaiser-Squires map of the same field: the structure buried in noise, and spilling past the footprint"><figcaption>Kaiser&ndash;Squires: noise, leakage</figcaption></figure>
+					</div>
+					</div>
+					<!-- <p class="ix-tag">radio: simulated for this slide. Lensing: a &kappa;TNG simulation with a real
+						catalogue&rsquo;s mask and noise, Leterme, Tersenov, Fadili &amp; Starck 2026</p> -->
+					<aside class="notes">
+						<p><strong>the radio bridge</strong> (the one radio slide; script beat to write)</p>
+						<ul>
+							<li>for the radio astronomers: <strong>this is your problem</strong>. One equation for
+								both instruments: what we measure = the instrument acting on the image we want, plus
+								noise</li>
+							<li>radio: the visibilities are the sky, Fourier transformed and sampled only on the uv
+								tracks, plus thermal noise</li>
+							<li>[CLICK] lensing: the equation we wrote for mass mapping. The shear is the mass map through
+								the shear operator and the mask, plus shape noise far larger than the signal. A real
+								simulation and a real survey mask: the holes are bright stars</li>
+							<li>[CLICK] invert directly (the adjoint): the dirty image, sidelobes everywhere; for us the
+								Kaiser&ndash;Squires map you just saw, noise, and structure leaking past the mask edges</li>
+							<li>both are fixed the same way: add a prior. CLEAN, MEM, sparsity (SARA) for you;
+								Wiener, sparsity, MCALens for us</li>
+							<li><em>if asked, where the analogy stops:</em> your gaps are in Fourier space (the
+								unsampled uv plane), and bright fields are limited by coverage and calibration more
+								than by thermal noise. Ours are in real space (the mask), and every pixel is
+								noise-dominated. And our operator alone loses nothing: the shear operator is a pure
+								phase in Fourier space, so a complete, noiseless field inverts exactly (up to the
+								mean)</li>
+							<li><em>if asked:</em> the mean of our map is invisible (the mass-sheet degeneracy),
+								like your missing zero spacing: both direct images come out with zero mean (the
+								dirty beam integrates to zero)</li>
+							<li>A is two things in each row, which is why its box is twice as wide: where we sample
+								(the uv coverage, the mask) and the transform the sky goes through (Fourier, the shear
+								operator)</li>
 							<li><em>if asked:</em> the lensing direct inverse is noise-weighted, as a naturally
 								weighted dirty image is</li>
 							<li><em>if asked:</em> the Wiener filter's radio twin is RESOLVE (a Gaussian-process
